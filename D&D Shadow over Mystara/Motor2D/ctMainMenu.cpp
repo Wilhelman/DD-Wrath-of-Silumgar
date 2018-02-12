@@ -61,8 +61,8 @@ bool ctMainMenu::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		this->quit_pressed = true;
 
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
-		App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);
+	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
+		//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);
 
 	return true;
 }

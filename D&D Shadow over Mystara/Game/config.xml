@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <config>
 	<app framerate_cap="60">
-		<title>Counter This</title>
-		<organization>García Subirana, Guillermo's hands</organization>
+		<title>D&D: Shadow over Mystara</title>
+		<organization>TODO</organization>
 	</app>
 	<renderer>
 		<vsync value="true" />

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{cb944693-b9d0-484c-bad2-02d5a7cdbec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{a8bfab6a-5472-4969-943e-861a8b493f08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Tools">
+      <UniqueIdentifier>{c7a1a7b4-76d6-43ab-9674-37db9359b093}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Tools\PuguiXML">
+      <UniqueIdentifier>{8611086a-dc86-4eab-a673-d0cc3fb5b88e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Modules">
+      <UniqueIdentifier>{387e49b0-4fd7-45ab-83f7-33acd8e7ab85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Scenes">
+      <UniqueIdentifier>{26109e64-80c0-4ee2-827e-1e9e22c6c347}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Modules\Entities">
+      <UniqueIdentifier>{9658865f-0746-415f-927c-14e91c1929b7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ctApp.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ctTimer.cpp">
+      <Filter>Utilities\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="pugixml.cpp">
+      <Filter>Utilities\Tools\PuguiXML</Filter>
+    </ClCompile>
+    <ClCompile Include="ctPerfTimer.cpp">
+      <Filter>Utilities\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="ctLog.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="ctMain.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ctWindow.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ctRender.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ctAudio.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ctInput.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ctTextures.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ctMainMenu.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ctFadeToBlack.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ctEntities.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="ctCollider.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ctApp.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ctTimer.h">
+      <Filter>Utilities\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="pugiconfig.hpp">
+      <Filter>Utilities\Tools\PuguiXML</Filter>
+    </ClInclude>
+    <ClInclude Include="pugixml.hpp">
+      <Filter>Utilities\Tools\PuguiXML</Filter>
+    </ClInclude>
+    <ClInclude Include="ctPerfTimer.h">
+      <Filter>Utilities\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="ctDefs.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ctDynArray.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ctList.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ctLog.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ctPoint.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ctSString.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ctAnimation.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ctModule.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MemLeaks.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ctWindow.h">
+      <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ctRender.h">
+      <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ctAudio.h">
+      <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ctInput.h">
+      <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ctTextures.h">
+      <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ctMainMenu.h">
+      <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ctFadeToBlack.h">
+      <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ctEntities.h">
+      <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ctCollider.h">
+      <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

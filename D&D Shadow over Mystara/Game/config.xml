@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<config>
+	<app framerate_cap="60">
+		<title>Counter This</title>
+		<organization>García Subirana, Guillermo's hands</organization>
+	</app>
+	<renderer>
+		<vsync value="true" />
+	</renderer>
+	<font>
+		<default_font file="fonts/FritzQuadrata Regular.ttf" size="12" />
+	</font>
+	<ui>
+		<atlas file="textures/ui/ui_atlas.png" />
+		<button>
+			<fx pressed="audio/fx/pressed_btn.wav" released="audio/fx/released_btn.wav" hover="audio/fx/hover_btn.wav" />
+		</button>
+	</ui>
+	<language current="ENG" />
+	<window>
+		<resolution width="1024" height="768" scale="3" />
+		<fullscreen value="false" />
+		<borderless value="false" />
+		<resizable value="false" />
+		<fullscreen_window value="false" />
+	</window>
+	<music fx="100" music="6">
+		<lvlMusic name="textures/source_spritesheet.png" />
+	</music>
+	<entities>
+		<spritesheetSource name="textures/source_spritesheet.png" />
+		<player>
+			<fxPlayerJump name="audio/fx/jump_fx.wav" />
+			<animations>
+				<animation name="down_idle" speed="1.0" loop="true">
+					<frame x="2" y="1" width="8" height="29" />
+					<frame x="13" y="1" width="8" height="29" />
+				</animation>
+			</animations>
+		</player>
+	</entities>
+	<particles>
+		<fxPlayerBasicShot name="audio/fx/player_basic_shot_fx.wav" />
+		<spritesheetSource name="textures/source_spritesheet.png">
+			<particle name="player_basic_shot" speed="3" life_time="3000">
+				<animation name="player_basic_shot_right" speed_x="60" speed_y="0.0" loop="true">
+					<frame x="4" y="83" width="9" height="5" />
+					<frame x="18" y="83" width="9" height="5" />
+					<frame x="34" y="83" width="9" height="5" />
+				</animation>
+				<animation name="player_basic_shot_left" speed_x="-60" speed_y="0.0" loop="true">
+					<frame x="34" y="115" width="9" height="5" />
+					<frame x="20" y="115" width="9" height="5" />
+					<frame x="4" y="115" width="9" height="5" />
+				</animation>
+				<animation name="player_jump_animation" speed_x="0.0" speed_y="0.0" loop="true">
+					<frame x="1" y="129" width="28" height="11" />
+					<frame x="32" y="129" width="28" height="11" />
+					<frame x="63" y="129" width="28" height="11" />
+					<frame x="94" y="129" width="28" height="11" />
+				</animation>
+			</particle>
+		</spritesheetSource>
+	</particles>
+	<file_system>
+		<path>data.zip</path>
+	</file_system>
+	<map>
+		<folder>maps/</folder>
+		<spritesheetSource name="maps/enviroment-tiles.png">
+			<animation name="lava_waterfall" speed="0.01" loop="true">
+				<frame x="144" y="32" width="16" height="16" />
+				<frame x="160" y="32" width="16" height="16" />
+				<frame x="176" y="32" width="16" height="16" />
+			</animation>
+			<animation name="waterfall" speed="0.01" loop="true">
+				<frame x="192" y="32" width="16" height="16" />
+				<frame x="208" y="32" width="16" height="16" />
+				<frame x="224" y="32" width="16" height="16" />
+			</animation>
+			<animation name="lava_animation" speed="0.01" loop="true">
+				<frame x="144" y="0" width="32" height="32" />
+				<frame x="176" y="0" width="32" height="32" />
+				<frame x="208" y="0" width="32" height="32" />
+			</animation>
+			<animation name="water_animation" speed="0.01" loop="true">
+				<frame x="240" y="0" width="32" height="29" />
+				<frame x="272" y="0" width="32" height="29" />
+				<frame x="304" y="0" width="32" height="29" />
+			</animation>
+		</spritesheetSource>
+		<main_menu />
+		<scene>
+			<data name="main_menu.tmx" start="true" currentLvl="false" />
+			<data name="lvl1.tmx" start="false" currentLvl="true" />
+			<data name="lvl2.tmx" start="false" currentLvl="false" />
+			<animations>
+				<animation name="heart_reward_anim" speed="0.12" loop="true">
+					<frame x="81" y="419" width="5" height="13" />
+					<frame x="86" y="419" width="5" height="13" />
+					<frame x="91" y="419" width="5" height="13" />
+					<frame x="96" y="419" width="5" height="13" />
+					<frame x="101" y="419" width="5" height="13" />
+				</animation>
+				<animation name="coin_reward_anim" speed="0.5" loop="true">
+					<frame x="0" y="433" width="10" height="14" />
+					<frame x="32" y="433" width="10" height="14" />
+					<frame x="64" y="433" width="10" height="14" />
+					<frame x="98" y="433" width="10" height="14" />
+				</animation>
+				<animation name="one_life_anim" speed="0.1" loop="true">
+					<frame x="78" y="366" width="13" height="13" />
+					<frame x="99" y="367" width="13" height="13" />
+				</animation>
+			</animations>
+		</scene>
+	</map>
+</config>

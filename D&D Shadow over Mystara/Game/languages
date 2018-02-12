@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<languages>
+
+	<ENG>
+		<press_space string="Press SPACE to continue" />
+		<new_game_btn string="PLAY" />
+		<continue_btn string="CONTINUE" />
+		<music_volume string="Music volume" />
+		<fx_volume string="FX volume" />
+		<cap_to string="Cap to 30 fps" />
+		<language_option string="Language" />
+		<quit_lan string="QUIT" />
+		<save_lan string="SAVE" />
+		<load_lan string="LOAD" />
+		<main_menu_lan string="MAIN MENU" />
+		<credits_btn string="CREDITS" />
+	</ENG>
+	
+	<CAT>
+		<press_space string="Prem ESPAI per continuar" />
+		<new_game_btn string="JUGAR" />
+		<continue_btn string="CONTINUAR" />
+		<music_volume string="Volum musica" />
+		<fx_volume string="Volum FX" />
+		<cap_to string="Capar a 30 fps" />
+		<language_option string="Idioma" />
+		<quit_lan string="SORTIR" />
+		<save_lan string="GUARDAR" />
+		<load_lan string="CARREGAR" />
+		<main_menu_lan string="MENU PRINCIPAL" />
+		<credits_btn string="CREDITS" />
+	</CAT>
+	
+	<ESP>
+		<press_space string="Presiona ESPACIO para continuar" />
+		<new_game_btn string="JUGAR" />
+		<continue_btn string="CONTINUAR" />
+		<music_volume string="Volumen musica" />
+		<fx_volume string="Volumen FX" />
+		<cap_to string="Capar a 30 fps" />
+		<language_option string="Idioma" />
+		<quit_lan string="SALIR" />
+		<save_lan string="GUARDAR" />
+		<load_lan string="CARGAR" />
+		<main_menu_lan string="MENU PRINCIPAL" />
+		<credits_btn string="CREDITOS" />
+	</ESP>
+
+	  <KGN>
+		<press_space string="logh taH press" />
+		<new_game_btn string="chu'" />
+		<continue_btn string="taH" />
+		<music_volume string="muq QoQ" />
+		<fx_volume string="muq FX" />
+		<cap_to string="vuS 30 fps" />
+		<language_option string="Hol" />
+		<quit_lan string="mej" />
+		<save_lan string="choq" />
+		<load_lan string="load" />
+		<main_menu_lan string="'elbogh HIDjolev" />
+		<credits_btn string="DEQ" />
+	  </KGN>
+</languages>

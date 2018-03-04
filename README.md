@@ -1,14 +1,15 @@
 ﻿# DUNGEONS & DRAGONS: SHADOW OVER MYSTARA
 
-Project II for Videogame Development subject. The main goal here is to create a simple plattaformer with two levels done in Tiled, having a main character moving around while being able to save and load game’s state. On top of this enemies pathfinding is implemented along other stuff such as stable frame rate (30fps), normalized movement, structured entity system described in an UML file and code with Brofiler integration. We also have added an intro menu and HUD implemented through a strucured ui system described in a UML file.
+Project II for Videogame Development subject. The main goal here is to redesign the arcade game Dungeons & Dragons: Shadow over Mystara. Enemies pathfinding is implemented along other stuff such as stable frame rate (60fps), normalized movement, structured entity system described in an UML file and code with Brofiler integration. We also have added an intro menu and HUD implemented through a structured ui system described in a UML file.
 
 This project has been done by seven spanish students of CITM - UPC (Terrasa, Spain).  
 
 * [Github repository](https://github.com/Wilhelman/DD-Shadow-over-Mystara)  
-* [Website] TODO WHEN WE HAVE IT
+* [Website] NOT YET
 
 ## About the game
-TODO : MIMIMIMIMI MIMIMI MI
+Dungeons & Dragons: Shadow over Mystara is an arcade game created and published by Capcom in 1996 and it's a sequel of Dungeons & Dragons: Tower of Doom. The game combines the genre of beat'em up with a lot of aspects about the role-playing. Brought a great innovation around the mechanics of the inventory system and habilities mechanics.
+We're going to redesign around JRPG genre. Check our game design document and stay tuned: [Game  Design Document](https://github.com/Wilhelman/DD-Shadow-over-Mystara/wiki/Game-Design-Document)
 
 ## Installation instructions
 
@@ -18,13 +19,21 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 
 ## Controls
 
-### Keyboard:
+* Pad: Move through menus.
+* A: Choose option.
+* B: Go to previous menu.
+* Start: Open Pause menu.
 
-Player controls:
-TODO:  ALL CONTROLS
+
+## Keyboard:
+
+* Arrow keys: Move through menus.
+* Enter: Choose option.
+* Return: Go to previous menu.
+* Escape: Open Pause menu.
 
 General/developer controls:
-TODO: ALL DEV CONTROLS
+* NOT YET
 
 ## Innovations / Redesign
 TODO: ALL INNOVATIONS WE HAVE
@@ -32,51 +41,48 @@ TODO: ALL INNOVATIONS WE HAVE
 ## Team members
 
 _García Subirana, Guillermo's responsability and Github account_
-
-* Team Lead
+* Lead
 * [Github account](https://github.com/Wilhelman)
 
-TODO: THE REST OF THE CREW
+_Sánchez-Cortés Puerta, Alfonso's responsability and Github account_
+* Code
+* [Github account](https://github.com/Siitoo)
+
+_Gutiérrez Llenas, Ricardo's responsability and Github account_
+* Management
+* [Github account](https://github.com/Ricardogll)
+
+_Tirado Fernández, Victor's responsability and Github account_
+* Design
+* [Github account](https://github.com/VictorTirado)
+
+_Tarrés i Urbieta, Marc's responsability and Github account_
+* Art + Audio
+* [Github account](https://github.com/MAtaur00)
+
+_Campamar Redol, Alex's responsability and Github account_
+* UI
+* [Github account](https://github.com/Acaree)
+
+_Mourelo Montero, Manel's responsability and Github account_
+* QA
+* [Github account](https://github.com/manelmourelo)
 
 
 ## Tools used
 * IDE: Microsoft Visual Studio 2017
 * Language: C++
+* Containers: STL
 * Graphics and audio: SDL 2.0
 * Data: pugixml 1.8
 * Level editor: Tiled 0.17
 * Code repository: GitHub
-* Others: Adobe Photoshop CS6 and MS Paint
+* Others: Adobe Photoshop CS6 / MS Paint / Aseprite
 
 ## Credits for artwork, music/sound fx and fonts
 
-Sprites:
+* Ripped Sprites:
 
-TODO: SET ALL CREDITS
-* Artwork created by 
+* Music:
 
-Tileset:
-
-TODO: SET ALL CREDITS
-
-* Artwork created by 
-
-Music:
-
-TODO : ALL MUSIC CREDIT
-
-* Game music from [DL SOUNDS](https://www.dl-sounds.com/). It can be found [here](https://www.dl-sounds.com/royalty-free/arcade-funk/)
-* Main menu music from 
-
-* Player shot and jump sound fx can be found [here](https://ansimuz.itch.io/grotto-escape-game-art-pack)
-* This game uses these sounds from freesound:
-      
-	- 249616__vincentm400__function-fail.wav by [OwlStorm / Natalie Kirk](https://freesound.org/people/OwlStorm/)
-	- 341695__projectsu012__coins-1.wav by  [ProjectsU012](https://freesound.org/people/ProjectsU012/)
-	- 345299__scrampunk__okay by [Scrampunk](https://freesound.org/people/Scrampunk/)
-	
-Fonts:
-
-TODO: ALL FONTS CREDITS
-
-* Font used can be found [here](http://tenbytwenty.com/?xxxx_posts=munro) 
+* Fonts:

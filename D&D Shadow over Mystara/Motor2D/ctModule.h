@@ -6,7 +6,7 @@
 #ifndef __ctMODULE_H__
 #define __ctMODULE_H__
 
-#include "ctSString.h"
+#include <string>
 #include "PugiXml\src\pugixml.hpp"
 
 class ctApp;
@@ -79,7 +79,7 @@ public:
 
 public:
 
-	ctSString	name;
+	std::string		name;
 	bool		active = false;
 
 };

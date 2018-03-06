@@ -16,7 +16,7 @@
 
 ctFadeToBlack::ctFadeToBlack()
 {
-	name.create("fadeToBlack");
+	name = "fadeToBlack";
 }
 
 ctFadeToBlack::~ctFadeToBlack()
@@ -108,7 +108,7 @@ bool ctFadeToBlack::FadeToBlack(float time)
 	return ret;
 }
 
-bool ctFadeToBlack::FadeToKnowBlack(ctSString lvlToFade, float time)
+bool ctFadeToBlack::FadeToKnowBlack(std::string lvlToFade, float time)
 {
 	lvlName = lvlToFade;
 	bool ret = false;

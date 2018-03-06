@@ -12,7 +12,7 @@
 ctAudio::ctAudio() : ctModule()
 {
 	music = NULL;
-	name.create("audio");
+	name = "audio";
 }
 
 // Destructor

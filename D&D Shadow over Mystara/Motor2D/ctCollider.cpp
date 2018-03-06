@@ -10,7 +10,7 @@ ctCollider::ctCollider()
 
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
 
-	name.create("collider");
+	name = "collider";
 }
 
 // Destructor

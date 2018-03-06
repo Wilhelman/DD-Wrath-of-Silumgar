@@ -98,16 +98,10 @@
     <ClInclude Include="ctDynArray.h">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="ctList.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="ctLog.h">
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="ctPoint.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="ctSString.h">
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="ctAnimation.h">

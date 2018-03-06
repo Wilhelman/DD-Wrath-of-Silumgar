@@ -4,6 +4,7 @@
 #include "ctModule.h"
 #include "ctAnimation.h"
 #include "ctDynArray.h"
+#include <string>
 
 enum EntityType
 {
@@ -50,7 +51,7 @@ private:
 
 	SDL_Texture* entity_sprites = nullptr;
 
-	ctSString spritesheetName;
+	std::string spritesheetName;
 
 };
 

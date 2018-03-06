@@ -12,8 +12,8 @@
 #define VSYNC true
 
 ctRender::ctRender() : ctModule()
-{
-	name.create("renderer");
+{ 
+	name = "renderer";
 	background.r = 0;
 	background.g = 0;
 	background.b = 0;

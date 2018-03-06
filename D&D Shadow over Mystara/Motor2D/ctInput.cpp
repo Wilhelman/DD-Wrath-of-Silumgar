@@ -10,7 +10,7 @@
 
 ctInput::ctInput() : ctModule()
 {
-	name.create("input");
+	name ="input";
 
 	keyboard = new ctKeyState[MAX_KEYS];
 	memset(keyboard, KEY_IDLE, sizeof(ctKeyState) * MAX_KEYS);

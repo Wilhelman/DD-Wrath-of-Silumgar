@@ -39,14 +39,12 @@
     <ClInclude Include="ctEntities.h" />
     <ClInclude Include="ctFadeToBlack.h" />
     <ClInclude Include="ctInput.h" />
-    <ClInclude Include="ctList.h" />
     <ClInclude Include="ctLog.h" />
     <ClInclude Include="ctMainMenu.h" />
     <ClInclude Include="ctModule.h" />
     <ClInclude Include="ctPerfTimer.h" />
     <ClInclude Include="ctPoint.h" />
     <ClInclude Include="ctRender.h" />
-    <ClInclude Include="ctSString.h" />
     <ClInclude Include="ctTextures.h" />
     <ClInclude Include="ctTimer.h" />
     <ClInclude Include="ctWindow.h" />

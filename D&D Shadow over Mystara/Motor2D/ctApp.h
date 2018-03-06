@@ -2,6 +2,7 @@
 #define __ctAPP_H__
 
 #include <list>
+#include <string>
 #include "ctModule.h"
 #include "ctPerfTimer.h"
 #include "ctTimer.h"
@@ -128,16 +129,16 @@ private:
 	int					argc = 0;
 	char**				args = nullptr;
 
-	ctSString			game_title;
-	ctSString			organization;
-	ctSString			vsync_to_show;
-	ctSString			cap_to_show;
+	std::string			game_title;
+	std::string				organization;
+	std::string				vsync_to_show;
+	std::string				cap_to_show;
 
 	mutable bool		want_to_save = false;
 	bool				want_to_load = false;
 
-	mutable ctSString	save_game;
-	ctSString			load_game;
+	mutable std::string	save_game;
+	std::string				load_game;
 
 	ctPerfTimer			perf_timer;
 	ctTimer				simple_timer;

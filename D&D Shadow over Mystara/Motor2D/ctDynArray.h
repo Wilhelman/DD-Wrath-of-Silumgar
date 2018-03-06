@@ -6,6 +6,7 @@
 #define __CTDYNARRAY_H__
 
 #include "ctDefs.h"
+#include <assert.h>
 
 #define DYN_ARRAY_BLOCK_SIZE 16
 

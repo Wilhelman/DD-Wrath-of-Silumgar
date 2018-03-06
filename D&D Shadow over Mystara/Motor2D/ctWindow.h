@@ -2,6 +2,7 @@
 #define __ctWINDOW_H__
 
 #include "ctModule.h"
+#include <string>
 
 struct SDL_Window;
 struct SDL_Surface;
@@ -40,7 +41,7 @@ public:
 	SDL_Surface* iconExe = nullptr;
 
 private:
-	ctSString	title;
+	std::string	title;
 	uint		width = 0u;
 	uint		height = 0u;
 	uint		scale = 0u;

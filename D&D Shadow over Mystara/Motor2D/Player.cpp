@@ -7,7 +7,7 @@
 #include "ctCollider.h"
 #include "ctAudio.h"
 #include "ctEntities.h"
-
+#include <string>
 #include "Player.h"
 
 Player::Player(int x, int y, EntityType type) : Entity(x, y) {
@@ -26,7 +26,7 @@ Player::Player(int x, int y, EntityType type) : Entity(x, y) {
 	//read animation from node
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
 	{
-		ctSString tmp(animations.attribute("name").as_string());
+		std::string tmp = animations.attribute("name").as_string();
 
 		if (tmp == "down_idle")
 			LoadAnimation(animations, &down_idle);

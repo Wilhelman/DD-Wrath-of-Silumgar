@@ -16,7 +16,7 @@
 
 ctEntities::ctEntities()
 {
-	name.create("entities");
+	name = "entities";
 }
 
 // Destructor
@@ -31,8 +31,8 @@ bool ctEntities::Awake(pugi::xml_node& config)
 	LOG("Loading Entities from config file");
 	bool ret = true;
 
-	spritesheetName.create(config.child("spritesheetSource").attribute("name").as_string());
-
+	spritesheetName = config.child("spritesheetSource").attribute("name").as_string();
+	
 	return ret;
 }
 
@@ -40,7 +40,7 @@ bool ctEntities::Start()
 {
 	bool ret = true;
 
-	entity_sprites = App->tex->Load(spritesheetName.GetString());
+	entity_sprites = App->tex->Load(spritesheetName.data());
 
 	if (entity_sprites == NULL) {
 		LOG("Error loading entities spritesheet!!");

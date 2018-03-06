@@ -16,7 +16,7 @@
 
 ctMainMenu::ctMainMenu() : ctModule()
 {
-	name.create("main_menu");
+	name = "main_menu";
 }
 
 // Destructor

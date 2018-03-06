@@ -136,8 +136,8 @@ bool ctApp::Awake()
 		// self-config
 		ret = true;
 		app_config = config.child("app");
-		game_title.create(app_config.child("title").child_value());
-		organization.create(app_config.child("organization").child_value());
+		game_title = app_config.child("title").child_value();
+		organization =app_config.child("organization").child_value();
 
 		cap = app_config.attribute("framerate_cap").as_uint();
 
@@ -153,7 +153,7 @@ bool ctApp::Awake()
 
 		while (it != modules.end() && ret == true)
 		{
-			ret = (*it)->Awake(config.child((*it)->name.GetString()));
+			ret = (*it)->Awake(config.child((*it)->name.data()));
 			
 			it++;
 		}
@@ -308,7 +308,7 @@ void ctApp::FinishUpdate()
 
 	dt = 1.0f / framerate;
 	
-	ctSString godMode;
+	std::string godMode;
 
 	/*if (App->entities->GetPlayer() != nullptr) {
 		(App->entities->GetPlayer()->god_mode) ?
@@ -316,11 +316,11 @@ void ctApp::FinishUpdate()
 			godMode.create("OFF");
 	}
 	else*/
-		godMode.create("Player not reachable");
+		godMode="Player not reachable";
 
 	static char title[256];
 	sprintf_s(title, 256, "%s - FPS: %.2f Av.FPS: %.2f Last Frame Ms: %u (Cap: %s  Vsync: %s) | GOD MODE: %s",
-		game_title.GetString(), framerate, avg_fps, last_frame_ms, cap_to_show.GetString(), vsync_to_show.GetString(), godMode.GetString());
+		game_title.data(), framerate, avg_fps, last_frame_ms, cap_to_show.data(), vsync_to_show.data(), godMode.data());
 
 	App->win->SetTitle(title);
 
@@ -429,13 +429,13 @@ const char* ctApp::GetArgv(int index) const
 // ---------------------------------------
 const char* ctApp::GetTitle() const
 {
-	return game_title.GetString();
+	return game_title.data();
 }
 
 // ---------------------------------------
 const char* ctApp::GetOrganization() const
 {
-	return organization.GetString();
+	return organization.data();
 }
 
 // Load / Save
@@ -468,11 +468,11 @@ bool ctApp::LoadGameNow()
 	pugi::xml_document data;
 	pugi::xml_node root;
 
-	pugi::xml_parse_result result = data.load_file(load_game.GetString());
+	pugi::xml_parse_result result = data.load_file(load_game.data());
 
 	if (result != NULL)
 	{
-		LOG("Loading new Game State from %s...", load_game.GetString());
+		LOG("Loading new Game State from %s...", load_game.data());
 
 		root = data.child("game_state");
 
@@ -482,7 +482,7 @@ bool ctApp::LoadGameNow()
 
 		while (it != modules.end() && ret == true)
 		{
-			ret = (*it)->Load(root.child((*it)->name.GetString()));
+			ret = (*it)->Load(root.child((*it)->name.data()));
 			it++;
 		}
 
@@ -490,10 +490,10 @@ bool ctApp::LoadGameNow()
 		if (ret == true)
 			LOG("...finished loading");
 		else
-			LOG("...loading process interrupted with error on module %s", (*it) ? (*it)->name.GetString() : "unknown");
+			LOG("...loading process interrupted with error on module %s", (*it) ? (*it)->name.data() : "unknown");
 	}
 	else
-		LOG("Could not parse game state xml file %s. pugi error: %s", load_game.GetString(), result.description());
+		LOG("Could not parse game state xml file %s. pugi error: %s", load_game.data(), result.description());
 
 	want_to_load = false;
 	return ret;
@@ -503,7 +503,7 @@ bool ctApp::SavegameNow() const
 {
 	bool ret = true;
 
-	LOG("Saving Game State to %s...", save_game.GetString());
+	LOG("Saving Game State to %s...", save_game.data());
 
 	// xml object were we will store all data
 	pugi::xml_document data;
@@ -516,17 +516,17 @@ bool ctApp::SavegameNow() const
 
 	while (it != modules.end() && ret == true)
 	{
-		ret = (*it)->Save(root.append_child((*it)->name.GetString()));
+		ret = (*it)->Save(root.append_child((*it)->name.data()));
 		it++;
 	}
 
 	if (ret == true)
 	{
-		data.save_file(save_game.GetString());
+		data.save_file(save_game.data());
 		LOG("... finished saving", );
 	}
 	else
-		LOG("Save process halted from an error in module %s", *(it) ? (*it)->name.GetString() : "unknown");
+		LOG("Save process halted from an error in module %s", *(it) ? (*it)->name.data() : "unknown");
 
 	data.reset();
 	want_to_save = false;

@@ -9,7 +9,7 @@
 
 ctTextures::ctTextures() : ctModule()
 {
-	name.create("textures");
+	name = "textures";
 }
 
 // Destructor

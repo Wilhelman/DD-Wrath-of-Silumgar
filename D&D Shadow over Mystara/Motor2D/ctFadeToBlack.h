@@ -3,7 +3,7 @@
 
 #include "ctModule.h"
 #include "SDL\include\SDL_rect.h"
-#include "ctSString.h"
+#include <string>
 
 class ctFadeToBlack : public ctModule
 {
@@ -22,7 +22,7 @@ public:
 
 	bool FadeToBlack(float time = 2.0f);
 	bool FadeToBlackBetweenModules(ctModule* module_off, ctModule* module_on, float time = 2.0f, bool andLoad = false);
-	bool FadeToKnowBlack(ctSString lvlToFade, float time = 2.0f);
+	bool FadeToKnowBlack(std::string lvlToFade, float time = 2.0f);
 	bool FadeIsOver();
 
 private:
@@ -43,7 +43,7 @@ private:
 	bool have_to_load = false;
 
 public:
-	ctSString lvlName;
+	std::string lvlName;
 	bool F1 = false;
 };
 

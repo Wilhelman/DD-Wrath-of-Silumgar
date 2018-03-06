@@ -2,7 +2,8 @@
 #define __ctTEXTURES_H__
 
 #include "ctModule.h"
-#include "ctList.h"
+
+#include <list>
 
 struct SDL_Texture;
 struct SDL_Surface;
@@ -33,7 +34,7 @@ public:
 
 public:
 
-	ctList<SDL_Texture*>	textures;
+	std::list<SDL_Texture*> textures;
 };
 
 

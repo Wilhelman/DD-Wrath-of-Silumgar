@@ -22,6 +22,9 @@
     <Filter Include="Core\Modules\Entities">
       <UniqueIdentifier>{9658865f-0746-415f-927c-14e91c1929b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Modules\GUI">
+      <UniqueIdentifier>{14b4087a-3bea-4a5e-b99f-8a814653b210}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ctApp.cpp">
@@ -71,6 +74,21 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="ctGui.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIElement.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIImage.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UILabel.cpp">
+      <Filter>Core\Modules\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +154,21 @@
     </ClInclude>
     <ClInclude Include="ctPoint.h">
       <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ctGui.h">
+      <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="UIButton.h">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIElement.h">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIImage.h">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UILabel.h">
+      <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

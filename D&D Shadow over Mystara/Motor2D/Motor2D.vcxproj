@@ -15,6 +15,7 @@
     <ClCompile Include="ctAudio.cpp" />
     <ClCompile Include="ctEntities.cpp" />
     <ClCompile Include="ctFadeToBlack.cpp" />
+    <ClCompile Include="ctGui.cpp" />
     <ClCompile Include="ctInput.cpp" />
     <ClCompile Include="ctLog.cpp" />
     <ClCompile Include="ctMain.cpp" />
@@ -27,6 +28,10 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="pugixml.cpp" />
+    <ClCompile Include="UIButton.cpp" />
+    <ClCompile Include="UIElement.cpp" />
+    <ClCompile Include="UIImage.cpp" />
+    <ClCompile Include="UILabel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctAnimation.h" />
@@ -35,6 +40,7 @@
     <ClInclude Include="ctDefs.h" />
     <ClInclude Include="ctEntities.h" />
     <ClInclude Include="ctFadeToBlack.h" />
+    <ClInclude Include="ctGui.h" />
     <ClInclude Include="ctInput.h" />
     <ClInclude Include="ctLog.h" />
     <ClInclude Include="ctMainMenu.h" />
@@ -50,6 +56,10 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
+    <ClInclude Include="UIButton.h" />
+    <ClInclude Include="UIElement.h" />
+    <ClInclude Include="UIImage.h" />
+    <ClInclude Include="UILabel.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2AF9969B-F202-497B-AF30-7BEF9CE8005E}</ProjectGuid>

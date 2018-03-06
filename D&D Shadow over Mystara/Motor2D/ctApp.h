@@ -16,6 +16,7 @@ class ctTextures;
 class ctAudio;
 class ctMainMenu;
 class ctEntities;
+class ctGui;
 class ctFadeToBlack;
 /*class j1Collider;
 class j1Scene;
@@ -105,6 +106,7 @@ public:
 	ctAudio*			audio = nullptr;
 	ctMainMenu*			main_menu = nullptr;
 	ctEntities*			entities = nullptr;
+	ctGui*				gui = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;
 	/*j1Collider*			collider = nullptr;
 	j1Scene*			scene = nullptr;

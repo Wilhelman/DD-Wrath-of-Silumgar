@@ -11,6 +11,7 @@
 #include "ctAudio.h"
 #include "ctMainMenu.h"
 #include "ctEntities.h"
+#include "ctGui.h"
 #include "ctFadeToBlack.h"
 /*
 #include "j1Scene.h"
@@ -44,6 +45,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	audio = new ctAudio();
 	main_menu = new ctMainMenu();
 	entities = new ctEntities();
+	gui = new ctGui();
 	fadeToBlack = new ctFadeToBlack();
 	/*scene = new j1Scene();
 	main_menu = new j1MainMenu();
@@ -68,6 +70,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(main_menu);
 	AddModule(entities);
+	AddModule(gui);
 	AddModule(fadeToBlack);
 	
 	/*AddModule(map);

@@ -55,28 +55,14 @@ bool ctEntities::Start()
 
 bool ctEntities::PreUpdate()
 {
-	for (int i = 0; i < entities.Count(); i++) {
-		if (entities[i]->to_destroy) {
-			delete(entities[i]);
-			entities[i] = nullptr;
-			if (!entities.RemoveAt(i)) {
-				LOG("Error removing entity");
-				return false;
-			}
-		}
-	}
+	
 	return true;
 }
 
 // Called before render is available
 bool ctEntities::Update(float dt)
 {
-
-	for (int i = 0; i < entities.Count() && App->fadeToBlack->FadeIsOver() /*&& !App->scene->IsGamePaused()*/; i++)
-		if (entities[i] != nullptr) entities[i]->Update(dt);
-
-	for (int i = 0; i < entities.Count(); i++)
-		if (entities[i] != nullptr) entities[i]->Draw(entity_sprites);
+	
 
 	return true;
 }
@@ -88,19 +74,7 @@ bool ctEntities::CleanUp()
 
 	App->tex->UnLoad(entity_sprites);
 
-	for (int i = entities.Count() - 1; i >= 0; --i)
-	{
-		if (entities[i] != nullptr) {
-			delete(entities[i]);
-			entities[i] = nullptr;
-			if (!entities.RemoveAt(i)) {
-				LOG("Error removing entity");
-				return false;
-			}
-		}
-	}
 
-	entities.Clear();
 
 	return true;
 }
@@ -114,7 +88,7 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 	{
 	case EntityType::PLAYER: {
 		Player* player = new Player(x, y, PLAYER);
-		entities.PushBack(player);
+		entities.push_back(player);
 		ret = true;
 		break;
 	}
@@ -128,7 +102,7 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 
 void ctEntities::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < entities.Count(); ++i)
+	for (uint i = 0; i < entities.max_size(); ++i)
 		if (entities[i] != nullptr && entities[i]->GetCollider() == c1)
 			entities[i]->OnCollision(c2);
 }
@@ -150,7 +124,7 @@ bool ctEntities::Save(pugi::xml_node& save) const
 
 Player* ctEntities::GetPlayer() const {
 
-	for (uint i = 0; i < entities.Count(); ++i)
+	for (uint i = 0; i < entities.max_size(); ++i)
 	{
 		if (entities[i] != nullptr)
 		{

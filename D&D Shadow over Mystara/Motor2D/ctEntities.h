@@ -3,7 +3,7 @@
 
 #include "ctModule.h"
 #include "ctAnimation.h"
-#include "ctDynArray.h"
+#include <vector>
 #include <string>
 
 enum EntityType
@@ -47,7 +47,7 @@ public:
 
 private:
 
-	ctDynArray<Entity*> entities;
+	std::vector<Entity*> entities;
 
 	SDL_Texture* entity_sprites = nullptr;
 

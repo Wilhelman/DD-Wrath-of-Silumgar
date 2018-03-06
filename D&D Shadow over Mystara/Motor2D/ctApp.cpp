@@ -101,12 +101,10 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 ctApp::~ctApp()
 {
 	// release modules
-	ctList_item<ctModule*>* item = modules.end;
-
-	while (item != NULL)
+	
+	for (std::list<ctModule*>::iterator it = modules.begin(); it != modules.end(); ++it)
 	{
-		RELEASE(item->data);
-		item = item->prev;
+		RELEASE(*it);
 	}
 
 	modules.clear();
@@ -115,7 +113,7 @@ ctApp::~ctApp()
 void ctApp::AddModule(ctModule* module)
 {
 	module->Init();
-	modules.add(module);
+	modules.push_back(module);
 }
 
 // Called before render is available
@@ -150,13 +148,14 @@ bool ctApp::Awake()
 
 	if (ret == true)
 	{
-		ctList_item<ctModule*>* item;
-		item = modules.start;
 
-		while (item != NULL && ret == true)
+		std::list<ctModule*>::iterator it = modules.begin();
+
+		while (it != modules.end() && ret == true)
 		{
-			ret = item->data->Awake(config.child(item->data->name.GetString()));
-			item = item->next;
+			ret = (*it)->Awake(config.child((*it)->name.GetString()));
+			
+			it++;
 		}
 	}
 
@@ -171,17 +170,17 @@ bool ctApp::Start()
 	PERF_START(ptimer);
 
 	bool ret = true;
-	ctList_item<ctModule*>* item;
-	item = modules.start;
 
-	while (item != NULL && ret == true)
+	std::list<ctModule*>::iterator it = modules.begin();
+	
+	while (it != modules.end() && ret == true)
 	{
-		if (item->data->active == false) {
-			item = item->next;
+		if ((*it)->active == false) {
+			it++;
 			continue;
 		}
-		ret = item->data->Start();
-		item = item->next;
+		ret = (*it)->Start();
+		it++;
 	}
 	startup_time.Start();
 
@@ -333,19 +332,20 @@ void ctApp::FinishUpdate()
 bool ctApp::PreUpdate()
 {
 		bool ret = true;
-	ctList_item<ctModule*>* item;
-	item = modules.start;
+	
+	
+
 	ctModule* pModule = NULL;
 
-	for (item = modules.start; item != NULL && ret == true; item = item->next)
+	for (std::list<ctModule*>::iterator it = modules.begin(); it != modules.end() && ret == true; it++)
 	{
-		pModule = item->data;
+		pModule = (*it);
 
 		if (pModule->active == false) {
 			continue;
 		}
 
-		ret = item->data->PreUpdate();
+		ret = (*it)->PreUpdate();
 	}
 
 	return ret;
@@ -355,19 +355,18 @@ bool ctApp::PreUpdate()
 bool ctApp::DoUpdate()
 {
 	bool ret = true;
-	ctList_item<ctModule*>* item;
-	item = modules.start;
+
 	ctModule* pModule = NULL;
 
-	for (item = modules.start; item != NULL && ret == true; item = item->next)
+	for (std::list<ctModule*>::iterator it = modules.begin(); it != modules.end() && ret == true; it++)
 	{
-		pModule = item->data;
+		pModule = (*it);
 
 		if (pModule->active == false) {
 			continue;
 		}
 
-		(all_modules_loaded) ? ret = item->data->Update(dt) : ret = item->data->Update(0);
+		(all_modules_loaded) ? ret = (*it)->Update(dt) : ret = (*it)->Update(0);
 	}
 
 	return ret;
@@ -378,18 +377,18 @@ bool ctApp::PostUpdate()
 {
 	PERF_START(ptimer);
 	bool ret = true;
-	ctList_item<ctModule*>* item;
+
 	ctModule* pModule = NULL;
 
-	for (item = modules.start; item != NULL && ret == true; item = item->next)
+	for (std::list<ctModule*>::iterator it = modules.begin(); it != modules.end() && ret == true; it++)
 	{
-		pModule = item->data;
+		pModule = (*it);
 
 		if (pModule->active == false) {
 			continue;
 		}
 
-		ret = item->data->PostUpdate();
+		ret = (*it)->PostUpdate();
 	}
 
 	//PERF_PEEK(ptimer);
@@ -400,13 +399,13 @@ bool ctApp::PostUpdate()
 bool ctApp::CleanUp()
 {
 	bool ret = true;
-	ctList_item<ctModule*>* item;
-	item = modules.end;
+	
+	std::list<ctModule*>::reverse_iterator it = modules.rbegin();
 
-	while (item != NULL && ret == true)
+	while (it != modules.rend() && ret == true)
 	{
-		ret = item->data->CleanUp();
-		item = item->prev;
+		ret = (*it)->CleanUp();
+		it++;
 	}
 
 	return ret;
@@ -457,7 +456,7 @@ void ctApp::SaveGame() const
 }
 
 // ---------------------------------------
-void ctApp::GetSaveGames(ctList<ctSString>& list_to_fill) const
+void ctApp::GetSaveGames(/*ctList<ctSString>& list_to_fill*/) const
 {
 	// need to add functionality to file_system module for this to work
 }
@@ -477,20 +476,21 @@ bool ctApp::LoadGameNow()
 
 		root = data.child("game_state");
 
-		ctList_item<ctModule*>* item = modules.start;
+		std::list<ctModule*>::iterator it = modules.begin();
+		
 		ret = true;
 
-		while (item != NULL && ret == true)
+		while (it != modules.end() && ret == true)
 		{
-			ret = item->data->Load(root.child(item->data->name.GetString()));
-			item = item->next;
+			ret = (*it)->Load(root.child((*it)->name.GetString()));
+			it++;
 		}
 
 		data.reset();
 		if (ret == true)
 			LOG("...finished loading");
 		else
-			LOG("...loading process interrupted with error on module %s", (item != NULL) ? item->data->name.GetString() : "unknown");
+			LOG("...loading process interrupted with error on module %s", (*it) ? (*it)->name.GetString() : "unknown");
 	}
 	else
 		LOG("Could not parse game state xml file %s. pugi error: %s", load_game.GetString(), result.description());
@@ -511,12 +511,13 @@ bool ctApp::SavegameNow() const
 
 	root = data.append_child("game_state");
 
-	ctList_item<ctModule*>* item = modules.start;
+	
+	std::list<ctModule*>::const_iterator it = modules.begin();
 
-	while (item != NULL && ret == true)
+	while (it != modules.end() && ret == true)
 	{
-		ret = item->data->Save(root.append_child(item->data->name.GetString()));
-		item = item->next;
+		ret = (*it)->Save(root.append_child((*it)->name.GetString()));
+		it++;
 	}
 
 	if (ret == true)
@@ -525,7 +526,7 @@ bool ctApp::SavegameNow() const
 		LOG("... finished saving", );
 	}
 	else
-		LOG("Save process halted from an error in module %s", (item != NULL) ? item->data->name.GetString() : "unknown");
+		LOG("Save process halted from an error in module %s", *(it) ? (*it)->name.GetString() : "unknown");
 
 	data.reset();
 	want_to_save = false;

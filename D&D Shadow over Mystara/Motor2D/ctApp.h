@@ -1,7 +1,7 @@
 #ifndef __ctAPP_H__
 #define __ctAPP_H__
 
-#include "ctList.h"
+#include <list>
 #include "ctModule.h"
 #include "ctPerfTimer.h"
 #include "ctTimer.h"
@@ -63,7 +63,7 @@ public:
 
 	void LoadGame();
 	void SaveGame() const;
-	void GetSaveGames(ctList<ctSString>& list_to_fill) const;
+	void GetSaveGames(/*ctList<ctSString>& list_to_fill*/) const;
 
 	// Load config file
 	pugi::xml_node LoadConfig(pugi::xml_document&) const;
@@ -124,7 +124,7 @@ public:
 
 private:
 
-	ctList<ctModule*>	modules;
+	std::list<ctModule*>	modules;
 	int					argc = 0;
 	char**				args = nullptr;
 

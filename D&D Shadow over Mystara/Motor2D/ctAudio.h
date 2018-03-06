@@ -3,7 +3,7 @@
 
 #include "ctModule.h"
 #include "SDL_mixer\include\SDL_mixer.h"
-#include "ctList.h"
+
 
 #define DEFAULT_MUSIC_FADE_TIME 2.0f
 #define MAX_FX 200

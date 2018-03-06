@@ -5,7 +5,6 @@
 #include "Entity.h"
 #include "ctAudio.h"
 #include "ctWindow.h"
-//#include "j1Collider.h"
 #include "ctLog.h"
 //#include "ctMap.h"
 #include "ctFadeToBlack.h"
@@ -55,7 +54,7 @@ bool ctEntities::Start()
 
 bool ctEntities::PreUpdate()
 {
-	
+
 	return true;
 }
 
@@ -100,14 +99,6 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 	return ret;
 }
 
-void ctEntities::OnCollision(Collider* c1, Collider* c2)
-{
-	for (uint i = 0; i < entities.max_size(); ++i)
-		if (entities[i] != nullptr && entities[i]->GetCollider() == c1)
-			entities[i]->OnCollision(c2);
-}
-
-
 bool ctEntities::Load(pugi::xml_node& load)
 {
 	bool ret = true;
@@ -124,9 +115,9 @@ bool ctEntities::Save(pugi::xml_node& save) const
 
 Player* ctEntities::GetPlayer() const {
 
-	for (uint i = 0; i < entities.max_size(); ++i)
+	for (uint i = 0; i < entities.capacity(); ++i)
 	{
-		if (entities[i] != nullptr)
+		if (entities.at(i) != nullptr)
 		{
 			if (entities[i]->type == PLAYER)
 				return (Player*)entities[i];

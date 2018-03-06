@@ -39,8 +39,6 @@ public:
 
 	bool CleanUp();
 
-	void OnCollision(Collider* c1, Collider* c2);
-
 	Player* GetPlayer()const;
 
 	bool SpawnEntity(int x, int y, EntityType type);

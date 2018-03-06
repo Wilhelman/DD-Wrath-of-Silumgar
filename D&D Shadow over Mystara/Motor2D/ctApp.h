@@ -15,7 +15,6 @@ class ctRender;
 class ctTextures;
 class ctAudio;
 class ctMainMenu;
-class ctCollider;
 class ctEntities;
 class ctFadeToBlack;
 /*class j1Collider;
@@ -105,7 +104,6 @@ public:
 	ctTextures*			tex = nullptr;
 	ctAudio*			audio = nullptr;
 	ctMainMenu*			main_menu = nullptr;
-	ctCollider*			collider = nullptr;
 	ctEntities*			entities = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;
 	/*j1Collider*			collider = nullptr;

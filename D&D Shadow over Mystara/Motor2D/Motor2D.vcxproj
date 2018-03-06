@@ -13,7 +13,6 @@
   <ItemGroup>
     <ClCompile Include="ctApp.cpp" />
     <ClCompile Include="ctAudio.cpp" />
-    <ClCompile Include="ctCollider.cpp" />
     <ClCompile Include="ctEntities.cpp" />
     <ClCompile Include="ctFadeToBlack.cpp" />
     <ClCompile Include="ctInput.cpp" />
@@ -33,7 +32,6 @@
     <ClInclude Include="ctAnimation.h" />
     <ClInclude Include="ctApp.h" />
     <ClInclude Include="ctAudio.h" />
-    <ClInclude Include="ctCollider.h" />
     <ClInclude Include="ctDefs.h" />
     <ClInclude Include="ctEntities.h" />
     <ClInclude Include="ctFadeToBlack.h" />

@@ -69,9 +69,6 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Core\Modules\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="ctCollider.cpp">
-      <Filter>Core\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Core\Modules\Entities</Filter>
     </ClCompile>
@@ -133,9 +130,6 @@
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Core\Modules\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="ctCollider.h">
-      <Filter>Core\Modules</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Core\Modules\Entities</Filter>

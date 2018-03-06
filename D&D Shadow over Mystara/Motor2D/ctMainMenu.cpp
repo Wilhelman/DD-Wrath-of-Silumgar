@@ -43,8 +43,6 @@ bool ctMainMenu::Start()
 		LOG("Error playing music in j1MainMenu Start");
 	}*/
 
-	App->entities->SpawnEntity(100, 100, PLAYER);
-
 	return ret;
 }
 

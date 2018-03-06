@@ -28,12 +28,9 @@ public:
 	Entity(int x, int y);
 	virtual ~Entity();
 
-	const Collider* GetCollider() const;
-
 	virtual void Update(float dt) {};
 	virtual void Shoot(float dt) {};
 	virtual void Draw(SDL_Texture* sprites);
-	virtual void OnCollision(Collider* collider);
 	virtual void SetEntitiesSpeed(float dt) {};
 
 	virtual void LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation) {};

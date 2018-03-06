@@ -4,7 +4,6 @@
 #include "ctInput.h"
 #include "ctRender.h"
 #include "ctTextures.h"
-#include "ctCollider.h"
 #include "ctAudio.h"
 #include "ctEntities.h"
 #include <string>
@@ -32,13 +31,6 @@ Player::Player(int x, int y, EntityType type) : Entity(x, y) {
 			LoadAnimation(animations, &down_idle);
 	}
 
-	LOG("Creating player collider");
-	collider = App->collider->AddCollider({ 0, 0, 16, 12 }, ColliderType::COLLIDER_PLAYER, (ctModule*)App->entities);
-
-	if (collider == nullptr)
-		LOG("Error adding player collider");
-
-
 	animation = &down_idle;
 }
 
@@ -60,8 +52,6 @@ Player::~Player()
 	LOG("Unloading player sound fx");
 	//App->audio->UnLoadFx(player_jump_fx);
 
-	LOG("Unloading player collider");
-	App->collider->EraseCollider(collider);
 }
 
 // Called each loop iteration
@@ -90,11 +80,6 @@ void Player::Update(float dt)
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = animation->GetCurrentFrame();
-
-	// Update player collider
-	collider->SetPos(position.x, position.y - r.h);
-	collider->rect.w = r.w;
-	collider->rect.h = r.h;
 
 	currentTime = SDL_GetTicks();
 }

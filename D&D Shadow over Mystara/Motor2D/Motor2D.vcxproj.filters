@@ -95,13 +95,7 @@
     <ClInclude Include="ctDefs.h">
       <Filter>Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="ctDynArray.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="ctLog.h">
-      <Filter>Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="ctPoint.h">
       <Filter>Utilities</Filter>
     </ClInclude>
     <ClInclude Include="ctAnimation.h">
@@ -145,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="ctPoint.h">
+      <Filter>Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

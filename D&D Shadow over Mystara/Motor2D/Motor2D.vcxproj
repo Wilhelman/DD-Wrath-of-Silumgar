@@ -35,7 +35,6 @@
     <ClInclude Include="ctAudio.h" />
     <ClInclude Include="ctCollider.h" />
     <ClInclude Include="ctDefs.h" />
-    <ClInclude Include="ctDynArray.h" />
     <ClInclude Include="ctEntities.h" />
     <ClInclude Include="ctFadeToBlack.h" />
     <ClInclude Include="ctInput.h" />

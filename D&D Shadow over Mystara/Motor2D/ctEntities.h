@@ -8,7 +8,8 @@
 
 enum EntityType
 {
-	PLAYER,
+	FIGHTER,
+	KOBOLD,
 
 	NO_TYPE
 };

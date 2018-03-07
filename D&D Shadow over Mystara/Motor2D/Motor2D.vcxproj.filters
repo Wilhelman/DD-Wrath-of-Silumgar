@@ -72,9 +72,6 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Core\Modules\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Core\Modules\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="ctGui.cpp">
       <Filter>Core\Modules</Filter>
     </ClCompile>
@@ -89,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="UILabel.cpp">
       <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ctCombat.cpp">
+      <Filter>Core\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,9 +149,6 @@
     <ClInclude Include="Entity.h">
       <Filter>Core\Modules\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Core\Modules\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="ctPoint.h">
       <Filter>Utilities</Filter>
     </ClInclude>
@@ -169,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="UILabel.h">
       <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ctCombat.h">
+      <Filter>Core\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

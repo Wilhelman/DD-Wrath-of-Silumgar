@@ -8,6 +8,7 @@
 #include "ctWindow.h"
 #include "ctEntities.h"
 
+
 #include "ctMainMenu.h"
 
 #include "ctFadeToBlack.h"
@@ -37,6 +38,8 @@ bool ctMainMenu::Awake()
 bool ctMainMenu::Start()
 {
 	bool ret = true;
+	continue_label = App->gui->AddUILabel(0,0,"Continue",YELLOW, NULL);
+	new_game_label = App->gui->AddUILabel(0,0,"New Game",YELLOW, NULL);
 
 	/*if (!App->audio->PlayMusic("audio/music/8-bit_Detective.ogg")) {
 		//ret = false;

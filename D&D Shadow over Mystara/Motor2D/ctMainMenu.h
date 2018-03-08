@@ -2,6 +2,7 @@
 #define __ctMAINMENU_H__
 
 #include "ctModule.h"
+#include "ctGui.h"
 
 
 
@@ -40,6 +41,12 @@ public:
 
 private:
 	bool quit_pressed = false;
+
+	UIElement* continue_label;
+	UIElement* new_game_label;
+	UIElement* settings_label;
+	UIElement* options_label;
+	UIElement* quit_label;
 
 };
 

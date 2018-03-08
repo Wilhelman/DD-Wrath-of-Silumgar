@@ -18,6 +18,7 @@ class ctMainMenu;
 class ctEntities;
 class ctGui;
 class ctFadeToBlack;
+class ctFonts;
 /*class j1Collider;
 class j1Scene;
 class j1MainMenu;
@@ -108,6 +109,7 @@ public:
 	ctEntities*			entities = nullptr;
 	ctGui*				gui = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;
+	ctFonts*			fonts = nullptr;
 	/*j1Collider*			collider = nullptr;
 	j1Scene*			scene = nullptr;
 	j1MainMenu*			main_menu = nullptr;

@@ -93,6 +93,9 @@
     <ClCompile Include="ctMap.cpp">
       <Filter>Core\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="ctFonts.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -175,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="ctMap.h">
       <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ctFonts.h">
+      <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

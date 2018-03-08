@@ -13,6 +13,7 @@
 #include "ctEntities.h"
 #include "ctGui.h"
 #include "ctFadeToBlack.h"
+#include "ctFonts.h"
 /*
 #include "j1Scene.h"
 #include "j1MainMenu.h"
@@ -47,6 +48,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	entities = new ctEntities();
 	gui = new ctGui();
 	fadeToBlack = new ctFadeToBlack();
+	fonts = new ctFonts();
 	/*scene = new j1Scene();
 	main_menu = new j1MainMenu();
 	credits = new j1Credits();

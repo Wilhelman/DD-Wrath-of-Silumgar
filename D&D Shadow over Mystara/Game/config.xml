@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <config>
 	<app framerate_cap="60">
-		<title>D&amp;D: Shadow over Mystara</title>
-		<organization>TODO</organization>
+		<title>D&D: Wrath of Silumgar</title>
+		<organization>Triggered Squid</organization>
 	</app>
 	<renderer>
 		<vsync value="true" />
@@ -67,33 +67,9 @@
 	</file_system>
 	<map>
 		<folder>maps/</folder>
-		<spritesheetSource name="maps/enviroment-tiles.png">
-			<animation name="lava_waterfall" speed="0.01" loop="true">
-				<frame x="144" y="32" width="16" height="16" />
-				<frame x="160" y="32" width="16" height="16" />
-				<frame x="176" y="32" width="16" height="16" />
-			</animation>
-			<animation name="waterfall" speed="0.01" loop="true">
-				<frame x="192" y="32" width="16" height="16" />
-				<frame x="208" y="32" width="16" height="16" />
-				<frame x="224" y="32" width="16" height="16" />
-			</animation>
-			<animation name="lava_animation" speed="0.01" loop="true">
-				<frame x="144" y="0" width="32" height="32" />
-				<frame x="176" y="0" width="32" height="32" />
-				<frame x="208" y="0" width="32" height="32" />
-			</animation>
-			<animation name="water_animation" speed="0.01" loop="true">
-				<frame x="240" y="0" width="32" height="29" />
-				<frame x="272" y="0" width="32" height="29" />
-				<frame x="304" y="0" width="32" height="29" />
-			</animation>
-		</spritesheetSource>
 		<main_menu />
 		<scene>
-			<data name="main_menu.tmx" start="true" currentLvl="true" />
-			<data name="lvl1.tmx" start="false" currentLvl="false" />
-			<data name="lvl2.tmx" start="false" currentLvl="false" />
+			<data name="map.tmx" start="false" />
 			<animations>
 				<animation name="heart_reward_anim" speed="0.12" loop="true">
 					<frame x="81" y="419" width="5" height="13" />

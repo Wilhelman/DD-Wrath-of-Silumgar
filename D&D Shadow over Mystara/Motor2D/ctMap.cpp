@@ -8,33 +8,33 @@
 #include "ctWindow.h"
 #include "ctEntities.h"
 
-#include "ctCombat.h"
+#include "ctMap.h"
 
 #include "ctFadeToBlack.h"
 
 
 
-ctCombat::ctCombat() : ctModule()
+ctMap::ctMap() : ctModule()
 {
-	name = "combat";
+	name = "map";
 }
 
 // Destructor
-ctCombat::~ctCombat()
+ctMap::~ctMap()
 {}
 
 // Called before render is available
 
-bool ctCombat::Awake()
+bool ctMap::Awake()
 {
-	LOG("Loading Combat");
+	LOG("Loading Map");
 	bool ret = true;
 
 	return ret;
 }
 
 // Called before the first frame
-bool ctCombat::Start()
+bool ctMap::Start()
 {
 	bool ret = true;
 
@@ -47,13 +47,13 @@ bool ctCombat::Start()
 }
 
 // Called each loop iteration
-bool ctCombat::PreUpdate()
+bool ctMap::PreUpdate()
 {
 	return true;
 }
 
 // Called each loop iteration
-bool ctCombat::Update(float dt)
+bool ctMap::Update(float dt)
 {
 
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
@@ -66,7 +66,7 @@ bool ctCombat::Update(float dt)
 }
 
 // Called each loop iteration
-bool ctCombat::PostUpdate()
+bool ctMap::PostUpdate()
 {
 	bool ret = true;
 
@@ -77,27 +77,27 @@ bool ctCombat::PostUpdate()
 }
 
 // Called before quitting
-bool ctCombat::CleanUp()
+bool ctMap::CleanUp()
 {
-	LOG("Freeing combat");
+	LOG("Freeing map");
 
 	return true;
 }
 
-bool ctCombat::Load(pugi::xml_node& load)
+bool ctMap::Load(pugi::xml_node& load)
 {
 	bool ret = true;
 
 	return ret;
 }
 
-bool ctCombat::Save(pugi::xml_node& save) const
+bool ctMap::Save(pugi::xml_node& save) const
 {
 	bool ret = true;
 
 	return ret;
 }
 
-void ctCombat::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
+void ctMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 {
 }

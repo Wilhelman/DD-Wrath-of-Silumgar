@@ -90,6 +90,9 @@
     <ClCompile Include="ctCombat.cpp">
       <Filter>Core\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="ctMap.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -168,6 +171,9 @@
       <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
     <ClInclude Include="ctCombat.h">
+      <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ctMap.h">
       <Filter>Core\Scenes</Filter>
     </ClInclude>
   </ItemGroup>

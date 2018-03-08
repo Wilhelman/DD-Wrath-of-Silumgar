@@ -21,6 +21,7 @@
     <ClCompile Include="ctLog.cpp" />
     <ClCompile Include="ctMain.cpp" />
     <ClCompile Include="ctMainMenu.cpp" />
+    <ClCompile Include="ctMap.cpp" />
     <ClCompile Include="ctPerfTimer.cpp" />
     <ClCompile Include="ctRender.cpp" />
     <ClCompile Include="ctTextures.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="ctInput.h" />
     <ClInclude Include="ctLog.h" />
     <ClInclude Include="ctMainMenu.h" />
+    <ClInclude Include="ctMap.h" />
     <ClInclude Include="ctModule.h" />
     <ClInclude Include="ctPerfTimer.h" />
     <ClInclude Include="ctPoint.h" />

@@ -10,6 +10,7 @@
 #include "ctTextures.h"
 #include "ctAudio.h"
 #include "ctMainMenu.h"
+#include "j1Map.h"
 #include "ctEntities.h"
 #include "ctGui.h"
 #include "ctFadeToBlack.h"
@@ -45,6 +46,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	tex = new ctTextures();
 	audio = new ctAudio();
 	main_menu = new ctMainMenu();
+	map = new j1Map();
 	entities = new ctEntities();
 	gui = new ctGui();
 	fadeToBlack = new ctFadeToBlack();
@@ -71,6 +73,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(main_menu);
+	AddModule(map);
 	AddModule(entities);
 	AddModule(gui);
 	AddModule(fadeToBlack);

@@ -15,6 +15,7 @@ class ctRender;
 class ctTextures;
 class ctAudio;
 class ctMainMenu;
+class j1Map;
 class ctEntities;
 class ctGui;
 class ctFadeToBlack;
@@ -25,7 +26,7 @@ class j1MainMenu;
 class j1Credits;
 class j1Entities;
 class j1Particles;
-class j1Map;
+
 class j1Language;
 class j1PathFinding;
 class j1Fonts;
@@ -106,6 +107,7 @@ public:
 	ctTextures*			tex = nullptr;
 	ctAudio*			audio = nullptr;
 	ctMainMenu*			main_menu = nullptr;
+	j1Map*				map = nullptr;
 	ctEntities*			entities = nullptr;
 	ctGui*				gui = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;

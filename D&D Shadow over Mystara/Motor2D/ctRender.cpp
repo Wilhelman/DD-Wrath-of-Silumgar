@@ -4,7 +4,6 @@
 #include "ctWindow.h"
 #include "ctRender.h"
 
-#include "Player.h"
 #include "ctEntities.h"
 //#include "j1FadeToBlack.h"
 //#include "j1MainMenu.h"
@@ -83,16 +82,9 @@ bool ctRender::Update(float dt)
 
 	App->win->GetWindowSize(winWidth, winHeight);
 
-	if (App->entities->active && App->entities->GetPlayer() != nullptr) {
-		camera.x = (App->entities->GetPlayer()->position.x);
-		camera.y = (App->entities->GetPlayer()->position.y);
-	}
-	else
-	{
-		camera.x = last_camera.x;
-		camera.y = last_camera.y;
-	}
-
+	camera.x = last_camera.x;
+	camera.y = last_camera.y;
+	
 	LOG("Camera pos x: %i pos y: %i", camera.x, camera.y);
 
 	return true;

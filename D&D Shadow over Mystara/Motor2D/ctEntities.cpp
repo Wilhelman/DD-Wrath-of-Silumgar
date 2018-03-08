@@ -10,8 +10,6 @@
 #include "ctFadeToBlack.h"
 //#include "j1Scene.h"
 
-#include "Player.h"
-
 
 ctEntities::ctEntities()
 {
@@ -43,7 +41,7 @@ bool ctEntities::Start()
 
 	if (entity_sprites == NULL) {
 		LOG("Error loading entities spritesheet!!");
-		ret = false;
+		//ret = false;
 	}
 
 	if (!ret)
@@ -85,12 +83,12 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 
 	switch (type)
 	{
-	case EntityType::PLAYER: {
+	/*case EntityType::PLAYER: {
 		Player* player = new Player(x, y, PLAYER);
 		entities.push_back(player);
 		ret = true;
 		break;
-	}
+	}*/
 	default:
 		break;
 	}
@@ -113,7 +111,7 @@ bool ctEntities::Save(pugi::xml_node& save) const
 	return ret;
 }
 
-Player* ctEntities::GetPlayer() const {
+/*Player* ctEntities::GetPlayer() const {
 
 	for (uint i = 0; i < entities.capacity(); ++i)
 	{
@@ -126,4 +124,4 @@ Player* ctEntities::GetPlayer() const {
 
 	return nullptr;
 
-}
+}*/

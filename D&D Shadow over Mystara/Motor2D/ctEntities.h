@@ -40,7 +40,7 @@ public:
 
 	bool CleanUp();
 
-	Player* GetPlayer()const;
+	//Player* GetPlayer()const;
 
 	bool SpawnEntity(int x, int y, EntityType type);
 

@@ -38,8 +38,9 @@ bool ctMainMenu::Awake()
 bool ctMainMenu::Start()
 {
 	bool ret = true;
-	continue_label = App->gui->AddUILabel(0,0,"Continue",YELLOW, NULL);
-	new_game_label = App->gui->AddUILabel(0,0,"New Game",YELLOW, NULL);
+	continue_label = App->gui->AddUILabel(10,10,"Continue",BLUE, nullptr);
+	new_game_label = App->gui->AddUILabel(100,50,"New Game",YELLOW, nullptr);
+	App->gui->AddUIImage(100, 100, {5,5,100,100},this,nullptr);
 
 	/*if (!App->audio->PlayMusic("audio/music/8-bit_Detective.ogg")) {
 		//ret = false;
@@ -58,7 +59,6 @@ bool ctMainMenu::PreUpdate()
 // Called each loop iteration
 bool ctMainMenu::Update(float dt)
 {
-
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		this->quit_pressed = true;
 
@@ -103,4 +103,5 @@ bool ctMainMenu::Save(pugi::xml_node& save) const
 
 void ctMainMenu::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 {
+
 }

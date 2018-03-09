@@ -42,11 +42,11 @@ bool ctFonts::Awake(pugi::xml_node& conf)
 bool ctFonts::CleanUp()
 {
 	LOG("Freeing True Type fonts and library");
-	std::list<TTF_Font*>* item;
+	/*TTF_Font* item;
 
-	/*for (item = fonts.front(); item != NULL; item = std::next(item,1))
+	for (item = fonts.front(); item != NULL; item = std::next(item,1))
 	{
-		TTF_CloseFont(item->_Get_data());
+		TTF_CloseFont(item);
 	}*/
 
 	fonts.clear();

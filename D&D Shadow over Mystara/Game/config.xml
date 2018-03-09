@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
 	<app framerate_cap="60">
-		<title>D&D: Wrath of Silumgar</title>
+		<title>D&amp;D: Wrath of Silumgar</title>
 		<organization>Triggered Squid</organization>
 	</app>
 	<renderer>

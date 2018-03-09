@@ -3,7 +3,7 @@
 #include "ctApp.h"
 #include "ctRender.h"
 #include "ctTextures.h"
-//#include "ctFonts.h"
+#include "ctFonts.h"
 #include "ctInput.h"
 #include "ctGui.h"
 

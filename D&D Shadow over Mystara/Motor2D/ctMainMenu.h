@@ -41,6 +41,7 @@ public:
 
 private:
 	bool quit_pressed = false;
+	
 
 	UIElement* continue_label;
 	UIElement* new_game_label;

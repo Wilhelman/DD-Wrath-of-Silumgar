@@ -53,6 +53,30 @@ struct Item {
 	uint judgement = 0u;
 };
 
+struct Skill {
+	std::vector<char*> name;
+	uint mana_cost = 0u;
+	int health_potion_effect = 0;
+	int mana_potion_effect = 0;
+	uint stun_chance = 0u;
+	uint bleeding_chance = 0u;
+	uint position_chance = 0u;
+	uint burn_chance = 0u;
+	
+
+	uint constitution_variation = 0u;
+	uint focus_variation = 0u;
+	uint strength_variation = 0u;
+	uint intelligence_variation = 0u;
+	uint dexterity_variation = 0u;
+	uint agility_variation = 0u;
+	uint physical_defense_variation = 0u;
+	uint magical_defense_variation = 0u;
+	uint luck_variation = 0u;
+	uint judgement_variation = 0u;
+	
+};
+
 class Entity
 {
 private:
@@ -66,10 +90,18 @@ protected:
 	uint health_points = 0;
 	uint mana_points = 0;
 
+	Stats base_stats;
+	
+	Item item;
+
+	std::vector<Skill> skills;
+	std::vector<Altered_Stats> altered_stats;
+	
 public:
-	iPoint position = iPoint(0, 0);
+	iPoint battleground_position = iPoint(0, 0);
 	bool to_destroy = false;
 	EntityType entity_type;
+
 public:
 	Entity(int x, int y);
 	virtual ~Entity();

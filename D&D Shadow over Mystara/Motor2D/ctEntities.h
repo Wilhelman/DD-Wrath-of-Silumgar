@@ -43,6 +43,8 @@ public:
 	//Player* GetPlayer()const;
 
 	bool SpawnEntity(int x, int y, EntityType type);
+	Entity* AddEntity(EntityType entity_type);
+	Entity* GetEntity(EntityType entity_type);
 
 private:
 

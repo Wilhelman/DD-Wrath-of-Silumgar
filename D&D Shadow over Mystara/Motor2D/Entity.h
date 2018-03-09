@@ -36,6 +36,8 @@ struct Stats {
 	int stat_effect_judgement = 0;
 };
 
+
+
 class Entity
 {
 private:
@@ -52,7 +54,7 @@ protected:
 public:
 	iPoint position = iPoint(0, 0);
 	bool to_destroy = false;
-
+	EntityType entity_type;
 public:
 	Entity(int x, int y);
 	virtual ~Entity();

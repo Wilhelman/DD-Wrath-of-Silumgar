@@ -38,9 +38,11 @@ bool ctMainMenu::Awake()
 bool ctMainMenu::Start()
 {
 	bool ret = true;
-	continue_label = App->gui->AddUILabel(10,10,"Continue",BLUE, nullptr);
-	new_game_label = App->gui->AddUILabel(100,50,"New Game",YELLOW, nullptr);
-	App->gui->AddUIImage(100, 100, {5,5,100,100},this,nullptr);
+	continue_label = App->gui->AddUILabel(0, 0, "Continue", {255,255,255,255}, nullptr);
+	new_game_label = App->gui->AddUILabel(0, 0, "New Game", {255,255,255,255}, nullptr);
+	settings_label = App->gui->AddUILabel(0, 0, "Settings", { 255,255,255,255 }, nullptr);
+	options_label = App->gui->AddUILabel(0, 0, "Options", { 255,255,255,255 }, nullptr);
+	//quit_label = App->gui->AddUILabel(0, 0, "Quit", { 255,255,255,255 }, nullptr);
 
 	/*if (!App->audio->PlayMusic("audio/music/8-bit_Detective.ogg")) {
 		//ret = false;

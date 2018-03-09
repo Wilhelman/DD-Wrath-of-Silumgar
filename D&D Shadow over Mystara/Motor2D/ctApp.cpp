@@ -75,6 +75,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(main_menu);
 	AddModule(map);
 	AddModule(entities);
+	AddModule(fonts);
 	AddModule(gui);
 	AddModule(fadeToBlack);
 	
@@ -86,7 +87,6 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(credits);
 	AddModule(entities);
 	AddModule(particles);
-	AddModule(font);
 	AddModule(ui);
 	AddModule(collider);
 	AddModule(fadeToBlack);*/

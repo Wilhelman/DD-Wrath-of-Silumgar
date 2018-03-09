@@ -10,19 +10,9 @@
 
 struct SDL_Texture;
 struct SDL_Rect;
+struct SDL_Color;
 class p2SString;
 class UIElement;
-
-enum Color //todo remove this
-{
-	RED,
-	GREEN,
-	BLUE,
-	YELLOW,
-	GREY,
-
-	COLOR_NOT_DEF
-};
 
 
 
@@ -71,7 +61,7 @@ public:
 
 	UIElement* AddUIImage(int position_x, int position_y, SDL_Rect rect, ctModule* callback = nullptr, UIElement* parent = nullptr);
 	UIElement* AddUIButton(int position_x, int position_y, SDL_Rect normal_rect, SDL_Rect focused_rect, SDL_Rect pressed_rect, ctModule* callback = nullptr, UIElement* parent = nullptr);
-	UIElement* AddUILabel(int position_x, int position_y, std::string text, Color color = COLOR_NOT_DEF, UIElement* parent = nullptr);
+	UIElement* AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, UIElement* parent = nullptr);
 	UIElement* GetElementUnderMouse(int x, int y);
 
 private:

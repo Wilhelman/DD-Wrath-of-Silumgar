@@ -12,9 +12,8 @@ class UILabel : public UIElement
 private:
 	//ctFonts normal_font;
 	std::string text;
-	Color text_color = COLOR_NOT_DEF;
 public:
-	UILabel(int x, int y, UI_Type type, std::string text, Color color, UIElement* parent = nullptr);
+	UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, UIElement* parent = nullptr);
 
 	void Update();
 };

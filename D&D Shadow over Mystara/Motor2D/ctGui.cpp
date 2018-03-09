@@ -143,7 +143,10 @@ UIElement* ctGui::AddUIButton(int position_x, int position_y, SDL_Rect normal_re
 	return nullptr;
 }
 
-UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, Color color, UIElement* parent) {
+UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, UIElement* parent) {
+
+	//funcion comprovar size del vector
+	//si se va a pasar del size, reservar mas espacio
 
 	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color, parent);
 	ui_elements.push_back(tmp_lbl);

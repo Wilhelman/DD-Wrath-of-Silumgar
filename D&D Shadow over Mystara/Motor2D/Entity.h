@@ -18,6 +18,10 @@ struct Stats {
 	uint base_magical_defense = 0u;
 	uint base_luck = 0u;
 	uint base_judgement = 0u;
+};
+
+struct Altered_Stats {
+	uint turn_left = 0u;
 
 	bool stun = false;
 	bool bleeding = false;
@@ -36,7 +40,18 @@ struct Stats {
 	int stat_effect_judgement = 0;
 };
 
-
+struct Item {
+	uint constitution = 0u;
+	uint focus = 0u;
+	uint strength = 0u;
+	uint intelligence = 0u;
+	uint dexterity = 0u;
+	uint agility = 0u;
+	uint physical_defense = 0u;
+	uint magical_defense = 0u;
+	uint luck = 0u;
+	uint judgement = 0u;
+};
 
 class Entity
 {

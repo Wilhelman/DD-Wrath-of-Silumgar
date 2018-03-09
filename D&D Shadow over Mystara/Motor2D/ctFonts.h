@@ -4,7 +4,7 @@
 #include "ctModule.h"
 #include "SDL\include\SDL_pixels.h"
 
-#define DEFAULT_FONT "Fonts/MunroSmall.ttf"
+#define DEFAULT_FONT "Fonts/8bitlim.ttf"
 #define DEFAULT_FONT_SIZE 30
 
 struct SDL_Texture;

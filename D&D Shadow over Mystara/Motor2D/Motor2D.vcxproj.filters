@@ -99,6 +99,9 @@
     <ClCompile Include="j1Map.cpp">
       <Filter>Core\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ctSettings.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="j1Map.h">
       <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ctSettings.h">
+      <Filter>Core\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

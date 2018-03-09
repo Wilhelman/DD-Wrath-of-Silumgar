@@ -3,6 +3,9 @@
 
 #include "ctPoint.h"
 #include "ctAnimation.h"
+#include "ctEntities.h"
+
+#include <vector>
 
 struct SDL_Texture;
 struct Collider;

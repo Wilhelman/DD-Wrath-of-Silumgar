@@ -125,3 +125,44 @@ bool ctEntities::Save(pugi::xml_node& save) const
 	return nullptr;
 
 }*/
+
+Entity* ctEntities::AddEntity(EntityType type_entity)
+{
+
+	Entity* ret = nullptr;
+
+	/*switch (type_entity)
+	{
+	case FIGHTER: ret = new Fighter();
+		break;
+	case KOBOLD: ret = new Kobold();
+		break;
+	default:
+		break;
+	}*/
+
+	if (ret != nullptr)
+	{
+		entities.push_back(ret);
+	}
+
+	return ret;
+
+}
+
+Entity* ctEntities::GetEntity(EntityType type_entity)
+{
+	Entity* ret = nullptr;
+
+	for (std::vector<Entity*>::iterator it = entities.begin(); it != entities.end(); ++it)
+	{
+		if ((*it)->entity_type == type_entity)
+		{
+			ret = (*it);
+		}
+	}
+
+	return ret;
+
+}
+

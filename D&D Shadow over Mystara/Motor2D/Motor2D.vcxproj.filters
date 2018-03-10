@@ -105,6 +105,9 @@
     <ClCompile Include="ctAbout.cpp">
       <Filter>Core\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Player_Cleric.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="ctAbout.h">
       <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_Cleric.h">
+      <Filter>Core\Modules\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

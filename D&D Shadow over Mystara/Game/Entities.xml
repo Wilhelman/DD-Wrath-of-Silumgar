@@ -53,6 +53,7 @@
           <frame x="700" y="400" w="100" h="100"/>
           <frame x="800" y="400" w="100" h="100"/>
           <frame x="900" y="400" w="100" h="100"/>
+          <speed speed ="1"/>
         </Attack>
       </Animations>
       </Cleric>

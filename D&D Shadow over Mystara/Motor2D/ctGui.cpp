@@ -36,8 +36,8 @@ bool ctGui::Awake(pugi::xml_node& conf)
 // Called before the first frame
 bool ctGui::Start()
 {
-	atlas = App->tex->Load(atlas_file_name.c_str());
-
+	//atlas = App->tex->Load(atlas_file_name.c_str());
+	atlas = App->tex->Load("textures/GUI/ui_atlas.png");
 	return true;
 }
 

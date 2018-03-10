@@ -10,6 +10,9 @@
 #include "ctTextures.h"
 #include "ctAudio.h"
 #include "ctMainMenu.h"
+#include "ctCombat.h"
+#include "ctMap.h"
+#include "ctSettings.h"
 #include "j1Map.h"
 #include "ctEntities.h"
 #include "ctGui.h"
@@ -46,6 +49,8 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	tex = new ctTextures();
 	audio = new ctAudio();
 	main_menu = new ctMainMenu();
+	combat = new ctCombat();
+	//settings = new ctSettings();
 	map = new j1Map();
 	entities = new ctEntities();
 	gui = new ctGui();
@@ -73,6 +78,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(main_menu);
+	AddModule(combat);
 	AddModule(map);
 	AddModule(entities);
 	AddModule(fonts);
@@ -98,6 +104,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	//disable lvl scene
 	/*scene->active = false;
 	credits->active = false;*/
+	combat->active = false;
 
 	PERF_PEEK(ptimer);
 }

@@ -64,8 +64,8 @@ public:
 	UIElement* AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, UIElement* parent = nullptr);
 	UIElement* GetElementUnderMouse(int x, int y);
 
-private:
 
+private:
 
 	std::vector<UIElement*> ui_elements;
 	SDL_Texture* atlas;

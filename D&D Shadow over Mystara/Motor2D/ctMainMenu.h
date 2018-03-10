@@ -46,8 +46,12 @@ private:
 	UIElement* continue_label;
 	UIElement* new_game_label;
 	UIElement* settings_label;
-	UIElement* options_label;
+	UIElement* about_label;
 	UIElement* quit_label;
+	UIElement* arrow;
+
+	int arrow_pos_x = 5;
+	int arrow_pos_y = 10;
 
 };
 

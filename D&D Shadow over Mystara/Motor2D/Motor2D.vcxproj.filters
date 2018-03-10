@@ -102,6 +102,9 @@
     <ClCompile Include="ctSettings.cpp">
       <Filter>Core\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="ctAbout.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -192,6 +195,9 @@
       <Filter>Core\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ctSettings.h">
+      <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ctAbout.h">
       <Filter>Core\Scenes</Filter>
     </ClInclude>
   </ItemGroup>

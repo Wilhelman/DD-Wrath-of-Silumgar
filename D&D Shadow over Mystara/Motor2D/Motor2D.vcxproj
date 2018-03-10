@@ -32,6 +32,7 @@
     <ClCompile Include="ctWindow.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="j1Map.cpp" />
+    <ClCompile Include="Kobold.cpp" />
     <ClCompile Include="Player_Cleric.cpp" />
     <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="UIButton.cpp" />
@@ -64,6 +65,7 @@
     <ClInclude Include="ctWindow.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="j1Map.h" />
+    <ClInclude Include="Kobold.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Player_Cleric.h" />
     <ClInclude Include="pugiconfig.hpp" />

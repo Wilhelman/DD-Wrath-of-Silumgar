@@ -108,6 +108,9 @@
     <ClCompile Include="Player_Cleric.cpp">
       <Filter>Core\Modules\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Kobold.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -204,6 +207,9 @@
       <Filter>Core\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Player_Cleric.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Kobold.h">
       <Filter>Core\Modules\Entities</Filter>
     </ClInclude>
   </ItemGroup>

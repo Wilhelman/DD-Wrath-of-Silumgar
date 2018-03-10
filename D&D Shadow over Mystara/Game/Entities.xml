@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Animations>
-  <Entities>
+ <Entities>
     <Enemies>
       <Kobold>
+        <Stadistics Constitution ="6" Focus="5" Force="6" Agility="1" Skill ="4" Intelligence="7" PhysicalDefense="3" MagicalDefense="4" Luck="4" Judgement="10"/>
+        <Animations>
         <Idle>
           <frame x="0" y="0" w="100" h="100"/>
           <frame x="100" y="0" w="100" h="100"/>
@@ -36,12 +37,14 @@
           <frame x="100" y="200" w="100" h="100"/>
           <frame x="0" y="200" w="100" h="100"/>
         </PunchAttack>
-      
+      </Animations>
       </Kobold>
     
     </Enemies>
     <Players>
       <Cleric>
+        <Stadistics Constitution ="6" Focus="5" Force="6" Agility="1" Skill ="4" Intelligence="7" PhysicalDefense="3" MagicalDefense="4" Luck="4"/>
+        <Animations>
         <Attack>
           <frame x="0" y="400" w="100" h="100"/>
           <frame x="100" y="400" w="100" h="100"/>
@@ -54,15 +57,14 @@
           <frame x="800" y="400" w="100" h="100"/>
           <frame x="900" y="400" w="100" h="100"/>
         </Attack>
+      </Animations>
       </Cleric>
       
       
     </Players>
   
  
-  </Entities>
+ </Entities>
 
 
 
-
-</Animations>

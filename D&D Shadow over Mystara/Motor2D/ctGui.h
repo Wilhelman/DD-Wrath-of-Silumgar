@@ -68,7 +68,6 @@ private:
 
 
 	std::vector<UIElement*> ui_elements;
-
 	SDL_Texture* atlas;
 	std::string atlas_file_name;
 };

@@ -42,7 +42,7 @@ bool ctMainMenu::Start()
 	new_game_label = App->gui->AddUILabel(15, 50, "New Game", {255,255,255,255}, nullptr);
 	settings_label = App->gui->AddUILabel(15, 90, "Settings", { 255,255,255,255 }, nullptr);
 	options_label = App->gui->AddUILabel(15, 130, "Options", { 255,255,255,255 }, nullptr);
-	//quit_label = App->gui->AddUILabel(0, 0, "Quit", { 255,255,255,255 }, nullptr);
+	quit_label = App->gui->AddUILabel(15, 170, "Quit", { 255,255,255,255 }, nullptr);
 
 	/*if (!App->audio->PlayMusic("audio/music/8-bit_Detective.ogg")) {
 		//ret = false;

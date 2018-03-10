@@ -38,14 +38,13 @@ bool ctGui::Start()
 {
 	atlas = App->tex->Load(atlas_file_name.c_str());
 
-
 	return true;
 }
 
 // Update all guis
 bool ctGui::PreUpdate()
 {
-	for (int i = 0; i < ui_elements.capacity(); i++)
+	for (int i = 0; i < ui_elements.size(); i++)
 		if (ui_elements.at(i) != nullptr) ui_elements[i]->Update();
 
 	return true;
@@ -55,10 +54,10 @@ bool ctGui::PreUpdate()
 bool ctGui::PostUpdate()
 {
 
-	for (int i = 0; i < ui_elements.capacity(); i++)
+	for (int i = 0; i < ui_elements.size(); i++)
 		if (ui_elements.at(i) != nullptr) ui_elements[i]->Draw(atlas);
 
-	for (int i = 0; i < ui_elements.capacity(); i++) {
+	for (int i = 0; i < ui_elements.size(); i++) {
 		if (ui_elements[i]->to_destroy) {
 			delete(ui_elements[i]);
 			ui_elements[i] = nullptr;
@@ -78,7 +77,7 @@ bool ctGui::CleanUp()
 	LOG("Freeing GUI");
 	//TODO unload tex
 
-	for (uint i = 0; i < ui_elements.capacity(); ++i)
+	for (uint i = 0; i < ui_elements.size(); ++i)
 	{
 		if (ui_elements[i] != nullptr)
 		{
@@ -135,9 +134,9 @@ UIElement* ctGui::AddUIImage(int position_x, int position_y, SDL_Rect rect, ctMo
 
 UIElement* ctGui::AddUIButton(int position_x, int position_y, SDL_Rect normal_rect, SDL_Rect focused_rect, SDL_Rect pressed_rect, ctModule* callback, UIElement* parent) {
 
-	UIElement* tmpBtn = new UIButton(position_x, position_y, BUTTON, normal_rect, focused_rect, pressed_rect, callback, parent);
-	ui_elements.push_back(tmpBtn);
-	return tmpBtn;
+	UIElement* tmp_Btn = new UIButton(position_x, position_y, BUTTON, normal_rect, focused_rect, pressed_rect, callback, parent);
+	ui_elements.push_back(tmp_Btn);
+	return tmp_Btn;
 
 	LOG("Error: Cant add the UIButton");
 	return nullptr;

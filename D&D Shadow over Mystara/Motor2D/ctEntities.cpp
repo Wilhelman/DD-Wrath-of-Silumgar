@@ -131,15 +131,15 @@ Entity* ctEntities::AddEntity(EntityType type_entity)
 
 	Entity* ret = nullptr;
 
-	/*switch (type_entity)
+	switch (type_entity)
 	{
-	case FIGHTER: ret = new Fighter();
+	case CLERIC: ret = new Entity(CLERIC);
 		break;
-	case KOBOLD: ret = new Kobold();
+	case KOBOLD: ret = new Entity(KOBOLD);
 		break;
 	default:
 		break;
-	}*/
+	}
 
 	if (ret != nullptr)
 	{

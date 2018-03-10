@@ -8,7 +8,7 @@
 
 enum EntityType
 {
-	FIGHTER,
+	CLERIC,
 	KOBOLD,
 
 	NO_TYPE

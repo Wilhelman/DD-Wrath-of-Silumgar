@@ -48,7 +48,7 @@ struct Item {
 	uint focus = 0u;
 	uint strength = 0u;
 	uint intelligence = 0u;
-	uint dexterity = 0u;
+	uint dexterity = 0u; 
 	uint agility = 0u;
 	uint physical_defense = 0u;
 	uint magical_defense = 0u;
@@ -57,7 +57,7 @@ struct Item {
 };
 
 struct Skill {
-	std::vector<char*> name;
+	std::string name;
 	uint mana_cost = 0u;
 	int health_potion_effect = 0;
 	int mana_potion_effect = 0;
@@ -89,7 +89,7 @@ protected:
 	uint currentTime = 0u;
 	uint lastTime = 0u;
 	bool key_entities_speed = false;
-
+	
 	uint health_points = 0;
 	uint mana_points = 0;
 
@@ -99,6 +99,8 @@ protected:
 
 	std::vector<Skill> skills;
 	std::vector<Altered_Stats> altered_stats;
+
+	std::string name;
 	
 public:
 	iPoint battleground_position = iPoint(0, 0);
@@ -106,11 +108,11 @@ public:
 	EntityType entity_type;
 
 public:
-	Entity(int x, int y);
+	Entity(EntityType type);
 	virtual ~Entity();
 
 	virtual void Update(float dt) {};
-	virtual void Draw(SDL_Texture* sprites);
+	//virtual void Draw(SDL_Texture* sprites);
 	virtual void SetEntitiesSpeed(float dt) {};
 
 	virtual void LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation) {};

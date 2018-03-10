@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
  <Entities>
-    <Enemies>
       <Kobold>
         <Stadistics Constitution ="6" Focus="5" Force="6" Agility="1" Skill ="4" Intelligence="7" PhysicalDefense="3" MagicalDefense="4" Luck="4" Judgement="10"/>
         <Animations>
@@ -40,10 +39,8 @@
       </Animations>
       </Kobold>
     
-    </Enemies>
-    <Players>
       <Cleric>
-        <Stadistics Constitution ="6" Focus="5" Force="6" Agility="1" Skill ="4" Intelligence="7" PhysicalDefense="3" MagicalDefense="4" Luck="4"/>
+        <Stadistics Constitution ="6" Focus="5" Force="6" Agility="1" Dexterity ="4" Intelligence="7"  PhysicalDefense="3" MagicalDefense="4" Luck="4"/>
         <Animations>
         <Attack>
           <frame x="0" y="400" w="100" h="100"/>
@@ -60,8 +57,7 @@
       </Animations>
       </Cleric>
       
-      
-    </Players>
+     
   
  
  </Entities>

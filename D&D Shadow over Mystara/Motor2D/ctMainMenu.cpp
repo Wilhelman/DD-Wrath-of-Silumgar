@@ -92,6 +92,7 @@ bool ctMainMenu::Update(float dt)
 			App->gui->DeleteUIElement(*about_label);
 			App->gui->DeleteUIElement(*quit_label);
 			App->gui->DeleteUIElement(*arrow);
+			App->audio->StopMusic();
 			this->active = false;
 		}
 		else if (arrow_pos_y == 30) {
@@ -103,6 +104,7 @@ bool ctMainMenu::Update(float dt)
 			App->gui->DeleteUIElement(*about_label);
 			App->gui->DeleteUIElement(*quit_label);
 			App->gui->DeleteUIElement(*arrow);
+			App->audio->StopMusic();
 			this->active = false;
 		}
 		else if (arrow_pos_y == 50) {

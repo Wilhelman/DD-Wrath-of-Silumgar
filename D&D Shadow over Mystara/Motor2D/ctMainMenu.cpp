@@ -8,6 +8,8 @@
 #include "ctWindow.h"
 #include "ctEntities.h"
 #include "ctCombat.h"
+#include "ctSettings.h"
+#include "ctAbout.h"
 
 
 #include "ctMainMenu.h"
@@ -45,7 +47,7 @@ bool ctMainMenu::Start()
 	about_label = App->gui->AddUILabel(15, 70, "About", { 255,255,255,255 }, nullptr);
 	quit_label = App->gui->AddUILabel(15, 90, "Quit", { 255,255,255,255 }, nullptr);
 	arrow = App->gui->AddUIImage(arrow_pos_x, arrow_pos_y, {0,0,5,5}, this, nullptr);
-
+	
 	if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg")) {
 		//ret = false;
 		LOG("Error playing music in j1MainMenu Start");
@@ -109,9 +111,27 @@ bool ctMainMenu::Update(float dt)
 		}
 		else if (arrow_pos_y == 50) {
 			LOG("Settings Pressed");
+			App->settings->active = true;
+			App->gui->DeleteUIElement(*continue_label);
+			App->gui->DeleteUIElement(*new_game_label);
+			App->gui->DeleteUIElement(*settings_label);
+			App->gui->DeleteUIElement(*about_label);
+			App->gui->DeleteUIElement(*quit_label);
+			App->gui->DeleteUIElement(*arrow);
+			App->audio->StopMusic();
+			this->active = false;
 		}
 		else if (arrow_pos_y == 70) {
 			LOG("About Pressed");
+			App->about->active = true;
+			App->gui->DeleteUIElement(*continue_label);
+			App->gui->DeleteUIElement(*new_game_label);
+			App->gui->DeleteUIElement(*settings_label);
+			App->gui->DeleteUIElement(*about_label);
+			App->gui->DeleteUIElement(*quit_label);
+			App->gui->DeleteUIElement(*arrow);
+			App->audio->StopMusic();
+			this->active = false;
 		}
 		else if (arrow_pos_y == 90) {
 			LOG("Quit Pressed");

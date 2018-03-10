@@ -11,6 +11,7 @@
 #include "ctAudio.h"
 #include "ctMainMenu.h"
 #include "ctCombat.h"
+#include "ctAbout.h"
 #include "ctMap.h"
 #include "ctSettings.h"
 #include "j1Map.h"
@@ -50,7 +51,8 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	audio = new ctAudio();
 	main_menu = new ctMainMenu();
 	combat = new ctCombat();
-	//settings = new ctSettings();
+	settings = new ctSettings();
+	about = new ctAbout();
 	map = new j1Map();
 	entities = new ctEntities();
 	gui = new ctGui();
@@ -78,6 +80,8 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(main_menu);
+	AddModule(settings);
+	AddModule(about);
 	AddModule(combat);
 	AddModule(map);
 	AddModule(entities);
@@ -105,6 +109,8 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	/*scene->active = false;
 	credits->active = false;*/
 	combat->active = false;
+	settings->active = false;
+	about->active = false;
 
 	PERF_PEEK(ptimer);
 }

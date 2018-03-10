@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ctAbout.cpp" />
     <ClCompile Include="ctApp.cpp" />
     <ClCompile Include="ctAudio.cpp" />
     <ClCompile Include="ctCombat.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="UILabel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ctAbout.h" />
     <ClInclude Include="ctAnimation.h" />
     <ClInclude Include="ctApp.h" />
     <ClInclude Include="ctAudio.h" />

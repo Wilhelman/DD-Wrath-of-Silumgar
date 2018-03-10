@@ -16,6 +16,7 @@ class ctTextures;
 class ctAudio;
 class ctMainMenu;
 class ctCombat;
+class ctAbout;
 class ctMap;
 class ctSettings;
 class j1Map;
@@ -111,6 +112,7 @@ public:
 	ctAudio*			audio = nullptr;
 	ctMainMenu*			main_menu = nullptr;
 	ctCombat*			combat = nullptr;
+	ctAbout*			about = nullptr;
 	j1Map*				map = nullptr;
 	ctSettings*			settings = nullptr;
 	ctEntities*			entities = nullptr;

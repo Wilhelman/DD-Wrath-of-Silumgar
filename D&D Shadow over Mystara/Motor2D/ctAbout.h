@@ -1,18 +1,18 @@
-#ifndef __ctSETTINGS_H__
-#define __ctSETTINGS_H__
+#ifndef __ctABOUT_H__
+#define __ctABOUT_H__
 
 #include "ctModule.h"
 #include "ctGui.h"
 
 
-class ctSettings : public ctModule
+class ctAbout : public ctModule
 {
 public:
 
-	ctSettings();
+	ctAbout();
 
 	// Destructor
-	virtual ~ctSettings();
+	virtual ~ctAbout();
 
 	// Called before render is available
 	bool Awake();
@@ -40,16 +40,12 @@ public:
 
 private:
 	bool quit_pressed = false;
-	bool first_update = true;
-
-	UIElement* music_volume;
-	UIElement* fx_volume;
-	UIElement* back;
 	
 
-	
+
+
 
 };
 
 
-#endif // __ctSETTINGS_H__
+#endif // __ctABOUT_H__

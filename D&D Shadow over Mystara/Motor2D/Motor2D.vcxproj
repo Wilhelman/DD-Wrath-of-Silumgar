@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AlchemistGoblin.cpp" />
     <ClCompile Include="ctAbout.cpp" />
     <ClCompile Include="ctApp.cpp" />
     <ClCompile Include="ctAudio.cpp" />
@@ -30,17 +31,30 @@
     <ClCompile Include="ctTextures.cpp" />
     <ClCompile Include="ctTimer.cpp" />
     <ClCompile Include="ctWindow.cpp" />
+    <ClCompile Include="DarkWarrior.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="GnollArcher.cpp" />
+    <ClCompile Include="Gnoll.cpp" />
+    <ClCompile Include="Goblin.cpp" />
+    <ClCompile Include="HeavyGoblin.cpp" />
+    <ClCompile Include="Hellhound.cpp" />
     <ClCompile Include="j1Map.cpp" />
     <ClCompile Include="Kobold.cpp" />
+    <ClCompile Include="Triton.cpp" />
+    <ClCompile Include="Owlbear.cpp" />
     <ClCompile Include="Player_Cleric.cpp" />
+    <ClCompile Include="Player_Dwarf.cpp" />
+    <ClCompile Include="Player_Elf.cpp" />
+    <ClCompile Include="Player_Warrior.cpp" />
     <ClCompile Include="pugixml.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="UIImage.cpp" />
     <ClCompile Include="UILabel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlchemistGoblin.h" />
     <ClInclude Include="ctAbout.h" />
     <ClInclude Include="ctAnimation.h" />
     <ClInclude Include="ctApp.h" />
@@ -63,13 +77,25 @@
     <ClInclude Include="ctTextures.h" />
     <ClInclude Include="ctTimer.h" />
     <ClInclude Include="ctWindow.h" />
+    <ClInclude Include="DarkWarrior.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Gnoll.h" />
+    <ClInclude Include="GnollArcher.h" />
+    <ClInclude Include="Goblin.h" />
+    <ClInclude Include="HeavyGoblin.h" />
+    <ClInclude Include="Hellhound.h" />
     <ClInclude Include="j1Map.h" />
     <ClInclude Include="Kobold.h" />
     <ClInclude Include="MemLeaks.h" />
+    <ClInclude Include="Owlbear.h" />
     <ClInclude Include="Player_Cleric.h" />
+    <ClInclude Include="Player_Dwarf.h" />
+    <ClInclude Include="Player_Elf.h" />
+    <ClInclude Include="Player_Warrior.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
+    <ClInclude Include="Skeleton.h" />
+    <ClInclude Include="Triton.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="UIImage.h" />

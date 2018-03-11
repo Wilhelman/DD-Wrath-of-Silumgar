@@ -126,6 +126,9 @@ public:
 	{
 		return true;
 	}
+
+	bool LoadProperties(pugi::xml_node properties);
+
 };
 
 #endif // __ENTITY_H__

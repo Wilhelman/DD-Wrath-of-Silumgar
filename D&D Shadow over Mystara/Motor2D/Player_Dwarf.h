@@ -1,5 +1,5 @@
-#ifndef _PLAYER_CLERIC_
-#define _PLAYER_CLERIC_
+#ifndef _PLAYER_DWARF_
+#define _PLAYER_DWARF_
 
 
 #include "Entity.h"
@@ -7,11 +7,11 @@
 
 
 
-class Cleric :public Entity
+class Dwarf :public Entity
 {
 public:
-	Cleric();
-	~Cleric();
+	Dwarf();
+	~Dwarf();
 
 private:
 

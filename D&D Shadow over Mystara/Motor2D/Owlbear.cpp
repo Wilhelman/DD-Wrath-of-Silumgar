@@ -1,8 +1,8 @@
-#include "Kobold.h"
+#include "Owlbear.h"
 
 
 
-Kobold::Kobold() :Entity(KOBOLD)
+Owlbear::Owlbear() :Entity(OWLBEAR)
 {
 
 	pugi::xml_document data;
@@ -17,7 +17,7 @@ Kobold::Kobold() :Entity(KOBOLD)
 			anim = anim.next_sibling();
 		}
 
-		LoadProperties(data.child("Entities").child("Kobold").child("Statistics"));
+		LoadProperties(data.child("Entities").child("Owlbear").child("Statistics"));
 
 		anim_attack.speed = anim.child("speed").attribute("speed").as_int();
 	}
@@ -25,7 +25,7 @@ Kobold::Kobold() :Entity(KOBOLD)
 
 }
 
-Kobold::~Kobold()
+Owlbear::~Owlbear()
 {
 
 }

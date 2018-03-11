@@ -2,7 +2,7 @@
 
  <Entities>
       <Kobold>
-        <Stadistics Constitution ="6" Focus="5" Force="6" Agility="1" Skill ="4" Intelligence="7" PhysicalDefense="3" MagicalDefense="4" Luck="4" Judgement="10"/>
+        <Statistics Constitution ="6" Focus="5" Force="6" Agility="1" Skill ="4" Intelligence="7" PhysicalDefense="3" MagicalDefense="4" Luck="4" Judgement="10"/>
         <Animations>
         <Idle>
           <frame x="0" y="0" w="100" h="100"/>

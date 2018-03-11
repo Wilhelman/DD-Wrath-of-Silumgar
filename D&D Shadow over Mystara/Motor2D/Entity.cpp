@@ -13,13 +13,51 @@ Entity::Entity(EntityType type)
 	case CLERIC:
 		name.assign("Cleric");
 		break;
+	case DWARF:
+		name.assign("Dwarf");
+		break;
+	case ELF:
+		name.assign("ELF");
+		break;
+	case WARRIOR:
+		name.assign("WARRIOR");
+		break;
 	case KOBOLD:
 		name.assign("Kobold");
+		break;
+	case GOBLIN:
+		name.assign("Goblin");
+		break;
+	case ALCHEMISTGOBLIN:
+		name.assign("AlchemistGoblin");
+		break;
+	case HEAVYGOBLIN:
+		name.assign("HeavyGoblin");
+		break;
+	case GNOLL:
+		name.assign("Gnoll");
+		break;
+	case GNOLLARCHER:
+		name.assign("GnollArcher");
+		break;
+	case SKELETON:
+		name.assign("Skeleton");
+		break;
+	case OWLBEAR:
+		name.assign("Owlbear");
+		break;
+	case TRITON:
+		name.assign("Triton");
+		break;
+	case HELLHOUND:
+		name.assign("Hellhound");
+		break;
+	case DARKWARRIOR:
+		name.assign("DarkWarrior");
 		break;
 	default:
 		break;
 	}
-	
 
 	pugi::xml_document data;
 
@@ -53,3 +91,20 @@ Entity::~Entity()
 //	if (animation != nullptr)
 //		App->render->Blit(sprites, position.x, position.y - r.h, &(animation->GetCurrentFrame()));
 //}
+
+bool Entity::LoadProperties(pugi::xml_node properties) {
+	bool ret = true;
+
+	base_stats.base_constitution = properties.attribute("Constitution").as_uint();
+	base_stats.base_focus = properties.attribute("Focus").as_uint();
+	base_stats.base_strength = properties.attribute("Force").as_uint();
+	base_stats.base_agility = properties.attribute("Agility").as_uint();
+	base_stats.base_dexterity = properties.attribute("Skill").as_uint();
+	base_stats.base_intelligence = properties.attribute("Intelligence").as_uint();
+	base_stats.base_physical_defense = properties.attribute("PhysicalDefense").as_uint();
+	base_stats.base_magical_defense = properties.attribute("MagicalDefense").as_uint();
+	base_stats.base_luck = properties.attribute("Luck").as_uint();
+	base_stats.base_judgement = properties.attribute("Judgement").as_uint();
+
+	return ret;
+}

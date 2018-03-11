@@ -16,6 +16,8 @@ Cleric::Cleric() : Entity(CLERIC)
 			anim = anim.next_sibling();
 		}
 
+		LoadProperties(data.child("Entities").child("Cleric").child("Statistics"));
+
 		anim_attack.speed = anim.child("speed").attribute("speed").as_int();
 	}
 }
@@ -24,4 +26,3 @@ Cleric::~Cleric()
 {
 
 }
-

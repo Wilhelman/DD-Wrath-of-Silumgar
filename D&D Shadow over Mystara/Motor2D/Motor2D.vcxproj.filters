@@ -111,6 +111,45 @@
     <ClCompile Include="Kobold.cpp">
       <Filter>Core\Modules\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Player_Elf.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_Dwarf.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_Warrior.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="DarkWarrior.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GnollArcher.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Hellhound.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Goblin.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="AlchemistGoblin.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Gnoll.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="HeavyGoblin.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Owlbear.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Triton.cpp">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -210,6 +249,45 @@
       <Filter>Core\Modules\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Kobold.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_Elf.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_Dwarf.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_Warrior.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Hellhound.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Goblin.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="AlchemistGoblin.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="HeavyGoblin.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="DarkWarrior.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Gnoll.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GnollArcher.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Owlbear.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Triton.h">
+      <Filter>Core\Modules\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
       <Filter>Core\Modules\Entities</Filter>
     </ClInclude>
   </ItemGroup>

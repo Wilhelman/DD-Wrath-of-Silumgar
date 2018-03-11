@@ -1,8 +1,8 @@
-#include "Kobold.h"
+#include "GnollArcher.h"
 
 
 
-Kobold::Kobold() :Entity(KOBOLD)
+GnollArcher::GnollArcher() :Entity(GNOLLARCHER)
 {
 
 	pugi::xml_document data;
@@ -17,7 +17,7 @@ Kobold::Kobold() :Entity(KOBOLD)
 			anim = anim.next_sibling();
 		}
 
-		LoadProperties(data.child("Entities").child("Kobold").child("Statistics"));
+		LoadProperties(data.child("Entities").child("GnollArcher").child("Statistics"));
 
 		anim_attack.speed = anim.child("speed").attribute("speed").as_int();
 	}
@@ -25,7 +25,7 @@ Kobold::Kobold() :Entity(KOBOLD)
 
 }
 
-Kobold::~Kobold()
+GnollArcher::~GnollArcher()
 {
 
 }

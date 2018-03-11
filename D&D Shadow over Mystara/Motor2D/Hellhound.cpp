@@ -1,8 +1,8 @@
-#include "Kobold.h"
+#include "Hellhound.h"
 
 
 
-Kobold::Kobold() :Entity(KOBOLD)
+Hellhound::Hellhound() :Entity(HELLHOUND)
 {
 
 	pugi::xml_document data;
@@ -17,7 +17,7 @@ Kobold::Kobold() :Entity(KOBOLD)
 			anim = anim.next_sibling();
 		}
 
-		LoadProperties(data.child("Entities").child("Kobold").child("Statistics"));
+		LoadProperties(data.child("Entities").child("Hellhound").child("Statistics"));
 
 		anim_attack.speed = anim.child("speed").attribute("speed").as_int();
 	}
@@ -25,7 +25,7 @@ Kobold::Kobold() :Entity(KOBOLD)
 
 }
 
-Kobold::~Kobold()
+Hellhound::~Hellhound()
 {
 
 }

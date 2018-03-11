@@ -1,8 +1,8 @@
-#include "Kobold.h"
+#include "Skeleton.h"
 
 
 
-Kobold::Kobold() :Entity(KOBOLD)
+Skeleton::Skeleton() :Entity(SKELETON)
 {
 
 	pugi::xml_document data;
@@ -17,7 +17,7 @@ Kobold::Kobold() :Entity(KOBOLD)
 			anim = anim.next_sibling();
 		}
 
-		LoadProperties(data.child("Entities").child("Kobold").child("Statistics"));
+		LoadProperties(data.child("Entities").child("Skeleton").child("Statistics"));
 
 		anim_attack.speed = anim.child("speed").attribute("speed").as_int();
 	}
@@ -25,7 +25,7 @@ Kobold::Kobold() :Entity(KOBOLD)
 
 }
 
-Kobold::~Kobold()
+Skeleton::~Skeleton()
 {
 
 }

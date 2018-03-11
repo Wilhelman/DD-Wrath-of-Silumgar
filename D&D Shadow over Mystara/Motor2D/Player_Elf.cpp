@@ -1,15 +1,14 @@
-#include "Kobold.h"
+#include "Player_Elf.h"
 
 
 
-Kobold::Kobold() :Entity(KOBOLD)
+Elf::Elf() : Entity(ELF)
 {
-
 	pugi::xml_document data;
 
 	if (pugi::xml_parse_result result = data.load_file("Entities.xml"))
 	{
-		pugi::xml_node anim = data.child("Entities").child("Kobold").child("Animations").child("PunchAttack").child("frame");
+		pugi::xml_node anim = data.child("Entities").child("Elf").child("Animations").child("Attack").child("frame");
 
 		while (anim != nullptr)
 		{
@@ -17,15 +16,13 @@ Kobold::Kobold() :Entity(KOBOLD)
 			anim = anim.next_sibling();
 		}
 
-		LoadProperties(data.child("Entities").child("Kobold").child("Statistics"));
+		LoadProperties(data.child("Entities").child("Elf").child("Statistics"));
 
 		anim_attack.speed = anim.child("speed").attribute("speed").as_int();
 	}
-
-
 }
 
-Kobold::~Kobold()
+Elf::~Elf()
 {
 
 }

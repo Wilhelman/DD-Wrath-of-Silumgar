@@ -42,8 +42,6 @@ bool ctAbout::Start()
 {
 	bool ret = true;
 
-	//music_volume = App->gui->AddUILabel(40, 45, "Music volume", { 255,255,255,255 }, nullptr);
-	//fx_volume = App->gui->AddUILabel(40, 90, "Fx volume", { 255,255,255,255 }, nullptr);
 	//if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg")) {
 	//	//ret = false;
 	//	LOG("Error playing music in j1MainMenu Start");
@@ -63,8 +61,41 @@ bool ctAbout::Update(float dt)
 {
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		this->quit_pressed = true;
+	if (first_update == true) {
+		back= App->gui->AddUILabel(125, 120, "Back", { 255,255,255,255 }, nullptr);
+		arrow = App->gui->AddUIImage(arrow_x, arrow_y, { 50,50,5,5 }, this, nullptr);
+		first_update = false;
+	}
 
-	App->gui->AddUILabel(10,15,"MANEL", { 255,255,255,255 }, nullptr);
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		this->quit_pressed = true;
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+		if (arrow_y < 120) {
+			App->gui->DeleteUIElement(*arrow);
+			arrow_y += 20;
+			arrow = App->gui->AddUIImage(arrow_x, arrow_y, { 0,0,5,5 }, this, nullptr);
+		}
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+		if (arrow_y > 60) {
+			App->gui->DeleteUIElement(*arrow);
+			arrow_y -= 20;
+			arrow = App->gui->AddUIImage(arrow_x, arrow_y, { 0,0,5,5 }, this, nullptr);
+		}
+	}
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+		if (arrow_y == 120) {
+			LOG("Back Pressed");
+			App->settings->active = true;
+			this->active = false;
+			first_update = true;
+			App->gui->DeleteUIElement(*back);
+			App->gui->DeleteUIElement(*arrow);
+			//App->audio->StopMusic();
+		
+		}
+	}
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 	//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);
 

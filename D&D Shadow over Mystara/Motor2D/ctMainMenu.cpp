@@ -41,12 +41,7 @@ bool ctMainMenu::Awake()
 bool ctMainMenu::Start()
 {
 	bool ret = true;
-	continue_label = App->gui->AddUILabel(15, 10, "Continue", {255,255,255,255}, nullptr);
-	new_game_label = App->gui->AddUILabel(15, 30, "New Game", {255,255,255,255}, nullptr);
-	settings_label = App->gui->AddUILabel(15, 50, "Settings", { 255,255,255,255 }, nullptr);
-	about_label = App->gui->AddUILabel(15, 70, "About", { 255,255,255,255 }, nullptr);
-	quit_label = App->gui->AddUILabel(15, 90, "Quit", { 255,255,255,255 }, nullptr);
-	arrow = App->gui->AddUIImage(arrow_pos_x, arrow_pos_y, {0,0,5,5}, this, nullptr);
+	
 	
 	if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg")) {
 		//ret = false;
@@ -65,6 +60,18 @@ bool ctMainMenu::PreUpdate()
 // Called each loop iteration
 bool ctMainMenu::Update(float dt)
 {
+
+	if (first_update == true)
+	{
+		continue_label = App->gui->AddUILabel(15, 10, "Continue", { 255,255,255,255 }, nullptr);
+		new_game_label = App->gui->AddUILabel(15, 30, "New Game", { 255,255,255,255 }, nullptr);
+		settings_label = App->gui->AddUILabel(15, 50, "Settings", { 255,255,255,255 }, nullptr);
+		about_label = App->gui->AddUILabel(15, 70, "About", { 255,255,255,255 }, nullptr);
+		quit_label = App->gui->AddUILabel(15, 90, "Quit", { 255,255,255,255 }, nullptr);
+		arrow = App->gui->AddUIImage(arrow_pos_x, arrow_pos_y, { 0,0,5,5 }, this, nullptr);
+
+		first_update = false;
+	}
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		this->quit_pressed = true;
 
@@ -123,6 +130,7 @@ bool ctMainMenu::Update(float dt)
 		}
 		else if (arrow_pos_y == 70) {
 			LOG("About Pressed");
+			//App->settings->active = false;
 			App->about->active = true;
 			App->gui->DeleteUIElement(*continue_label);
 			App->gui->DeleteUIElement(*new_game_label);

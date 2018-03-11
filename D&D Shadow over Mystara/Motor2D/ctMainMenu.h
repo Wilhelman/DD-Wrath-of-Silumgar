@@ -41,14 +41,14 @@ public:
 
 private:
 	bool quit_pressed = false;
-	
+	bool first_update = true;
 
-	UIElement* continue_label;
-	UIElement* new_game_label;
-	UIElement* settings_label;
-	UIElement* about_label;
-	UIElement* quit_label;
-	UIElement* arrow;
+	UIElement* continue_label = NULL;
+	UIElement* new_game_label = NULL;
+	UIElement* settings_label = NULL;
+	UIElement* about_label = NULL;
+	UIElement* quit_label = NULL;
+	UIElement* arrow = NULL;
 
 	int arrow_pos_x = 5;
 	int arrow_pos_y = 10;

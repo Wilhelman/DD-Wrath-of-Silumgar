@@ -41,10 +41,14 @@ public:
 private:
 	bool quit_pressed = false;
 	bool first_update = true;
+	int arrow_x = 100;
+	int arrow_y = 20;
 
-	UIElement* music_volume;
-	UIElement* fx_volume;
-	UIElement* back;
+
+	UIElement* arrow = NULL;
+	UIElement* music_volume = NULL;
+	UIElement* fx_volume = NULL;
+	UIElement* back = NULL;
 	
 
 	

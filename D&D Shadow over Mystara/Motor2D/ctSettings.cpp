@@ -66,12 +66,44 @@ bool ctSettings::Update(float dt)
 
 	if (first_update == true)
 	{
-		music_volume = App->gui->AddUILabel(40, 45, "Music volume", { 255,255,255,255 }, nullptr);
-		fx_volume = App->gui->AddUILabel(40, 90, "Fx volume", { 255,255,255,255 }, nullptr);
-		back = App->gui->AddUILabel(40, 135, "Back", { 255,255,255,255 }, nullptr);
+		music_volume = App->gui->AddUILabel(125, 20, "Music volume", { 255,255,255,255 }, nullptr);
+		fx_volume = App->gui->AddUILabel(125, 80, "Fx volume", { 255,255,255,255 }, nullptr);
+		back = App->gui->AddUILabel(125, 140, "Back", { 255,255,255,255 }, nullptr);
+		arrow = App->gui->AddUIImage(arrow_x, arrow_y, { 0,0,5,5 }, this, nullptr);
 
 		first_update = false;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		this->quit_pressed = true;
 
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+		if (arrow_y < 140) {
+			App->gui->DeleteUIElement(*arrow);
+			arrow_y += 60;
+			arrow = App->gui->AddUIImage(arrow_x, arrow_y, { 0,0,5,5 }, this, nullptr);
+		}
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+		if (arrow_y > 20) {
+			App->gui->DeleteUIElement(*arrow);
+			arrow_y -= 60;
+			arrow = App->gui->AddUIImage(arrow_x, arrow_y, { 0,0,5,5 }, this, nullptr);
+		}
+	}
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+		if (arrow_y == 140) {
+			LOG("Back Pressed");
+			App->about->active = true;
+			this->active = false;
+			first_update = true;
+			App->gui->DeleteUIElement(*music_volume);
+			App->gui->DeleteUIElement(*fx_volume);
+			App->gui->DeleteUIElement(*back);
+			App->gui->DeleteUIElement(*arrow);
+			//App->audio->StopMusic();
+			
+		}
 	}
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 	//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);

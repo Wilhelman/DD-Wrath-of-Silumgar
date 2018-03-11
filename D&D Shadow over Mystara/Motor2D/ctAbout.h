@@ -40,7 +40,12 @@ public:
 
 private:
 	bool quit_pressed = false;
-	
+	bool first_update = true;
+	int arrow_x= 115;
+	int arrow_y= 60;
+
+	UIElement* back = NULL;
+	UIElement* arrow = NULL;
 
 
 

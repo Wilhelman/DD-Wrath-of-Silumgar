@@ -69,9 +69,9 @@ bool ctMainMenu::Update(float dt)
 		about_label = App->gui->AddUILabel(15, 70, "About", { 255,255,255,255 }, nullptr);
 		quit_label = App->gui->AddUILabel(15, 90, "Quit", { 255,255,255,255 }, nullptr);
 		arrow = App->gui->AddUIImage(arrow_pos_x, arrow_pos_y, { 0,0,5,5 }, this, nullptr);
-
 		first_update = false;
 	}
+
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		this->quit_pressed = true;
 
@@ -102,6 +102,7 @@ bool ctMainMenu::Update(float dt)
 			App->gui->DeleteUIElement(*quit_label);
 			App->gui->DeleteUIElement(*arrow);
 			App->audio->StopMusic();
+			first_update = true;
 			this->active = false;
 		}
 		else if (arrow_pos_y == 30) {
@@ -114,6 +115,7 @@ bool ctMainMenu::Update(float dt)
 			App->gui->DeleteUIElement(*quit_label);
 			App->gui->DeleteUIElement(*arrow);
 			App->audio->StopMusic();
+			first_update = true;
 			this->active = false;
 		}
 		else if (arrow_pos_y == 50) {
@@ -125,12 +127,12 @@ bool ctMainMenu::Update(float dt)
 			App->gui->DeleteUIElement(*about_label);
 			App->gui->DeleteUIElement(*quit_label);
 			App->gui->DeleteUIElement(*arrow);
-			App->audio->StopMusic();
+			//App->audio->StopMusic();
+			first_update = true;
 			this->active = false;
 		}
 		else if (arrow_pos_y == 70) {
 			LOG("About Pressed");
-			//App->settings->active = false;
 			App->about->active = true;
 			App->gui->DeleteUIElement(*continue_label);
 			App->gui->DeleteUIElement(*new_game_label);
@@ -138,7 +140,8 @@ bool ctMainMenu::Update(float dt)
 			App->gui->DeleteUIElement(*about_label);
 			App->gui->DeleteUIElement(*quit_label);
 			App->gui->DeleteUIElement(*arrow);
-			App->audio->StopMusic();
+			//App->audio->StopMusic();
+			first_update = true;
 			this->active = false;
 		}
 		else if (arrow_pos_y == 90) {

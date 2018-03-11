@@ -61,8 +61,6 @@ bool ctSettings::PreUpdate()
 // Called each loop iteration
 bool ctSettings::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-		this->quit_pressed = true;
 
 	if (first_update == true)
 	{
@@ -73,6 +71,7 @@ bool ctSettings::Update(float dt)
 
 		first_update = false;
 	}
+
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		this->quit_pressed = true;
 
@@ -94,13 +93,14 @@ bool ctSettings::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
 		if (arrow_y == 140) {
 			LOG("Back Pressed");
-			App->about->active = true;
-			this->active = false;
-			first_update = true;
+			App->main_menu->active = true;
 			App->gui->DeleteUIElement(*music_volume);
 			App->gui->DeleteUIElement(*fx_volume);
 			App->gui->DeleteUIElement(*back);
 			App->gui->DeleteUIElement(*arrow);
+			arrow_y = 20;
+			first_update = true;
+			this->active = false;
 			//App->audio->StopMusic();
 			
 		}

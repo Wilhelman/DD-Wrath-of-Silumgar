@@ -59,8 +59,6 @@ bool ctAbout::PreUpdate()
 // Called each loop iteration
 bool ctAbout::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-		this->quit_pressed = true;
 	if (first_update == true) {
 		back= App->gui->AddUILabel(125, 120, "Back", { 255,255,255,255 }, nullptr);
 		arrow = App->gui->AddUIImage(arrow_x, arrow_y, { 50,50,5,5 }, this, nullptr);
@@ -69,6 +67,7 @@ bool ctAbout::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		this->quit_pressed = true;
+
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
 		if (arrow_y < 120) {
 			App->gui->DeleteUIElement(*arrow);
@@ -87,13 +86,13 @@ bool ctAbout::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
 		if (arrow_y == 120) {
 			LOG("Back Pressed");
-			App->settings->active = true;
-			this->active = false;
-			first_update = true;
+			App->main_menu->active = true;
 			App->gui->DeleteUIElement(*back);
 			App->gui->DeleteUIElement(*arrow);
+			arrow_y = 20;
+			first_update = true;
+			this->active = false;
 			//App->audio->StopMusic();
-		
 		}
 	}
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())

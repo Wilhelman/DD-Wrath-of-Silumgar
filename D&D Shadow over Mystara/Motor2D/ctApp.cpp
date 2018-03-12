@@ -204,6 +204,8 @@ bool ctApp::Start()
 
 	PERF_PEEK(ptimer);
 
+	Mix_VolumeMusic(App->settings->music_volume_value);
+
 	return ret;
 }
 

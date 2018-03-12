@@ -38,6 +38,9 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
+	uint music_volume_value = 64;
+	uint fx_volume_value = 64;
+
 private:
 	bool quit_pressed = false;
 	bool first_update = true;
@@ -46,10 +49,13 @@ private:
 
 
 	UIElement* arrow = NULL;
-	UIElement* music_volume = NULL;
-	UIElement* fx_volume = NULL;
+	UIElement* music_volume_text = NULL;
+	UIElement* music_volume_num = NULL;
+	UIElement* fx_volume_text = NULL;
+	UIElement* fx_volume_num = NULL;
 	UIElement* back = NULL;
-	
+
+
 
 	
 

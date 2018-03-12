@@ -62,10 +62,18 @@ bool ctSettings::PreUpdate()
 bool ctSettings::Update(float dt)
 {
 
+	char music_volume_char[(((sizeof music_volume_value) * CHAR_BIT) + 2) / 3 + 2];
+	sprintf_s(music_volume_char, "%d", music_volume_value);
+
+	char fx_volume_char[(((sizeof fx_volume_value) * CHAR_BIT) + 2) / 3 + 2];
+	sprintf_s(fx_volume_char, "%d", fx_volume_value);
+
 	if (first_update == true)
 	{
-		music_volume = App->gui->AddUILabel(125, 20, "Music volume", { 255,255,255,255 }, nullptr);
-		fx_volume = App->gui->AddUILabel(125, 80, "Fx volume", { 255,255,255,255 }, nullptr);
+		music_volume_text = App->gui->AddUILabel(125, 20, "Music volume", { 255,255,255,255 }, nullptr);
+		music_volume_num = App->gui->AddUILabel(210, 20, music_volume_char, { 255,255,255,255 }, nullptr);
+		fx_volume_text = App->gui->AddUILabel(125, 80, "Fx volume", { 255,255,255,255 }, nullptr);
+		fx_volume_num = App->gui->AddUILabel(210, 80, fx_volume_char, { 255,255,255,255 }, nullptr);
 		back = App->gui->AddUILabel(125, 140, "Back", { 255,255,255,255 }, nullptr);
 		arrow = App->gui->AddUIImage(arrow_x, arrow_y, { 0,0,5,5 }, this, nullptr);
 
@@ -94,17 +102,57 @@ bool ctSettings::Update(float dt)
 		if (arrow_y == 140) {
 			LOG("Back Pressed");
 			App->main_menu->active = true;
-			App->gui->DeleteUIElement(*music_volume);
-			App->gui->DeleteUIElement(*fx_volume);
+			App->gui->DeleteUIElement(*music_volume_text);
+			App->gui->DeleteUIElement(*fx_volume_text);
 			App->gui->DeleteUIElement(*back);
 			App->gui->DeleteUIElement(*arrow);
+			App->gui->DeleteUIElement(*music_volume_num);
+			App->gui->DeleteUIElement(*fx_volume_num);
 			arrow_y = 20;
 			first_update = true;
 			this->active = false;
 			//App->audio->StopMusic();
-			
 		}
 	}
+
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
+		if (arrow_y == 20) {
+			if (music_volume_value >= 8) {
+				music_volume_value -= 8;
+				App->gui->DeleteUIElement(*music_volume_num);
+				music_volume_num = App->gui->AddUILabel(210, 20, music_volume_char, { 255,255,255,255 }, nullptr);
+			}
+			Mix_VolumeMusic(music_volume_value);
+		}
+		else if (arrow_y == 80) {
+			if (fx_volume_value >= 8) {
+				fx_volume_value -= 8;
+				App->gui->DeleteUIElement(*fx_volume_num);
+				fx_volume_num = App->gui->AddUILabel(210, 80, fx_volume_char, { 255,255,255,255 }, nullptr);
+			}
+			//Mix_VolumeChunk(Mix_GetChunk(1), fx_volume_value);
+		}
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN) {
+		if (arrow_y == 20) {
+			if (music_volume_value <= 120) {
+				music_volume_value += 8;
+				App->gui->DeleteUIElement(*music_volume_num);
+				music_volume_num = App->gui->AddUILabel(210, 20, music_volume_char, { 255,255,255,255 }, nullptr);
+			}
+			Mix_VolumeMusic(music_volume_value);
+		}
+		else if (arrow_y == 80) {
+			if (fx_volume_value <= 120) {
+				fx_volume_value += 8;
+				App->gui->DeleteUIElement(*fx_volume_num);
+				fx_volume_num = App->gui->AddUILabel(210, 80, fx_volume_char, { 255,255,255,255 }, nullptr);
+			}
+			//Mix_VolumeChunk(Mix_GetChunk(1), fx_volume_value);
+		}
+	}
+
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 	//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);
 

@@ -5,9 +5,9 @@
         <Statistics Constitution ="6" Focus="5" Force="5" Intelligence="4" Skill ="4" Agility="7" PhysicalDefense="3" MagicalDefense="2" Judgement="40"/>
         <Animations>
         <Idle>
-          <frame x="0" y="0" w="100" h="100"/>
-          <frame x="100" y="0" w="100" h="100"/>
-          <frame x="200" y="0" w="100" h="100"/>
+          <frame x="993" y="70" w="52" h="47"/>
+          <frame x="933" y="70" w="53" h="47"/>
+          <frame x="874" y="70" w="54" h="47"/>
         </Idle>
         <Run>
           <frame x="0" y="100" w="100" h="100"/>
@@ -18,6 +18,18 @@
           <frame x="500" y="100" w="100" h="100"/>
           <frame x="600" y="100" w="100" h="100"/>
         </Run>
+        <BasicAttack>
+          <frame x="988" y="398" w="50" h="47"/>
+          <frame x="928" y="386" w="51" h="61"/>
+          <frame x="863" y="385" w="56" h="62"/>
+          <frame x="810" y="388" w="49" h="64"/>
+          <frame x="751" y="399" w="53" h="53"/>
+          <frame x="665" y="383" w="79" h="69"/>
+          <frame x="559" y="405" w="105" h="47"/>
+          <frame x="496" y="408" w="62" h="52"/>
+          <frame x="443" y="407" w="45" h="55"/>
+          <frame x="386" y="406" w="49" h="46"/>
+        </BasicAttack>
         <PunchAttack>
           <frame x="1500" y="200" w="100" h="100"/>
           <frame x="1400" y="200" w="100" h="100"/>
@@ -44,78 +56,142 @@
       <Goblin>
         <Statistics Constitution ="5" Focus="3" Force="4" Intelligence="2" Skill ="4" Agility="6" PhysicalDefense="1" MagicalDefense="0" Judgement="10"/>
         <Animations>
+          <Idle>
+            <!--<frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/> NO IDLE-->
+          </Idle>
       </Animations>
       </Goblin>
    
       <AlchemistGoblin>
         <Statistics Constitution ="5" Focus="5" Force="4" Intelligence="4" Skill ="4" Agility="6" PhysicalDefense="2" MagicalDefense="1" Judgement="25"/>
         <Animations>
+          <Idle>
+            <!--<frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/> NO IDLE-->
+          </Idle>
       </Animations>
       </AlchemistGoblin>
         
       <HeavyGoblin>
         <Statistics Constitution ="6" Focus="5" Force="5" Intelligence="3" Skill ="4" Agility="4" PhysicalDefense="4" MagicalDefense="2" Judgement="30"/>
         <Animations>
+          <Idle>
+            <!--<frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/> NO IDLE-->
+          </Idle>
       </Animations>
       </HeavyGoblin>
         
       <Gnoll>
         <Statistics Constitution ="8" Focus="6" Force="7" Intelligence="3" Skill ="6" Agility="7" PhysicalDefense="4" MagicalDefense="2" Judgement="40"/>
         <Animations>
+          <Idle>
+            <frame x="899" y="13" w="110" h="73"/>
+            <frame x="785" y="9" w="110" h="78"/>
+            <frame x="672" y="12" w="108" h="75"/>
+          </Idle>
       </Animations>
       </Gnoll>
    
       <GnollArcher>
         <Statistics Constitution ="7" Focus="6" Force="6" Intelligence="4" Skill ="6" Agility="7" PhysicalDefense="2" MagicalDefense="2" Judgement="60"/>
         <Animations>
+          <Idle>
+            <frame x="981" y="15" w="80" h="83"/>
+            <frame x="887" y="14" w="79" h="84"/>
+            <frame x="789" y="13" w="77" h="85"/>
+          </Idle>
       </Animations>
       </GnollArcher>
    
       <Skeleton>
         <Statistics Constitution ="9" Focus="8" Force="8" Intelligence="5" Skill ="7" Agility="6" PhysicalDefense="10" MagicalDefense="12" Judgement="50"/>
         <Animations>
+          <Idle>
+            <frame x="706" y="98" w="69" h="59"/>
+            <frame x="625" y="99" w="58" h="58"/>
+          </Idle>
       </Animations>
       </Skeleton>
         
       <Owlbear>
         <Statistics Constitution ="15" Focus="8" Force="10" Intelligence="3" Skill ="7" Agility="3" PhysicalDefense="8" MagicalDefense="14" Judgement="35"/>
         <Animations>
+          <Idle>
+            <frame x="1287" y="7" w="130" h="61"/>
+            <frame x="1148" y="6" w="130" h="62"/>
+            <frame x="1010" y="6" w="130" h="62"/>
+            <frame x="869" y="6" w="131" h="62"/>
+            <frame x="719" y="6" w="131" h="62"/>
+          </Idle>
       </Animations>
       </Owlbear>
    
       <Triton>
         <Statistics Constitution ="8" Focus="14" Force="5" Intelligence="10" Skill ="9" Agility="10" PhysicalDefense="8" MagicalDefense="12" Judgement="60"/>
         <Animations>
+          <Idle>
+            <!--<frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/> NO IDLE-->
+          </Idle>
       </Animations>
       </Triton>
    
       <Hellhound>
         <Statistics Constitution ="9" Focus="9" Force="9" Intelligence="9" Skill ="9" Agility="14" PhysicalDefense="7" MagicalDefense="5" Judgement="40"/>
         <Animations>
+          <Idle>
+            <!--<frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/> NO IDLE-->
+          </Idle>
       </Animations>
       </Hellhound>
    
       <DarkWarrior>
         <Statistics Constitution ="40" Focus="15" Force="20" Intelligence="33" Skill ="15" Agility="14" PhysicalDefense="14" MagicalDefense="14" Judgement="40"/>
         <Animations>
+          <Idle>
+            <frame x="1256" y="403" w="151" h="147"/>
+            <frame x="1075" y="405" w="151" h="145"/>
+          </Idle>
       </Animations>
       </DarkWarrior>
    
       <TrollLeaders>
         <Statistics Constitution ="20" Focus="15" Force="22" Intelligence="9" Skill ="16" Agility="12" PhysicalDefense="13" MagicalDefense="11" Judgement="30"/>
         <Animations>
+          <Idle>
+            <frame x="899" y="32" w="103" h="95"/>
+            <frame x="703" y="36" w="92" h="91"/>
+          </Idle>
       </Animations>
       </TrollLeaders>
         
       <DisplacerBeast>
         <Statistics Constitution ="30" Focus="15" Force="17" Intelligence="18" Skill ="12" Agility="16" PhysicalDefense="14" MagicalDefense="15" Judgement="50"/>
         <Animations>
+          <Idle>
+            <frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/>
+            <frame x="0" y="0" w="0" h="0"/>
+          </Idle>
       </Animations>
       </DisplacerBeast>
         
       <Lich1st>
         <Statistics Constitution ="30" Focus="999" Force="10" Intelligence="40" Skill ="20" Agility="20" PhysicalDefense="18" MagicalDefense="20" Judgement="70"/>
         <Animations>
+          <Idle>
+            <frame x="576" y="520" w="96" h="67"/>
+            <frame x="767" y="509" w="96" h="67"/>
+            <frame x="970" y="514" w="90" h="67"/>
+          </Idle>
       </Animations>
       </Lich1st>
       
@@ -128,43 +204,64 @@
       <Cleric>
         <Stadistics Constitution ="6" Focus="5" Force="6" Agility="1" Dexterity ="4" Intelligence="7"  PhysicalDefense="3" MagicalDefense="4" Luck="4"/>
         <Animations>
-        <Attack>
-          <frame x="0" y="400" w="100" h="100"/>
-          <frame x="100" y="400" w="100" h="100"/>
-          <frame x="200" y="400" w="100" h="100"/>
-          <frame x="300" y="400" w="100" h="100"/>
-          <frame x="400" y="400" w="100" h="100"/>
-          <frame x="500" y="400" w="100" h="100"/>
-          <frame x="600" y="400" w="100" h="100"/>
-          <frame x="700" y="400" w="100" h="100"/>
-          <frame x="800" y="400" w="100" h="100"/>
-          <frame x="900" y="400" w="100" h="100"/>
-          <speed speed ="1"/>
-        </Attack>
+          <Idle>
+            <frame x="116" y="2659" w="70" h="77"/>
+            <frame x="204" y="2659" w="70" h="77"/>
+            <frame x="292" y="2659" w="70" h="77"/>
+            <frame x="381" y="2659" w="70" h="77"/>
+          </Idle>
+          <Attack>
+            <frame x="0" y="400" w="100" h="100"/>
+            <frame x="100" y="400" w="100" h="100"/>
+            <frame x="200" y="400" w="100" h="100"/>
+            <frame x="300" y="400" w="100" h="100"/>
+            <frame x="400" y="400" w="100" h="100"/>
+            <frame x="500" y="400" w="100" h="100"/>
+            <frame x="600" y="400" w="100" h="100"/>
+            <frame x="700" y="400" w="100" h="100"/>
+            <frame x="800" y="400" w="100" h="100"/>
+            <frame x="900" y="400" w="100" h="100"/>
+            <speed speed ="1"/>
+          </Attack>
       </Animations>
       </Cleric>
    
       <Dwarf>
         <Stadistics Constitution ="7" Focus="4" Force="9" Agility="3" Dexterity ="4" Intelligence="1"  PhysicalDefense="4" MagicalDefense="3" Luck="5"/>
         <Animations>
-        <Attack>
-        </Attack>
+          <Idle>
+            <frame x="66" y="335" w="49" h="65"/>
+            <frame x="134" y="334" w="49" h="66"/>
+            <frame x="202" y="335" w="49" h="65"/>
+          </Idle>
+          <Attack>
+          </Attack>
       </Animations>
       </Dwarf>
       
       <Elf>
         <Stadistics Constitution ="5" Focus="7" Force="2" Agility="6" Dexterity ="3" Intelligence="9"  PhysicalDefense="2" MagicalDefense="3" Luck="3"/>
         <Animations>
-        <Attack>
-        </Attack>
+          <Idle>
+            <frame x="842" y="2156" w="46" h="68"/>
+            <frame x="902" y="2156" w="45" h="68"/>
+            <frame x="962" y="2156" w="45" h="68"/>
+          </Idle>
+          <Attack>
+          </Attack>
       </Animations>
       </Elf>
    
       <Fighter>
         <Stadistics Constitution ="9" Focus="4" Force="5" Agility="4" Dexterity ="6" Intelligence="2"  PhysicalDefense="5" MagicalDefense="4" Luck="1"/>
         <Animations>
-        <Attack>
-        </Attack>
+          <Idle>
+            <frame x="1160" y="118" w="65" h="74"/>
+            <frame x="1244" y="118" w="66" h="74"/>
+            <frame x="1328" y="118" w="67" h="74"/>
+          </Idle>
+          <Attack>
+          </Attack>
       </Animations>
       </Fighter>
       

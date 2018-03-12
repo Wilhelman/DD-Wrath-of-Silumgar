@@ -30,26 +30,39 @@
           <frame x="443" y="407" w="45" h="55"/>
           <frame x="386" y="406" w="49" h="46"/>
         </BasicAttack>
-        <PunchAttack>
-          <frame x="1500" y="200" w="100" h="100"/>
-          <frame x="1400" y="200" w="100" h="100"/>
-          <frame x="1300" y="200" w="100" h="100"/>
-          <frame x="1200" y="200" w="100" h="100"/>
-          <frame x="1100" y="200" w="100" h="100"/>
-          <frame x="1000" y="200" w="100" h="100"/>
-          <frame x="900" y="200" w="100" h="100"/>
-          <frame x="800" y="200" w="100" h="100"/>
-          <frame x="700" y="200" w="100" h="100"/>
-          <frame x="600" y="200" w="100" h="100"/>
-          <frame x="500" y="200" w="100" h="100"/>
-          <frame x="400" y="200" w="100" h="100"/>
-          <frame x="300" y="200" w="100" h="100"/>
-          <frame x="200" y="200" w="100" h="100"/>
-          <frame x="100" y="200" w="100" h="100"/>
-          <frame x="0" y="200" w="100" h="100"/>
-          <speed speed="1"/>
-          
-        </PunchAttack>
+        <QuickStab>
+          <frame x="982" y="326" w="61" h="43"/>
+          <frame x="917" y="326" w="59" h="43"/>
+          <frame x="860" y="330" w="51" h="40"/>
+          <frame x="793" y="330" w="56" h="41"/>
+          <frame x="725" y="330" w="61" h="41"/>
+          <frame x="649" y="328" w="68" h="42"/>
+          <frame x="562" y="327" w="80" h="41"/>
+          <frame x="468" y="329" w="90" h="41"/>
+          <frame x="364" y="329" w="99" h="41"/>
+          <frame x="264" y="329" w="94" h="42"/>
+          <frame x="163" y="324" w="92" h="44"/>
+          <frame x="82" y="326" w="72" h="43"/>
+        </QuickStab>
+        <Jab>
+          <frame x="976" y="262" w="63" h="44"/>
+          <frame x="916" y="263" w="55" h="43"/>
+          <frame x="861" y="264" w="49" h="42"/>
+          <frame x="801" y="265" w="49" h="41"/>
+          <frame x="744" y="264" w="47" h="42"/>
+          <frame x="685" y="263" w="49" h="43"/>
+          <frame x="632" y="264" w="46" h="43"/>
+          <frame x="581" y="262" w="45" h="44"/>
+          <frame x="524" y="260" w="51" h="46"/>
+          <frame x="461" y="257" w="56" h="48"/>
+          <frame x="392" y="257" w="65" h="47"/>
+          <frame x="338" y="255" w="49" h="50"/>
+          <frame x="278" y="256" w="55" h="48"/>
+          <frame x="202" y="255" w="68" h="49"/>
+          <frame x="123" y="256" w="70" h="47"/>
+          <frame x="69" y="258" w="47" h="45"/>
+          <frame x="14" y="261" w="45" h="44"/>
+        </Jab>
       </Animations>
       </Kobold>
    
@@ -61,6 +74,15 @@
             <frame x="0" y="0" w="0" h="0"/>
             <frame x="0" y="0" w="0" h="0"/> NO IDLE-->
           </Idle>
+          <BasicAttack>
+            <frame x="1040" y="741" w="50" h="61"/>
+            <frame x="746" y="750" w="46" h="51"/>
+            <frame x="806" y="739" w="40" h="62"/>
+            <frame x="966" y="747" w="62" h="55"/>
+            <frame x="863" y="746" w="95" h="56"/>
+            <frame x="556" y="757" w="98" h="44"/>
+            <frame x="470" y="760" w="73" h="52"/>
+          </BasicAttack>
       </Animations>
       </Goblin>
    
@@ -72,6 +94,23 @@
             <frame x="0" y="0" w="0" h="0"/>
             <frame x="0" y="0" w="0" h="0"/> NO IDLE-->
           </Idle>
+          <BasicAttack>
+            <frame x="746" y="262" w="50" h="50"/>
+            <frame x="804" y="252" w="40" h="60"/>
+            <frame x="665" y="238" w="73" h="74"/>
+            <frame x="966" y="264" w="62" h="49"/>
+            <frame x="861" y="258" w="97" h="55"/>
+            <frame x="553" y="268" w="101" h="44"/>
+            <frame x="477" y="268" w="66" h="52"/>
+          </BasicAttack>
+          <CookingOil>
+            <frame x="1038" y="331" w="50" h="47"/>
+            <frame x="992" y="329" w="39" h="49"/>
+            <frame x="937" y="323" w="45" h="55"/>
+            <frame x="860" y="331" w="65" h="48"/>
+            <frame x="782" y="337" w="69" h="44"/>
+            <frame x="728" y="337" w="49" h="44"/>
+          </CookingOil>
       </Animations>
       </AlchemistGoblin>
         
@@ -83,6 +122,18 @@
             <frame x="0" y="0" w="0" h="0"/>
             <frame x="0" y="0" w="0" h="0"/> NO IDLE-->
           </Idle>
+          <BasicAttack>
+            <frame x="748" y="1180" w="46" h="53"/>
+            <frame x="807" y="1171" w="41" h="62"/>
+            <frame x="968" y="1179" w="62" h="55"/>
+            <frame x="865" y="1178" w="97" h="55"/>
+            <frame x="558" y="1184" w="98" h="49"/>
+            <frame x="472" y="1185" w="73" h="59"/>
+          </BasicAttack>
+          <Pointing>
+            <frame x="900" y="984" w="52" h="45"/>
+            <frame x="823" y="983" w="70" h="45"/>
+          </Pointing>
       </Animations>
       </HeavyGoblin>
         

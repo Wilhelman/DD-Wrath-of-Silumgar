@@ -15,13 +15,7 @@ struct SDL_Texture;
 enum LayerTypes
 {
 	BACKGROUND = 0,
-	PARALLAX,
-	DEAD_ZONE,
-	GROUND_1,
-	GROUND_2,
-	LOGIC,
-	COLLISIONS,
-	ENEMIES,
+	POSITION,
 
 	LAYER_NOT_DEF
 };
@@ -181,14 +175,8 @@ private:
 	pugi::xml_document	map_file;
 
 	std::string			folder;
-	std::string			spritesheetName;
 
 	bool				map_loaded = false;
-
-	ctAnimation			lava_waterfall = ctAnimation();
-	ctAnimation			lava_animation = ctAnimation();
-	ctAnimation			water_animation = ctAnimation();
-	ctAnimation			waterfall = ctAnimation();
 
 };
 

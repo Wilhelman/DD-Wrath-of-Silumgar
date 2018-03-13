@@ -8,6 +8,7 @@
 #include "ctWindow.h"
 #include "ctEntities.h"
 #include "ctMap.h"
+#include "j1Map.h"
 
 #include "ctCombat.h"
 
@@ -43,7 +44,8 @@ bool ctCombat::Start()
 	//ret = false;
 	LOG("Error playing music in j1MainMenu Start");
 	}*/
-
+	
+	
 	return ret;
 }
 
@@ -62,7 +64,7 @@ bool ctCombat::Update(float dt)
 
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 	//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);
-
+	App->map->Draw();
 	return true;
 }
 

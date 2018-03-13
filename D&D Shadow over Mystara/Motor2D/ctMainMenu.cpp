@@ -11,7 +11,7 @@
 #include "ctSettings.h"
 #include "ctAbout.h"
 #include "ctMap.h"
-
+#include "j1Map.h"
 
 #include "ctMainMenu.h"
 
@@ -104,6 +104,8 @@ bool ctMainMenu::Update(float dt)
 			App->gui->DeleteUIElement(*arrow);
 			App->audio->StopMusic();
 			first_update = true;
+			App->map->Load("TestTavern.tmx");
+			App->combat->active = true;
 			this->active = false;
 		}
 		else if (arrow_pos_y == 30) {

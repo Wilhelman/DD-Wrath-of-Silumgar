@@ -94,6 +94,7 @@ bool ctAbout::Update(float dt)
 			this->active = false;
 			//App->audio->StopMusic();
 		}
+		
 	}
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 	//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);

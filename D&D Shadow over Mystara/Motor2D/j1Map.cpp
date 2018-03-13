@@ -11,7 +11,7 @@
 j1Map::j1Map() : ctModule(), map_loaded(false)
 {
 	name = "map";
-	spawn = iPoint(-1, -1);
+	
 }
 
 // Destructor
@@ -42,25 +42,6 @@ bool j1Map::Awake(pugi::xml_node& config)
 	}
 	data.save_file("config.xml");
 
-	//Set up animations map
-	spritesheetName = config.child("spritesheetSource").attribute("name").as_string();
-
-	//set all the animations
-	for (pugi::xml_node animations = config.child("spritesheetSource").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
-	{
-		std::string tmp(animations.attribute("name").as_string());
-
-		if (tmp == "lava_waterfall") 
-			LoadMapAnimation(animations, &lava_waterfall);
-		if (tmp == "lava_animation")
-			LoadMapAnimation(animations, &lava_animation);
-		if (tmp == "water_animation") 
-			LoadMapAnimation(animations, &water_animation);
-		if (tmp == "waterfall")
-			LoadMapAnimation(animations, &waterfall);
-
-	}
-
 	return ret;
 }
 
@@ -72,11 +53,11 @@ void j1Map::LayersSetUp()
 
 	while (tilesetsToCheck != this->data.tilesets.begin())
 	{
-		if ((*tilesetsToCheck)->name == "environment-tiles")
+		/*if ((*tilesetsToCheck)->name == "environment-tiles")
 			(*tilesetsToCheck)->tileset_type = PLATFORM;
 			
 		if ((*tilesetsToCheck)->name == "flag")
-			(*tilesetsToCheck)->tileset_type = FLAG;
+			(*tilesetsToCheck)->tileset_type = FLAG;*/
 		
 		std::list<MapLayer*>::iterator layersToCheck = this->data.layers.begin();
 
@@ -90,20 +71,8 @@ void j1Map::LayersSetUp()
 					{
 						if ((*layersToCheck)->name == "background")
 							(*layersToCheck)->layer_type = BACKGROUND;
-						else if ((*layersToCheck)->name == "parallax")
-							(*layersToCheck)->layer_type = PARALLAX;
-						else if ((*layersToCheck)->name == "ground")
-							(*layersToCheck)->layer_type = GROUND_1;
-						else if ((*layersToCheck)->name == "ground2")
-							(*layersToCheck)->layer_type = GROUND_2;
-						else if ((*layersToCheck)->name == "dead_zone")
-							(*layersToCheck)->layer_type = DEAD_ZONE;
-						else if ((*layersToCheck)->name == "logic")
-							(*layersToCheck)->layer_type = LOGIC;
-						else if ((*layersToCheck)->name == "collisions")
-							(*layersToCheck)->layer_type = COLLISIONS;
-						else if ((*layersToCheck)->name == "enemies")
-							(*layersToCheck)->layer_type = ENEMIES;
+						else
+							(*layersToCheck)->layer_type = POSITION;
 					}
 				}
 			}
@@ -113,7 +82,7 @@ void j1Map::LayersSetUp()
 	}
 }
 
-void j1Map::setAllLogicForMap()
+/*void j1Map::setAllLogicForMap()
 {
 	std::list<TileSet*>::iterator tilesetsBlit = this->data.tilesets.end();
 
@@ -152,7 +121,7 @@ void j1Map::setAllLogicForMap()
 							}
 							if (id == 589) { //coin
 								App->entities->SpawnEntity(MapToWorld(i, j).x, MapToWorld(i, j).y, COIN);
-							}*/
+							
 						}
 						
 					}
@@ -162,16 +131,16 @@ void j1Map::setAllLogicForMap()
 		}
 		tilesetsBlit--;
 	}
-}
+}*/
 
 void j1Map::Draw()
 {
 	if(map_loaded == false)
 		return;
 
-	std::list<TileSet*>::iterator tilesetsBlit = this->data.tilesets.end();
+	std::list<TileSet*>::iterator tilesetsBlit = this->data.tilesets.begin();
 	
-	while (tilesetsBlit != this->data.tilesets.begin())
+	while (tilesetsBlit != this->data.tilesets.end())
 	{
 		std::list<MapLayer*>::iterator layersBlit = this->data.layers.begin();
 
@@ -187,29 +156,19 @@ void j1Map::Draw()
 
 						iPoint world = MapToWorld(i, j);
 
-						if ((*layersBlit)->layer_type != LOGIC && (*layersBlit)->layer_type != COLLISIONS)
-						{
-							if ((*layersBlit)->layer_type == GROUND_1)
-							{
-							}
-
-							if ((*layersBlit)->layer_type == GROUND_2) {
+							/*if ((*layersBlit)->layer_type == PARALLAX)
+								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect, 0.7f);*/
 								
-							}
-
-							if ((*layersBlit)->layer_type == PARALLAX)
-								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect, 0.7f);
-								
-							if ((*layersBlit)->layer_type == BACKGROUND)
+							if ((*layersBlit)->name == "Background")
 								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect, 0.1f); 
-						}
+						
 					}
 				}
 			}
 
 			layersBlit++;
 		}
-		tilesetsBlit--;
+		tilesetsBlit++;
 	}
 }
 
@@ -305,7 +264,7 @@ bool j1Map::CleanUp()
 bool j1Map::Load(const char* file_name)
 {
 	bool ret = true;
-	std::string tmp = ("%s%s", folder, file_name);
+	std::string tmp =  folder + std::string(file_name);
 
 	pugi::xml_parse_result result = map_file.load_file(tmp.c_str());
 
@@ -567,7 +526,7 @@ bool j1Map::LoadProperties(pugi::xml_node& node, Properties& properties)
 	return ret;
 }
 
-void j1Map::LoadMapAnimation(pugi::xml_node animation_node, ctAnimation * animation)
+/*void j1Map::LoadMapAnimation(pugi::xml_node animation_node, ctAnimation * animation)
 {
 	bool ret = true;
 
@@ -611,8 +570,8 @@ bool j1Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 					if(ts != NULL)
 					{
 					map[i] = ts->properties.Get("walkable", 1);
-					}*/
-				/*}
+					}
+				}
 			}
 		}
 
@@ -623,9 +582,9 @@ bool j1Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 
 		break;
 	}
-	*/
+	
 	return true;
-}
+}*/
 
 TileSet* j1Map::GetTilesetFromTileId(int id) const
 {

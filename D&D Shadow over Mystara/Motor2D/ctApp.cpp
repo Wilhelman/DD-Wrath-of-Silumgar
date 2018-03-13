@@ -58,6 +58,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	gui = new ctGui();
 	fadeToBlack = new ctFadeToBlack();
 	fonts = new ctFonts();
+	map_scene = new ctMap();
 	/*scene = new j1Scene();
 	main_menu = new j1MainMenu();
 	credits = new j1Credits();

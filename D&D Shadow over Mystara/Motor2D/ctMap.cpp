@@ -7,6 +7,7 @@
 #include "ctRender.h"
 #include "ctWindow.h"
 #include "ctEntities.h"
+#include "ctCombat.h"
 
 #include "ctMap.h"
 
@@ -58,6 +59,11 @@ bool ctMap::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		this->quit_pressed = true;
+
+	if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN) {
+		App->combat->active = true;
+		this->active = false;
+	}
 
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 	//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);

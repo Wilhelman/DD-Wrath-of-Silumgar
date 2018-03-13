@@ -7,6 +7,7 @@
 #include "ctRender.h"
 #include "ctWindow.h"
 #include "ctEntities.h"
+#include "ctMap.h"
 
 #include "ctCombat.h"
 

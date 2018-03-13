@@ -10,6 +10,7 @@
 #include "ctCombat.h"
 #include "ctSettings.h"
 #include "ctAbout.h"
+#include "ctMap.h"
 
 
 #include "ctMainMenu.h"
@@ -94,7 +95,7 @@ bool ctMainMenu::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
 		if (arrow_pos_y == 10) {
 			LOG("Continue Pressed");
-			App->combat->active = true;
+			App->map_scene->active = true;
 			App->gui->DeleteUIElement(*continue_label);
 			App->gui->DeleteUIElement(*new_game_label);
 			App->gui->DeleteUIElement(*settings_label);
@@ -107,7 +108,7 @@ bool ctMainMenu::Update(float dt)
 		}
 		else if (arrow_pos_y == 30) {
 			LOG("New Game Pressed");
-			App->combat->active = true;
+			App->map_scene->active = true;
 			App->gui->DeleteUIElement(*continue_label);
 			App->gui->DeleteUIElement(*new_game_label);
 			App->gui->DeleteUIElement(*settings_label);

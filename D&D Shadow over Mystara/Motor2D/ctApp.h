@@ -119,6 +119,7 @@ public:
 	ctGui*				gui = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;
 	ctFonts*			fonts = nullptr;
+	ctMap*				map_scene = nullptr;
 	/*j1Collider*			collider = nullptr;
 	j1Scene*			scene = nullptr;
 	j1MainMenu*			main_menu = nullptr;

@@ -106,13 +106,14 @@ public:
 	iPoint battleground_position = iPoint(0, 0);
 	bool to_destroy = false;
 	EntityType entity_type;
+	std::string anim_Path;
 
 public:
 	Entity(EntityType type);
 	virtual ~Entity();
 
 	virtual void Update(float dt) {};
-	virtual void Draw(SDL_Texture* sprites);
+	void Draw(SDL_Texture* sprites);
 	virtual void SetEntitiesSpeed(float dt) {};
 
 	virtual void LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation) {};

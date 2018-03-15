@@ -1,4 +1,5 @@
 #include "Player_Cleric.h"
+#include "ctLog.h"
 
 
 
@@ -9,6 +10,10 @@ Cleric::Cleric() : Entity(CLERIC)
 	if (pugi::xml_parse_result result = data.load_file("Entities.xml"))
 	{
 		pugi::xml_node anim = data.child("Entities").child("Cleric").child("Animations").child("Attack").child("frame");
+		pugi::xml_node path = data.child("Entities").child("Cleric").child("spritesheetSource");
+
+		anim_Path.assign(path.attribute("name").as_string());
+		LOG(anim_Path.c_str());
 
 		while (anim != nullptr)
 		{

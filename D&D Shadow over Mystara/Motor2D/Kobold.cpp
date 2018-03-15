@@ -1,5 +1,5 @@
 #include "Kobold.h"
-
+#include "ctLog.h"
 
 
 Kobold::Kobold() :Entity(KOBOLD)
@@ -9,7 +9,11 @@ Kobold::Kobold() :Entity(KOBOLD)
 
 	if (pugi::xml_parse_result result = data.load_file("Entities.xml"))
 	{
-		pugi::xml_node anim = data.child("Entities").child("Kobold").child("Animations").child("PunchAttack").child("frame");
+		pugi::xml_node anim = data.child("Entities").child("Kobold").child("Animations").child("Idle").child("frame");
+		pugi::xml_node path = data.child("Entities").child("Kobold").child("spritesheetSource");
+
+		anim_Path.assign(path.attribute("name").as_string());
+		LOG(anim_Path.c_str());
 
 		while (anim != nullptr)
 		{

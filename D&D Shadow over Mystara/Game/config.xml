@@ -28,7 +28,7 @@
 		<lvlMusic name="textures/source_spritesheet.png" />
 	</music>
 	<entities>
-		<spritesheetSource name="textures/source_spritesheet.png" />
+		<spritesheetSource name="textures/" />
 		<player>
 			<fxPlayerJump name="audio/fx/jump_fx.wav" />
 			<animations>

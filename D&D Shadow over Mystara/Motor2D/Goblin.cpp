@@ -9,7 +9,7 @@ Goblin::Goblin() :Entity(GOBLIN)
 
 	if (pugi::xml_parse_result result = data.load_file("Entities.xml"))
 	{
-		pugi::xml_node anim = data.child("Entities").child("Goblin").child("Animations").child("PunchAttack").child("frame");
+		pugi::xml_node anim = data.child("Entities").child("Goblin").child("Animations").child("Idle").child("frame");
 
 		while (anim != nullptr)
 		{

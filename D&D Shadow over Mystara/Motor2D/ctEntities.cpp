@@ -6,6 +6,7 @@
 #include "ctAudio.h"
 #include "ctWindow.h"
 #include "ctLog.h"
+#include "Player_Cleric.h"
 //#include "ctMap.h"
 #include "ctFadeToBlack.h"
 //#include "j1Scene.h"
@@ -60,6 +61,9 @@ bool ctEntities::PreUpdate()
 bool ctEntities::Update(float dt)
 {
 	
+	for (int i = 0; i < entities.size(); i++) {
+		//entities.at(i)->Draw(entity_sprites);
+	}
 
 	return true;
 }
@@ -83,12 +87,13 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 
 	switch (type)
 	{
-	/*case EntityType::PLAYER: {
-		Player* player = new Player(x, y, PLAYER);
-		entities.push_back(player);
+	case EntityType::CLERIC: {
+		Cleric* cleric = new Cleric();
+		cleric->battleground_position = { x,y };
+		entities.push_back(cleric);
 		ret = true;
 		break;
-	}*/
+	}
 	default:
 		break;
 	}

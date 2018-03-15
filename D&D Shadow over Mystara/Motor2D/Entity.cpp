@@ -83,14 +83,14 @@ Entity::Entity(EntityType type)
 Entity::~Entity()
 {
 }
-//
-//void Entity::Draw(SDL_Texture* sprites)
-//{
-//	SDL_Rect r = animation->GetCurrentFrame();
-//	
-//	if (animation != nullptr)
-//		App->render->Blit(sprites, position.x, position.y - r.h, &(animation->GetCurrentFrame()));
-//}
+
+void Entity::Draw(SDL_Texture* sprites)
+{
+	SDL_Rect r = animation->GetCurrentFrame();
+
+	if (animation != nullptr)
+		App->render->Blit(sprites, battleground_position.x, battleground_position.y - r.h, &(animation->GetCurrentFrame()));
+}
 
 bool Entity::LoadProperties(pugi::xml_node properties) {
 	bool ret = true;

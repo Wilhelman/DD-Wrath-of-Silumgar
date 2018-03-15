@@ -104,8 +104,7 @@ bool ctMainMenu::Update(float dt)
 			App->gui->DeleteUIElement(*arrow);
 			App->audio->StopMusic();
 			first_update = true;
-			App->map->Load("TestTavern.tmx");
-			App->combat->active = true;
+			//App->map->Load("TestTavern.tmx");
 			this->active = false;
 		}
 		else if (arrow_pos_y == 30) {

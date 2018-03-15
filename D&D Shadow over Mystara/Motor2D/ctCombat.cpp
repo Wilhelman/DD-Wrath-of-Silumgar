@@ -64,6 +64,9 @@ bool ctCombat::Update(float dt)
 
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 	//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);
+	App->entities->SpawnEntity(10, 10, CLERIC);
+	
+
 	App->map->Draw();
 	return true;
 }

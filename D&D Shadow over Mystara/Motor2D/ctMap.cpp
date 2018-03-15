@@ -8,7 +8,7 @@
 #include "ctWindow.h"
 #include "ctEntities.h"
 #include "ctCombat.h"
-
+#include "j1Map.h"
 #include "ctMap.h"
 
 #include "ctFadeToBlack.h"
@@ -62,6 +62,8 @@ bool ctMap::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN) {
 		App->combat->active = true;
+		LOG("X pressed");
+		App->map->Load("TestTavern.tmx");
 		this->active = false;
 	}
 

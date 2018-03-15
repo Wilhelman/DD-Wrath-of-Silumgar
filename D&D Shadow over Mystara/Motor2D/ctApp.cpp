@@ -89,6 +89,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(fonts);
 	AddModule(gui);
 	AddModule(fadeToBlack);
+	AddModule(map_scene);
 	
 	/*AddModule(map);
 	AddModule(pathfinding);
@@ -112,6 +113,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	combat->active = false;
 	settings->active = false;
 	about->active = false;
+	map_scene->active = false;
 
 	PERF_PEEK(ptimer);
 }

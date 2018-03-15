@@ -29,6 +29,7 @@ enum EntityType
 
 class Entity;
 class Player;
+class Cleric;
 
 struct SDL_Texture;
 

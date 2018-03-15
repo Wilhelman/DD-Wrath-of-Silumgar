@@ -62,7 +62,6 @@ public:
 				loops++;
 			}
 		}
-		break;
 		}
 
 		return frames[(int)current_frame];

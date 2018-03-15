@@ -65,7 +65,7 @@ bool ctEntities::Update(float dt)
 		LOG(entities.at(i)->anim_Path.c_str());
 
 		SDL_Texture* sprites = App->tex->Load(entities.at(i)->anim_Path.c_str());
-		//entities.at(i)->Draw(sprites);
+		entities.at(i)->Draw(sprites);
 	}
 
 	return true;

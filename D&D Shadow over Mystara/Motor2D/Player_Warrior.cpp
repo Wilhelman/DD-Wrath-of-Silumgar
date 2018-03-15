@@ -8,7 +8,7 @@ Warrior::Warrior() : Entity(WARRIOR)
 
 	if (pugi::xml_parse_result result = data.load_file("Entities.xml"))
 	{
-		pugi::xml_node anim = data.child("Entities").child("Warrior").child("Animations").child("Attack").child("frame");
+		pugi::xml_node anim = data.child("Entities").child("Warrior").child("Animations").child("Idle").child("frame");
 
 		while (anim != nullptr)
 		{

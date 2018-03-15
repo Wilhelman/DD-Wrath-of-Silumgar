@@ -17,10 +17,10 @@ Entity::Entity(EntityType type)
 		name.assign("Dwarf");
 		break;
 	case ELF:
-		name.assign("ELF");
+		name.assign("Elf");
 		break;
 	case WARRIOR:
-		name.assign("WARRIOR");
+		name.assign("Warrior");
 		break;
 	case KOBOLD:
 		name.assign("Kobold");

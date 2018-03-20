@@ -8,8 +8,7 @@ build:
 after_build:
 - cmd: mkdir %APPVEYOR_BUILD_FOLDER%\DnD-WrathOfSilumgar
 - cmd: copy "%APPVEYOR_BUILD_FOLDER%\D&D Shadow over Mystara\Release\DD Shadow over Mystara.exe" %APPVEYOR_BUILD_FOLDER%\DnD-WrathOfSilumgar
-- cmd: xcopy "%APPVEYOR_BUILD_FOLDER%\D&D Shadow over Mystara\Game" %APPVEYOR_BUILD_FOLDER%\DnD-WrathOfSilumgar
-All
+- cmd: xcopy "%APPVEYOR_BUILD_FOLDER%\D&D Shadow over Mystara\Game" %APPVEYOR_BUILD_FOLDER%\DnD-WrathOfSilumgar All
 - cmd: move %APPVEYOR_BUILD_FOLDER%\README.md %APPVEYOR_BUILD_FOLDER%\DnD-WrathOfSilumgar
 - 7z a DnD-WrathOfSilumgar.zip %APPVEYOR_BUILD_FOLDER%\DnD-WrathOfSilumgar
 

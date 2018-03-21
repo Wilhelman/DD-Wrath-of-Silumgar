@@ -9,7 +9,7 @@ class ctAnimation
 public:
 	bool loop = true;
 	bool pingpong = false;
-	float speed = 1.0f;
+	float speed = 0.1f;
 	SDL_Rect frames[MAX_FRAMES];
 
 private:

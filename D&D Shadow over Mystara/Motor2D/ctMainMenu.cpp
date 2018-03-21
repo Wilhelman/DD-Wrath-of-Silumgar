@@ -42,7 +42,10 @@ bool ctMainMenu::Awake()
 bool ctMainMenu::Start()
 {
 	bool ret = true;
-	
+	App->entities->SpawnEntity(30, 310, WARRIOR);
+	App->entities->SpawnEntity(330, 310, DWARF);
+	App->entities->SpawnEntity(330, 110, ELF);
+	App->entities->SpawnEntity(50, 110, CLERIC);
 	
 	if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg")) {
 		//ret = false;
@@ -64,7 +67,9 @@ bool ctMainMenu::Update(float dt)
 
 	if (first_update == true)
 	{
-		App->entities->SpawnEntity(30, 310, ELF);
+		
+		//App->entities->SpawnEntity(60, 310, DWARF);
+	//	App->entities->SpawnEntity(90, 310, CLERIC);
 		continue_label = App->gui->AddUILabel(15, 10, "Continue", { 255,255,255,255 }, nullptr);
 		new_game_label = App->gui->AddUILabel(15, 30, "New Game", { 255,255,255,255 }, nullptr);
 		settings_label = App->gui->AddUILabel(15, 50, "Settings", { 255,255,255,255 }, nullptr);

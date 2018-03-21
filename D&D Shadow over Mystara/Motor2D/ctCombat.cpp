@@ -44,7 +44,7 @@ bool ctCombat::Start()
 	//ret = false;
 	LOG("Error playing music in j1MainMenu Start");
 	}*/
-	
+
 	
 	return ret;
 }
@@ -64,7 +64,12 @@ bool ctCombat::Update(float dt)
 
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 	//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);
-	App->entities->SpawnEntity(10, 10, CLERIC);
+	if (first_update == true)
+	{
+		
+		first_update = false;
+
+	}
 	
 
 	App->map->Draw();

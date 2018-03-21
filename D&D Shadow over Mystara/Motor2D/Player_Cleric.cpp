@@ -23,7 +23,8 @@ Cleric::Cleric() : Entity(CLERIC)
 
 		LoadProperties(data.child("Entities").child("Cleric").child("Statistics"));
 
-		anim_attack.speed = anim.child("speed").attribute("speed").as_int();
+		//anim_attack.speed = anim.child("speed").attribute("speed").as_float();
+		LOG("%d", anim_attack.speed);
 		
 		animation = &anim_attack;
 	}

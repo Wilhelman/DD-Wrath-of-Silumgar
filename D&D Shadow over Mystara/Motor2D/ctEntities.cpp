@@ -7,6 +7,7 @@
 #include "ctWindow.h"
 #include "ctLog.h"
 #include "Player_Cleric.h"
+#include "Player_Dwarf.h"
 //#include "ctMap.h"
 #include "ctFadeToBlack.h"
 //#include "j1Scene.h"
@@ -94,6 +95,14 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 		Cleric* cleric = new Cleric();
 		cleric->battleground_position = { x,y };
 		entities.push_back(cleric);
+		ret = true;
+		break;
+
+	}
+	case EntityType::DWARF: {
+		Dwarf* dwarf = new Dwarf();
+		dwarf->battleground_position = { x,y };
+		entities.push_back(dwarf);
 		ret = true;
 		break;
 	}

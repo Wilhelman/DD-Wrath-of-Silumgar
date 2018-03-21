@@ -101,6 +101,9 @@
     <ClInclude Include="UIImage.h" />
     <ClInclude Include="UILabel.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Game\Entities.xml" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2AF9969B-F202-497B-AF30-7BEF9CE8005E}</ProjectGuid>
     <RootNamespace>dd_shadow_over_mystara</RootNamespace>

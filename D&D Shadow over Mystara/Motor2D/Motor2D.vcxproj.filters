@@ -291,4 +291,9 @@
       <Filter>Core\Modules\Entities</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Game\Entities.xml">
+      <Filter>Core\Modules\Entities</Filter>
+    </Xml>
+  </ItemGroup>
 </Project>

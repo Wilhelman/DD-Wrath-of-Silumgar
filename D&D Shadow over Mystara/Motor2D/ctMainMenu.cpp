@@ -64,7 +64,7 @@ bool ctMainMenu::Update(float dt)
 
 	if (first_update == true)
 	{
-		App->entities->SpawnEntity(10, 350, DWARF);
+		App->entities->SpawnEntity(30, 310, ELF);
 		continue_label = App->gui->AddUILabel(15, 10, "Continue", { 255,255,255,255 }, nullptr);
 		new_game_label = App->gui->AddUILabel(15, 30, "New Game", { 255,255,255,255 }, nullptr);
 		settings_label = App->gui->AddUILabel(15, 50, "Settings", { 255,255,255,255 }, nullptr);

@@ -277,19 +277,30 @@
             <frame x="381" y="2659" w="70" h="77"/>
           </Idle>
           <Attack>
-            <frame x="0" y="400" w="100" h="100"/>
-            <frame x="100" y="400" w="100" h="100"/>
-            <frame x="200" y="400" w="100" h="100"/>
-            <frame x="300" y="400" w="100" h="100"/>
-            <frame x="400" y="400" w="100" h="100"/>
-            <frame x="500" y="400" w="100" h="100"/>
-            <frame x="600" y="400" w="100" h="100"/>
-            <frame x="700" y="400" w="100" h="100"/>
-            <frame x="800" y="400" w="100" h="100"/>
-            <frame x="900" y="400" w="100" h="100"/>
-            <speed speed ="1"/>
+            <frame x="47"  y="12" w="126" h="96"/>
+            <frame x="188" y="12" w="126" h="96"/>
+            <frame x="358" y="12" w="126" h="96"/>
+            <frame x="510" y="12" w="126" h="96"/>
+            <frame x="682" y="12" w="126" h="96"/>
+            <frame x="841" y="12" w="126" h="96"/>
+            <frame x="998" y="12" w="126" h="96"/>
+            <frame x="1405" y="12" w="126" h="96"/>
           </Attack>
+          <Run>
+            <frame x="1124"  y="2255" w="97" h="81"/>
+            <frame x="1020"  y="2255" w="97" h="81"/>
+            <frame x="916"  y="2255" w="97" h="81"/>
+            <frame x="812"  y="2255" w="97" h="81"/>
+            <frame x="708"  y="2255" w="97" h="81"/>
+            <frame x="604"  y="2255" w="97" h="81"/>
+            <frame x="499"  y="2255" w="97" h="81"/>
+            <frame x="396"  y="2255" w="97" h="81"/>
+            <frame x="292"  y="2255" w="97" h="81"/>
+            <frame x="188"  y="2255" w="97" h="81"/>
+            <frame x="84"  y="2255" w="97" h="81"/>
+          </Run>
       </Animations>
+      
       </Cleric>
    
       <Dwarf>
@@ -297,12 +308,34 @@
         <Stadistics Constitution ="7" Focus="4" Force="9" Agility="3" Dexterity ="4" Intelligence="1"  PhysicalDefense="4" MagicalDefense="3" Luck="5"/>
         <Animations>
           <Idle>
-            <frame x="66" y="335" w="49" h="65"/>
+           <frame x="66" y="334" w="49" h="66"/>
             <frame x="134" y="334" w="49" h="66"/>
-            <frame x="202" y="335" w="49" h="65"/>
+            <frame x="202" y="334" w="49" h="66"/>
           </Idle>
           <Attack>
+            <frame x="2409" y="435" w="114" h="77"/>
+            <frame x="2311" y="435" w="114" h="77"/>
+            <frame x="2193" y="435" w="114" h="77"/>
+            <frame x="2071" y="435" w="114" h="77"/>
+            <frame x="1896" y="435" w="114" h="77"/>
+            <frame x="1701" y="435" w="114" h="77"/>
+            <frame x="1540" y="435" w="114" h="77"/>
+            <frame x="1396" y="435" w="114" h="77"/>
+            <frame x="1241" y="435" w="114" h="77"/>
           </Attack>
+        <Run>
+            <frame x="776" y="805" w="80" h="59"/>
+            <frame x="688" y="805" w="80" h="59"/>
+            <frame x="600" y="805" w="80" h="59"/>
+            <frame x="512" y="805" w="80" h="59"/>
+            <frame x="424" y="805" w="80" h="59"/>
+            <frame x="336" y="805" w="80" h="59"/>
+            <frame x="248" y="805" w="80" h="59"/>
+            <frame x="160" y="805" w="80" h="59"/>
+            <frame x="72" y="805" w="80" h="59"/>
+            <frame x="863" y="805" w="80" h="59"/>
+            <frame x="956" y="805" w="80" h="59"/>
+          </Run>
       </Animations>
       </Dwarf>
       
@@ -316,12 +349,25 @@
             <frame x="962" y="2156" w="45" h="68"/>
           </Idle>
           <Attack>
+            <frame x="1444" y="690" w="125" h="65"/>
+            <frame x="1229" y="690" w="125" h="65"/>
+            <frame x="1024" y="690" w="125" h="65"/>
+            <frame x="881" y="690" w="125" h="65"/>
+            <frame x="754" y="690" w="125" h="65"/>
           </Attack>
+        <Run>
+           <frame x="1776" y="450" w="94" h="57"/>
+           <frame x="1671" y="450" w="94" h="57"/>
+           <frame x="1450" y="450" w="94" h="57"/>
+           <frame x="1342" y="450" w="94" h="57"/>
+           <frame x="1234" y="450" w="94" h="57"/>
+           <frame x="1126" y="450" w="94" h="57"/>
+        </Run>
       </Animations>
       </Elf>
    
-      <Fighter>
-        <spritesheetSource name = "textures/Characters/Fighter_sheet.png" />
+     <Warrior>
+        <spritesheetSource name = "textures/Characters/Warrior_sheet.png" />
         <Stadistics Constitution ="9" Focus="4" Force="5" Agility="4" Dexterity ="6" Intelligence="2"  PhysicalDefense="5" MagicalDefense="4" Luck="1"/>
         <Animations>
           <Idle>
@@ -330,9 +376,27 @@
             <frame x="1328" y="118" w="67" h="74"/>
           </Idle>
           <Attack>
+            <frame x="1838" y="926" w="131" h="98"/>
+            <frame x="1696" y="926" w="131" h="98"/>
+            <frame x="1529" y="926" w="131" h="98"/>
+            <frame x="1383" y="926" w="131" h="98"/>
+            <frame x="1225" y="926" w="131" h="98"/>
+            <frame x="1070" y="926" w="131" h="98"/>
+            <frame x="899" y="926" w="131" h="98"/>
+            <frame x="725" y="926" w="131" h="98"/>
+            <frame x="567" y="926" w="131" h="98"/>
+            <frame x="419" y="926" w="131" h="98"/>
           </Attack>
+          <Run>
+            <frame x="524" y="802" w="73" h="94"/>
+            <frame x="424" y="802" w="73" h="94"/>
+            <frame x="324" y="802" w="73" h="94"/>
+            <frame x="224" y="802" w="73" h="94"/>
+            <frame x="124" y="802" w="73" h="94"/>
+            <frame x="40" y="802" w="73" h="94"/>
+          </Run>
       </Animations>
-      </Fighter>
+      </Warrior>
       
      
   

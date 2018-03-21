@@ -8,7 +8,10 @@ Elf::Elf() : Entity(ELF)
 
 	if (pugi::xml_parse_result result = data.load_file("Entities.xml"))
 	{
-		pugi::xml_node anim = data.child("Entities").child("Elf").child("Animations").child("Idle").child("frame");
+		pugi::xml_node anim = data.child("Entities").child("Elf").child("Animations").child("Run").child("frame");
+		pugi::xml_node path = data.child("Entities").child("Elf").child("spritesheetSource");
+
+		anim_Path.assign(path.attribute("name").as_string());
 
 		while (anim != nullptr)
 		{
@@ -18,7 +21,7 @@ Elf::Elf() : Entity(ELF)
 
 		LoadProperties(data.child("Entities").child("Elf").child("Statistics"));
 
-		anim_attack.speed = anim.child("speed").attribute("speed").as_int();
+		animation = &anim_attack;
 	}
 }
 

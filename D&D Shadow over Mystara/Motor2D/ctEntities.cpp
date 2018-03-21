@@ -8,6 +8,8 @@
 #include "ctLog.h"
 #include "Player_Cleric.h"
 #include "Player_Dwarf.h"
+#include "Player_Elf.h"
+#include "Player_Warrior.h"
 //#include "ctMap.h"
 #include "ctFadeToBlack.h"
 //#include "j1Scene.h"
@@ -103,6 +105,20 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 		Dwarf* dwarf = new Dwarf();
 		dwarf->battleground_position = { x,y };
 		entities.push_back(dwarf);
+		ret = true;
+		break;
+	}
+	case EntityType::ELF: {
+		Elf* elf = new Elf();
+		elf->battleground_position = { x,y };
+		entities.push_back(elf);
+		ret = true;
+		break;
+	}
+	case EntityType::WARRIOR: {
+		Warrior* warrior = new Warrior();
+		warrior->battleground_position = { x,y };
+		entities.push_back(warrior);
 		ret = true;
 		break;
 	}

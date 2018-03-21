@@ -17,7 +17,7 @@ private:
 
 
 	ctAnimation anim_attack;
-	ctAnimation* current_animation = nullptr;
+	//ctAnimation* current_animation = nullptr;
 
 
 };

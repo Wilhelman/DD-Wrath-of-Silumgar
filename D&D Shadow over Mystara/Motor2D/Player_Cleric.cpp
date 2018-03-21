@@ -9,7 +9,7 @@ Cleric::Cleric() : Entity(CLERIC)
 
 	if (pugi::xml_parse_result result = data.load_file("Entities.xml"))
 	{
-		pugi::xml_node anim = data.child("Entities").child("Cleric").child("Animations").child("Attack").child("frame");
+		pugi::xml_node anim = data.child("Entities").child("Cleric").child("Animations").child("Idle").child("frame");
 		pugi::xml_node path = data.child("Entities").child("Cleric").child("spritesheetSource");
 
 		anim_Path.assign(path.attribute("name").as_string());

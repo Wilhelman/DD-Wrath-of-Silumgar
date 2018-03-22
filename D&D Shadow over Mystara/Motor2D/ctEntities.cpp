@@ -12,6 +12,10 @@
 #include "Player_Warrior.h"
 //#include "ctMap.h"
 #include "ctFadeToBlack.h"
+#include "Kobold.h"
+#include "Owlbear.h"
+#include "Gnoll.h"
+#include "GnollArcher.h"
 //#include "j1Scene.h"
 
 
@@ -119,6 +123,34 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 		Warrior* warrior = new Warrior();
 		warrior->battleground_position = { x,y };
 		entities.push_back(warrior);
+		ret = true;
+		break;
+	}
+	case EntityType::KOBOLD: {
+		Kobold* kobold = new Kobold();
+		kobold->battleground_position = { x,y };
+		entities.push_back(kobold);
+		ret = true;
+		break;
+	}
+	case EntityType::OWLBEAR: {
+		Owlbear* owlbear = new Owlbear();
+		owlbear->battleground_position = { x,y };
+		entities.push_back(owlbear);
+		ret = true;
+		break;
+	}
+	case EntityType::GNOLL: {
+		Gnoll* Gnoll_melee = new Gnoll();
+		Gnoll_melee->battleground_position = { x,y };
+		entities.push_back(Gnoll_melee);
+		ret = true;
+		break;
+	}
+	case EntityType::GNOLLARCHER: {
+		GnollArcher* gnoll_archer = new GnollArcher();
+		gnoll_archer->battleground_position = { x,y };
+		entities.push_back(gnoll_archer);
 		ret = true;
 		break;
 	}

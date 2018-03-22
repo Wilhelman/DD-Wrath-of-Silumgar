@@ -13,7 +13,7 @@ struct SDL_Rect;
 struct SDL_Color;
 class p2SString;
 class UIElement;
-
+enum UI_State;
 
 
 enum UI_Type
@@ -45,6 +45,8 @@ public:
 	// Called before all Updates
 	bool PreUpdate();
 
+	bool Update(float dt);
+
 	// Called after all Updates
 	bool PostUpdate();
 
@@ -61,11 +63,12 @@ public:
 
 	UIElement* AddUIImage(int position_x, int position_y, SDL_Rect rect, ctModule* callback = nullptr, UIElement* parent = nullptr);
 	UIElement* AddUIButton(int position_x, int position_y, SDL_Rect normal_rect, SDL_Rect focused_rect, SDL_Rect pressed_rect, ctModule* callback = nullptr, UIElement* parent = nullptr);
-	UIElement* AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, UIElement* parent = nullptr);
+	UIElement* AddUILabel(int position_x, int position_y, std::string text, SDL_Color color,UIElement* parent = nullptr, ctModule* callback = nullptr);
 	UIElement* GetElementUnderMouse(int x, int y);
 
 
 private:
+
 
 	std::vector<UIElement*> ui_elements;
 	SDL_Texture* atlas;

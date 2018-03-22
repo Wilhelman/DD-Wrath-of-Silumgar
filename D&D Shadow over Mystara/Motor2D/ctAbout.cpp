@@ -135,7 +135,7 @@ bool ctAbout::Save(pugi::xml_node& save) const
 	return ret;
 }
 
-void ctAbout::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
+void ctAbout::OnUITrigger(UIElement* elementTriggered)
 {
 
 }

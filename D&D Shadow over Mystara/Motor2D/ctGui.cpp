@@ -50,6 +50,51 @@ bool ctGui::PreUpdate()
 	return true;
 }
 
+bool ctGui::Update(float dt)
+{
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
+	{
+		bool button_found = false;
+		while (!button_found)
+		{
+			std::vector<UIElement*>::iterator it = ui_elements.begin();
+
+			if ((*it)->type == LABEL)
+			{
+				if ((*it)->current_state == STATE_FOCUSED)
+				{
+					(*it)->current_state = STATE_NORMAL;
+
+					it++;
+					if ((*it) == nullptr)
+					{
+						it = ui_elements.begin();
+						(*it)->current_state = STATE_FOCUSED;
+					}
+					else
+					{
+						(*it)->current_state = STATE_FOCUSED;
+					}
+					button_found = true;
+				}
+				if (button_found)
+				{
+					break;
+				}
+				it++;
+			}
+			else
+			{
+				it++;
+			}
+
+		}
+	}
+
+
+	return true;
+}
+
 // Called after all Updates
 bool ctGui::PostUpdate()
 {
@@ -142,12 +187,12 @@ UIElement* ctGui::AddUIButton(int position_x, int position_y, SDL_Rect normal_re
 	return nullptr;
 }
 
-UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, UIElement* parent) {
+UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, UIElement* parent, ctModule* callback) {
 
 	//funcion comprovar size del vector
 	//si se va a pasar del size, reservar mas espacio
 
-	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color, parent);
+	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color , callback ,parent);
 	ui_elements.push_back(tmp_lbl);
 	return tmp_lbl;
 

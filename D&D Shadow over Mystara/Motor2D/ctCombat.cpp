@@ -109,6 +109,6 @@ bool ctCombat::Save(pugi::xml_node& save) const
 	return ret;
 }
 
-void ctCombat::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
+void ctCombat::OnUITrigger(UIElement* elementTriggered)
 {
 }

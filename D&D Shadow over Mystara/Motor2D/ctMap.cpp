@@ -106,6 +106,6 @@ bool ctMap::Save(pugi::xml_node& save) const
 	return ret;
 }
 
-void ctMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
+void ctMap::OnUITrigger(UIElement* elementTriggered)
 {
 }

@@ -3,7 +3,7 @@
 
 #include "ctModule.h"
 #include "ctGui.h"
-
+#include "UIElement.h"
 
 
 class ctMainMenu : public ctModule
@@ -37,7 +37,7 @@ public:
 
 	bool Save(pugi::xml_node&) const;
 
-	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
+	void OnUITrigger(UIElement* elementTriggered);
 
 private:
 	bool quit_pressed = false;

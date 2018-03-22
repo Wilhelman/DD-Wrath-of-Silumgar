@@ -75,7 +75,7 @@ public:
 	// Callbacks ---
 	virtual void OnCollision(Collider*, Collider*) {}
 
-	virtual void OnUITrigger(UIElement* elementTriggered, UI_State ui_state) {}
+	virtual void OnUITrigger(UIElement* elementTriggered) {}
 
 public:
 

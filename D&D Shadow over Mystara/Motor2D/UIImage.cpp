@@ -7,7 +7,7 @@
 UIImage::UIImage(int x, int y, UI_Type type, SDL_Rect rect, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
 	this->callback = callback;
-
+	
 	img_normal = rect;
 	current_rect = rect;
 

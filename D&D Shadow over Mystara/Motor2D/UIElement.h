@@ -51,6 +51,7 @@ public:
 
 	void SetParent(UIElement* parent);
 	UIElement* GetParent() const;
+	void SetState(UI_State);
 };
 
 #endif // __ENTITY_H__

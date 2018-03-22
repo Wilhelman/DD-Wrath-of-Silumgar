@@ -13,9 +13,9 @@ private:
 	//ctFonts normal_font;
 	std::string text;
 public:
-	UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, UIElement* parent = nullptr);
+	UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, ctModule* callback, UIElement* parent = nullptr);
 
-	void Update();
+	
 };
 
 #endif //__UILABEL_H__

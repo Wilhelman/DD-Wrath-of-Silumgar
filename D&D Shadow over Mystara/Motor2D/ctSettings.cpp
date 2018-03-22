@@ -192,7 +192,7 @@ bool ctSettings::Save(pugi::xml_node& save) const
 	return ret;
 }
 
-void ctSettings::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
+void ctSettings::OnUITrigger(UIElement* elementTriggered)
 {
 
 }

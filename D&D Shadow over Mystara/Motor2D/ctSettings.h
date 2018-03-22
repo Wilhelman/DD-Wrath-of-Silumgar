@@ -36,7 +36,7 @@ public:
 
 	bool Save(pugi::xml_node&) const;
 
-	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
+	void OnUITrigger(UIElement* elementTriggered);
 
 	uint music_volume_value = 64;
 	uint fx_volume_value = 64;

@@ -30,7 +30,8 @@ void UIElement::Update()
 		debug_draw = !debug_draw;
 
 
-	
+	callback->OnUITrigger(this);
+
 }
 
 void UIElement::Draw(SDL_Texture* sprites)
@@ -40,11 +41,15 @@ void UIElement::Draw(SDL_Texture* sprites)
 		switch (this->type)
 		{
 		case IMAGE:
+			App->render->Blit(sprites, local_position.x, local_position.y, &current_rect);
 		case BUTTON:
-			App->render->Blit(sprites, screen_position.x, screen_position.y, &current_rect);
+			App->render->Blit(sprites, local_position.x, local_position.y, &current_rect);
 				break;
 		case LABEL:
-			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect);
+			if(parent == nullptr)
+			App->render->Blit(texture, local_position.x, local_position.y, &current_rect);
+			else
+			App->render->Blit(texture, local_position.x, local_position.y, &current_rect);
 			break;
 		default:
 			break;
@@ -70,7 +75,12 @@ iPoint UIElement::GetScreenPosition() const
 
 void UIElement::SetParent(UIElement * parent)
 {
-	this->parent = parent;
+	if (this->parent != parent)
+	{
+		this->parent = parent;
+		local_position.x = screen_position.x - parent->screen_position.x;
+		local_position.y = screen_position.y + parent->screen_position.y;
+	}
 }
 
 UIElement * UIElement::GetParent() const
@@ -81,4 +91,9 @@ UIElement * UIElement::GetParent() const
 SDL_Rect UIElement::GetRect() const 
 {
 	return current_rect;
+}
+
+void UIElement::SetState(UI_State state)
+{
+	current_state = state;
 }

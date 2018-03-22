@@ -43,12 +43,13 @@ bool ctMainMenu::Start()
 {
 	bool ret = true;
 
-	continue_label = App->gui->AddUILabel(15, 10, "Continue", { 255,255,255,255 }, nullptr);
-	new_game_label = App->gui->AddUILabel(15, 30, "New Game", { 255,255,255,255 }, nullptr);
-	settings_label = App->gui->AddUILabel(15, 50, "Settings", { 255,255,255,255 }, nullptr);
-	about_label = App->gui->AddUILabel(15, 70, "About", { 255,255,255,255 }, nullptr);
-	quit_label = App->gui->AddUILabel(15, 90, "Quit", { 255,255,255,255 }, nullptr);
-	arrow = App->gui->AddUIImage(5, 10, { 0,0,5,5 }, this, nullptr);
+	continue_label = App->gui->AddUILabel(25, 10, "Continue", { 255,255,255,255 }, nullptr,this);
+	continue_label->SetState(STATE_FOCUSED);
+	new_game_label = App->gui->AddUILabel(25, 30, "New Game", { 255,255,255,255 }, nullptr,this);
+	settings_label = App->gui->AddUILabel(25, 50, "Settings", { 255,255,255,255 }, nullptr,this);
+	about_label = App->gui->AddUILabel(25, 70, "About", { 255,255,255,255 }, nullptr,this);
+	quit_label = App->gui->AddUILabel(25, 90, "Quit", { 255,255,255,255 }, nullptr,this);
+	arrow = App->gui->AddUIImage(35, 10, { 0,0,5,5 }, this, nullptr);
 	
 	if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg")) {
 		//ret = false;
@@ -106,7 +107,19 @@ bool ctMainMenu::Save(pugi::xml_node& save) const
 	return ret;
 }
 
-void ctMainMenu::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
+void ctMainMenu::OnUITrigger(UIElement* elementTriggered)
 {
+	
+	switch (elementTriggered->current_state)
+	{
+
+	case STATE_NORMAL:
+		break;
+	case STATE_FOCUSED:
+		
+		arrow->SetParent(elementTriggered);
+		break;
+
+	}
 
 }

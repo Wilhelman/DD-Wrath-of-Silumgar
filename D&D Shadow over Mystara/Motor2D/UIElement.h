@@ -10,12 +10,6 @@ struct SDL_Rect;
 
 enum UI_State {
 	STATE_NORMAL,
-	STATE_MOUSE_ENTER,
-	STATE_MOUSE_LEAVE,
-	STATE_LEFT_MOUSE_PRESSED,
-	STATE_LEFT_MOUSE_RELEASED,
-	STATE_RIGHT_MOUSE_PRESSED,
-	STATE_RIGHT_MOUSE_RELEASED,
 	STATE_FOCUSED,
 	
 	STATE_NO_DEF
@@ -38,7 +32,7 @@ private:
 	bool debug_draw = false;
 
 public:
-	bool draggable = false;
+	
 	bool to_destroy = false;
 	UIElement* parent = nullptr;
 	UI_Type type = UI_NOT_DEF;

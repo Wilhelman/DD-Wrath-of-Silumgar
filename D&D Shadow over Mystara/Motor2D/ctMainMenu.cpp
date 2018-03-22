@@ -42,10 +42,13 @@ bool ctMainMenu::Awake()
 bool ctMainMenu::Start()
 {
 	bool ret = true;
-	App->entities->SpawnEntity(30, 310, WARRIOR);
-	App->entities->SpawnEntity(330, 310, DWARF);
-	App->entities->SpawnEntity(330, 110, ELF);
-	App->entities->SpawnEntity(50, 110, CLERIC);
+
+	continue_label = App->gui->AddUILabel(15, 10, "Continue", { 255,255,255,255 }, nullptr);
+	new_game_label = App->gui->AddUILabel(15, 30, "New Game", { 255,255,255,255 }, nullptr);
+	settings_label = App->gui->AddUILabel(15, 50, "Settings", { 255,255,255,255 }, nullptr);
+	about_label = App->gui->AddUILabel(15, 70, "About", { 255,255,255,255 }, nullptr);
+	quit_label = App->gui->AddUILabel(15, 90, "Quit", { 255,255,255,255 }, nullptr);
+	arrow = App->gui->AddUIImage(5, 10, { 0,0,5,5 }, this, nullptr);
 	
 	if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg")) {
 		//ret = false;
@@ -65,101 +68,7 @@ bool ctMainMenu::PreUpdate()
 bool ctMainMenu::Update(float dt)
 {
 
-	if (first_update == true)
-	{
-		
-		//App->entities->SpawnEntity(60, 310, DWARF);
-	//	App->entities->SpawnEntity(90, 310, CLERIC);
-		continue_label = App->gui->AddUILabel(15, 10, "Continue", { 255,255,255,255 }, nullptr);
-		new_game_label = App->gui->AddUILabel(15, 30, "New Game", { 255,255,255,255 }, nullptr);
-		settings_label = App->gui->AddUILabel(15, 50, "Settings", { 255,255,255,255 }, nullptr);
-		about_label = App->gui->AddUILabel(15, 70, "About", { 255,255,255,255 }, nullptr);
-		quit_label = App->gui->AddUILabel(15, 90, "Quit", { 255,255,255,255 }, nullptr);
-		arrow = App->gui->AddUIImage(arrow_pos_x, arrow_pos_y, { 0,0,5,5 }, this, nullptr);
-		first_update = false;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-		this->quit_pressed = true;
-
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
-		if (arrow_pos_y < 90) {
-			App->gui->DeleteUIElement(*arrow);
-			arrow_pos_y += 20;
-			arrow = App->gui->AddUIImage(arrow_pos_x, arrow_pos_y, { 0,0,5,5 }, this, nullptr);
-		}
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
-		if (arrow_pos_y > 10) {
-			App->gui->DeleteUIElement(*arrow);
-			arrow_pos_y -= 20;
-			arrow = App->gui->AddUIImage(arrow_pos_x, arrow_pos_y, { 0,0,5,5 }, this, nullptr);
-		}
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
-		if (arrow_pos_y == 10) {
-			LOG("Continue Pressed");
-			App->map_scene->active = true;
-			App->gui->DeleteUIElement(*continue_label);
-			App->gui->DeleteUIElement(*new_game_label);
-			App->gui->DeleteUIElement(*settings_label);
-			App->gui->DeleteUIElement(*about_label);
-			App->gui->DeleteUIElement(*quit_label);
-			App->gui->DeleteUIElement(*arrow);
-			App->audio->StopMusic();
-			first_update = true;
-			//App->map->Load("TestTavern.tmx");
-			this->active = false;
-		}
-		else if (arrow_pos_y == 30) {
-			LOG("New Game Pressed");
-			App->map_scene->active = true;
-			App->gui->DeleteUIElement(*continue_label);
-			App->gui->DeleteUIElement(*new_game_label);
-			App->gui->DeleteUIElement(*settings_label);
-			App->gui->DeleteUIElement(*about_label);
-			App->gui->DeleteUIElement(*quit_label);
-			App->gui->DeleteUIElement(*arrow);
-			App->audio->StopMusic();
-			first_update = true;
-			this->active = false;
-		}
-		else if (arrow_pos_y == 50) {
-			LOG("Settings Pressed");
-			App->settings->active = true;
-			App->gui->DeleteUIElement(*continue_label);
-			App->gui->DeleteUIElement(*new_game_label);
-			App->gui->DeleteUIElement(*settings_label);
-			App->gui->DeleteUIElement(*about_label);
-			App->gui->DeleteUIElement(*quit_label);
-			App->gui->DeleteUIElement(*arrow);
-			//App->audio->StopMusic();
-			first_update = true;
-			this->active = false;
-		}
-		else if (arrow_pos_y == 70) {
-			LOG("About Pressed");
-			App->about->active = true;
-			App->gui->DeleteUIElement(*continue_label);
-			App->gui->DeleteUIElement(*new_game_label);
-			App->gui->DeleteUIElement(*settings_label);
-			App->gui->DeleteUIElement(*about_label);
-			App->gui->DeleteUIElement(*quit_label);
-			App->gui->DeleteUIElement(*arrow);
-			//App->audio->StopMusic();
-			first_update = true;
-			this->active = false;
-		}
-		else if (arrow_pos_y == 90) {
-			LOG("Quit Pressed");
-			this->quit_pressed = true;
-		}
-	}
-
-	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
-		//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);
+	
 
 	return true;
 }

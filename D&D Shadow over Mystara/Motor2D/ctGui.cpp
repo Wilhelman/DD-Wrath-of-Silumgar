@@ -52,35 +52,41 @@ bool ctGui::PreUpdate()
 
 bool ctGui::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
+	if ( App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
 	{
 		bool button_found = false;
+		std::vector<UIElement*>::iterator it = ui_elements.begin();
 		while (!button_found)
 		{
-			std::vector<UIElement*>::iterator it = ui_elements.begin();
-
 			if ((*it)->type == LABEL)
 			{
 				if ((*it)->current_state == STATE_FOCUSED)
 				{
 					(*it)->current_state = STATE_NORMAL;
-
+					
 					it++;
-					if ((*it) == nullptr)
+
+					if ((*it) == ui_elements.back())
 					{
 						it = ui_elements.begin();
-						(*it)->current_state = STATE_FOCUSED;
+						while ((*it)->type != LABEL)
+							it++;
 					}
-					else
+
+					if ((*it)->type == LABEL) 
 					{
+
 						(*it)->current_state = STATE_FOCUSED;
+						
+						button_found = true;
 					}
-					button_found = true;
+					
 				}
 				if (button_found)
 				{
 					break;
 				}
+
 				it++;
 			}
 			else
@@ -89,6 +95,53 @@ bool ctGui::Update(float dt)
 			}
 
 		}
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN)
+	{
+		bool button_found = false;
+		std::vector<UIElement*>::reverse_iterator it = ui_elements.rbegin();
+		while (!button_found)
+		{
+			if ((*it)->type == LABEL)
+			{
+				if ((*it)->current_state == STATE_FOCUSED)
+				{
+					(*it)->current_state = STATE_NORMAL;
+
+					it++;
+
+					if ( (*it) == *ui_elements.rend())
+					{
+						it = ui_elements.rbegin();
+
+						while ((*it)->type != LABEL)
+							it++;
+					}
+
+					if ((*it)->type == LABEL)
+					{
+
+						(*it)->current_state = STATE_FOCUSED;
+
+						button_found = true;
+					}
+
+				}
+				if (button_found)
+				{
+					break;
+				}
+
+				it++;
+			}
+			else
+			{
+				it++;
+			}
+
+		}
+
 	}
 
 

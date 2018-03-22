@@ -74,7 +74,28 @@ bool ctMainMenu::Update(float dt)
 		App->gui->DeleteAllUIElements();
 		this->active = false;
 	}
-	
+	else if (new_game_label->current_state == STATE_EXECUTED)
+	{
+		App->combat->active = true;
+		App->gui->DeleteAllUIElements();
+		this->active = false;
+	}
+	else if (settings_label->current_state == STATE_EXECUTED)
+	{
+		App->settings->active = true;
+		App->gui->DeleteAllUIElements();
+		this->active = false;
+	}
+	else if (about_label->current_state == STATE_EXECUTED)
+	{
+		App->about->active = true;
+		App->gui->DeleteAllUIElements();
+		this->active = false;
+	}
+	else if (quit_label->current_state == STATE_EXECUTED)
+	{
+		quit_pressed = true;
+	}
 
 	return true;
 }

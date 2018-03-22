@@ -13,7 +13,7 @@ public:
 	~Kobold();
 
 private:
-	ctAnimation * current_animation = nullptr;
+	//ctAnimation * current_animation = nullptr;
 	ctAnimation anim_attack;
 	
 

@@ -23,7 +23,9 @@ Kobold::Kobold() :Entity(KOBOLD)
 
 		LoadProperties(data.child("Entities").child("Kobold").child("Statistics"));
 
-		anim_attack.speed = anim.child("speed").attribute("speed").as_int();
+		//anim_attack.speed = anim.child("speed").attribute("speed").as_int();
+
+		animation = &anim_attack;
 	}
 
 

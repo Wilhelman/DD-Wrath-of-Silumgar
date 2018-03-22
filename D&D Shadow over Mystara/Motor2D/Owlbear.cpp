@@ -10,6 +10,10 @@ Owlbear::Owlbear() :Entity(OWLBEAR)
 	if (pugi::xml_parse_result result = data.load_file("Entities.xml"))
 	{
 		pugi::xml_node anim = data.child("Entities").child("Owlbear").child("Animations").child("Idle").child("frame");
+		pugi::xml_node path = data.child("Entities").child("Owlbear").child("spritesheetSource");
+
+		anim_Path.assign(path.attribute("name").as_string());
+
 
 		while (anim != nullptr)
 		{
@@ -19,7 +23,8 @@ Owlbear::Owlbear() :Entity(OWLBEAR)
 
 		LoadProperties(data.child("Entities").child("Owlbear").child("Statistics"));
 
-		anim_attack.speed = anim.child("speed").attribute("speed").as_int();
+		//anim_attack.speed = anim.child("speed").attribute("speed").as_int();
+		animation = &anim_attack;
 	}
 
 

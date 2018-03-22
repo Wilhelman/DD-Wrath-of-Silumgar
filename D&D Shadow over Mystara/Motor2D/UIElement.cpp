@@ -29,6 +29,11 @@ void UIElement::Update()
 	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN)
 		debug_draw = !debug_draw;
 
+	if (current_state == STATE_FOCUSED)
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+			current_state = STATE_EXECUTED;
+	
+
 
 	callback->OnUITrigger(this);
 

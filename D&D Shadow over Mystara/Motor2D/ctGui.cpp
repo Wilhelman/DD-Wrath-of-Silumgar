@@ -52,98 +52,100 @@ bool ctGui::PreUpdate()
 
 bool ctGui::Update(float dt)
 {
-	if ( App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
+	if (!ui_elements.empty())
 	{
-		bool button_found = false;
-		std::vector<UIElement*>::iterator it = ui_elements.begin();
-		while (!button_found)
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
 		{
-			if ((*it)->type == LABEL)
+			bool button_found = false;
+			std::vector<UIElement*>::iterator it = ui_elements.begin();
+			while (!button_found)
 			{
-				if ((*it)->current_state == STATE_FOCUSED)
+				if ((*it)->type == LABEL)
 				{
-					(*it)->current_state = STATE_NORMAL;
-					
+					if ((*it)->current_state == STATE_FOCUSED)
+					{
+						(*it)->current_state = STATE_NORMAL;
+
+						it++;
+
+						if ((*it) == ui_elements.back())
+						{
+							it = ui_elements.begin();
+							while ((*it)->type != LABEL)
+								it++;
+						}
+
+						if ((*it)->type == LABEL)
+						{
+
+							(*it)->current_state = STATE_FOCUSED;
+
+							button_found = true;
+						}
+
+					}
+					if (button_found)
+					{
+						break;
+					}
+
 					it++;
-
-					if ((*it) == ui_elements.back())
-					{
-						it = ui_elements.begin();
-						while ((*it)->type != LABEL)
-							it++;
-					}
-
-					if ((*it)->type == LABEL) 
-					{
-
-						(*it)->current_state = STATE_FOCUSED;
-						
-						button_found = true;
-					}
-					
 				}
-				if (button_found)
+				else
 				{
-					break;
+					it++;
 				}
 
-				it++;
 			}
-			else
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN)
+		{
+			bool button_found = false;
+			std::vector<UIElement*>::reverse_iterator it = ui_elements.rbegin();
+			while (!button_found)
 			{
-				it++;
+				if ((*it)->type == LABEL)
+				{
+					if ((*it)->current_state == STATE_FOCUSED)
+					{
+						(*it)->current_state = STATE_NORMAL;
+
+						it++;
+
+						if ((*it) == *ui_elements.rend())
+						{
+							it = ui_elements.rbegin();
+
+							while ((*it)->type != LABEL)
+								it++;
+						}
+
+						if ((*it)->type == LABEL)
+						{
+
+							(*it)->current_state = STATE_FOCUSED;
+
+							button_found = true;
+						}
+
+					}
+					if (button_found)
+					{
+						break;
+					}
+
+					it++;
+				}
+				else
+				{
+					it++;
+				}
+
 			}
 
 		}
 	}
-
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN)
-	{
-		bool button_found = false;
-		std::vector<UIElement*>::reverse_iterator it = ui_elements.rbegin();
-		while (!button_found)
-		{
-			if ((*it)->type == LABEL)
-			{
-				if ((*it)->current_state == STATE_FOCUSED)
-				{
-					(*it)->current_state = STATE_NORMAL;
-
-					it++;
-
-					if ( (*it) == *ui_elements.rend())
-					{
-						it = ui_elements.rbegin();
-
-						while ((*it)->type != LABEL)
-							it++;
-					}
-
-					if ((*it)->type == LABEL)
-					{
-
-						(*it)->current_state = STATE_FOCUSED;
-
-						button_found = true;
-					}
-
-				}
-				if (button_found)
-				{
-					break;
-				}
-
-				it++;
-			}
-			else
-			{
-				it++;
-			}
-
-		}
-
-	}
-
 
 	return true;
 }

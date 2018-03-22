@@ -11,6 +11,7 @@ struct SDL_Rect;
 enum UI_State {
 	STATE_NORMAL,
 	STATE_FOCUSED,
+	STATE_EXECUTED,
 	
 	STATE_NO_DEF
 };

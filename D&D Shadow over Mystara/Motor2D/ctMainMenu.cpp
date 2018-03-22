@@ -68,7 +68,12 @@ bool ctMainMenu::PreUpdate()
 // Called each loop iteration
 bool ctMainMenu::Update(float dt)
 {
-
+	if (continue_label->current_state == STATE_EXECUTED)
+	{
+		App->combat->active = true;
+		App->gui->DeleteAllUIElements();
+		this->active = false;
+	}
 	
 
 	return true;
@@ -116,8 +121,9 @@ void ctMainMenu::OnUITrigger(UIElement* elementTriggered)
 	case STATE_NORMAL:
 		break;
 	case STATE_FOCUSED:
-		
 		arrow->SetParent(elementTriggered);
+		break;
+	case STATE_EXECUTED:
 		break;
 
 	}

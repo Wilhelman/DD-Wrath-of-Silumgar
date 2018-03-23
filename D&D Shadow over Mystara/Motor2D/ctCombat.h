@@ -38,6 +38,8 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered);
 
+	double last_scale = 1;
+
 private:
 	bool quit_pressed = false;
 	bool first_update = true;

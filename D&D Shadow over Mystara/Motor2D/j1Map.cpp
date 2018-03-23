@@ -155,15 +155,10 @@ void j1Map::Draw()
 						SDL_Rect rect = (*tilesetsBlit)->GetTileRect((*layersBlit)->Get(i, j));
 
 						iPoint world = MapToWorld(i, j);
-
-							/*if ((*layersBlit)->layer_type == PARALLAX)
-								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect, 0.7f);*/
+					
 								
 							if ((*layersBlit)->name == "Background")
-								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect, 0.1f); 
-							/*else
-								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect, 0.1f);*/
-						
+								App->render->MapBlit((*tilesetsBlit)->texture, world.x, world.y, &rect,0.1); 
 					}
 				}
 			}

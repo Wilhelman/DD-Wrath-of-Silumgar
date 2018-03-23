@@ -61,12 +61,21 @@ bool ctCombat::Update(float dt)
 		App->entities->active = true;
 		App->map->Load("map.tmx");
 		
-
-		
 		first_update = false;
 
 	}
 	
+	if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
+	{
+		last_scale = App->render->scale_factor;
+		App->render->scale_factor += 0.1;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	{
+		last_scale = App->render->scale_factor;
+		App->render->scale_factor -= 0.1;
+	}
+
 
 	App->map->Draw();
 	return true;

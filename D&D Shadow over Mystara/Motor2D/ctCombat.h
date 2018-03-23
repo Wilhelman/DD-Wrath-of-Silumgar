@@ -42,6 +42,8 @@ private:
 	bool quit_pressed = false;
 	bool first_update = true;
 
+	
+
 };
 
 

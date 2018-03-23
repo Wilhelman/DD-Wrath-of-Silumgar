@@ -59,13 +59,11 @@ bool ctCombat::PreUpdate()
 bool ctCombat::Update(float dt)
 {
 
-	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-		this->quit_pressed = true;
-
-	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
-	//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);
 	if (first_update == true)
 	{
+		App->map->Load("map.tmx");
+
+
 		
 		first_update = false;
 

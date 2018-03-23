@@ -43,13 +43,13 @@ bool ctMainMenu::Start()
 {
 	bool ret = true;
 
-	continue_label = App->gui->AddUILabel(25, 10, "Continue", { 255,255,255,255 }, nullptr,this);
+	continue_label = App->gui->AddUILabel(35, 10, "Continue", { 255,255,255,255 }, nullptr,this);
 	continue_label->SetState(STATE_FOCUSED);
-	new_game_label = App->gui->AddUILabel(25, 30, "New Game", { 255,255,255,255 }, nullptr,this);
-	settings_label = App->gui->AddUILabel(25, 50, "Settings", { 255,255,255,255 }, nullptr,this);
-	about_label = App->gui->AddUILabel(25, 70, "About", { 255,255,255,255 }, nullptr,this);
-	quit_label = App->gui->AddUILabel(25, 90, "Quit", { 255,255,255,255 }, nullptr,this);
-	arrow = App->gui->AddUIImage(35, 10, { 0,0,5,5 }, this, nullptr);
+	new_game_label = App->gui->AddUILabel(35, 30, "New Game", { 255,255,255,255 }, nullptr,this);
+	settings_label = App->gui->AddUILabel(35, 50, "Settings", { 255,255,255,255 }, nullptr,this);
+	about_label = App->gui->AddUILabel(35, 70, "About", { 255,255,255,255 }, nullptr,this);
+	quit_label = App->gui->AddUILabel(35, 90, "Quit", { 255,255,255,255 }, nullptr,this);
+	arrow = App->gui->AddUIImage(50, 10, { 0,0,5,5 }, this, nullptr);
 	
 	if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg")) {
 		//ret = false;

@@ -40,10 +40,7 @@ bool ctCombat::Start()
 {
 	bool ret = true;
 	
-	/*if (!App->audio->PlayMusic("audio/music/8-bit_Detective.ogg")) {
-	//ret = false;
-	LOG("Error playing music in j1MainMenu Start");
-	}*/
+	
 
 	
 	return ret;

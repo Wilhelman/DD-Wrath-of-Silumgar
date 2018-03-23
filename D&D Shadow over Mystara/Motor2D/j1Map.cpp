@@ -161,8 +161,8 @@ void j1Map::Draw()
 								
 							if ((*layersBlit)->name == "Background")
 								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect, 0.1f); 
-							else
-								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect, 0.1f);
+							/*else
+								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect, 0.1f);*/
 						
 					}
 				}

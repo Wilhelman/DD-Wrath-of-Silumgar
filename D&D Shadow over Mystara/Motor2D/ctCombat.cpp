@@ -58,8 +58,9 @@ bool ctCombat::Update(float dt)
 
 	if (first_update == true)
 	{
+		App->entities->active = true;
 		App->map->Load("map.tmx");
-
+		
 
 		
 		first_update = false;

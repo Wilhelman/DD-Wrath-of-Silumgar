@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<entities>
+	<enemies>
+		<Kobold>
+			<spritesheetSource name = "textures/Enemies/Kobold_sheet.png" />
+			<Statistics Constitution ="6" Focus="5" Force="5" Intelligence="4" Skill ="4" Agility="7" PhysicalDefense="3" MagicalDefense="2" Judgement="40"/>
+			<Animations>
+			  <Idle>
+				<frame x="991" y="70" w="54" h="47"/>
+				<frame x="932" y="70" w="54" h="47"/>
+				<frame x="874" y="70" w="54" h="47"/>
+			  </Idle>
+			  <Run>
+				<frame x="991" y="131" w="55" h="38"/>
+				<frame x="921" y="131" w="55" h="38"/>
+				<frame x="855" y="131" w="55" h="38"/>
+				<frame x="775" y="131" w="55" h="38"/>
+				<frame x="712" y="131" w="55" h="38"/>
+				<frame x="656" y="131" w="55" h="38"/>
+				<frame x="595" y="131" w="55" h="38"/>
+			  </Run>
+			  <BasicAttack>
+				<frame x="956" y="371" w="79" h="69"/>
+				<frame x="873" y="371" w="79" h="69"/>
+				<frame x="788" y="371" w="79" h="69"/>
+				<frame x="709" y="371" w="79" h="69"/>
+				<frame x="622" y="371" w="79" h="69"/>
+				<frame x="537" y="371" w="79" h="69"/>
+				<frame x="424" y="365" w="79" h="69"/>
+				<frame x="330" y="365" w="79" h="69"/>
+				<frame x="240" y="371" w="79" h="69"/>
+
+			  </BasicAttack>
+			  <QuickStab>
+				<frame x="982" y="326" w="61" h="43"/>
+				<frame x="917" y="326" w="59" h="43"/>
+				<frame x="860" y="330" w="51" h="40"/>
+				<frame x="793" y="330" w="56" h="41"/>
+				<frame x="725" y="330" w="61" h="41"/>
+				<frame x="649" y="328" w="68" h="42"/>
+				<frame x="562" y="327" w="80" h="41"/>
+				<frame x="468" y="329" w="90" h="41"/>
+				<frame x="364" y="329" w="99" h="41"/>
+				<frame x="264" y="329" w="94" h="42"/>
+				<frame x="163" y="324" w="92" h="44"/>
+				<frame x="82" y="326" w="72" h="43"/>
+			  </QuickStab>
+			  <Jab>
+				<frame x="91" y="252" w="71" h="49"/>
+				<frame x="9" y="252" w="71" h="49"/>
+				<frame x="552" y="175" w="71" h="49"/>
+				<frame x="479" y="175" w="71" h="49"/>
+				<frame x="403" y="175" w="71" h="49"/>
+				<frame x="327" y="175" w="71" h="49"/>
+				<frame x="256" y="175" w="71" h="49"/>
+				<frame x="185" y="175" w="71" h="49"/>
+				<frame x="111" y="175" w="71" h="49"/>
+				<frame x="15" y="175" w="71" h="49"/>
+				<frame x="472" y="99" w="71" h="49"/>
+				<frame x="386" y="99" w="71" h="49"/>
+				<frame x="315" y="99" w="71" h="49"/>
+				<frame x="242" y="99" w="71" h="49"/>
+				<frame x="165" y="99" w="71" h="49"/>
+				<frame x="70" y="99" w="71" h="49"/>
+			  </Jab>
+			</Animations>
+		</Kobold>
+
+		 <Goblin>
+			<spritesheetSource name = "textures/Enemies/Goblins_sheet.png" />
+			<Statistics Constitution ="5" Focus="3" Force="4" Intelligence="2" Skill ="4" Agility="6" PhysicalDefense="1" MagicalDefense="0" Judgement="10"/>
+			<Animations>
+			  <Idle>
+				<!--<frame x="0" y="0" w="0" h="0"/>
+					<frame x="0" y="0" w="0" h="0"/>
+					<frame x="0" y="0" w="0" h="0"/> NO IDLE-->
+			  </Idle>
+			  <BasicAttack>
+				<frame x="1040" y="741" w="50" h="61"/>
+				<frame x="746" y="750" w="46" h="51"/>
+				<frame x="806" y="739" w="40" h="62"/>
+				<frame x="966" y="747" w="62" h="55"/>
+				<frame x="863" y="746" w="95" h="56"/>
+				<frame x="556" y="757" w="98" h="44"/>
+				<frame x="470" y="760" w="73" h="52"/>
+			  </BasicAttack>
+			</Animations>
+		 </Goblin>
+
+		  <AlchemistGoblin>
+			<spritesheetSource name = "textures/Enemies/Goblins_sheet.png" />
+			<Statistics Constitution ="5" Focus="5" Force="4" Intelligence="4" Skill ="4" Agility="6" PhysicalDefense="2" MagicalDefense="1" Judgement="25"/>
+			<Animations>
+			  <Idle>
+				<!--<frame x="0" y="0" w="0" h="0"/>
+					<frame x="0" y="0" w="0" h="0"/>
+					<frame x="0" y="0" w="0" h="0"/> NO IDLE-->
+			  </Idle>
+			  <BasicAttack>
+				<frame x="746" y="262" w="50" h="50"/>
+				<frame x="804" y="252" w="40" h="60"/>
+				<frame x="665" y="238" w="73" h="74"/>
+				<frame x="966" y="264" w="62" h="49"/>
+				<frame x="861" y="258" w="97" h="55"/>
+				<frame x="553" y="268" w="101" h="44"/>
+				<frame x="477" y="268" w="66" h="52"/>
+			  </BasicAttack>
+			  <CookingOil>
+				<frame x="1038" y="331" w="50" h="47"/>
+				<frame x="992" y="329" w="39" h="49"/>
+				<frame x="937" y="323" w="45" h="55"/>
+				<frame x="860" y="331" w="65" h="48"/>
+				<frame x="782" y="337" w="69" h="44"/>
+				<frame x="728" y="337" w="49" h="44"/>
+			  </CookingOil>
+			</Animations>
+		  </AlchemistGoblin>
+
+		  <HeavyGoblin>
+			<spritesheetSource name = "textures/Enemies/Goblins_sheet.png" />
+			<Statistics Constitution ="6" Focus="5" Force="5" Intelligence="3" Skill ="4" Agility="4" PhysicalDefense="4" MagicalDefense="2" Judgement="30"/>
+			<Animations>
+			  <Idle>
+				<!--<frame x="0" y="0" w="0" h="0"/>
+					<frame x="0" y="0" w="0" h="0"/>
+					<frame x="0" y="0" w="0" h="0"/> NO IDLE-->
+			  </Idle>
+			  <BasicAttack>
+				<frame x="748" y="1180" w="46" h="53"/>
+				<frame x="807" y="1171" w="41" h="62"/>
+				<frame x="968" y="1179" w="62" h="55"/>
+				<frame x="865" y="1178" w="97" h="55"/>
+				<frame x="558" y="1184" w="98" h="49"/>
+				<frame x="472" y="1185" w="73" h="59"/>
+			  </BasicAttack>
+			  <Pointing>
+				<frame x="900" y="984" w="52" h="45"/>
+				<frame x="823" y="983" w="70" h="45"/>
+			  </Pointing>
+			</Animations>
+		  </HeavyGoblin>
+
+		  <Gnoll>
+			<spritesheetSource name = "textures/Enemies/GnollA_sheet.png" />
+			<Statistics Constitution ="8" Focus="6" Force="7" Intelligence="3" Skill ="6" Agility="7" PhysicalDefense="4" MagicalDefense="2" Judgement="40"/>
+			<Animations>
+			  <Idle>
+				<frame x="899" y="9" w="110" h="78"/>
+				<frame x="785" y="9" w="110" h="78"/>
+				<frame x="670" y="9" w="110" h="78"/>
+			  </Idle>
+			  <Attack>
+				<frame x="712" y="263" w="176" h="123"/>
+				<frame x="533" y="263" w="176" h="123"/>
+				<frame x="375" y="262" w="176" h="123"/>
+				<frame x="198" y="263" w="176" h="123"/>
+				<frame x="5" y="268" w="176" h="123"/>
+			  </Attack>
+			  <Run>
+				<frame x="906" y="99" w="107" h="71"/>
+				<frame x="790" y="99" w="107" h="71"/>
+				<frame x="672" y="99" w="107" h="71"/>
+				<frame x="557" y="99" w="107" h="71"/>
+				<frame x="441" y="99" w="107" h="71"/>
+				<frame x="328" y="99" w="107" h="71"/>
+				<frame x="197" y="99" w="107" h="71"/>
+			  </Run>
+			</Animations>
+		  </Gnoll>
+
+		  <GnollArcher>
+			<spritesheetSource name = "textures/Enemies/BowGnoll_sheet.png" />
+			<Statistics Constitution ="7" Focus="6" Force="6" Intelligence="4" Skill ="6" Agility="7" PhysicalDefense="2" MagicalDefense="2" Judgement="60"/>
+			<Animations>
+			  <Idle>
+				<frame x="981" y="13" w="80" h="85"/>
+				<frame x="886" y="13" w="79" h="85"/>
+				<frame x="786" y="13" w="77" h="85"/>
+			  </Idle>
+			  <Run>
+				<frame x="951" y="120" w="77" h="83"/>
+				<frame x="813" y="120" w="77" h="83"/>
+				<frame x="707" y="120" w="77" h="83"/>
+				<frame x="589" y="120" w="77" h="83"/>
+				<frame x="467" y="120" w="77" h="83"/>
+				<frame x="336" y="120" w="77" h="83"/>
+				<frame x="197" y="120" w="77" h="83"/>
+				<frame x="69" y="120" w="77" h="83"/>
+			  </Run>
+			  <Attack>
+				<frame x="970" y="230" w="106" h="82"/>
+				<frame x="852" y="230" w="106" h="82"/>
+				<frame x="727" y="230" w="106" h="82"/>
+			  </Attack>
+
+			</Animations>
+		  </GnollArcher>
+
+		  <Skeleton>
+			<spritesheetSource name = "textures/Enemies/Skeleton_sheet.png" />
+			<Statistics Constitution ="9" Focus="8" Force="8" Intelligence="5" Skill ="7" Agility="6" PhysicalDefense="10" MagicalDefense="12" Judgement="50"/>
+			<Animations>
+			  <Idle>
+				<frame x="706" y="98" w="69" h="59"/>
+				<frame x="625" y="99" w="58" h="58"/>
+			  </Idle>
+			</Animations>
+		  </Skeleton>
+
+		  <Owlbear>
+			<spritesheetSource name = "textures/Enemies/Owlbear_sheet.png" />
+			<Statistics Constitution ="15" Focus="8" Force="10" Intelligence="3" Skill ="7" Agility="3" PhysicalDefense="8" MagicalDefense="14" Judgement="35"/>
+			<Animations>
+			  <Idle>
+				<frame x="1286" y="6" w="131" h="62"/>
+				<frame x="1147" y="6" w="131" h="62"/>
+				<frame x="1009" y="6" w="131" h="62"/>
+				<frame x="869" y="6" w="131" h="62"/>
+				<frame x="719" y="6" w="131" h="62"/>
+			  </Idle>
+			  <Attack>
+				<frame x="1257" y="280" w="160" h="58"/>
+				<frame x="1067" y="280" w="160" h="58"/>
+				<frame x="838" y="280" w="160" h="58"/>
+				<frame x="614" y="280" w="160" h="58"/>
+				<frame x="403" y="280" w="160" h="58"/>
+				<frame x="167" y="280" w="160" h="58"/>
+			  </Attack>
+			  <Run>
+				<frame x="1297" y="168" w="132" h="67"/>
+				<frame x="1163" y="168" w="132" h="67"/>
+				<frame x="1016" y="168" w="132" h="67"/>
+				<frame x="875" y="168" w="132" h="67"/>
+				<frame x="731" y="168" w="132" h="67"/>
+				<frame x="593" y="168" w="132" h="67"/>
+				<frame x="450" y="168" w="132" h="67"/>
+				<frame x="296" y="168" w="132" h="67"/>
+				<frame x="147" y="168" w="132" h="67"/>
+				<frame x="2" y="168" w="132" h="67"/>
+			  </Run>
+			</Animations>
+		  </Owlbear>
+
+		  <Triton>
+			<spritesheetSource name = "textures/Enemies/Triton_sheet.png" />
+			<Statistics Constitution ="8" Focus="14" Force="5" Intelligence="10" Skill ="9" Agility="10" PhysicalDefense="8" MagicalDefense="12" Judgement="60"/>
+			<Animations>
+			  <Idle>
+				<!--<frame x="0" y="0" w="0" h="0"/>
+					<frame x="0" y="0" w="0" h="0"/>
+					<frame x="0" y="0" w="0" h="0"/> NO IDLE-->
+			  </Idle>
+			</Animations>
+		  </Triton>
+
+		  <Hellhound>
+			<spritesheetSource name = "textures/Enemies/Hellhound_sheet.png" />
+			<Statistics Constitution ="9" Focus="9" Force="9" Intelligence="9" Skill ="9" Agility="14" PhysicalDefense="7" MagicalDefense="5" Judgement="40"/>
+			<Animations>
+			  <Idle>
+				<!--<frame x="0" y="0" w="0" h="0"/>
+					<frame x="0" y="0" w="0" h="0"/>
+					<frame x="0" y="0" w="0" h="0"/> NO IDLE-->
+			  </Idle>
+			</Animations>
+		  </Hellhound>
+
+		  <DarkWarrior>
+			<spritesheetSource name = "textures/Enemies/DarkWarrior_sheet.png" />
+			<Statistics Constitution ="40" Focus="15" Force="20" Intelligence="33" Skill ="15" Agility="14" PhysicalDefense="14" MagicalDefense="14" Judgement="40"/>
+			<Animations>
+			  <Idle>
+				<frame x="1256" y="403" w="151" h="147"/>
+				<frame x="1075" y="405" w="151" h="145"/>
+			  </Idle>
+			</Animations>
+		  </DarkWarrior>
+
+		  <TrollLeaders>
+			<spritesheetSource name = "textures/Enemies/TrollLeader_sheet.png" />
+			<Statistics Constitution ="20" Focus="15" Force="22" Intelligence="9" Skill ="16" Agility="12" PhysicalDefense="13" MagicalDefense="11" Judgement="30"/>
+			<Animations>
+			  <Idle>
+				<frame x="899" y="32" w="103" h="95"/>
+				<frame x="703" y="36" w="92" h="91"/>
+			  </Idle>
+			</Animations>
+		  </TrollLeaders>
+
+		  <DisplacerBeast>
+			<spritesheetSource name = "textures/Enemies/DisplacerBeast_sheet.png" />
+			<Statistics Constitution ="30" Focus="15" Force="17" Intelligence="18" Skill ="12" Agility="16" PhysicalDefense="14" MagicalDefense="15" Judgement="50"/>
+			<Animations>
+			  <Idle>
+				<frame x="0" y="0" w="0" h="0"/>
+				<frame x="0" y="0" w="0" h="0"/>
+				<frame x="0" y="0" w="0" h="0"/>
+			  </Idle>
+			</Animations>
+		  </DisplacerBeast>
+
+		  <Lich1st>
+			<spritesheetSource name = "textures/Enemies/Lich1st_sheet.png" />
+			<Statistics Constitution ="30" Focus="999" Force="10" Intelligence="40" Skill ="20" Agility="20" PhysicalDefense="18" MagicalDefense="20" Judgement="70"/>
+			<Animations>
+			  <Idle>
+				<frame x="576" y="520" w="96" h="67"/>
+				<frame x="767" y="509" w="96" h="67"/>
+				<frame x="970" y="514" w="90" h="67"/>
+			  </Idle>
+			</Animations>
+		  </Lich1st>
+
+		  <Lich2nd>
+			<Statistics Constitution ="30" Focus="999" Force="10" Intelligence="40" Skill ="20" Agility="20" PhysicalDefense="18" MagicalDefense="20" Judgement="70"/>
+			<Animations>
+			</Animations>
+		  </Lich2nd>
+
+	</enemies>
+	<heroes>
+		<cleric>
+			<Stadistics Constitution ="6" Focus="5" Force="6" Agility="1" Dexterity ="4" Intelligence="7"  PhysicalDefense="3" MagicalDefense="4" Luck="4"/>
+			<animations>
+				<animation name="idle" speed="5.0" loop="true">
+					<frame x="116" y="2659" width="70" height="77"/>
+					<frame x="204" y="2659" width="70" height="77"/>
+					<frame x="292" y="2659" width="70" height="77"/>
+					<frame x="381" y="2659" width="70" height="77"/>
+				</animation>
+				<animation name="run_forward" speed="5.0" loop="true">
+					<frame x="1124"  y="2255" width="97" height="81"/>
+					<frame x="1020"  y="2255" width="97" height="81"/>
+					<frame x="916"  y="2255" width="97" height="81"/>
+					<frame x="812"  y="2255" width="97" height="81"/>
+					<frame x="708"  y="2255" width="97" height="81"/>
+					<frame x="604"  y="2255" width="97" height="81"/>
+					<frame x="499"  y="2255" width="97" height="81"/>
+					<frame x="396"  y="2255" width="97" height="81"/>
+					<frame x="292"  y="2255" width="97" height="81"/>
+					<frame x="188"  y="2255" width="97" height="81"/>
+					<frame x="84"  y="2255" width="97" height="81"/>
+				</animation>
+			  <Attack>
+				<frame x="47"  y="12" w="126" h="96"/>
+				<frame x="188" y="12" w="126" h="96"/>
+				<frame x="358" y="12" w="126" h="96"/>
+				<frame x="510" y="12" w="126" h="96"/>
+				<frame x="682" y="12" w="126" h="96"/>
+				<frame x="841" y="12" w="126" h="96"/>
+				<frame x="998" y="12" w="126" h="96"/>
+				<frame x="1405" y="12" w="126" h="96"/>
+			  </Attack>
+			</animations>
+		</cleric>
+	  
+		  <Dwarf>
+		<spritesheetSource name = "textures/Characters/Dwarf_sheet.png" />
+		<Stadistics Constitution ="7" Focus="4" Force="9" Agility="3" Dexterity ="4" Intelligence="1"  PhysicalDefense="4" MagicalDefense="3" Luck="5"/>
+		<Animations>
+		  <Idle>
+			<frame x="66" y="334" w="49" h="66"/>
+			<frame x="134" y="334" w="49" h="66"/>
+			<frame x="202" y="334" w="49" h="66"/>
+		  </Idle>
+		  <Attack>
+			<frame x="2409" y="435" w="114" h="77"/>
+			<frame x="2311" y="435" w="114" h="77"/>
+			<frame x="2193" y="435" w="114" h="77"/>
+			<frame x="2071" y="435" w="114" h="77"/>
+			<frame x="1896" y="435" w="114" h="77"/>
+			<frame x="1701" y="435" w="114" h="77"/>
+			<frame x="1540" y="435" w="114" h="77"/>
+			<frame x="1396" y="435" w="114" h="77"/>
+			<frame x="1241" y="435" w="114" h="77"/>
+		  </Attack>
+		  <Run>
+			<frame x="776" y="805" w="80" h="59"/>
+			<frame x="688" y="805" w="80" h="59"/>
+			<frame x="600" y="805" w="80" h="59"/>
+			<frame x="512" y="805" w="80" h="59"/>
+			<frame x="424" y="805" w="80" h="59"/>
+			<frame x="336" y="805" w="80" h="59"/>
+			<frame x="248" y="805" w="80" h="59"/>
+			<frame x="160" y="805" w="80" h="59"/>
+			<frame x="72" y="805" w="80" h="59"/>
+			<frame x="863" y="805" w="80" h="59"/>
+			<frame x="956" y="805" w="80" h="59"/>
+		  </Run>
+		</Animations>
+	  </Dwarf>
+
+	  <Elf>
+		<spritesheetSource name = "textures/Characters/Elf_sheet.png" />
+		<Stadistics Constitution ="5" Focus="7" Force="2" Agility="6" Dexterity ="3" Intelligence="9"  PhysicalDefense="2" MagicalDefense="3" Luck="3"/>
+		<Animations>
+		  <Idle>
+			<frame x="842" y="2156" w="46" h="68"/>
+			<frame x="902" y="2156" w="45" h="68"/>
+			<frame x="962" y="2156" w="45" h="68"/>
+		  </Idle>
+		  <Attack>
+			<frame x="1444" y="690" w="125" h="65"/>
+			<frame x="1229" y="690" w="125" h="65"/>
+			<frame x="1024" y="690" w="125" h="65"/>
+			<frame x="881" y="690" w="125" h="65"/>
+			<frame x="754" y="690" w="125" h="65"/>
+		  </Attack>
+		  <Run>
+			<frame x="1776" y="450" w="94" h="57"/>
+			<frame x="1671" y="450" w="94" h="57"/>
+			<frame x="1450" y="450" w="94" h="57"/>
+			<frame x="1342" y="450" w="94" h="57"/>
+			<frame x="1234" y="450" w="94" h="57"/>
+			<frame x="1126" y="450" w="94" h="57"/>
+		  </Run>
+		</Animations>
+	  </Elf>
+
+	  <Warrior>
+		<spritesheetSource name = "textures/Characters/Warrior_sheet.png" />
+		<Stadistics Constitution ="9" Focus="4" Force="5" Agility="4" Dexterity ="6" Intelligence="2"  PhysicalDefense="5" MagicalDefense="4" Luck="1"/>
+		<Animations>
+		  <Idle>
+			<frame x="1160" y="118" w="65" h="74"/>
+			<frame x="1244" y="118" w="66" h="74"/>
+			<frame x="1328" y="118" w="67" h="74"/>
+		  </Idle>
+		  <Attack>
+			<frame x="1838" y="926" w="131" h="98"/>
+			<frame x="1696" y="926" w="131" h="98"/>
+			<frame x="1529" y="926" w="131" h="98"/>
+			<frame x="1383" y="926" w="131" h="98"/>
+			<frame x="1225" y="926" w="131" h="98"/>
+			<frame x="1070" y="926" w="131" h="98"/>
+			<frame x="899" y="926" w="131" h="98"/>
+			<frame x="725" y="926" w="131" h="98"/>
+			<frame x="567" y="926" w="131" h="98"/>
+			<frame x="419" y="926" w="131" h="98"/>
+		  </Attack>
+		  <Run>
+			<frame x="524" y="802" w="73" h="94"/>
+			<frame x="424" y="802" w="73" h="94"/>
+			<frame x="324" y="802" w="73" h="94"/>
+			<frame x="224" y="802" w="73" h="94"/>
+			<frame x="124" y="802" w="73" h="94"/>
+			<frame x="40" y="802" w="73" h="94"/>
+		  </Run>
+		</Animations>
+	  </Warrior>
+	  
+	</heroes>
+	
+</entities>
+
+

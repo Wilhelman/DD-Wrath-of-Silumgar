@@ -14,6 +14,7 @@
     <ClCompile Include="Cleric.cpp" />
     <ClCompile Include="ctApp.cpp" />
     <ClCompile Include="ctAudio.cpp" />
+    <ClCompile Include="ctCombat.cpp" />
     <ClCompile Include="ctEntities.cpp" />
     <ClCompile Include="ctFadeToBlack.cpp" />
     <ClCompile Include="ctFonts.cpp" />
@@ -27,7 +28,9 @@
     <ClCompile Include="ctTextures.cpp" />
     <ClCompile Include="ctTimer.cpp" />
     <ClCompile Include="ctWindow.cpp" />
+    <ClCompile Include="ctWorldMap.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="j1Map.cpp" />
     <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIElement.cpp" />
@@ -39,6 +42,7 @@
     <ClInclude Include="ctAnimation.h" />
     <ClInclude Include="ctApp.h" />
     <ClInclude Include="ctAudio.h" />
+    <ClInclude Include="ctCombat.h" />
     <ClInclude Include="ctDefs.h" />
     <ClInclude Include="ctEntities.h" />
     <ClInclude Include="ctFadeToBlack.h" />
@@ -54,7 +58,9 @@
     <ClInclude Include="ctTextures.h" />
     <ClInclude Include="ctTimer.h" />
     <ClInclude Include="ctWindow.h" />
+    <ClInclude Include="ctWorldMap.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="j1Map.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />

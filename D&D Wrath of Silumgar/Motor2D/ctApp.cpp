@@ -10,6 +10,7 @@
 #include "ctTextures.h"
 #include "ctAudio.h"
 #include "ctMainMenu.h"
+#include "ctWorldMap.h"
 #include "ctEntities.h"
 #include "ctGui.h"
 #include "ctFonts.h"
@@ -26,6 +27,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	tex = new ctTextures();
 	audio = new ctAudio();
 	main_menu = new ctMainMenu();
+	world_map = new ctWorldMap();
 	entities = new ctEntities();
 	gui = new ctGui();
 	fonts = new ctFonts();
@@ -38,6 +40,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(main_menu);
+	AddModule(world_map);
 	AddModule(entities);
 	AddModule(gui);
 	AddModule(fonts);
@@ -45,6 +48,9 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 
 	// render last to swap buffer
 	AddModule(render);
+
+	//disable modules here
+	world_map->active = false;
 
 	PERF_PEEK(ptimer);
 }

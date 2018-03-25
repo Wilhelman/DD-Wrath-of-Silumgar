@@ -38,10 +38,6 @@ bool ctCombat::Start()
 {
 	bool ret = true;
 
-	/*if (!App->audio->PlayMusic("audio/music/8-bit_Detective.ogg")) {
-	//ret = false;
-	LOG("Error playing music in j1MainMenu Start");
-	}*/
 
 	return ret;
 }
@@ -56,9 +52,6 @@ bool ctCombat::PreUpdate()
 bool ctCombat::Update(float dt)
 {
 
-	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
-		this->quit_pressed = true;
-
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 	//App->fadeToBlack->FadeToBlackBetweenModules(this, this, 1.0f);
 
@@ -70,8 +63,6 @@ bool ctCombat::PostUpdate()
 {
 	bool ret = true;
 
-	if (quit_pressed)
-		ret = false;
 
 	return ret;
 }
@@ -79,7 +70,7 @@ bool ctCombat::PostUpdate()
 // Called before quitting
 bool ctCombat::CleanUp()
 {
-	LOG("Freeing main_menu");
+	LOG("Freeing combat");
 
 	return true;
 }

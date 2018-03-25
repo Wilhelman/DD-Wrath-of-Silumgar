@@ -18,7 +18,7 @@ public:
 	bool Start();
 
 	// Called each loop iteration
-	bool Update(float dt);
+	bool PostUpdate();
 
 	bool FadeToBlack(float time = 2.0f);
 	bool FadeToBlackBetweenModules(ctModule* module_off, ctModule* module_on, float time = 2.0f, bool andLoad = false);

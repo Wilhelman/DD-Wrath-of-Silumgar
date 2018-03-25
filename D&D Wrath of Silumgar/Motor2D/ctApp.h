@@ -15,6 +15,7 @@ class ctRender;
 class ctTextures;
 class ctAudio;
 class ctMainMenu;
+class ctWorldMap;
 class ctEntities;
 class ctGui;
 class ctFonts;
@@ -83,6 +84,7 @@ public:
 	ctTextures*			tex = nullptr;
 	ctAudio*			audio = nullptr;
 	ctMainMenu*			main_menu = nullptr;
+	ctWorldMap*			world_map = nullptr;
 	ctEntities*			entities = nullptr;
 	ctGui*				gui = nullptr;
 	ctFonts*			fonts = nullptr;

@@ -44,7 +44,7 @@ bool ctFadeToBlack::Start()
 }
 
 // Update: draw background
-bool ctFadeToBlack::Update(float dt)
+bool ctFadeToBlack::PostUpdate()
 {
 	bool ret = true;
 	if (current_step == FadeStep::NONE_FADE)

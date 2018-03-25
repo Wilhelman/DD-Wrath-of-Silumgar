@@ -27,6 +27,12 @@
 	<music fx="100" music="6">
 		<lvlMusic name="textures/source_spritesheet.png" />
 	</music>
+	<world_map>
+		<spritesheet name="textures/WorldMap/map_spritesheet.png"/>
+		<rects>
+			<rect name="background" x="0" y="0" width="850" height="480"/>
+		</rects>
+	</world_map>
 	<entities>
 		<cleric spritesheetName="textures/Characters/Cleric_sheet.png"/>
 		<spritesheetSource name="textures/" />

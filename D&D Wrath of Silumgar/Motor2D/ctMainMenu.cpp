@@ -11,6 +11,7 @@
 #include "ctMainMenu.h"
 
 #include "ctFadeToBlack.h"
+#include "ctWorldMap.h"
 
 
 
@@ -50,7 +51,7 @@ bool ctMainMenu::Start()
 		LOG("Error playing music in ctMainMenu Start");
 	}
 
-	App->entities->SpawnEntity(50, 50, CLERIC);
+	//App->entities->SpawnEntity(50, 50, CLERIC);
 
 	return ret;
 }
@@ -64,6 +65,9 @@ bool ctMainMenu::PreUpdate()
 // Called each loop iteration
 bool ctMainMenu::Update(float dt)
 {
+
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map);
 
 	return true;
 }
@@ -83,6 +87,8 @@ bool ctMainMenu::PostUpdate()
 bool ctMainMenu::CleanUp()
 {
 	LOG("Freeing main_menu");
+
+	App->gui->DeleteAllUIElements();
 	
 	return true;
 }

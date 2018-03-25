@@ -99,6 +99,15 @@
     <ClCompile Include="Cleric.cpp">
       <Filter>Core\Modules\Entities\Heroes</Filter>
     </ClCompile>
+    <ClCompile Include="ctCombat.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ctWorldMap.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Map.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -181,6 +190,15 @@
     </ClInclude>
     <ClInclude Include="Cleric.h">
       <Filter>Core\Modules\Entities\Heroes</Filter>
+    </ClInclude>
+    <ClInclude Include="ctCombat.h">
+      <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ctWorldMap.h">
+      <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Map.h">
+      <Filter>Core\Modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

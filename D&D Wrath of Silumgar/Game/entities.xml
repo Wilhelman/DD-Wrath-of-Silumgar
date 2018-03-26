@@ -321,7 +321,7 @@
 	</enemies>
 	<heroes>
 		<cleric>
-			<Stadistics Constitution ="6" Focus="5" Force="6" Agility="1" Dexterity ="4" Intelligence="7"  PhysicalDefense="3" MagicalDefense="4" Luck="4"/>
+			<stadistics constitution ="6" focus="5" strength="6" Agility="1" Dexterity ="4" Intelligence="7"  physicalDefense="3" MagicalDefense="4" Luck="4"/>
 			<animations>
 				<animation name="idle" speed="5.0" loop="true">
 					<frame x="116" y="2659" width="70" height="77"/>

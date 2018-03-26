@@ -14,6 +14,7 @@ class ctInput;
 class ctRender;
 class ctTextures;
 class ctAudio;
+class j1Map;
 class ctMainMenu;
 class ctWorldMap;
 class ctEntities;
@@ -83,6 +84,7 @@ public:
 	ctRender*			render = nullptr;
 	ctTextures*			tex = nullptr;
 	ctAudio*			audio = nullptr;
+	j1Map*				map = nullptr;
 	ctMainMenu*			main_menu = nullptr;
 	ctWorldMap*			world_map = nullptr;
 	ctEntities*			entities = nullptr;

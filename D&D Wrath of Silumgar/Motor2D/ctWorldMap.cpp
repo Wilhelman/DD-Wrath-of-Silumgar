@@ -7,6 +7,7 @@
 #include "ctRender.h"
 #include "ctWindow.h"
 #include "ctEntities.h"
+#include "j1Map.h"
 
 #include "ctWorldMap.h"
 
@@ -30,7 +31,8 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 	LOG("Loading World Map");
 	bool ret = true;
 
-	spritesheet_name = config.child("spritesheet").attribute("name").as_string();
+	//TO DELETE 1
+	/*spritesheet_name = config.child("spritesheet").attribute("name").as_string();
 
 	//read rects from node
 	for (pugi::xml_node rects = config.child("rects").child("rect"); rects && ret; rects = rects.next_sibling("rect"))
@@ -39,7 +41,7 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 
 		if (tmp == "background")
 			LoadRect(rects, &background);
-	}
+	}*/
 
 	return ret;
 }
@@ -49,12 +51,18 @@ bool ctWorldMap::Start()
 {
 	bool ret = true;
 
-	spritesheet = App->tex->Load(spritesheet_name.c_str());
+	//TO DELETE 1
+	/*spritesheet = App->tex->Load(spritesheet_name.c_str());
 
 	if (spritesheet == NULL) {
 		LOG("Fail to load spritesheet in WorldMap!");
 		ret = false;
-	}
+	}*/
+
+	//Displaying map
+	LOG("%s", App->map->sceneName.c_str());
+	App->map->Load(App->map->sceneName.c_str());
+	App->map->LayersSetUp();
 
 	return ret;
 }
@@ -70,7 +78,9 @@ bool ctWorldMap::Update(float dt)
 {
 
 	// Draw everything --------------------------------------
-	App->render->Blit(spritesheet, 0, 0, &background, 1.0f); // map's background
+	//App->render->Blit(spritesheet, 0, 0, &background, 1.0f); // map's background
+
+	App->map->Draw();
 
 	return true;
 }

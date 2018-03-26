@@ -16,6 +16,7 @@ enum LayerTypes
 {
 	BACKGROUND = 0,
 	POSITION,
+	LOGIC,
 
 	LAYER_NOT_DEF
 };
@@ -138,7 +139,7 @@ public:
 	bool CleanUp();
 
 	// Load new map
-	bool Load(const char* path);
+	bool Load(std::string file_name);
 
 	iPoint MapToWorld(int x, int y) const;
 

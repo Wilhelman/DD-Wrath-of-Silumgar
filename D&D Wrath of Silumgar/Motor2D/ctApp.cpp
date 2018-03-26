@@ -9,6 +9,7 @@
 #include "ctRender.h"
 #include "ctTextures.h"
 #include "ctAudio.h"
+#include "j1Map.h"
 #include "ctMainMenu.h"
 #include "ctWorldMap.h"
 #include "ctEntities.h"
@@ -26,6 +27,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	render = new ctRender();
 	tex = new ctTextures();
 	audio = new ctAudio();
+	map = new j1Map();
 	main_menu = new ctMainMenu();
 	world_map = new ctWorldMap();
 	entities = new ctEntities();
@@ -39,6 +41,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(win);
 	AddModule(tex);
 	AddModule(audio);
+	AddModule(map);
 	AddModule(main_menu);
 	AddModule(world_map);
 	AddModule(entities);

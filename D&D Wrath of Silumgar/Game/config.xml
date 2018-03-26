@@ -28,13 +28,13 @@
 		<lvlMusic name="textures/source_spritesheet.png" />
 	</music>
 	<world_map>
-		<spritesheet name="textures/WorldMap/map_spritesheet.png"/>
+		<spritesheet name="textures/WorldMap/map_spritesheet.png" />
 		<rects>
-			<rect name="background" x="0" y="0" width="850" height="480"/>
+			<rect name="background" x="0" y="0" width="850" height="480" />
 		</rects>
 	</world_map>
 	<entities>
-		<cleric spritesheetName="textures/Characters/Cleric_sheet.png"/>
+		<cleric spritesheetName="textures/Characters/Cleric_sheet.png" />
 		<spritesheetSource name="textures/" />
 		<player>
 			<fxPlayerJump name="audio/fx/jump_fx.wav" />
@@ -51,28 +51,8 @@
 	</file_system>
 	<map>
 		<folder>maps/</folder>
-		<main_menu />
 		<scene>
-			<data name="map.tmx" start="false" />
-			<animations>
-				<animation name="heart_reward_anim" speed="0.12" loop="true">
-					<frame x="81" y="419" width="5" height="13" />
-					<frame x="86" y="419" width="5" height="13" />
-					<frame x="91" y="419" width="5" height="13" />
-					<frame x="96" y="419" width="5" height="13" />
-					<frame x="101" y="419" width="5" height="13" />
-				</animation>
-				<animation name="coin_reward_anim" speed="0.5" loop="true">
-					<frame x="0" y="433" width="10" height="14" />
-					<frame x="32" y="433" width="10" height="14" />
-					<frame x="64" y="433" width="10" height="14" />
-					<frame x="98" y="433" width="10" height="14" />
-				</animation>
-				<animation name="one_life_anim" speed="0.1" loop="true">
-					<frame x="78" y="366" width="13" height="13" />
-					<frame x="99" y="367" width="13" height="13" />
-				</animation>
-			</animations>
+			<data name="world_map.tmx" start="true" currentLvl="true" />
 		</scene>
 	</map>
 </config>

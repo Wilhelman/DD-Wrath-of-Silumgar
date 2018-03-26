@@ -70,8 +70,8 @@ void j1Map::LayersSetUp()
 					{
 						if ((*layersToCheck)->name == "background")
 							(*layersToCheck)->layer_type = BACKGROUND;
-						else
-							(*layersToCheck)->layer_type = POSITION;
+						else if ((*layersToCheck)->name == "logic")
+							(*layersToCheck)->layer_type = LOGIC;
 					}
 				}
 			}
@@ -154,10 +154,9 @@ void j1Map::Draw()
 						SDL_Rect rect = (*tilesetsBlit)->GetTileRect((*layersBlit)->Get(i, j));
 
 						iPoint world = MapToWorld(i, j);
-					
-								
-							if ((*layersBlit)->name == "Background")
-								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect,0.1); 
+
+							if ((*layersBlit)->name == "background")
+								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect,1.0f); 
 					}
 				}
 			}
@@ -257,10 +256,10 @@ bool j1Map::CleanUp()
 }
 
 // Load new map
-bool j1Map::Load(const char* file_name)
+bool j1Map::Load(std::string file_name)
 {
 	bool ret = true;
-	std::string tmp =  folder + std::string(file_name);
+	std::string tmp =  folder + file_name.c_str();
 
 	pugi::xml_parse_result result = map_file.load_file(tmp.c_str());
 
@@ -311,7 +310,7 @@ bool j1Map::Load(const char* file_name)
 
 	if(ret == true)
 	{
-		LOG("Successfully parsed map XML file: %s", file_name);
+		LOG("Successfully parsed map XML file: %s", file_name.c_str());
 		LOG("width: %d height: %d", data.width, data.height);
 		LOG("tile_width: %d tile_height: %d", data.tile_width, data.tile_height);
 

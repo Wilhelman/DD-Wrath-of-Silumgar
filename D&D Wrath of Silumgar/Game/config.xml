@@ -29,9 +29,15 @@
 	</music>
 	<world_map>
 		<spritesheet name="textures/WorldMap/map_spritesheet.png" />
-		<rects>
-			<rect name="background" x="0" y="0" width="850" height="480" />
-		</rects>
+		<world_map_tmx name="world_map.tmx" />
+		<world_map_elements>
+			<map_element>
+				<tier type="1" />
+				<entity name="KOBOLD" />
+				<entity name="GOBLIN" />
+				<scene name="pink_cave.tmx" />
+			</map_element>
+		</world_map_elements>
 	</world_map>
 	<entities>
 		<cleric spritesheetName="textures/Characters/Cleric_sheet.png" />

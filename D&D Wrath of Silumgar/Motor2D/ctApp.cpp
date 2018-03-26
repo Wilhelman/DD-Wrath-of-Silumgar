@@ -12,6 +12,7 @@
 #include "j1Map.h"
 #include "ctMainMenu.h"
 #include "ctWorldMap.h"
+#include "ctCombat.h"
 #include "ctEntities.h"
 #include "ctGui.h"
 #include "ctFonts.h"
@@ -30,6 +31,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	map = new j1Map();
 	main_menu = new ctMainMenu();
 	world_map = new ctWorldMap();
+	combat = new ctCombat();
 	entities = new ctEntities();
 	gui = new ctGui();
 	fonts = new ctFonts();
@@ -44,6 +46,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(main_menu);
 	AddModule(world_map);
+	AddModule(combat);
 	AddModule(entities);
 	AddModule(gui);
 	AddModule(fonts);
@@ -54,6 +57,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 
 	//disable modules here
 	world_map->active = false;
+	combat->active = false;
 
 	PERF_PEEK(ptimer);
 }

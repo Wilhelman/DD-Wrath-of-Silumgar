@@ -4,9 +4,19 @@
 #include "ctModule.h"
 
 #include <string>
+#include <vector>
+
+class Entity;
 
 class ctWorldMap : public ctModule
 {
+
+	struct WorldMapElement {
+		uint tier = 0u;
+		std::vector<Entity*> entities;
+		std::string scene_name;
+	};
+
 public:
 
 	ctWorldMap();
@@ -45,10 +55,9 @@ private:
 
 private:
 
-	SDL_Rect background = { 0,0,0,0 };
+	std::vector<WorldMapElement*> map_elements;
 
-	std::string spritesheet_name;
-	SDL_Texture* spritesheet = nullptr;
+	std::string world_map_tmx;
 
 };
 

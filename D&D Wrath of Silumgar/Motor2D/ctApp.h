@@ -17,6 +17,7 @@ class ctAudio;
 class j1Map;
 class ctMainMenu;
 class ctWorldMap;
+class ctCombat;
 class ctEntities;
 class ctGui;
 class ctFonts;
@@ -87,6 +88,7 @@ public:
 	j1Map*				map = nullptr;
 	ctMainMenu*			main_menu = nullptr;
 	ctWorldMap*			world_map = nullptr;
+	ctCombat*			combat = nullptr;
 	ctEntities*			entities = nullptr;
 	ctGui*				gui = nullptr;
 	ctFonts*			fonts = nullptr;

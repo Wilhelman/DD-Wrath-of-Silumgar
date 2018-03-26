@@ -3,6 +3,9 @@
 
 #include "ctModule.h"
 
+#include <string>
+
+using namespace std;
 
 
 class ctCombat : public ctModule
@@ -38,7 +41,13 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
+public:
+
+	void SetSceneName(string new_scene_name);
+
 private:
+
+	string scene_name;
 
 };
 

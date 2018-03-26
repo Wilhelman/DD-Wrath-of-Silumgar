@@ -10,6 +10,7 @@
 #include "j1Map.h"
 
 #include "ctWorldMap.h"
+#include "ctCombat.h"
 
 #include "ctFadeToBlack.h"
 
@@ -30,6 +31,23 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 {
 	LOG("Loading World Map");
 	bool ret = true;
+
+	world_map_tmx = config.child("world_map_tmx").attribute("name").as_string();
+
+	//read rects from node
+	for (pugi::xml_node map_element = config.child("world_map_elements").child("map_element"); map_element && ret; map_element = map_element.next_sibling("map_element"))
+	{
+		WorldMapElement* tmp_map_element = new WorldMapElement();
+
+		tmp_map_element->tier = map_element.child("tier").attribute("type").as_uint();
+		tmp_map_element->scene_name = map_element.child("scene").attribute("name").as_string();
+
+		//TODO FOR for each entity in xml and pushback it to the vector
+
+
+		map_elements.push_back(tmp_map_element);
+		
+	}
 
 	//TO DELETE 1
 	/*spritesheet_name = config.child("spritesheet").attribute("name").as_string();
@@ -60,7 +78,7 @@ bool ctWorldMap::Start()
 	}*/
 
 	//Displaying map
-	LOG("%s", App->map->sceneName.c_str());
+	App->map->sceneName = world_map_tmx.c_str();
 	App->map->Load(App->map->sceneName.c_str());
 	App->map->LayersSetUp();
 
@@ -77,9 +95,17 @@ bool ctWorldMap::PreUpdate()
 bool ctWorldMap::Update(float dt)
 {
 
-	// Draw everything --------------------------------------
-	//App->render->Blit(spritesheet, 0, 0, &background, 1.0f); // map's background
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
 
+		WorldMapElement* tmp_map_element = map_elements.back();
+
+		App->combat->SetSceneName(tmp_map_element->scene_name);
+
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat,1.0f);
+
+	}
+
+	// Draw everything --------------------------------------
 	App->map->Draw();
 
 	return true;
@@ -98,6 +124,18 @@ bool ctWorldMap::PostUpdate()
 bool ctWorldMap::CleanUp()
 {
 	LOG("Freeing ctWorldMap");
+
+	//TODO CLEAN THIS
+	/*std::vector<WorldMapElement*>::const_iterator it_map_elements = map_elements.begin();
+
+	while (it_map_elements != map_elements.end()) {
+		delete *it_map_elements;
+		it_map_elements++;
+	}
+
+	map_elements.clear();*/
+
+	App->map->CleanUp();
 
 	return true;
 }

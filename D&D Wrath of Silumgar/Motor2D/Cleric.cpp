@@ -31,7 +31,7 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &run_forward);
 	}
 
-	animation = &run_forward;
+	animation = &idle;
 
 }
 

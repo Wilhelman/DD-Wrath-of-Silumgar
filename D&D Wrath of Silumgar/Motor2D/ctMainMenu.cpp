@@ -51,8 +51,6 @@ bool ctMainMenu::Start()
 		LOG("Error playing music in ctMainMenu Start");
 	}
 
-	//App->entities->SpawnEntity(50, 50, CLERIC);
-
 	return ret;
 }
 
@@ -67,7 +65,7 @@ bool ctMainMenu::Update(float dt)
 {
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map);
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0f);
 
 	return true;
 }
@@ -88,7 +86,15 @@ bool ctMainMenu::CleanUp()
 {
 	LOG("Freeing main_menu");
 
+	App->audio->StopMusic();
+
 	App->gui->DeleteAllUIElements();
+	continue_label = nullptr;
+	new_game_label = nullptr;
+	settings_label = nullptr;
+	about_label = nullptr;
+	quit_label = nullptr;
+	arrow = nullptr;
 	
 	return true;
 }

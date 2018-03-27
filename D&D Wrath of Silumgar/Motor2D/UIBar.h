@@ -9,6 +9,12 @@ class UIBar : public UIElement
 {
 public:
 
+	//570 22
+	UIElement* lower_bar = nullptr;
+	UIElement* upper_bar = nullptr;
+	UIElement* yellow_bar = nullptr;
+	int max_width = 570;
+	int max_capacity = 0;
 
 
 public:

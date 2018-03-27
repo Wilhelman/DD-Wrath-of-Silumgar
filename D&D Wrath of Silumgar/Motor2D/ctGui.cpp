@@ -12,6 +12,7 @@
 #include "UIButton.h"
 #include "UICombatMenu.h"
 #include "UITextBox.h"
+#include "UIBar.h"
 
 #include "UIElement.h"
 
@@ -177,6 +178,15 @@ UIElement* ctGui::AddUITextBox(int position_x, int position_y, int size, int box
 	ui_elements.push_back(tmp_lbl);
 
 	return tmp_lbl;
+}
+
+UIElement* ctGui::AddUIBar(int position_x, int position_y, int max_capacity, UI_Type barType, ctModule* callback = nullptr, UIElement* parent = nullptr) {
+	UIElement* tmp_bar = new UIBar(position_x, position_y, max_capacity, barType, callback, parent);
+	ui_elements.push_back(tmp_bar);
+	return tmp_bar;
+
+	LOG("Error: Cant add the UIBar");
+	return nullptr;
 }
 
 

@@ -103,16 +103,16 @@ bool ctSettings::Update(float dt)
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) {
-		HPbar->LowerBar(50);
+		HPbar->LowerBar(25);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
-		HPbar->RecoverBar(25);
+		HPbar->RecoverBar(1);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN) {
-		ManaBar->LowerBar(50);
+		ManaBar->LowerBar(25);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN) {
-		ManaBar->RecoverBar(25);
+		ManaBar->RecoverBar(1);
 	}
 
 	return true;

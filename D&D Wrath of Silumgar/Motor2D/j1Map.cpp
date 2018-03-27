@@ -156,7 +156,7 @@ void j1Map::Draw()
 						iPoint world = MapToWorld(i, j);
 
 							if ((*layersBlit)->layer_type == BACKGROUND)
-								App->render->Blit((*tilesetsBlit)->texture, world.x, world.y, &rect,1.0f); 
+								App->render->MapBlit((*tilesetsBlit)->texture, world.x, world.y, &rect,1.0f); 
 					}
 				}
 			}

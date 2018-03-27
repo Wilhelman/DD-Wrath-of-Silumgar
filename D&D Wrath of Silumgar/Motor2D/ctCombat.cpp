@@ -67,6 +67,16 @@ bool ctCombat::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 
+	// ZOOM
+	if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
+	{
+		App->render->scale_factor += 0.1;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	{
+		App->render->scale_factor -= 0.1;
+	}
+
 	// Draw everything --------------------------------------
 	App->map->Draw();
 

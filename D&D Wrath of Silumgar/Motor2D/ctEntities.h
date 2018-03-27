@@ -11,7 +11,7 @@ enum ComboType;
 enum EntityType
 {
 	CLERIC,
-	
+	 
 
 	NO_TYPE
 };

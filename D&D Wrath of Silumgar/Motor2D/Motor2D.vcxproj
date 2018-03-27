@@ -34,6 +34,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="j1Map.cpp" />
     <ClCompile Include="pugixml.cpp" />
+    <ClCompile Include="UIBar.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UICombatMenu.cpp" />
     <ClCompile Include="UIElement.cpp" />
@@ -70,6 +71,7 @@
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
+    <ClInclude Include="UIBar.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UICombatMenu.h" />
     <ClInclude Include="UIElement.h" />

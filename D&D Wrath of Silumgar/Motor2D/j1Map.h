@@ -6,6 +6,7 @@
 #include "ctModule.h"
 #include "ctAnimation.h"
 #include <string>
+#include <vector>
 #include <list>
 
 class p2String;
@@ -17,14 +18,17 @@ enum LayerTypes
 	BACKGROUND = 0,
 	POSITION,
 	LOGIC,
+	TIER_1,
+	TIER_2,
+	TIER_3,
 
 	LAYER_NOT_DEF
 };
 
 enum TileSetTypes
 {
-	PLATFORM = 0,
-	FLAG,
+	BACKGROUND_TILESET = 0,
+	RED_GREEN_TILESET,
 	
 
 	TILESET_NOT_DEF
@@ -166,10 +170,13 @@ public:
 
 	MapData data;
 	std::string sceneName;
-	iPoint spawn = iPoint({ -1, -1 });
 
 	//for comodity c:
 	MapLayer* collisionLayer = nullptr;
+
+	std::vector<iPoint> tier_1_coords;
+	std::vector<iPoint> tier_2_coords;
+	std::vector<iPoint> tier_3_coords;
 
 private:
 

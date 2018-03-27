@@ -162,6 +162,13 @@ void ctSettings::NavigateDown(std::vector<UIElement*> &current_vector) {
 				arrow->SetParent((*it_vector));
 				break;
 			}
+			else
+			{
+				(*it_vector)->current_state = STATE_NORMAL;
+				it_vector = current_vector.begin();
+				(*it_vector)->current_state = STATE_FOCUSED;
+				arrow->SetParent((*it_vector));
+			}
 		}
 		it_vector++;
 	}
@@ -177,6 +184,13 @@ void ctSettings::NavigateUp(std::vector<UIElement*> &current_vector) {
 				(*it_vector)->current_state = STATE_FOCUSED;
 				arrow->SetParent((*it_vector));
 				break;
+			}
+			else
+			{
+				(*it_vector)->current_state = STATE_NORMAL;
+				it_vector = current_vector.end() - 1;
+				(*it_vector)->current_state = STATE_FOCUSED;
+				arrow->SetParent((*it_vector));
 			}
 		}
 		it_vector++;

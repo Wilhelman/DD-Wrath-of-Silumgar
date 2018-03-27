@@ -66,6 +66,7 @@ private:
 
 	UIBar* HPbar = nullptr;
 	UIBar* ManaBar = nullptr;
+	UIBar* EnemyBar = nullptr;
 };
 
 

@@ -5,6 +5,8 @@
 #include "ctGui.h"
 #include "UIElement.h"
 
+struct ctPerfTimer;
+
 class UIBar : public UIElement
 {
 public:
@@ -19,6 +21,7 @@ public:
 	int current_quantity = 0;
 	iPoint bar_pos = {0,0};
 	UI_Type bar_type;
+	ctPerfTimer yellow_bar_time;
 
 
 public:

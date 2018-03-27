@@ -2,6 +2,7 @@
 #include "UIBar.h"
 #include "ctLog.h"
 #include "ctInput.h"
+#include "ctPerfTimer.h"
 
 UIBar::UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
@@ -26,6 +27,10 @@ UIBar::UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, U
 
 void UIBar::Update()
 {
+	if (yellow_bar != nullptr && yellow_bar_time.ReadMs() > 500) {
+		App->gui->DeleteUIElement(*yellow_bar);
+		yellow_bar = nullptr;
+	}
 }
 
 void UIBar::LowerBar(int quantity)
@@ -87,6 +92,7 @@ void UIBar::DrawYellowBar() {
 		App->gui->DeleteUIElement(*yellow_bar);
 	}
 	yellow_bar = App->gui->AddUIImage(bar_pos.x+current_width, bar_pos.y, { 582,129,(previous_width-current_width),22 });
+	yellow_bar_time.Start();
 }
 
 int UIBar::CalculateBarWidth(int quantity) {

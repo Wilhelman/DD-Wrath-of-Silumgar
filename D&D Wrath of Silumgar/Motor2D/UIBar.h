@@ -15,12 +15,15 @@ public:
 	UIElement* yellow_bar = nullptr;
 	int max_width = 570;
 	int max_capacity = 0;
+	iPoint bar_pos = {0,0};
 
 
 public:
 	UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, UIElement* parent = nullptr);
 
 	void Update();
+
+	int CalculateBarWidth(int quantity);
 };
 
 #endif //__UIBAR_H__

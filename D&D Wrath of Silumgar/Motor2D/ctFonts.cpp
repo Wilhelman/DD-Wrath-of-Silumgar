@@ -103,3 +103,29 @@ bool ctFonts::CalcSize(const char* text, int& width, int& height, _TTF_Font* fon
 
 	return ret;
 }
+
+
+// prints text that will have multiple lines if the width of the text is larger than box_width
+SDL_Texture* ctFonts::PrintTextBox(const char* text, SDL_Color color, _TTF_Font* font, Uint32 box_width, int size)
+{
+
+	SDL_Texture* ret = NULL;
+	default = Load(path, size);
+
+	SDL_Surface* surface = TTF_RenderText_Blended_Wrapped((font) ? font : default, text, color, box_width);
+	SDL_SetSurfaceAlphaMod(surface, color.a);
+
+	if (surface == NULL)
+	{
+		LOG("Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError());
+	}
+	else
+	{
+		ret = App->tex->LoadSurface(surface);
+		SDL_FreeSurface(surface);
+	}
+
+	return ret;
+
+
+}

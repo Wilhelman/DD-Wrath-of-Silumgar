@@ -114,6 +114,8 @@ void UIElement::Draw(SDL_Texture* sprites)
 		case LABEL:
 			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect);
 			break;
+		case TEXTBOX:
+			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect);
 		default:
 			break;
 		}

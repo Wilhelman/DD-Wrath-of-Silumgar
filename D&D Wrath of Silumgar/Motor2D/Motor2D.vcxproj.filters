@@ -114,6 +114,9 @@
     <ClCompile Include="ctSettings.cpp">
       <Filter>Core\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="UITextBox.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -211,6 +214,9 @@
     </ClInclude>
     <ClInclude Include="ctSettings.h">
       <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="UITextBox.h">
+      <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

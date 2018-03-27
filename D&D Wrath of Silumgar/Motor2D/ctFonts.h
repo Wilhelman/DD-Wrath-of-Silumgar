@@ -34,6 +34,8 @@ public:
 
 	bool CalcSize(const char* text, int& width, int& height, _TTF_Font* font = NULL) const;
 
+	SDL_Texture* PrintTextBox(const char* text, SDL_Color color, _TTF_Font* font, Uint32 box_width, int size);
+
 public:
 
 	std::list<_TTF_Font*>	fonts;

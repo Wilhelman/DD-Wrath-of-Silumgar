@@ -11,6 +11,7 @@
 #include "UIImage.h"
 #include "UIButton.h"
 #include "UICombatMenu.h"
+#include "UITextBox.h"
 
 #include "UIElement.h"
 
@@ -168,6 +169,16 @@ UIElement* ctGui::AddUICombatMenu(int position_x, int position_y, ctModule* call
 	LOG("Error: Cant add the UICombatMenu");
 	return nullptr;
 }
+
+UIElement* ctGui::AddUITextBox(int position_x, int position_y, int size, int box_width, std::string text, SDL_Color color, UIElement* parent, const char* path) {
+	UIElement* tmp_lbl = nullptr;
+
+	tmp_lbl = new UITextBox(position_x, position_y, TEXTBOX, text, color, size, box_width, path, parent);
+	ui_elements.push_back(tmp_lbl);
+
+	return tmp_lbl;
+}
+
 
 UIElement* ctGui::GetElementUnderMouse(int x, int y)
 {

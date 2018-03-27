@@ -17,6 +17,7 @@ enum UI_Type
 	BUTTON,
 	IMAGE,
 	COMBATMENU,
+	TEXTBOX,
 
 	UI_NOT_DEF
 };
@@ -59,6 +60,7 @@ public:
 	UIElement* AddUIButton(int position_x, int position_y, SDL_Rect normal_rect, SDL_Rect focused_rect, SDL_Rect pressed_rect, ctModule* callback = nullptr, UIElement* parent = nullptr);
 	UIElement* AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback = nullptr, UIElement* parent = nullptr, const char* path = DEFAULT_FONT);
 	UIElement* AddUICombatMenu(int position_x, int position_y, ctModule* callback = nullptr, UIElement* parent = nullptr);
+	UIElement* AddUITextBox(int position_x, int position_y, int size, int box_width, std::string text, SDL_Color color, UIElement* parent = nullptr, const char* path = DEFAULT_FONT);
 	UIElement* GetElementUnderMouse(int x, int y);
 
 private:

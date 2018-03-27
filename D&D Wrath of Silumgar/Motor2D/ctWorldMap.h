@@ -67,6 +67,9 @@ private:
 
 	bool map_generated = false;
 
+	std::string name_spritesheet_world_map;
+	SDL_Texture* spritesheet_world_map = nullptr;
+
 };
 
 

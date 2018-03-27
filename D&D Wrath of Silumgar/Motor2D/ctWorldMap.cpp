@@ -109,9 +109,11 @@ bool ctWorldMap::PreUpdate()
 bool ctWorldMap::Update(float dt)
 {
 
+
+
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
 
-		WorldMapElement* tmp_map_element = all_map_elements.back();
+		WorldMapElement* tmp_map_element = final_map_elements.back();
 
 		App->combat->SetSceneName(tmp_map_element->scene_name);
 
@@ -121,6 +123,7 @@ bool ctWorldMap::Update(float dt)
 
 	// Draw everything --------------------------------------
 	App->map->Draw();
+
 
 	return true;
 }
@@ -226,6 +229,8 @@ void ctWorldMap::GenerateNewRandomlyMap()
 
 		final_map_elements.push_back(tier_2_vec.at(random_number));
 	}
+
+
 
 	map_generated = true;
 }

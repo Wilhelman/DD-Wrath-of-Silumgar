@@ -5,6 +5,7 @@
 #include "ctGui.h"
 #include "UIElement.h"
 
+struct UIBar;
 
 class ctSettings : public ctModule
 {
@@ -63,7 +64,8 @@ private:
 	void TurnDown(std::vector<UIElement*> &current_vector);
 	uint NumberToPercentage(uint num, uint max_num);
 
-
+	UIBar* HPbar = nullptr;
+	UIBar* ManaBar = nullptr;
 };
 
 

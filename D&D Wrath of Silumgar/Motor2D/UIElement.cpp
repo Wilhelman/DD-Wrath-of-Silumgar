@@ -45,7 +45,9 @@ void UIElement::Update()
 			current_state = UI_State::STATE_MOUSE_ENTER;
 			if (this->type == BUTTON)
 				((UIButton*)this)->UpdateButtonWithSelfRect(((UIButton*)this)->btn_focused);
-			this->callback->OnUITrigger(this, current_state);
+			if (this->callback != nullptr) {
+				this->callback->OnUITrigger(this, current_state);
+			}
 		}
 
 		if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_REPEAT && current_state == STATE_MOUSE_ENTER) 
@@ -85,7 +87,9 @@ void UIElement::Update()
 			current_state = UI_State::STATE_MOUSE_LEAVE;
 			if (this->type == BUTTON)
 				((UIButton*)this)->UpdateButtonWithSelfRect(((UIButton*)this)->btn_normal);
-			this->callback->OnUITrigger(this, current_state);
+			if (this->callback != nullptr) {
+				this->callback->OnUITrigger(this, current_state);
+			}
 		}
 		else if (current_state == STATE_MOUSE_LEAVE)
 			current_state = STATE_NORMAL;

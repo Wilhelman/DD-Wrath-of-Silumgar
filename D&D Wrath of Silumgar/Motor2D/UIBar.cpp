@@ -7,7 +7,7 @@
 UIBar::UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
 	this->callback = callback;
-
+	bar_type = type;
 	bar_pos.x = x;
 	bar_pos.y = y;
 	this->max_capacity = max_capacity;
@@ -35,12 +35,22 @@ void UIBar::LowerBar(int quantity)
 	if ((current_quantity-quantity) >= 0) {
 		int new_width = CalculateBarWidth(-quantity);
 		App->gui->DeleteUIElement(*upper_bar);
-		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+		if (bar_type == LIFEBAR) {
+			upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+		}
+		else if (bar_type == MANABAR) {
+			upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,new_width,22 });
+		}
 	}
 	else {
 		int new_width = CalculateBarWidth(-current_quantity);
 		App->gui->DeleteUIElement(*upper_bar);
-		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+		if (bar_type == LIFEBAR) {
+			upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+		}
+		else if (bar_type == MANABAR) {
+			upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,new_width,22 });
+		}
 	}
 }
 
@@ -50,12 +60,22 @@ void UIBar::RecoverBar(int quantity)
 	if ((current_quantity+quantity) < max_capacity) {
 		int new_width = CalculateBarWidth(quantity);
 		App->gui->DeleteUIElement(*upper_bar);
-		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+		if (bar_type == LIFEBAR) {
+			upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+		}
+		else if (bar_type == MANABAR) {
+			upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,new_width,22 });
+		}
 	}
 	else {
 		int new_width = CalculateBarWidth((max_capacity-current_quantity));
 		App->gui->DeleteUIElement(*upper_bar);
-		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+		if (bar_type == LIFEBAR) {
+			upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+		}
+		else if (bar_type == MANABAR) {
+			upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,new_width,22 });
+		}
 	}
 }
 

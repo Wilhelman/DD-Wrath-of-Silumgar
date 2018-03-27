@@ -9,7 +9,6 @@ class UIBar : public UIElement
 {
 public:
 
-	//570 22
 	UIElement* lower_bar = nullptr;
 	UIElement* upper_bar = nullptr;
 	UIElement* yellow_bar = nullptr;
@@ -18,6 +17,7 @@ public:
 	int max_capacity = 0;
 	int current_quantity = 0;
 	iPoint bar_pos = {0,0};
+	UI_Type bar_type;
 
 
 public:
@@ -28,6 +28,7 @@ public:
 	void RecoverBar(int quantity);
 
 	int CalculateBarWidth(int quantity);
+
 };
 
 #endif //__UIBAR_H__

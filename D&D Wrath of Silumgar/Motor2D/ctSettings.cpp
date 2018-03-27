@@ -7,6 +7,7 @@
 #include "ctRender.h"
 #include "ctWindow.h"
 #include "ctEntities.h"
+#include "UIBar.h"
 
 #include "ctSettings.h"
 
@@ -64,6 +65,9 @@ bool ctSettings::Start()
 		LOG("Error playing music in ctMainMenu Start");
 	}
 
+	HPbar = (UIBar*)App->gui->AddUIBar(0,150, 100,LIFEBAR,this);
+	ManaBar = (UIBar*)App->gui->AddUIBar(0, 300, 100, MANABAR, this);
+
 	return ret;
 }
 
@@ -96,6 +100,19 @@ bool ctSettings::Update(float dt)
 	//TurnDownVolume
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
 		TurnDown(labels);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) {
+		HPbar->LowerBar(50);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
+		HPbar->RecoverBar(25);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN) {
+		ManaBar->LowerBar(50);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN) {
+		ManaBar->RecoverBar(25);
 	}
 
 	return true;

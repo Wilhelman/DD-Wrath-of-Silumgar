@@ -38,9 +38,18 @@ bool ctSettings::Awake()
 bool ctSettings::Start()
 {
 	bool ret = true;
+	uint music_num = NumberToPercentage(music_volume_value, max_volume);
+	char music_volume_char[(((sizeof music_num) * CHAR_BIT) + 2) / 3 + 2];
+	sprintf_s(music_volume_char, "%d", music_num);
+
+	uint fx_num = NumberToPercentage(fx_volume_value, max_volume);
+	char fx_volume_char[(((sizeof fx_num) * CHAR_BIT) + 2) / 3 + 2];
+	sprintf_s(fx_volume_char, "%d", fx_num);
 
 	music_volume_label = App->gui->AddUILabel(35, 10, "Music Volume", { 255,255,255,255 }, 15, this);
+	music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 15, this);
 	fx_volume_label = App->gui->AddUILabel(35, 30, "Fx Volume", { 255,255,255,255 }, 15, this);
+	fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 15, this);
 	back_label = App->gui->AddUILabel(35, 50, "Back to Menu", { 255,255,255,255 }, 15, this);
 	arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this);
 	music_volume_label->current_state = STATE_FOCUSED;
@@ -79,6 +88,14 @@ bool ctSettings::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
 		ExecuteComand(labels);
 	}
+	//TurnUp volume
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN) {
+		TurnUp(labels);
+	}
+	//TurnDownVolume
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
+		TurnDown(labels);
+	}
 
 	return true;
 }
@@ -105,6 +122,8 @@ bool ctSettings::CleanUp()
 	music_volume_label = nullptr;
 	fx_volume_label = nullptr;
 	back_label = nullptr;
+	music_volume = nullptr;
+	fx_volume = nullptr;
 	arrow = nullptr;
 	labels.clear();
 	
@@ -182,4 +201,62 @@ void ctSettings::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 	}
 
+}
+
+void ctSettings::TurnUp(std::vector<UIElement*> &current_vector) {
+	if (music_volume_label->current_state == STATE_FOCUSED) {
+		if (music_volume_value <= 120) {
+			music_volume_value += 8;
+			uint music_num = NumberToPercentage(music_volume_value, max_volume);
+			char music_volume_char[(((sizeof music_num) * CHAR_BIT) + 2) / 3 + 2];
+			sprintf_s(music_volume_char, "%d", music_num);
+			App->gui->DeleteUIElement(*music_volume);
+			music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 15, this);
+		}
+		Mix_VolumeMusic(music_volume_value);
+	}
+	else if (fx_volume_label->current_state == STATE_FOCUSED) {
+		if (fx_volume_value <= 120) {
+			fx_volume_value += 8;
+			uint fx_num = NumberToPercentage(fx_volume_value, max_volume);
+			char fx_volume_char[(((sizeof fx_num) * CHAR_BIT) + 2) / 3 + 2];
+			sprintf_s(fx_volume_char, "%d", fx_num);
+			App->gui->DeleteUIElement(*fx_volume);
+			fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 15, this);
+		}
+		//Mix_VolumeChunk(Mix_GetChunk(1), fx_volume_value);
+	}
+}
+
+void ctSettings::TurnDown(std::vector<UIElement*> &current_vector) {
+	if (music_volume_label->current_state == STATE_FOCUSED) {
+		if (music_volume_value >= 8) {
+			music_volume_value -= 8;
+			uint music_num = NumberToPercentage(music_volume_value, max_volume);
+			char music_volume_char[(((sizeof music_num) * CHAR_BIT) + 2) / 3 + 2];
+			sprintf_s(music_volume_char, "%d", music_num);
+			App->gui->DeleteUIElement(*music_volume);
+			music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 15, this);
+		}
+		Mix_VolumeMusic(music_volume_value);
+	}
+	else if (fx_volume_label->current_state == STATE_FOCUSED) {
+		if (fx_volume_value >= 8) {
+			fx_volume_value -= 8;
+			uint fx_num = NumberToPercentage(fx_volume_value, max_volume);
+			char fx_volume_char[(((sizeof fx_num) * CHAR_BIT) + 2) / 3 + 2];
+			sprintf_s(fx_volume_char, "%d", fx_num);
+			App->gui->DeleteUIElement(*fx_volume);
+			fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 15, this);
+		}
+		//Mix_VolumeChunk(Mix_GetChunk(1), fx_volume_value);
+	}
+}
+
+uint ctSettings::NumberToPercentage(uint num, uint max_num) {
+	uint percentage;
+
+	percentage = (num * 100) / max_num;
+
+	return percentage;
 }

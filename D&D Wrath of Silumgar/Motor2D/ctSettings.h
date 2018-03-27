@@ -39,6 +39,9 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
+	uint music_volume_value = 64;
+	uint fx_volume_value = 64;
+
 private:
 	bool quit_pressed = false;
 	
@@ -46,12 +49,18 @@ private:
 	UIElement* music_volume_label = nullptr;
 	UIElement* fx_volume_label = nullptr;
 	UIElement* back_label = nullptr;
+	UIElement* music_volume = nullptr;
+	UIElement* fx_volume = nullptr;
 	UIElement* arrow = nullptr;
 	std::vector<UIElement*> labels;
+	uint max_volume = 128;
 
 	void NavigateDown(std::vector<UIElement*> &current_vector);
 	void NavigateUp(std::vector<UIElement*> &current_vector);
 	void ExecuteComand(std::vector<UIElement*> &current_vector);
+	void TurnUp(std::vector<UIElement*> &current_vector);
+	void TurnDown(std::vector<UIElement*> &current_vector);
+	uint NumberToPercentage(uint num, uint max_num);
 
 
 };

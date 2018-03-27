@@ -30,7 +30,7 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 		else if (tmp == "run_forward")
 			LoadAnimation(animations, &run_forward);
 	}
-
+	LoadProperties(node->child("statistics"));
 	animation = &idle;
 
 }

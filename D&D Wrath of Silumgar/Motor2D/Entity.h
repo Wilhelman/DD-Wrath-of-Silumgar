@@ -101,6 +101,7 @@ public:
 	virtual void SetEntitiesSpeed(float dt) {};
 
 	virtual void LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation) {};
+	bool LoadProperties(pugi::xml_node properties);
 };
 
 #endif // __ENTITY_H__

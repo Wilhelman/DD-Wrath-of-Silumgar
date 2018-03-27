@@ -10,6 +10,7 @@
 #include "UILabel.h"
 #include "UIImage.h"
 #include "UIButton.h"
+#include "UICombatMenu.h"
 
 #include "UIElement.h"
 
@@ -149,13 +150,22 @@ UIElement* ctGui::AddUIButton(int position_x, int position_y, SDL_Rect normal_re
 	return nullptr;
 }
 
-UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, ctModule* callback, UIElement* parent) {
+UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback, UIElement* parent, const char* path) {
 
-	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color, callback, parent);
+	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color, size, callback,path, parent);
 	ui_elements.push_back(tmp_lbl);
 	return tmp_lbl;
 
 	LOG("Error: Cant add the UILabel");
+	return nullptr;
+}
+
+UIElement* ctGui::AddUICombatMenu(int position_x, int position_y, ctModule* callback, UIElement* parent) {
+	UIElement* tmp_cmenu = new UICombatMenu(position_x, position_y, COMBATMENU, callback, parent);
+	ui_elements.push_back(tmp_cmenu);
+	return tmp_cmenu;
+
+	LOG("Error: Cant add the UICombatMenu");
 	return nullptr;
 }
 

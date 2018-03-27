@@ -108,6 +108,9 @@
     <ClCompile Include="j1Map.cpp">
       <Filter>Core\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="UICombatMenu.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="j1Map.h">
       <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="UICombatMenu.h">
+      <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

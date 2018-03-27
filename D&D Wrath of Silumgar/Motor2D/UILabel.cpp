@@ -2,17 +2,25 @@
 #include "UILabel.h"
 #include "ctLog.h"
 #include "ctGui.h"
-#include "ctFonts.h"
+//#include "ctFonts.h"
 
-UILabel::UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
+UILabel::UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, int size, ctModule* callback, const char* path, UIElement* parent) : UIElement(x, y, type, parent)
 {
-	this->text = text;
 	this->callback = callback;
-	texture = App->fonts->Print(text.c_str(), color, App->fonts->default);
+	this->text = text;
+
+	App->fonts->size = size;
+	_TTF_Font* newFont = App->fonts->Load(path, size);
+
+	texture = App->fonts->Print(text.c_str(), color, newFont);
 
 	int width = 0, height = 0;
-	App->fonts->CalcSize(this->text.c_str(), width, height, App->fonts->default);
+	App->fonts->CalcSize(this->text.c_str(), width, height, newFont);
 	current_rect.w = width;
 	current_rect.h = height;
 }
 
+void UILabel::Update()
+{
+
+}

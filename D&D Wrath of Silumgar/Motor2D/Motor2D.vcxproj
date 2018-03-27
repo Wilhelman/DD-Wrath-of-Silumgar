@@ -33,6 +33,7 @@
     <ClCompile Include="j1Map.cpp" />
     <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="UIButton.cpp" />
+    <ClCompile Include="UICombatMenu.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="UIImage.cpp" />
     <ClCompile Include="UILabel.cpp" />
@@ -65,6 +66,7 @@
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <ClInclude Include="UIButton.h" />
+    <ClInclude Include="UICombatMenu.h" />
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="UIImage.h" />
     <ClInclude Include="UILabel.h" />

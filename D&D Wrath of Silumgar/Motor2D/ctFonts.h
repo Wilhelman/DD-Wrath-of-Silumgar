@@ -5,6 +5,7 @@
 #include "SDL\include\SDL_pixels.h"
 
 #define DEFAULT_FONT "Fonts/8bitlim.ttf"
+#define Second_Font "Fonts/FritzQuadrata Regular.ttf"
 #define DEFAULT_FONT_SIZE 15
 
 struct SDL_Texture;
@@ -37,6 +38,8 @@ public:
 
 	std::list<_TTF_Font*>	fonts;
 	_TTF_Font*			default;
+	const char* path;
+	int size = DEFAULT_FONT_SIZE;
 };
 
 

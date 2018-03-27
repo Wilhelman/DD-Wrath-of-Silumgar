@@ -186,13 +186,13 @@ bool ctRender::MapBlit(SDL_Texture* texture, int x, int y, const SDL_Rect* secti
 {
 	bool ret = true;
 
-
+	uint scale = App->win->GetScale();
 	SDL_Rect rect;
 
 	if (section != NULL)
 	{
-		rect.w = section->w*scale_factor;
-		rect.h = section->h*scale_factor;
+		rect.w = section->w*scale;
+		rect.h = section->h*scale;
 	}
 
 	rect.x = (int)((camera.x * speed) + ((x / section->w) * rect.w));

@@ -14,6 +14,11 @@
 #include "Elf.h"
 #include "Warrior.h"
 
+#include "Kobold.h"
+#include "Owlbear.h"
+#include "Gnoll.h"
+#include "GnollArcher.h"
+
 
 ctEntities::ctEntities()
 {
@@ -37,7 +42,11 @@ bool ctEntities::Awake(pugi::xml_node& config)
 	dwarf_spritesheet_name = config.child("dwarf").attribute("spritesheetName").as_string();
 	elf_spritesheet_name = config.child("elf").attribute("spritesheetName").as_string();
 	warrior_spritesheet_name = config.child("warrior").attribute("spritesheetName").as_string();
-	
+
+	kobold_spritesheet_name = config.child("kobold").attribute("spritesheetName").as_string();
+	gnoll_spritesheet_name = config.child("gnollA").attribute("spritesheetName").as_string();
+	gnollArcher_spritesheet_name = config.child("bowGnoll").attribute("spritesheetName").as_string();
+	owlbear_spritesheet_name = config.child("owlbear").attribute("spritesheetName").as_string();
 	return ret;
 }
 
@@ -51,11 +60,16 @@ bool ctEntities::Start()
 	elf_spritesheet = App->tex->Load(elf_spritesheet_name.data());
 	warrior_spritesheet = App->tex->Load(warrior_spritesheet_name.data());
 
-	if (cleric_spritesheet == NULL|| dwarf_spritesheet == NULL || elf_spritesheet == NULL || warrior_spritesheet == NULL) {
+	kobold_spritesheet = App->tex->Load(kobold_spritesheet_name.data());
+	gnoll_spritesheet = App->tex->Load(gnoll_spritesheet_name.data());
+	gnollArcher_spritesheet = App->tex->Load(gnollArcher_spritesheet_name.data());
+	owlbear_spritesheet = App->tex->Load(owlbear_spritesheet_name.data());
+
+	if (cleric_spritesheet == NULL || dwarf_spritesheet == NULL || elf_spritesheet == NULL || warrior_spritesheet == NULL) {
 		LOG("Error loading entities spritesheet!!");
 		ret = false;
 	}
-	
+
 	if (!ret)
 		return false;
 
@@ -97,12 +111,24 @@ bool ctEntities::Update(float dt)
 		case WARRIOR:
 			if (entities.at(i) != nullptr) entities[i]->Draw(warrior_spritesheet);
 			break;
+		case KOBOLD:
+			if (entities.at(i) != nullptr) entities[i]->Draw(kobold_spritesheet);
+			break;
+		case GNOLL:
+			if (entities.at(i) != nullptr) entities[i]->Draw(gnoll_spritesheet);
+			break;
+		case GNOLL_ARCHER:
+			if (entities.at(i) != nullptr) entities[i]->Draw(gnollArcher_spritesheet);
+			break;
+		case OWLBEAR:
+			if (entities.at(i) != nullptr) entities[i]->Draw(owlbear_spritesheet);
+			break;
 		default:
 			break;
 		}
-		
+
 	}
-		
+
 
 	return true;
 }
@@ -117,6 +143,11 @@ bool ctEntities::CleanUp()
 	App->tex->UnLoad(dwarf_spritesheet);
 	App->tex->UnLoad(elf_spritesheet);
 	App->tex->UnLoad(warrior_spritesheet);
+
+	App->tex->UnLoad(kobold_spritesheet);
+	App->tex->UnLoad(gnoll_spritesheet);
+	App->tex->UnLoad(gnollArcher_spritesheet);
+	App->tex->UnLoad(owlbear_spritesheet);
 
 	for (uint i = 0; i < entities.size(); ++i)
 	{
@@ -165,6 +196,30 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 		Warrior* warrior = new Warrior(x, y, WARRIOR);
 		entities.push_back(warrior);
 		App->task_manager->Enemy = warrior; //guarrada: to improve (quitar include taskmanager)
+		ret = true;
+		break;
+	}
+	case EntityType::KOBOLD: {
+		Kobold* kobold = new Kobold(x, y, KOBOLD);
+		entities.push_back(kobold);
+		ret = true;
+		break;
+	}
+	case EntityType::GNOLL: {
+		Gnoll* gnoll = new Gnoll(x, y, GNOLL);
+		entities.push_back(gnoll);
+		ret = true;
+		break;
+	}
+	case EntityType::GNOLL_ARCHER: {
+		GnollArcher* gnollArcher = new GnollArcher(x, y, GNOLL_ARCHER);
+		entities.push_back(gnollArcher);
+		ret = true;
+		break;
+	}
+	case EntityType::OWLBEAR: {
+		Owlbear* owlbear = new Owlbear(x, y, OWLBEAR);
+		entities.push_back(owlbear);
 		ret = true;
 		break;
 	}
@@ -226,6 +281,62 @@ Warrior* ctEntities::GetWarrior() const {
 		{
 			if (entities[i]->type == WARRIOR)
 				return (Warrior*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+Kobold* ctEntities::GetKobold() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == KOBOLD)
+				return (Kobold*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+Gnoll* ctEntities::GetGnoll() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == GNOLL)
+				return (Gnoll*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+gnollArcher* ctEntities::GetGnoll_Archer() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == GNOLL_ARCHER)
+				return (gnollArcher*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+Owlbear* ctEntities::GetOwlbear() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == OWLBEAR)
+				return (Owlbear*)entities[i];
 		}
 	}
 

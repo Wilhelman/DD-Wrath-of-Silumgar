@@ -132,3 +132,8 @@ void ctCombat::SetSceneName(string new_scene_name)
 {
 	scene_name = new_scene_name;
 }
+
+uint ctCombat::CalculatedDamage(Entity* attacker, Entity* defender)
+{
+	return ((attacker->base_stats.base_constitution * 3)*(100 - defender->base_stats.base_physical_defense)) / 100;
+}

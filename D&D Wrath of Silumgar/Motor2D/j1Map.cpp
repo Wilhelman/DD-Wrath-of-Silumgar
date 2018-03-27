@@ -116,7 +116,6 @@ void j1Map::setAllLogicForMap()
 		}
 		tilesetsBlit++;
 	}
-	LOG("as");
 }
 
 void j1Map::Draw()

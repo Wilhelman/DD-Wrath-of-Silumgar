@@ -40,6 +40,7 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 	srand(time(NULL));
 
 	world_map_tmx = config.child("world_map_tmx").attribute("name").as_string();
+	name_spritesheet_world_map = config.child("spritesheet").attribute("name").as_string();
 
 	//read rects from node
 	for (pugi::xml_node map_element = config.child("world_map_elements").child("map_element"); map_element && ret; map_element = map_element.next_sibling("map_element"))
@@ -79,12 +80,12 @@ bool ctWorldMap::Start()
 	bool ret = true;
 
 	//TO DELETE 1
-	/*spritesheet = App->tex->Load(spritesheet_name.c_str());
+	spritesheet_world_map = App->tex->Load(name_spritesheet_world_map.c_str());
 
-	if (spritesheet == NULL) {
+	if (spritesheet_world_map == NULL) {
 		LOG("Fail to load spritesheet in WorldMap!");
 		ret = false;
-	}*/
+	}
 
 	
 
@@ -124,6 +125,11 @@ bool ctWorldMap::Update(float dt)
 	// Draw everything --------------------------------------
 	App->map->Draw();
 
+	for (int i = 0; i < final_map_elements.size(); i++)
+	{
+		App->render->Blit(spritesheet_world_map, final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y, &final_map_elements.at(i)->icon_rect, 1.0f);
+		LOG("Printing in Y= %i", final_map_elements.at(i)->coords_in_map.y);
+	}
 
 	return true;
 }
@@ -190,6 +196,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 
 	vector<WorldMapElement*> tier_1_vec;
 	vector<WorldMapElement*> tier_2_vec;
+	vector<WorldMapElement*> tier_3_vec;
 
 	for (int k = 0; k < this->all_map_elements.size(); k++) {
 		switch (this->all_map_elements.at(k)->tier)
@@ -200,13 +207,18 @@ void ctWorldMap::GenerateNewRandomlyMap()
 		case 2:
 			tier_2_vec.push_back(this->all_map_elements.at(k));
 			break;
+		case 3:
+			tier_3_vec.push_back(this->all_map_elements.at(k));
+			break;
 		default:
 			break;
 		}
 	}
 
+	int random_number = -1;
+	int last_random = -1;
+
 	//TIER 1 randomize (useless but whatever)
-	
 	for (int i = 0; i < App->map->tier_1_coords.size(); i++) {
 		/* generate secret number: */
 		int random_number = (rand() % tier_1_vec.size());
@@ -217,8 +229,8 @@ void ctWorldMap::GenerateNewRandomlyMap()
 	}
 
 	//TIER 2 randomize
-	int random_number = 0;
-	int last_random = -1;
+	random_number = -1;
+	last_random = -1;
 	for (int i = 0; i < App->map->tier_2_coords.size(); i++) {
 		/* generate secret number: */
 		while(last_random == random_number)
@@ -228,6 +240,25 @@ void ctWorldMap::GenerateNewRandomlyMap()
 		tier_2_vec.at(random_number)->coords_in_map = App->map->tier_2_coords.at(i);
 
 		final_map_elements.push_back(tier_2_vec.at(random_number));
+	}
+
+	//TIER 3 randomize
+	random_number = -1;
+	last_random = -1;
+	for (int i = 0; i < App->map->tier_3_coords.size(); i++) {
+		/* generate secret number: */
+		while (random_number == last_random) {
+
+			random_number = rand() % tier_3_vec.size();
+			while (tier_3_vec.at(random_number)->coords_in_map.y != 0 && tier_3_vec.at(random_number)->coords_in_map.x != 0)
+				random_number = rand() % tier_3_vec.size();
+
+		}
+		last_random = random_number;
+
+		tier_3_vec.at(last_random)->coords_in_map = App->map->tier_3_coords.at(i);
+
+		final_map_elements.push_back(tier_3_vec.at(last_random));
 	}
 
 

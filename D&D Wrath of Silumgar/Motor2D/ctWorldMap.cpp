@@ -14,6 +14,10 @@
 
 #include "ctFadeToBlack.h"
 
+//randomize libs
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+
 
 
 ctWorldMap::ctWorldMap() : ctModule()
@@ -32,6 +36,9 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 	LOG("Loading World Map");
 	bool ret = true;
 
+	/* initialize random seed: */
+	srand(time(NULL));
+
 	world_map_tmx = config.child("world_map_tmx").attribute("name").as_string();
 
 	//read rects from node
@@ -41,11 +48,13 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 
 		tmp_map_element->tier = map_element.child("tier").attribute("type").as_uint();
 		tmp_map_element->scene_name = map_element.child("scene").attribute("name").as_string();
+		tmp_map_element->icon_rect = { map_element.child("icon_coords").attribute("x").as_int(), map_element.child("icon_coords").attribute("y").as_int(), map_element.child("icon_coords").attribute("width").as_int(), map_element.child("icon_coords").attribute("height").as_int() } ;
 
-		//TODO FOR for each entity in xml and pushback it to the vector
+		//TODO 
+		//FOR for each entity in xml and pushback it to the vector
 
 
-		map_elements.push_back(tmp_map_element);
+		all_map_elements.push_back(tmp_map_element);
 		
 	}
 
@@ -77,10 +86,15 @@ bool ctWorldMap::Start()
 		ret = false;
 	}*/
 
+	
+
 	//Displaying map
 	App->map->sceneName = world_map_tmx.c_str();
 	App->map->Load(App->map->sceneName.c_str());
 	App->map->LayersSetUp();
+
+	if (!map_generated)
+		GenerateNewRandomlyMap();
 
 	return ret;
 }
@@ -97,7 +111,7 @@ bool ctWorldMap::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
 
-		WorldMapElement* tmp_map_element = map_elements.back();
+		WorldMapElement* tmp_map_element = all_map_elements.back();
 
 		App->combat->SetSceneName(tmp_map_element->scene_name);
 
@@ -164,4 +178,54 @@ void ctWorldMap::LoadRect(pugi::xml_node rect_node, SDL_Rect* rect)
 	rect->y = rect_node.attribute("y").as_float();
 	rect->w = rect_node.attribute("width").as_float();
 	rect->h = rect_node.attribute("height").as_float();
+}
+
+void ctWorldMap::GenerateNewRandomlyMap()
+{
+	//this gets the coords of the tile to set the element maps
+	App->map->setAllLogicForMap();
+
+	vector<WorldMapElement*> tier_1_vec;
+	vector<WorldMapElement*> tier_2_vec;
+
+	for (int k = 0; k < this->all_map_elements.size(); k++) {
+		switch (this->all_map_elements.at(k)->tier)
+		{
+		case 1:
+			tier_1_vec.push_back(this->all_map_elements.at(k));
+			break;
+		case 2:
+			tier_2_vec.push_back(this->all_map_elements.at(k));
+			break;
+		default:
+			break;
+		}
+	}
+
+	//TIER 1 randomize (useless but whatever)
+	
+	for (int i = 0; i < App->map->tier_1_coords.size(); i++) {
+		/* generate secret number: */
+		int random_number = (rand() % tier_1_vec.size());
+
+		tier_1_vec.at(random_number)->coords_in_map = App->map->tier_1_coords.at(i);
+		
+		final_map_elements.push_back(tier_1_vec.at(random_number));
+	}
+
+	//TIER 2 randomize
+	int random_number = 0;
+	int last_random = -1;
+	for (int i = 0; i < App->map->tier_2_coords.size(); i++) {
+		/* generate secret number: */
+		while(last_random == random_number)
+			random_number = rand() % tier_2_vec.size();
+		last_random = random_number;
+
+		tier_2_vec.at(random_number)->coords_in_map = App->map->tier_2_coords.at(i);
+
+		final_map_elements.push_back(tier_2_vec.at(random_number));
+	}
+
+	map_generated = true;
 }

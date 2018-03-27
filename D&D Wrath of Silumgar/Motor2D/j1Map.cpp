@@ -48,16 +48,16 @@ bool j1Map::Awake(pugi::xml_node& config)
 void j1Map::LayersSetUp()
 {
 	
-	std::list<TileSet*>::iterator tilesetsToCheck = this->data.tilesets.end();
+	std::list<TileSet*>::iterator tilesetsToCheck = this->data.tilesets.begin();
 
-	while (tilesetsToCheck != this->data.tilesets.begin())
+	while (tilesetsToCheck != this->data.tilesets.end())
 	{
-		/*if ((*tilesetsToCheck)->name == "environment-tiles")
-			(*tilesetsToCheck)->tileset_type = PLATFORM;
-			
-		if ((*tilesetsToCheck)->name == "flag")
-			(*tilesetsToCheck)->tileset_type = FLAG;*/
-		
+		if ((*tilesetsToCheck)->name == "background_map")
+		(*tilesetsToCheck)->tileset_type = BACKGROUND_TILESET;
+
+		if ((*tilesetsToCheck)->name == "RedGreen")
+		(*tilesetsToCheck)->tileset_type = RED_GREEN_TILESET;
+
 		std::list<MapLayer*>::iterator layersToCheck = this->data.layers.begin();
 
 		while (layersToCheck != this->data.layers.end())
@@ -72,65 +72,52 @@ void j1Map::LayersSetUp()
 							(*layersToCheck)->layer_type = BACKGROUND;
 						else if ((*layersToCheck)->name == "logic")
 							(*layersToCheck)->layer_type = LOGIC;
+						else if ((*layersToCheck)->name == "tier_1")
+							(*layersToCheck)->layer_type = TIER_1;
+						else if ((*layersToCheck)->name == "tier_2")
+							(*layersToCheck)->layer_type = TIER_2;
+						else if ((*layersToCheck)->name == "tier_3")
+							(*layersToCheck)->layer_type = TIER_3;
 					}
 				}
 			}
 			layersToCheck++;
 		}
-		tilesetsToCheck--;
+		tilesetsToCheck++;
 	}
 }
 
-/*void j1Map::setAllLogicForMap()
+void j1Map::setAllLogicForMap()
 {
-	std::list<TileSet*>::iterator tilesetsBlit = this->data.tilesets.end();
+	std::list<TileSet*>::iterator tilesetsBlit = this->data.tilesets.begin();
 
-	while (tilesetsBlit != this->data.tilesets.begin())
+	while (tilesetsBlit != this->data.tilesets.end())
 	{
-		std::list<MapLayer*>::iterator layersBlit = data.layers.begin();
+		std::list<MapLayer*>::iterator layersBlit = this->data.layers.begin();
 
 		while (layersBlit != this->data.layers.end())
 		{
-			for (uint i = 0; i < (*layersBlit)->width; i++) 
+			for (uint i = 0; i < (*layersBlit)->width; i++)
 			{
 				for (uint j = 0; j < (*layersBlit)->height; j++)
 				{
 					if ((*layersBlit)->Get(i, j) != 0)
 					{
-						int id = (*layersBlit)->Get(i, j);
-						if ((*layersBlit)->layer_type == LOGIC && ((*tilesetsBlit)->tileset_type == PLATFORM || (*tilesetsBlit)->tileset_type == FLAG))
-						{
-							if(id == 434)
-								spawn = MapToWorld(i, j);
-							if (id == 167) 
-							{
-								SDL_Rect rect = (*tilesetsBlit)->GetTileRect(id);
-								iPoint world = MapToWorld(i, j);
-								rect.x = world.x;
-								rect.y = world.y;
-							}
-						}
-						if ((*layersBlit)->layer_type == ENEMIES && (*tilesetsBlit)->tileset_type == PLATFORM)
-						{
-							/*if (id == 631) { //bat
-								App->entities->SpawnEntity(MapToWorld(i, j).x, MapToWorld(i, j).y, BAT);
-							}
-							if (id == 127) { //slime
-								App->entities->SpawnEntity(MapToWorld(i, j).x, MapToWorld(i, j).y, SLIME);
-							}
-							if (id == 589) { //coin
-								App->entities->SpawnEntity(MapToWorld(i, j).x, MapToWorld(i, j).y, COIN);
-							
-						}
-						
+						if ((*layersBlit)->layer_type == TIER_1 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							tier_1_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == TIER_2 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							tier_2_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == TIER_3 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							tier_3_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 					}
 				}
 			}
 			layersBlit++;
 		}
-		tilesetsBlit--;
+		tilesetsBlit++;
 	}
-}*/
+	LOG("as");
+}
 
 void j1Map::Draw()
 {

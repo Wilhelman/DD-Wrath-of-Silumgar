@@ -7,6 +7,7 @@
 #include "ctRender.h"
 #include "ctWindow.h"
 #include "ctEntities.h"
+#include "ctTaskManager.h"
 
 #include "ctCombat.h"
 #include "ctWorldMap.h"
@@ -51,11 +52,12 @@ bool ctCombat::Start()
 	App->map->Load(App->map->sceneName.c_str());
 	App->map->LayersSetUp();
 
-	App->entities->SpawnEntity(350, 300, ELF);
-	App->entities->SpawnEntity(250, 300, DWARF);
-	App->entities->SpawnEntity(450, 300, WARRIOR);
+	//App->entities->SpawnEntity(350, 300, ELF);
+	//App->entities->SpawnEntity(250, 300, DWARF);
+	//App->entities->SpawnEntity(450, 300, WARRIOR);
 	App->entities->SpawnEntity(50, 300, CLERIC);
-
+	App->entities->SpawnEntity(500, 300, WARRIOR);
+	
 	return ret;
 }
 

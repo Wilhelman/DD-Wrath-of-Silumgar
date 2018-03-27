@@ -80,13 +80,13 @@ struct Skill {
 class Entity
 {
 protected:
-	ctAnimation* animation = nullptr;
+	
 	bool key_entities_speed = false;
 
 	
 
 public:
-
+	ctAnimation* animation = nullptr;
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);
 	EntityType type = EntityType::NO_TYPE;

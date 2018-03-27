@@ -22,6 +22,7 @@ class ctCombat;
 class ctEntities;
 class ctGui;
 class ctFonts;
+class ctTaskManager;
 class ctFadeToBlack;
 
 class ctApp
@@ -94,6 +95,7 @@ public:
 	ctEntities*			entities = nullptr;
 	ctGui*				gui = nullptr;
 	ctFonts*			fonts = nullptr;
+	ctTaskManager*		task_manager = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;
 
 	bool				cap_state = false;

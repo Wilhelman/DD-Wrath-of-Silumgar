@@ -7,6 +7,7 @@
 #include "ctWindow.h"
 #include "ctLog.h"
 #include "ctFadeToBlack.h"
+#include "ctTaskManager.h"
 
 #include "Cleric.h"
 #include "Dwarf.h"
@@ -144,6 +145,7 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 	case EntityType::CLERIC: {
 		Cleric* cleric = new Cleric(x, y, CLERIC);
 		entities.push_back(cleric);
+		App->task_manager->Player = cleric; //guarrada: to improve (quitar include taskmanager)
 		ret = true;
 		break;
 	}
@@ -162,6 +164,7 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 	case EntityType::WARRIOR: {
 		Warrior* warrior = new Warrior(x, y, WARRIOR);
 		entities.push_back(warrior);
+		App->task_manager->Enemy = warrior; //guarrada: to improve (quitar include taskmanager)
 		ret = true;
 		break;
 	}

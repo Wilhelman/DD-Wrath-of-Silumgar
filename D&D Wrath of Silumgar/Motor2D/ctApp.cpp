@@ -18,7 +18,9 @@
 #include "ctEntities.h"
 #include "ctGui.h"
 #include "ctFonts.h"
+#include "ctTaskManager.h"
 #include "ctFadeToBlack.h"
+
 
 // Constructor
 ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
@@ -38,6 +40,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	entities = new ctEntities();
 	gui = new ctGui();
 	fonts = new ctFonts();
+	task_manager = new ctTaskManager();
 	fadeToBlack = new ctFadeToBlack();
 	
 	// Ordered for awake / Start / Update
@@ -54,6 +57,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(entities);
 	AddModule(gui);
 	AddModule(fonts);
+	AddModule(task_manager);
 	AddModule(fadeToBlack);
 
 	// render last to swap buffer

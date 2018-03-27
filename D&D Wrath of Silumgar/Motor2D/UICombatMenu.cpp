@@ -22,7 +22,6 @@ UICombatMenu::UICombatMenu(int x, int y, UI_Type type,ctModule* callback, UIElem
 	upper_points_pos.y = y-20;
 	lower_points_pos.x = x+8;
 	lower_points_pos.y = y+47;
-
 	LOG("UICombatMenu created in x:%i, y:%i", x, y);
 }
 

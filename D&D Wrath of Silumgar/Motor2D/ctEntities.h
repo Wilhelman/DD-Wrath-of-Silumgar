@@ -12,7 +12,8 @@ enum EntityType
 {
 	CLERIC,
 	DWARF,
-	 
+	WARRIOR,
+	ELF,
 
 	NO_TYPE
 };
@@ -20,6 +21,8 @@ enum EntityType
 class Entity;
 class Cleric;
 class Dwarf;
+class Warrior;
+class Elf;
 
 struct SDL_Texture;
 
@@ -47,6 +50,9 @@ public:
 	//getters
 	Cleric* GetCleric()const;
 	Dwarf* GetDwarf()const;
+	Warrior* GetWarrior()const;
+	Elf* GetElf()const;
+
 
 private:
 
@@ -55,8 +61,15 @@ private:
 	//cleric_sources
 	SDL_Texture* cleric_spritesheet = nullptr;
 	std::string cleric_spritesheet_name;
+	//dwarf sources
 	SDL_Texture* dwarf_spritesheet = nullptr;
 	std::string dwarf_spritesheet_name;
+	//warrior sources
+	SDL_Texture* warrior_spritesheet = nullptr;
+	std::string warrior_spritesheet_name;
+	//elf sources
+	SDL_Texture* elf_spritesheet = nullptr;
+	std::string elf_spritesheet_name;
 
 	//todo: delete
 	SDL_Texture* entity_sprites = nullptr;

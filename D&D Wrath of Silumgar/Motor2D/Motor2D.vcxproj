@@ -33,7 +33,11 @@
     <ClCompile Include="Dwarf.cpp" />
     <ClCompile Include="Elf.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Gnoll.cpp" />
+    <ClCompile Include="GnollArcher.cpp" />
     <ClCompile Include="j1Map.cpp" />
+    <ClCompile Include="Kobold.cpp" />
+    <ClCompile Include="Owlbear.cpp" />
     <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="UIBar.cpp" />
     <ClCompile Include="UIButton.cpp" />
@@ -70,8 +74,12 @@
     <ClInclude Include="Dwarf.h" />
     <ClInclude Include="Elf.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Gnoll.h" />
+    <ClInclude Include="GnollArcher.h" />
     <ClInclude Include="j1Map.h" />
+    <ClInclude Include="Kobold.h" />
     <ClInclude Include="MemLeaks.h" />
+    <ClInclude Include="Owlbear.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <ClInclude Include="UIBar.h" />

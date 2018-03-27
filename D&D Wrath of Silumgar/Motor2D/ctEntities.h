@@ -14,6 +14,11 @@ enum EntityType
 	DWARF,
 	ELF,
 	WARRIOR,
+
+	KOBOLD,
+	GNOLL,
+	GNOLL_ARCHER,
+	OWLBEAR,
 	 
 
 	NO_TYPE
@@ -24,6 +29,11 @@ class Cleric;
 class Dwarf;
 class Elf;
 class Warrior;
+
+class Kobold;
+class Gnoll;
+class Gnoll_Archer;
+class Owlbear;
 
 struct SDL_Texture;
 
@@ -53,6 +63,11 @@ public:
 	Dwarf* GetDwarf()const;
 	Elf* GetElf()const;
 	Warrior* GetWarrior()const;
+
+	Kobold* GetKobold()const;
+	Gnoll* GetGnoll()const;
+	Gnoll_Archer* GetGnoll_Archer()const;
+	Owlbear* GetOwlbear()const;
 
 private:
 

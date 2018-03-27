@@ -29,7 +29,7 @@ void UIBar::Update()
 }
 
 int UIBar::CalculateBarWidth(int quantity) {
-	int new_width;
+	int new_width = 0;
 
 	return new_width;
 }

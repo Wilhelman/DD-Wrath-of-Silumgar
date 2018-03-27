@@ -1,19 +1,19 @@
-#ifndef __ctMAINMENU_H__
-#define __ctMAINMENU_H__
+#ifndef __ctSETTINGS_H__
+#define __ctSETTINGS_H__
 
 #include "ctModule.h"
 #include "ctGui.h"
 #include "UIElement.h"
 
 
-class ctMainMenu : public ctModule
+class ctSettings : public ctModule
 {
 public:
 
-	ctMainMenu();
+	ctSettings();
 
 	// Destructor
-	virtual ~ctMainMenu();
+	virtual ~ctSettings();
 
 	// Called before render is available
 	bool Awake();
@@ -43,11 +43,9 @@ private:
 	bool quit_pressed = false;
 	
 
-	UIElement* continue_label = nullptr;
-	UIElement* new_game_label = nullptr;
-	UIElement* settings_label = nullptr;
-	UIElement* about_label = nullptr;
-	UIElement* quit_label = nullptr;
+	UIElement* music_volume_label = nullptr;
+	UIElement* fx_volume_label = nullptr;
+	UIElement* back_label = nullptr;
 	UIElement* arrow = nullptr;
 	std::vector<UIElement*> labels;
 
@@ -59,4 +57,4 @@ private:
 };
 
 
-#endif // __ctMAINMENU_H__
+#endif // __ctSETTINGS_H__

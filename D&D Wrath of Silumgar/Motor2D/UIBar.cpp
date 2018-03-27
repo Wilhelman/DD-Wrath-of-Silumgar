@@ -43,6 +43,7 @@ UIBar::UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, U
 
 void UIBar::Update()
 {
+	//Destroy the yellowbar after 500ms
 	if (yellow_bar != nullptr && yellow_bar_time.ReadMs() > 500) {
 		App->gui->DeleteUIElement(*yellow_bar);
 		yellow_bar = nullptr;
@@ -104,6 +105,7 @@ void UIBar::RecoverBar(int quantity)
 }
 
 void UIBar::DrawYellowBar() {
+	//Draw a yellow bar showing what you've lost
 	if (yellow_bar != nullptr) {
 		App->gui->DeleteUIElement(*yellow_bar);
 	}

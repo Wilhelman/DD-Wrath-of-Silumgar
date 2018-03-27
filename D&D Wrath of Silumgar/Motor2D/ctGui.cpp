@@ -12,6 +12,7 @@
 #include "UIButton.h"
 #include "UICombatMenu.h"
 #include "UITextBox.h"
+#include "UIBar.h"
 
 #include "UIElement.h"
 
@@ -153,7 +154,7 @@ UIElement* ctGui::AddUIButton(int position_x, int position_y, SDL_Rect normal_re
 
 UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback, UIElement* parent, const char* path) {
 
-	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color, size, callback,path, parent);
+	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color, size, callback, path, parent);
 	ui_elements.push_back(tmp_lbl);
 	return tmp_lbl;
 
@@ -177,6 +178,15 @@ UIElement* ctGui::AddUITextBox(int position_x, int position_y, int size, int box
 	ui_elements.push_back(tmp_lbl);
 
 	return tmp_lbl;
+}
+
+UIElement* ctGui::AddUIBar(int position_x, int position_y, int max_capacity, UI_Type barType, ctModule* callback, UIElement* parent) {
+	UIElement* tmp_bar = new UIBar(position_x, position_y, max_capacity, barType, callback, parent);
+	ui_elements.push_back(tmp_bar);
+	return tmp_bar;
+
+	LOG("Error: Cant add the UIBar");
+	return nullptr;
 }
 
 

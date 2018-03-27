@@ -32,17 +32,31 @@ void UIBar::Update()
 void UIBar::LowerBar(int quantity)
 {
 	//Lower width of the bar when losing hp/mana
-	int new_width = CalculateBarWidth(-quantity);
-	App->gui->DeleteUIElement(*upper_bar);
-	upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+	if ((current_quantity-quantity) >= 0) {
+		int new_width = CalculateBarWidth(-quantity);
+		App->gui->DeleteUIElement(*upper_bar);
+		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+	}
+	else {
+		int new_width = CalculateBarWidth(-current_quantity);
+		App->gui->DeleteUIElement(*upper_bar);
+		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+	}
 }
 
 void UIBar::RecoverBar(int quantity)
 {
 	//Recover width of the bar when wining hp/mana
-	int new_width = CalculateBarWidth(quantity);
-	App->gui->DeleteUIElement(*upper_bar);
-	upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+	if ((current_quantity+quantity) < max_capacity) {
+		int new_width = CalculateBarWidth(quantity);
+		App->gui->DeleteUIElement(*upper_bar);
+		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+	}
+	else {
+		int new_width = CalculateBarWidth((max_capacity-current_quantity));
+		App->gui->DeleteUIElement(*upper_bar);
+		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,new_width,22 });
+	}
 }
 
 int UIBar::CalculateBarWidth(int quantity) {

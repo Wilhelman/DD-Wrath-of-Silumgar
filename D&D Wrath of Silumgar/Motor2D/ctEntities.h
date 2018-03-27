@@ -19,7 +19,7 @@ enum EntityType
 	GNOLL,
 	GNOLL_ARCHER,
 	OWLBEAR,
-	 
+
 
 	NO_TYPE
 };
@@ -32,7 +32,7 @@ class Warrior;
 
 class Kobold;
 class Gnoll;
-class Gnoll_Archer;
+class gnollArcher;
 class Owlbear;
 
 struct SDL_Texture;
@@ -66,13 +66,13 @@ public:
 
 	Kobold* GetKobold()const;
 	Gnoll* GetGnoll()const;
-	Gnoll_Archer* GetGnoll_Archer()const;
+	gnollArcher* GetGnoll_Archer()const;
 	Owlbear* GetOwlbear()const;
 
 private:
 
 	std::vector<Entity*> entities;
-
+	///HEROES
 	//cleric_sources
 	SDL_Texture* cleric_spritesheet = nullptr;
 	std::string cleric_spritesheet_name;
@@ -85,6 +85,20 @@ private:
 	//warrior_sources
 	SDL_Texture* warrior_spritesheet = nullptr;
 	std::string warrior_spritesheet_name;
+
+	///ENEMIES
+	//kobold_sources
+	SDL_Texture* kobold_spritesheet = nullptr;
+	std::string kobold_spritesheet_name;
+	//gnoll_sources
+	SDL_Texture* gnoll_spritesheet = nullptr;
+	std::string gnoll_spritesheet_name;
+	//gnollArcher_sources
+	SDL_Texture* gnollArcher_spritesheet = nullptr;
+	std::string gnollArcher_spritesheet_name;
+	//Owlbear_sources
+	SDL_Texture* owlbear_spritesheet = nullptr;
+	std::string owlbear_spritesheet_name;
 
 	//todo: delete
 	SDL_Texture* entity_sprites = nullptr;

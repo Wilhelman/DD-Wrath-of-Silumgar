@@ -11,6 +11,7 @@ enum ComboType;
 enum EntityType
 {
 	CLERIC,
+	DWARF,
 	 
 
 	NO_TYPE
@@ -18,6 +19,7 @@ enum EntityType
 
 class Entity;
 class Cleric;
+class Dwarf;
 
 struct SDL_Texture;
 
@@ -44,6 +46,7 @@ public:
 
 	//getters
 	Cleric* GetCleric()const;
+	Dwarf* GetDwarf()const;
 
 private:
 
@@ -52,6 +55,8 @@ private:
 	//cleric_sources
 	SDL_Texture* cleric_spritesheet = nullptr;
 	std::string cleric_spritesheet_name;
+	SDL_Texture* dwarf_spritesheet = nullptr;
+	std::string dwarf_spritesheet_name;
 
 	//todo: delete
 	SDL_Texture* entity_sprites = nullptr;

@@ -41,6 +41,21 @@
 	</world_map>
 	<entities>
 		<cleric spritesheetName="textures/Characters/Cleric_sheet.png" />
+		<dwarf spritesheetName="textures/Characters/Dwarf_sheet.png" />
+		<elf spritesheetName="textures/Characters/Elf_sheet.png" />
+		<warrior spritesheetName="textures/Characters/Warrior_sheet.png" />
+		<bowGnoll spritesheetName="textures/Enemies/BowGnoll_sheet.png" />
+		<darkWarrior spritesheetName="textures/Enemies/DarkWarrior_sheet.png" />
+		<displacerBeast spritesheetName="textures/Enemies/DisplacerBeast_sheet.png" />
+		<gnollA spritesheetName="textures/Enemies/GnollA_sheet.png" />
+		<goblins spritesheetName="textures/Enemies/Goblins_sheet.png" />
+		<hellbound spritesheetName="textures/Enemies/Hellhound_sheet.png" />
+		<kobold spritesheetName="textures/Enemies/Kobold_sheet.png" />
+		<lich1st spritesheetName="textures/Enemies/Lich1st_sheet.png" />
+		<owlbear spritesheetName="textures/Enemies/Owlbear_sheet.png" />
+		<skeleton spritesheetName="textures/Enemies/Skeleton_sheet.png" />
+		<triton spritesheetName="textures/Enemies/Triton_sheet.png" />
+		<trollLeader spritesheetName="textures/Enemies/TrollLeader_sheet.png" />
 		<spritesheetSource name="textures/" />
 		<player>
 			<fxPlayerJump name="audio/fx/jump_fx.wav" />

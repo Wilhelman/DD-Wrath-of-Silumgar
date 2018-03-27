@@ -9,6 +9,7 @@
 #include "ctFadeToBlack.h"
 
 #include "Cleric.h"
+#include "Dwarf.h"
 
 
 ctEntities::ctEntities()
@@ -30,6 +31,7 @@ bool ctEntities::Awake(pugi::xml_node& config)
 
 	//cleric spritesheet
 	cleric_spritesheet_name = config.child("cleric").attribute("spritesheetName").as_string();
+	dwarf_spritesheet_name = config.child("dwarf").attribute("spritesheetName").as_string();
 	
 	return ret;
 }
@@ -40,8 +42,9 @@ bool ctEntities::Start()
 
 	//cleric spritesheet
 	cleric_spritesheet = App->tex->Load(cleric_spritesheet_name.data());
+	dwarf_spritesheet = App->tex->Load(dwarf_spritesheet_name.data());
 
-	if (cleric_spritesheet == NULL/*|| fighter_spritesheet == NULL*/) {
+	if (cleric_spritesheet == NULL|| dwarf_spritesheet == NULL) {
 		LOG("Error loading entities spritesheet!!");
 		ret = false;
 	}
@@ -78,6 +81,9 @@ bool ctEntities::Update(float dt)
 		case CLERIC:
 			if (entities.at(i) != nullptr) entities[i]->Draw(cleric_spritesheet);
 			break;
+		case DWARF:
+			if (entities.at(i) != nullptr) entities[i]->Draw(dwarf_spritesheet);
+			break;
 		default:
 			break;
 		}
@@ -95,6 +101,7 @@ bool ctEntities::CleanUp()
 
 	//cleric spritesheet
 	App->tex->UnLoad(cleric_spritesheet);
+	App->tex->UnLoad(dwarf_spritesheet);
 
 	for (uint i = 0; i < entities.size(); ++i)
 	{
@@ -126,6 +133,12 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 		ret = true;
 		break;
 	}
+	case EntityType::DWARF: {
+		Dwarf* dwarf = new Dwarf(x, y, DWARF);
+		entities.push_back(dwarf);
+		ret = true;
+		break;
+	}
 	default:
 		break;
 	}
@@ -142,6 +155,20 @@ Cleric* ctEntities::GetCleric() const {
 		{
 			if (entities[i]->type == CLERIC)
 				return (Cleric*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+Dwarf* ctEntities::GetDwarf() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == DWARF)
+				return (Dwarf*)entities[i];
 		}
 	}
 

@@ -11,7 +11,9 @@
 #include "ctCombat.h"
 #include "ctWorldMap.h"
 #include "j1Map.h"
+
 #include "Cleric.h"
+#include "Dwarf.h"
 
 #include "ctFadeToBlack.h"
 
@@ -47,7 +49,7 @@ bool ctCombat::Start()
 	App->map->Load(App->map->sceneName.c_str());
 	App->map->LayersSetUp();
 
-	App->entities->SpawnEntity(50, 100, CLERIC);
+	App->entities->SpawnEntity(50, 300, DWARF);
 
 	return ret;
 }
@@ -91,6 +93,9 @@ bool ctCombat::CleanUp()
 
 	if(App->entities->GetCleric() != nullptr)
 		App->entities->GetCleric()->to_destroy = true;
+
+	if (App->entities->GetDwarf() != nullptr)
+		App->entities->GetDwarf()->to_destroy = true;
 
 	return true;
 }

@@ -30,6 +30,7 @@
     <ClCompile Include="ctTimer.cpp" />
     <ClCompile Include="ctWindow.cpp" />
     <ClCompile Include="ctWorldMap.cpp" />
+    <ClCompile Include="Dwarf.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="j1Map.cpp" />
     <ClCompile Include="pugixml.cpp" />
@@ -63,6 +64,7 @@
     <ClInclude Include="ctTimer.h" />
     <ClInclude Include="ctWindow.h" />
     <ClInclude Include="ctWorldMap.h" />
+    <ClInclude Include="Dwarf.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="j1Map.h" />
     <ClInclude Include="MemLeaks.h" />

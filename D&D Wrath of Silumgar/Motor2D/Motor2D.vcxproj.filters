@@ -117,6 +117,9 @@
     <ClCompile Include="UITextBox.cpp">
       <Filter>Core\Modules\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="Dwarf.cpp">
+      <Filter>Core\Modules\Entities\Heroes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -217,6 +220,9 @@
     </ClInclude>
     <ClInclude Include="UITextBox.h">
       <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Dwarf.h">
+      <Filter>Core\Modules\Entities\Heroes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

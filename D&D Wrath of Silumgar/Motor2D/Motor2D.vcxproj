@@ -31,6 +31,7 @@
     <ClCompile Include="ctWindow.cpp" />
     <ClCompile Include="ctWorldMap.cpp" />
     <ClCompile Include="Dwarf.cpp" />
+    <ClCompile Include="Elf.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="j1Map.cpp" />
     <ClCompile Include="pugixml.cpp" />
@@ -40,6 +41,7 @@
     <ClCompile Include="UIImage.cpp" />
     <ClCompile Include="UILabel.cpp" />
     <ClCompile Include="UITextBox.cpp" />
+    <ClCompile Include="Warrior.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cleric.h" />
@@ -65,6 +67,7 @@
     <ClInclude Include="ctWindow.h" />
     <ClInclude Include="ctWorldMap.h" />
     <ClInclude Include="Dwarf.h" />
+    <ClInclude Include="Elf.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="j1Map.h" />
     <ClInclude Include="MemLeaks.h" />
@@ -76,6 +79,7 @@
     <ClInclude Include="UIImage.h" />
     <ClInclude Include="UILabel.h" />
     <ClInclude Include="UITextBox.h" />
+    <ClInclude Include="Warrior.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2AF9969B-F202-497B-AF30-7BEF9CE8005E}</ProjectGuid>

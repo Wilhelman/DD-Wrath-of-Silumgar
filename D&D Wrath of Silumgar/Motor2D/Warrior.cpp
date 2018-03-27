@@ -8,16 +8,16 @@
 #include "ctAudio.h"
 #include "ctEntities.h"
 
-#include "Dwarf.h"
+#include "Warrior.h"
 
 
-Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
+Warrior::Warrior(int x, int y, EntityType type) : Entity(x, y, type) {
 
 	bool ret = true;
 
 	pugi::xml_document	config_file;
 	pugi::xml_node* node = &App->LoadEntities(config_file);
-	node = &node->child("heroes").child("dwarf");
+	node = &node->child("heroes").child("warrior");
 
 	//todo get the stats
 
@@ -35,14 +35,14 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 
 }
 
-Dwarf::~Dwarf()
+Warrior::~Warrior()
 {
 	LOG("Freeing the player");
 
 }
 
 // Called each loop iteration
-void Dwarf::Update(float dt)
+void Warrior::Update(float dt)
 {
 
 	if (dt > 0)
@@ -55,13 +55,13 @@ void Dwarf::Update(float dt)
 		
 }
 
-void Dwarf::SetPlayerAnimationsSpeed(float dt)
+void Warrior::SetPlayerAnimationsSpeed(float dt)
 {
 	idle.speed = idle_vel * dt;
 	run_forward.speed = run_forward_vel * dt;
 }
 
-void Dwarf::SetEntitiesSpeed(float dt)
+void Warrior::SetEntitiesSpeed(float dt)
 {
 	idle_vel = idle.speed;
 	run_forward_vel = run_forward.speed;
@@ -69,7 +69,7 @@ void Dwarf::SetEntitiesSpeed(float dt)
 	key_entities_speed = true;
 }
 
-void Dwarf::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
+void Warrior::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
 {
 	bool ret = true;
 

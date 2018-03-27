@@ -120,12 +120,6 @@
     <ClCompile Include="Dwarf.cpp">
       <Filter>Core\Modules\Entities\Heroes</Filter>
     </ClCompile>
-    <ClCompile Include="Warrior.cpp">
-      <Filter>Core\Modules\Entities\Heroes</Filter>
-    </ClCompile>
-    <ClCompile Include="Elf.cpp">
-      <Filter>Core\Modules\Entities\Heroes</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -228,12 +222,6 @@
       <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
     <ClInclude Include="Dwarf.h">
-      <Filter>Core\Modules\Entities\Heroes</Filter>
-    </ClInclude>
-    <ClInclude Include="Warrior.h">
-      <Filter>Core\Modules\Entities\Heroes</Filter>
-    </ClInclude>
-    <ClInclude Include="Elf.h">
       <Filter>Core\Modules\Entities\Heroes</Filter>
     </ClInclude>
   </ItemGroup>

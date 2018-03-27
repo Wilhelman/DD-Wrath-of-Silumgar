@@ -74,7 +74,7 @@ void Dwarf::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
 	bool ret = true;
 
 	for (pugi::xml_node frame = animation_node.child("frame"); frame && ret; frame = frame.next_sibling("frame"))
-		animation->PushBack({ frame.attribute("x").as_int() , frame.attribute("y").as_int(), frame.attribute("width").as_int(), frame.attribute("height").as_int() });
+		animation->PushBack({ frame.attribute("x").as_int() , frame.attribute("y").as_int(), frame.attribute("w").as_int(), frame.attribute("h").as_int() });
 
 	animation->speed = animation_node.attribute("speed").as_float();
 	animation->loop = animation_node.attribute("loop").as_bool();

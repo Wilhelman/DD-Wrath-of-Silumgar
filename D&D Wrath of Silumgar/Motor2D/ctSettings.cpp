@@ -46,6 +46,7 @@ bool ctSettings::Start()
 	char fx_volume_char[(((sizeof fx_num) * CHAR_BIT) + 2) / 3 + 2];
 	sprintf_s(fx_volume_char, "%d", fx_num);
 
+	background = App->gui->AddUIImage(0, 0, { 337, 479, 800, 450 }, this);
 	music_volume_label = App->gui->AddUILabel(35, 10, "Music Volume", { 255,255,255,255 }, 15, this);
 	music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 15, this);
 	fx_volume_label = App->gui->AddUILabel(35, 30, "Fx Volume", { 255,255,255,255 }, 15, this);
@@ -119,6 +120,7 @@ bool ctSettings::CleanUp()
 	App->audio->StopMusic();
 
 	App->gui->DeleteAllUIElements();
+	background = nullptr;
 	music_volume_label = nullptr;
 	fx_volume_label = nullptr;
 	back_label = nullptr;

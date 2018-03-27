@@ -46,6 +46,7 @@ private:
 	bool quit_pressed = false;
 	
 
+	UIElement* background = nullptr;
 	UIElement* music_volume_label = nullptr;
 	UIElement* fx_volume_label = nullptr;
 	UIElement* back_label = nullptr;

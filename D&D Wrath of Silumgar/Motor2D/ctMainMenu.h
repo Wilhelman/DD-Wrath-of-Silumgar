@@ -43,6 +43,7 @@ private:
 	bool quit_pressed = false;
 	
 
+	UIElement* background = nullptr;
 	UIElement* continue_label = nullptr;
 	UIElement* new_game_label = nullptr;
 	UIElement* settings_label = nullptr;

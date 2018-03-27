@@ -40,6 +40,7 @@ bool ctMainMenu::Start()
 {
 	bool ret = true;
 
+	background = App->gui->AddUIImage(0, 0, { 337, 479, 800, 450 }, this);
 	continue_label = App->gui->AddUILabel(35, 10, "Continue", { 255,255,255,255 }, 15, this);
 	new_game_label = App->gui->AddUILabel(35, 30, "New Game", { 255,255,255,255 }, 15, this);
 	settings_label = App->gui->AddUILabel(35, 50, "Settings", { 255,255,255,255 }, 15, this);
@@ -111,6 +112,7 @@ bool ctMainMenu::CleanUp()
 	App->audio->StopMusic();
 
 	App->gui->DeleteAllUIElements();
+	background = nullptr;
 	continue_label = nullptr;
 	new_game_label = nullptr;
 	settings_label = nullptr;

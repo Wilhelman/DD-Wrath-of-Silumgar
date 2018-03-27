@@ -55,8 +55,10 @@ bool ctCombat::Start()
 	//App->entities->SpawnEntity(350, 300, ELF);
 	//App->entities->SpawnEntity(250, 300, DWARF);
 	//App->entities->SpawnEntity(450, 300, WARRIOR);
-	App->entities->SpawnEntity(50, 300, CLERIC);
-	App->entities->SpawnEntity(500, 300, WARRIOR);
+	App->entities->SpawnEntity(150, 300, CLERIC);
+	App->entities->SpawnEntity(300, 200, WARRIOR);
+
+	
 	
 	return ret;
 }
@@ -84,6 +86,15 @@ bool ctCombat::Update(float dt)
 		App->render->scale_factor -= 0.1;
 	}
 
+	if (App->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
+	{
+		uint x = 0;
+
+		x = CalculatedDamage(App->entities->GetCleric(), App->entities->GetWarrior());
+
+		LOG("%i", x);
+
+	}
 	// Draw everything --------------------------------------
 	App->map->Draw();
 

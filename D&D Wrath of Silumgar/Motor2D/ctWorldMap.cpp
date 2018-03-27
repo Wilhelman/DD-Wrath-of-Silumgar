@@ -128,7 +128,6 @@ bool ctWorldMap::Update(float dt)
 	for (int i = 0; i < final_map_elements.size(); i++)
 	{
 		App->render->Blit(spritesheet_world_map, final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y, &final_map_elements.at(i)->icon_rect, 1.0f);
-		LOG("Printing in Y= %i", final_map_elements.at(i)->coords_in_map.y);
 	}
 
 	return true;

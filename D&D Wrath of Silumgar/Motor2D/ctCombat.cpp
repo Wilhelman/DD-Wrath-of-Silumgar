@@ -58,6 +58,7 @@ bool ctCombat::Start()
 	App->entities->SpawnEntity(150, 300, CLERIC);
 	App->entities->SpawnEntity(300, 200, WARRIOR);
 
+
 	
 	
 	return ret;

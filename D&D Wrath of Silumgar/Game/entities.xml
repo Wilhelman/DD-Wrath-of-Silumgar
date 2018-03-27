@@ -372,7 +372,7 @@
   <heroes>
 
     <cleric>
-      <stadistics constitution ="6" focus="5" strength="6" agility="1" dexterity ="4" intelligence="7"  physicalDefense="3" magicalDefense="4" luck="4"/>
+      <statistics constitution ="6" focus="5" strength="6" agility="1" dexterity ="4" intelligence="7"  physicalDefense="3" magicalDefense="4" luck="4"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -413,7 +413,7 @@
 
 
     <dwarf>
-      <stadistics constitution ="7" focus="4" strength="9" agility="3" dexterity ="4" intelligence="1"  physicalDefense="4" magicalDefense="3" luck="5"/>
+      <statistics constitution ="7" focus="4" strength="9" agility="3" dexterity ="4" intelligence="1"  physicalDefense="4" magicalDefense="3" luck="5"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -456,7 +456,7 @@
 
 
     <elf>
-      <stadistics constitution ="5" focus="7" strength="2" agility="6" dexterity ="3" intelligence="9"  physicalDefense="2" magicalDefense="3" luck="3"/>
+      <statistics constitution ="5" focus="7" strength="2" agility="6" dexterity ="3" intelligence="9"  physicalDefense="2" magicalDefense="3" luck="3"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -488,7 +488,7 @@
 
     <warrior>
       <spritesheetSource name = "textures/Characters/Warrior_sheet.png" />
-      <stadistics constitution ="9" focus="4" strength="5" agility="4" dexterity ="6" intelligence="2"  physicalDefense="5" magicalDefense="4" luck="1"/>
+      <statistics constitution ="9" focus="4" strength="5" agility="4" dexterity ="6" intelligence="2"  physicalDefense="5" magicalDefense="4" luck="1"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">

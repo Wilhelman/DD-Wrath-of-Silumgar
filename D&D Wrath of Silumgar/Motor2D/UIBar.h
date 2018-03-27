@@ -13,6 +13,7 @@ public:
 	UIElement* upper_bar = nullptr;
 	UIElement* yellow_bar = nullptr;
 	int max_width = 570;
+	int previous_width = 570;
 	int current_width = 570;
 	int max_capacity = 0;
 	int current_quantity = 0;
@@ -26,6 +27,7 @@ public:
 	void Update();
 	void LowerBar(int quantity);
 	void RecoverBar(int quantity);
+	void DrawYellowBar();
 
 	int CalculateBarWidth(int quantity);
 

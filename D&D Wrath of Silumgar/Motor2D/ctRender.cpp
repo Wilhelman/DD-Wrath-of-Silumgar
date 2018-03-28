@@ -82,7 +82,7 @@ bool ctRender::Update(float dt)
 	
 	int speed = 3;
 
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	/*if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		camera.y += speed;
 
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
@@ -92,7 +92,7 @@ bool ctRender::Update(float dt)
 		camera.x += speed;
 
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		camera.x -= speed;
+		camera.x -= speed;*/
 
 	//LOG("Camera pos x: %i pos y: %i", camera.x, camera.y);
 

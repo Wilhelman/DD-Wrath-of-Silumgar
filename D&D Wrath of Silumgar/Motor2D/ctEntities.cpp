@@ -86,6 +86,18 @@ bool ctEntities::PreUpdate()
 			entities.shrink_to_fit();
 		}
 	}
+
+	for (std::vector<Entity*>::iterator iterator = entities.begin(); iterator != entities.end(); iterator++) {
+		if (App->render->Is_inScreen((*iterator)->position.x, (*iterator)->position.y)) {
+			EntitiesDraw_info info;
+			info.pos = (*iterator)->position;
+			info.rect = (*iterator)->animation->GetCurrentFrame();
+			info.priority = (*iterator)->position.y + (*iterator)->animation->GetCurrentFrame().h;
+			info.anim = (*iterator)->animation;
+			info.type = (*iterator)->type;
+			drawOrder.push(info);
+		}
+	}
 	return true;
 }
 
@@ -96,39 +108,42 @@ bool ctEntities::Update(float dt)
 	for (int i = 0; i < entities.size(); i++)
 		if (entities.at(i) != nullptr) entities[i]->Update(dt);
 
-	for (int i = 0; i < entities.size(); i++) {
-		switch (entities.at(i)->type)
-		{
-		case CLERIC:
-			if (entities.at(i) != nullptr) entities[i]->Draw(cleric_spritesheet);
-			break;
-		case DWARF:
-			if (entities.at(i) != nullptr) entities[i]->Draw(dwarf_spritesheet);
-			break;
-		case ELF:
-			if (entities.at(i) != nullptr) entities[i]->Draw(elf_spritesheet);
-			break;
-		case WARRIOR:
-			if (entities.at(i) != nullptr) entities[i]->Draw(warrior_spritesheet);
-			break;
-		case KOBOLD:
-			if (entities.at(i) != nullptr) entities[i]->Draw(kobold_spritesheet);
-			break;
-		case GNOLL:
-			if (entities.at(i) != nullptr) entities[i]->Draw(gnoll_spritesheet);
-			break;
-		case GNOLL_ARCHER:
-			if (entities.at(i) != nullptr) entities[i]->Draw(gnollArcher_spritesheet);
-			break;
-		case OWLBEAR:
-			if (entities.at(i) != nullptr) entities[i]->Draw(owlbear_spritesheet);
-			break;
-		default:
-			break;
+	int index = 0;
+	if (entities.size() > 0) {
+		for (EntitiesDraw_info info = drawOrder.top(); !drawOrder.empty(); drawOrder.pop(), info = drawOrder.top()) {
+
+			switch (info.type)
+			{
+			case CLERIC:
+				if (entities.at(index) != nullptr) entities[index]->Draw(cleric_spritesheet);
+				break;
+			case DWARF:
+				if (entities.at(index) != nullptr) entities[index]->Draw(dwarf_spritesheet);
+				break;
+			case ELF:
+				if (entities.at(index) != nullptr) entities[index]->Draw(elf_spritesheet);
+				break;
+			case WARRIOR:
+				if (entities.at(index) != nullptr) entities[index]->Draw(warrior_spritesheet);
+				break;
+			case KOBOLD:
+				if (entities.at(index) != nullptr) entities[index]->Draw(kobold_spritesheet);
+				break;
+			case GNOLL:
+				if (entities.at(index) != nullptr) entities[index]->Draw(gnoll_spritesheet);
+				break;
+			case GNOLL_ARCHER:
+				if (entities.at(index) != nullptr) entities[index]->Draw(gnollArcher_spritesheet);
+				break;
+			case OWLBEAR:
+				if (entities.at(index) != nullptr) entities[index]->Draw(owlbear_spritesheet);
+				break;
+			default:
+				break;
+			}
+			index++;
 		}
-
 	}
-
 
 	return true;
 }

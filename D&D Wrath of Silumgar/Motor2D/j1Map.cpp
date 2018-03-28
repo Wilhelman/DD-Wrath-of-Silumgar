@@ -78,6 +78,10 @@ void j1Map::LayersSetUp()
 							(*layersToCheck)->layer_type = TIER_2;
 						else if ((*layersToCheck)->name == "tier_3")
 							(*layersToCheck)->layer_type = TIER_3;
+						else if ((*layersToCheck)->name == "heroes_position")
+							(*layersToCheck)->layer_type = HEROES_POSITION;
+						else if ((*layersToCheck)->name == "enemies_position")
+							(*layersToCheck)->layer_type = ENEMIES_POSITION;
 					}
 				}
 			}
@@ -109,6 +113,10 @@ void j1Map::setAllLogicForMap()
 							tier_2_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 						else if ((*layersBlit)->layer_type == TIER_3 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
 							tier_3_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == HEROES_POSITION && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							heroes_position_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == ENEMIES_POSITION && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							enemies_position_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 					}
 				}
 			}

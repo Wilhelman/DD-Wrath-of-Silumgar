@@ -21,6 +21,8 @@ enum LayerTypes
 	TIER_1,
 	TIER_2,
 	TIER_3,
+	HEROES_POSITION,
+	ENEMIES_POSITION,
 
 	LAYER_NOT_DEF
 };
@@ -177,6 +179,9 @@ public:
 	std::vector<iPoint> tier_1_coords;
 	std::vector<iPoint> tier_2_coords;
 	std::vector<iPoint> tier_3_coords;
+
+	std::vector<iPoint> heroes_position_coords;
+	std::vector<iPoint> enemies_position_coords;
 
 private:
 

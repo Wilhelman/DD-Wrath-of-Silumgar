@@ -20,6 +20,10 @@
 
 #include "ctFadeToBlack.h"
 
+//randomize libs
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+
 
 
 ctCombat::ctCombat() : ctModule()
@@ -33,10 +37,13 @@ ctCombat::~ctCombat()
 
 // Called before render is available
 
-bool ctCombat::Awake()
+bool ctCombat::Awake(pugi::xml_node& config)
 {
 	LOG("Loading Combat");
 	bool ret = true;
+
+	/* initialize random seed: */
+	srand(time(NULL));
 
 	return ret;
 }
@@ -51,15 +58,9 @@ bool ctCombat::Start()
 	LOG("%s", App->map->sceneName.c_str());
 	App->map->Load(App->map->sceneName.c_str());
 	App->map->LayersSetUp();
+	App->map->setAllLogicForMap();
 
-	//App->entities->SpawnEntity(350, 300, ELF);
-	//App->entities->SpawnEntity(250, 300, DWARF);
-	//App->entities->SpawnEntity(450, 300, WARRIOR);
-	App->entities->SpawnEntity(150, 300, CLERIC);
-	App->entities->SpawnEntity(300, 200, WARRIOR);
-
-
-	
+	SpawnEntities();
 	
 	return ret;
 }
@@ -161,4 +162,104 @@ void ctCombat::SetSceneName(string new_scene_name)
 uint ctCombat::CalculatedDamage(Entity* attacker, Entity* defender)
 {
 	return ((attacker->base_stats.base_constitution * 3)*(100 - defender->base_stats.base_physical_defense)) / 100;
+}
+
+void ctCombat::SpawnEntities()
+{
+	int random_number = (rand() % 4);
+
+	switch (random_number)
+	{
+	case 0:
+		for (int i = 0; i < App->map->heroes_position_coords.size(); i++)
+		{
+			switch (i)
+			{
+			case 0:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, CLERIC);
+				break;
+			case 1:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, WARRIOR);
+				break;
+			case 2:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, ELF);
+				break;
+			case 3:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, DWARF);
+				break;
+			default:
+				break;
+			}
+		}
+		break;
+	case 1:
+		for (int i = 0; i < App->map->heroes_position_coords.size(); i++)
+		{
+			switch (i)
+			{
+			case 0:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, WARRIOR);
+				break;
+			case 1:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, DWARF);
+				break;
+			case 2:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, ELF);
+				break;
+			case 3:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, CLERIC);
+				break;
+			default:
+				break;
+			}
+		}
+		break;
+	case 2:
+		for (int i = 0; i < App->map->heroes_position_coords.size(); i++)
+		{
+			switch (i)
+			{
+			case 0:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, ELF);
+				
+				break;
+			case 1:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, CLERIC);
+				break;
+			case 2:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, WARRIOR);
+				break;
+			case 3:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, DWARF);
+				break;
+			default:
+				break;
+			}
+		}
+		break;
+	case 3:
+		for (int i = 0; i < App->map->heroes_position_coords.size(); i++)
+		{
+			switch (i)
+			{
+			case 0:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, CLERIC);
+				break;
+			case 1:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, WARRIOR);
+				break;
+			case 2:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, ELF);
+				break;
+			case 3:
+				App->entities->SpawnEntity(App->map->heroes_position_coords.at(i).x, App->map->heroes_position_coords.at(i).y, DWARF);
+				break;
+			default:
+				break;
+			}
+		}
+		break;
+	default:
+		break;
+	}
 }

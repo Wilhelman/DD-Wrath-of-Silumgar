@@ -18,7 +18,7 @@ public:
 	virtual ~ctCombat();
 
 	// Called before render is available
-	bool Awake();
+	bool Awake(pugi::xml_node& config);
 
 	// Called before the first frame
 	bool Start();
@@ -40,11 +40,16 @@ public:
 	bool Save(pugi::xml_node&) const;
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
-	uint CalculatedDamage(Entity* attacker, Entity* defender);
 
 public:
 
 	void SetSceneName(string new_scene_name);
+
+	uint CalculatedDamage(Entity* attacker, Entity* defender);
+
+private:
+
+	void SpawnEntities();
 
 private:
 

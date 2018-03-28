@@ -149,7 +149,7 @@ void j1Map::Draw()
 
 						iPoint world = MapToWorld(i, j);
 
-							if ((*layersBlit)->layer_type == BACKGROUND)
+							if ((*layersBlit)->layer_type == BACKGROUND && App->render->Is_inScreen(world.x, world.y))
 								App->render->MapBlit((*tilesetsBlit)->texture, world.x, world.y, &rect,1.0f); 
 					}
 				}

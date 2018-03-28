@@ -47,6 +47,8 @@ public:
 	//Utils
 	iPoint ScreenToWorld(int x, int y) const;
 
+	bool Is_inScreen(int x, int y);
+
 public:
 	double          scale_factor = 1;
 	SDL_Renderer*	renderer = nullptr;

@@ -168,6 +168,7 @@ void ctCombat::SpawnEntities()
 {
 	int random_number = (rand() % 4);
 
+	//randomization is ugly, sorry c:
 	switch (random_number)
 	{
 	case 0:

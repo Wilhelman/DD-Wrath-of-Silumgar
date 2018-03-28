@@ -5,6 +5,7 @@
 #include "ctRender.h"
 #include "ctEntities.h"
 #include "ctInput.h"
+#include "j1Map.h"
 
 #define VSYNC true
 
@@ -81,7 +82,7 @@ bool ctRender::Update(float dt)
 	
 	int speed = 3;
 
-	/*if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		camera.y += speed;
 
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
@@ -91,7 +92,7 @@ bool ctRender::Update(float dt)
 		camera.x += speed;
 
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		camera.x -= speed;*/
+		camera.x -= speed;
 
 	//LOG("Camera pos x: %i pos y: %i", camera.x, camera.y);
 
@@ -314,6 +315,15 @@ iPoint ctRender::ScreenToWorld(int x, int y) const
 
 	ret.x = (x - camera.x / scale);
 	ret.y = (y - camera.y / scale);
+
+	return ret;
+}
+
+bool ctRender::Is_inScreen(int x, int y) {
+	bool ret = false;
+	if (x >= -App->render->camera.x && x + App->map->data.tile_width < -App->render->camera.x + App->render->camera.w)
+		if (y >= -App->render->camera.y && y + App->map->data.tile_height < -App->render->camera.y + App->render->camera.h)
+			ret = true;
 
 	return ret;
 }

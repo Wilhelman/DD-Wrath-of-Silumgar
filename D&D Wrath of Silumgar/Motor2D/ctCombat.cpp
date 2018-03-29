@@ -97,6 +97,10 @@ bool ctCombat::Update(float dt)
 		x = CalculatedDamage(App->entities->GetCleric(), App->entities->GetWarrior());
 		test->LowerBar(x);
 
+		if (test->CurrentQuantity() <= 0)
+		{
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+		}
 		
 
 		LOG("%i", x);
@@ -123,6 +127,8 @@ bool ctCombat::CleanUp()
 	LOG("Freeing combat");
 
 	//todo: despawn entities
+
+	App->gui->DeleteAllUIElements();
 
 	App->map->CleanUp();
 

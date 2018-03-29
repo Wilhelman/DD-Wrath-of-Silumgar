@@ -79,7 +79,7 @@ bool ctSkillTree::Update(float dt)
 
 	App->render->Blit(spritesheet_skill_tree_map,0,0);
 
-	if (current_hero == 1)
+	/*if (current_hero == 1)
 	{
 		DrawAbilities(warrior_vec);
 	}
@@ -97,7 +97,7 @@ bool ctSkillTree::Update(float dt)
 	if (current_hero == 4)
 	{
 		DrawAbilities(elf_vec);
-	}
+	}*/
 
 	return true;
 }
@@ -138,10 +138,10 @@ void ctSkillTree::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 {
 }
 
-void ctSkillTree::DrawAbilities(vector<Ability*> vec)
-{
-	for (int i = 0; i < vec.size(); i++)
-	{
-		App->render->Blit(spritesheet_abilities, vec.at(i)->coords_in_map.x, vec.at(i)->coords_in_map.y, &vec.at(i)->icon_rect, 1.0f);
-	}
-}
+//void ctSkillTree::DrawAbilities(vector<Ability*> vec)
+//{
+//	for (int i = 0; i < vec.size(); i++)
+//	{
+//		App->render->Blit(spritesheet_abilities, vec.at(i)->coords_in_map.x, vec.at(i)->coords_in_map.y, &vec.at(i)->icon_rect, 1.0f);
+//	}
+//}

@@ -51,7 +51,7 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 	
-	void DrawAbilities(vector<Ability*> vec);
+	/*void DrawAbilities(vector<Ability*> vec);*/
 
 private:
 
@@ -65,10 +65,10 @@ private:
 	std::string name_spritesheet_abilities;
 	SDL_Texture* spritesheet_abilities = nullptr;
 
-	vector<Ability*> warrior_vec;
-	vector<Ability*> cleric_vec;
-	vector<Ability*> dwarf_vec;
-	vector<Ability*> elf_vec;
+	//vector<Ability*> warrior_vec;
+	//vector<Ability*> cleric_vec;
+	//vector<Ability*> dwarf_vec;
+	//vector<Ability*> elf_vec;
 
 	uint current_hero = 1;
 

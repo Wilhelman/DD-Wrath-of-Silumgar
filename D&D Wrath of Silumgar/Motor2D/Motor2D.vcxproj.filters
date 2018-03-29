@@ -144,6 +144,9 @@
     <ClCompile Include="ctTaskManager.cpp">
       <Filter>Core\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ctAbilitiesMap.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -271,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="ctTaskManager.h">
       <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ctAbilitiesMap.h">
+      <Filter>Core\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

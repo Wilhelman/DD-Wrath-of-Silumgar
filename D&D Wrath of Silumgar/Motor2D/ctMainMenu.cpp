@@ -13,6 +13,7 @@
 #include "ctFadeToBlack.h"
 #include "ctWorldMap.h"
 #include "ctSettings.h"
+#include "ctAbilitiesMap.h"
 
 
 

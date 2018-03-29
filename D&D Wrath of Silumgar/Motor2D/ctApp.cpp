@@ -20,6 +20,7 @@
 #include "ctFonts.h"
 #include "ctTaskManager.h"
 #include "ctFadeToBlack.h"
+#include "ctAbilitiesMap.h"
 
 
 // Constructor
@@ -42,6 +43,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	fonts = new ctFonts();
 	task_manager = new ctTaskManager();
 	fadeToBlack = new ctFadeToBlack();
+	abilities_map = new ctAbiltiesMap();
 	
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -59,6 +61,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(fonts);
 	AddModule(task_manager);
 	AddModule(fadeToBlack);
+	AddModule(abilities_map);
 
 	// render last to swap buffer
 	AddModule(render);
@@ -67,6 +70,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	world_map->active = false;
 	settings->active = false;
 	combat->active = false;
+	abilities_map->active = false;
 
 	PERF_PEEK(ptimer);
 }

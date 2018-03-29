@@ -34,6 +34,8 @@ bool ctSkillTree::Awake(pugi::xml_node& config)
 	skill_tree_map_tmx = config.child("skill_tree_map_tmx").attribute("name").as_string();
 	name_spritesheet_skill_tree_map = config.child("spritesheet").attribute("name").as_string();
 
+	name_spritesheet_abilities = config.child("spritesheet_abilities").attribute("name").as_string();
+
 	return ret;
 }
 
@@ -44,8 +46,15 @@ bool ctSkillTree::Start()
 
 	spritesheet_skill_tree_map = App->tex->Load(name_spritesheet_skill_tree_map.c_str());
 
+	spritesheet_abilities = App->tex->Load(name_spritesheet_abilities.c_str());
+
 	if (spritesheet_skill_tree_map == NULL) {
 		LOG("Fail to load spritesheet in SkillTree!");
+		ret = false;
+	}
+
+	if (spritesheet_abilities == NULL) {
+		LOG("Fail to load spritesheet_abilities in SkillTree!");
 		ret = false;
 	}
 
@@ -65,14 +74,30 @@ bool ctSkillTree::PreUpdate()
 // Called each loop iteration
 bool ctSkillTree::Update(float dt)
 {
-
-
-
 	// Draw everything --------------------------------------
 	App->map->Draw();
 
 	App->render->Blit(spritesheet_skill_tree_map,0,0);
 
+	if (current_hero == 1)
+	{
+		DrawAbilities(warrior_vec);
+	}
+
+	if (current_hero == 2)
+	{
+		DrawAbilities(cleric_vec);
+	}
+
+	if (current_hero == 3)
+	{
+		DrawAbilities(dwarf_vec);
+	}
+
+	if (current_hero == 4)
+	{
+		DrawAbilities(elf_vec);
+	}
 
 	return true;
 }
@@ -82,7 +107,6 @@ bool ctSkillTree::PostUpdate()
 {
 	bool ret = true;
 
-
 	return ret;
 }
 
@@ -90,8 +114,6 @@ bool ctSkillTree::PostUpdate()
 bool ctSkillTree::CleanUp()
 {
 	LOG("Freeing ctSkillTree");
-
-	
 
 	App->map->CleanUp();
 
@@ -116,5 +138,10 @@ void ctSkillTree::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 {
 }
 
-
-
+void ctSkillTree::DrawAbilities(vector<Ability*> vec)
+{
+	for (int i = 0; i < vec.size(); i++)
+	{
+		App->render->Blit(spritesheet_abilities, vec.at(i)->coords_in_map.x, vec.at(i)->coords_in_map.y, &vec.at(i)->icon_rect, 1.0f);
+	}
+}

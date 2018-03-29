@@ -3,133 +3,133 @@
 <abilities>
   <heroes>
      <warrior>
-       <ability_1  name="Slash" tier="1" mana="0">
+       <ability_1  name="Slash" tier="1" mana="0" branch="2">
          <frame x="65" y="333" width="40" height="40"/>
        </ability_1>
-       <ability_2  name="Kick" tier="2" mana="18">
+       <ability_2  name="Kick" tier="2" mana="18" branch="1">
          <frame x="65" y="289" width="40" height="40"/>
        </ability_2>
-       <ability_3  name="Guard" tier="2" mana="20">
+       <ability_3  name="Guard" tier="2" mana="20" branch="2">
          <frame x="21" y="243" width="40" height="40"/>
        </ability_3>
-       <ability_4  name="Heavy Slash" tier="2" mana="21">
+       <ability_4  name="Heavy Slash" tier="2" mana="21" branch="3">
          <frame x="109" y="243" width="40" height="40"/>
        </ability_4>
-       <ability_5  name="Kick +" tier="3" mana="18">
+       <ability_5  name="Kick +" tier="3" mana="18" branch="1">
          <frame x="109" y="289" width="40" height="40"/>
        </ability_5>
-       <ability_6  name="Guard +" tier="3" mana="20">
+       <ability_6  name="Guard +" tier="3" mana="20" branch="2">
          <frame x="65" y="243" width="40" height="40"/>
        </ability_6>
-       <ability_7  name="Heavy Slash +" tier="3" mana="21">
+       <ability_7  name="Heavy Slash +" tier="3" mana="21" branch="3">
          <frame x="21" y="289" width="40" height="40"/>
        </ability_7>
-       <ability_8  name="Charge" tier="4" mana="38">
+       <ability_8  name="Charge" tier="4" mana="38" branch="1">
          <frame x="109" y="199" width="40" height="40"/>
        </ability_8>
-       <ability_9  name="Charge" tier="4" mana="46">
+       <ability_9  name="Charge" tier="4" mana="46" branch="2">
          <frame x="21" y="199" width="40" height="40"/>
        </ability_9>
-       <ability_10 name="Whirlwind" tier="4" mana="45">
+       <ability_10 name="Whirlwind" tier="4" mana="45" branch="3">
          <frame x="65" y="199" width="40" height="40"/>
        </ability_10>
      </warrior>
     
     <cleric>
-      <ability_1  name="Mace Hit" tier="1" mana="0">
+      <ability_1  name="Mace Hit" tier="1" mana="0" branch="2">
         <frame x="22" y="15" width="40" height="40"/>
       </ability_1>
-      <ability_2  name="Heal" tier="2" mana="32">
+      <ability_2  name="Heal" tier="2" mana="32" branch="1">
         <frame x="108" y="56" width="40" height="40"/>
       </ability_2>
-      <ability_3  name="Light Strike" tier="2" mana="26">
+      <ability_3  name="Light Strike" tier="2" mana="26" branch="2">
         <frame x="22" y="98" width="40" height="40"/>
       </ability_3>
-      <ability_4  name="Mace Throw" tier="2" mana="28">
+      <ability_4  name="Mace Throw" tier="2" mana="28" branch="3">
         <frame x="65" y="15" width="40" height="40"/>
       </ability_4>
-      <ability_5  name="Heal +" tier="3" mana="32">
+      <ability_5  name="Heal +" tier="3" mana="32" branch="1">
         <frame x="65" y="98" width="40" height="40"/>
       </ability_5>
-      <ability_6  name="Light Strike +" tier="3" mana="26">
+      <ability_6  name="Light Strike +" tier="3" mana="26" branch="2">
         <frame x="108" y="98" width="40" height="40"/>
       </ability_6>
-      <ability_7  name="Mace Throw +" tier="3" mana="28">
+      <ability_7  name="Mace Throw +" tier="3" mana="28" branch="3">
         <frame x="65" y="56" width="40" height="40"/>
       </ability_7>
-      <ability_8  name="Blessing" tier="4" mana="74">
+      <ability_8  name="Blessing" tier="4" mana="74" branch="1">
         <frame x="22" y="56" width="40" height="40"/>
       </ability_8>
-      <ability_9  name="Harden Skin" tier="4" mana="65">
+      <ability_9  name="Harden Skin" tier="4" mana="65" branch="2">
         <frame x="108" y="15" width="40" height="40"/>
       </ability_9>
-      <ability_10 name="Clarity" tier="4" mana="58">
+      <ability_10 name="Clarity" tier="4" mana="58" branch="3">
         <frame x="65" y="142" width="40" height="40"/>
       </ability_10>
     </cleric>
     
     <dwarf>
-      <ability_1  name="Axe slash" tier="1" mana="0" >
+      <ability_1  name="Axe slash" tier="1" mana="0" branch="2">
         <frame x="197" y="98" width="40" height="40"/>
       </ability_1>
-      <ability_2  name="Morale boost" tier="2" mana="17" >
+      <ability_2  name="Morale boost" tier="2" mana="17" branch="1">
         <frame x="291" y="98" width="40" height="40"/>
       </ability_2>
-      <ability_3  name="Double edged axe" tier="2" mana="21" >
+      <ability_3  name="Double edged axe" tier="2" mana="21" branch="2">
          <frame x="197" y="10" width="40" height="40"/>
       </ability_3>
-      <ability_4  name="Dwarfs wrath" tier="2" mana="25" >
+      <ability_4  name="Dwarfs wrath" tier="2" mana="25" branch="3">
         <frame x="244" y="54" width="40" height="40"/>
       </ability_4>
-      <ability_5  name="Morale boost plus" tier="3" mana="17"  >
+      <ability_5  name="Morale boost plus" tier="3" mana="17" branch="1">
         <frame x="291" y="54" width="40" height="40"/>
       </ability_5>
-      <ability_6  name="Double edged axe plus" tier="3" mana="21"  >
+      <ability_6  name="Double edged axe plus" tier="3" mana="21" branch="2">
         <frame x="244" y="10" width="40" height="40"/>
       </ability_6>
-      <ability_7  name="Dwarfs wrath plus" tier="3" mana="25"  >
+      <ability_7  name="Dwarfs wrath plus" tier="3" mana="25" branch="3">
         <frame x="244" y="142" width="40" height="40"/>
       </ability_7>
-      <ability_8  name="Raging mock" tier="4" mana="47"  >
+      <ability_8  name="Raging mock" tier="4" mana="47" branch="1">
         <frame x="291" y="10" width="40" height="40"/>
       </ability_8>
-      <ability_9  name="Meteor" tier="4" mana="50"  >
+      <ability_9  name="Meteor" tier="4" mana="50" branch="2">
         <frame x="197" y="54" width="40" height="40"/>
       </ability_9>
-      <ability_10 name="Counter" tier="4" mana="46"  >
+      <ability_10 name="Counter" tier="4" mana="46" branch="3">
         <frame x="244" y="98" width="40" height="40"/>
       </ability_10>
     </dwarf>
     
      <elf>
-       <ability_1  name="Slash" tier="1" mana="0" >
+       <ability_1  name="Slash" tier="1" mana="0" branch="2">
          <frame x="288" y="242" width="40" height="40"/>
        </ability_1>
-       <ability_2  name="Seeds of life" tier="2" mana="27" >
+       <ability_2  name="Seeds of life" tier="2" mana="27" branch="1">
          <frame x="200" y="199" width="40" height="40"/>
        </ability_2>
-       <ability_3  name="Fireball" tier="2" mana="29" >
+       <ability_3  name="Fireball" tier="2" mana="29" branch="2">
          <frame x="244" y="199" width="40" height="40"/>
        </ability_3>
-       <ability_4  name="Lightning bolt" tier="2" mana="24" >
+       <ability_4  name="Lightning bolt" tier="2" mana="24" branch="3">
          <frame x="288" y="284 " width="40" height="40"/>
        </ability_4>
-       <ability_5  name="Seeds of life plus" tier="3" mana="27"  >
+       <ability_5  name="Seeds of life plus" tier="3" mana="27" branch="1">
          <frame x="200" y="284" width="40" height="40"/>
        </ability_5>
-       <ability_6  name="Fireball plus" tier="3" mana="29"  >
+       <ability_6  name="Fireball plus" tier="3" mana="29" branch="2">
          <frame x="288" y="199" width="40" height="40"/>
        </ability_6>
-       <ability_7  name="Lightning bolt plus" tier="3" mana="24"  >
+       <ability_7  name="Lightning bolt plus" tier="3" mana="24" branch="3">
          <frame x="243" y="326" width="40" height="40"/>
        </ability_7>
-       <ability_8  name="Revive" tier="4" mana="120"  >
+       <ability_8  name="Revive" tier="4" mana="120" branch="1">
          <frame x="200" y="242" width="40" height="40"/>
        </ability_8>
-       <ability_9  name="Blizzard" tier="4" mana="62"  >
+       <ability_9  name="Blizzard" tier="4" mana="62" branch="2">
          <frame x="243" y="242" width="40" height="40"/>
        </ability_9>
-       <ability_10 name="Fire Djiin" tier="4" mana="70"  >
+       <ability_10 name="Fire Djiin" tier="4" mana="70" branch="3">
          <frame x="243" y="284" width="40" height="40"/>
        </ability_10>
     </elf>

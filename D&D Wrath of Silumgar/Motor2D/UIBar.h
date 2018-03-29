@@ -36,6 +36,8 @@ public:
 	void LowerBar(int quantity);
 	void RecoverBar(int quantity);
 	void DrawYellowBar();
+	void DeleteElements();
+	int CurrentQuantity();
 
 	int CalculateBarWidth(int quantity);
 

@@ -48,6 +48,9 @@ void UIBar::Update()
 		App->gui->DeleteUIElement(*yellow_bar);
 		yellow_bar = nullptr;
 	}
+	if (current_quantity <=0) {
+		DeleteElements();
+	}
 }
 
 void UIBar::LowerBar(int quantity)
@@ -113,6 +116,12 @@ void UIBar::DrawYellowBar() {
 	yellow_bar_time.Start();
 }
 
+void UIBar::DeleteElements() {
+	App->gui->DeleteUIElement(*lower_bar);
+	App->gui->DeleteUIElement(*upper_bar);
+	App->gui->DeleteUIElement(*yellow_bar);
+}
+
 int UIBar::CalculateBarWidth(int quantity) {
 	//Calculate the new bar width when losing/wining hp/mana quantity 
 	int new_width = current_width;
@@ -123,4 +132,8 @@ int UIBar::CalculateBarWidth(int quantity) {
 	new_width = (new_quantity * max_width) / max_capacity;
 
 	return new_width;
+}
+
+int UIBar::CurrentQuantity() {
+	return current_quantity;
 }

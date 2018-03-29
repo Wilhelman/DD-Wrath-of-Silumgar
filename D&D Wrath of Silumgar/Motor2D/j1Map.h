@@ -21,6 +21,7 @@ enum LayerTypes
 	TIER_1,
 	TIER_2,
 	TIER_3,
+	TIER_4,
 	HEROES_POSITION,
 	ENEMIES_POSITION,
 

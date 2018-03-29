@@ -58,6 +58,12 @@ void j1Map::LayersSetUp()
 		if ((*tilesetsToCheck)->name == "RedGreen")
 		(*tilesetsToCheck)->tileset_type = RED_GREEN_TILESET;
 
+		if ((*tilesetsToCheck)->name == "skill_tree")
+			(*tilesetsToCheck)->tileset_type = BACKGROUND_TILESET;
+
+		if ((*tilesetsToCheck)->name == "Sprite-0001")
+			(*tilesetsToCheck)->tileset_type = BACKGROUND_TILESET;
+
 		std::list<MapLayer*>::iterator layersToCheck = this->data.layers.begin();
 
 		while (layersToCheck != this->data.layers.end())
@@ -78,6 +84,8 @@ void j1Map::LayersSetUp()
 							(*layersToCheck)->layer_type = TIER_2;
 						else if ((*layersToCheck)->name == "tier_3")
 							(*layersToCheck)->layer_type = TIER_3;
+						else if ((*layersToCheck)->name == "tier_4")
+							(*layersToCheck)->layer_type = TIER_4;
 						else if ((*layersToCheck)->name == "heroes_position")
 							(*layersToCheck)->layer_type = HEROES_POSITION;
 						else if ((*layersToCheck)->name == "enemies_position")

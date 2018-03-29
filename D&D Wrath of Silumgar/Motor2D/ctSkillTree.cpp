@@ -31,8 +31,8 @@ bool ctSkillTree::Awake(pugi::xml_node& config)
 	LOG("Loading SkillTree Map");
 	bool ret = true;
 
-	abilities_map_tmx = config.child("skill_tree_map_tmx").attribute("name").as_string();
-	name_spritesheet_abilities_map = config.child("spritesheet").attribute("name").as_string();
+	skill_tree_map_tmx = config.child("skill_tree_map_tmx").attribute("name").as_string();
+	name_spritesheet_skill_tree_map = config.child("spritesheet").attribute("name").as_string();
 
 	return ret;
 }
@@ -42,14 +42,14 @@ bool ctSkillTree::Start()
 {
 	bool ret = true;
 
-	spritesheet_abilities_map = App->tex->Load(name_spritesheet_abilities_map.c_str());
+	spritesheet_skill_tree_map = App->tex->Load(name_spritesheet_skill_tree_map.c_str());
 
-	if (spritesheet_abilities_map == NULL) {
+	if (spritesheet_skill_tree_map == NULL) {
 		LOG("Fail to load spritesheet in SkillTree!");
 		ret = false;
 	}
 
-	App->map->sceneName = abilities_map_tmx.c_str();
+	App->map->sceneName = skill_tree_map_tmx.c_str();
 	App->map->Load(App->map->sceneName.c_str());
 	App->map->LayersSetUp();
 
@@ -70,6 +70,8 @@ bool ctSkillTree::Update(float dt)
 
 	// Draw everything --------------------------------------
 	App->map->Draw();
+
+	App->render->Blit(spritesheet_skill_tree_map,0,0);
 
 
 	return true;

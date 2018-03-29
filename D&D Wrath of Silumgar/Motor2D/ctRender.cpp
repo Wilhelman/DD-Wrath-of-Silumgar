@@ -52,7 +52,7 @@ bool ctRender::Awake(pugi::xml_node& config)
 		camera.x = 0;
 		camera.y = 0;
 	}
-
+	scale_factor = App->win->GetScale();
 	return ret;
 }
 
@@ -62,6 +62,7 @@ bool ctRender::Start()
 	LOG("render start");
 	// back background
 	SDL_RenderGetViewport(renderer, &viewport);
+	
 	return true;
 }
 
@@ -192,8 +193,8 @@ bool ctRender::MapBlit(SDL_Texture* texture, int x, int y, const SDL_Rect* secti
 
 	if (section != NULL)
 	{
-		rect.w = section->w*scale;
-		rect.h = section->h*scale;
+		rect.w = section->w*scale_factor;
+		rect.h = section->h*scale_factor;
 	}
 
 	rect.x = (int)((camera.x * speed) + ((x / section->w) * rect.w));

@@ -48,6 +48,9 @@ void UIBar::Update()
 		App->gui->DeleteUIElement(*yellow_bar);
 		yellow_bar = nullptr;
 	}
+	if (current_quantity <=0) {
+		DeleteElements();
+	}
 }
 
 void UIBar::LowerBar(int quantity)
@@ -111,6 +114,12 @@ void UIBar::DrawYellowBar() {
 	}
 	yellow_bar = App->gui->AddUIImage(bar_pos.x+current_width, bar_pos.y, { 582,129,(previous_width-current_width),bar_height });
 	yellow_bar_time.Start();
+}
+
+void UIBar::DeleteElements() {
+	App->gui->DeleteUIElement(*lower_bar);
+	App->gui->DeleteUIElement(*upper_bar);
+	App->gui->DeleteUIElement(*yellow_bar);
 }
 
 int UIBar::CalculateBarWidth(int quantity) {

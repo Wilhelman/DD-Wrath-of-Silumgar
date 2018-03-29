@@ -124,3 +124,7 @@ int UIBar::CalculateBarWidth(int quantity) {
 
 	return new_width;
 }
+
+int UIBar::CurrentQuantity() {
+	return current_quantity;
+}

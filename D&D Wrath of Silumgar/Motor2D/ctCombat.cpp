@@ -172,6 +172,8 @@ uint ctCombat::CalculatedDamage(Entity* attacker, Entity* defender)
 void ctCombat::SpawnEntities()
 {
 	int random_number = (rand() % 4);
+	// Test assign life with lifebar
+	
 
 	//randomization is ugly, sorry c:
 	switch (random_number)
@@ -269,6 +271,7 @@ void ctCombat::SpawnEntities()
 		break;
 	}
 	// TEST FOR UI BAR WITH CALC DAMAGE
-	test = (UIBar*)App->gui->AddUIBar(100,100,100,LIFEBAR);
+	Entity* cleric = App->entities->GetCleric();
+	test = (UIBar*)App->gui->AddUIBar(100,100,cleric->base_stats.base_constitution*13,LIFEBAR);
 	
 }

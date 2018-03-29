@@ -2,7 +2,8 @@
 #define __ctCOMBAT_H__
 
 #include "ctModule.h"
-
+#include "ctGui.h"
+#include "UIBar.h"
 #include <string>
 
 using namespace std;
@@ -47,10 +48,12 @@ public:
 
 	uint CalculatedDamage(Entity* attacker, Entity* defender);
 
+	
 private:
 
 	void SpawnEntities();
-
+	// TEST FOR UI BAR WITH CALC DAMAGE
+	UIBar* test = nullptr;
 private:
 
 	string scene_name;

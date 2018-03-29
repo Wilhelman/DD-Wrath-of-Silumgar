@@ -18,6 +18,8 @@
 #include "Elf.h"
 #include "Warrior.h"
 
+#include "ctGui.h"
+
 #include "ctFadeToBlack.h"
 
 //randomize libs
@@ -93,6 +95,9 @@ bool ctCombat::Update(float dt)
 		uint x = 0;
 
 		x = CalculatedDamage(App->entities->GetCleric(), App->entities->GetWarrior());
+		test->LowerBar(x);
+
+		
 
 		LOG("%i", x);
 
@@ -263,4 +268,7 @@ void ctCombat::SpawnEntities()
 	default:
 		break;
 	}
+	// TEST FOR UI BAR WITH CALC DAMAGE
+	test = (UIBar*)App->gui->AddUIBar(100,100,100,LIFEBAR);
+	
 }

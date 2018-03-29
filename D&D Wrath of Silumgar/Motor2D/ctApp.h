@@ -24,7 +24,7 @@ class ctGui;
 class ctFonts;
 class ctTaskManager;
 class ctFadeToBlack;
-class ctAbiltiesMap;
+class ctSkillTree;
 
 class ctApp
 {
@@ -98,7 +98,7 @@ public:
 	ctFonts*			fonts = nullptr;
 	ctTaskManager*		task_manager = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;
-	ctAbiltiesMap*		abilities_map = nullptr;
+	ctSkillTree*		skill_tree = nullptr;
 
 	bool				cap_state = false;
 

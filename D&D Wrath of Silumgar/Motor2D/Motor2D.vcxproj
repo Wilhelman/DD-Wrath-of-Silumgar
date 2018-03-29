@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cleric.cpp" />
-    <ClCompile Include="ctAbilitiesMap.cpp" />
+    <ClCompile Include="ctSkillTree.cpp" />
     <ClCompile Include="ctApp.cpp" />
     <ClCompile Include="ctAudio.cpp" />
     <ClCompile Include="ctCombat.cpp" />
@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cleric.h" />
-    <ClInclude Include="ctAbilitiesMap.h" />
+    <ClInclude Include="ctSkillTree.h" />
     <ClInclude Include="ctAnimation.h" />
     <ClInclude Include="ctApp.h" />
     <ClInclude Include="ctAudio.h" />

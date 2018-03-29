@@ -9,57 +9,61 @@
 #include "ctEntities.h"
 #include "j1Map.h"
 
-#include "ctAbilitiesMap.h"
+#include "ctSkillTree.h"
 #include "ctCombat.h"
 
 #include "ctFadeToBlack.h"
 
 
-ctAbiltiesMap::ctAbiltiesMap() : ctModule()
+ctSkillTree::ctSkillTree() : ctModule()
 {
-	name = "abilities_map";
+	name = "skill_tree";
 }
 
 // Destructor
-ctAbiltiesMap::~ctAbiltiesMap()
+ctSkillTree::~ctSkillTree()
 {}
 
 // Called before render is available
 
-bool ctAbiltiesMap::Awake(pugi::xml_node& config)
+bool ctSkillTree::Awake(pugi::xml_node& config)
 {
-	LOG("Loading Abilities Map");
+	LOG("Loading SkillTree Map");
 	bool ret = true;
 
-	abilities_map_tmx = config.child("abilities_map_tmx").attribute("name").as_string();
+	abilities_map_tmx = config.child("skill_tree_map_tmx").attribute("name").as_string();
 	name_spritesheet_abilities_map = config.child("spritesheet").attribute("name").as_string();
 
 	return ret;
 }
 
 // Called before the first frame
-bool ctAbiltiesMap::Start()
+bool ctSkillTree::Start()
 {
 	bool ret = true;
 
 	spritesheet_abilities_map = App->tex->Load(name_spritesheet_abilities_map.c_str());
 
 	if (spritesheet_abilities_map == NULL) {
-		LOG("Fail to load spritesheet in WorldMap!");
+		LOG("Fail to load spritesheet in SkillTree!");
 		ret = false;
 	}
+
+	App->map->sceneName = abilities_map_tmx.c_str();
+	App->map->Load(App->map->sceneName.c_str());
+	App->map->LayersSetUp();
 
 	return ret;
 }
 
 // Called each loop iteration
-bool ctAbiltiesMap::PreUpdate()
+bool ctSkillTree::PreUpdate()
 {
 	return true;
 }
 
 // Called each loop iteration
-bool ctAbiltiesMap::Update(float dt)
+bool ctSkillTree::Update(float dt)
 {
 
 
@@ -72,7 +76,7 @@ bool ctAbiltiesMap::Update(float dt)
 }
 
 // Called each loop iteration
-bool ctAbiltiesMap::PostUpdate()
+bool ctSkillTree::PostUpdate()
 {
 	bool ret = true;
 
@@ -81,9 +85,9 @@ bool ctAbiltiesMap::PostUpdate()
 }
 
 // Called before quitting
-bool ctAbiltiesMap::CleanUp()
+bool ctSkillTree::CleanUp()
 {
-	LOG("Freeing ctWorldMap");
+	LOG("Freeing ctSkillTree");
 
 	
 
@@ -92,21 +96,21 @@ bool ctAbiltiesMap::CleanUp()
 	return true;
 }
 
-bool ctAbiltiesMap::Load(pugi::xml_node& load)
+bool ctSkillTree::Load(pugi::xml_node& load)
 {
 	bool ret = true;
 
 	return ret;
 }
 
-bool ctAbiltiesMap::Save(pugi::xml_node& save) const
+bool ctSkillTree::Save(pugi::xml_node& save) const
 {
 	bool ret = true;
 
 	return ret;
 }
 
-void ctAbiltiesMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
+void ctSkillTree::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 {
 }
 

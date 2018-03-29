@@ -136,8 +136,8 @@
 			<data name="world_map.tmx" start="true" currentLvl="true" />
 		</scene>
 	</map>
-	<abilities_map>
-		<spritesheet name="textures/AbilitiesMap/abilities_map.png" />
-		<abilities_map_tmx name="AbilitiesMap.tmx" />
-	</abilities_map>
+	<skill_tree>
+		<spritesheet name="textures/SkillTree/skill_tree.png" />
+		<skill_tree_map_tmx name="skill_tree_map.tmx" />
+	</skill_tree>
 </config>

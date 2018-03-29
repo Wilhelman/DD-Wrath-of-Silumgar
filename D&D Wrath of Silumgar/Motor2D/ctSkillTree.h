@@ -1,5 +1,5 @@
-#ifndef __ctAbilitiesMap_H__
-#define __ctAbilitiesMap_H__
+#ifndef __ctSkillTree_H__
+#define __ctSkillTree_H__
 
 #include "ctModule.h"
 
@@ -8,15 +8,15 @@
 
 class Entity;
 
-class ctAbiltiesMap : public ctModule
+class ctSkillTree : public ctModule
 {
 
 public:
 
-	ctAbiltiesMap();
+	ctSkillTree();
 
 	// Destructor
-	virtual ~ctAbiltiesMap();
+	virtual ~ctSkillTree();
 
 	// Called before render is available
 	bool Awake(pugi::xml_node& config);
@@ -56,4 +56,4 @@ private:
 };
 
 
-#endif // __ctWorldMap_H__
+#endif // __ctSkillTree_H__

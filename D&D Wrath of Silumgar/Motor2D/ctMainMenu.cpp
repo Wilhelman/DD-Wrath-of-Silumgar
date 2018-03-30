@@ -56,6 +56,7 @@ bool ctMainMenu::Start()
 	labels.push_back(about_label);
 	labels.push_back(quit_label);
 
+
 	if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg")) {
 		//ret = false;
 		LOG("Error playing music in ctMainMenu Start");
@@ -75,7 +76,7 @@ bool ctMainMenu::Update(float dt)
 {
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->skill_tree,1.0f);
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0f);
 	}
 		
 	//Go down

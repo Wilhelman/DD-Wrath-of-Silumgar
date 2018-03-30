@@ -7,6 +7,7 @@
 #include <vector>
 
 class Entity;
+class Cleric; //substitute for miniheroes
 
 class ctWorldMap : public ctModule
 {
@@ -69,6 +70,7 @@ private:
 
 	std::string name_spritesheet_world_map;
 	SDL_Texture* spritesheet_world_map = nullptr;
+	Entity* avatar = nullptr;
 
 };
 

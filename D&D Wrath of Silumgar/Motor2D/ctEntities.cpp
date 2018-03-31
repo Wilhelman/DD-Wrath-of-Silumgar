@@ -19,6 +19,8 @@
 #include "Gnoll.h"
 #include "GnollArcher.h"
 
+#include "MiniHeroes.h"
+
 
 ctEntities::ctEntities()
 {
@@ -47,6 +49,8 @@ bool ctEntities::Awake(pugi::xml_node& config)
 	gnoll_spritesheet_name = config.child("gnollA").attribute("spritesheetName").as_string();
 	gnollArcher_spritesheet_name = config.child("bowGnoll").attribute("spritesheetName").as_string();
 	owlbear_spritesheet_name = config.child("owlbear").attribute("spritesheetName").as_string();
+
+	miniheroes_spritesheet_name = config.child("miniheroes").attribute("spritesheetName").as_string();
 	return ret;
 }
 
@@ -64,6 +68,8 @@ bool ctEntities::Start()
 	gnoll_spritesheet = App->tex->Load(gnoll_spritesheet_name.data());
 	gnollArcher_spritesheet = App->tex->Load(gnollArcher_spritesheet_name.data());
 	owlbear_spritesheet = App->tex->Load(owlbear_spritesheet_name.data());
+
+	miniheroes_spritesheet = App->tex->Load(miniheroes_spritesheet_name.data());
 
 	if (cleric_spritesheet == NULL || dwarf_spritesheet == NULL || elf_spritesheet == NULL || warrior_spritesheet == NULL) {
 		LOG("Error loading entities spritesheet!!");
@@ -138,6 +144,9 @@ bool ctEntities::Update(float dt)
 			case OWLBEAR:
 				if (entities.at(index) != nullptr) entities[index]->Draw(owlbear_spritesheet);
 				break;
+			case MINIHEROES:
+				if (entities.at(index) != nullptr) entities[index]->Draw(miniheroes_spritesheet);
+				break;
 			default:
 				break;
 			}
@@ -164,6 +173,8 @@ bool ctEntities::CleanUp()
 	App->tex->UnLoad(gnollArcher_spritesheet);
 	App->tex->UnLoad(owlbear_spritesheet);
 
+	App->tex->UnLoad(miniheroes_spritesheet);
+
 	for (uint i = 0; i < entities.size(); ++i)
 	{
 		if (entities[i] != nullptr)
@@ -181,7 +192,8 @@ bool ctEntities::CleanUp()
 	return true;
 }
 
-bool ctEntities::SpawnEntity(int x, int y, EntityType type)
+
+bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 {
 	// find room for the new entity
 	bool ret = false;
@@ -238,6 +250,13 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 		ret = true;
 		break;
 	}
+	case EntityType::MINIHEROES: {
+		MiniHeroes* miniheroes = new MiniHeroes(x, y, MINIHEROES);
+		entities.push_back(miniheroes);
+		ret = true;
+		break;
+	}
+
 	default:
 		break;
 	}
@@ -245,6 +264,7 @@ bool ctEntities::SpawnEntity(int x, int y, EntityType type)
 
 	return ret;
 }
+
 
 Cleric* ctEntities::GetCleric() const {
 
@@ -358,3 +378,19 @@ Owlbear* ctEntities::GetOwlbear() const {
 	return nullptr;
 
 }
+
+MiniHeroes* ctEntities::GetMiniheroes() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == MINIHEROES)
+				return (MiniHeroes*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+

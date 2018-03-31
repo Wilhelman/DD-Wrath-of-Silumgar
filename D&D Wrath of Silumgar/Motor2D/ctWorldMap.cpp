@@ -88,7 +88,7 @@ bool ctWorldMap::Start()
 		ret = false;
 	}
 
-	App->entities->SpawnEntity(80,280, CLERIC);
+	App->entities->SpawnEntity(80,280, MINIHEROES);
 
 	//Displaying map
 	App->map->sceneName = world_map_tmx.c_str();
@@ -112,13 +112,13 @@ bool ctWorldMap::Update(float dt)
 {
 
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
-		Entity* avatar = (Entity*)App->entities->GetCleric();
+		Entity* avatar = (Entity*)App->entities->GetMiniheroes();
 		avatar->position.x += 100;
 		avatar->position.y -= 70;
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
-		Entity* avatar = (Entity*)App->entities->GetCleric();
+		Entity* avatar = (Entity*)App->entities->GetMiniheroes();
 		avatar->position.x += 100;
 		avatar->position.y += 70;
 	}

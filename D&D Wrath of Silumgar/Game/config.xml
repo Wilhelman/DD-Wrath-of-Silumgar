@@ -101,6 +101,7 @@
 	</world_map>
 	<entities>
 		<cleric spritesheetName="textures/Characters/Cleric_sheet.png" />
+		<miniheroes spritesheetName="textures/Characters/MiniHeroes_sheet.png" />
 		<dwarf spritesheetName="textures/Characters/Dwarf_sheet.png" />
 		<elf spritesheetName="textures/Characters/Elf_sheet.png" />
 		<warrior spritesheetName="textures/Characters/Warrior_sheet.png" />

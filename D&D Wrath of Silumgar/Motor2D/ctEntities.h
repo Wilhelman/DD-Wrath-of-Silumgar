@@ -21,6 +21,7 @@ enum EntityType
 	GNOLL_ARCHER,
 	OWLBEAR,
 
+	MINIHEROES,
 
 	NO_TYPE
 };
@@ -51,6 +52,8 @@ class Gnoll;
 class gnollArcher;
 class Owlbear;
 
+class MiniHeroes;
+
 struct SDL_Texture;
 
 class ctEntities : public ctModule
@@ -71,8 +74,7 @@ public:
 	bool CleanUp();
 
 	bool SpawnEntity(int x, int y, EntityType type);
-
-
+	
 
 	//getters
 	Cleric* GetCleric()const;
@@ -84,6 +86,8 @@ public:
 	Gnoll* GetGnoll()const;
 	gnollArcher* GetGnoll_Archer()const;
 	Owlbear* GetOwlbear()const;
+
+	MiniHeroes* GetMiniheroes()const;
 
 private:
 
@@ -118,6 +122,9 @@ private:
 	//Owlbear_sources
 	SDL_Texture* owlbear_spritesheet = nullptr;
 	std::string owlbear_spritesheet_name;
+	//Miniheroes source
+	SDL_Texture* miniheroes_spritesheet = nullptr;
+	std::string miniheroes_spritesheet_name;
 
 	//todo: delete
 	SDL_Texture* entity_sprites = nullptr;
@@ -126,3 +133,5 @@ private:
 };
 
 #endif // __ctEnemies_H__
+
+bool SpawnEntity(int x, int y, EntityType type);

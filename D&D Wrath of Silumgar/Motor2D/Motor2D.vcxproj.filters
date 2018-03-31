@@ -147,6 +147,9 @@
     <ClCompile Include="ctSkillTree.cpp">
       <Filter>Core\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="MiniHeroes.cpp">
+      <Filter>Core\Modules\Entities\Heroes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -277,6 +280,9 @@
     </ClInclude>
     <ClInclude Include="ctSkillTree.h">
       <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniHeroes.h">
+      <Filter>Core\Modules\Entities\Heroes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

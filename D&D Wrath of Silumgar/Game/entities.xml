@@ -523,6 +523,24 @@
 
     </warrior>
 
+    <miniheroes>
+      <spritesheetSource name = "textures/Characters/MiniHeroes_sheet.png" />
+     
+      <animations>
+        <animation name="idle" speed="1.0" loop="true">
+          <frame x="0" y="0" width="55" height="36"/>
+          <frame x="56" y="0" width="55" height="36"/>
+        </animation>
+
+        <animation name="run_forward" speed="1.0" loop="true">
+          <frame x="0" y="37" width="55" height="36"/>
+          <frame x="56" y="37" width="55" height="36"/>
+        </animation>
+
+      </animations>
+
+    </miniheroes>
+
 
   </heroes>
 

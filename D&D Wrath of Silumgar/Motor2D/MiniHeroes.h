@@ -17,8 +17,6 @@ private:
 
 
 	//animations
-	ctAnimation idle = ctAnimation();
-	ctAnimation run_forward = ctAnimation();
 
 	//animations velocity
 	uint idle_vel = 0u, run_forward_vel = 0u;

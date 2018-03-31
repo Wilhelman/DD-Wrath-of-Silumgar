@@ -7,6 +7,7 @@
 #include "ctRender.h"
 #include "ctWindow.h"
 #include "ctEntities.h"
+#include "ctTaskManager.h"
 #include "j1Map.h"
 
 #include "ctWorldMap.h"
@@ -95,6 +96,8 @@ bool ctWorldMap::Start()
 	App->map->Load(App->map->sceneName.c_str());
 	App->map->LayersSetUp();
 
+	avatar = (Entity*)App->entities->GetMiniheroes();
+
 	if (!map_generated)
 		GenerateNewRandomlyMap();
 
@@ -112,15 +115,13 @@ bool ctWorldMap::Update(float dt)
 {
 
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
-		Entity* avatar = (Entity*)App->entities->GetMiniheroes();
-		avatar->position.x += 100;
-		avatar->position.y -= 70;
+		
+		App->task_manager->AddTask(new Move(avatar, { avatar->position.x + 100,avatar->position.y - 70 }));
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
-		Entity* avatar = (Entity*)App->entities->GetMiniheroes();
-		avatar->position.x += 100;
-		avatar->position.y += 70;
+		
+		App->task_manager->AddTask(new Move(avatar, { avatar->position.x + 100,avatar->position.y + 70 }));
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
@@ -168,6 +169,8 @@ bool ctWorldMap::CleanUp()
 
 	map_elements.clear();*/
 
+	
+	avatar->to_destroy = true;
 	App->map->CleanUp();
 
 	return true;

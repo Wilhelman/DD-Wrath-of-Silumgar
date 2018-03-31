@@ -14,7 +14,7 @@ class Task
 public:
 	Task() {};
 	virtual ~Task() {};
-	virtual bool Execute(Entity* actor) { return true; };
+	virtual bool Execute() { return true; };
 
 private:
 
@@ -63,10 +63,16 @@ public:
 class Move : public Task
 {
 public:
-	Move() {};
+	Move(Entity* actor, iPoint finalpos) {
+		this->actor = actor;
+		this->finalpos = finalpos;
+	};
 	virtual  ~Move() {};
 
-	bool Execute(Entity* actor);
+	bool Execute();
+private:
+	Entity* actor = nullptr;
+	iPoint finalpos;
 };
 
 class Attack : public Task
@@ -75,7 +81,7 @@ public:
 	Attack() {};
 	virtual  ~Attack() {};
 
-	bool Execute(Entity* actor);
+	bool Execute();
 };
 
 class Back : public Task

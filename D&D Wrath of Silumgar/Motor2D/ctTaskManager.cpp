@@ -5,82 +5,47 @@
 
 
 
-bool Move::Execute(Entity* actor)
+bool Move::Execute()
 {
 	bool ret = false;
-	if (actor->type == WARRIOR) {
 
-		if (actor->position.x == App->task_manager->posaux.x - 500)
+		if (actor->position.x == finalpos.x && actor->position.y == finalpos.y)
 		{
-			//actor->animation = &actor->Idle_anim;
-			App->task_manager->posaux.x = actor->position.x;
-
+			actor->animation = &actor->idle;
 			ret = true;
 		}
-		else
-		{
-			//actor->animation = &actor->Move_anim;
-			actor->position.x -= 5;
-		}
-	}
+		else {
+			if (actor->position.x < finalpos.x)
+			{
+				actor->animation = &actor->run_forward;
+				actor->position.x += 5;
+			}
 
-	else if (actor->type == CLERIC) {
+			else if (actor->position.x > finalpos.x)
+			{
+				actor->animation = &actor->run_forward;
+				actor->position.x -= 5;
+			}
 
-		if (actor->position.x == App->task_manager->posaux.x + 500)
-		{
-			//actor->animation = &actor->Idle_anim;
-			App->task_manager->posaux.x = actor->position.x;
+			if (actor->position.y < finalpos.y)
+			{
+				actor->animation = &actor->run_forward;
+				actor->position.y += 5;
+			}
 
-			ret = true;
+			else if (actor->position.y > finalpos.y)
+			{
+				actor->animation = &actor->run_forward;
+				actor->position.y -= 5;
+			}
 		}
-		else
-		{
-			//actor->animation = &actor->Move_anim;
-			actor->position.x += 5;
-		}
-	}
+
 	return ret;
 }
 
 
-bool Back::Execute(Entity* actor)
-{
-	bool ret = false;
-	if (actor->type == CLERIC) {
 
-		if (actor->position.x == App->task_manager->posaux.x - 500)
-		{
-			//actor->animation = &actor->Idle_anim;
-			App->task_manager->posaux.x = actor->position.x;
-
-			ret = true;
-		}
-		else
-		{
-			//actor->animation = &actor->Move_anim;
-			actor->position.x -= 5;
-		}
-	}
-
-	else if (actor->type == WARRIOR) {
-
-		if (actor->position.x == App->task_manager->posaux.x + 500)
-		{
-			//actor->animation = &actor->Idle_anim;
-			App->task_manager->posaux.x = actor->position.x;
-
-			ret = true;
-		}
-		else
-		{
-			//actor->animation = &actor->Move_anim;
-			actor->position.x -= 5;
-		}
-	}
-	return ret;
-}
-
-bool Attack::Execute(Entity* actor)
+bool Attack::Execute()
 {
 /*	bool ret = false;
 
@@ -117,12 +82,6 @@ bool ctTaskManager::Update(float dt)
 
 bool ctTaskManager::Start()
 {
-	buttonQ = new Move;
-	buttonW = new Move;
-	buttonA = new Attack;
-	buttonS = new Attack;
-	buttonZ = new Back;
-	buttonX = new Back;
 	return true;
 }
 
@@ -132,10 +91,6 @@ bool ctTaskManager::CleanUp()
 	{
 		TaskQueue.pop();
 	}
-
-	delete buttonQ;
-	delete buttonW;
-
 	return true;
 }
 
@@ -152,7 +107,7 @@ bool ctTaskManager::DoTask()
 	if (aux_task != nullptr)
 	{
 		//TODO 3 If the task is finished, pop the next task until the queue is empty
-		if (aux_task->Execute(Actor))
+		if (aux_task->Execute())
 		{
 			if (TaskQueue.size() != 0)
 			{
@@ -168,50 +123,6 @@ bool ctTaskManager::DoTask()
 
 bool ctTaskManager::TaskOrderer()
 {
-	//TODO 4 Add the task to the queque 
-	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
-	{
-		Actor = Player;
-		posaux = Actor->position;
-		AddTask(buttonQ);
-	}
-	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
-	{
-		Actor = Enemy;
-		posaux = Actor->position;
-		AddTask(buttonW);
-
-	}
-
 	
-	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
-	{
-		Actor = Player;
-		posaux = Actor->position;
-		AddTask(buttonA);
-	}
-	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
-	{
-		Actor = Enemy;
-		posaux = Actor->position;
-		AddTask(buttonS);
-
-	}
-
-
-	if (App->input->GetKey(SDL_SCANCODE_Z) == KEY_DOWN)
-	{
-		Actor = Player;
-		posaux = Actor->position;
-		AddTask(buttonZ);
-	}
-	if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN)
-	{
-		Actor = Enemy;
-		posaux = Actor->position;
-		AddTask(buttonX);
-
-	}
-
 	return true;
 }

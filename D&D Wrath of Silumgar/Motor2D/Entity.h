@@ -87,6 +87,9 @@ protected:
 
 public:
 	ctAnimation* animation = nullptr;
+	ctAnimation idle = ctAnimation();
+	ctAnimation run_forward = ctAnimation();
+
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);
 	EntityType type = EntityType::NO_TYPE;

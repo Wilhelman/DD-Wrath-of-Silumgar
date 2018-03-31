@@ -2,12 +2,13 @@
 #define __ctWorldMap_H__
 
 #include "ctModule.h"
+#include "Entity.h"
 
 #include <string>
 #include <vector>
 
 class Entity;
-class Cleric; //substitute for miniheroes
+class MiniHeroes;
 
 class ctWorldMap : public ctModule
 {
@@ -42,6 +43,8 @@ public:
 	// Called before all Updates
 	bool PostUpdate();
 
+	Entity* avatar;
+
 	// Called before quitting
 	bool CleanUp();
 
@@ -70,7 +73,7 @@ private:
 
 	std::string name_spritesheet_world_map;
 	SDL_Texture* spritesheet_world_map = nullptr;
-	Entity* avatar = nullptr;
+	
 
 };
 

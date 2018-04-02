@@ -121,6 +121,8 @@ void j1Map::setAllLogicForMap()
 							tier_2_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 						else if ((*layersBlit)->layer_type == TIER_3 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
 							tier_3_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == TIER_4 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							tier_4_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 						else if ((*layersBlit)->layer_type == HEROES_POSITION && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
 							heroes_position_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 						else if ((*layersBlit)->layer_type == ENEMIES_POSITION && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)

@@ -180,6 +180,7 @@ public:
 	std::vector<iPoint> tier_1_coords;
 	std::vector<iPoint> tier_2_coords;
 	std::vector<iPoint> tier_3_coords;
+	std::vector<iPoint> tier_4_coords;
 
 	std::vector<iPoint> heroes_position_coords;
 	std::vector<iPoint> enemies_position_coords;

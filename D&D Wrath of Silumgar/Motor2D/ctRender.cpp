@@ -150,8 +150,7 @@ bool ctRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section,
 	uint scale = App->win->GetScale();
 
 	SDL_Rect rect;
-	/*rect.x = (int)(camera.x * speed) + x * scale_factor;
-	rect.y = (int)(camera.y * speed) + y * scale_factor;*/
+
 	if (section != NULL)
 	{
 		rect.w = section->w*scale_factor;
@@ -165,10 +164,6 @@ bool ctRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section,
 	rect.x = (int)((camera.x * speed) + (x  * scale_factor));
 	rect.y = (int)((camera.y * speed) + (y  * scale_factor));
 
-	
-
-	/*rect.w *= scale;
-	rect.h *= scale;*/
 
 	SDL_Point* p = NULL;
 	SDL_Point pivot;
@@ -326,8 +321,8 @@ iPoint ctRender::ScreenToWorld(int x, int y) const
 
 bool ctRender::Is_inScreen(int x, int y) {
 	bool ret = false;
-	if (x >= -App->render->camera.x && x + App->map->data.tile_width < -App->render->camera.x + App->render->camera.w)
-		if (y >= -App->render->camera.y && y + App->map->data.tile_height < -App->render->camera.y + App->render->camera.h)
+	if (x >= -App->render->camera.x-800 && x + App->map->data.tile_width < -App->render->camera.x + App->render->camera.w+800)
+		if (y >= -App->render->camera.y-800 && y + App->map->data.tile_height < -App->render->camera.y + App->render->camera.h+800)
 			ret = true;
 
 	return ret;

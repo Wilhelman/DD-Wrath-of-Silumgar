@@ -41,7 +41,7 @@ bool ctMainMenu::Start()
 {
 	bool ret = true;
 
-	background = App->gui->AddUIImage(0, 0, { 337, 479, 800, 450 }, this);
+	background = App->gui->AddUIImage(0, 0, { 337, 479, 484, 324 }, this);
 	continue_label = App->gui->AddUILabel(35, 10, "Continue", { 255,255,255,255 }, 15, this);
 	new_game_label = App->gui->AddUILabel(35, 30, "New Game", { 255,255,255,255 }, 15, this);
 	settings_label = App->gui->AddUILabel(35, 50, "Settings", { 255,255,255,255 }, 15, this);
@@ -76,7 +76,7 @@ bool ctMainMenu::Update(float dt)
 {
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0f);
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->skill_tree,1.0f);
 	}
 		
 	//Go down

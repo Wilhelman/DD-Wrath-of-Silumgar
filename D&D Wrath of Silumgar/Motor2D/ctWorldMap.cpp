@@ -89,7 +89,7 @@ bool ctWorldMap::Start()
 		ret = false;
 	}
 
-	App->entities->SpawnEntity(40,160, MINIHEROES);
+	App->entities->SpawnEntity(80,280, MINIHEROES);
 
 	//Displaying map
 	App->map->sceneName = world_map_tmx.c_str();
@@ -148,7 +148,7 @@ bool ctWorldMap::Update(float dt)
 
 	for (int i = 0; i < final_map_elements.size(); i++)
 	{
-		App->render->MapBlit(spritesheet_world_map, final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y, &final_map_elements.at(i)->icon_rect, 1.0f);
+		App->render->Blit(spritesheet_world_map, final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y, &final_map_elements.at(i)->icon_rect, 1.0f);
 	}
 
 	return true;
@@ -178,8 +178,8 @@ bool ctWorldMap::CleanUp()
 
 	map_elements.clear();*/
 
-	
-	avatar->to_destroy = true;
+	if(avatar != nullptr)
+		avatar->to_destroy = true;
 	App->map->CleanUp();
 
 	return true;

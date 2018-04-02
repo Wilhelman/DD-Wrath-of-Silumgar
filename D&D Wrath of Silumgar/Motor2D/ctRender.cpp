@@ -83,7 +83,7 @@ bool ctRender::Update(float dt)
 	
 	int speed = 3;
 
-	/*if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		camera.y += speed;
 
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
@@ -93,7 +93,7 @@ bool ctRender::Update(float dt)
 		camera.x += speed;
 
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		camera.x -= speed;*/
+		camera.x -= speed;
 
 	//LOG("Camera pos x: %i pos y: %i", camera.x, camera.y);
 
@@ -150,21 +150,25 @@ bool ctRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section,
 	uint scale = App->win->GetScale();
 
 	SDL_Rect rect;
-	rect.x = (int)(camera.x * speed) + x * scale;
-	rect.y = (int)(camera.y * speed) + y * scale;
-
+	/*rect.x = (int)(camera.x * speed) + x * scale_factor;
+	rect.y = (int)(camera.y * speed) + y * scale_factor;*/
 	if (section != NULL)
 	{
-		rect.w = section->w;
-		rect.h = section->h;
+		rect.w = section->w*scale_factor;
+		rect.h = section->h*scale_factor;
 	}
 	else
 	{
 		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
 	}
 
-	rect.w *= scale;
-	rect.h *= scale;
+	rect.x = (int)((camera.x * speed) + (x  * scale_factor));
+	rect.y = (int)((camera.y * speed) + (y  * scale_factor));
+
+	
+
+	/*rect.w *= scale;
+	rect.h *= scale;*/
 
 	SDL_Point* p = NULL;
 	SDL_Point pivot;

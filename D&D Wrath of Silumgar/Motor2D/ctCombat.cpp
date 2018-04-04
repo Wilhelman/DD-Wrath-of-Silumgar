@@ -76,7 +76,7 @@ bool ctCombat::PreUpdate()
 // Called each loop iteration
 bool ctCombat::Update(float dt)
 {
-
+	
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 
@@ -127,6 +127,10 @@ bool ctCombat::CleanUp()
 	LOG("Freeing combat");
 
 	//todo: despawn entities
+	for (Entity* info = entity_priority.top(); !entity_priority.empty(); entity_priority.pop(), info = entity_priority.top())
+	{
+		entity_priority.pop();
+	}
 
 	App->gui->DeleteAllUIElements();
 

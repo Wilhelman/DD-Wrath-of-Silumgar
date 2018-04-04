@@ -37,8 +37,8 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	main_menu = new ctMainMenu();
 	world_map = new ctWorldMap();
 	settings = new ctSettings();
-	combat = new ctCombat();
 	entities = new ctEntities();
+	combat = new ctCombat();
 	gui = new ctGui();
 	fonts = new ctFonts();
 	task_manager = new ctTaskManager();

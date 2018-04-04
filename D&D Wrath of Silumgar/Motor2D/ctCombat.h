@@ -4,10 +4,20 @@
 #include "ctModule.h"
 #include "ctGui.h"
 #include "UIBar.h"
+#include "Entity.h"
 #include <string>
 
 using namespace std;
 
+
+
+struct CompareAgility
+{
+	bool operator()( Entity* entityA, Entity* entityB)
+	{
+	return entityA->base_stats.base_agility <= entityB->base_stats.base_agility;
+	}
+};
 
 class ctCombat : public ctModule
 {
@@ -47,10 +57,10 @@ public:
 	void SetSceneName(string new_scene_name);
 
 	uint CalculatedDamage(Entity* attacker, Entity* defender);
-
+	std::priority_queue<Entity*, std::vector<Entity*>, CompareAgility> entity_priority;
 	
 private:
-
+	
 	void SpawnEntities();
 	// TEST FOR UI BAR WITH CALC DAMAGE
 	UIBar* test = nullptr;

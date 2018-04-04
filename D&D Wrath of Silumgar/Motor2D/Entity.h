@@ -77,6 +77,8 @@ struct Skill {
 
 };
 
+
+
 class Entity
 {
 protected:

@@ -6,8 +6,23 @@
 #include <vector>
 #include <string>
 #include <queue>
-
+struct Stats;
 enum ComboType;
+
+class Entity;
+class Cleric;
+class Dwarf;
+class Elf;
+class Warrior;
+
+class Kobold;
+class Gnoll;
+class gnollArcher;
+class Owlbear;
+
+class MiniHeroes;
+
+struct SDL_Texture;
 
 enum EntityType
 {
@@ -41,20 +56,7 @@ struct compare {
 	}
 };
 
-class Entity;
-class Cleric;
-class Dwarf;
-class Elf;
-class Warrior;
 
-class Kobold;
-class Gnoll;
-class gnollArcher;
-class Owlbear;
-
-class MiniHeroes;
-
-struct SDL_Texture;
 
 class ctEntities : public ctModule
 {
@@ -92,7 +94,7 @@ public:
 private:
 
 	std::vector<Entity*> entities;
-
+	
 	std::priority_queue<EntitiesDraw_info, std::vector<EntitiesDraw_info>, compare> drawOrder;
 
 	///HEROES

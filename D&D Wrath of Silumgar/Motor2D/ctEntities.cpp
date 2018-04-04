@@ -6,6 +6,7 @@
 #include "ctAudio.h"
 #include "ctWindow.h"
 #include "ctLog.h"
+#include "ctCombat.h"
 #include "ctFadeToBlack.h"
 #include "ctTaskManager.h"
 
@@ -203,6 +204,7 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 	case EntityType::CLERIC: {
 		Cleric* cleric = new Cleric(x, y, CLERIC);
 		entities.push_back(cleric);
+		App->combat->entity_priority.push(cleric);
 		App->task_manager->Player = cleric; //guarrada: to improve (quitar include taskmanager)
 		ret = true;
 		break;
@@ -210,18 +212,21 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 	case EntityType::DWARF: {
 		Dwarf* dwarf = new Dwarf(x, y, DWARF);
 		entities.push_back(dwarf);
+		App->combat->entity_priority.push(dwarf);
 		ret = true;
 		break;
 	}
 	case EntityType::ELF: {
 		Elf* elf = new Elf(x, y, ELF);
 		entities.push_back(elf);
+		App->combat->entity_priority.push(elf);
 		ret = true;
 		break;
 	}
 	case EntityType::WARRIOR: {
 		Warrior* warrior = new Warrior(x, y, WARRIOR);
 		entities.push_back(warrior);
+		App->combat->entity_priority.push(warrior);
 		App->task_manager->Enemy = warrior; //guarrada: to improve (quitar include taskmanager)
 		ret = true;
 		break;
@@ -229,30 +234,35 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 	case EntityType::KOBOLD: {
 		Kobold* kobold = new Kobold(x, y, KOBOLD);
 		entities.push_back(kobold);
+		App->combat->entity_priority.push(kobold);
 		ret = true;
 		break;
 	}
 	case EntityType::GNOLL: {
 		Gnoll* gnoll = new Gnoll(x, y, GNOLL);
 		entities.push_back(gnoll);
+		App->combat->entity_priority.push(gnoll);
 		ret = true;
 		break;
 	}
 	case EntityType::GNOLL_ARCHER: {
 		GnollArcher* gnollArcher = new GnollArcher(x, y, GNOLL_ARCHER);
 		entities.push_back(gnollArcher);
+		App->combat->entity_priority.push(gnollArcher);
 		ret = true;
 		break;
 	}
 	case EntityType::OWLBEAR: {
 		Owlbear* owlbear = new Owlbear(x, y, OWLBEAR);
 		entities.push_back(owlbear);
+		App->combat->entity_priority.push(owlbear);
 		ret = true;
 		break;
 	}
 	case EntityType::MINIHEROES: {
 		MiniHeroes* miniheroes = new MiniHeroes(x, y, MINIHEROES);
 		entities.push_back(miniheroes);
+		
 		ret = true;
 		break;
 	}

@@ -136,4 +136,4 @@ private:
 
 #endif // __ctEnemies_H__
 
-bool SpawnEntity(int x, int y, EntityType type);
+

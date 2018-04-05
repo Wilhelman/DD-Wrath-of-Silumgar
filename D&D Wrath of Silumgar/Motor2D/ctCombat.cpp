@@ -70,6 +70,7 @@ bool ctCombat::Start()
 // Called each loop iteration
 bool ctCombat::PreUpdate()
 {
+	OrderPriority();
 	return true;
 }
 
@@ -127,10 +128,7 @@ bool ctCombat::CleanUp()
 	LOG("Freeing combat");
 
 	//todo: despawn entities
-	for (Entity* info = entity_priority.top(); !entity_priority.empty(); entity_priority.pop(), info = entity_priority.top())
-	{
-		entity_priority.pop();
-	}
+	
 
 	App->gui->DeleteAllUIElements();
 
@@ -284,4 +282,38 @@ void ctCombat::SpawnEntities()
 	Entity* cleric = App->entities->GetCleric();
 	test = (UIBar*)App->gui->AddUIBar(100,100,cleric->base_stats.base_constitution*13,LIFEBAR);
 	
+}
+
+void ctCombat::OrderPriority()
+{
+	bool ordered = false;
+
+	while (!ordered)
+	{
+		ordered = true;
+		std::vector<Entity*>::iterator itnext = priority_entity.begin();
+		int count = 0;
+		for (std::vector<Entity*>::iterator it = priority_entity.begin(); it != priority_entity.end(); ++it)
+		{
+			itnext++;
+			count++;
+			if (count != priority_entity.size())
+			{
+				if ((*it)->base_stats.base_agility < (*itnext)->base_stats.base_agility)
+				{
+					Entity* entity_tmp = (*it);
+
+					(*it) = (*itnext);
+					it++;
+					(*it) = entity_tmp;
+					it--;
+					ordered = false;
+				}
+			}
+			else
+				break;
+		}
+
+	}
+
 }

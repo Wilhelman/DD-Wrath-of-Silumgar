@@ -11,13 +11,7 @@ using namespace std;
 
 
 
-struct CompareAgility
-{
-	bool operator()( Entity* entityA, Entity* entityB)
-	{
-	return entityA->base_stats.base_agility <= entityB->base_stats.base_agility;
-	}
-};
+
 
 class ctCombat : public ctModule
 {
@@ -52,12 +46,15 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
+	void OrderPriority();
+
 public:
 
 	void SetSceneName(string new_scene_name);
 
 	uint CalculatedDamage(Entity* attacker, Entity* defender);
-	std::priority_queue<Entity*, std::vector<Entity*>, CompareAgility> entity_priority;
+	//TEST to priority attack
+	std::vector<Entity*> priority_entity;
 	
 private:
 	

@@ -286,6 +286,22 @@ void ctCombat::SpawnEntities()
 	// TEST FOR UI BAR WITH CALC DAMAGE
 	Entity* cleric = App->entities->GetCleric();
 	test = (UIBar*)App->gui->AddUIBar(100,100,cleric->base_stats.base_constitution*13,LIFEBAR);
+
+	//Entity* cleric = App->entities->GetCleric();
+	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
+	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 11, cleric->base_stats.base_focus * 13, MANABAR);
+
+	Entity* warrior = App->entities->GetWarrior();
+	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(276, 0, warrior->base_stats.base_constitution * 13, LIFEBAR);
+	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(276, 11, warrior->base_stats.base_focus * 13, MANABAR);
+
+	Entity* elf = App->entities->GetElf();
+	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->base_stats.base_constitution * 13, LIFEBAR);
+	elf_mana_bar = (UIBar*)App->gui->AddUIBar(34, 304, elf->base_stats.base_focus * 13, MANABAR);
+
+	Entity* dwarf = App->entities->GetDwarf();
+	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(276, 293, dwarf->base_stats.base_constitution * 13, LIFEBAR);
+	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(276, 304, dwarf->base_stats.base_focus * 13, MANABAR);
 	
 }
 

@@ -65,11 +65,18 @@ private:
 
 	string scene_name;
 
-	std::vector<UIElement*> ui_elements;
 	UIElement* cleric_background = nullptr;
 	UIElement* warrior_background = nullptr;
 	UIElement* dwarf_background = nullptr;
 	UIElement* elf_background = nullptr;
+	UIBar* cleric_HP_bar = nullptr;
+	UIBar* warrior_HP_bar = nullptr;
+	UIBar* dwarf_HP_bar = nullptr;
+	UIBar* elf_HP_bar = nullptr;
+	UIBar* cleric_mana_bar = nullptr;
+	UIBar* warrior_mana_bar = nullptr;
+	UIBar* dwarf_mana_bar = nullptr;
+	UIBar* elf_mana_bar = nullptr;
 
 };
 

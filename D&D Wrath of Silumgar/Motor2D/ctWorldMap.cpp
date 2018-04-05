@@ -14,6 +14,8 @@
 #include "ctCombat.h"
 #include "Entity.h"
 
+#include "MiniHeroes.h"
+
 #include "ctFadeToBlack.h"
 
 //randomize libs
@@ -89,7 +91,7 @@ bool ctWorldMap::Start()
 		ret = false;
 	}
 
-	App->entities->SpawnEntity(500,500, MINIHEROES);
+	App->entities->SpawnEntity(40,170, MINIHEROES);
 
 	//Displaying map
 	App->map->sceneName = world_map_tmx.c_str();
@@ -116,12 +118,12 @@ bool ctWorldMap::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
 		
-		App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 100,avatar->position.y - 70 }));
+		App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y - 20 }));
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
 		
-		App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 100,avatar->position.y + 70 }));
+		App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y + 20 }));
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
@@ -178,8 +180,9 @@ bool ctWorldMap::CleanUp()
 
 	map_elements.clear();*/
 
-	if(avatar != nullptr)
-		avatar->to_destroy = true;
+	if (App->entities->GetMiniheroes() != nullptr)
+		App->entities->GetMiniheroes()->to_destroy = true;
+
 	App->map->CleanUp();
 
 	return true;

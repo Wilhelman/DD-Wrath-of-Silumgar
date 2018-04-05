@@ -86,6 +86,27 @@ bool ctCombat::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 
+
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	{
+		App->task_manager->AddTask(new MoveForward(App->entities->GetCleric(), {App->entities->GetCleric()->position.x + 250,App->entities->GetCleric()->position.y}));
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+	{
+		App->task_manager->AddTask(new MoveForward(App->entities->GetWarrior(), { App->entities->GetWarrior()->position.x + 250,App->entities->GetWarrior()->position.y }));
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
+	{
+		App->task_manager->AddTask(new MoveForward(App->entities->GetElf(), { App->entities->GetElf()->position.x + 250,App->entities->GetElf()->position.y }));
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
+	{
+		App->task_manager->AddTask(new MoveForward(App->entities->GetDwarf(), { App->entities->GetDwarf()->position.x + 250,App->entities->GetDwarf()->position.y }));
+	}
+
 	// ZOOM
 	if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
 	{
@@ -150,6 +171,8 @@ bool ctCombat::CleanUp()
 
 	if (App->entities->GetWarrior() != nullptr)
 		App->entities->GetWarrior()->to_destroy = true;
+
+	
 
 	return true;
 }

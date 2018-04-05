@@ -134,7 +134,7 @@ bool ctCombat::CleanUp()
 
 	//todo: despawn entities
 	
-
+	priority_entity.clear();
 	App->gui->DeleteAllUIElements();
 
 	App->map->CleanUp();

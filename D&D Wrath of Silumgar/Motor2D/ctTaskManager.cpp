@@ -85,18 +85,18 @@ bool MoveBackward::Execute()
 
 bool Attack::Execute()
 {
-/*	bool ret = false;
+	bool ret = false;
 
-	actor->animation = &actor->Attack_anim;
+	actor->animation = &actor->attack;
 
 	ret = actor->animation->Finished();
 
 	if (ret == true) {
-		actor->Attack_anim.Reset();
-		actor->animation = &actor->Idle_anim;
+		actor->attack.Reset();
+		actor->animation = &actor->idle;
 	}
-	*/
-	return true;
+	
+	return ret;
 }
 
 bool ctTaskManager::Update(float dt)

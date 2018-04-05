@@ -396,7 +396,7 @@
           <frame x="84"  y="2255" width="97" height="81"/>
         </animation>
 
-        <animation name="attack" speed="1.0" loop="true">
+        <animation name="attack" speed="1.0" loop="false">
           <frame x="47"  y="12" width="126" height="96"/>
           <frame x="188" y="12" width="126" height="96"/>
           <frame x="358" y="12" width="126" height="96"/>
@@ -436,7 +436,7 @@
           <frame x="956" y="805" width="80" height="59"/>
         </animation>
 
-        <animation name="attack" speed="1.0" loop="true">
+        <animation name="attack" speed="1.0" loop="false">
           <frame x="2409" y="435" width="114" height="77"/>
           <frame x="2311" y="435" width="114" height="77"/>
           <frame x="2193" y="435" width="114" height="77"/>
@@ -474,7 +474,7 @@
           <frame x="1126" y="450" width="94" height="57"/>
         </animation>
 
-        <animation name="attack" speed="1.0" loop="true">
+        <animation name="attack" speed="1.0" loop="false">
           <frame x="1444" y="690" width="125" height="65"/>
           <frame x="1229" y="690" width="125" height="65"/>
           <frame x="1024" y="690" width="125" height="65"/>
@@ -506,7 +506,7 @@
           <frame x="40" y="802" width="73" height="94"/>
         </animation>
 
-        <animation name="attack" speed="1.0" loop="true">
+        <animation name="attack" speed="1.0" loop="false">
           <frame x="1838" y="926" width="131" height="98"/>
           <frame x="1696" y="926" width="131" height="98"/>
           <frame x="1529" y="926" width="131" height="98"/>

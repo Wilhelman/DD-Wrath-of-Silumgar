@@ -78,10 +78,15 @@ private:
 class Attack : public Task
 {
 public:
-	Attack() {};
+	Attack(Entity* actor) {
+		this->actor = actor;
+	};
 	virtual  ~Attack() {};
 
 	bool Execute();
+
+private:
+	Entity* actor = nullptr;
 };
 
 class MoveBackward : public Task

@@ -9,7 +9,7 @@
 
 using namespace std;
 
-
+enum EntityType;
 
 
 
@@ -47,6 +47,7 @@ public:
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
 	void OrderPriority();
+	void DrawPriority();
 
 public:
 

@@ -80,6 +80,7 @@ private:
 
 	std::vector<Entity*> entities;
 
+public:
 	///HEROES
 	//cleric_sources
 	SDL_Texture* cleric_spritesheet = nullptr;

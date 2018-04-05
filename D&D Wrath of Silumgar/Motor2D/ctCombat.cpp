@@ -135,7 +135,7 @@ bool ctCombat::Update(float dt)
 	}
 	// Draw everything --------------------------------------
 	App->map->Draw();
-
+	DrawPriority();
 	return true;
 }
 
@@ -357,6 +357,45 @@ void ctCombat::OrderPriority()
 			else
 				break;
 		}
+
+	}
+
+}
+
+void ctCombat::DrawPriority()
+{
+	uint x=100, y=100;
+	for (std::vector<Entity*>::iterator it = priority_entity.begin(); it != priority_entity.end(); ++it)
+	{
+		SDL_Rect n = { 881,71,26,26 };
+		switch ((*it)->type)
+		{
+		case CLERIC:
+			break;
+		case DWARF:
+			break;
+		case ELF:
+			break;
+		case WARRIOR:
+			break;
+		case KOBOLD:
+			App->render->Blit(App->entities->kobold_spritesheet, x, y, &n);
+			break;
+		case GNOLL:
+			break;
+		case GNOLL_ARCHER:
+			break;
+		case OWLBEAR:
+			break;
+		case MINIHEROES:
+			break;
+		case NO_TYPE:
+			break;
+		default:
+			break;
+		}
+		x += 26;
+		y += 26;
 
 	}
 

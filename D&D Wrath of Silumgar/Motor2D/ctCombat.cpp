@@ -62,10 +62,10 @@ bool ctCombat::Start()
 	App->map->LayersSetUp();
 	App->map->setAllLogicForMap();
 
-	cleric_background = App->gui->AddUIImage(0, 0, {0,151,315,42}, this, nullptr);
-	warrior_background = App->gui->AddUIImage(0, 0, { 0,151,315,42 }, this, nullptr);
-	dwarf_background = App->gui->AddUIImage(0, 0, { 0,151,315,42 }, this, nullptr);
-	elf_background = App->gui->AddUIImage(0, 0, { 0,151,315,42 }, this, nullptr);
+	cleric_background = App->gui->AddUIImage(0, 0, {0,0,242,31}, this, nullptr);
+	warrior_background = App->gui->AddUIImage(242, 0, { 242,31,242,31 }, this, nullptr);
+	elf_background = App->gui->AddUIImage(0, 293, { 0,31,242,31 }, this, nullptr);
+	dwarf_background = App->gui->AddUIImage(242, 293, { 242,0,242,31 }, this, nullptr);
 
 	SpawnEntities();
 	

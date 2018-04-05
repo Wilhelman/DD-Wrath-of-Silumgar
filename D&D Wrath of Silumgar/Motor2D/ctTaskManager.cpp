@@ -47,33 +47,39 @@ bool MoveBackward::Execute()
 {
 	bool ret = false;
 
+
+	if (actor->flip_texture != true) {
+		actor->flip_texture = true;
+	}
+
 	if (actor->position.x == finalpos.x && actor->position.y == finalpos.y)
 	{
 		actor->animation = &actor->idle;
+		actor->flip_texture = false;
 		ret = true;
 	}
 	else {
 		if (actor->position.x < finalpos.x)
 		{
-			actor->animation = &actor->run_backward;
+			actor->animation = &actor->run_forward;
 			actor->position.x += 5;
 		}
 
 		else if (actor->position.x > finalpos.x)
 		{
-			actor->animation = &actor->run_backward;
+			actor->animation = &actor->run_forward;
 			actor->position.x -= 5;
 		}
 
 		if (actor->position.y < finalpos.y)
 		{
-			actor->animation = &actor->run_backward;
+			actor->animation = &actor->run_forward;
 			actor->position.y += 5;
 		}
 
 		else if (actor->position.y > finalpos.y)
 		{
-			actor->animation = &actor->run_backward;
+			actor->animation = &actor->run_forward;
 			actor->position.y -= 5;
 		}
 	}

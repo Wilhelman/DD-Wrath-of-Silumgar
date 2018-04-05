@@ -13,9 +13,14 @@ Entity::~Entity()
 void Entity::Draw(SDL_Texture* sprites)
 {
 	SDL_Rect r = animation->GetCurrentFrame();
-	
-	if (animation != nullptr)
+
+	if (animation != nullptr) {
+		if (flip_texture == false)
 		App->render->Blit(sprites, position.x, position.y - r.h, &(animation->GetCurrentFrame()));
+		else {
+		App->render->Blit(sprites, position.x, position.y - r.h, &(animation->GetCurrentFrame()), NULL,NULL, SDL_FLIP_HORIZONTAL);
+		}
+	}
 }
 
 bool Entity::LoadProperties(pugi::xml_node properties) {

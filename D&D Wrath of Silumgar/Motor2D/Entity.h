@@ -5,6 +5,8 @@
 #include "ctAnimation.h"
 #include "ctEntities.h"
 
+#include "SDL/include/SDL.h"
+
 struct SDL_Texture;
 
 struct Stats {
@@ -99,6 +101,8 @@ public:
 	iPoint position = iPoint(0, 0);
 	EntityType type = EntityType::NO_TYPE;
 	bool to_destroy = false;
+	bool flip_texture = false;
+	
 
 public:
 	Entity(int x, int y, EntityType type);

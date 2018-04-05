@@ -131,6 +131,9 @@ bool ctEntities::Update(float dt)
 		case OWLBEAR:
 			if (entities.at(i) != nullptr) entities[i]->Draw(owlbear_spritesheet);
 			break;
+		case MINIHEROES:
+			if (entities.at(i) != nullptr) entities[i]->Draw(miniheroes_spritesheet);
+			break;
 		default:
 			break;
 		}

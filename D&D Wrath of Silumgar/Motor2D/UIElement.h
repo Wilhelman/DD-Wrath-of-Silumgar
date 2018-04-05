@@ -28,7 +28,7 @@ protected:
 	ctModule* callback = nullptr;
 	SDL_Rect current_rect = { 0,0,0,0 };
 	iPoint local_position = iPoint(0,0);
-	iPoint screen_position = iPoint(0, 0);
+	//iPoint screen_position = iPoint(0, 0);
 	uint mouse_in_fx = 0u;
 	int mouse_motion_x = 0, mouse_motion_y = 0;
 	int tmp_mouse_x, tmp_mouse_y;
@@ -44,6 +44,9 @@ public:
 	UIElement* parent = nullptr;
 	UI_Type type = UI_NOT_DEF;
 	UI_State current_state = STATE_NO_DEF;
+
+	iPoint screen_position = iPoint(0, 0);//TODO mirar si esto aqui envez de protected esta okay
+
 
 public:
 	UIElement(int x, int y, UI_Type type = UI_NOT_DEF, UIElement* parent = nullptr);

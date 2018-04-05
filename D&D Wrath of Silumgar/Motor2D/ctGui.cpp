@@ -13,6 +13,7 @@
 #include "UICombatMenu.h"
 #include "UITextBox.h"
 #include "UIBar.h"
+#include "UIDecision.h"
 
 #include "UIElement.h"
 
@@ -189,6 +190,14 @@ UIElement* ctGui::AddUIBar(int position_x, int position_y, int max_capacity, UI_
 	return nullptr;
 }
 
+UIElement* ctGui::AddUIDecision(int x, int y, int decision_number, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent) {
+	UIElement* tmp_decision = new UIDecision(x, y, decision_number, DECISION, arrow, options, callback, parent);
+	ui_elements.push_back(tmp_decision);
+	return tmp_decision;
+
+	LOG("Error: Cant add the UIDecision");
+	return nullptr;
+}
 
 UIElement* ctGui::GetElementUnderMouse(int x, int y)
 {

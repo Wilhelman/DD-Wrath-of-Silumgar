@@ -9,6 +9,7 @@
 
 class Entity;
 class MiniHeroes;
+class UIDecision;
 
 class ctWorldMap : public ctModule
 {
@@ -54,12 +55,19 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
+
+
 private:
 
 	//used to load easily a rect from XML
 	void LoadRect(pugi::xml_node rect_node, SDL_Rect* rect);
 
 	void GenerateNewRandomlyMap();
+
+	void NavigateDown(std::vector<UIElement*> &current_vector);
+
+	void NavigateUp(std::vector<UIElement*> &current_vector);
+
 
 private:
 
@@ -74,7 +82,10 @@ private:
 	std::string name_spritesheet_world_map;
 	SDL_Texture* spritesheet_world_map = nullptr;
 	
-
+	//Decision
+	UIDecision* decision = nullptr; 
+	UIElement* arrow = nullptr;
+	std::vector<UIElement*> options;
 };
 
 

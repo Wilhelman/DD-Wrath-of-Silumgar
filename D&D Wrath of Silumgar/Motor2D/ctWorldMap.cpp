@@ -103,6 +103,13 @@ bool ctWorldMap::Start()
 	if (!map_generated)
 		GenerateNewRandomlyMap();
 
+
+	//Decision call example
+
+	//decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this); 
+	//(*options.rbegin())->current_state = STATE_FOCUSED;
+	//arrow->SetParent(*options.rbegin());
+
 	return ret;
 }
 
@@ -115,6 +122,17 @@ bool ctWorldMap::PreUpdate()
 // Called each loop iteration
 bool ctWorldMap::Update(float dt)
 {
+
+
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision!=nullptr)
+	{
+		NavigateUp(options);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr)
+	{
+		NavigateDown(options);
+	}
 
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
 		
@@ -289,4 +307,51 @@ void ctWorldMap::GenerateNewRandomlyMap()
 
 
 	map_generated = true;
+}
+
+void ctWorldMap::NavigateDown(std::vector<UIElement*> &current_vector) {
+	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();
+	while (it_vector != current_vector.end()) {
+		if ((*it_vector)->current_state == STATE_FOCUSED) {
+			if ((*it_vector) != current_vector.back()) {
+				(*it_vector)->current_state = STATE_NORMAL;
+				it_vector++;
+				(*it_vector)->current_state = STATE_FOCUSED;
+				arrow->SetParent((*it_vector));
+				break;
+			}
+			else
+			{
+
+				(*it_vector)->current_state = STATE_NORMAL;
+				it_vector = current_vector.begin();
+				(*it_vector)->current_state = STATE_FOCUSED;
+				arrow->SetParent((*it_vector));
+			}
+		}
+		it_vector++;
+	}
+}
+
+void ctWorldMap::NavigateUp(std::vector<UIElement*> &current_vector) {
+	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();
+	while (it_vector != current_vector.end()) {
+		if ((*it_vector)->current_state == STATE_FOCUSED) {
+			if ((*it_vector) != current_vector.front()) {
+				(*it_vector)->current_state = STATE_NORMAL;
+				it_vector--;
+				(*it_vector)->current_state = STATE_FOCUSED;
+				arrow->SetParent((*it_vector));
+				break;
+			}
+			else
+			{
+				(*it_vector)->current_state = STATE_NORMAL;
+				it_vector = current_vector.end() - 1;
+				(*it_vector)->current_state = STATE_FOCUSED;
+				arrow->SetParent((*it_vector));
+			}
+		}
+		it_vector++;
+	}
 }

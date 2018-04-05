@@ -150,6 +150,9 @@
     <ClCompile Include="MiniHeroes.cpp">
       <Filter>Core\Modules\Entities\Heroes</Filter>
     </ClCompile>
+    <ClCompile Include="UIDecision.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -283,6 +286,9 @@
     </ClInclude>
     <ClInclude Include="MiniHeroes.h">
       <Filter>Core\Modules\Entities\Heroes</Filter>
+    </ClInclude>
+    <ClInclude Include="UIDecision.h">
+      <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

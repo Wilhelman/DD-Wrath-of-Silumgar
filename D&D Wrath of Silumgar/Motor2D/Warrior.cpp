@@ -29,6 +29,8 @@ Warrior::Warrior(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &idle);
 		else if (tmp == "run_forward")
 			LoadAnimation(animations, &run_forward);
+		else if (tmp == "attack")
+			LoadAnimation(animations, &attack);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

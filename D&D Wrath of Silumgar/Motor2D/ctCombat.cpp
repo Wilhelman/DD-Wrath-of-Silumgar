@@ -90,21 +90,29 @@ bool ctCombat::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
 		App->task_manager->AddTask(new MoveForward(App->entities->GetCleric(), {App->entities->GetCleric()->position.x + 250,App->entities->GetCleric()->position.y}));
+		App->task_manager->AddTask(new Attack(App->entities->GetCleric()));
+		App->task_manager->AddTask(new MoveForward(App->entities->GetCleric(), { App->entities->GetCleric()->position.x ,App->entities->GetCleric()->position.y }));
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 	{
-		App->task_manager->AddTask(new MoveForward(App->entities->GetWarrior(), { App->entities->GetWarrior()->position.x + 250,App->entities->GetWarrior()->position.y }));
+		App->task_manager->AddTask(new MoveForward(App->entities->GetWarrior(), { App->entities->GetWarrior()->position.x + 250, App->entities->GetWarrior()->position.y }));
+		App->task_manager->AddTask(new Attack(App->entities->GetWarrior()));
+		App->task_manager->AddTask(new MoveForward(App->entities->GetWarrior(), { App->entities->GetWarrior()->position.x, App->entities->GetWarrior()->position.y }));
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 	{
 		App->task_manager->AddTask(new MoveForward(App->entities->GetElf(), { App->entities->GetElf()->position.x + 250,App->entities->GetElf()->position.y }));
+		App->task_manager->AddTask(new Attack(App->entities->GetElf()));
+		App->task_manager->AddTask(new MoveForward(App->entities->GetElf(), { App->entities->GetElf()->position.x,App->entities->GetElf()->position.y }));
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
 	{
 		App->task_manager->AddTask(new MoveForward(App->entities->GetDwarf(), { App->entities->GetDwarf()->position.x + 250,App->entities->GetDwarf()->position.y }));
+		App->task_manager->AddTask(new Attack(App->entities->GetDwarf()));
+		App->task_manager->AddTask(new MoveForward(App->entities->GetDwarf(), { App->entities->GetDwarf()->position.x,App->entities->GetDwarf()->position.y }));
 	}
 
 	// ZOOM

@@ -380,15 +380,25 @@ void ctCombat::DrawPriority()
 	{
 		SDL_Rect Kobold = { 881,71,26,26 };
 		SDL_Rect Gnoll = { 821,8,26,26 };
+		SDL_Rect Owlbear = { 1147, 19, 26, 26 };
+		SDL_Rect GnollArcher = { 993, 25, 26, 26 };
+		SDL_Rect Cleric = { 142, 2652, 26, 26 };
+		SDL_Rect Dwarf = { 81, 333, 26, 26 };
+		SDL_Rect Elf = { 852, 2150, 26, 26 };
+		SDL_Rect Warrior = { 1183, 112, 26, 26 };
 		switch ((*it)->type)
 		{
 		case CLERIC:
+			App->render->Blit(App->entities->cleric_spritesheet, x, y, &Cleric);
 			break;
 		case DWARF:
+			App->render->Blit(App->entities->dwarf_spritesheet, x, y, &Dwarf);
 			break;
 		case ELF:
+			App->render->Blit(App->entities->elf_spritesheet, x, y, &Elf);
 			break;
 		case WARRIOR:
+			App->render->Blit(App->entities->warrior_spritesheet, x, y, &Warrior);
 			break;
 		case KOBOLD:
 			App->render->Blit(App->entities->kobold_spritesheet, x, y, &Kobold);
@@ -397,8 +407,10 @@ void ctCombat::DrawPriority()
 			App->render->Blit(App->entities->gnoll_spritesheet, x, y, &Gnoll);
 			break;
 		case GNOLL_ARCHER:
+			App->render->Blit(App->entities->gnollArcher_spritesheet, x, y, &GnollArcher);
 			break;
 		case OWLBEAR:
+			App->render->Blit(App->entities->owlbear_spritesheet, x, y, &Elf);
 			break;
 		case MINIHEROES:
 			break;

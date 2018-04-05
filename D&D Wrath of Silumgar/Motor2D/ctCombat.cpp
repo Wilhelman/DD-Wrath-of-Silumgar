@@ -375,10 +375,11 @@ void ctCombat::OrderPriority()
 
 void ctCombat::DrawPriority()
 {
-	uint x=100, y=100;
+	uint x=10, y=30;
 	for (std::vector<Entity*>::iterator it = priority_entity.begin(); it != priority_entity.end(); ++it)
 	{
-		SDL_Rect n = { 881,71,26,26 };
+		SDL_Rect Kobold = { 881,71,26,26 };
+		SDL_Rect Gnoll = { 821,8,26,26 };
 		switch ((*it)->type)
 		{
 		case CLERIC:
@@ -390,9 +391,10 @@ void ctCombat::DrawPriority()
 		case WARRIOR:
 			break;
 		case KOBOLD:
-			//App->render->Blit(App->entities->kobold_spritesheet, x, y, &n);
+			App->render->Blit(App->entities->kobold_spritesheet, x, y, &Kobold);
 			break;
 		case GNOLL:
+			App->render->Blit(App->entities->gnoll_spritesheet, x, y, &Gnoll);
 			break;
 		case GNOLL_ARCHER:
 			break;
@@ -405,7 +407,7 @@ void ctCombat::DrawPriority()
 		default:
 			break;
 		}
-		x += 26;
+		
 		y += 26;
 
 	}

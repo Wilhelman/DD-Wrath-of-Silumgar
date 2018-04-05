@@ -48,7 +48,7 @@ void UIBar::Update()
 		App->gui->DeleteUIElement(*yellow_bar);
 		yellow_bar = nullptr;
 	}
-	if (current_quantity <=0) {
+	if (current_quantity <=0 && bar_type == LIFEBAR) {
 		DeleteElements();
 		lower_bar = nullptr;
 		upper_bar = nullptr;

@@ -60,14 +60,14 @@ public:
 };
 
 
-class Move : public Task
+class MoveForward : public Task
 {
 public:
-	Move(Entity* actor, iPoint finalpos) {
+	MoveForward(Entity* actor, iPoint finalpos) {
 		this->actor = actor;
 		this->finalpos = finalpos;
 	};
-	virtual  ~Move() {};
+	~MoveForward() {};
 
 	bool Execute();
 private:
@@ -84,13 +84,21 @@ public:
 	bool Execute();
 };
 
-class Back : public Task
+class MoveBackward : public Task
 {
 public:
-	Back() {};
-	virtual  ~Back() {};
+public:
+	MoveBackward(Entity* actor, iPoint finalpos) {
+		this->actor = actor;
+		this->finalpos = finalpos;
+	};
+	~MoveBackward() {};
 
-	bool Execute(Entity* actor);
+	bool Execute();
+
+private:
+	Entity* actor = nullptr;
+	iPoint finalpos;
 };
 
 

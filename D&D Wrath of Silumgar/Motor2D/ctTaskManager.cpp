@@ -5,7 +5,7 @@
 
 
 
-bool Move::Execute()
+bool MoveForward::Execute()
 {
 	bool ret = false;
 
@@ -39,6 +39,44 @@ bool Move::Execute()
 				actor->position.y -= 5;
 			}
 		}
+
+	return ret;
+}
+
+bool MoveBackward::Execute()
+{
+	bool ret = false;
+
+	if (actor->position.x == finalpos.x && actor->position.y == finalpos.y)
+	{
+		actor->animation = &actor->idle;
+		ret = true;
+	}
+	else {
+		if (actor->position.x < finalpos.x)
+		{
+			actor->animation = &actor->run_backward;
+			actor->position.x += 5;
+		}
+
+		else if (actor->position.x > finalpos.x)
+		{
+			actor->animation = &actor->run_backward;
+			actor->position.x -= 5;
+		}
+
+		if (actor->position.y < finalpos.y)
+		{
+			actor->animation = &actor->run_backward;
+			actor->position.y += 5;
+		}
+
+		else if (actor->position.y > finalpos.y)
+		{
+			actor->animation = &actor->run_backward;
+			actor->position.y -= 5;
+		}
+	}
 
 	return ret;
 }

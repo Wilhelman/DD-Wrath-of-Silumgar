@@ -89,7 +89,7 @@ bool ctWorldMap::Start()
 		ret = false;
 	}
 
-	App->entities->SpawnEntity(40,170, MINIHEROES);
+	App->entities->SpawnEntity(500,500, MINIHEROES);
 
 	//Displaying map
 	App->map->sceneName = world_map_tmx.c_str();
@@ -116,12 +116,12 @@ bool ctWorldMap::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
 		
-		App->task_manager->AddTask(new Move(avatar, { avatar->position.x + 100,avatar->position.y - 70 }));
+		App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 100,avatar->position.y - 70 }));
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
 		
-		App->task_manager->AddTask(new Move(avatar, { avatar->position.x + 100,avatar->position.y + 70 }));
+		App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 100,avatar->position.y + 70 }));
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {

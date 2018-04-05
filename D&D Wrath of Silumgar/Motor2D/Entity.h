@@ -91,6 +91,9 @@ public:
 	ctAnimation* animation = nullptr;
 	ctAnimation idle = ctAnimation();
 	ctAnimation run_forward = ctAnimation();
+	ctAnimation run_backward = ctAnimation();
+	ctAnimation attack = ctAnimation();
+	ctAnimation damaged = ctAnimation();
 
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);

@@ -76,9 +76,11 @@ public:
 
 	MiniHeroes* GetMiniheroes()const;
 
+	std::vector<Entity*> entities;
+
 private:
 
-	std::vector<Entity*> entities;
+	
 
 public:
 	///HEROES

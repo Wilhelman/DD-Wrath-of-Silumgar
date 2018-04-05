@@ -60,6 +60,7 @@ public:
 private:
 	
 	void SpawnEntities();
+	void SpawnEnemies(string sceneName);
 	// TEST FOR UI BAR WITH CALC DAMAGE
 	UIBar* test = nullptr;
 private:

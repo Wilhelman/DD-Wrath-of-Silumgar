@@ -41,21 +41,6 @@ enum EntityType
 	NO_TYPE
 };
 
-struct EntitiesDraw_info {
-	SDL_Rect rect = { 0,0,0,0 };
-	iPoint pos = { 0,0 };
-	uint priority = 0u;
-	ctAnimation* anim = nullptr;
-	EntityType type = NO_TYPE;
-};
-
-struct compare {
-	bool operator()(const EntitiesDraw_info& infoA, const EntitiesDraw_info& infoB)
-	{
-		return infoA.priority > infoB.priority;
-	}
-};
-
 
 
 class ctEntities : public ctModule
@@ -94,8 +79,6 @@ public:
 private:
 
 	std::vector<Entity*> entities;
-	
-	std::priority_queue<EntitiesDraw_info, std::vector<EntitiesDraw_info>, compare> drawOrder;
 
 	///HEROES
 	//cleric_sources

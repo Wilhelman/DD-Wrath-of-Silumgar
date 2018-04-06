@@ -79,7 +79,8 @@ bool ctWindow::Awake(pugi::xml_node& config)
 			screen_surface = SDL_GetWindowSurface(window);
 		}
 	}
-
+	w_scalade = (float)screen_surface->w / width;
+	h_scalade = (float)screen_surface->h / height;
 	return ret;
 }
 
@@ -116,4 +117,13 @@ void ctWindow::GetWindowSize(uint& width, uint& height) const
 uint ctWindow::GetScale() const
 {
 	return scale;
+}
+
+float ctWindow::GetWScalade() const
+{
+	return w_scalade;
+}
+float ctWindow::GetHScalade() const
+{
+	return h_scalade;
 }

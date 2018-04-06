@@ -30,6 +30,8 @@ public:
 
 	// Retrieve window scale
 	uint GetScale() const;
+	float GetWScalade() const;
+	float GetHScalade() const;
 
 public:
 	//The window we'll be rendering to
@@ -42,6 +44,8 @@ public:
 
 private:
 	std::string	title;
+	float		w_scalade = 0u;
+	float		h_scalade = 0u;
 	uint		width = 0u;
 	uint		height = 0u;
 	uint		scale = 0u;

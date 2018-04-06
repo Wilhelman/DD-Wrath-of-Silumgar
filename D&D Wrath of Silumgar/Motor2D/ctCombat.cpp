@@ -66,9 +66,11 @@ bool ctCombat::Start()
 	warrior_background = App->gui->AddUIImage(242, 0, { 242,31,242,31 }, this, nullptr);
 	elf_background = App->gui->AddUIImage(0, 293, { 0,31,242,31 }, this, nullptr);
 	dwarf_background = App->gui->AddUIImage(242, 293, { 242,0,242,31 }, this, nullptr);
-
+	
 	SpawnEntities();
 	SpawnEnemies(scene_name);
+
+	
 	
 	return ret;
 }
@@ -319,12 +321,14 @@ void ctCombat::SpawnEntities()
 		break;
 	}
 	// TEST FOR UI BAR WITH CALC DAMAGE
-	Entity* cleric = App->entities->GetCleric();
+	//Entity* cleric = App->entities->GetCleric();
 	//test = (UIBar*)App->gui->AddUIBar(100,100,cleric->base_stats.base_constitution*13,LIFEBAR);
 
-	//Entity* cleric = App->entities->GetCleric();
-	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
+	Entity* cleric = App->entities->GetCleric();
+	//cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
+	test = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
 	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 11, cleric->base_stats.base_focus * 13, MANABAR);
+	
 
 	Entity* warrior = App->entities->GetWarrior();
 	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(276, 0, warrior->base_stats.base_constitution * 13, LIFEBAR);

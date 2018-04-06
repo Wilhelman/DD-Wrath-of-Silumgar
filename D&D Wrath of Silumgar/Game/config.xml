@@ -18,7 +18,7 @@
 	</gui>
 	<language current="ENG" />
 	<window>
-		<resolution width="1452" height="972" scale="3" />
+		<resolution width="968" height="648" scale="2" />
 		<fullscreen value="false" />
 		<borderless value="false" />
 		<resizable value="false" />

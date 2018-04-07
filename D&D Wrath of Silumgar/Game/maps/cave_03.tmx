@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="left-up" width="22" height="27" tilewidth="22" tileheight="12" nextobjectid="1">
- <tileset firstgid="1" name="forest" tilewidth="22" tileheight="12" tilecount="594" columns="22">
-  <image source="forest.png" trans="ff00ff" width="484" height="324"/>
- </tileset>
- <tileset firstgid="595" name="RedGreen" tilewidth="22" tileheight="12" tilecount="4" columns="2">
+ <tileset firstgid="1" name="RedGreen" tilewidth="22" tileheight="12" tilecount="4" columns="2">
   <image source="RedGreen.png" trans="ff00ff" width="64" height="32"/>
+ </tileset>
+ <tileset firstgid="5" name="background_cave_02" tilewidth="22" tileheight="12" tilecount="594" columns="22">
+  <image source="background_cave_02.png" trans="ff00ff" width="484" height="324"/>
  </tileset>
  <layer name="background" width="22" height="27">
   <data>
-   <tile gid="1"/>
-   <tile gid="2"/>
-   <tile gid="3"/>
-   <tile gid="4"/>
    <tile gid="5"/>
    <tile gid="6"/>
    <tile gid="7"/>
@@ -602,6 +598,10 @@
    <tile gid="592"/>
    <tile gid="593"/>
    <tile gid="594"/>
+   <tile gid="595"/>
+   <tile gid="596"/>
+   <tile gid="597"/>
+   <tile gid="598"/>
   </data>
  </layer>
  <layer name="heroes_position" width="22" height="27">
@@ -919,7 +919,6 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="595"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -962,6 +961,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="1"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -988,7 +988,6 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="595"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1031,6 +1030,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="1"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1051,7 +1051,6 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="595"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1094,6 +1093,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="1"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1120,7 +1120,6 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="595"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1141,6 +1140,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="1"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1529,7 +1529,6 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="596"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1574,6 +1573,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1592,7 +1592,6 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="596"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1637,6 +1636,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1661,7 +1661,6 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="596"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1706,6 +1705,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1724,7 +1724,6 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="596"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1747,6 +1746,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>

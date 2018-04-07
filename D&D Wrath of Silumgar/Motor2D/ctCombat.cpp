@@ -442,6 +442,42 @@ void ctCombat::SpawnEnemies(string sceneName)
 	{
 		if (random_number == 1)
 		{
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(2).x, App->map->enemies_position_coords.at(2).y, KOBOLD);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(0).x, App->map->enemies_position_coords.at(0).y, GNOLL);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
+			
+			
+
+		}
+		else if (random_number == 0)
+		{
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(2).x, App->map->enemies_position_coords.at(2).y, KOBOLD);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
+		}
+
+	}
+	if (sceneName == "cave_02.tmx")
+	{
+		if (random_number == 1)
+		{
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(0).x, App->map->enemies_position_coords.at(0).y, GNOLL);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);
+
+		}
+		else if (random_number == 0)
+		{
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(2).x, App->map->enemies_position_coords.at(2).y, KOBOLD);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
+		}
+
+	}
+	if (sceneName == "cave_03.tmx")
+	{
+		if (random_number == 1)
+		{
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(0).x, App->map->enemies_position_coords.at(0).y, GNOLL);
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);

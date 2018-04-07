@@ -37,7 +37,7 @@
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
-				<scene name="forest.tmx" />
+				<scene name="cave_02.tmx" />
 				<icon_coords x="160" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>
@@ -46,7 +46,7 @@
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
-				<scene name="forest.tmx" />
+				<scene name="cave_02.tmx" />
 				<icon_coords x="160" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>
@@ -55,7 +55,7 @@
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
-				<scene name="forest.tmx" />
+				<scene name="cave_02.tmx" />
 				<icon_coords x="160" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>
@@ -64,7 +64,7 @@
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
-				<scene name="forest.tmx" />
+				<scene name="cave_02.tmx" />
 				<icon_coords x="160" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>

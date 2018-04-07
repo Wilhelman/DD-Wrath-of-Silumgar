@@ -62,10 +62,14 @@ bool ctCombat::Start()
 	App->map->LayersSetUp();
 	App->map->setAllLogicForMap();
 
-	cleric_background = App->gui->AddUIImage(0, 0, {0,0,242,31}, this, nullptr);
-	warrior_background = App->gui->AddUIImage(242, 0, { 242,31,242,31 }, this, nullptr);
-	elf_background = App->gui->AddUIImage(0, 293, { 0,31,242,31 }, this, nullptr);
+	cleric_background = App->gui->AddUIImage(-1, -1, {0,0,242,31}, this, nullptr);
+	warrior_background = App->gui->AddUIImage(242, -1, { 242,31,242,31 }, this, nullptr);
+	elf_background = App->gui->AddUIImage(-1, 293, { 0,31,242,31 }, this, nullptr);
 	dwarf_background = App->gui->AddUIImage(242, 293, { 242,0,242,31 }, this, nullptr);
+	cleric_name = App->gui->AddUILabel(200, 3, "Cleric", { 255,255,255,255 }, 15, this);
+	warrior_name = App->gui->AddUILabel(438, 3, "Warrior", { 255,255,255,255 }, 15, this);
+	elf_name = App->gui->AddUILabel(210, 296, "Elf", { 255,255,255,255 }, 15, this);
+	dwarf_name = App->gui->AddUILabel(443, 296, "Dwarf", { 255,255,255,255 }, 15, this);
 	
 	SpawnEntities();
 	SpawnEnemies(scene_name);
@@ -326,21 +330,21 @@ void ctCombat::SpawnEntities()
 
 	Entity* cleric = App->entities->GetCleric();
 	//cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
-	test = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
-	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 11, cleric->base_stats.base_focus * 13, MANABAR);
+	test = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.base_constitution * 13, LIFEBAR);
+	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->base_stats.base_focus * 13, MANABAR);
 	
 
 	Entity* warrior = App->entities->GetWarrior();
-	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(276, 0, warrior->base_stats.base_constitution * 13, LIFEBAR);
-	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(276, 11, warrior->base_stats.base_focus * 13, MANABAR);
+	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->base_stats.base_constitution * 13, LIFEBAR);
+	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(277, 10, warrior->base_stats.base_focus * 13, MANABAR);
 
 	Entity* elf = App->entities->GetElf();
 	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->base_stats.base_constitution * 13, LIFEBAR);
 	elf_mana_bar = (UIBar*)App->gui->AddUIBar(34, 304, elf->base_stats.base_focus * 13, MANABAR);
 
 	Entity* dwarf = App->entities->GetDwarf();
-	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(276, 293, dwarf->base_stats.base_constitution * 13, LIFEBAR);
-	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(276, 304, dwarf->base_stats.base_focus * 13, MANABAR);
+	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->base_stats.base_constitution * 13, LIFEBAR);
+	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.base_focus * 13, MANABAR);
 	
 }
 

@@ -79,6 +79,10 @@ private:
 	UIBar* warrior_mana_bar = nullptr;
 	UIBar* dwarf_mana_bar = nullptr;
 	UIBar* elf_mana_bar = nullptr;
+	UIElement* cleric_name;
+	UIElement* warrior_name;
+	UIElement* dwarf_name;
+	UIElement* elf_name;
 
 };
 

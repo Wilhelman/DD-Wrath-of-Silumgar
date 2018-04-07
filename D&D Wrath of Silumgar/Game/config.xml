@@ -37,8 +37,8 @@
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
-				<scene name="cave_02.tmx" />
-				<icon_coords x="200" y="480" width="100" height="100" />
+				<scene name="forest.tmx" />
+				<icon_coords x="160" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="3" />
@@ -46,8 +46,8 @@
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
-				<scene name="cave_02.tmx" />
-				<icon_coords x="300" y="480" width="100" height="100" />
+				<scene name="forest.tmx" />
+				<icon_coords x="160" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="3" />
@@ -55,8 +55,8 @@
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
-				<scene name="cave_02.tmx" />
-				<icon_coords x="100" y="480" width="100" height="100" />
+				<scene name="forest.tmx" />
+				<icon_coords x="160" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="3" />
@@ -64,38 +64,38 @@
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
+				<scene name="forest.tmx" />
+				<icon_coords x="160" y="512" width="32" height="32" />
+			</map_element>
+			<map_element>
+				<tier type="2" />
+				<entity name="KOBOLD" />
+				<entity name="KOBOLD" />
+				<entity name="KOBOLD" />
 				<scene name="cave_02.tmx" />
-				<icon_coords x="400" y="480" width="100" height="100" />
-			</map_element>
-			<map_element>
-				<tier type="2" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<scene name="pink_cave.tmx" />
-				<icon_coords x="400" y="480" width="100" height="100" />
+				<icon_coords x="64" y="480" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="2" />
 				<entity name="GOBLIN" />
 				<entity name="GOBLIN" />
 				<entity name="GOBLIN" />
-				<scene name="pink_cave.tmx" />
-				<icon_coords x="300" y="480" width="100" height="100" />
+				<scene name="forest.tmx" />
+				<icon_coords x="96" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="2" />
 				<entity name="KOBOLD" />
 				<entity name="GOBLIN" />
-				<scene name="pink_cave.tmx" />
-				<icon_coords x="100" y="480" width="100" height="100" />
+				<scene name="train.tmx" />
+				<icon_coords x="128" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="1" />
 				<entity name="KOBOLD" />
 				<entity name="GOBLIN" />
 				<scene name="tabern.tmx" />
-				<icon_coords x="0" y="480" width="100" height="100" />
+				<icon_coords x="0" y="480" width="32" height="32" />
 			</map_element>
 		</world_map_elements>
 	</world_map>

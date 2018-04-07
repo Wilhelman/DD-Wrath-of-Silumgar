@@ -438,7 +438,7 @@ void ctCombat::DrawPriority()
 void ctCombat::SpawnEnemies(string sceneName)
 {
 	int random_number = (rand() % 2);
-	if (sceneName == "cave_02.tmx")
+	if (sceneName == "forest.tmx")
 	{
 		if (random_number == 1)
 		{
@@ -449,8 +449,8 @@ void ctCombat::SpawnEnemies(string sceneName)
 		else if (random_number == 0)
 		{
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(2).x, App->map->enemies_position_coords.at(2).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, GNOLL);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
 		}
 
 	}

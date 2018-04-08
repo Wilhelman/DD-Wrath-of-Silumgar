@@ -109,13 +109,24 @@ bool ctWorldMap::Start()
 	if (!map_generated)
 		GenerateNewRandomlyMap();
 
-
+	
 	//Decision call example
 
 	//decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this); 
 	//(*options.rbegin())->current_state = STATE_FOCUSED;
 	//arrow->SetParent(*options.rbegin());
 
+	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 05 The Journey (Stage 1).ogg", -1)) {
+		
+		LOG("Error playing music in ctMainMenu Start");
+	}
+	
+
+
+	menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuMove.wav");
+	menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuSelect.wav");
+	walk_fx = App->audio->LoadFx("audio/sounds/Others/WorldMapWalk.wav"); //TODO Change fx if you find better
+		
 	return ret;
 }
 
@@ -130,8 +141,9 @@ bool ctWorldMap::Update(float dt)
 {
 
 
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision!=nullptr)
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr)
 	{
+		App->audio->PlayFx(walk_fx);
 		NavigateUp(options);
 	}
 
@@ -141,7 +153,7 @@ bool ctWorldMap::Update(float dt)
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
-		
+		App->audio->PlayFx(walk_fx,3); //TODO Change if we dont move at the same time we press 1
 		App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y - 20 }));
 	}
 
@@ -194,6 +206,13 @@ bool ctWorldMap::PostUpdate()
 bool ctWorldMap::CleanUp()
 {
 	LOG("Freeing ctWorldMap");
+
+	App->audio->StopMusic();
+	App->audio->UnLoadFx(menu_move_fx);
+	App->audio->UnLoadFx(menu_select_fx);
+	App->audio->UnLoadFx(walk_fx);
+	
+
 
 	//TODO CLEAN THIS
 	/*std::vector<WorldMapElement*>::const_iterator it_map_elements = map_elements.begin();

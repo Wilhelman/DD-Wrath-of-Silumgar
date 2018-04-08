@@ -57,11 +57,14 @@ bool ctMainMenu::Start()
 	labels.push_back(quit_label);
 
 
-	if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg")) {
-		//ret = false;
+
+	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 00 Fanfare.ogg",1)) {
+		
 		LOG("Error playing music in ctMainMenu Start");
 	}
-
+	
+	menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuMove.wav");
+	menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuSelect.wav");
 	return ret;
 }
 
@@ -85,14 +88,17 @@ bool ctMainMenu::Update(float dt)
 		
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+		App->audio->PlayFx(menu_move_fx);
 		NavigateDown(labels);
 	}
 	//Go up
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+		App->audio->PlayFx(menu_move_fx);
 		NavigateUp(labels);
 	}
 	//Execute
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+		App->audio->PlayFx(menu_select_fx);
 		ExecuteComand(labels);
 	}
 
@@ -115,7 +121,10 @@ bool ctMainMenu::CleanUp()
 {
 	LOG("Freeing main_menu");
 
-	App->audio->StopMusic();
+	//App->audio->StopMusic();
+
+	App->audio->UnLoadFx(menu_move_fx);
+	App->audio->UnLoadFx(menu_select_fx);
 
 	App->gui->DeleteAllUIElements();
 	background = nullptr;
@@ -204,10 +213,26 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	
 	if (continue_label->current_state == STATE_EXECUTED) {
 		LOG("continue_label pressed");
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+
+
+
+		if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 02  Dungeons & Dragons.ogg", 1, 0)) {
+
+			LOG("Error playing music in ctMainMenu Start");
+		}
+
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 5.0f);
+
+		
 	}
 	if (new_game_label->current_state == STATE_EXECUTED) {
 		LOG("new_game_label pressed");
+
+		if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 02  Dungeons & Dragons.ogg", 1, 0)) {
+
+			LOG("Error playing music in ctMainMenu Start");
+		}
+
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 	}
 	if (settings_label->current_state == STATE_EXECUTED) {

@@ -45,6 +45,8 @@ public:
 private:
 	bool quit_pressed = false;
 	
+	uint menu_move_fx=0;
+	uint menu_select_fx = 0;
 
 	UIElement* background = nullptr;
 	UIElement* continue_label = nullptr;

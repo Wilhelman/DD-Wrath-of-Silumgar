@@ -2,7 +2,7 @@
 #include "UICombatMenu.h"
 #include "ctLog.h"
 #include "ctInput.h"
-
+#include "ctAudio.h"
 
 UICombatMenu::UICombatMenu(int x, int y, UI_Type type,ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
@@ -23,12 +23,22 @@ UICombatMenu::UICombatMenu(int x, int y, UI_Type type,ctModule* callback, UIElem
 	lower_points_pos.x = x+8;
 	lower_points_pos.y = y+47;
 	LOG("UICombatMenu created in x:%i, y:%i", x, y);
+	menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuMove.wav");
+	menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuSelect.wav");
+	menu_back_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuBack.wav"); //TODO change this sound if you find any better
+}
+
+UICombatMenu::~UICombatMenu() {
+	App->audio->UnLoadFx(menu_move_fx);
+	App->audio->UnLoadFx(menu_select_fx);
+	App->audio->UnLoadFx(menu_back_fx);
 }
 
 void UICombatMenu::Update()
 {
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+		
 		if (main_labels.size() != 0) {
 			NavigateDown(main_labels);
 		}
@@ -53,6 +63,7 @@ void UICombatMenu::Update()
 	}
 	//Execute
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+		App->audio->PlayFx(menu_select_fx);
 		if (main_labels.size() != 0) {
 			ExecuteComand(main_labels);
 		}
@@ -65,6 +76,7 @@ void UICombatMenu::Update()
 	}
 	//Go back to the start combat menu
 	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN) {
+		
 		GoBack();
 	}
 
@@ -96,6 +108,7 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 					it_vector++;
 					(*it_vector)->current_state = STATE_FOCUSED;
 					arrow->SetParent((*it_vector));
+					App->audio->PlayFx(menu_move_fx);
 					break;
 				}
 			}
@@ -111,6 +124,7 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 					it_vector++;
 					(*it_vector)->current_state = STATE_FOCUSED;
 					arrow->SetParent((*it_vector));
+					App->audio->PlayFx(menu_move_fx);
 					break;
 				}
 			}
@@ -127,6 +141,7 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 			names_iterator++;
 			current_vector.back()->current_state = STATE_FOCUSED;
 			arrow->SetParent(current_vector.back());
+			App->audio->PlayFx(menu_move_fx);
 		}
 	}
 }
@@ -142,6 +157,7 @@ void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 					it_vector--;
 					(*it_vector)->current_state = STATE_FOCUSED;
 					arrow->SetParent((*it_vector));
+					App->audio->PlayFx(menu_move_fx);
 					break;
 				}
 			}
@@ -157,6 +173,7 @@ void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 					it_vector--;
 					(*it_vector)->current_state = STATE_FOCUSED;
 					arrow->SetParent((*it_vector));
+					App->audio->PlayFx(menu_move_fx);
 					break;
 				}
 			}
@@ -173,6 +190,7 @@ void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 			names_iterator--;
 			current_vector.front()->current_state = STATE_FOCUSED;
 			arrow->SetParent(current_vector.front());
+			App->audio->PlayFx(menu_move_fx);
 		}
 	}
 }
@@ -302,6 +320,8 @@ void UICombatMenu::GoBack() {
 		}
 		abilities.clear();
 		names.clear();
+
+		App->audio->PlayFx(menu_back_fx);
 	}
 	else if (items.size()>0) {
 		for (int i = 0; i < items.size(); i++) {
@@ -309,6 +329,8 @@ void UICombatMenu::GoBack() {
 		}
 		items.clear();
 		names.clear();
+
+		App->audio->PlayFx(menu_back_fx);
 	}
 	
 	if (main_labels.size() == 0) {
@@ -322,6 +344,8 @@ void UICombatMenu::GoBack() {
 		main_labels.push_back(attack_label);
 		main_labels.push_back(abilities_label);
 		main_labels.push_back(items_label);
+
+		App->audio->PlayFx(menu_back_fx);
 	}
 
 	if (upper_points != nullptr) {

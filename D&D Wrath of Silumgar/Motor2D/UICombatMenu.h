@@ -33,8 +33,14 @@ public:
 
 	int font_size = 12;
 
+	uint menu_move_fx = 0;
+	uint menu_select_fx = 0;
+	uint menu_back_fx = 0;
+
 public:
 	UICombatMenu(int x, int y, UI_Type type,ctModule* callback, UIElement* parent = nullptr);
+	virtual ~UICombatMenu();
+
 
 	void Update();
 

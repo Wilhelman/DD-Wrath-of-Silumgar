@@ -60,14 +60,19 @@ bool ctSettings::Start()
 	labels.push_back(fx_volume_label);
 	labels.push_back(back_label);
 
-	if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg")) {
+	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 21 What Sleeps in The Rotting Sea (Stage 5-B).ogg", -1)) {
 		//ret = false;
 		LOG("Error playing music in ctMainMenu Start");
 	}
 
+	menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuMove.wav");
+	menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuSelect.wav");
+
 	HPbar = (UIBar*)App->gui->AddUIBar(0,150, 100,LIFEBAR,this);
 	ManaBar = (UIBar*)App->gui->AddUIBar(0, 300, 100, MANABAR, this);
 	EnemyBar = (UIBar*)App->gui->AddUIBar(0, 350, 100, ENEMYLIFEBAR, this);
+
+
 
 	return ret;
 }
@@ -84,26 +89,31 @@ bool ctSettings::Update(float dt)
 
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+		App->audio->PlayFx(menu_move_fx);
 		NavigateDown(labels);
 	}
 	//Go up
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+		App->audio->PlayFx(menu_move_fx);
 		NavigateUp(labels);
 	}
 	//Execute
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+		/*App->audio->PlayFx(menu_select_fx);*/
 		ExecuteComand(labels);
 	}
 	//TurnUp volume
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN) {
+		App->audio->PlayFx(menu_move_fx);
 		TurnUp(labels);
 	}
 	//TurnDownVolume
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
+		App->audio->PlayFx(menu_move_fx);
 		TurnDown(labels);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) { // TODO QUITAR ESTO MANEL??
 		HPbar->LowerBar(25);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
@@ -153,6 +163,9 @@ bool ctSettings::CleanUp()
 	arrow = nullptr;
 	labels.clear();
 	
+	App->audio->UnLoadFx(menu_move_fx);
+	App->audio->UnLoadFx(menu_select_fx);
+
 	return true;
 }
 
@@ -238,6 +251,7 @@ void ctSettings::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	}
 	if (back_label->current_state == STATE_EXECUTED) {
 		LOG("back_label pressed");
+		App->audio->PlayFx(menu_select_fx);
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 	}
 
@@ -264,7 +278,7 @@ void ctSettings::TurnUp(std::vector<UIElement*> &current_vector) {
 			App->gui->DeleteUIElement(*fx_volume);
 			fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 15, this);
 		}
-		//Mix_VolumeChunk(Mix_GetChunk(1), fx_volume_value);
+		Mix_Volume(-1, fx_volume_value);
 	}
 }
 
@@ -289,7 +303,7 @@ void ctSettings::TurnDown(std::vector<UIElement*> &current_vector) {
 			App->gui->DeleteUIElement(*fx_volume);
 			fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 15, this);
 		}
-		//Mix_VolumeChunk(Mix_GetChunk(1), fx_volume_value);
+		Mix_Volume(-1, fx_volume_value);
 	}
 }
 

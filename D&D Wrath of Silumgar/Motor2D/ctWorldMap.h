@@ -86,6 +86,11 @@ private:
 	UIDecision* decision = nullptr; 
 	UIElement* arrow = nullptr;
 	std::vector<UIElement*> options;
+
+	uint menu_move_fx = 0;
+	uint menu_select_fx = 0;
+	uint walk_fx = 0;
+	
 };
 
 

@@ -39,6 +39,9 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
+public:
+	bool is_new_game = false;
+
 private:
 	bool quit_pressed = false;
 	

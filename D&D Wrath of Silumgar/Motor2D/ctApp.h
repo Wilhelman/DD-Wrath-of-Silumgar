@@ -63,6 +63,9 @@ public:
 	// Load entities file
 	pugi::xml_node LoadEntities(pugi::xml_document&) const;
 
+	// Load data file
+	pugi::xml_node LoadData(pugi::xml_document&) const;
+
 private:
 
 	// Call modules before each loop iteration

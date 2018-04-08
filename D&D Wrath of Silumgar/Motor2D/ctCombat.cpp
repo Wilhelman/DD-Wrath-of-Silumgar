@@ -576,7 +576,7 @@ bool ctCombat::IsGoingToDoAnythingClever(Entity * entity)
 
 	int random_number = (rand() % 100) + 1; //random del 1-100
 	
-	return entity->GetCurrentJudgement<=random_number;
+	return entity->GetCurrentJudgement()<=random_number;
 }
 
 Entity * ctCombat::GetTheWeakestHeroe()
@@ -591,16 +591,16 @@ Entity * ctCombat::GetTheWeakestHeroe()
 	if (tmp_entity->GetCurrentHealthPoints() == 0)
 		tmp_entity = App->entities->GetWarrior();
 
-	if (tmp_entity->GetCurrentHealthPoints > App->entities->GetCleric()->GetCurrentHealthPoints() && App->entities->GetCleric()->GetCurrentHealthPoints()>0)
+	if (tmp_entity->GetCurrentHealthPoints() > App->entities->GetCleric()->GetCurrentHealthPoints() && App->entities->GetCleric()->GetCurrentHealthPoints()>0)
 		tmp_entity = App->entities->GetCleric();
 
-	if (tmp_entity->GetCurrentHealthPoints > App->entities->GetDwarf()->GetCurrentHealthPoints() && App->entities->GetDwarf()->GetCurrentHealthPoints()>0)
+	if (tmp_entity->GetCurrentHealthPoints() > App->entities->GetDwarf()->GetCurrentHealthPoints() && App->entities->GetDwarf()->GetCurrentHealthPoints()>0)
 		tmp_entity = App->entities->GetDwarf();
 
-	if (tmp_entity->GetCurrentHealthPoints > App->entities->GetElf()->GetCurrentHealthPoints() && App->entities->GetElf()->GetCurrentHealthPoints()>0)
+	if (tmp_entity->GetCurrentHealthPoints() > App->entities->GetElf()->GetCurrentHealthPoints() && App->entities->GetElf()->GetCurrentHealthPoints()>0)
 		tmp_entity = App->entities->GetElf();
 
-	if (tmp_entity->GetCurrentHealthPoints > App->entities->GetWarrior()->GetCurrentHealthPoints() && App->entities->GetWarrior()->GetCurrentHealthPoints()>0)
+	if (tmp_entity->GetCurrentHealthPoints() > App->entities->GetWarrior()->GetCurrentHealthPoints() && App->entities->GetWarrior()->GetCurrentHealthPoints()>0)
 		tmp_entity = App->entities->GetWarrior();
 
 	return tmp_entity;

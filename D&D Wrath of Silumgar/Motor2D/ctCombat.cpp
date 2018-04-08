@@ -12,6 +12,7 @@
 #include "ctCombat.h"
 #include "ctWorldMap.h"
 #include "j1Map.h"
+#include "ctMainMenu.h"
 
 #include "Cleric.h"
 #include "Dwarf.h"
@@ -73,7 +74,12 @@ bool ctCombat::Start()
 	
 	SpawnEntities();
 
-	
+	if (!App->main_menu->is_new_game) {
+		//todo load from data.xml the current health, mana, items that have the heroes
+		LoadDataFromXML();
+	}
+
+	SetDataToUI();
 	
 	return ret;
 }
@@ -175,21 +181,17 @@ bool ctCombat::CleanUp()
 
 	App->map->CleanUp();
 
+	if (App->main_menu->is_new_game)
+		App->main_menu->is_new_game = false;
+
+	if(App->entities->entities.size()>0)
+		SaveDataToXML();
+
+	for (int i = 0; i < App->entities->entities.size(); i++)
+	{
+		App->entities->entities.at(i)->to_destroy = true;
+	}
 	App->entities->entities.clear();
-
-	/*if(App->entities->GetCleric() != nullptr)
-		App->entities->GetCleric()->to_destroy = true;
-
-	if (App->entities->GetDwarf() != nullptr)
-		App->entities->GetDwarf()->to_destroy = true;
-
-	if (App->entities->GetElf() != nullptr)
-		App->entities->GetElf()->to_destroy = true;
-
-	if (App->entities->GetWarrior() != nullptr)
-		App->entities->GetWarrior()->to_destroy = true;*/
-
-	
 
 	return true;
 }
@@ -339,8 +341,69 @@ void ctCombat::SpawnEntities()
 		}
 	}
 
-	SetDataToUI();
+}
 
+void ctCombat::LoadDataFromXML()
+{
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+	node = &node->child("heroes");
+
+	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
+	{
+		std::string tmp(heroe.attribute("name").as_string());
+
+		if (tmp == "cleric") {
+			App->entities->GetCleric()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+			App->entities->GetCleric()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+		}
+		else if (tmp == "warrior") {
+			App->entities->GetWarrior()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+			App->entities->GetWarrior()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+		}
+		else if (tmp == "dwarf") {
+			App->entities->GetDwarf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+			App->entities->GetDwarf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+		}
+		else if (tmp == "elf") {
+			App->entities->GetElf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+			App->entities->GetElf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+		}
+
+	}
+}
+
+void ctCombat::SaveDataToXML()
+{
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+	node = &node->child("heroes");
+
+	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
+	{
+		std::string tmp(heroe.attribute("name").as_string());
+
+		if (tmp == "cleric") {
+			heroe.child("values").attribute("health_points").set_value(App->entities->GetCleric()->GetCurrentHealthPoints());
+			heroe.child("values").attribute("mana_points").set_value(App->entities->GetCleric()->GetCurrentManaPoints());
+		}
+		else if (tmp == "warrior") {
+			heroe.child("values").attribute("health_points").set_value(App->entities->GetWarrior()->GetCurrentHealthPoints());
+			heroe.child("values").attribute("mana_points").set_value(App->entities->GetWarrior()->GetCurrentManaPoints());
+		}
+		else if (tmp == "dwarf") {
+			heroe.child("values").attribute("health_points").set_value(App->entities->GetDwarf()->GetCurrentHealthPoints());
+			heroe.child("values").attribute("mana_points").set_value(App->entities->GetDwarf()->GetCurrentManaPoints());
+		}
+		else if (tmp == "elf") {
+			heroe.child("values").attribute("health_points").set_value(App->entities->GetElf()->GetCurrentHealthPoints());
+			heroe.child("values").attribute("mana_points").set_value(App->entities->GetElf()->GetCurrentManaPoints());
+		}
+
+	}
+
+	data_file.save_file("data.xml");
+	data_file.reset();
 }
 
 void ctCombat::SetDataToUI()

@@ -56,7 +56,7 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 		tmp_map_element->icon_rect = { map_element.child("icon_coords").attribute("x").as_int(), map_element.child("icon_coords").attribute("y").as_int(), map_element.child("icon_coords").attribute("width").as_int(), map_element.child("icon_coords").attribute("height").as_int() } ;
 
 		//FOR for each entity in xml and pushback it to the vector
-		for (pugi::xml_node entity = config.child("world_map_elements").child("map_element").child("entity"); entity && ret; entity = entity.next_sibling("entity"))
+		for (pugi::xml_node entity = map_element.child("entity"); entity && ret; entity = entity.next_sibling("entity"))
 		{
 			std::string tmp(entity.attribute("name").as_string());
 			if (tmp == "KOBOLD")

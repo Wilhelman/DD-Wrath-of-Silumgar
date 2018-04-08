@@ -33,8 +33,15 @@
 		<world_map_elements>
 			<map_element>
 				<tier type="2" />
+				<entity name="KOBOLD" />
 				<entity name="GNOLL" />
 				<entity name="KOBOLD" />
+				<entity name="GNOLL" />
+				<scene name="cave_02.tmx" />
+				<icon_coords x="64" y="480" width="32" height="32" />
+			</map_element>
+			<map_element>
+				<tier type="2" />
 				<entity name="KOBOLD" />
 				<entity name="GNOLL" />
 				<scene name="forest.tmx" />
@@ -44,8 +51,8 @@
 				<tier type="2" />
 				<entity name="KOBOLD" />
 				<entity name="GNOLL" />
-				<scene name="forest.tmx" />
-				<icon_coords x="128" y="512" width="32" height="32" />
+				<scene name="cave_03.tmx" />
+				<icon_coords x="128" y="480" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="1" />

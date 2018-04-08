@@ -80,6 +80,8 @@ bool ctCombat::Start()
 	}
 
 	SetDataToUI();
+
+	OrderTurnPriority();
 	
 	return ret;
 }
@@ -87,13 +89,21 @@ bool ctCombat::Start()
 // Called each loop iteration
 bool ctCombat::PreUpdate()
 {
-	OrderPriority();
 	return true;
 }
 
 // Called each loop iteration
 bool ctCombat::Update(float dt)
 {
+
+	if (turn_priority_entity.size() == 0) {
+		OrderTurnPriority();
+	}
+	else {
+		Entity* entity_to_perform_action = turn_priority_entity.front();
+		
+		PerformActionWithEntity(entity_to_perform_action);
+	}
 	
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
@@ -156,7 +166,7 @@ bool ctCombat::Update(float dt)
 	}
 	// Draw everything --------------------------------------
 	App->map->Draw();
-	DrawPriority();
+	DrawTurnPriority();
 	return true;
 }
 
@@ -176,7 +186,7 @@ bool ctCombat::CleanUp()
 
 	//todo: despawn entities
 	
-	priority_entity.clear();
+	turn_priority_entity.clear();
 	App->gui->DeleteAllUIElements();
 
 	App->map->CleanUp();
@@ -430,20 +440,20 @@ void ctCombat::SetDataToUI()
 	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.base_focus * 13, MANABAR);
 }
 
-void ctCombat::OrderPriority()
+void ctCombat::OrderTurnPriority()
 {
 	bool ordered = false;
 
 	while (!ordered)
 	{
 		ordered = true;
-		std::vector<Entity*>::iterator itnext = priority_entity.begin();
+		std::vector<Entity*>::iterator itnext = turn_priority_entity.begin();
 		int count = 0;
-		for (std::vector<Entity*>::iterator it = priority_entity.begin(); it != priority_entity.end(); ++it)
+		for (std::vector<Entity*>::iterator it = turn_priority_entity.begin(); it != turn_priority_entity.end(); ++it)
 		{
 			itnext++;
 			count++;
-			if (count != priority_entity.size())
+			if (count != turn_priority_entity.size())
 			{
 				if ((*it)->base_stats.base_agility < (*itnext)->base_stats.base_agility)
 				{
@@ -464,11 +474,12 @@ void ctCombat::OrderPriority()
 
 }
 
-void ctCombat::DrawPriority()
+void ctCombat::DrawTurnPriority()
 {
 	uint x=10, y=30;
-	for (std::vector<Entity*>::iterator it = priority_entity.begin(); it != priority_entity.end(); ++it)
+	for (std::vector<Entity*>::iterator it = turn_priority_entity.begin(); it != turn_priority_entity.end(); ++it)
 	{
+		//todo: this should be read from xml or be a define
 		SDL_Rect Kobold = { 881,71,26,26 };
 		SDL_Rect Gnoll = { 821,8,26,26 };
 		SDL_Rect Owlbear = { 1147, 19, 26, 26 };
@@ -515,4 +526,39 @@ void ctCombat::DrawPriority()
 
 	}
 
+}
+
+bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
+{
+	//todo: la idea es añadir en el task manager la IA y su movimiento random y en los heroes que se aparezca el menu de combate y espere a la eleccion
+	
+	switch (entity_to_perform_action->type)
+	{
+	case CLERIC:
+		break;
+	case DWARF:
+		break;
+	case ELF:
+		break;
+	case WARRIOR:
+		break;
+	case KOBOLD: {
+
+	}
+		break;
+	case GNOLL:
+		break;
+	case GNOLL_ARCHER:
+		break;
+	case OWLBEAR:
+		break;
+	case MINIHEROES:
+	case NO_TYPE:
+		LOG("this should not happen");
+		break;
+	default:
+		break;
+	}
+
+	return false;
 }

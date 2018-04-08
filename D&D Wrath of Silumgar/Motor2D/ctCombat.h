@@ -55,7 +55,7 @@ public:
 	uint CalculatedDamage(Entity* attacker, Entity* defender);
 
 	//TEST to priority attack
-	std::vector<Entity*> priority_entity;
+	std::vector<Entity*> turn_priority_entity;
 	std::vector<EntityType> entities_to_spawn;
 	
 private:
@@ -72,8 +72,8 @@ private:
 	//Set the values for the health and mana bar and all the things in the UI from the data of entities
 	void SetDataToUI();
 
-	void OrderPriority();
-	void DrawPriority();
+	void OrderTurnPriority();
+	void DrawTurnPriority();
 
 	// TEST FOR UI BAR WITH CALC DAMAGE
 	UIBar* test = nullptr;

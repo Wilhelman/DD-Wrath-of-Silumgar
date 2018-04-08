@@ -16,7 +16,7 @@ class ctWorldMap : public ctModule
 
 	struct WorldMapElement {
 		uint tier = 0u;
-		std::vector<Entity*> entities;
+		std::vector<EntityType> entities;
 		std::string scene_name;
 		SDL_Rect icon_rect;
 		iPoint coords_in_map = { 0,0 };

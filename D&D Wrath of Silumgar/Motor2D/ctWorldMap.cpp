@@ -55,9 +55,15 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 		tmp_map_element->scene_name = map_element.child("scene").attribute("name").as_string();
 		tmp_map_element->icon_rect = { map_element.child("icon_coords").attribute("x").as_int(), map_element.child("icon_coords").attribute("y").as_int(), map_element.child("icon_coords").attribute("width").as_int(), map_element.child("icon_coords").attribute("height").as_int() } ;
 
-		//TODO 
 		//FOR for each entity in xml and pushback it to the vector
-
+		for (pugi::xml_node entity = config.child("world_map_elements").child("map_element").child("entity"); entity && ret; entity = entity.next_sibling("entity"))
+		{
+			std::string tmp(entity.attribute("name").as_string());
+			if (tmp == "KOBOLD")
+				tmp_map_element->entities.push_back(EntityType::KOBOLD);
+			else if (tmp == "GNOLL")
+				tmp_map_element->entities.push_back(EntityType::GNOLL);
+		}
 
 		all_map_elements.push_back(tmp_map_element);
 		
@@ -149,6 +155,7 @@ bool ctWorldMap::Update(float dt)
 		WorldMapElement* tmp_map_element = final_map_elements.back();
 
 		App->combat->SetSceneName(tmp_map_element->scene_name);
+		App->combat->entities_to_spawn = tmp_map_element->entities;
 
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat,1.0f);
 
@@ -286,25 +293,25 @@ void ctWorldMap::GenerateNewRandomlyMap()
 	}
 
 	//TIER 3 randomize
-	random_number = -1;
-	last_random = -1;
-	for (int i = 0; i < App->map->tier_3_coords.size(); i++) {
-		/* generate secret number: */
-		while (random_number == last_random) {
+	if (tier_3_vec.size() > 0) {
+		random_number = -1;
+		last_random = -1;
+		for (int i = 0; i < App->map->tier_3_coords.size(); i++) {
+			/* generate secret number: */
+			while (random_number == last_random) {
 
-			random_number = rand() % tier_3_vec.size();
-			while (tier_3_vec.at(random_number)->coords_in_map.y != 0 && tier_3_vec.at(random_number)->coords_in_map.x != 0)
 				random_number = rand() % tier_3_vec.size();
+				while (tier_3_vec.at(random_number)->coords_in_map.y != 0 && tier_3_vec.at(random_number)->coords_in_map.x != 0)
+					random_number = rand() % tier_3_vec.size();
 
+			}
+			last_random = random_number;
+
+			tier_3_vec.at(last_random)->coords_in_map = App->map->tier_3_coords.at(i);
+
+			final_map_elements.push_back(tier_3_vec.at(last_random));
 		}
-		last_random = random_number;
-
-		tier_3_vec.at(last_random)->coords_in_map = App->map->tier_3_coords.at(i);
-
-		final_map_elements.push_back(tier_3_vec.at(last_random));
 	}
-
-
 
 	map_generated = true;
 }

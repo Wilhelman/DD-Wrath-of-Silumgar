@@ -46,21 +46,25 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
-	void OrderPriority();
-	void DrawPriority();
+	
 
 public:
 
 	void SetSceneName(string new_scene_name);
 
 	uint CalculatedDamage(Entity* attacker, Entity* defender);
+
 	//TEST to priority attack
 	std::vector<Entity*> priority_entity;
+	std::vector<EntityType> entities_to_spawn;
 	
 private:
 	
 	void SpawnEntities();
-	void SpawnEnemies(string sceneName);
+	void SetDataToUI();
+	void OrderPriority();
+	void DrawPriority();
+
 	// TEST FOR UI BAR WITH CALC DAMAGE
 	UIBar* test = nullptr;
 private:

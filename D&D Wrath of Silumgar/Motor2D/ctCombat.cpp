@@ -72,7 +72,6 @@ bool ctCombat::Start()
 	dwarf_name = App->gui->AddUILabel(443, 296, "Dwarf", { 255,255,255,255 }, 15, this);
 	
 	SpawnEntities();
-	SpawnEnemies(scene_name);
 
 	
 	
@@ -227,7 +226,6 @@ void ctCombat::SpawnEntities()
 {
 	int random_number = (rand() % 4);
 	// Test assign life with lifebar
-	
 
 	//randomization is ugly, sorry c:
 	switch (random_number)
@@ -324,6 +322,29 @@ void ctCombat::SpawnEntities()
 	default:
 		break;
 	}
+
+
+	for (int i = 0; i < entities_to_spawn.size(); i++)
+	{
+		switch (entities_to_spawn.at(i))
+		{
+		case KOBOLD:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, KOBOLD);
+			break;
+		case GNOLL:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, GNOLL);
+			break;
+		default:
+			break;
+		}
+	}
+
+	SetDataToUI();
+
+}
+
+void ctCombat::SetDataToUI()
+{
 	// TEST FOR UI BAR WITH CALC DAMAGE
 	//Entity* cleric = App->entities->GetCleric();
 	//test = (UIBar*)App->gui->AddUIBar(100,100,cleric->base_stats.base_constitution*13,LIFEBAR);
@@ -332,7 +353,6 @@ void ctCombat::SpawnEntities()
 	//cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
 	test = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.base_constitution * 13, LIFEBAR);
 	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->base_stats.base_focus * 13, MANABAR);
-	
 
 	Entity* warrior = App->entities->GetWarrior();
 	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->base_stats.base_constitution * 13, LIFEBAR);
@@ -345,7 +365,6 @@ void ctCombat::SpawnEntities()
 	Entity* dwarf = App->entities->GetDwarf();
 	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->base_stats.base_constitution * 13, LIFEBAR);
 	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.base_focus * 13, MANABAR);
-	
 }
 
 void ctCombat::OrderPriority()
@@ -433,61 +452,4 @@ void ctCombat::DrawPriority()
 
 	}
 
-}
-
-void ctCombat::SpawnEnemies(string sceneName)
-{
-	int random_number = (rand() % 2);
-	if (sceneName == "forest.tmx")
-	{
-		if (random_number == 1)
-		{
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(2).x, App->map->enemies_position_coords.at(2).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(0).x, App->map->enemies_position_coords.at(0).y, GNOLL);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
-			
-			
-
-		}
-		else if (random_number == 0)
-		{
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(2).x, App->map->enemies_position_coords.at(2).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
-		}
-
-	}
-	if (sceneName == "cave_02.tmx")
-	{
-		if (random_number == 1)
-		{
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(0).x, App->map->enemies_position_coords.at(0).y, GNOLL);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);
-
-		}
-		else if (random_number == 0)
-		{
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(2).x, App->map->enemies_position_coords.at(2).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
-		}
-
-	}
-	if (sceneName == "cave_03.tmx")
-	{
-		if (random_number == 1)
-		{
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(0).x, App->map->enemies_position_coords.at(0).y, GNOLL);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);
-		}
-		else if (random_number == 0)
-		{
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(2).x, App->map->enemies_position_coords.at(2).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
-		}
-
-	}
 }

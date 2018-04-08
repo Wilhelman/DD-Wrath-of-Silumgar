@@ -211,9 +211,22 @@ pugi::xml_node ctApp::LoadEntities(pugi::xml_document& config_file) const
 	pugi::xml_parse_result result = config_file.load_file("entities.xml");
 
 	if (result == NULL)
-		LOG("Could not load xml file config.xml. pugi error: %s", result.description());
+		LOG("Could not load xml file entities.xml. pugi error: %s", result.description());
 	else
 		ret = config_file.child("entities");
+	return ret;
+}
+
+pugi::xml_node ctApp::LoadData(pugi::xml_document& config_file) const
+{
+	pugi::xml_node ret;
+
+	pugi::xml_parse_result result = config_file.load_file("data.xml");
+
+	if (result == NULL)
+		LOG("Could not load xml file data.xml. pugi error: %s", result.description());
+	else
+		ret = config_file.child("data");
 	return ret;
 }
 

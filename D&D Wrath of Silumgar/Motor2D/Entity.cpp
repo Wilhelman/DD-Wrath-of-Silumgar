@@ -39,3 +39,17 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 
 	return ret;
 }
+
+uint Entity::GetCurrentHealthPoints()
+{
+	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
+	uint current_health_points = base_stats.base_constitution * StatisticsValues::CONSTITUTION;
+	return current_health_points;
+}
+
+uint Entity::GetCurrentManaPoints()
+{
+	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
+	uint current_mana_points = base_stats.base_constitution * StatisticsValues::FOCUS;
+	return current_mana_points;
+}

@@ -76,7 +76,11 @@ bool ctMainMenu::Update(float dt)
 {
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
+
+		//this block will be like we call "new game"
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0f);
+
+
 	}
 		
 	//Go down

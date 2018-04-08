@@ -60,8 +60,18 @@ public:
 	
 private:
 	
+	//spawn heroes and enemies
 	void SpawnEntities();
+
+	//load all the values like health and mana from the xml
+	void LoadDataFromXML();
+
+	//set the base data at the start of the first combat here we write in the xml.
+	void SetData();
+
+	//Set the values for the health and mana bar and all the things in the UI from the data of entities
 	void SetDataToUI();
+
 	void OrderPriority();
 	void DrawPriority();
 

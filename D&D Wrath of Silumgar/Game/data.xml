@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<data>
+	<world_map current_location="here_the_coords_maybe"/>
+	
+	<heroes>
+		<cleric>
+			<health_points value="-1" mana_points="-1"/>
+			
+			<skills>
+				<skill name="test" mana_cost="10" etc="etc"/>
+			</skills>
+			
+			<items>
+				<item name="test" etc="etc"/>
+			</items>
+		</cleric>
+	</heroes>
+	
+</data>

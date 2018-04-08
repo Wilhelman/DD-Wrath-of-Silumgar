@@ -41,7 +41,20 @@ enum EntityType
 	NO_TYPE
 };
 
-
+//todo read this from xml.
+enum StatisticsValues
+{
+	CONSTITUTION = 13,
+	FOCUS = 17,
+	STRENGTH = 3,
+	INTELLIGENCE = 3,
+	DEXTERITY = 2,
+	AGILITY = 2,
+	PHYSICAL_DEFENSE = 2,
+	MAGICAL_DEFENSE = 2,
+	LUCK = 1,
+	JUDGEMENT = 1
+};
 
 class ctEntities : public ctModule
 {

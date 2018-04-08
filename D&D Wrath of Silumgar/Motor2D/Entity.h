@@ -87,7 +87,8 @@ protected:
 	
 	bool key_entities_speed = false;
 
-	
+	uint current_health_points = 0u;
+	uint current_mana_points = 0u;
 
 public:
 	ctAnimation* animation = nullptr;
@@ -114,6 +115,12 @@ public:
 
 	virtual void LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation) {};
 	bool LoadProperties(pugi::xml_node properties);
+
+	uint GetCurrentHealthPoints();
+	uint GetCurrentManaPoints();
+
+	void SetCurrentHealthPoints(uint new_health_points);
+	void SetCurrentManaPoints(uint new_mana_points);
 };
 
 #endif // __ENTITY_H__

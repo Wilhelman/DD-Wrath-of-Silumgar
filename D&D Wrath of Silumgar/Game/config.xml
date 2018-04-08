@@ -57,7 +57,7 @@
 		</world_map_elements>
 	</world_map>
 	<entities>
-		<base_statistics_values constitution ="13" focus="17" strength="3" agility="2" dexterity ="2" intelligence="3"  physicalDefense="2" magicalDefense="2" luck="1" judgement="1"/>
+		<base_statistics_values constitution="13" focus="17" strength="3" agility="2" dexterity="2" intelligence="3" physicalDefense="2" magicalDefense="2" luck="1" judgement="1" />
 		<cleric spritesheetName="textures/Characters/Cleric_sheet.png" />
 		<miniheroes spritesheetName="textures/Characters/MiniHeroes_sheet.png" />
 		<dwarf spritesheetName="textures/Characters/Dwarf_sheet.png" />

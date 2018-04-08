@@ -37,19 +37,30 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 	base_stats.base_luck = properties.attribute("luck").as_uint();
 	base_stats.base_judgement = properties.attribute("judgement").as_uint();
 
+	current_health_points = base_stats.base_constitution * StatisticsValues::CONSTITUTION;
+	current_mana_points = base_stats.base_constitution * StatisticsValues::FOCUS;
+
 	return ret;
 }
 
 uint Entity::GetCurrentHealthPoints()
 {
 	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
-	uint current_health_points = base_stats.base_constitution * StatisticsValues::CONSTITUTION;
 	return current_health_points;
 }
 
 uint Entity::GetCurrentManaPoints()
 {
 	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
-	uint current_mana_points = base_stats.base_constitution * StatisticsValues::FOCUS;
 	return current_mana_points;
+}
+
+void Entity::SetCurrentHealthPoints(uint new_health_points)
+{
+	current_health_points = new_health_points;
+}
+
+void Entity::SetCurrentManaPoints(uint new_mana_points)
+{
+	current_mana_points = new_mana_points;
 }

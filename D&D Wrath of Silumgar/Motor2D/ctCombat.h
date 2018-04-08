@@ -75,12 +75,26 @@ private:
 	void OrderTurnPriority();
 	void DrawTurnPriority();
 
+	bool PerformActionWithEntity(Entity* entity_to_perform_action);
+
+	//IA STUFF
+	///judgement die
+	bool IsGoingToDoAnythingClever(Entity* entity);
+
+	///only gets the lowest hp
+	Entity* GetTheWeakestHeroe();
+
+	Entity* GetRandomHeroe();
+	//END IA STUFF
+
+
 	// TEST FOR UI BAR WITH CALC DAMAGE
 	UIBar* test = nullptr;
 private:
 
 	string scene_name;
 
+	//UI STUFF
 	UIElement* cleric_background = nullptr;
 	UIElement* warrior_background = nullptr;
 	UIElement* dwarf_background = nullptr;

@@ -15,6 +15,9 @@ public:
 
 private:
 
+	//sounds fx
+	uint attack_fx = 0u;
+
 	//player state
 
 	//animations velocity
@@ -32,6 +35,7 @@ public:
 	~Cleric();
 
 	void Update(float dt);
+	void Attack();
 };
 
 #endif

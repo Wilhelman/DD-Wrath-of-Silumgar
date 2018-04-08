@@ -530,8 +530,7 @@ void ctCombat::DrawTurnPriority()
 
 bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 {
-	//todo: la idea es añadir en el task manager la IA y su movimiento random y en los heroes que se aparezca el menu de combate y espere a la eleccion
-	
+
 	switch (entity_to_perform_action->type)
 	{
 	case CLERIC:
@@ -543,7 +542,16 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 	case WARRIOR:
 		break;
 	case KOBOLD: {
+		if (IsGoingToDoAnythingClever(entity_to_perform_action)) {
+			//in this case the kobold will search the weakest heroe since we dont have abilities
+			Entity* weakest_heroe = GetTheWeakestHeroe();
+			
+		}
+		else {
+			//in this case, the kobold will attack one random heroe
+			Entity* weakest_heroe = GetRandomHeroe();
 
+		}
 	}
 		break;
 	case GNOLL:
@@ -561,4 +569,44 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 	}
 
 	return false;
+}
+
+bool ctCombat::IsGoingToDoAnythingClever(Entity * entity)
+{
+
+	int random_number = (rand() % 100) + 1; //random del 1-100
+	
+	return entity->GetCurrentJudgement<=random_number;
+}
+
+Entity * ctCombat::GetTheWeakestHeroe()
+{
+	//now we get the lowest hp
+
+	Entity* tmp_entity = App->entities->GetCleric();
+	if(tmp_entity->GetCurrentHealthPoints() == 0)
+		tmp_entity = App->entities->GetDwarf();
+	if (tmp_entity->GetCurrentHealthPoints() == 0)
+		tmp_entity = App->entities->GetElf();
+	if (tmp_entity->GetCurrentHealthPoints() == 0)
+		tmp_entity = App->entities->GetWarrior();
+
+	if (tmp_entity->GetCurrentHealthPoints > App->entities->GetCleric()->GetCurrentHealthPoints() && App->entities->GetCleric()->GetCurrentHealthPoints()>0)
+		tmp_entity = App->entities->GetCleric();
+
+	if (tmp_entity->GetCurrentHealthPoints > App->entities->GetDwarf()->GetCurrentHealthPoints() && App->entities->GetDwarf()->GetCurrentHealthPoints()>0)
+		tmp_entity = App->entities->GetDwarf();
+
+	if (tmp_entity->GetCurrentHealthPoints > App->entities->GetElf()->GetCurrentHealthPoints() && App->entities->GetElf()->GetCurrentHealthPoints()>0)
+		tmp_entity = App->entities->GetElf();
+
+	if (tmp_entity->GetCurrentHealthPoints > App->entities->GetWarrior()->GetCurrentHealthPoints() && App->entities->GetWarrior()->GetCurrentHealthPoints()>0)
+		tmp_entity = App->entities->GetWarrior();
+
+	return tmp_entity;
+}
+
+Entity * ctCombat::GetRandomHeroe()
+{
+	return nullptr;
 }

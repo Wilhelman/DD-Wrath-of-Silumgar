@@ -32,7 +32,7 @@ ctEntities::ctEntities()
 ctEntities::~ctEntities()
 {
 	LOG("Unloading entities spritesheet");
-	App->tex->UnLoad(entity_sprites);
+	
 }
 
 bool ctEntities::Awake(pugi::xml_node& config)
@@ -57,30 +57,9 @@ bool ctEntities::Awake(pugi::xml_node& config)
 
 bool ctEntities::Start()
 {
-	bool ret = true;
 
-	//cleric spritesheet
-	cleric_spritesheet = App->tex->Load(cleric_spritesheet_name.data());
-	dwarf_spritesheet = App->tex->Load(dwarf_spritesheet_name.data());
-	elf_spritesheet = App->tex->Load(elf_spritesheet_name.data());
-	warrior_spritesheet = App->tex->Load(warrior_spritesheet_name.data());
 
-	kobold_spritesheet = App->tex->Load(kobold_spritesheet_name.data());
-	gnoll_spritesheet = App->tex->Load(gnoll_spritesheet_name.data());
-	gnollArcher_spritesheet = App->tex->Load(gnollArcher_spritesheet_name.data());
-	owlbear_spritesheet = App->tex->Load(owlbear_spritesheet_name.data());
-
-	miniheroes_spritesheet = App->tex->Load(miniheroes_spritesheet_name.data());
-
-	if (cleric_spritesheet == NULL || dwarf_spritesheet == NULL || elf_spritesheet == NULL || warrior_spritesheet == NULL) {
-		LOG("Error loading entities spritesheet!!");
-		ret = false;
-	}
-
-	if (!ret)
-		return false;
-
-	return ret;
+	return true;
 }
 
 bool ctEntities::PreUpdate()
@@ -104,40 +83,9 @@ bool ctEntities::Update(float dt)
 	for (int i = 0; i < entities.size(); i++)
 		if (entities.at(i) != nullptr) entities[i]->Update(dt);
 
-	for (int i = 0; i < entities.size(); i++) {
-		switch (entities.at(i)->type)
-		{
-		case CLERIC:
-			if (entities.at(i) != nullptr) entities[i]->Draw(cleric_spritesheet);
-			break;
-		case DWARF:
-			if (entities.at(i) != nullptr) entities[i]->Draw(dwarf_spritesheet);
-			break;
-		case ELF:
-			if (entities.at(i) != nullptr) entities[i]->Draw(elf_spritesheet);
-			break;
-		case WARRIOR:
-			if (entities.at(i) != nullptr) entities[i]->Draw(warrior_spritesheet);
-			break;
-		case KOBOLD:
-			if (entities.at(i) != nullptr) entities[i]->Draw(kobold_spritesheet);
-			break;
-		case GNOLL:
-			if (entities.at(i) != nullptr) entities[i]->Draw(gnoll_spritesheet);
-			break;
-		case GNOLL_ARCHER:
-			if (entities.at(i) != nullptr) entities[i]->Draw(gnollArcher_spritesheet);
-			break;
-		case OWLBEAR:
-			if (entities.at(i) != nullptr) entities[i]->Draw(owlbear_spritesheet);
-			break;
-		case MINIHEROES:
-			if (entities.at(i) != nullptr) entities[i]->Draw(miniheroes_spritesheet);
-			break;
-		default:
-			break;
-		}
-	}
+	for (int i = 0; i < entities.size(); i++)
+		if (entities.at(i) != nullptr) entities[i]->Draw();
+
 
 	return true;
 
@@ -148,18 +96,7 @@ bool ctEntities::CleanUp()
 {
 	LOG("Freeing all entities");
 
-	//cleric spritesheet
-	App->tex->UnLoad(cleric_spritesheet);
-	App->tex->UnLoad(dwarf_spritesheet);
-	App->tex->UnLoad(elf_spritesheet);
-	App->tex->UnLoad(warrior_spritesheet);
 
-	App->tex->UnLoad(kobold_spritesheet);
-	App->tex->UnLoad(gnoll_spritesheet);
-	App->tex->UnLoad(gnollArcher_spritesheet);
-	App->tex->UnLoad(owlbear_spritesheet);
-
-	App->tex->UnLoad(miniheroes_spritesheet);
 
 	for (uint i = 0; i < entities.size(); ++i)
 	{

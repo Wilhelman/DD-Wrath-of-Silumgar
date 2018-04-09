@@ -383,48 +383,40 @@ void ctCombat::DrawPriority()
 	uint x=10, y=30;
 	for (std::vector<Entity*>::iterator it = priority_entity.begin(); it != priority_entity.end(); ++it)
 	{
-		SDL_Rect Kobold = { 881,71,26,26 };
-		SDL_Rect Gnoll = { 821,8,26,26 };
-		SDL_Rect Owlbear = { 1147, 19, 26, 26 };
-		SDL_Rect GnollArcher = { 993, 25, 26, 26 };
-		SDL_Rect Cleric = { 142, 2652, 26, 26 };
-		SDL_Rect Dwarf = { 81, 333, 26, 26 };
-		SDL_Rect Elf = { 852, 2150, 26, 26 };
-		SDL_Rect Warrior = { 1183, 112, 26, 26 };
+		SDL_Rect rect;
+	
 		switch ((*it)->type)
 		{
 		case CLERIC:
-			App->render->Blit(App->entities->cleric_spritesheet, x, y, &Cleric);
+			rect = { 142, 2652, 26, 26 };
 			break;
 		case DWARF:
-			App->render->Blit(App->entities->dwarf_spritesheet, x, y, &Dwarf);
+			rect = { 81, 333, 26, 26 };
 			break;
 		case ELF:
-			App->render->Blit(App->entities->elf_spritesheet, x, y, &Elf);
+			rect = { 852, 2150, 26, 26 };
 			break;
 		case WARRIOR:
-			App->render->Blit(App->entities->warrior_spritesheet, x, y, &Warrior);
+			rect = { 1183, 112, 26, 26 };
 			break;
 		case KOBOLD:
-			App->render->Blit(App->entities->kobold_spritesheet, x, y, &Kobold);
+			rect = { 881,71,26,26 };
 			break;
 		case GNOLL:
-			App->render->Blit(App->entities->gnoll_spritesheet, x, y, &Gnoll);
+			rect = { 821,8,26,26 };
 			break;
 		case GNOLL_ARCHER:
-			App->render->Blit(App->entities->gnollArcher_spritesheet, x, y, &GnollArcher);
+			rect = { 993, 25, 26, 26 };
 			break;
 		case OWLBEAR:
-			App->render->Blit(App->entities->owlbear_spritesheet, x, y, &Elf);
+			rect = { 1147, 19, 26, 26 };
 			break;
 		case MINIHEROES:
 			break;
 		case NO_TYPE:
 			break;
-		default:
-			break;
 		}
-		
+		App->render->Blit((*it)->texture, x, y, &rect);
 		y += 26;
 
 	}

@@ -4,7 +4,7 @@
 #include "ctPoint.h"
 #include "ctAnimation.h"
 #include "ctEntities.h"
-
+#include "ctTextures.h"
 #include "SDL/include/SDL.h"
 
 struct SDL_Texture;
@@ -103,13 +103,13 @@ public:
 	bool to_destroy = false;
 	bool flip_texture = false;
 	
-
+	SDL_Texture* texture = nullptr;
 public:
 	Entity(int x, int y, EntityType type);
 	virtual ~Entity();
 
 	virtual void Update(float dt) {};
-	virtual void Draw(SDL_Texture* sprites);
+	virtual void Draw();
 	virtual void SetEntitiesSpeed(float dt) {};
 
 	virtual void LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation) {};

@@ -462,7 +462,7 @@ void ctCombat::OrderTurnPriority()
 void ctCombat::DrawTurnPriority()
 {
 	uint x=10, y=30;
-	for (std::vector<Entity*>::iterator it = turn_priority_entity.begin(); it != turn_priority_entity.end(); ++it)
+	for (std::vector<Entity*>::iterator it = draw_turn_priority_entity.begin(); it != draw_turn_priority_entity.end(); ++it)
 	{
 
 		SDL_Rect rect;

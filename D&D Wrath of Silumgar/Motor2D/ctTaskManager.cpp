@@ -9,6 +9,8 @@ bool MoveForward::Execute()
 {
 	bool ret = false;
 
+	
+
 		if (actor->position.x == finalpos.x && actor->position.y == finalpos.y)
 		{
 			actor->animation = &actor->idle;
@@ -91,6 +93,10 @@ bool MoveBackward::Execute()
 
 bool Attack::Execute()
 {
+	//if (actor->type == CLERIC) {
+
+	//}
+
 	bool ret = false;
 
 	actor->animation = &actor->attack;

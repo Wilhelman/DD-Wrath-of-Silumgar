@@ -46,27 +46,55 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
-	void OrderPriority();
-	void DrawPriority();
+	
 
 public:
 
 	void SetSceneName(string new_scene_name);
 
 	uint CalculatedDamage(Entity* attacker, Entity* defender);
+
 	//TEST to priority attack
-	std::vector<Entity*> priority_entity;
+	std::vector<Entity*> turn_priority_entity;
+	std::vector<EntityType> entities_to_spawn;
 	
 private:
 	
+	//spawn heroes and enemies
 	void SpawnEntities();
-	void SpawnEnemies(string sceneName);
+
+	//load all the values like health and mana from the xml
+	void LoadDataFromXML();
+
+	//set the base data at the start of the first combat here we write in the xml.
+	void SaveDataToXML();
+
+	//Set the values for the health and mana bar and all the things in the UI from the data of entities
+	void SetDataToUI();
+
+	void OrderTurnPriority();
+	void DrawTurnPriority();
+
+	bool PerformActionWithEntity(Entity* entity_to_perform_action);
+
+	//IA STUFF
+	///judgement die
+	bool IsGoingToDoAnythingClever(Entity* entity);
+
+	///only gets the lowest hp
+	Entity* GetTheWeakestHeroe();
+
+	Entity* GetRandomHeroe();
+	//END IA STUFF
+
+
 	// TEST FOR UI BAR WITH CALC DAMAGE
 	UIBar* test = nullptr;
 private:
 
 	string scene_name;
 
+	//UI STUFF
 	UIElement* cleric_background = nullptr;
 	UIElement* warrior_background = nullptr;
 	UIElement* dwarf_background = nullptr;
@@ -79,6 +107,10 @@ private:
 	UIBar* warrior_mana_bar = nullptr;
 	UIBar* dwarf_mana_bar = nullptr;
 	UIBar* elf_mana_bar = nullptr;
+	UIElement* cleric_name;
+	UIElement* warrior_name;
+	UIElement* dwarf_name;
+	UIElement* elf_name;
 
 };
 

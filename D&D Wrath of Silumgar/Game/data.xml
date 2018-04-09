@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<data>
+	<world_map current_location="here_the_coords_maybe" />
+	<heroes>
+		<heroe name="cleric">
+			<values health_points="78" mana_points="102" />
+			<skills>
+				<skill name="test" mana_cost="10" etc="etc" />
+			</skills>
+			<items>
+				<item name="test" etc="etc" />
+			</items>
+		</heroe>
+		<heroe name="warrior">
+			<values health_points="117" mana_points="153" />
+			<skills>
+				<skill name="test" mana_cost="10" etc="etc" />
+			</skills>
+			<items>
+				<item name="test" etc="etc" />
+			</items>
+		</heroe>
+		<heroe name="dwarf">
+			<values health_points="91" mana_points="119" />
+			<skills>
+				<skill name="test" mana_cost="10" etc="etc" />
+			</skills>
+			<items>
+				<item name="test" etc="etc" />
+			</items>
+		</heroe>
+		<heroe name="elf">
+			<values health_points="65" mana_points="85" />
+			<skills>
+				<skill name="test" mana_cost="10" etc="etc" />
+			</skills>
+			<items>
+				<item name="test" etc="etc" />
+			</items>
+		</heroe>
+	</heroes>
+</data>

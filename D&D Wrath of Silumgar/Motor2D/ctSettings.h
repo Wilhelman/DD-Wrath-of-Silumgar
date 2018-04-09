@@ -67,6 +67,9 @@ private:
 	UIBar* HPbar = nullptr;
 	UIBar* ManaBar = nullptr;
 	UIBar* EnemyBar = nullptr;
+
+	uint menu_move_fx = 0;
+	uint menu_select_fx = 0;
 };
 
 

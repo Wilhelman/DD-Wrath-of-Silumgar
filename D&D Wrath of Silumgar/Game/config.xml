@@ -32,74 +32,43 @@
 		<world_map_tmx name="world_map.tmx" />
 		<world_map_elements>
 			<map_element>
-				<tier type="3" />
+				<tier type="2" />
 				<entity name="KOBOLD" />
+				<entity name="GNOLL" />
 				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
+				<entity name="GNOLL" />
 				<scene name="cave_02.tmx" />
-				<icon_coords x="200" y="480" width="100" height="100" />
-			</map_element>
-			<map_element>
-				<tier type="3" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<scene name="cave_02.tmx" />
-				<icon_coords x="300" y="480" width="100" height="100" />
-			</map_element>
-			<map_element>
-				<tier type="3" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<scene name="cave_02.tmx" />
-				<icon_coords x="100" y="480" width="100" height="100" />
-			</map_element>
-			<map_element>
-				<tier type="3" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<scene name="cave_02.tmx" />
-				<icon_coords x="400" y="480" width="100" height="100" />
+				<icon_coords x="64" y="480" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="2" />
 				<entity name="KOBOLD" />
+				<entity name="GNOLL" />
 				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<scene name="pink_cave.tmx" />
-				<icon_coords x="400" y="480" width="100" height="100" />
-			</map_element>
-			<map_element>
-				<tier type="2" />
-				<entity name="GOBLIN" />
-				<entity name="GOBLIN" />
-				<entity name="GOBLIN" />
-				<scene name="pink_cave.tmx" />
-				<icon_coords x="300" y="480" width="100" height="100" />
+				<entity name="GNOLL" />
+				<scene name="forest.tmx" />
+				<icon_coords x="96" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="2" />
 				<entity name="KOBOLD" />
-				<entity name="GOBLIN" />
-				<scene name="pink_cave.tmx" />
-				<icon_coords x="100" y="480" width="100" height="100" />
+				<entity name="GNOLL" />
+				<scene name="cave_03.tmx" />
+				<icon_coords x="128" y="480" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="1" />
 				<entity name="KOBOLD" />
-				<entity name="GOBLIN" />
-				<scene name="tabern.tmx" />
-				<icon_coords x="0" y="480" width="100" height="100" />
+				<entity name="GNOLL" />
+				<entity name="KOBOLD" />
+				<entity name="GNOLL" />
+				<scene name="tavern.tmx" />
+				<icon_coords x="0" y="480" width="32" height="32" />
 			</map_element>
 		</world_map_elements>
 	</world_map>
 	<entities>
+		<base_statistics_values constitution="13" focus="17" strength="3" agility="2" dexterity="2" intelligence="3" physicalDefense="2" magicalDefense="2" luck="1" judgement="1" />
 		<cleric spritesheetName="textures/Characters/Cleric_sheet.png" />
 		<miniheroes spritesheetName="textures/Characters/MiniHeroes_sheet.png" />
 		<dwarf spritesheetName="textures/Characters/Dwarf_sheet.png" />

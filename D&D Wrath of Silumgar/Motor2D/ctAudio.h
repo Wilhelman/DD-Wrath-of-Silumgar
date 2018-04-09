@@ -30,7 +30,7 @@ public:
 	bool CleanUp();
 
 	// Play a music file
-	bool PlayMusic(const char* path, float fade_time = DEFAULT_MUSIC_FADE_TIME);
+	bool PlayMusic(const char* path, int loops, float fade_time = DEFAULT_MUSIC_FADE_TIME);
 	bool StopMusic();
 
 	// Load a WAV in memory

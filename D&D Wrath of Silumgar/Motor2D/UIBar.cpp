@@ -27,7 +27,7 @@ UIBar::UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, U
 		previous_width = max_width;
 		bar_height = player_bar_height;
 		lower_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,129,max_width,bar_height });
-		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,max_width,bar_height });
+		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 318,445,max_width,bar_height });
 	}
 	else if (type == ENEMYLIFEBAR) {
 		max_width = max_enemy_bar_width;

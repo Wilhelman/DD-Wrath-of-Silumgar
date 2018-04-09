@@ -12,6 +12,7 @@
 #include "ctCombat.h"
 #include "ctWorldMap.h"
 #include "j1Map.h"
+#include "ctMainMenu.h"
 
 #include "Cleric.h"
 #include "Dwarf.h"
@@ -62,15 +63,25 @@ bool ctCombat::Start()
 	App->map->LayersSetUp();
 	App->map->setAllLogicForMap();
 
-	cleric_background = App->gui->AddUIImage(0, 0, {0,0,242,31}, this, nullptr);
-	warrior_background = App->gui->AddUIImage(242, 0, { 242,31,242,31 }, this, nullptr);
-	elf_background = App->gui->AddUIImage(0, 293, { 0,31,242,31 }, this, nullptr);
+	cleric_background = App->gui->AddUIImage(-1, -1, {0,0,242,31}, this, nullptr);
+	warrior_background = App->gui->AddUIImage(242, -1, { 242,31,242,31 }, this, nullptr);
+	elf_background = App->gui->AddUIImage(-1, 293, { 0,31,242,31 }, this, nullptr);
 	dwarf_background = App->gui->AddUIImage(242, 293, { 242,0,242,31 }, this, nullptr);
+	cleric_name = App->gui->AddUILabel(200, 3, "Cleric", { 255,255,255,255 }, 15, this);
+	warrior_name = App->gui->AddUILabel(438, 3, "Warrior", { 255,255,255,255 }, 15, this);
+	elf_name = App->gui->AddUILabel(210, 296, "Elf", { 255,255,255,255 }, 15, this);
+	dwarf_name = App->gui->AddUILabel(443, 296, "Dwarf", { 255,255,255,255 }, 15, this);
 	
 	SpawnEntities();
-	SpawnEnemies(scene_name);
 
-	
+	if (!App->main_menu->is_new_game) {
+		//todo load from data.xml the current health, mana, items that have the heroes
+		LoadDataFromXML();
+	}
+
+	SetDataToUI();
+
+	OrderTurnPriority();
 	
 	return ret;
 }
@@ -78,13 +89,21 @@ bool ctCombat::Start()
 // Called each loop iteration
 bool ctCombat::PreUpdate()
 {
-	OrderPriority();
 	return true;
 }
 
 // Called each loop iteration
 bool ctCombat::Update(float dt)
 {
+
+	if (turn_priority_entity.size() == 0) {
+		OrderTurnPriority();
+	}
+	else {
+		Entity* entity_to_perform_action = turn_priority_entity.front();
+		
+		PerformActionWithEntity(entity_to_perform_action);
+	}
 	
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
@@ -128,6 +147,14 @@ bool ctCombat::Update(float dt)
 	{
 		App->render->scale_factor -= 0.1;
 	}
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+	{
+		App->render->camera.x+=10;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
+	{
+		App->render->camera.x -= 10;
+	}
 
 	if (App->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
 	{
@@ -147,7 +174,7 @@ bool ctCombat::Update(float dt)
 	}
 	// Draw everything --------------------------------------
 	App->map->Draw();
-	DrawPriority();
+	DrawTurnPriority();
 	return true;
 }
 
@@ -167,26 +194,22 @@ bool ctCombat::CleanUp()
 
 	//todo: despawn entities
 	
-	priority_entity.clear();
+	turn_priority_entity.clear();
 	App->gui->DeleteAllUIElements();
 
 	App->map->CleanUp();
 
+	if (App->main_menu->is_new_game)
+		App->main_menu->is_new_game = false;
+
+	if(App->entities->entities.size()>0)
+		SaveDataToXML();
+
+	for (int i = 0; i < App->entities->entities.size(); i++)
+	{
+		App->entities->entities.at(i)->to_destroy = true;
+	}
 	App->entities->entities.clear();
-
-	/*if(App->entities->GetCleric() != nullptr)
-		App->entities->GetCleric()->to_destroy = true;
-
-	if (App->entities->GetDwarf() != nullptr)
-		App->entities->GetDwarf()->to_destroy = true;
-
-	if (App->entities->GetElf() != nullptr)
-		App->entities->GetElf()->to_destroy = true;
-
-	if (App->entities->GetWarrior() != nullptr)
-		App->entities->GetWarrior()->to_destroy = true;*/
-
-	
 
 	return true;
 }
@@ -223,7 +246,6 @@ void ctCombat::SpawnEntities()
 {
 	int random_number = (rand() % 4);
 	// Test assign life with lifebar
-	
 
 	//randomization is ugly, sorry c:
 	switch (random_number)
@@ -320,44 +342,126 @@ void ctCombat::SpawnEntities()
 	default:
 		break;
 	}
+
+
+	for (int i = 0; i < entities_to_spawn.size(); i++)
+	{
+		switch (entities_to_spawn.at(i))
+		{
+		case KOBOLD:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, KOBOLD);
+			break;
+		case GNOLL:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, GNOLL);
+			break;
+		default:
+			break;
+		}
+	}
+
+}
+
+void ctCombat::LoadDataFromXML()
+{
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+	node = &node->child("heroes");
+
+	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
+	{
+		std::string tmp(heroe.attribute("name").as_string());
+
+		if (tmp == "cleric") {
+			App->entities->GetCleric()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+			App->entities->GetCleric()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+		}
+		else if (tmp == "warrior") {
+			App->entities->GetWarrior()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+			App->entities->GetWarrior()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+		}
+		else if (tmp == "dwarf") {
+			App->entities->GetDwarf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+			App->entities->GetDwarf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+		}
+		else if (tmp == "elf") {
+			App->entities->GetElf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+			App->entities->GetElf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+		}
+
+	}
+}
+
+void ctCombat::SaveDataToXML()
+{
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+	node = &node->child("heroes");
+
+	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
+	{
+		std::string tmp(heroe.attribute("name").as_string());
+
+		if (tmp == "cleric") {
+			heroe.child("values").attribute("health_points").set_value(App->entities->GetCleric()->GetCurrentHealthPoints());
+			heroe.child("values").attribute("mana_points").set_value(App->entities->GetCleric()->GetCurrentManaPoints());
+		}
+		else if (tmp == "warrior") {
+			heroe.child("values").attribute("health_points").set_value(App->entities->GetWarrior()->GetCurrentHealthPoints());
+			heroe.child("values").attribute("mana_points").set_value(App->entities->GetWarrior()->GetCurrentManaPoints());
+		}
+		else if (tmp == "dwarf") {
+			heroe.child("values").attribute("health_points").set_value(App->entities->GetDwarf()->GetCurrentHealthPoints());
+			heroe.child("values").attribute("mana_points").set_value(App->entities->GetDwarf()->GetCurrentManaPoints());
+		}
+		else if (tmp == "elf") {
+			heroe.child("values").attribute("health_points").set_value(App->entities->GetElf()->GetCurrentHealthPoints());
+			heroe.child("values").attribute("mana_points").set_value(App->entities->GetElf()->GetCurrentManaPoints());
+		}
+
+	}
+
+	data_file.save_file("data.xml");
+	data_file.reset();
+}
+
+void ctCombat::SetDataToUI()
+{
 	// TEST FOR UI BAR WITH CALC DAMAGE
 	//Entity* cleric = App->entities->GetCleric();
 	//test = (UIBar*)App->gui->AddUIBar(100,100,cleric->base_stats.base_constitution*13,LIFEBAR);
 
 	Entity* cleric = App->entities->GetCleric();
 	//cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
-	test = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
-	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 11, cleric->base_stats.base_focus * 13, MANABAR);
-	
+	test = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.base_constitution * 13, LIFEBAR);
+	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->base_stats.base_focus * 13, MANABAR);
 
 	Entity* warrior = App->entities->GetWarrior();
-	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(276, 0, warrior->base_stats.base_constitution * 13, LIFEBAR);
-	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(276, 11, warrior->base_stats.base_focus * 13, MANABAR);
+	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->base_stats.base_constitution * 13, LIFEBAR);
+	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(277, 10, warrior->base_stats.base_focus * 13, MANABAR);
 
 	Entity* elf = App->entities->GetElf();
 	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->base_stats.base_constitution * 13, LIFEBAR);
 	elf_mana_bar = (UIBar*)App->gui->AddUIBar(34, 304, elf->base_stats.base_focus * 13, MANABAR);
 
 	Entity* dwarf = App->entities->GetDwarf();
-	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(276, 293, dwarf->base_stats.base_constitution * 13, LIFEBAR);
-	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(276, 304, dwarf->base_stats.base_focus * 13, MANABAR);
-	
+	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->base_stats.base_constitution * 13, LIFEBAR);
+	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.base_focus * 13, MANABAR);
 }
 
-void ctCombat::OrderPriority()
+void ctCombat::OrderTurnPriority()
 {
 	bool ordered = false;
 
 	while (!ordered)
 	{
 		ordered = true;
-		std::vector<Entity*>::iterator itnext = priority_entity.begin();
+		std::vector<Entity*>::iterator itnext = turn_priority_entity.begin();
 		int count = 0;
-		for (std::vector<Entity*>::iterator it = priority_entity.begin(); it != priority_entity.end(); ++it)
+		for (std::vector<Entity*>::iterator it = turn_priority_entity.begin(); it != turn_priority_entity.end(); ++it)
 		{
 			itnext++;
 			count++;
-			if (count != priority_entity.size())
+			if (count != turn_priority_entity.size())
 			{
 				if ((*it)->base_stats.base_agility < (*itnext)->base_stats.base_agility)
 				{
@@ -378,11 +482,12 @@ void ctCombat::OrderPriority()
 
 }
 
-void ctCombat::DrawPriority()
+void ctCombat::DrawTurnPriority()
 {
 	uint x=10, y=30;
-	for (std::vector<Entity*>::iterator it = priority_entity.begin(); it != priority_entity.end(); ++it)
+	for (std::vector<Entity*>::iterator it = turn_priority_entity.begin(); it != turn_priority_entity.end(); ++it)
 	{
+
 		SDL_Rect rect;
 	
 		switch ((*it)->type)
@@ -423,23 +528,85 @@ void ctCombat::DrawPriority()
 
 }
 
-void ctCombat::SpawnEnemies(string sceneName)
+bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 {
-	int random_number = (rand() % 2);
-	if (sceneName == "cave_02.tmx")
-	{
-		if (random_number == 1)
-		{
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(0).x, App->map->enemies_position_coords.at(0).y, GNOLL);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, GNOLL);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, KOBOLD);
-		}
-		else if (random_number == 0)
-		{
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(2).x, App->map->enemies_position_coords.at(2).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(3).x, App->map->enemies_position_coords.at(3).y, KOBOLD);
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, GNOLL);
-		}
 
+	switch (entity_to_perform_action->type)
+	{
+	case CLERIC:
+		break;
+	case DWARF:
+		break;
+	case ELF:
+		break;
+	case WARRIOR:
+		break;
+	case KOBOLD: {
+		if (IsGoingToDoAnythingClever(entity_to_perform_action)) {
+			//in this case the kobold will search the weakest heroe since we dont have abilities
+			Entity* weakest_heroe = GetTheWeakestHeroe();
+			
+		}
+		else {
+			//in this case, the kobold will attack one random heroe
+			Entity* weakest_heroe = GetRandomHeroe();
+
+		}
 	}
+		break;
+	case GNOLL:
+		break;
+	case GNOLL_ARCHER:
+		break;
+	case OWLBEAR:
+		break;
+	case MINIHEROES:
+	case NO_TYPE:
+		LOG("this should not happen");
+		break;
+	default:
+		break;
+	}
+
+	return false;
+}
+
+bool ctCombat::IsGoingToDoAnythingClever(Entity * entity)
+{
+
+	int random_number = (rand() % 100) + 1; //random del 1-100
+	
+	return entity->GetCurrentJudgement()<=random_number;
+}
+
+Entity * ctCombat::GetTheWeakestHeroe()
+{
+	//now we get the lowest hp
+
+	Entity* tmp_entity = App->entities->GetCleric();
+	if(tmp_entity->GetCurrentHealthPoints() == 0)
+		tmp_entity = App->entities->GetDwarf();
+	if (tmp_entity->GetCurrentHealthPoints() == 0)
+		tmp_entity = App->entities->GetElf();
+	if (tmp_entity->GetCurrentHealthPoints() == 0)
+		tmp_entity = App->entities->GetWarrior();
+
+	if (tmp_entity->GetCurrentHealthPoints() > App->entities->GetCleric()->GetCurrentHealthPoints() && App->entities->GetCleric()->GetCurrentHealthPoints()>0)
+		tmp_entity = App->entities->GetCleric();
+
+	if (tmp_entity->GetCurrentHealthPoints() > App->entities->GetDwarf()->GetCurrentHealthPoints() && App->entities->GetDwarf()->GetCurrentHealthPoints()>0)
+		tmp_entity = App->entities->GetDwarf();
+
+	if (tmp_entity->GetCurrentHealthPoints() > App->entities->GetElf()->GetCurrentHealthPoints() && App->entities->GetElf()->GetCurrentHealthPoints()>0)
+		tmp_entity = App->entities->GetElf();
+
+	if (tmp_entity->GetCurrentHealthPoints() > App->entities->GetWarrior()->GetCurrentHealthPoints() && App->entities->GetWarrior()->GetCurrentHealthPoints()>0)
+		tmp_entity = App->entities->GetWarrior();
+
+	return tmp_entity;
+}
+
+Entity * ctCombat::GetRandomHeroe()
+{
+	return nullptr;
 }

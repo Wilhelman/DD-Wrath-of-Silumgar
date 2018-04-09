@@ -32,6 +32,11 @@ public:
 		return options;
 	}
 
+	//Decision call example
+
+	//decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this); 
+	//(*options.rbegin())->current_state = STATE_FOCUSED;
+	//arrow->SetParent(*options.rbegin());
 };
 
 #endif //Questions to Ricardo

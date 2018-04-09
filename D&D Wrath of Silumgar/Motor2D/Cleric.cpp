@@ -20,6 +20,8 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 	pugi::xml_node* node = &App->LoadEntities(config_file);
 	node = &node->child("heroes").child("cleric");
 
+	attack_fx = App->audio->LoadFx(node->attribute("attack_fx").as_string());
+
 	//todo get the stats
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
@@ -42,6 +44,7 @@ Cleric::~Cleric()
 {
 	LOG("Freeing the player");
 
+	App->audio->UnLoadFx(attack_fx);
 }
 
 // Called each loop iteration
@@ -56,6 +59,12 @@ void Cleric::Update(float dt)
 		SetPlayerAnimationsSpeed(dt);
 	}
 		
+}
+
+void Cleric::Attack()
+{
+
+	LOG("Attack!");
 }
 
 void Cleric::SetPlayerAnimationsSpeed(float dt)

@@ -80,7 +80,8 @@ bool ctRender::Update(float dt)
 
 	App->win->GetWindowSize(winWidth, winHeight);
 
-	
+	/*
+
 	int speed = 3;
 
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
@@ -94,6 +95,8 @@ bool ctRender::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		camera.x -= speed;
+		
+		*/
 
 	//LOG("Camera pos x: %i pos y: %i", camera.x, camera.y);
 
@@ -198,8 +201,8 @@ bool ctRender::MapBlit(SDL_Texture* texture, int x, int y, const SDL_Rect* secti
 
 	if (section != NULL)
 	{
-		rect.w = section->w*(scale_factor*w_scalade)+4;
-		rect.h = section->h*(scale_factor*h_scalade)+1;
+		rect.w = section->w*(scale_factor*w_scalade);
+		rect.h = section->h*(scale_factor*h_scalade);
 	}
 
 	rect.x = (int)((camera.x * speed) + ((x / section->w) * rect.w));

@@ -8,7 +8,6 @@
 #include "ctLog.h"
 #include "ctCombat.h"
 #include "ctFadeToBlack.h"
-#include "ctTaskManager.h"
 
 #include "Cleric.h"
 #include "Dwarf.h"
@@ -127,7 +126,6 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 		Cleric* cleric = new Cleric(x, y, CLERIC);
 		entities.push_back(cleric);
 		App->combat->turn_priority_entity.push_back(cleric);
-		App->task_manager->Player = cleric; //guarrada: to improve (quitar include taskmanager)
 		ret = true;
 		break;
 	}
@@ -149,7 +147,6 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 		Warrior* warrior = new Warrior(x, y, WARRIOR);
 		entities.push_back(warrior);
 		App->combat->turn_priority_entity.push_back(warrior);
-		App->task_manager->Enemy = warrior; //guarrada: to improve (quitar include taskmanager)
 		ret = true;
 		break;
 	}

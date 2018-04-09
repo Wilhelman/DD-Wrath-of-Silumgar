@@ -23,6 +23,9 @@
 
 #include "ctFadeToBlack.h"
 
+#include "UICombatMenu.h"
+#include "UIBar.h"
+
 //randomize libs
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
@@ -82,6 +85,12 @@ bool ctCombat::Start()
 	SetDataToUI();
 
 	OrderTurnPriority();
+
+	for (std::vector<Entity *>::iterator it = turn_priority_entity.begin(); it != turn_priority_entity.end(); ++it) {
+		if ((*it)->type != CLERIC && (*it)->type != WARRIOR && (*it)->type != DWARF && (*it)->type != ELF) {
+			enemies.push_back(*it);
+		}
+	}
 	
 	return ret;
 }
@@ -536,10 +545,13 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 	switch (entity_to_perform_action->type)
 	{
 	case CLERIC:
+		//spawn combat ui infront of him
+		combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action->position.x + 30, entity_to_perform_action->position.y, this, nullptr);
 		break;
 	case DWARF:
 		break;
 	case ELF:
+		combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action->position.x + 30, entity_to_perform_action->position.y, this, nullptr);
 		break;
 	case WARRIOR:
 		break;

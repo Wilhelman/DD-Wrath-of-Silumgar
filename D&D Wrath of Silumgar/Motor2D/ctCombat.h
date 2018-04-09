@@ -3,7 +3,7 @@
 
 #include "ctModule.h"
 #include "ctGui.h"
-#include "UIBar.h"
+
 #include "Entity.h"
 #include <string>
 
@@ -11,7 +11,8 @@ using namespace std;
 
 enum EntityType;
 
-
+class UICombatMenu;
+class UIBar;
 
 class ctCombat : public ctModule
 {
@@ -95,9 +96,19 @@ private:
 
 	// TEST FOR UI BAR WITH CALC DAMAGE
 	UIBar* test = nullptr;
+
+	//UICombat stuff
+	std::vector<Entity*> enemies;
 private:
 
 	string scene_name;
+
+	//UICombat stuff
+	UICombatMenu* combat_menu = nullptr;
+	UIElement* ready_player1 = nullptr;
+	UIElement* ready_player2 = nullptr;
+	UIElement* ready_player3 = nullptr;
+	UIElement* ready_player4 = nullptr;
 
 	//UI STUFF
 	UIElement* cleric_background = nullptr;

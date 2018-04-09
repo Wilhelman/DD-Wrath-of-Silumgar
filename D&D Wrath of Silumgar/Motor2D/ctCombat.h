@@ -128,10 +128,6 @@ private:
 	Entity* GetRandomHeroe();
 	//END IA STUFF
 
-
-	// TEST FOR UI BAR WITH CALC DAMAGE
-	UIBar* test = nullptr;
-
 };
 
 

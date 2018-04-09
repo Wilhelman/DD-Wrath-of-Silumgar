@@ -439,7 +439,7 @@ void ctCombat::SetDataToUI()
 
 	Entity* cleric = App->entities->GetCleric();
 	//cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
-	test = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.base_constitution * 13, LIFEBAR);
+	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.base_constitution * 13, LIFEBAR);
 	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->base_stats.base_focus * 13, MANABAR);
 
 	Entity* warrior = App->entities->GetWarrior();
@@ -552,8 +552,10 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		else {
 			if (combat_menu->background == nullptr) {
 				combat_menu->~UICombatMenu();
-				combat_menu->to_destroy = true;
+				App->gui->DeleteUIElement(*combat_menu);
 				combat_menu = nullptr;
+				established_action = true;
+				making_decision = false;
 			}
 		}
 		break;
@@ -565,8 +567,10 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		else {
 			if (combat_menu->background == nullptr) {
 				combat_menu->~UICombatMenu();
-				combat_menu->to_destroy = true;
+				App->gui->DeleteUIElement(*combat_menu);
 				combat_menu = nullptr;
+				established_action = true;
+				making_decision = false;
 			}
 		}
 		break;
@@ -576,8 +580,12 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			making_decision = true;
 		}
 		else {
-			if (combat_menu == nullptr) {
-				LOG("NULLPTR");
+			if (combat_menu->background == nullptr) {
+				combat_menu->~UICombatMenu();
+				App->gui->DeleteUIElement(*combat_menu);
+				combat_menu = nullptr;
+				established_action = true;
+				making_decision = false;
 			}
 		}
 		break;
@@ -589,8 +597,10 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		else {
 			if (combat_menu->background == nullptr) {
 				combat_menu->~UICombatMenu();
-				combat_menu->to_destroy = true;
+				App->gui->DeleteUIElement(*combat_menu);
 				combat_menu = nullptr;
+				established_action = true;
+				making_decision = false;
 			}
 		}
 		break;
@@ -621,6 +631,8 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			entity_objective = GetRandomHeroe();
 		}
 		App->task_manager->AddTask(new MoveToEntity(entity_to_perform_action, entity_objective, 20));
+		App->task_manager->AddTask(new PerformActionToEntity(entity_to_perform_action, entity_to_perform_action->default_attack, entity_objective));
+		App->task_manager->AddTask(new MoveToInitialPosition(entity_to_perform_action));
 
 		established_action = true;
 	}

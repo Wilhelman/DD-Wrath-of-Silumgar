@@ -7,6 +7,8 @@
 #include "Entity.h"
 #include "SDL/include/SDL.h"
 
+#define BASE_SPEED 3
+
 class Entity;
 
 class Task
@@ -56,19 +58,34 @@ public:
 };
 
 
-class Move : public Task
+class MoveToEntity : public Task
 {
 public:
-	Move(Entity* entity_to_move, Entity* entity_to_go) {
+	MoveToEntity(Entity* entity_to_move, Entity* entity_to_go, int offset) {
 		this->entity_to_move = entity_to_move;
 		this->entity_to_go = entity_to_go;
+		this->offset = offset;
 	};
-	~Move() {};
+	~MoveToEntity() {};
 
 	bool Execute();
 private:
 	Entity* entity_to_move = nullptr;
 	Entity* entity_to_go = nullptr;
+	int offset = false;
+};
+
+class MoveToInitialPosition : public Task
+{
+public:
+	MoveToInitialPosition(Entity* entity_to_move) {
+		this->entity_to_move = entity_to_move;
+	};
+	~MoveToInitialPosition() {};
+
+	bool Execute();
+private:
+	Entity* entity_to_move = nullptr;
 };
 
 

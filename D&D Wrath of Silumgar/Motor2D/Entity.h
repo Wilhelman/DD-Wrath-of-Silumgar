@@ -99,6 +99,7 @@ public:
 
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);
+	iPoint initial_position = iPoint(0, 0);
 	EntityType type = EntityType::NO_TYPE;
 	bool to_destroy = false;
 	bool flip_texture = false;

@@ -120,6 +120,8 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 	// find room for the new entity
 	bool ret = false;
 
+
+
 	switch (type)
 	{
 	case EntityType::CLERIC: {

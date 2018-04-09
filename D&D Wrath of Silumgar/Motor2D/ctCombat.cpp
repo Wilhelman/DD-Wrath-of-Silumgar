@@ -530,7 +530,9 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			//in this case, the kobold will attack one random heroe
 			entity_objective = GetRandomHeroe();
 		}
-		App->task_manager->AddTask(new Move(entity_to_perform_action, entity_objective));
+ 		App->task_manager->AddTask(new MoveToEntity(entity_to_perform_action, entity_objective, 20));
+		//attack
+		App->task_manager->AddTask(new MoveToInitialPosition(entity_to_perform_action));
 
 		established_action = true;
 	}
@@ -545,7 +547,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			//in this case, the kobold will attack one random heroe
 			entity_objective = GetRandomHeroe();
 		}
-		App->task_manager->AddTask(new Move(entity_to_perform_action, entity_objective));
+		App->task_manager->AddTask(new MoveToEntity(entity_to_perform_action, entity_objective, 20));
 
 		established_action = true;
 	}
@@ -569,7 +571,10 @@ bool ctCombat::IsGoingToDoAnythingClever(Entity * entity)
 {
 
 	int random_number = (rand() % 100) + 1; //random del 1-100
-	
+	if (entity->GetCurrentJudgement() <= random_number)
+		LOG("clever thing");
+	else
+		LOG("lul");
 	return entity->GetCurrentJudgement()<=random_number;
 }
 

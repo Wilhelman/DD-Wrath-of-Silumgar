@@ -4,11 +4,14 @@
 #include "ctInput.h"
 
 
-bool Move::Execute()
+bool MoveToEntity::Execute()
 {
 	bool ret = false;
 
-	if (entity_to_move->position.x == entity_to_go->position.x && entity_to_move->position.y == entity_to_go->position.y)
+
+	int x_objective = (entity_to_go->position.x + offset);
+
+	if (((entity_to_move->position.x + 25) >= x_objective && (entity_to_move->position.x - 25) <= x_objective ) && ((entity_to_move->position.y + 25) >= entity_to_go->position.y && (entity_to_move->position.y - 25) <= entity_to_go->position.y))
 	{
 		entity_to_move->animation = &entity_to_move->idle;
 		ret = true;
@@ -17,25 +20,65 @@ bool Move::Execute()
 		if (entity_to_move->position.x < entity_to_go->position.x)
 		{
 			entity_to_move->animation = &entity_to_move->run_forward;
-			entity_to_move->position.x += 5;
+			entity_to_move->position.x += BASE_SPEED;
 		}
 
 		else if (entity_to_move->position.x > entity_to_go->position.x)
 		{
 			entity_to_move->animation = &entity_to_move->run_forward;
-			entity_to_move->position.x -= 5;
+			entity_to_move->position.x -= BASE_SPEED;
 		}
 
 		if (entity_to_move->position.y < entity_to_go->position.y)
 		{
 			entity_to_move->animation = &entity_to_move->run_forward;
-			entity_to_move->position.y += 5;
+			entity_to_move->position.y += BASE_SPEED;
 		}
 
 		else if (entity_to_move->position.y > entity_to_go->position.y)
 		{
 			entity_to_move->animation = &entity_to_move->run_forward;
-			entity_to_move->position.y -= 5;
+			entity_to_move->position.y -= BASE_SPEED;
+		}
+	}
+
+	return ret;
+}
+
+bool MoveToInitialPosition::Execute()
+{
+	bool ret = false;
+
+	//offset?
+
+	if (entity_to_move->position.x == entity_to_move->initial_position.x && entity_to_move->position.y == entity_to_move->initial_position.y)
+	{
+		entity_to_move->animation = &entity_to_move->idle;
+		ret = true;
+	}
+	else {
+		if (entity_to_move->position.x < entity_to_move->initial_position.x)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.x += BASE_SPEED;
+		}
+
+		else if (entity_to_move->position.x > entity_to_move->initial_position.x)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.x -= BASE_SPEED;
+		}
+
+		if (entity_to_move->position.y < entity_to_move->initial_position.y)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.y += BASE_SPEED;
+		}
+
+		else if (entity_to_move->position.y > entity_to_move->initial_position.y)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.y -= BASE_SPEED;
 		}
 	}
 

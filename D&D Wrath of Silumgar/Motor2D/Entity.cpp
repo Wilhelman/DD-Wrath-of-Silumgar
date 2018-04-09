@@ -4,6 +4,7 @@
 
 Entity::Entity(int x, int y, EntityType type) : position(x, y), type(type)
 {
+	initial_position = iPoint(x, y);
 }
 
 Entity::~Entity()

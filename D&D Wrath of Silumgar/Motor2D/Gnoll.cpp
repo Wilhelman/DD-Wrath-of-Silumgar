@@ -18,7 +18,7 @@ Gnoll::Gnoll(int x, int y, EntityType type) : Entity(x, y, type) {
 	pugi::xml_document	config_file;
 	pugi::xml_node* node = &App->LoadEntities(config_file);
 	node = &node->child("enemies").child("gnoll");
-
+	texture = App->tex->Load(App->entities->gnoll_spritesheet_name.data());
 	//todo get the stats
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))

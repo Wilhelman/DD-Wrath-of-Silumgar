@@ -8,17 +8,18 @@ Entity::Entity(int x, int y, EntityType type) : position(x, y), type(type)
 
 Entity::~Entity()
 {
+	App->tex->UnLoad(texture);
 }
 
-void Entity::Draw(SDL_Texture* sprites)
+void Entity::Draw()
 {
 	SDL_Rect r = animation->GetCurrentFrame();
 
 	if (animation != nullptr) {
 		if (flip_texture == false)
-		App->render->Blit(sprites, position.x, position.y - r.h, &(animation->GetCurrentFrame()));
+		App->render->Blit(texture, position.x, position.y - r.h, &(animation->GetCurrentFrame()));
 		else {
-		App->render->Blit(sprites, position.x, position.y - r.h, &(animation->GetCurrentFrame()), NULL,NULL, SDL_FLIP_HORIZONTAL);
+		App->render->Blit(texture, position.x, position.y - r.h, &(animation->GetCurrentFrame()), NULL,NULL, SDL_FLIP_HORIZONTAL);
 		}
 	}
 }

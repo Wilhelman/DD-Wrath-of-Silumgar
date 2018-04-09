@@ -2,6 +2,7 @@
 #include "ctLog.h"
 #include "ctApp.h"
 #include "ctInput.h"
+#include "ctApp.h"
 #include "ctRender.h"
 #include "ctTextures.h"
 #include "ctFadeToBlack.h"
@@ -14,7 +15,7 @@
 Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 
 	bool ret = true;
-
+	texture = App->tex->Load(App->entities->cleric_spritesheet_name.data());
 	pugi::xml_document	config_file;
 	pugi::xml_node* node = &App->LoadEntities(config_file);
 	node = &node->child("heroes").child("cleric");

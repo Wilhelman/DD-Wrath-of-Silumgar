@@ -56,6 +56,7 @@ public:
 
 	//TEST to priority attack
 	std::vector<Entity*> turn_priority_entity;
+	std::vector<Entity*> draw_turn_priority_entity;
 	std::vector<EntityType> entities_to_spawn;
 	
 private:

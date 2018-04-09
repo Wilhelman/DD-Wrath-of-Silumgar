@@ -34,14 +34,10 @@ public:
 	bool AddTask(Task* task);
 	bool DoTask();
 
-	Entity* Player = nullptr;
-	Entity* Enemy = nullptr;
-	Entity* Actor = nullptr;
-
 	
 
 private:
-	//TODO 1 Create a queue of tasks
+
 	std::queue<Task*> TaskQueue;
 	Task*		buttonQ = nullptr;
 	Task*		buttonA = nullptr;
@@ -57,6 +53,22 @@ public:
 	Task * aux_task = nullptr;
 	iPoint posaux = { 0,0 };
 
+};
+
+
+class Move : public Task
+{
+public:
+	Move(Entity* entity_to_move, Entity* entity_to_go) {
+		this->entity_to_move = entity_to_move;
+		this->entity_to_go = entity_to_go;
+	};
+	~Move() {};
+
+	bool Execute();
+private:
+	Entity* entity_to_move = nullptr;
+	Entity* entity_to_go = nullptr;
 };
 
 

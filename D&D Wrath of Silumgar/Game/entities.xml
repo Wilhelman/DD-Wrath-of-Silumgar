@@ -14,7 +14,7 @@
           <frame x="874" y="70" width="54" height="47"/>
         </animation>
 
-        <animation name="run" speed="5.0" loop="true">
+        <animation name="run_forward" speed="5.0" loop="true">
           <frame x="991" y="131" width="55" height="38"/>
           <frame x="921" y="131" width="55" height="38"/>
           <frame x="855" y="131" width="55" height="38"/>
@@ -190,7 +190,7 @@
     </heavyGoblin>
 
     <gnoll>
-      <statistics constitution ="8" focus="6" strength="7" agility="7"  dexterity ="6" intelligence="3" physicalDefense="4" magicalDefense="2" judgement="40"/>
+      <statistics constitution ="8" focus="6" strength="7" agility="6"  dexterity ="6" intelligence="3" physicalDefense="4" magicalDefense="2" judgement="40"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">

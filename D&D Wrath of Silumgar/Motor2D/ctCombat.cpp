@@ -102,40 +102,16 @@ bool ctCombat::Update(float dt)
 	else {
 		Entity* entity_to_perform_action = turn_priority_entity.front();
 		
-		PerformActionWithEntity(entity_to_perform_action);
+		if (PerformActionWithEntity(entity_to_perform_action)) {//Return true if the action was established.
+			
+			turn_priority_entity.erase(turn_priority_entity.cbegin());
+			turn_priority_entity.shrink_to_fit();
+
+		}
 	}
 	
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
-
-
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-	{
-		App->task_manager->AddTask(new MoveForward(App->entities->GetCleric(), {App->entities->GetCleric()->position.x + 250,App->entities->GetCleric()->position.y}));
-		App->task_manager->AddTask(new Attack(App->entities->GetCleric()));
-		App->task_manager->AddTask(new MoveBackward(App->entities->GetCleric(), { App->entities->GetCleric()->position.x ,App->entities->GetCleric()->position.y }));
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
-	{
-		App->task_manager->AddTask(new MoveForward(App->entities->GetWarrior(), { App->entities->GetWarrior()->position.x + 250, App->entities->GetWarrior()->position.y }));
-		App->task_manager->AddTask(new Attack(App->entities->GetWarrior()));
-		App->task_manager->AddTask(new MoveBackward(App->entities->GetWarrior(), { App->entities->GetWarrior()->position.x, App->entities->GetWarrior()->position.y }));
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
-	{
-		App->task_manager->AddTask(new MoveForward(App->entities->GetElf(), { App->entities->GetElf()->position.x + 250,App->entities->GetElf()->position.y }));
-		App->task_manager->AddTask(new Attack(App->entities->GetElf()));
-		App->task_manager->AddTask(new MoveBackward(App->entities->GetElf(), { App->entities->GetElf()->position.x,App->entities->GetElf()->position.y }));
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
-	{
-		App->task_manager->AddTask(new MoveForward(App->entities->GetDwarf(), { App->entities->GetDwarf()->position.x + 250,App->entities->GetDwarf()->position.y }));
-		App->task_manager->AddTask(new Attack(App->entities->GetDwarf()));
-		App->task_manager->AddTask(new MoveBackward(App->entities->GetDwarf(), { App->entities->GetDwarf()->position.x,App->entities->GetDwarf()->position.y }));
-	}
 
 	// ZOOM
 
@@ -479,6 +455,7 @@ void ctCombat::OrderTurnPriority()
 		}
 
 	}
+	draw_turn_priority_entity = turn_priority_entity;
 
 }
 
@@ -538,6 +515,9 @@ void ctCombat::DrawTurnPriority()
 
 bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 {
+	bool established_action = false;
+
+	Entity* entity_objective = nullptr;
 
 	switch (entity_to_perform_action->type)
 	{
@@ -552,17 +532,31 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 	case KOBOLD: {
 		if (IsGoingToDoAnythingClever(entity_to_perform_action)) {
 			//in this case the kobold will search the weakest heroe since we dont have abilities
-			Entity* weakest_heroe = GetTheWeakestHeroe();
-			
+			entity_objective = GetTheWeakestHeroe();
 		}
 		else {
 			//in this case, the kobold will attack one random heroe
-			Entity* weakest_heroe = GetRandomHeroe();
-
+			entity_objective = GetRandomHeroe();
 		}
+		App->task_manager->AddTask(new Move(entity_to_perform_action, entity_objective));
+
+		established_action = true;
 	}
 		break;
 	case GNOLL:
+	{
+		if (IsGoingToDoAnythingClever(entity_to_perform_action)) {
+			//in this case the kobold will search the weakest heroe since we dont have abilities
+			entity_objective = GetTheWeakestHeroe();
+		}
+		else {
+			//in this case, the kobold will attack one random heroe
+			entity_objective = GetRandomHeroe();
+		}
+		App->task_manager->AddTask(new Move(entity_to_perform_action, entity_objective));
+
+		established_action = true;
+	}
 		break;
 	case GNOLL_ARCHER:
 		break;
@@ -576,7 +570,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		break;
 	}
 
-	return false;
+	return established_action;
 }
 
 bool ctCombat::IsGoingToDoAnythingClever(Entity * entity)
@@ -616,5 +610,33 @@ Entity * ctCombat::GetTheWeakestHeroe()
 
 Entity * ctCombat::GetRandomHeroe()
 {
-	return nullptr;
+	int random_number = rand() % 4; //0-3
+
+	Entity* tmp_entity = nullptr;
+
+	do
+	{
+		int random_number = rand() % 4; //0-3
+
+		switch (random_number)
+		{
+		case 0:
+			tmp_entity = App->entities->GetCleric();
+			break;
+		case 1:
+			tmp_entity = App->entities->GetWarrior();
+			break;
+		case 2:
+			tmp_entity = App->entities->GetDwarf();
+			break;
+		case 3:
+			tmp_entity = App->entities->GetElf();
+			break;
+		default:
+			break;
+		}
+
+	} while (tmp_entity->GetCurrentHealthPoints()==0);
+
+	return tmp_entity;
 }

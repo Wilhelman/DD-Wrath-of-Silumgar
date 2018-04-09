@@ -4,6 +4,43 @@
 #include "ctInput.h"
 
 
+bool Move::Execute()
+{
+	bool ret = false;
+
+	if (entity_to_move->position.x == entity_to_go->position.x && entity_to_move->position.y == entity_to_go->position.y)
+	{
+		entity_to_move->animation = &entity_to_move->idle;
+		ret = true;
+	}
+	else {
+		if (entity_to_move->position.x < entity_to_go->position.x)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.x += 5;
+		}
+
+		else if (entity_to_move->position.x > entity_to_go->position.x)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.x -= 5;
+		}
+
+		if (entity_to_move->position.y < entity_to_go->position.y)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.y += 5;
+		}
+
+		else if (entity_to_move->position.y > entity_to_go->position.y)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.y -= 5;
+		}
+	}
+
+	return ret;
+}
 
 bool MoveForward::Execute()
 {
@@ -93,9 +130,6 @@ bool MoveBackward::Execute()
 
 bool Attack::Execute()
 {
-	//if (actor->type == CLERIC) {
-
-	//}
 
 	bool ret = false;
 

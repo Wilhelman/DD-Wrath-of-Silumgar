@@ -132,22 +132,7 @@ bool ctCombat::Update(float dt)
 		App->render->camera.x -= 10;
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
-	{
-		uint x = 0;
-
-		x = CalculatedDamage(App->entities->GetCleric(), App->entities->GetWarrior());
-		test->LowerBar(x);
-
-		if (test->CurrentQuantity() <= 0)
-		{
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
-		}
-		
-
-		LOG("%i", x);
-
-	}
+	
 	// Draw everything --------------------------------------
 	App->map->Draw();
 	DrawTurnPriority();
@@ -213,10 +198,47 @@ void ctCombat::SetSceneName(string new_scene_name)
 	scene_name = new_scene_name;
 }
 
-uint ctCombat::CalculatedDamage(Entity* attacker, Entity* defender)
+void ctCombat::UpdateHPBarOfEntity(Entity * entity_to_update_bar, int quantity)
+{
+	switch (entity_to_update_bar->type)
+	{
+	case CLERIC:
+		cleric_HP_bar->LowerBar(quantity);
+		break;
+	case DWARF:
+		dwarf_HP_bar->LowerBar(quantity);
+		break;
+	case ELF:
+		elf_HP_bar->LowerBar(quantity);
+		break;
+	case WARRIOR:
+		warrior_HP_bar->LowerBar(quantity);
+		break;
+	case KOBOLD:
+		break;
+	case GNOLL:
+		break;
+	case GNOLL_ARCHER:
+		break;
+	case OWLBEAR:
+		break;
+	case MINIHEROES:
+		break;
+	case NO_TYPE:
+		break;
+	default:
+		break;
+	}
+}
+
+void ctCombat::UpdateManaBarOfEntity(Entity * entity_to_update_bar, int quantity)
+{
+}
+
+/*uint ctCombat::CalculatedDamage(Entity* attacker, Entity* defender)	TODO: esto esta en cuarentena porque no entiendo nada
 {
 	return ((attacker->base_stats.base_constitution * 3)*(100 - defender->base_stats.base_physical_defense)) / 100;
-}
+}*/
 
 void ctCombat::SpawnEntities()
 {

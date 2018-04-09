@@ -14,7 +14,7 @@
           <frame x="874" y="70" width="54" height="47"/>
         </animation>
 
-        <animation name="run_forward" speed="5.0" loop="true">
+        <animation name="run" speed="5.0" loop="true">
           <frame x="991" y="131" width="55" height="38"/>
           <frame x="921" y="131" width="55" height="38"/>
           <frame x="855" y="131" width="55" height="38"/>
@@ -24,7 +24,7 @@
           <frame x="595" y="131" width="55" height="38"/>
         </animation>
 
-        <animation name="basicAttack" speed="5.0" loop="true">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="956" y="371" width="79" height="69"/>
           <frame x="873" y="371" width="79" height="69"/>
           <frame x="788" y="371" width="79" height="69"/>
@@ -199,7 +199,7 @@
           <frame x="670" y="9" width="110" height="78"/>
         </animation>
 
-        <animation name="attack" speed="5.0" loop="true">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="712" y="263" width="176" height="123"/>
           <frame x="533" y="263" width="176" height="123"/>
           <frame x="375" y="262" width="176" height="123"/>
@@ -463,7 +463,7 @@
           <frame x="381" y="2659" width="70" height="77"/>
         </animation>
 
-        <animation name="run_forward" speed="10.0" loop="true">
+        <animation name="run" speed="10.0" loop="true">
           <frame x="1124"  y="2255" width="97" height="81"/>
           <frame x="1020"  y="2255" width="97" height="81"/>
           <frame x="916"  y="2255" width="97" height="81"/>
@@ -477,7 +477,7 @@
           <frame x="84"  y="2255" width="97" height="81"/>
         </animation>
 
-        <animation name="attack" speed="0.2" loop="false">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="47"  y="12" width="126" height="96"/>
           <frame x="188" y="12" width="126" height="96"/>
           <frame x="358" y="12" width="126" height="96"/>
@@ -522,7 +522,7 @@
           <frame x="202" y="334" width="49" height="66"/>
         </animation>
 
-        <animation name="run_forward" speed="10.0" loop="true">
+        <animation name="run" speed="10.0" loop="true">
           <frame x="776" y="805" width="80" height="59"/>
           <frame x="688" y="805" width="80" height="59"/>
           <frame x="600" y="805" width="80" height="59"/>
@@ -536,7 +536,7 @@
           <frame x="956" y="805" width="80" height="59"/>
         </animation>
 
-        <animation name="attack" speed="0.2" loop="false">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="2409" y="435" width="114" height="77"/>
           <frame x="2311" y="435" width="114" height="77"/>
           <frame x="2193" y="435" width="114" height="77"/>
@@ -582,7 +582,7 @@
           <frame x="962" y="2156" width="45" height="68"/>
         </animation>
 
-        <animation name="run_forward" speed="10.0" loop="true">
+        <animation name="run" speed="10.0" loop="true">
           <frame x="1776" y="450" width="94" height="57"/>
           <frame x="1671" y="450" width="94" height="57"/>
           <frame x="1450" y="450" width="94" height="57"/>
@@ -591,7 +591,7 @@
           <frame x="1126" y="450" width="94" height="57"/>
         </animation>
 
-        <animation name="attack" speed="0.2" loop="false">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="1444" y="690" width="125" height="65"/>
           <frame x="1229" y="690" width="125" height="65"/>
           <frame x="1024" y="690" width="125" height="65"/>
@@ -633,7 +633,7 @@
           <frame x="1328" y="118" width="67" height="74"/>
         </animation>
 
-        <animation name="run_forward" speed="10.0" loop="true">
+        <animation name="run" speed="10.0" loop="true">
           <frame x="524" y="802" width="73" height="94"/>
           <frame x="424" y="802" width="73" height="94"/>
           <frame x="324" y="802" width="73" height="94"/>
@@ -642,7 +642,7 @@
           <frame x="40" y="802" width="73" height="94"/>
         </animation>
 
-        <animation name="attack" speed="0.2" loop="false">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="1838" y="926" width="131" height="98"/>
           <frame x="1696" y="926" width="131" height="98"/>
           <frame x="1529" y="926" width="131" height="98"/>
@@ -685,7 +685,7 @@
           <frame x="56" y="0" width="55" height="36"/>
         </animation>
 
-        <animation name="run_forward" speed="1.0" loop="true">
+        <animation name="run" speed="1.0" loop="true">
           <frame x="0" y="37" width="55" height="36"/>
           <frame x="56" y="37" width="55" height="36"/>
         </animation>

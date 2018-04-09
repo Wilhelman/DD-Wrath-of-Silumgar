@@ -2,6 +2,7 @@
 #include "ctApp.h"
 #include "ctEntities.h"
 #include "ctInput.h"
+#include "ctCombat.h"
 
 
 bool MoveToEntity::Execute()
@@ -51,9 +52,14 @@ bool MoveToInitialPosition::Execute()
 
 	//offset?
 
+	if (entity_to_move->flip_texture != true) {
+		entity_to_move->flip_texture = true;
+	}
+
 	if (entity_to_move->position.x == entity_to_move->initial_position.x && entity_to_move->position.y == entity_to_move->initial_position.y)
 	{
 		entity_to_move->animation = &entity_to_move->idle;
+		entity_to_move->flip_texture = false;
 		ret = true;
 	}
 	else {
@@ -104,8 +110,12 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->attack.Reset();
 			actioner_entity->animation = &actioner_entity->idle;
 
+			//TODO WE'RE NOT CALCULATING THE ATTACK AGAINST THE DEFENSE! also the action should have type of attack: fisical or magical!!!
 			receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + action_to_perform.health_points_effect);
-			//todo animate the receiver to hit + audio
+
+			//todo animate the receiver to hit + audio or smth
+
+			App->combat->UpdateHPBarOfEntity(receiver_entity, action_to_perform.health_points_effect);
 		}
 	}
 		break;

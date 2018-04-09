@@ -52,7 +52,11 @@ public:
 
 	void SetSceneName(string new_scene_name);
 
-	uint CalculatedDamage(Entity* attacker, Entity* defender);
+	void UpdateHPBarOfEntity(Entity* entity_to_update_bar, int quantity);
+	void UpdateManaBarOfEntity(Entity* entity_to_update_bar, int quantity);
+
+	//cuarentena
+	//uint CalculatedDamage(Entity* attacker, Entity* defender);
 
 	//TEST to priority attack
 	std::vector<Entity*> turn_priority_entity;

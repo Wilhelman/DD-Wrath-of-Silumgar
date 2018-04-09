@@ -545,21 +545,54 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 	switch (entity_to_perform_action->type)
 	{
 	case CLERIC:
-		//spawn combat ui infront of him
-		combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action->position.x + 30, entity_to_perform_action->position.y, this, nullptr);
-		break;
-	case DWARF:
-		break;
-	case ELF:
 		if (!making_decision) {
-			combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+			combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
 			making_decision = true;
 		}
 		else {
-
+			if (combat_menu->background == nullptr) {
+				combat_menu->~UICombatMenu();
+				combat_menu->to_destroy = true;
+				combat_menu = nullptr;
+			}
+		}
+		break;
+	case DWARF:
+		if (!making_decision) {
+			combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+			making_decision = true;
+		}
+		else {
+			if (combat_menu->background == nullptr) {
+				combat_menu->~UICombatMenu();
+				combat_menu->to_destroy = true;
+				combat_menu = nullptr;
+			}
+		}
+		break;
+	case ELF:
+		if (!making_decision) {
+			combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+			making_decision = true;
+		}
+		else {
+			if (combat_menu == nullptr) {
+				LOG("NULLPTR");
+			}
 		}
 		break;
 	case WARRIOR:
+		if (!making_decision) {
+			combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+			making_decision = true;
+		}
+		else {
+			if (combat_menu->background == nullptr) {
+				combat_menu->~UICombatMenu();
+				combat_menu->to_destroy = true;
+				combat_menu = nullptr;
+			}
+		}
 		break;
 	case KOBOLD: {
 		if (IsGoingToDoAnythingClever(entity_to_perform_action)) {

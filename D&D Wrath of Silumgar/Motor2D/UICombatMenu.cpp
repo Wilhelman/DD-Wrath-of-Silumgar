@@ -4,9 +4,12 @@
 #include "ctInput.h"
 #include "ctAudio.h"
 #include "ctCombat.h"
+#include "Entity.h"
+#include "ctTaskManager.h"
 
-UICombatMenu::UICombatMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
+UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
+	this->entity = entity;
 	this->callback = callback;
 
 	background = App->gui->AddUIImage(x, y, { 1260, 208, 60, 90 }, callback);
@@ -453,13 +456,19 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		App->gui->DeleteUIElement(*lower_points);
 		lower_points = nullptr;
 
-
 		for (int i = 0; i < current_vector.size(); i++) {
 			App->gui->DeleteUIElement(*current_vector.at(i));
 		}
 
 		current_vector.clear();
+
 		selecting_enemy = false;
+
+		//perform tasks!
+		//(*selected_enemy)
+		App->task_manager->AddTask(new MoveToEntity(entity, (*selected_enemy), -20));
+		App->task_manager->AddTask(new PerformActionToEntity(entity, entity->default_attack, (*selected_enemy)));
+		App->task_manager->AddTask(new MoveToInitialPosition(entity));
 	}
 
 

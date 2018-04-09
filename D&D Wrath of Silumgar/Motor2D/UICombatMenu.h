@@ -10,6 +10,8 @@ struct Entity;
 class UICombatMenu : public UIElement
 {
 public:
+	Entity* entity = nullptr;
+
 	UIElement* background = nullptr;
 	UIElement* arrow = nullptr;
 	UIElement* enemy_select_arrow = nullptr;
@@ -43,7 +45,8 @@ public:
 	bool selecting_enemy = false;
 
 public:
-	UICombatMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent = nullptr);
+
+	UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule* callback, UIElement* parent = nullptr);
 	virtual ~UICombatMenu();
 
 

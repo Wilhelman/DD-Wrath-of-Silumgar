@@ -163,8 +163,8 @@ UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, S
 	return nullptr;
 }
 
-UIElement* ctGui::AddUICombatMenu(int position_x, int position_y, ctModule* callback, UIElement* parent) {
-	UIElement* tmp_cmenu = new UICombatMenu(position_x, position_y, COMBATMENU, callback, parent);
+UIElement* ctGui::AddUICombatMenu(Entity* entity, int position_x, int position_y, ctModule* callback, UIElement* parent) {
+	UIElement* tmp_cmenu = new UICombatMenu(entity, position_x, position_y, COMBATMENU, callback, parent);
 	ui_elements.push_back(tmp_cmenu);
 	return tmp_cmenu;
 

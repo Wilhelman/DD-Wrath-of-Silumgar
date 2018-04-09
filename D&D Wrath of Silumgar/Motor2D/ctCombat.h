@@ -63,6 +63,9 @@ public:
 	std::vector<Entity*> turn_priority_entity;
 	std::vector<Entity*> draw_turn_priority_entity;
 	std::vector<EntityType> entities_to_spawn;
+
+	//UICombat stuff
+	std::vector<Entity*> enemies;
 	
 private:
 	
@@ -87,18 +90,7 @@ private:
 	///judgement die
 	bool IsGoingToDoAnythingClever(Entity* entity);
 
-	///only gets the lowest hp
-	Entity* GetTheWeakestHeroe();
-
-	Entity* GetRandomHeroe();
-	//END IA STUFF
-
-
-	// TEST FOR UI BAR WITH CALC DAMAGE
-	UIBar* test = nullptr;
-
-	//UICombat stuff
-	std::vector<Entity*> enemies;
+	
 private:
 
 	string scene_name;
@@ -128,6 +120,17 @@ private:
 	UIElement* warrior_name;
 	UIElement* dwarf_name;
 	UIElement* elf_name;
+
+
+	///only gets the lowest hp
+	Entity* GetTheWeakestHeroe();
+
+	Entity* GetRandomHeroe();
+	//END IA STUFF
+
+
+	// TEST FOR UI BAR WITH CALC DAMAGE
+	UIBar* test = nullptr;
 
 };
 

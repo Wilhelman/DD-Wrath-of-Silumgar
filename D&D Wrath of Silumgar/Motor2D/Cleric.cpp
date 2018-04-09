@@ -36,6 +36,10 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &attack);
 	}
 	LoadProperties(node->child("statistics"));
+
+
+	//LoadActions()
+
 	animation = &idle;
 
 }

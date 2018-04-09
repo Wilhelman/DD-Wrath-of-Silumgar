@@ -531,7 +531,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			entity_objective = GetRandomHeroe();
 		}
  		App->task_manager->AddTask(new MoveToEntity(entity_to_perform_action, entity_objective, 20));
-		//attack
+		App->task_manager->AddTask(new PerformActionToEntity(entity_to_perform_action, entity_to_perform_action->default_attack, entity_objective));
 		App->task_manager->AddTask(new MoveToInitialPosition(entity_to_perform_action));
 
 		established_action = true;

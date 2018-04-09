@@ -85,105 +85,35 @@ bool MoveToInitialPosition::Execute()
 	return ret;
 }
 
-bool MoveForward::Execute()
+
+
+bool PerformActionToEntity::Execute()
 {
+
 	bool ret = false;
+
+	switch (action_to_perform.type)
+	{
+	case DEFAULT_ATTACK: {
+
+		actioner_entity->animation = &actioner_entity->attack;
+
+		ret = actioner_entity->animation->Finished();
+
+		if (ret == true) {
+			actioner_entity->attack.Reset();
+			actioner_entity->animation = &actioner_entity->idle;
+
+			receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + action_to_perform.health_points_effect);
+			//todo animate the receiver to hit + audio
+		}
+	}
+		break;
+	default:
+		break;
+	}
 
 	
-
-		if (actor->position.x == finalpos.x && actor->position.y == finalpos.y)
-		{
-			actor->animation = &actor->idle;
-			ret = true;
-		}
-		else {
-			if (actor->position.x < finalpos.x)
-			{
-				actor->animation = &actor->run_forward;
-				actor->position.x += 5;
-			}
-
-			else if (actor->position.x > finalpos.x)
-			{
-				actor->animation = &actor->run_forward;
-				actor->position.x -= 5;
-			}
-
-			if (actor->position.y < finalpos.y)
-			{
-				actor->animation = &actor->run_forward;
-				actor->position.y += 5;
-			}
-
-			else if (actor->position.y > finalpos.y)
-			{
-				actor->animation = &actor->run_forward;
-				actor->position.y -= 5;
-			}
-		}
-
-	return ret;
-}
-
-bool MoveBackward::Execute()
-{
-	bool ret = false;
-
-
-	if (actor->flip_texture != true) {
-		actor->flip_texture = true;
-	}
-
-	if (actor->position.x == finalpos.x && actor->position.y == finalpos.y)
-	{
-		actor->animation = &actor->idle;
-		actor->flip_texture = false;
-		ret = true;
-	}
-	else {
-		if (actor->position.x < finalpos.x)
-		{
-			actor->animation = &actor->run_forward;
-			actor->position.x += 5;
-		}
-
-		else if (actor->position.x > finalpos.x)
-		{
-			actor->animation = &actor->run_forward;
-			actor->position.x -= 5;
-		}
-
-		if (actor->position.y < finalpos.y)
-		{
-			actor->animation = &actor->run_forward;
-			actor->position.y += 5;
-		}
-
-		else if (actor->position.y > finalpos.y)
-		{
-			actor->animation = &actor->run_forward;
-			actor->position.y -= 5;
-		}
-	}
-
-	return ret;
-}
-
-
-
-bool Attack::Execute()
-{
-
-	bool ret = false;
-
-	actor->animation = &actor->attack;
-
-	ret = actor->animation->Finished();
-
-	if (ret == true) {
-		actor->attack.Reset();
-		actor->animation = &actor->idle;
-	}
 	
 	return ret;
 }

@@ -39,6 +39,12 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 	base_stats.base_luck = properties.attribute("luck").as_uint();
 	base_stats.base_judgement = properties.attribute("judgement").as_uint();
 
+	/* ADDING BASIC ACTION FOR ALL THE ENTITIES THIS SHOULD BE CHANGED */
+	default_attack.name = "Attack";
+	default_attack.type = DEFAULT_ATTACK;
+	default_attack.health_points_effect = -(int)base_stats.base_strength * StatisticsValues::STRENGTH;
+
+	//todo change this
 	current_health_points = base_stats.base_constitution * StatisticsValues::CONSTITUTION;
 	current_mana_points = base_stats.base_constitution * StatisticsValues::FOCUS;
 

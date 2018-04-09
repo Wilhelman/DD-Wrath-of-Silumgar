@@ -55,16 +55,27 @@ struct Item {
 	uint judgement = 0u;
 };
 
-struct Skill {
+enum ActionType {
+	DEFAULT_ATTACK,
+
+	ACTION_NOT_DEFINED
+};
+
+struct Action {
+
 	std::string name;
+	ActionType type = ACTION_NOT_DEFINED;
 	uint mana_cost = 0u;
-	int health_potion_effect = 0;
-	int mana_potion_effect = 0;
+
+	int health_points_effect_to_himself = 0;
+	int mana_points_effect_to_himself = 0;
+	int health_points_effect = 0;
+	int mana_points_effect = 0;
+
 	uint stun_chance = 0u;
 	uint bleeding_chance = 0u;
 	uint position_chance = 0u;
 	uint burn_chance = 0u;
-
 
 	uint constitution_variation = 0u;
 	uint focus_variation = 0u;
@@ -105,6 +116,9 @@ public:
 	bool flip_texture = false;
 	
 	SDL_Texture* texture = nullptr;
+
+	//Combat stuff
+	Action default_attack;
 public:
 	Entity(int x, int y, EntityType type);
 	virtual ~Entity();

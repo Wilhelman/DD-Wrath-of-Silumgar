@@ -88,34 +88,22 @@ private:
 	Entity* entity_to_move = nullptr;
 };
 
-
-class MoveForward : public Task
+class PerformActionToEntity : public Task
 {
 public:
-	MoveForward(Entity* actor, iPoint finalpos) {
-		this->actor = actor;
-		this->finalpos = finalpos;
+	PerformActionToEntity(Entity* actioner_entity, Action action_to_perform, Entity* receiver_entity) {
+		this->actioner_entity = actioner_entity;
+		this->action_to_perform = action_to_perform;
+		this->receiver_entity = receiver_entity;
 	};
-	~MoveForward() {};
-
-	bool Execute();
-private:
-	Entity* actor = nullptr;
-	iPoint finalpos;
-};
-
-class Attack : public Task
-{
-public:
-	Attack(Entity* actor) {
-		this->actor = actor;
-	};
-	virtual  ~Attack() {};
+	virtual  ~PerformActionToEntity() {};
 
 	bool Execute();
 
 private:
-	Entity* actor = nullptr;
+	Entity* actioner_entity = nullptr;
+	Action action_to_perform;
+	Entity* receiver_entity = nullptr;
 };
 
 class MoveBackward : public Task

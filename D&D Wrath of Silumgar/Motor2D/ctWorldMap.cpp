@@ -18,6 +18,9 @@
 
 #include "ctFadeToBlack.h"
 
+#include "ctGui.h"
+#include "UIElement.h"
+
 
 //randomize libs
 #include <stdlib.h>     /* srand, rand */

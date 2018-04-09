@@ -551,7 +551,13 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 	case DWARF:
 		break;
 	case ELF:
-		combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action->position.x + 30, entity_to_perform_action->position.y, this, nullptr);
+		if (!making_decision) {
+			combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+			making_decision = true;
+		}
+		else {
+
+		}
 		break;
 	case WARRIOR:
 		break;

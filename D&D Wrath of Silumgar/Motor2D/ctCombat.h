@@ -102,6 +102,7 @@ private:
 private:
 
 	string scene_name;
+	bool making_decision = false;
 
 	//UICombat stuff
 	UICombatMenu* combat_menu = nullptr;

@@ -60,30 +60,57 @@ void UIBar::LowerBar(int quantity)
 {
 	//Lower width of the bar when losing hp/mana
 	if (lower_bar != nullptr) {
-		if ((current_quantity - quantity) >= 0) {
-			current_width = CalculateBarWidth(-quantity);
-			App->gui->DeleteUIElement(*upper_bar);
-			if (bar_type == LIFEBAR || bar_type == ENEMYLIFEBAR) {
-				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
-				DrawYellowBar();
+		if (quantity<0) {
+			if ((current_quantity - quantity) >= 0) {
+				current_width = CalculateBarWidth(quantity);
+				App->gui->DeleteUIElement(*upper_bar);
+				if (bar_type == LIFEBAR || bar_type == ENEMYLIFEBAR) {
+					upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
+					DrawYellowBar();
+				}
+				else if (bar_type == MANABAR) {
+					upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
+					DrawYellowBar();
+				}
 			}
-			else if (bar_type == MANABAR) {
-				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
-				DrawYellowBar();
+			else {
+				current_width = CalculateBarWidth(-current_quantity);
+				App->gui->DeleteUIElement(*upper_bar);
+				if (bar_type == LIFEBAR || bar_type == ENEMYLIFEBAR) {
+					upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
+					DrawYellowBar();
+				}
+				else if (bar_type == MANABAR) {
+					upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
+					DrawYellowBar();
+				}
 			}
 		}
-		else {
-			current_width = CalculateBarWidth(-current_quantity);
-			App->gui->DeleteUIElement(*upper_bar);
-			if (bar_type == LIFEBAR || bar_type == ENEMYLIFEBAR) {
-				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
-				DrawYellowBar();
-			}
-			else if (bar_type == MANABAR) {
-				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
-				DrawYellowBar();
+		else if (quantity>0){
+			if (lower_bar != nullptr) {
+				if ((current_quantity + quantity) < max_capacity) {
+					current_width = CalculateBarWidth(quantity);
+					App->gui->DeleteUIElement(*upper_bar);
+					if (bar_type == LIFEBAR || bar_type == ENEMYLIFEBAR) {
+						upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
+					}
+					else if (bar_type == MANABAR) {
+						upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
+					}
+				}
+				else {
+					current_width = CalculateBarWidth((max_capacity - current_quantity));
+					App->gui->DeleteUIElement(*upper_bar);
+					if (bar_type == LIFEBAR || bar_type == ENEMYLIFEBAR) {
+						upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
+					}
+					else if (bar_type == MANABAR) {
+						upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
+					}
+				}
 			}
 		}
+
 	}
 }
 

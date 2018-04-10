@@ -7,8 +7,6 @@
 #include "ctRender.h"
 #include "ctWindow.h"
 #include "ctEntities.h"
-#include "UIBar.h"
-
 #include "ctSettings.h"
 
 #include "ctFadeToBlack.h"
@@ -68,10 +66,6 @@ bool ctSettings::Start()
 	menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuMove.wav");
 	menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuSelect.wav");
 
-	HPbar = (UIBar*)App->gui->AddUIBar(0,150, 100,LIFEBAR,this);
-	ManaBar = (UIBar*)App->gui->AddUIBar(0, 300, 100, MANABAR, this);
-	EnemyBar = (UIBar*)App->gui->AddUIBar(0, 350, 100, ENEMYLIFEBAR, this);
-
 
 
 	return ret;
@@ -111,25 +105,6 @@ bool ctSettings::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
 		App->audio->PlayFx(menu_move_fx);
 		TurnDown(labels);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) { // TODO QUITAR ESTO MANEL??
-		HPbar->LowerBar(25);
-	}
-	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN) {
-		HPbar->RecoverBar(1);
-	}
-	if (App->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN) {
-		ManaBar->LowerBar(25);
-	}
-	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN) {
-		ManaBar->RecoverBar(1);
-	}
-	if (App->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
-		EnemyBar->LowerBar(25);
-	}
-	if (App->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN) {
-		EnemyBar->RecoverBar(1);
 	}
 
 	return true;

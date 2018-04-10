@@ -42,18 +42,20 @@ bool ctMainMenu::Start()
 	bool ret = true;
 
 	background = App->gui->AddUIImage(0, 0, { 337, 479, 484, 324 }, this);
-	continue_label = App->gui->AddUILabel(35, 10, "Continue", { 255,255,255,255 }, 15, this);
+	continue_label = App->gui->AddUILabel(35, 10, "Continue", { 255,0,0,255 }, 15, this);
 	new_game_label = App->gui->AddUILabel(35, 30, "New Game", { 255,255,255,255 }, 15, this);
 	settings_label = App->gui->AddUILabel(35, 50, "Settings", { 255,255,255,255 }, 15, this);
-	about_label = App->gui->AddUILabel(35, 70, "About", { 255,255,255,255 }, 15, this);
+	about_label = App->gui->AddUILabel(35, 70, "About", { 255,0,0,255 }, 15, this);
 	quit_label = App->gui->AddUILabel(35, 90, "Quit", { 255,255,255,255 }, 15, this);
 	arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this);
-	continue_label->current_state = STATE_FOCUSED;
-	arrow->SetParent(continue_label);
-	labels.push_back(continue_label);
+	//continue_label->current_state = STATE_FOCUSED;
+	new_game_label->current_state = STATE_FOCUSED;
+	//arrow->SetParent(continue_label);
+	arrow->SetParent(new_game_label);
+	//labels.push_back(continue_label);
 	labels.push_back(new_game_label);
 	labels.push_back(settings_label);
-	labels.push_back(about_label);
+	//labels.push_back(about_label);
 	labels.push_back(quit_label);
 
 

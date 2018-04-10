@@ -26,12 +26,12 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	//background = App->gui->AddUIImage(x, y, { 1260, 208, 60, 90 }, callback);
 	attack_label = App->gui->AddUILabel(x + main_label1_pos.x, y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
 	abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
-	items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,255,255,255 }, font_size, nullptr, background);
+	items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
 	attack_label->current_state = STATE_FOCUSED;
 	arrow = App->gui->AddUIImage(x - (main_label1_pos.x / 1.5), y, { 1333, 272, 7, 14 }, callback, background);
 	main_labels.push_back(attack_label);
 	main_labels.push_back(abilities_label);
-	main_labels.push_back(items_label);
+	//main_labels.push_back(items_label);
 	arrow->SetParent(attack_label);
 	upper_points_pos.x = x + 8;
 	upper_points_pos.y = y - 20;
@@ -65,6 +65,9 @@ UICombatMenu::~UICombatMenu() {
 	lower_points = nullptr;
 	App->gui->DeleteUIElement(*background);
 	background = nullptr;
+
+	App->gui->DeleteUIElement(*items_label);
+	items_label = nullptr;
 }
 
 void UICombatMenu::Update()
@@ -303,6 +306,9 @@ void UICombatMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		}
 
 		main_labels.clear();
+		//DELETE WHEN ADDING ITEMS OPTION BACK
+		App->gui->DeleteUIElement(*items_label);
+		items_label = nullptr;
 	}
 
 }
@@ -403,12 +409,12 @@ void UICombatMenu::GoBack() {
 
 		attack_label = App->gui->AddUILabel(backgroundPos.x + main_label1_pos.x, backgroundPos.y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
 		abilities_label = App->gui->AddUILabel(backgroundPos.x + main_label2_pos.x, backgroundPos.y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
-		items_label = App->gui->AddUILabel(backgroundPos.x + main_label3_pos.x, backgroundPos.y + main_label3_pos.y, "Items", { 255,255,255,255 }, font_size, nullptr, background);
+		items_label = App->gui->AddUILabel(backgroundPos.x + main_label3_pos.x, backgroundPos.y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
 		attack_label->current_state = STATE_FOCUSED;
 		arrow->SetParent(attack_label);
 		main_labels.push_back(attack_label);
 		main_labels.push_back(abilities_label);
-		main_labels.push_back(items_label);
+		//main_labels.push_back(items_label);
 
 		App->audio->PlayFx(menu_back_fx);
 	}

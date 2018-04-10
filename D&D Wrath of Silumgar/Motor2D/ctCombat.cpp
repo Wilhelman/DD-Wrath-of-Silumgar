@@ -88,7 +88,12 @@ bool ctCombat::Start()
 
 	for (std::vector<Entity *>::iterator it = turn_priority_entity.begin(); it != turn_priority_entity.end(); ++it) {
 		if ((*it)->type != CLERIC && (*it)->type != WARRIOR && (*it)->type != DWARF && (*it)->type != ELF) {
-			enemies.push_back(*it);
+			if ((*it)->GetCurrentHealthPoints()>0)
+				enemies.push_back(*it);
+		}
+		else {
+			if ((*it)->GetCurrentHealthPoints()>0)
+				heroes.push_back(*it);
 		}
 	}
 	
@@ -106,7 +111,18 @@ bool ctCombat::Update(float dt)
 {
 
 	if (turn_priority_entity.size() == 0) {
-		OrderTurnPriority();
+		if (App->task_manager->TaskQueue.size() == 0 && App->task_manager->aux_task == nullptr) {
+			for (std::vector<Entity *>::iterator it_heroe = heroes.begin(); it_heroe != heroes.end(); ++it_heroe) {
+				if ((*it_heroe)->GetCurrentHealthPoints()>0)
+					turn_priority_entity.push_back(*it_heroe);
+			}
+			for (std::vector<Entity *>::iterator it_enemy = enemies.begin(); it_enemy != enemies.end(); ++it_enemy) {
+				if ((*it_enemy)->GetCurrentHealthPoints()>0)
+					turn_priority_entity.push_back(*it_enemy);
+			}
+
+			OrderTurnPriority();
+		}
 	}
 	else {
 		Entity* entity_to_perform_action = turn_priority_entity.front();
@@ -481,11 +497,14 @@ void ctCombat::OrderTurnPriority()
 					ordered = false;
 				}
 			}
-			else
+			else {
 				break;
+			}
+				
 		}
 
 	}
+
 	draw_turn_priority_entity = turn_priority_entity;
 
 }
@@ -542,112 +561,118 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 
 	Entity* entity_objective = nullptr;
 
-	switch (entity_to_perform_action->type)
-	{
-	case CLERIC:
-		if (!making_decision) {
-			combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
-			making_decision = true;
-		}
-		else {
-			if (combat_menu->background == nullptr) {
-				combat_menu->~UICombatMenu();
-				App->gui->DeleteUIElement(*combat_menu);
-				combat_menu = nullptr;
-				established_action = true;
-				making_decision = false;
-			}
-		}
-		break;
-	case DWARF:
-		if (!making_decision) {
-			combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
-			making_decision = true;
-		}
-		else {
-			if (combat_menu->background == nullptr) {
-				combat_menu->~UICombatMenu();
-				App->gui->DeleteUIElement(*combat_menu);
-				combat_menu = nullptr;
-				established_action = true;
-				making_decision = false;
-			}
-		}
-		break;
-	case ELF:
-		if (!making_decision) {
-			combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
-			making_decision = true;
-		}
-		else {
-			if (combat_menu->background == nullptr) {
-				combat_menu->~UICombatMenu();
-				App->gui->DeleteUIElement(*combat_menu);
-				combat_menu = nullptr;
-				established_action = true;
-				making_decision = false;
-			}
-		}
-		break;
-	case WARRIOR:
-		if (!making_decision) {
-			combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
-			making_decision = true;
-		}
-		else {
-			if (combat_menu->background == nullptr) {
-				combat_menu->~UICombatMenu();
-				App->gui->DeleteUIElement(*combat_menu);
-				combat_menu = nullptr;
-				established_action = true;
-				making_decision = false;
-			}
-		}
-		break;
-	case KOBOLD: {
-		if (IsGoingToDoAnythingClever(entity_to_perform_action)) {
-			//in this case the kobold will search the weakest heroe since we dont have abilities
-			entity_objective = GetTheWeakestHeroe();
-		}
-		else {
-			//in this case, the kobold will attack one random heroe
-			entity_objective = GetRandomHeroe();
-		}
- 		App->task_manager->AddTask(new MoveToEntity(entity_to_perform_action, entity_objective, 20));
-		App->task_manager->AddTask(new PerformActionToEntity(entity_to_perform_action, entity_to_perform_action->default_attack, entity_objective));
-		App->task_manager->AddTask(new MoveToInitialPosition(entity_to_perform_action));
-
+	if (entity_to_perform_action->GetCurrentHealthPoints() == 0)
 		established_action = true;
-	}
-		break;
-	case GNOLL:
-	{
-		if (IsGoingToDoAnythingClever(entity_to_perform_action)) {
-			//in this case the kobold will search the weakest heroe since we dont have abilities
-			entity_objective = GetTheWeakestHeroe();
-		}
-		else {
-			//in this case, the kobold will attack one random heroe
-			entity_objective = GetRandomHeroe();
-		}
-		App->task_manager->AddTask(new MoveToEntity(entity_to_perform_action, entity_objective, 20));
-		App->task_manager->AddTask(new PerformActionToEntity(entity_to_perform_action, entity_to_perform_action->default_attack, entity_objective));
-		App->task_manager->AddTask(new MoveToInitialPosition(entity_to_perform_action));
 
-		established_action = true;
+	if (!established_action) {
+		switch (entity_to_perform_action->type)
+		{
+		case CLERIC:
+			if (!making_decision) {
+				combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+				making_decision = true;
+			}
+			else {
+				if (combat_menu->background == nullptr) {
+					combat_menu->~UICombatMenu();
+					App->gui->DeleteUIElement(*combat_menu);
+					combat_menu = nullptr;
+					established_action = true;
+					making_decision = false;
+				}
+			}
+			break;
+		case DWARF:
+			if (!making_decision) {
+				combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+				making_decision = true;
+			}
+			else {
+				if (combat_menu->background == nullptr) {
+					combat_menu->~UICombatMenu();
+					App->gui->DeleteUIElement(*combat_menu);
+					combat_menu = nullptr;
+					established_action = true;
+					making_decision = false;
+				}
+			}
+			break;
+		case ELF:
+			if (!making_decision) {
+				combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+				making_decision = true;
+			}
+			else {
+				if (combat_menu->background == nullptr) {
+					combat_menu->~UICombatMenu();
+					App->gui->DeleteUIElement(*combat_menu);
+					combat_menu = nullptr;
+					established_action = true;
+					making_decision = false;
+				}
+			}
+			break;
+		case WARRIOR:
+			if (!making_decision) {
+				combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+				making_decision = true;
+			}
+			else {
+				if (combat_menu->background == nullptr) {
+					combat_menu->~UICombatMenu();
+					App->gui->DeleteUIElement(*combat_menu);
+					combat_menu = nullptr;
+					established_action = true;
+					making_decision = false;
+				}
+			}
+			break;
+		case KOBOLD: {
+			if (IsGoingToDoAnythingClever(entity_to_perform_action)) {
+				//in this case the kobold will search the weakest heroe since we dont have abilities
+				entity_objective = GetTheWeakestHeroe();
+			}
+			else {
+				//in this case, the kobold will attack one random heroe
+				entity_objective = GetRandomHeroe();
+			}
+			App->task_manager->AddTask(new MoveToEntity(entity_to_perform_action, entity_objective, 20));
+			App->task_manager->AddTask(new PerformActionToEntity(entity_to_perform_action, entity_to_perform_action->default_attack, entity_objective));
+			App->task_manager->AddTask(new MoveToInitialPosition(entity_to_perform_action));
+
+			established_action = true;
+		}
+					 break;
+		case GNOLL:
+		{
+			if (IsGoingToDoAnythingClever(entity_to_perform_action)) {
+				//in this case the kobold will search the weakest heroe since we dont have abilities
+				entity_objective = GetTheWeakestHeroe();
+			}
+			else {
+				//in this case, the kobold will attack one random heroe
+				entity_objective = GetRandomHeroe();
+			}
+			App->task_manager->AddTask(new MoveToEntity(entity_to_perform_action, entity_objective, 20));
+			App->task_manager->AddTask(new PerformActionToEntity(entity_to_perform_action, entity_to_perform_action->default_attack, entity_objective));
+			App->task_manager->AddTask(new MoveToInitialPosition(entity_to_perform_action));
+
+			established_action = true;
+		}
+		break;
+		case GNOLL_ARCHER:
+			break;
+		case OWLBEAR:
+			break;
+		case MINIHEROES:
+		case NO_TYPE:
+			LOG("this should not happen");
+			break;
+		default:
+			break;
+		}
 	}
-		break;
-	case GNOLL_ARCHER:
-		break;
-	case OWLBEAR:
-		break;
-	case MINIHEROES:
-	case NO_TYPE:
-		LOG("this should not happen");
-		break;
-	default:
-		break;
-	}
+	
 
 	return established_action;
 }

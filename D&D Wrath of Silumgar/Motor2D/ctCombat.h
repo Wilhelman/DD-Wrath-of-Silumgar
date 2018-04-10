@@ -66,6 +66,7 @@ public:
 
 	//UICombat stuff
 	std::vector<Entity*> enemies;
+	std::vector<Entity*> heroes;
 	
 private:
 	

@@ -70,12 +70,15 @@ uint Entity::GetCurrentJudgement()
 	return current_judgement;
 }
 
-void Entity::SetCurrentHealthPoints(uint new_health_points)
+void Entity::SetCurrentHealthPoints(int new_health_points)
 {
-	current_health_points = new_health_points;
+	if (new_health_points <= 0)
+		current_health_points = 0;
+	else
+		current_health_points = new_health_points;
 }
 
-void Entity::SetCurrentManaPoints(uint new_mana_points)
+void Entity::SetCurrentManaPoints(int new_mana_points)
 {
 	current_mana_points = new_mana_points;
 }

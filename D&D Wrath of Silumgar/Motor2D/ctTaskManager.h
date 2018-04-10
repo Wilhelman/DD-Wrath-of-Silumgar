@@ -40,7 +40,6 @@ public:
 
 private:
 
-	std::queue<Task*> TaskQueue;
 	Task*		buttonQ = nullptr;
 	Task*		buttonA = nullptr;
 	Task*		buttonZ = nullptr;
@@ -52,6 +51,8 @@ private:
 
 
 public:
+	std::queue<Task*> TaskQueue;
+
 	Task * aux_task = nullptr;
 	iPoint posaux = { 0,0 };
 

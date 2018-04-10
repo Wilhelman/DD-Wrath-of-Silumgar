@@ -173,7 +173,7 @@ bool ctTaskManager::DoTask()
 {
 	if (aux_task != nullptr)
 	{
-		//TODO 3 If the task is finished, pop the next task until the queue is empty
+
 		if (aux_task->Execute())
 		{
 			if (TaskQueue.size() != 0)
@@ -181,7 +181,8 @@ bool ctTaskManager::DoTask()
 				aux_task = TaskQueue.front();
 				TaskQueue.pop();
 			}
-			else aux_task = nullptr;
+			else 
+				aux_task = nullptr;
 
 		}
 	}

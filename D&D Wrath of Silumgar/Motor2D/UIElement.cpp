@@ -55,14 +55,16 @@ void UIElement::Update()
 			current_state = STATE_LEFT_MOUSE_PRESSED;
 			if (this->type == BUTTON)
 				((UIButton*)this)->UpdateButtonWithSelfRect(((UIButton*)this)->btn_pressed);
-			this->callback->OnUITrigger(this, current_state);
+			if (this->callback != nullptr) 
+				this->callback->OnUITrigger(this, current_state);
 		}
 		else if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_UP && current_state == STATE_LEFT_MOUSE_PRESSED) 
 		{
 			current_state = STATE_LEFT_MOUSE_RELEASED;
 			if (this->type == BUTTON)
 				((UIButton*)this)->UpdateButtonWithSelfRect(((UIButton*)this)->btn_normal);
-			this->callback->OnUITrigger(this, current_state);
+			if (this->callback != nullptr)
+				this->callback->OnUITrigger(this, current_state);
 		}
 
 		if (current_state == STATE_LEFT_MOUSE_PRESSED && this->draggable) 

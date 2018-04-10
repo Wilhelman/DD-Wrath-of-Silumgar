@@ -138,8 +138,8 @@ public:
 
 	uint GetCurrentJudgement();
 
-	void SetCurrentHealthPoints(uint new_health_points);
-	void SetCurrentManaPoints(uint new_mana_points);
+	void SetCurrentHealthPoints(int new_health_points);
+	void SetCurrentManaPoints(int new_mana_points);
 };
 
 #endif // __ENTITY_H__

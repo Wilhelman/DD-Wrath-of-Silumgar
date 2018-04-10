@@ -220,7 +220,6 @@ bool ctCombat::CleanUp()
 	enemies.clear();
 	heroes.clear();
 	entities_to_spawn.clear();
-	enemies_bars.clear();
 
 	return true;
 }

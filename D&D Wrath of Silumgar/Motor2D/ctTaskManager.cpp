@@ -18,6 +18,8 @@ bool MoveToEntity::Execute()
 					if (entity_to_go->GetCurrentHealthPoints() != 0)
 						break;
 				}
+				if(entity_to_go->GetCurrentHealthPoints() == 0)
+					return true;
 			}
 			else {
 				for (int i = 0; i < App->combat->heroes.size(); i++)
@@ -26,6 +28,8 @@ bool MoveToEntity::Execute()
 					if (entity_to_go->GetCurrentHealthPoints() != 0)
 						break;
 				}
+				if (entity_to_go->GetCurrentHealthPoints() == 0)
+					return true;
 			}
 		}
 
@@ -141,6 +145,8 @@ bool PerformActionToEntity::Execute()
 						if (receiver_entity->GetCurrentHealthPoints() != 0)
 							break;
 					}
+					if (receiver_entity->GetCurrentHealthPoints() == 0)
+						return true;
 				}
 				else {
 					for (int i = 0; i < App->combat->heroes.size(); i++)
@@ -149,6 +155,8 @@ bool PerformActionToEntity::Execute()
 						if (receiver_entity->GetCurrentHealthPoints() != 0)
 							break;
 					}
+					if (receiver_entity->GetCurrentHealthPoints() == 0)
+						return true;
 				}
 			}
 

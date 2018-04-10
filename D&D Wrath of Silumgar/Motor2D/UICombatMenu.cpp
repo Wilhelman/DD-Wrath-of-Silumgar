@@ -434,6 +434,14 @@ void UICombatMenu::GoBack() {
 
 void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 	if (enemy_select_arrow == nullptr) {
+		while ((*selected_enemy)->GetCurrentHealthPoints() <= 0) {
+			if (selected_enemy != App->combat->enemies.end()) {
+				selected_enemy++;
+			}
+			else {
+				selected_enemy = App->combat->enemies.begin();
+			}
+		}
 		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
@@ -447,21 +455,29 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 			App->gui->DeleteUIElement(*enemy_select_arrow);
 			enemy_select_arrow = nullptr;
 		}
-		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
-	}
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
-		if (selected_enemy != App->combat->enemies.begin()) {
-			selected_enemy--;
-		}
-		//if (selected_enemy == App->combat->enemies.begin()) {
-		//	selected_enemy = App->combat->enemies.end();
-		//}
-		if (enemy_select_arrow != nullptr) {
-			App->gui->DeleteUIElement(*enemy_select_arrow);
-			enemy_select_arrow = nullptr;
+		while ((*selected_enemy)->GetCurrentHealthPoints()<=0){
+			if (selected_enemy != App->combat->enemies.end()) {
+				selected_enemy++;
+			}
+			else {
+				selected_enemy = App->combat->enemies.begin();
+			}
 		}
 		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
 	}
+	//if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+	//	if (selected_enemy != App->combat->enemies.begin()) {
+	//		selected_enemy--;
+	//	}
+	//	//if (selected_enemy == App->combat->enemies.begin()) {
+	//	//	selected_enemy = App->combat->enemies.end();
+	//	//}
+	//	if (enemy_select_arrow != nullptr) {
+	//		App->gui->DeleteUIElement(*enemy_select_arrow);
+	//		enemy_select_arrow = nullptr;
+	//	}
+	//	enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+	//}
 
 	if (App->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN) {
 		App->gui->DeleteUIElement(*arrow);

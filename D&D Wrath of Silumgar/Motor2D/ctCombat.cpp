@@ -248,15 +248,15 @@ void ctCombat::UpdateHPBarOfEntity(Entity * entity_to_update_bar, int quantity)
 		warrior_HP_bar->LowerBar(quantity);
 		break;
 	case KOBOLD:
-		break;
 	case GNOLL:
-		break;
 	case GNOLL_ARCHER:
-		break;
 	case OWLBEAR:
+	{
+		UIBar* tmp_bar = this->GetUIBarFromEntity(entity_to_update_bar);
+		tmp_bar->LowerBar(quantity);
+	}
 		break;
 	case MINIHEROES:
-		break;
 	case NO_TYPE:
 		break;
 	default:

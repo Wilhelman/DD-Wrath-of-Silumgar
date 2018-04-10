@@ -199,17 +199,3 @@ int UIBar::CalculateBarWidth(int quantity) {
 int UIBar::CurrentQuantity() {
 	return current_quantity;
 }
-
-void UIBar::SetBarCurrentQuantity(int new_quantity) {
-	App->gui->DeleteUIElement(*upper_bar);
-	current_quantity = new_quantity;
-	if (bar_type == LIFEBAR) {
-		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,current_width,bar_height });
-	}
-	else if (bar_type == MANABAR) {
-		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
-	}
-	else if (bar_type == ENEMYLIFEBAR) {
-		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,110,current_width,bar_height });
-	}
-}

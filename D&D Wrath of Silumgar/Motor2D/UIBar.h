@@ -47,7 +47,6 @@ public:
 	void DrawYellowBar();
 	void DeleteElements();
 	int CurrentQuantity();
-	void SetBarCurrentQuantity(int new_quantity);
 
 	int CalculateBarWidth(int quantity);
 

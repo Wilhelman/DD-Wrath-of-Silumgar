@@ -10,6 +10,7 @@ Entity::Entity(int x, int y, EntityType type) : position(x, y), type(type)
 Entity::~Entity()
 {
 	App->tex->UnLoad(texture);
+	
 }
 
 void Entity::Draw()

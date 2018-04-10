@@ -4,7 +4,7 @@
 #include "ctGui.h"
 #include "ctInput.h"
 #include "UIButton.h"
-
+#include "ctTextures.h"
 
 UIElement::UIElement(int x, int y, UI_Type type, UIElement* parent) : screen_position(x,y), type(type), parent(parent)
 {
@@ -21,6 +21,7 @@ UIElement::UIElement(int x, int y, UI_Type type, UIElement* parent) : screen_pos
 
 UIElement::~UIElement()
 {
+	App->tex->UnLoad(texture);
 }
 
 void UIElement::Update()

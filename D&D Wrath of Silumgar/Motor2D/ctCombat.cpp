@@ -195,7 +195,9 @@ bool ctCombat::CleanUp()
 	{
 		App->entities->entities.at(i)->to_destroy = true;
 	}
-	App->entities->entities.clear();
+
+
+
 
 	return true;
 }

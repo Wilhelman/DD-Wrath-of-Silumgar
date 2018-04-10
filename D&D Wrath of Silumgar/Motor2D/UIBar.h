@@ -31,7 +31,13 @@ public:
 
 public:
 	UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, UIElement* parent = nullptr);
-
+	~UIBar()
+	{
+		lower_bar->to_destroy = true;
+		upper_bar->to_destroy = true;
+		if( yellow_bar != nullptr)
+		yellow_bar->to_destroy = true;
+	}; 
 	void Update();
 	void LowerBar(int quantity);
 	void RecoverBar(int quantity);

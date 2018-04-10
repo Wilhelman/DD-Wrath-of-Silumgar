@@ -59,6 +59,9 @@ bool ctCombat::Start()
 {
 	bool ret = true;
 
+	making_decision = false;
+	App->task_manager->Start();
+
 	//Displaying map
 	App->map->sceneName = this->scene_name;
 	LOG("%s", App->map->sceneName.c_str());
@@ -201,7 +204,6 @@ bool ctCombat::CleanUp()
 
 	//todo: despawn entities
 	
-	turn_priority_entity.clear();
 	App->gui->DeleteAllUIElements();
 
 	App->map->CleanUp();
@@ -219,8 +221,12 @@ bool ctCombat::CleanUp()
 
 	enemies.clear();
 	heroes.clear();
-	entities_to_spawn.clear();
 	enemies_bars.clear();
+	turn_priority_entity.clear();
+	draw_turn_priority_entity.clear();
+	entities_to_spawn.clear();
+
+	App->task_manager->CleanUp();
 
 	return true;
 }

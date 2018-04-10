@@ -20,7 +20,7 @@ UIBar::UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, E
 		previous_width = max_width;
 		bar_height = player_bar_height;
 		lower_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 571,107,max_width,bar_height });
-		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,max_width,bar_height });
+		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,max_width,bar_height });
 	}
 	else if (type == MANABAR) {
 		max_width = max_player_bar_width;
@@ -66,7 +66,7 @@ void UIBar::LowerBar(int quantity)
 				current_width = CalculateBarWidth(quantity);
 				App->gui->DeleteUIElement(*upper_bar);
 				if (bar_type == LIFEBAR) {
-					upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
+					upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,current_width,bar_height });
 					DrawYellowBar();
 				}
 				else if (bar_type == MANABAR) {
@@ -82,7 +82,7 @@ void UIBar::LowerBar(int quantity)
 				current_width = CalculateBarWidth(-current_quantity);
 				App->gui->DeleteUIElement(*upper_bar);
 				if (bar_type == LIFEBAR) {
-					upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
+					upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,current_width,bar_height });
 					DrawYellowBar();
 				}
 				else if (bar_type == MANABAR) {
@@ -101,7 +101,7 @@ void UIBar::LowerBar(int quantity)
 					current_width = CalculateBarWidth(quantity);
 					App->gui->DeleteUIElement(*upper_bar);
 					if (bar_type == LIFEBAR) {
-						upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
+						upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,current_width,bar_height });
 					}
 					else if (bar_type == MANABAR) {
 						upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
@@ -115,7 +115,7 @@ void UIBar::LowerBar(int quantity)
 					current_width = CalculateBarWidth((max_capacity - current_quantity));
 					App->gui->DeleteUIElement(*upper_bar);
 					if (bar_type == LIFEBAR) {
-						upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
+						upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,current_width,bar_height });
 					}
 					else if (bar_type == MANABAR) {
 						upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
@@ -139,7 +139,7 @@ void UIBar::RecoverBar(int quantity)
 			current_width = CalculateBarWidth(quantity);
 			App->gui->DeleteUIElement(*upper_bar);
 			if (bar_type == LIFEBAR) {
-				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
+				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,current_width,bar_height });
 			}
 			else if (bar_type == MANABAR) {
 				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
@@ -152,7 +152,7 @@ void UIBar::RecoverBar(int quantity)
 			current_width = CalculateBarWidth((max_capacity - current_quantity));
 			App->gui->DeleteUIElement(*upper_bar);
 			if (bar_type == LIFEBAR) {
-				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,107,current_width,bar_height });
+				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,current_width,bar_height });
 			}
 			else if (bar_type == MANABAR) {
 				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
@@ -169,7 +169,7 @@ void UIBar::DrawYellowBar() {
 	if (yellow_bar != nullptr) {
 		App->gui->DeleteUIElement(*yellow_bar);
 	}
-	if (previous_width - current_width >= 0) {
+	if ((previous_width - current_width) > 0) {
 		yellow_bar = App->gui->AddUIImage(bar_pos.x + current_width, bar_pos.y, { 583,130,(previous_width - current_width),bar_height });
 	}
 	else {
@@ -198,4 +198,17 @@ int UIBar::CalculateBarWidth(int quantity) {
 
 int UIBar::CurrentQuantity() {
 	return current_quantity;
+}
+
+void UIBar::SetBarCurrentQuantity(int new_quantity) {
+	App->gui->DeleteUIElement(*upper_bar);
+	if (bar_type == LIFEBAR) {
+		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,current_width,bar_height });
+	}
+	else if (bar_type == MANABAR) {
+		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 317,444,current_width,bar_height });
+	}
+	else if (bar_type == ENEMYLIFEBAR) {
+		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,110,current_width,bar_height });
+	}
 }

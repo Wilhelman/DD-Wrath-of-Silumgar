@@ -6,6 +6,7 @@
 #include "UIElement.h"
 
 struct ctPerfTimer;
+struct Entity;
 
 class UIBar : public UIElement
 {
@@ -28,9 +29,11 @@ public:
 	UI_Type bar_type;
 	ctPerfTimer yellow_bar_time;
 
+	Entity* entity;
+
 
 public:
-	UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, UIElement* parent = nullptr);
+	UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, Entity* entity,UIElement* parent = nullptr);
 	~UIBar()
 	{
 		lower_bar->to_destroy = true;

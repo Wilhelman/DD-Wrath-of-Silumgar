@@ -91,6 +91,8 @@ private:
 	///judgement die
 	bool IsGoingToDoAnythingClever(Entity* entity);
 
+	UIBar* GetUIBarFromEntity(Entity* entity);
+
 	
 private:
 

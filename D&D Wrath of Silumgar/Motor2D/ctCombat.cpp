@@ -100,7 +100,7 @@ bool ctCombat::Start()
 	for (int i = 0; i < enemies.size(); i++) {
 		int pos_x = enemies.at(i)->position.x + (enemies.at(i)->animation->GetCurrentFrame().w / 2) - 25;
 		int pos_y = enemies.at(i)->position.y - enemies.at(i)->animation->GetCurrentFrame().h - 5;
-		UIBar* bar = (UIBar*)App->gui->AddUIBar(pos_x, pos_y, enemies.at(i)->base_stats.base_constitution * 13, ENEMYLIFEBAR, this, nullptr);
+		UIBar* bar = (UIBar*)App->gui->AddUIBar(pos_x, pos_y, enemies.at(i)->base_stats.base_constitution * 13, ENEMYLIFEBAR, enemies.at(i), this, nullptr);
 		enemies_bars.push_back(bar);
 	}
 	
@@ -464,20 +464,20 @@ void ctCombat::SetDataToUI()
 
 	Entity* cleric = App->entities->GetCleric();
 	//cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
-	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.base_constitution * 13, LIFEBAR);
-	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->base_stats.base_focus * 13, MANABAR);
+	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.base_constitution * 13, LIFEBAR, cleric);
+	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->base_stats.base_focus * 13, MANABAR, cleric);
 
 	Entity* warrior = App->entities->GetWarrior();
-	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->base_stats.base_constitution * 13, LIFEBAR);
-	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(277, 10, warrior->base_stats.base_focus * 13, MANABAR);
+	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->base_stats.base_constitution * 13, LIFEBAR, warrior);
+	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(277, 10, warrior->base_stats.base_focus * 13, MANABAR, warrior);
 
 	Entity* elf = App->entities->GetElf();
-	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->base_stats.base_constitution * 13, LIFEBAR);
-	elf_mana_bar = (UIBar*)App->gui->AddUIBar(34, 304, elf->base_stats.base_focus * 13, MANABAR);
+	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->base_stats.base_constitution * 13, LIFEBAR, elf);
+	elf_mana_bar = (UIBar*)App->gui->AddUIBar(34, 304, elf->base_stats.base_focus * 13, MANABAR, elf);
 
 	Entity* dwarf = App->entities->GetDwarf();
-	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->base_stats.base_constitution * 13, LIFEBAR);
-	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.base_focus * 13, MANABAR);
+	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->base_stats.base_constitution * 13, LIFEBAR, dwarf);
+	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.base_focus * 13, MANABAR, dwarf);
 }
 
 void ctCombat::OrderTurnPriority()
@@ -755,4 +755,12 @@ Entity * ctCombat::GetRandomHeroe()
 	} while (tmp_entity->GetCurrentHealthPoints()==0);
 
 	return tmp_entity;
+}
+
+UIBar* ctCombat::GetUIBarFromEntity(Entity* entity) {
+	for (int i = 0; i < enemies_bars.size(); i++) {
+		if (enemies_bars.at(i)->entity == entity) {
+			return enemies_bars.at(i);
+		}
+	}
 }

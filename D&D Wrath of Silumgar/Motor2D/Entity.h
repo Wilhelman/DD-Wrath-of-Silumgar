@@ -100,13 +100,16 @@ protected:
 
 	uint current_health_points, current_mana_points, current_judgement = 0u;
 
+	bool dead = false;
+
 public:
 	ctAnimation* animation = nullptr;
 	ctAnimation idle = ctAnimation();
 	ctAnimation run_forward = ctAnimation();
 	ctAnimation run_backward = ctAnimation();
 	ctAnimation attack = ctAnimation();
-	ctAnimation damaged = ctAnimation();
+	ctAnimation hit = ctAnimation();
+	ctAnimation death = ctAnimation();
 
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);

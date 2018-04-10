@@ -164,6 +164,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + action_to_perform.health_points_effect);
 
 				//todo animate the receiver to hit + audio or smth
+				receiver_entity->animation = &receiver_entity->hit;
 
 				App->combat->UpdateHPBarOfEntity(receiver_entity, action_to_perform.health_points_effect);
 			}

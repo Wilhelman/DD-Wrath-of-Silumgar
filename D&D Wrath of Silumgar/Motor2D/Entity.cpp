@@ -24,6 +24,16 @@ void Entity::Draw()
 		App->render->Blit(texture, position.x, position.y - r.h, &(animation->GetCurrentFrame()), NULL,NULL, SDL_FLIP_HORIZONTAL);
 		}
 	}
+
+	if (hit.Finished()) {
+		this->animation = &idle;
+		hit.Reset();
+	}
+
+	if (this->GetCurrentHealthPoints() == 0 && !dead) {
+		this->animation = &death;
+		dead = true;
+	}
 }
 
 bool Entity::LoadProperties(pugi::xml_node properties) {

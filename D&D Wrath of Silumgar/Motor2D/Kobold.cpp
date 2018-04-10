@@ -31,6 +31,10 @@ Kobold::Kobold(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &run_forward);
 		else if (tmp == "default_attack")
 			LoadAnimation(animations, &attack);
+		else if (tmp == "hit")
+			LoadAnimation(animations, &hit);
+		else if (tmp == "death")
+			LoadAnimation(animations, &death);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

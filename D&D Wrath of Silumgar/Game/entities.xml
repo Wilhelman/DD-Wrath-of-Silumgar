@@ -82,12 +82,12 @@
           <frame x="240" y="371" width="79" height="69"/>
         </animation>-->
 
-        <animation name="hit" speed="5.0" loop="false">
+        <animation name="hit" speed="0.05" loop="false">
           <frame x="992" y="469" width="40" height="47"/>
           <frame x="949" y="469" width="40" height="47"/>
         </animation>
 
-        <animation name="death" speed="5.0" loop="false">
+        <animation name="death" speed="1.0" loop="false">
           <frame x="877" y="467" width="66" height="57"/>
           <frame x="799" y="467" width="66" height="57"/>
           <frame x="728" y="467" width="66" height="57"/>
@@ -488,12 +488,12 @@
           <frame x="1405" y="12" width="126" height="96"/>
         </animation>
 
-        <animation name="hit" speed="5.0" loop="false">
+        <animation name="hit" speed="0.05" loop="false">
           <frame x="1851" y="1281" width="67" height="79"/>
           <frame x="1762" y="1281" width="67" height="79"/>
         </animation>
 
-        <animation name="death" speed="5.0" loop="false">
+        <animation name="death" speed="1.0" loop="false">
           <frame x="1587" y="1283" width="145" height="78"/>
           <frame x="1413" y="1283" width="145" height="78"/>
           <frame x="1263" y="1283" width="145" height="78"/>
@@ -548,12 +548,12 @@
           <frame x="1241" y="435" width="114" height="77"/>
         </animation>
 
-        <animation name="hit" speed="5.0" loop="false">
+        <animation name="hit" speed="0.05" loop="false">
           <frame x="852" y="337" width="65" height="65"/>
           <frame x="762" y="337" width="65" height="65"/>
         </animation>
 
-        <animation name="death" speed="5.0" loop="false">
+        <animation name="death" speed="1.0" loop="false">
           <frame x="1748" y="331" width="99" height="87"/>
           <frame x="1605" y="331" width="99" height="87"/>
           <frame x="1473" y="331" width="99" height="87"/>
@@ -599,12 +599,12 @@
           <frame x="754" y="690" width="125" height="65"/>
         </animation>
 
-        <animation name="hit" speed="5.0" loop="false">
+        <animation name="hit" speed="0.05" loop="false">
           <frame x="1464" y="1658" width="43" height="70"/>
           <frame x="1519" y="1658" width="43" height="70"/>
         </animation>
 
-        <animation name="death" speed="5.0" loop="false">
+        <animation name="death" speed="1.0" loop="false">
           <frame x="1598" y="1663" width="121" height="67"/>
           <frame x="1716" y="1663" width="121" height="67"/>
           <frame x="1849" y="1663" width="121" height="67"/>
@@ -655,12 +655,12 @@
           <frame x="419" y="926" width="131" height="98"/>
         </animation>
 
-        <animation name="hit" speed="5.0" loop="false">
+        <animation name="hit" speed="0.05" loop="false">
           <frame x="2265" y="2210" width="66" height="77"/>
           <frame x="2155" y="2210" width="66" height="77"/>
         </animation>
 
-        <animation name="death" speed="5.0" loop="false">
+        <animation name="death" speed="1.0" loop="false">
           <frame x="1959" y="2207" width="96" height="79"/>
           <frame x="1806" y="2207" width="96" height="79"/>
           <frame x="1663" y="2207" width="96" height="79"/>

@@ -500,6 +500,16 @@ void ctCombat::SetDataToUI()
 	Entity* dwarf = App->entities->GetDwarf();
 	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->base_stats.base_constitution * 13, LIFEBAR, dwarf);
 	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.base_focus * 13, MANABAR, dwarf);
+
+	//update bar
+	cleric_HP_bar->SetBarCurrentQuantity(cleric->GetCurrentHealthPoints());
+	cleric_mana_bar->SetBarCurrentQuantity(cleric->GetCurrentManaPoints());
+	warrior_HP_bar->SetBarCurrentQuantity(cleric->GetCurrentHealthPoints());
+	warrior_mana_bar->SetBarCurrentQuantity(cleric->GetCurrentManaPoints());
+	elf_HP_bar->SetBarCurrentQuantity(cleric->GetCurrentHealthPoints());
+	elf_mana_bar->SetBarCurrentQuantity(cleric->GetCurrentManaPoints());
+	dwarf_HP_bar->SetBarCurrentQuantity(cleric->GetCurrentHealthPoints());
+	dwarf_mana_bar->SetBarCurrentQuantity(cleric->GetCurrentManaPoints());
 }
 
 void ctCombat::OrderTurnPriority()

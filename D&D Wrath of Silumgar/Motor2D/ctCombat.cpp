@@ -203,8 +203,11 @@ bool ctCombat::CleanUp()
 		App->entities->entities.at(i)->to_destroy = true;
 	}
 
-
-
+	enemies.clear();
+	heroes.clear();
+	turn_priority_entity.clear();
+	draw_turn_priority_entity.clear();
+	entities_to_spawn.clear();
 	return true;
 }
 

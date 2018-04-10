@@ -180,13 +180,13 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 		ret = true;
 		break;
 	}
-	case EntityType::MINIHEROES: {
+	/*case EntityType::MINIHEROES: {
 		MiniHeroes* miniheroes = new MiniHeroes(x, y, MINIHEROES);
 		entities.push_back(miniheroes);
 		
 		ret = true;
 		break;
-	}
+	}*/
 
 	default:
 		break;

@@ -169,7 +169,7 @@ bool PerformActionToEntity::Execute()
 				App->combat->UpdateHPBarOfEntity(receiver_entity, action_to_perform.health_points_effect);
 			}
 		}
-							 break;
+		break;
 		default:
 			break;
 		}

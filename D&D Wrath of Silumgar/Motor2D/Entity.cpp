@@ -34,6 +34,7 @@ void Entity::Draw()
 		this->animation = &death;
 		dead = true;
 	}
+
 }
 
 bool Entity::LoadProperties(pugi::xml_node properties) {

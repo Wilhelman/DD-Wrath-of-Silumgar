@@ -4,8 +4,9 @@
 #include "ctInput.h"
 #include "ctPerfTimer.h"
 
-UIBar::UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
+UIBar::UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, Entity* entity, UIElement* parent) : UIElement(x, y, type, parent)
 {
+	this->entity = entity;
 	this->callback = callback;
 	bar_type = type;
 	bar_pos.x = x;

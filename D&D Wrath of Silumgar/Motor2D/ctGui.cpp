@@ -181,8 +181,8 @@ UIElement* ctGui::AddUITextBox(int position_x, int position_y, int size, int box
 	return tmp_lbl;
 }
 
-UIElement* ctGui::AddUIBar(int position_x, int position_y, int max_capacity, UI_Type barType, ctModule* callback, UIElement* parent) {
-	UIElement* tmp_bar = new UIBar(position_x, position_y, max_capacity, barType, callback, parent);
+UIElement* ctGui::AddUIBar(int position_x, int position_y, int max_capacity, UI_Type barType, Entity* entity, ctModule* callback, UIElement* parent) {
+	UIElement* tmp_bar = new UIBar(position_x, position_y, max_capacity, barType, callback, entity, parent);
 	ui_elements.push_back(tmp_bar);
 	return tmp_bar;
 

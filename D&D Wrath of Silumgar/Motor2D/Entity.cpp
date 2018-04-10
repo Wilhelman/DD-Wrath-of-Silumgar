@@ -30,7 +30,7 @@ void Entity::Draw()
 		hit.Reset();
 	}
 
-	if (this->GetCurrentHealthPoints() == 0 && !dead) {
+	if (this->GetCurrentHealthPoints() == 0 && !dead && this->type!=MINIHEROES) {
 		this->animation = &death;
 		dead = true;
 	}

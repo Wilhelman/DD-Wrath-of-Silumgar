@@ -202,6 +202,7 @@ int UIBar::CurrentQuantity() {
 
 void UIBar::SetBarCurrentQuantity(int new_quantity) {
 	App->gui->DeleteUIElement(*upper_bar);
+	current_quantity = new_quantity;
 	if (bar_type == LIFEBAR) {
 		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,current_width,bar_height });
 	}

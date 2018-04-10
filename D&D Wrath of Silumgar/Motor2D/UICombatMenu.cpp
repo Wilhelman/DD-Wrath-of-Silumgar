@@ -11,8 +11,19 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 {
 	this->entity = entity;
 	this->callback = callback;
-
-	background = App->gui->AddUIImage(x, y, { 1260, 208, 60, 90 }, callback);
+	if (entity->type == CLERIC) {
+		background = App->gui->AddUIImage(x, y, { 1141, 338, 60, 90 }, callback);
+	}
+	if (entity->type == WARRIOR) {
+		background = App->gui->AddUIImage(x, y, { 1261, 209, 60, 90 }, callback);
+	}
+	if (entity->type == DWARF) {
+		background = App->gui->AddUIImage(x, y, { 1201, 338, 60, 90 }, callback);
+	}
+	if (entity->type == ELF) {
+		background = App->gui->AddUIImage(x, y, { 1261, 299, 60, 90 }, callback);
+	}
+	//background = App->gui->AddUIImage(x, y, { 1260, 208, 60, 90 }, callback);
 	attack_label = App->gui->AddUILabel(x + main_label1_pos.x, y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
 	abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
 	items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,255,255,255 }, font_size, nullptr, background);

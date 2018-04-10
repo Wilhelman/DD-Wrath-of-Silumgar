@@ -198,7 +198,6 @@ bool ctCombat::CleanUp()
 
 
 
-
 	return true;
 }
 

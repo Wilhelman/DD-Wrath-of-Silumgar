@@ -96,6 +96,13 @@ bool ctCombat::Start()
 				heroes.push_back(*it);
 		}
 	}
+
+	for (int i = 0; i < enemies.size(); i++) {
+		int pos_x = enemies.at(i)->position.x + (enemies.at(i)->animation->GetCurrentFrame().w / 2) - 25;
+		int pos_y = enemies.at(i)->position.y - enemies.at(i)->animation->GetCurrentFrame().h - 5;
+		UIBar* bar = (UIBar*)App->gui->AddUIBar(pos_x, pos_y, enemies.at(i)->base_stats.base_constitution * 13, ENEMYLIFEBAR, this, nullptr);
+		enemies_bars.push_back(bar);
+	}
 	
 	return ret;
 }

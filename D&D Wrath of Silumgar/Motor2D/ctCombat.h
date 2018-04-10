@@ -129,6 +129,8 @@ private:
 	Entity* GetRandomHeroe();
 	//END IA STUFF
 
+	std::vector<UIBar*> enemies_bars;
+
 };
 
 

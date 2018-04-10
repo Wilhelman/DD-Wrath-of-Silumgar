@@ -169,11 +169,11 @@ void UIBar::DrawYellowBar() {
 	if (yellow_bar != nullptr) {
 		App->gui->DeleteUIElement(*yellow_bar);
 	}
-	if ((previous_width - current_width) > 0) {
+	if (current_width > 0) {
 		yellow_bar = App->gui->AddUIImage(bar_pos.x + current_width, bar_pos.y, { 583,130,(previous_width - current_width),bar_height });
 	}
 	else {
-		yellow_bar = App->gui->AddUIImage(bar_pos.x + current_width, bar_pos.y, { 583,130,(previous_width),bar_height });
+		yellow_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 583,130,(previous_width),bar_height });
 	}
 	yellow_bar_time.Start();
 }

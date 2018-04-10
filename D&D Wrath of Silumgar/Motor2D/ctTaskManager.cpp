@@ -9,6 +9,25 @@ bool MoveToEntity::Execute()
 {
 	bool ret = false;
 
+	if (entity_to_go->GetCurrentHealthPoints() == 0) {
+		if (entity_to_move->type == ELF || entity_to_move->type == CLERIC || entity_to_move->type == WARRIOR || entity_to_move->type == DWARF) {
+			for (int i = 0; i < App->combat->enemies.size(); i++)
+			{
+				entity_to_go = App->combat->enemies.at(i);
+				if (entity_to_go->GetCurrentHealthPoints() != 0)
+					break;
+			}
+		}
+		else {
+			for (int i = 0; i < App->combat->heroes.size(); i++)
+			{
+				entity_to_go = App->combat->heroes.at(i);
+				if (entity_to_go->GetCurrentHealthPoints() != 0)
+					break;
+			}
+		}
+	}
+
 
 	int x_objective = (entity_to_go->position.x + offset);
 
@@ -101,6 +120,25 @@ bool PerformActionToEntity::Execute()
 	switch (action_to_perform.type)
 	{
 	case DEFAULT_ATTACK: {
+
+		if (receiver_entity->GetCurrentHealthPoints() == 0) {
+			if (actioner_entity->type == ELF || actioner_entity->type == CLERIC || actioner_entity->type == WARRIOR || actioner_entity->type == DWARF) {
+				for (int i = 0; i < App->combat->enemies.size(); i++)
+				{
+					receiver_entity = App->combat->enemies.at(i);
+					if (receiver_entity->GetCurrentHealthPoints() != 0)
+						break;
+				}
+			}
+			else {
+				for (int i = 0; i < App->combat->heroes.size(); i++)
+				{
+					receiver_entity = App->combat->heroes.at(i);
+					if (receiver_entity->GetCurrentHealthPoints() != 0)
+						break;
+				}
+			}
+		}
 
 		actioner_entity->animation = &actioner_entity->attack;
 

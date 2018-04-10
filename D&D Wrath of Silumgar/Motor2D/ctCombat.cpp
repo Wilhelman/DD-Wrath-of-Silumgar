@@ -480,36 +480,32 @@ void ctCombat::SaveDataToXML()
 
 void ctCombat::SetDataToUI()
 {
-	// TEST FOR UI BAR WITH CALC DAMAGE
-	//Entity* cleric = App->entities->GetCleric();
-	//test = (UIBar*)App->gui->AddUIBar(100,100,cleric->base_stats.base_constitution*13,LIFEBAR);
 
 	Entity* cleric = App->entities->GetCleric();
-	//cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
-	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.base_constitution * 13, LIFEBAR, cleric);
-	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->base_stats.base_focus * 13, MANABAR, cleric);
+	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, -1, cleric->GetCurrentHealthPoints(), LIFEBAR, cleric);
+	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->GetCurrentManaPoints(), MANABAR, cleric);
 
 	Entity* warrior = App->entities->GetWarrior();
-	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->base_stats.base_constitution * 13, LIFEBAR, warrior);
-	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(277, 10, warrior->base_stats.base_focus * 13, MANABAR, warrior);
+	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->GetCurrentHealthPoints(), LIFEBAR, warrior);
+	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(277, 10, warrior->GetCurrentManaPoints(), MANABAR, warrior);
 
 	Entity* elf = App->entities->GetElf();
-	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->base_stats.base_constitution * 13, LIFEBAR, elf);
-	elf_mana_bar = (UIBar*)App->gui->AddUIBar(34, 304, elf->base_stats.base_focus * 13, MANABAR, elf);
+	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->GetCurrentHealthPoints(), LIFEBAR, elf);
+	elf_mana_bar = (UIBar*)App->gui->AddUIBar(34, 304, elf->GetCurrentManaPoints(), MANABAR, elf);
 
 	Entity* dwarf = App->entities->GetDwarf();
-	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->base_stats.base_constitution * 13, LIFEBAR, dwarf);
-	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.base_focus * 13, MANABAR, dwarf);
+	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->GetCurrentHealthPoints(), LIFEBAR, dwarf);
+	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->GetCurrentManaPoints(), MANABAR, dwarf);
 
 	//update bar
-	cleric_HP_bar->SetBarCurrentQuantity(cleric->GetCurrentHealthPoints());
-	cleric_mana_bar->SetBarCurrentQuantity(cleric->GetCurrentManaPoints());
-	warrior_HP_bar->SetBarCurrentQuantity(cleric->GetCurrentHealthPoints());
-	warrior_mana_bar->SetBarCurrentQuantity(cleric->GetCurrentManaPoints());
-	elf_HP_bar->SetBarCurrentQuantity(cleric->GetCurrentHealthPoints());
-	elf_mana_bar->SetBarCurrentQuantity(cleric->GetCurrentManaPoints());
-	dwarf_HP_bar->SetBarCurrentQuantity(cleric->GetCurrentHealthPoints());
-	dwarf_mana_bar->SetBarCurrentQuantity(cleric->GetCurrentManaPoints());
+	cleric_HP_bar->LowerBar((cleric_HP_bar->max_capacity - cleric->GetCurrentHealthPoints()) * -1);
+	cleric_mana_bar->LowerBar((cleric_mana_bar->max_capacity - cleric->GetCurrentManaPoints()) * -1);
+	warrior_HP_bar->LowerBar((warrior_HP_bar->max_capacity - warrior->GetCurrentHealthPoints()) * -1);
+	warrior_mana_bar->LowerBar((warrior_mana_bar->max_capacity - warrior->GetCurrentManaPoints()) * -1);
+	elf_HP_bar->LowerBar((elf_HP_bar->max_capacity - elf->GetCurrentHealthPoints()) * -1);
+	elf_mana_bar->LowerBar((elf_mana_bar->max_capacity - elf->GetCurrentManaPoints()) * -1);
+	dwarf_HP_bar->LowerBar((dwarf_HP_bar->max_capacity - dwarf->GetCurrentHealthPoints()) * -1);
+	dwarf_mana_bar->LowerBar((dwarf_mana_bar->max_capacity - dwarf->GetCurrentManaPoints()) * -1);
 }
 
 void ctCombat::OrderTurnPriority()

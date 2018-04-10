@@ -58,7 +58,7 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 
 	//todo change this
 	current_health_points = base_stats.base_constitution * StatisticsValues::CONSTITUTION;
-	current_mana_points = base_stats.base_constitution * StatisticsValues::FOCUS;
+	current_mana_points = base_stats.base_focus * StatisticsValues::FOCUS;
 
 	current_judgement = base_stats.base_judgement * StatisticsValues::JUDGEMENT;
 

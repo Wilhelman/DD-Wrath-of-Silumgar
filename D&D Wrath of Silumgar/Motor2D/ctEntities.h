@@ -45,7 +45,7 @@ enum EntityType
 enum StatisticsValues
 {
 	CONSTITUTION = 13,
-	FOCUS = 17,
+	FOCUS = 13,
 	STRENGTH = 3,
 	INTELLIGENCE = 3,
 	DEXTERITY = 2,

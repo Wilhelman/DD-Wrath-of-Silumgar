@@ -101,7 +101,7 @@ bool ctWorldMap::Start()
 		ret = false;
 	}
 
-	App->entities->SpawnEntity(40,170, MINIHEROES);
+	//App->entities->SpawnEntity(40,170, MINIHEROES);
 
 	//Displaying map
 	App->map->sceneName = world_map_tmx.c_str();

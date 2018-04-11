@@ -101,6 +101,7 @@
         </animation>
 
       </animations>
+	  <sounds attack_fx="audio/sounds/Enemies/KoboldAttack.wav" run_fx="audio/sounds/Enemies/KoboldRun.wav" damaged_fx="audio/sounds/Enemies/KoboldDamaged.wav" death_fx="audio/sounds/Enemies/KoboldDeath.wav"/>
 
     </kobold>
 
@@ -238,6 +239,7 @@
         </animation>
 
       </animations>
+	  <sounds attack_fx="audio/sounds/Enemies/GnollAttack.wav" run_fx="audio/sounds/Enemies/GnollRun.wav" damaged_fx="audio/sounds/Enemies/GnollDamaged.wav" death_fx="audio/sounds/Enemies/GnollDeath.wav"/>
 
     </gnoll>
 
@@ -508,6 +510,7 @@
         </animation>
 
       </animations>
+	  <sounds attack_fx="audio/sounds/Characters/ClericAttack.wav" run_fx="audio/sounds/Characters/ClericRun.wav" damaged_fx="audio/sounds/Characters/ClericDamaged.wav" death_fx="audio/sounds/Characters/ClericDeath.wav"/>
 
     </cleric>
 
@@ -568,6 +571,7 @@
         </animation>
 
       </animations>
+	  <sounds attack_fx="audio/sounds/Characters/DwarfAttack.wav" run_fx="audio/sounds/Characters/DwarfRun.wav" damaged_fx="audio/sounds/Characters/DwarfDamaged.wav" death_fx="audio/sounds/Characters/DwarfDeath.wav"/>
 
     </dwarf>
 
@@ -619,6 +623,7 @@
         </animation>
 
       </animations>
+	  <sounds attack_fx="audio/sounds/Characters/ElfAttack.wav" run_fx="audio/sounds/Characters/ElfRun.wav" damaged_fx="audio/sounds/Characters/ElfDamaged.wav" death_fx="audio/sounds/Characters/ElfDeath.wav"/>
 
     </elf>
 
@@ -673,6 +678,7 @@
         </animation>
 
       </animations>
+	  <sounds attack_fx="audio/sounds/Characters/WarriorAttack.wav" run_fx="audio/sounds/Characters/WarriorRun.wav" damaged_fx="audio/sounds/Characters/WarriorDamaged.wav" death_fx="audio/sounds/Characters/WarriorDeath.wav"/>
 
     </warrior>
 

@@ -163,6 +163,16 @@ UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, S
 	return nullptr;
 }
 
+UIElement* ctGui::AddUIFloatingValue(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback, UIElement* parent, const char* path) {
+
+	UIElement* tmp_lbl = new UILabel(position_x, position_y, FLOATING_VALUE, text, color, size, callback, path, parent);
+	ui_elements.push_back(tmp_lbl);
+	return tmp_lbl;
+
+	LOG("Error: Cant add the UIFloatingValue");
+	return nullptr;
+}
+
 UIElement* ctGui::AddUICombatMenu(Entity* entity, int position_x, int position_y, ctModule* callback, UIElement* parent) {
 	UIElement* tmp_cmenu = new UICombatMenu(entity, position_x, position_y, COMBATMENU, callback, parent);
 	ui_elements.push_back(tmp_cmenu);

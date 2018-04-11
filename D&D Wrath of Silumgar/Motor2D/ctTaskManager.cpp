@@ -169,6 +169,7 @@ bool PerformActionToEntity::Execute()
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
+				actioner_entity->Attack();
 				actioner_entity->attack.Reset();
 				actioner_entity->animation = &actioner_entity->idle;
 
@@ -184,24 +185,36 @@ bool PerformActionToEntity::Execute()
 
 					}
 					else {// THE ATTACK HITS
+
+						bool critical = false;
+
 						int damage_to_deal =  action_to_perform.health_points_effect;
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 						random_thousand_faces_die = (rand() % 100) + 1;
-						if (random_thousand_faces_die <= actioner_dexterity)
+						if (random_thousand_faces_die <= actioner_dexterity) {
 							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
+							critical = true;
+						}
 						damage_to_deal = damage_to_deal - damage_reduction;
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 						receiver_entity->animation = &receiver_entity->hit;
 						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+						std::string tmp_dmg = std::to_string(damage_to_deal);
+						if(!critical)
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+						else
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
+
+						receiver_entity->Damaged();
 					}
 				}
 				else {//ACTIONER MISSES!
 					
 				}
 				//todo animate the receiver to hit + audio or smth
-				actioner_entity->Attack();
-				receiver_entity->Damaged();
+				
+				
 			}
 		}
 		break;

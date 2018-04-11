@@ -14,6 +14,7 @@
 #include "UITextBox.h"
 #include "UIBar.h"
 #include "UIDecision.h"
+#include "UIFloatingValue.h"
 
 #include "UIElement.h"
 
@@ -165,7 +166,7 @@ UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, S
 
 UIElement* ctGui::AddUIFloatingValue(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback, UIElement* parent, const char* path) {
 
-	UIElement* tmp_lbl = new UILabel(position_x, position_y, FLOATING_VALUE, text, color, size, callback, path, parent);
+	UIElement* tmp_lbl = new UIFloatingValue(position_x, position_y, FLOATING_VALUE, text, color, size, callback, path, parent);
 	ui_elements.push_back(tmp_lbl);
 	return tmp_lbl;
 

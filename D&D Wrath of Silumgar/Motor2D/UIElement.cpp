@@ -30,7 +30,11 @@ void UIElement::Update()
 	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN)
 		debug_draw = !debug_draw;
 
-	
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+	{
+		if (type == DECISION)
+			current_state = STATE_EXECUTED;
+	}
 	
 	
 	if (parent == nullptr)
@@ -41,6 +45,8 @@ void UIElement::Update()
 		screen_position.y = parent->screen_position.y + local_position.y;
 	}
 	
+	if(callback != nullptr)
+		callback->OnUITrigger(this, current_state);
 }
 
 void UIElement::Draw(SDL_Texture* sprites)

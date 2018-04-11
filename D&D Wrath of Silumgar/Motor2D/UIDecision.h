@@ -39,9 +39,9 @@ public:
 		text_border->to_destroy = true;
 		text_decision->to_destroy = true;
 		arrow->to_destroy = true;
-		/*	ui_options[0]->to_destroy = true;
-		ui_options[1]->to_destroy = true;
-		ui_options[2]->to_destroy = true;*/
+		options[0]->to_destroy = true;
+		options[1]->to_destroy = true;
+	
 		first_option->to_destroy = true;
 	}
 	//Decision call example

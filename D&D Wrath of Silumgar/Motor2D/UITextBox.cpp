@@ -42,7 +42,4 @@ UITextBox::UITextBox(int x, int y, UI_Type type, std::string text, SDL_Color col
 	text_rect = current_rect;
 }
 
-void UITextBox::Update()
-{
 
-}

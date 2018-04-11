@@ -7,8 +7,8 @@
 UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
 	int size = 15;
-	std::string text = "Text sample\nBlaba sdasjadh hdj fdj hd jhfdj\n  hskj sdj sjdk hskdh akjhs daa hdsh";
-	std::string text_options[] = { "!A.Do something", "!B.Do something else" };
+	std::string text = "Mi mi mi mi\n DO YOU LIKE CATS??";
+	std::string text_options[] = { "!A.YES", "!B.OHHH YEEEEEEEEEEEES" };
 	this->callback = callback;
 	UIElement* aux_element;
 

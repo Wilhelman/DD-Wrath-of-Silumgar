@@ -63,7 +63,10 @@ bool ctCombat::Start()
 	App->task_manager->Start();
 
 	//Displaying map
-	App->map->sceneName = this->scene_name;
+	if (App->map->sceneName == "world_map.tmx")
+	{
+		App->map->sceneName = this->scene_name;
+	}
 	LOG("%s", App->map->sceneName.c_str());
 	App->map->Load(App->map->sceneName.c_str());
 	App->map->LayersSetUp();
@@ -249,7 +252,8 @@ bool ctCombat::Save(pugi::xml_node& save) const
 }
 
 void ctCombat::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
-{
+{ 
+	int x = 0;
 }
 
 void ctCombat::SetSceneName(string new_scene_name)

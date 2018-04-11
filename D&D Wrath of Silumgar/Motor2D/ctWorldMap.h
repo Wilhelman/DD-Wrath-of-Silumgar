@@ -11,6 +11,7 @@ class Entity;
 class MiniHeroes;
 class UIDecision;
 
+enum TierList;
 class ctWorldMap : public ctModule
 {
 

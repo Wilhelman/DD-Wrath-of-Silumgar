@@ -13,6 +13,14 @@ class p2String;
 struct SDL_Texture;
 // ----------------------------------------------------
 
+enum TierList
+{
+	TIER_MAP_0,
+	TIER_MAP_1,
+	TIER_MAP_2
+};
+
+
 enum LayerTypes
 {
 	BACKGROUND = 0,
@@ -185,6 +193,7 @@ public:
 	std::vector<iPoint> heroes_position_coords;
 	std::vector<iPoint> enemies_position_coords;
 
+	TierList actual_tier = TIER_MAP_0;
 private:
 
 	pugi::xml_document	map_file;

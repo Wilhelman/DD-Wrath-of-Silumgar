@@ -20,6 +20,7 @@
 
 #include "ctGui.h"
 #include "UIElement.h"
+#include "UIDecision.h"
 
 
 //randomize libs
@@ -113,12 +114,28 @@ bool ctWorldMap::Start()
 	if (!map_generated)
 		GenerateNewRandomlyMap();
 
-	
+	// MORE TIER
+	App->map->actual_tier ;
+	switch (App->map->actual_tier)
+	{
+	case TIER_MAP_0:
+		App->map->actual_tier = TierList::TIER_MAP_1;
+		break;
+	case TIER_MAP_1:
+		App->map->actual_tier = TierList::TIER_MAP_2;
+		break;
+	case TIER_MAP_2:
+		break;
+	}
 	//Decision call example
 
-	//decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this); 
-	//(*options.rbegin())->current_state = STATE_FOCUSED;
-	//arrow->SetParent(*options.rbegin());
+	if (App->map->actual_tier == TierList::TIER_MAP_2)
+	{
+		decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this); 
+		(*options.rbegin())->current_state = STATE_FOCUSED;
+		arrow->SetParent(*options.rbegin());
+	}
+	
 
 	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 05 The Journey (Stage 1).ogg", -1)) {
 		
@@ -143,18 +160,6 @@ bool ctWorldMap::PreUpdate()
 // Called each loop iteration
 bool ctWorldMap::Update(float dt)
 {
-
-
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr)
-	{
-		App->audio->PlayFx(walk_fx);
-		NavigateUp(options);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr)
-	{
-		NavigateDown(options);
-	}
 
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
 		App->audio->PlayFx(walk_fx,3); //TODO Change if we dont move at the same time we press 1
@@ -185,6 +190,25 @@ bool ctWorldMap::Update(float dt)
 	{
 		App->render->scale_factor -= 0.1;
 	}
+
+	// FIRTS DECISIÖN TIER 1 to 2
+	if (App->map->actual_tier == TierList::TIER_MAP_2)
+	{
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr)
+		{
+			App->audio->PlayFx(walk_fx);
+			NavigateUp(options);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr)
+		{
+			App->audio->PlayFx(walk_fx);
+			NavigateDown(options);
+		}
+	}
+
+
+
 
 	// Draw everything --------------------------------------
 	App->map->Draw();
@@ -252,6 +276,26 @@ bool ctWorldMap::Save(pugi::xml_node& save) const
 
 void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 {
+	if (elementTriggered->type == DECISION)
+	{
+		if (ui_state == STATE_EXECUTED)
+		{
+			if (decision->options[0]->current_state == STATE_FOCUSED)
+			{
+				avatar->position.x += 40, avatar->position.y += 20;
+				App->map->sceneName = "forest.tmx";
+			}
+			else
+			{
+				avatar->position.x += 40, avatar->position.y -= 20;
+				App->map->sceneName = "cave_03.tmx";
+			}
+
+			decision->to_destroy = true;
+		}
+	}
+
+
 }
 
 void ctWorldMap::LoadRect(pugi::xml_node rect_node, SDL_Rect* rect)

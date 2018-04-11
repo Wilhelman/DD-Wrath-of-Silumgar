@@ -106,7 +106,10 @@ bool ctCombat::Start()
 		UIBar* bar = (UIBar*)App->gui->AddUIBar(pos_x, pos_y, enemies.at(i)->base_stats.base_constitution * 13, ENEMYLIFEBAR, enemies.at(i), this, nullptr);
 		enemies_bars.push_back(bar);
 	}
-	
+	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 07 Battle at Trintan Village (Stage 2).ogg", -1)) {
+
+		LOG("Error playing music in ctMainMenu Start");
+	}
 	return ret;
 }
 

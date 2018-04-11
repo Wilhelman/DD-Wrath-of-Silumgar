@@ -200,6 +200,8 @@ bool PerformActionToEntity::Execute()
 					
 				}
 				//todo animate the receiver to hit + audio or smth
+				actioner_entity->Attack();
+				receiver_entity->Damaged();
 			}
 		}
 		break;

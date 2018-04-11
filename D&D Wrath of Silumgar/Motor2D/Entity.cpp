@@ -1,6 +1,7 @@
 #include "ctApp.h"
 #include "Entity.h"
 #include "ctRender.h"
+#include "ctAudio.h"
 
 Entity::Entity(int x, int y, EntityType type) : position(x, y), type(type)
 {
@@ -10,6 +11,11 @@ Entity::Entity(int x, int y, EntityType type) : position(x, y), type(type)
 Entity::~Entity()
 {
 	App->tex->UnLoad(texture);
+	App->tex->UnLoad(texture);
+	App->audio->UnLoadFx(attack_fx);
+	App->audio->UnLoadFx(run_fx);
+	App->audio->UnLoadFx(death_fx);
+	App->audio->UnLoadFx(damaged_fx);
 	
 }
 
@@ -34,6 +40,19 @@ void Entity::Draw()
 		this->animation = &death;
 		dead = true;
 	}
+
+
+	if (this->animation == &run_forward) {
+		if (steps_timer == 0) {
+			steps_timer = current_timer;
+		}
+
+		if (steps_timer + 310 < current_timer) {
+			steps_timer = 0;
+			this->Run();
+		}
+	}
+	current_timer = SDL_GetTicks();
 
 }
 

@@ -4,6 +4,10 @@
 #include "ctInput.h"
 #include "ctCombat.h"
 
+//randomize libs
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+
 
 bool MoveToEntity::Execute()
 {
@@ -168,13 +172,34 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->attack.Reset();
 				actioner_entity->animation = &actioner_entity->idle;
 
-				//TODO WE'RE NOT CALCULATING THE ATTACK AGAINST THE DEFENSE! also the action should have type of attack: fisical or magical!!!
-				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + action_to_perform.health_points_effect);
+				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
+				int random_thousand_faces_die = (rand() % 100) + 1;
+
+				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
+					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
+
+					random_thousand_faces_die = (rand() % 100) + 1;
+					if (random_thousand_faces_die <= receiver_agility) {// THE RECEIVER DODGES THE ATTACK
+
+					}
+					else {// THE ATTACK HITS
+						int damage_to_deal =  action_to_perform.health_points_effect;
+						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						actioner_dexterity = actioner_dexterity / 10;
+						random_thousand_faces_die = (rand() % 100) + 1;
+						if (random_thousand_faces_die <= actioner_dexterity)
+							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
+						damage_to_deal = damage_to_deal - damage_reduction;
+						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
+						receiver_entity->animation = &receiver_entity->hit;
+						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+					}
+				}
+				else {//ACTIONER MISSES!
+					
+				}
 				//todo animate the receiver to hit + audio or smth
-				receiver_entity->animation = &receiver_entity->hit;
-
-				App->combat->UpdateHPBarOfEntity(receiver_entity, action_to_perform.health_points_effect);
 			}
 		}
 		break;
@@ -209,6 +234,8 @@ bool ctTaskManager::Update(float dt)
 
 bool ctTaskManager::Start()
 {
+	/* initialize random seed: */
+	srand(time(NULL));
 	return true;
 }
 

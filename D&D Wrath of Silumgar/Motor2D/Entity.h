@@ -10,16 +10,16 @@
 struct SDL_Texture;
 
 struct Stats {
-	uint base_constitution = 0u;
-	uint base_focus = 0u;
-	uint base_strength = 0u;
-	uint base_intelligence = 0u;
-	uint base_dexterity = 0u;
-	uint base_agility = 0u;
-	uint base_physical_defense = 0u;
-	uint base_magical_defense = 0u;
-	uint base_luck = 0u;
-	uint base_judgement = 0u;
+	int base_constitution = 0u;
+	int base_focus = 0u;
+	int base_strength = 0u;
+	int base_intelligence = 0u;
+	int base_dexterity = 0u;
+	int base_agility = 0u;
+	int base_physical_defense = 0u;
+	int base_magical_defense = 0u;
+	int base_luck = 0u;
+	int base_judgement = 0u;
 };
 
 struct Altered_Stats {
@@ -98,7 +98,7 @@ protected:
 	
 	bool key_entities_speed = false;
 
-	uint current_health_points, current_mana_points, current_judgement = 0u;
+	int current_health_points, current_mana_points, current_agility_points, current_dexterity_points, current_physical_defense_points, current_judgement = 0;
 
 	bool dead = false;
 
@@ -138,10 +138,13 @@ public:
 	//for task manager "callbacks"
 	virtual void Attack() {};
 
-	uint GetCurrentHealthPoints();
-	uint GetCurrentManaPoints();
+	int GetCurrentHealthPoints();
+	int GetCurrentManaPoints();
+	int GetCurrentAgilityPoints();
+	int GetCurrentDexterityPoints();
+	int GetCurrentPhysicalDefensePoints();
 
-	uint GetCurrentJudgement();
+	int GetCurrentJudgement();
 
 	void SetCurrentHealthPoints(int new_health_points);
 	void SetCurrentManaPoints(int new_mana_points);

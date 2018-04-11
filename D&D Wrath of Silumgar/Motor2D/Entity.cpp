@@ -59,25 +59,46 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 	//todo change this
 	current_health_points = base_stats.base_constitution * StatisticsValues::CONSTITUTION;
 	current_mana_points = base_stats.base_focus * StatisticsValues::FOCUS;
+	current_agility_points = base_stats.base_agility * StatisticsValues::AGILITY;
+	current_dexterity_points = base_stats.base_dexterity * StatisticsValues::DEXTERITY;
+	current_physical_defense_points = base_stats.base_physical_defense * StatisticsValues::PHYSICAL_DEFENSE;
 
 	current_judgement = base_stats.base_judgement * StatisticsValues::JUDGEMENT;
 
 	return ret;
 }
 
-uint Entity::GetCurrentHealthPoints()
+int Entity::GetCurrentHealthPoints()
 {
 	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
 	return current_health_points;
 }
 
-uint Entity::GetCurrentManaPoints()
+int Entity::GetCurrentManaPoints()
 {
 	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
 	return current_mana_points;
 }
 
-uint Entity::GetCurrentJudgement()
+int Entity::GetCurrentAgilityPoints()
+{
+	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
+	return current_agility_points;
+}
+
+int Entity::GetCurrentDexterityPoints()
+{
+	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
+	return current_dexterity_points;
+}
+
+int Entity::GetCurrentPhysicalDefensePoints()
+{
+	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
+	return current_physical_defense_points;
+}
+
+int Entity::GetCurrentJudgement()
 {
 	return current_judgement;
 }

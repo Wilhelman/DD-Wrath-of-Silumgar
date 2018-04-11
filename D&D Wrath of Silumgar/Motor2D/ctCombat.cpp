@@ -723,10 +723,7 @@ bool ctCombat::IsGoingToDoAnythingClever(Entity * entity)
 {
 
 	int random_number = (rand() % 100) + 1; //random del 1-100
-	if (entity->GetCurrentJudgement() <= random_number)
-		LOG("clever thing");
-	else
-		LOG("lul");
+
 	return entity->GetCurrentJudgement()<=random_number;
 }
 

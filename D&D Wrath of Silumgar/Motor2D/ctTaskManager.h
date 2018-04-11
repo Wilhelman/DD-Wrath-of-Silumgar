@@ -8,6 +8,9 @@
 #include "SDL/include/SDL.h"
 
 #define BASE_SPEED 3
+#define BASE_DEXTERITY 60
+#define BASE_AGILITY 0
+#define CRITICAL_VALUE 2
 
 class Entity;
 

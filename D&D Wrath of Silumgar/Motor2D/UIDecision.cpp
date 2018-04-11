@@ -8,13 +8,13 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 {
 	int size = 15;
 	std::string text = "Text sample\nBlaba sdasjadh hdj fdj hd jhfdj\n  hskj sdj sjdk hskdh akjhs daa hdsh";
-	std::string text_options[] = { "!A.Do something", "!B.Do something else", "!C.sdsfsdf" };
+	std::string text_options[] = { "!A.Do something", "!B.Do something else" };
 	this->callback = callback;
 	UIElement* aux_element;
 
 	aux_element = App->gui->AddUIImage(x, y, { 0,648,264,169 }, nullptr, this);
 	this->image_border = aux_element;
-	
+
 	aux_element = App->gui->AddUIImage(x, y + 165, { 0,485,264,162 }, nullptr, this);
 	this->text_border = aux_element;
 
@@ -25,9 +25,9 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 
 	int extra_h = 0;
 
-	for (int i = 2; i >= 0; i--) {
+	for (int i = 1; i >= 0; i--) {
 
-		if (!text_options[i].empty()) { //text box for every option
+		if (!text_options[i].empty() && !text_options[i].empty()) { //text box for every option
 			aux_element = App->gui->AddUITextBox(x + 20, 300 - extra_h, size, 150, text_options[i], { 255,255,255,255 }, this);
 			//this->ui_options[i] = aux_element;
 			options.push_back(aux_element);
@@ -47,4 +47,7 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	arrow = App->gui->AddUIImage(x + 10, options.back()->screen_position.y, { 1333, 272, 7, 14 }, nullptr, options.back()); // y + 165 + 26 + this->text_decision->current_rect.h - option_A_height - 8 * extra_lines + 16
 	this->arrow = arrow;
 
+	first_option = options.back();
+
+	this->options = options;
 }

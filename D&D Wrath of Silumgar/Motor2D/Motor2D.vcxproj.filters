@@ -153,6 +153,9 @@
     <ClCompile Include="UIDecision.cpp">
       <Filter>Core\Modules\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="UIFloatingValue.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -288,6 +291,9 @@
       <Filter>Core\Modules\Entities\Heroes</Filter>
     </ClInclude>
     <ClInclude Include="UIDecision.h">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFloatingValue.h">
       <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>

@@ -380,19 +380,19 @@ void ctEntities::AssignPriorityDraw()
 		{
 			if (entities[i]->type == CLERIC || entities[i]->type == DWARF || entities[i]->type == ELF || entities[i]->type == WARRIOR)
 			{
-				if (entities[i]->initial_position == App->map->heroes_position_coords[0])
+				if (entities[i]->initial_position.y == App->map->heroes_position_coords[0].y)
 				{
 					entities[i]->priority_draw_order = 4;
 				}
-				else if (entities[i]->initial_position == App->map->heroes_position_coords[1])
+				else if (entities[i]->initial_position.y == App->map->heroes_position_coords[1].y)
 				{
 					entities[i]->priority_draw_order = 2;
 				}
-				else if (entities[i]->initial_position == App->map->heroes_position_coords[2])
+				else if (entities[i]->initial_position.y == App->map->heroes_position_coords[2].y)
 				{
 					entities[i]->priority_draw_order = 3;
 				}
-				else if (entities[i]->initial_position == App->map->heroes_position_coords[3])
+				else if (entities[i]->initial_position.y == App->map->heroes_position_coords[3].y)
 				{
 					entities[i]->priority_draw_order = 1;
 				}
@@ -400,19 +400,19 @@ void ctEntities::AssignPriorityDraw()
 			}
 			else if (entities[i]->type != MINIHEROES)
 			{
-				if (entities[i]->initial_position == App->map->enemies_position_coords[0])
+				if (entities[i]->initial_position.y == App->map->enemies_position_coords[0].y)
 				{
 					entities[i]->priority_draw_order = 4;
 				}
-				else if (entities[i]->initial_position == App->map->enemies_position_coords[1])
+				else if (entities[i]->initial_position.y == App->map->enemies_position_coords[1].y)
 				{
 					entities[i]->priority_draw_order = 2;
 				}
-				else if (entities[i]->initial_position == App->map->enemies_position_coords[2])
+				else if (entities[i]->initial_position.y == App->map->enemies_position_coords[2].y)
 				{
 					entities[i]->priority_draw_order = 3;
 				}
-				else if (entities[i]->initial_position == App->map->enemies_position_coords[3])
+				else if (entities[i]->initial_position.y == App->map->enemies_position_coords[3].y)
 				{
 					entities[i]->priority_draw_order = 1;
 				}

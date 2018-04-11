@@ -19,6 +19,11 @@ Elf::Elf(int x, int y, EntityType type) : Entity(x, y, type) {
 	pugi::xml_node* node = &App->LoadEntities(config_file);
 	node = &node->child("heroes").child("elf");
 	texture = App->tex->Load(App->entities->elf_spritesheet_name.data());
+
+	attack_fx = App->audio->LoadFx(node->child("sounds").attribute("attack_fx").as_string());
+	death_fx = App->audio->LoadFx(node->child("sounds").attribute("death_fx").as_string());
+	damaged_fx = App->audio->LoadFx(node->child("sounds").attribute("damaged_fx").as_string());
+	run_fx = App->audio->LoadFx(node->child("sounds").attribute("run_fx").as_string());
 	//todo get the stats
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
@@ -84,4 +89,20 @@ void Elf::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
 
 	animation->speed = animation_node.attribute("speed").as_float();
 	animation->loop = animation_node.attribute("loop").as_bool();
+}
+
+void Elf::Attack()
+{
+	App->audio->PlayFx(attack_fx, 0);
+
+}
+
+void  Elf::Death() {
+	App->audio->PlayFx(death_fx, 0);
+}
+void  Elf::Run() {
+	App->audio->PlayFx(run_fx, 0);
+}
+void  Elf::Damaged() {
+	App->audio->PlayFx(damaged_fx, 0);
 }

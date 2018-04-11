@@ -124,6 +124,14 @@ public:
 	uint priority_draw_order = 0u;
 	//Combat stuff
 	Action default_attack;
+
+	//Sounds stuff
+	uint attack_fx = 0u;
+	uint death_fx = 0u;
+	uint run_fx = 0u;
+	uint damaged_fx = 0u;
+	uint steps_timer = 0u;
+	uint current_timer = 0u;
 public:
 	Entity(int x, int y, EntityType type);
 	virtual ~Entity();
@@ -135,8 +143,11 @@ public:
 	virtual void LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation) {};
 	bool LoadProperties(pugi::xml_node properties);
 
-	//for task manager "callbacks"
+	//for sounds
 	virtual void Attack() {};
+	virtual void Run() {};
+	virtual void Death() {};
+	virtual void Damaged() {};
 
 	int GetCurrentHealthPoints();
 	int GetCurrentManaPoints();

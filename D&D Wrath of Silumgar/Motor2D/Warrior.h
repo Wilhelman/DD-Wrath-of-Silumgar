@@ -32,6 +32,10 @@ public:
 	~Warrior();
 
 	void Update(float dt);
+	void Attack();
+	void Death();
+	void Run();
+	void Damaged();
 };
 
 #endif

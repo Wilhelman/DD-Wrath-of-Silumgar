@@ -120,6 +120,8 @@ public:
 	
 	SDL_Texture* texture = nullptr;
 
+	//Priority Draw Order
+	uint priority_draw_order = 0u;
 	//Combat stuff
 	Action default_attack;
 public:

@@ -3,7 +3,7 @@
 	<world_map current_location="here_the_coords_maybe" />
 	<heroes>
 		<heroe name="cleric">
-			<values health_points="63" mana_points="65" />
+			<values health_points="78" mana_points="65" />
 			<skills>
 				<skill name="test" mana_cost="10" etc="etc" />
 			</skills>
@@ -12,7 +12,7 @@
 			</items>
 		</heroe>
 		<heroe name="warrior">
-			<values health_points="0" mana_points="52" />
+			<values health_points="117" mana_points="52" />
 			<skills>
 				<skill name="test" mana_cost="10" etc="etc" />
 			</skills>
@@ -30,7 +30,7 @@
 			</items>
 		</heroe>
 		<heroe name="elf">
-			<values health_points="0" mana_points="91" />
+			<values health_points="65" mana_points="91" />
 			<skills>
 				<skill name="test" mana_cost="10" etc="etc" />
 			</skills>

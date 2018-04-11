@@ -75,7 +75,8 @@ public:
 
 	bool SpawnEntity(int x, int y, EntityType type);
 	
-
+	void OrderDrawEntities();
+	void AssignPriorityDraw();
 	//getters
 	Cleric* GetCleric()const;
 	Dwarf* GetDwarf()const;
@@ -90,6 +91,7 @@ public:
 	MiniHeroes* GetMiniheroes()const;
 
 	std::vector<Entity*> entities;
+	std::vector<Entity*> draw_priority_entities;
 
 private:
 

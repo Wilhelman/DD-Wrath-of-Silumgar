@@ -16,6 +16,7 @@
 #include "UIDecision.h"
 #include "UIFloatingValue.h"
 #include "UILevelUpInfo.h"
+#include "UIVerticalSliceInfo.h"
 
 
 #include "UIElement.h"
@@ -194,9 +195,9 @@ UIElement* ctGui::AddUILevelUpInfo(int position_x, int position_y, EntityType he
 }
 
 UIElement* ctGui::AddUIVerticalSliceInfo(int position_x, int position_y, bool overcome, ctModule* callback, UIElement* parent) {
-	//UIElement* tmp_cmenu = new UILevelUpInfo(position_x, position_y, LEVELUPINFO, hero, callback, parent);
-	//ui_elements.push_back(tmp_cmenu);
-	//return tmp_cmenu;
+	UIElement* tmp_cmenu = new UIVerticalSliceInfo(position_x, position_y, overcome, callback, parent);
+	ui_elements.push_back(tmp_cmenu);
+	return tmp_cmenu;
 
 	LOG("Error: Cant add the UILevelUpInfo");
 	return nullptr;

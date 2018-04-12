@@ -9,17 +9,8 @@ class UIVerticalSliceInfo : public UIElement
 {
 public:
 	UIElement* background = nullptr;
-	UIElement* image_hero = nullptr;
+	UIElement* congratulations = nullptr;
 	UIElement* text = nullptr;
-	UIElement* constitution = nullptr;
-	UIElement* focus = nullptr;
-	UIElement* force = nullptr;
-	UIElement* agility = nullptr;
-	UIElement* skill = nullptr;
-	UIElement* intelligence = nullptr;
-	UIElement* physical_defense = nullptr;
-	UIElement* magic_defense = nullptr;
-	UIElement* luck = nullptr;
 
 
 

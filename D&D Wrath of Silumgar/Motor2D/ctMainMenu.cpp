@@ -87,6 +87,9 @@ bool ctMainMenu::Update(float dt)
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0f);
 
 	}
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN ) {
+		App->gui->AddUIVerticalSliceInfo(30,30,false,this,nullptr);
+	}
 		
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {

@@ -72,17 +72,15 @@ bool ctEntities::PreUpdate()
 		}
 	}
 
-	if (entities.size() != draw_priority_entities.size())
-	{
-		OrderDrawEntities();
-	}
+	OrderDrawEntities();
+
+	
 	return true;
 }
 
 // Called before render is available
 bool ctEntities::Update(float dt)
 {
-
 	for (int i = 0; i < entities.size(); i++)
 		if (entities.at(i) != nullptr) entities[i]->Update(dt);
 
@@ -348,7 +346,7 @@ void ctEntities::OrderDrawEntities()
 			count++;
 			if (count != order_entity.size())
 			{
-				if ((*it)->initial_position.y > (*itnext)->initial_position.y)
+				if ((*it)->initial_position.y > (*itnext)->initial_position.y )
 				{
 					Entity* entity_tmp = (*it);
 
@@ -367,35 +365,40 @@ void ctEntities::OrderDrawEntities()
 		}
 
 	}
+	ordered = false;
 
-	std::vector<Entity*>::iterator itnext = order_entity.begin();
-	int count = 0;
-	for (std::vector<Entity*>::iterator it = order_entity.begin(); it != order_entity.end(); ++it)
+
+	while (!ordered)
 	{
-		itnext++;
-		count++;
-		if (count != order_entity.size())
+		ordered = true;
+		std::vector<Entity*>::iterator itnext = order_entity.begin();
+		int count = 0;
+		for (std::vector<Entity*>::iterator it = order_entity.begin(); it != order_entity.end(); ++it)
 		{
-			if (((*itnext)->type != CLERIC && (*itnext)->type != WARRIOR && (*itnext)->type != ELF && (*itnext)->type != DWARF) && ((*it)->type == CLERIC || (*it)->type == WARRIOR || (*it)->type == ELF || (*it)->type == DWARF))
+			itnext++;
+			count++;
+			if (count != order_entity.size())
 			{
-				Entity* entity_tmp = (*it);
+				if (((*itnext)->type != CLERIC && (*itnext)->type != WARRIOR && (*itnext)->type != ELF && (*itnext)->type != DWARF) && ((*it)->type == CLERIC || (*it)->type == WARRIOR || (*it)->type == ELF || (*it)->type == DWARF))
+				{
+					Entity* entity_tmp = (*it);
 
-				(*it) = (*itnext);
-				it++;
-				(*it) = entity_tmp;
-				it--;
-				ordered = false;
+					(*it) = (*itnext);
+					it++;
+					(*it) = entity_tmp;
+					it--;
+					ordered = false;
+				}
+
+			}
+			else {
+				break;
 			}
 
-		}
-		else {
-			break;
-		}
 
+		}
 
 	}
-		
-	
 
 
 

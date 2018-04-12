@@ -159,6 +159,9 @@
     <ClCompile Include="UILevelUpInfo.cpp">
       <Filter>Core\Modules\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="ctTabernScene.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -301,6 +304,9 @@
     </ClInclude>
     <ClInclude Include="UILevelUpInfo.h">
       <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ctTabernScene.h">
+      <Filter>Core\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@
 #include "ctAudio.h"
 #include "j1Map.h"
 #include "ctMainMenu.h"
+#include "ctTabernScene.h"
 #include "ctSettings.h"
 #include "ctWorldMap.h"
 #include "ctSettings.h"
@@ -35,6 +36,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	audio = new ctAudio();
 	map = new j1Map();
 	main_menu = new ctMainMenu();
+	tabern_scene = new ctTabernScene();
 	world_map = new ctWorldMap();
 	settings = new ctSettings();
 	entities = new ctEntities();
@@ -53,6 +55,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(map);
 	AddModule(main_menu);
+	AddModule(tabern_scene);
 	AddModule(world_map);
 	AddModule(settings);
 	AddModule(combat);
@@ -67,6 +70,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(render);
 
 	//disable modules here
+	main_menu->active = false;
 	world_map->active = false;
 	settings->active = false;
 	combat->active = false;

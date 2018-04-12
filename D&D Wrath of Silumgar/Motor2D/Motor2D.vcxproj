@@ -27,6 +27,7 @@
     <ClCompile Include="ctPerfTimer.cpp" />
     <ClCompile Include="ctRender.cpp" />
     <ClCompile Include="ctSettings.cpp" />
+    <ClCompile Include="ctTabernScene.cpp" />
     <ClCompile Include="ctTaskManager.cpp" />
     <ClCompile Include="ctTextures.cpp" />
     <ClCompile Include="ctTimer.cpp" />
@@ -74,6 +75,7 @@
     <ClInclude Include="ctPoint.h" />
     <ClInclude Include="ctRender.h" />
     <ClInclude Include="ctSettings.h" />
+    <ClInclude Include="ctTabernScene.h" />
     <ClInclude Include="ctTaskManager.h" />
     <ClInclude Include="ctTextures.h" />
     <ClInclude Include="ctTimer.h" />

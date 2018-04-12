@@ -13,21 +13,27 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	this->callback = callback;
 	if (entity->type == CLERIC) {
 		background = App->gui->AddUIImage(x, y, { 1141, 338, 60, 90 }, callback);
+		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 1141, 338, 60, 90 }, callback);
 	}
 	if (entity->type == WARRIOR) {
 		background = App->gui->AddUIImage(x, y, { 1261, 209, 60, 90 }, callback);
+		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 1141, 338, 60, 90 }, callback);
 	}
 	if (entity->type == DWARF) {
 		background = App->gui->AddUIImage(x, y, { 1201, 338, 60, 90 }, callback);
+		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 1141, 338, 60, 90 }, callback);
 	}
 	if (entity->type == ELF) {
 		background = App->gui->AddUIImage(x, y, { 1261, 299, 60, 90 }, callback);
+		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 1141, 338, 60, 90 }, callback);
 	}
 	//background = App->gui->AddUIImage(x, y, { 1260, 208, 60, 90 }, callback);
 	attack_label = App->gui->AddUILabel(x + main_label1_pos.x, y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
 	abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
 	items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
 	attack_label->current_state = STATE_FOCUSED;
+	explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, ATTACKEXPLANATION, {255,255,255,255});
+	explanation_label->SetParent(explanation_background);
 	arrow = App->gui->AddUIImage(x - (main_label1_pos.x / 1.5), y, { 1333, 272, 7, 14 }, callback, background);
 	main_labels.push_back(attack_label);
 	main_labels.push_back(abilities_label);
@@ -65,6 +71,10 @@ UICombatMenu::~UICombatMenu() {
 	lower_points = nullptr;
 	App->gui->DeleteUIElement(*background);
 	background = nullptr;
+	App->gui->DeleteUIElement(*explanation_label);
+	explanation_label = nullptr;
+	App->gui->DeleteUIElement(*explanation_background);
+	explanation_background = nullptr;
 
 	App->gui->DeleteUIElement(*items_label);
 	items_label = nullptr;
@@ -189,6 +199,9 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 			App->audio->PlayFx(menu_move_fx);
 		}
 	}
+
+	ChangeExplanation(current_vector);
+
 }
 
 
@@ -239,6 +252,9 @@ void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 			App->audio->PlayFx(menu_move_fx);
 		}
 	}
+
+	ChangeExplanation(current_vector);
+
 }
 
 
@@ -310,6 +326,8 @@ void UICombatMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		App->gui->DeleteUIElement(*items_label);
 		items_label = nullptr;
 	}
+
+	//ChangeExplanation(current_vector);
 
 }
 
@@ -430,6 +448,8 @@ void UICombatMenu::GoBack() {
 		lower_points = nullptr;
 	}
 
+	ChangeExplanation(main_labels);
+
 }
 
 void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
@@ -516,5 +536,35 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 			}
 		}
 	}
+
+}
+
+void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
+	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();
+	if (current_vector == main_labels) {
+		App->gui->DeleteUIElement(*explanation_label);
+		while (it_vector != current_vector.end()) {
+			if ((*it_vector)->current_state == STATE_FOCUSED) {
+				if ((*it_vector) == attack_label) {
+					explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, ATTACKEXPLANATION, { 255,255,255,255 });
+					explanation_label->SetParent(explanation_background);
+					break;
+				}
+				else if ((*it_vector) == abilities_label) {
+					explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, ABILITIESEXPLANATION, { 255,255,255,255 });
+					explanation_label->SetParent(explanation_background);
+					break;
+				}
+				else if ((*it_vector) == items_label) {
+					explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, ITEMSEXPLANATION, { 255,255,255,255 });
+					explanation_label->SetParent(explanation_background);
+					break;
+				}
+			}
+			it_vector++;
+		}
+	}
+
+
 
 }

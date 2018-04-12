@@ -5,6 +5,10 @@
 #include "ctGui.h"
 #include "UIElement.h"
 
+#define ATTACKEXPLANATION "Use a normal attack that has no mana cost"
+#define ABILITIESEXPLANATION "Open the abilities list"
+#define ITEMSEXPLANATION "Open your inventory"
+
 struct Entity;
 
 class UICombatMenu : public UIElement
@@ -20,6 +24,8 @@ public:
 	UIElement* items_label = nullptr;
 	UIElement* upper_points = nullptr;
 	UIElement* lower_points = nullptr;
+	UIElement* explanation_background = nullptr;
+	UIElement* explanation_label = nullptr;
 	iPoint upper_points_pos = { 0,0 };
 	iPoint lower_points_pos = { 0,0 };
 	std::vector<UIElement*> main_labels;
@@ -35,6 +41,8 @@ public:
 	iPoint main_label1_pos{ 15,10 };
 	iPoint main_label2_pos{ 15,40 };
 	iPoint main_label3_pos{ 15,70 };
+
+	iPoint explanationPos{242,31};
 
 	int font_size = 12;
 
@@ -62,6 +70,8 @@ public:
 	void GoBack();
 
 	void SelectEnemy(std::vector<UIElement*> &current_vector);
+
+	void ChangeExplanation(std::vector<UIElement*> &current_vector);
 
 private:
 	std::vector<Entity*>::const_iterator selected_enemy;

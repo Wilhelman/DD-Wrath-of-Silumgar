@@ -41,6 +41,7 @@ private:
 public:
 	bool draggable = false;
 	bool to_destroy = false;
+	bool non_drawable = false;
 	UIElement* parent = nullptr;
 	UI_Type type = UI_NOT_DEF;
 	UI_State current_state = STATE_NO_DEF;

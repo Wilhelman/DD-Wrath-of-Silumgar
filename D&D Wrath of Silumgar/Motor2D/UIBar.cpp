@@ -199,3 +199,15 @@ int UIBar::CalculateBarWidth(int quantity) {
 int UIBar::CurrentQuantity() {
 	return current_quantity;
 }
+
+void UIBar::MakeElementsInvisible() {
+	lower_bar->non_drawable = true;
+	upper_bar->non_drawable = true;
+	yellow_bar->non_drawable = true;
+}
+
+void UIBar::MakeElementsVisible() {
+	lower_bar->non_drawable = false;
+	upper_bar->non_drawable = false;
+	yellow_bar->non_drawable = false;
+}

@@ -67,7 +67,7 @@ bool ctGui::PostUpdate()
 {
 
 	for (int i = 0; i < ui_elements.size(); i++)
-		if (ui_elements.at(i) != nullptr) ui_elements[i]->Draw(atlas);
+		if (ui_elements.at(i) != nullptr  && ui_elements.at(i)->non_drawable == false) ui_elements[i]->Draw(atlas);
 
 	for (int i = 0; i < ui_elements.size(); i++) {
 		if (ui_elements[i]->to_destroy) {

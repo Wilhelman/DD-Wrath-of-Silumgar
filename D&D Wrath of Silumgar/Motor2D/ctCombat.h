@@ -101,7 +101,7 @@ private:
 
 	UIBar* GetUIBarFromEntity(Entity* entity);
 
-
+	void SelectWithPreviousHeroe();
 
 	
 private:

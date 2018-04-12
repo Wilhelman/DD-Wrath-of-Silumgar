@@ -205,6 +205,11 @@ bool ctCombat::Update(float dt)
 	{
 		App->render->camera.x -= 10;
 	}
+
+	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN)
+	{
+		SelectWithPreviousHeroe();
+	}
 	
 	// Draw everything --------------------------------------
 	App->map->Draw();
@@ -833,4 +838,32 @@ UIBar* ctCombat::GetUIBarFromEntity(Entity* entity) {
 			return enemies_bars.at(i);
 		}
 	}
+}
+
+void ctCombat::SelectWithPreviousHeroe() {
+	//std::vector<Entity*> auxiliar_vector;
+	//if (combat_menu->selecting_enemy == false && combat_menu->main_labels.size() != 0) {
+	//	std::vector<Entity*>::const_iterator it_vector = heroes.begin();
+	//	while (it_vector != heroes.end()) {
+	//		if ((*it_vector) == combat_menu->entity) {
+	//			if (it_vector != heroes.begin()) {
+	//				it_vector--;
+	//				App->gui->DeleteUIElement(*combat_menu);
+	//				auxiliar_vector.push_back((*it_vector));
+	//				std::vector<Entity*>::const_iterator it_vector2 = turn_priority_entity.begin();
+	//				while (it_vector2 != turn_priority_entity.end()) {
+	//					auxiliar_vector.push_back((*it_vector2));
+	//					it_vector2++;
+	//				}
+	//				turn_priority_entity = auxiliar_vector;
+	//				break;
+	//			}
+	//			break;
+	//		}
+	//		else {
+	//			it_vector++;
+	//		}
+	//	}
+
+	//}
 }

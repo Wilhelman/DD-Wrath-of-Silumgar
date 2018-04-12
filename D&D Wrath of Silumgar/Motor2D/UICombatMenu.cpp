@@ -513,9 +513,17 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 	//	if (selected_enemy != App->combat->enemies.begin()) {
 	//		selected_enemy--;
 	//	}
-	//	//if (selected_enemy == App->combat->enemies.begin()) {
-	//	//	selected_enemy = App->combat->enemies.end();
+	//	//if (selected_enemy == app->combat->enemies.begin()) {
+	//	//	selected_enemy = app->combat->enemies.end();
 	//	//}
+	//	while ((*selected_enemy)->GetCurrentHealthPoints() <= 0) {
+	//		if (selected_enemy != App->combat->enemies.begin()) {
+	//			selected_enemy--;
+	//		}
+	//		else {
+	//			selected_enemy = App->combat->enemies.end();
+	//		}
+	//	}
 	//	if (enemy_select_arrow != nullptr) {
 	//		App->gui->DeleteUIElement(*enemy_select_arrow);
 	//		enemy_select_arrow = nullptr;

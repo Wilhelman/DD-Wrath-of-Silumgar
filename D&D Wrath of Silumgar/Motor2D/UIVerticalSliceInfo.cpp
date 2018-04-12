@@ -24,6 +24,9 @@ UIVerticalSliceInfo:: UIVerticalSliceInfo(int x, int y,bool overcome,ctModule* c
 }
 
 UIVerticalSliceInfo::~UIVerticalSliceInfo() {
+	background->to_destroy = true;
+	congratulations->to_destroy = true;
+	text->to_destroy = true;
 
 	
 }

@@ -50,6 +50,7 @@
     <ClCompile Include="UIFloatingValue.cpp" />
     <ClCompile Include="UIImage.cpp" />
     <ClCompile Include="UILabel.cpp" />
+    <ClCompile Include="UILevelUpInfo.cpp" />
     <ClCompile Include="UITextBox.cpp" />
     <ClCompile Include="Warrior.cpp" />
   </ItemGroup>
@@ -98,6 +99,7 @@
     <ClInclude Include="UIFloatingValue.h" />
     <ClInclude Include="UIImage.h" />
     <ClInclude Include="UILabel.h" />
+    <ClInclude Include="UILevelUpInfo.h" />
     <ClInclude Include="UITextBox.h" />
     <ClInclude Include="Warrior.h" />
   </ItemGroup>

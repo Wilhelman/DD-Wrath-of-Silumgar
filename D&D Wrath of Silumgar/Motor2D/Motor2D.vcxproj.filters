@@ -156,6 +156,9 @@
     <ClCompile Include="UIFloatingValue.cpp">
       <Filter>Core\Modules\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="UILevelUpInfo.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -294,6 +297,9 @@
       <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
     <ClInclude Include="UIFloatingValue.h">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UILevelUpInfo.h">
       <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>

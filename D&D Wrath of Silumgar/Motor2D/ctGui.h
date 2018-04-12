@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "ctFonts.h"
+#include "ctEntities.h"
 
 struct SDL_Texture;
 struct SDL_Rect;
@@ -24,6 +25,7 @@ enum UI_Type
 	ENEMYLIFEBAR,
 	DECISION,
 	FLOATING_VALUE,
+	LEVELUPINFO,
 
 	UI_NOT_DEF
 };
@@ -70,6 +72,7 @@ public:
 	UIElement* AddUIBar(int position_x, int position_y, int max_capacity, UI_Type barType, Entity* entity, ctModule* callback = nullptr, UIElement* parent = nullptr);
 	UIElement* AddUIDecision(int x, int y, int decision_number, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent = nullptr);
 	UIElement* AddUIFloatingValue(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback = nullptr, UIElement* parent = nullptr, const char* path = DEFAULT_FONT);
+	UIElement* AddUILevelUpInfo(int position_x, int position_y, EntityType hero, ctModule* callback = nullptr, UIElement* parent = nullptr);
 	UIElement* GetElementUnderMouse(int x, int y);
 
 private:

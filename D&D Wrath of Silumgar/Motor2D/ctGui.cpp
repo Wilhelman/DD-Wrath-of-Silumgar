@@ -15,6 +15,8 @@
 #include "UIBar.h"
 #include "UIDecision.h"
 #include "UIFloatingValue.h"
+#include "UILevelUpInfo.h"
+
 
 #include "UIElement.h"
 
@@ -180,6 +182,14 @@ UIElement* ctGui::AddUICombatMenu(Entity* entity, int position_x, int position_y
 	return tmp_cmenu;
 
 	LOG("Error: Cant add the UICombatMenu");
+	return nullptr;
+}
+UIElement* ctGui::AddUILevelUpInfo(int position_x, int position_y, EntityType hero, ctModule* callback, UIElement* parent) {
+	UIElement* tmp_cmenu = new UILevelUpInfo(position_x, position_y, LEVELUPINFO, hero, callback, parent);
+	ui_elements.push_back(tmp_cmenu);
+	return tmp_cmenu;
+
+	LOG("Error: Cant add the UILevelUpInfo");
 	return nullptr;
 }
 

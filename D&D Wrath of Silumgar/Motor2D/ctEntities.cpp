@@ -333,13 +333,13 @@ void ctEntities::OrderDrawEntities()
 {
 	bool ordered = false;
 
-	AssignPriorityDraw();
-
+	
+	
 	std::vector<Entity*> order_entity = entities;
 
 	while (!ordered)
 	{
-		ordered = true;
+   		ordered = true;
 		std::vector<Entity*>::iterator itnext = order_entity.begin();
 		int count = 0;
 		for (std::vector<Entity*>::iterator it = order_entity.begin(); it != order_entity.end(); ++it)
@@ -348,7 +348,7 @@ void ctEntities::OrderDrawEntities()
 			count++;
 			if (count != order_entity.size())
 			{
-				if ((*it)->priority_draw_order < (*itnext)->priority_draw_order)
+				if ((*it)->initial_position.y > (*itnext)->initial_position.y)
 				{
 					Entity* entity_tmp = (*it);
 
@@ -358,6 +358,7 @@ void ctEntities::OrderDrawEntities()
 					it--;
 					ordered = false;
 				}
+				
 			}
 			else {
 				break;
@@ -367,60 +368,39 @@ void ctEntities::OrderDrawEntities()
 
 	}
 
+	std::vector<Entity*>::iterator itnext = order_entity.begin();
+	int count = 0;
+	for (std::vector<Entity*>::iterator it = order_entity.begin(); it != order_entity.end(); ++it)
+	{
+		itnext++;
+		count++;
+		if (count != order_entity.size())
+		{
+			if (((*itnext)->type != CLERIC && (*itnext)->type != WARRIOR && (*itnext)->type != ELF && (*itnext)->type != DWARF) && ((*it)->type == CLERIC || (*it)->type == WARRIOR || (*it)->type == ELF || (*it)->type == DWARF))
+			{
+				Entity* entity_tmp = (*it);
+
+				(*it) = (*itnext);
+				it++;
+				(*it) = entity_tmp;
+				it--;
+				ordered = false;
+			}
+
+		}
+		else {
+			break;
+		}
+
+
+	}
+		
+	
+
+
+
 	draw_priority_entities = order_entity;
 
 	order_entity.clear();
 }
 
-void ctEntities::AssignPriorityDraw()
-{
-
-	
-		for (uint i = 0; i < entities.size(); ++i)
-		{
-			if (entities[i]->type == CLERIC || entities[i]->type == DWARF || entities[i]->type == ELF || entities[i]->type == WARRIOR)
-			{
-				if (entities[i]->initial_position.y == App->map->heroes_position_coords[0].y)
-				{
-					entities[i]->priority_draw_order = 4;
-				}
-				else if (entities[i]->initial_position.y == App->map->heroes_position_coords[1].y)
-				{
-					entities[i]->priority_draw_order = 3;
-				}
-				else if (entities[i]->initial_position.y == App->map->heroes_position_coords[2].y)
-				{
-					entities[i]->priority_draw_order = 2;
-				}
-				else if (entities[i]->initial_position.y == App->map->heroes_position_coords[3].y)
-				{
-					entities[i]->priority_draw_order = 1;
-				}
-
-			}
-			else if (entities[i]->type != MINIHEROES)
-			{
-				if (entities[i]->initial_position.y == App->map->enemies_position_coords[0].y)
-				{
-					entities[i]->priority_draw_order = 8;
-				}
-				else if (entities[i]->initial_position.y == App->map->enemies_position_coords[1].y)
-				{
-					entities[i]->priority_draw_order = 7;
-				}
-				else if (entities[i]->initial_position.y == App->map->enemies_position_coords[2].y)
-				{
-					entities[i]->priority_draw_order = 6;
-				}
-				else if (entities[i]->initial_position.y == App->map->enemies_position_coords[3].y)
-				{
-					entities[i]->priority_draw_order = 5;
-				}
-
-			}
-
-		}
-	
-
-
-}

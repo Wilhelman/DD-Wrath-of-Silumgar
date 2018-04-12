@@ -70,7 +70,8 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(render);
 
 	//disable modules here
-	main_menu->active = false;
+	tabern_scene->active = false;
+	main_menu->active = true;
 	world_map->active = false;
 	settings->active = false;
 	combat->active = false;

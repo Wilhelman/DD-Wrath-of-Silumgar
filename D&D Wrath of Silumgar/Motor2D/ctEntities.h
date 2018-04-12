@@ -76,7 +76,7 @@ public:
 	bool SpawnEntity(int x, int y, EntityType type);
 	
 	void OrderDrawEntities();
-	void AssignPriorityDraw();
+
 	//getters
 	Cleric* GetCleric()const;
 	Dwarf* GetDwarf()const;

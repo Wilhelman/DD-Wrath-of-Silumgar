@@ -148,6 +148,20 @@ void UICombatMenu::Update()
 	else if (abilities.size() != 0 && selecting_enemy == true) {
 		SelectEnemy(abilities);
 	}
+	
+	if (executed_command == true) {
+		if (main_labels.size() != 0) {
+			ChangeExplanation(main_labels);
+		}
+		else if (abilities.size() != 0) {
+			ChangeExplanation(abilities);
+		}
+		else if (items.size() != 0) {
+			ChangeExplanation(items);
+		}
+	}
+
+	executed_command = false;
 
 }
 
@@ -327,7 +341,7 @@ void UICombatMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		items_label = nullptr;
 	}
 
-	//ChangeExplanation(current_vector);
+	executed_command = true;
 
 }
 
@@ -335,15 +349,28 @@ void UICombatMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 void UICombatMenu::LoadAbilities() {
 	iPoint backgroundPos = background->GetScreenPosition();
 	names_iterator = 0;
-	names.push_back("Ability1");
-	names.push_back("Ability2");
-	names.push_back("Ability3");
-	names.push_back("Ability4");
-	names.push_back("Ability5");
-	names.push_back("Ability6");
-	names.push_back("Ability7");
-	names.push_back("Ability8");
-	names.push_back("Ability9");
+
+	if (entity->abilities.size() != 0) {
+		std::vector<Action>::const_iterator it_vector = entity->abilities.begin();
+		while (it_vector != entity->abilities.end()) {
+			names.push_back((*it_vector).name);
+			entity_actions.push_back(*it_vector);
+			it_vector++;
+		}
+	}
+	else {
+		names.push_back("0 Abilities");
+	}
+
+	//names.push_back("Ability1");
+	//names.push_back("Ability2");
+	//names.push_back("Ability3");
+	//names.push_back("Ability4");
+	//names.push_back("Ability5");
+	//names.push_back("Ability6");
+	//names.push_back("Ability7");
+	//names.push_back("Ability8");
+	//names.push_back("Ability9");
 
 	if (names.size() > 3) {
 		abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
@@ -562,6 +589,20 @@ void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 				}
 			}
 			it_vector++;
+		}
+	}
+	else{
+		if (explanation_label != nullptr) {
+			App->gui->DeleteUIElement(*explanation_label);
+		}
+		if (entity->abilities.size() != 0) {
+			string description = entity->abilities.at(names_iterator).description;
+			explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, description, { 255,255,255,255 });
+			explanation_label->SetParent(explanation_background);
+		}
+		else {
+			explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, "You have non abilities in this moment", { 255,255,255,255 });
+			explanation_label->SetParent(explanation_background);
 		}
 	}
 

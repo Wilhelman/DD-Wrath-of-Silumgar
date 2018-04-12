@@ -10,6 +10,7 @@
 #define ITEMSEXPLANATION "Open your inventory"
 
 struct Entity;
+struct Action;
 
 class UICombatMenu : public UIElement
 {
@@ -32,6 +33,7 @@ public:
 	std::vector<UIElement*> abilities;
 	std::vector<UIElement*> items;
 	std::vector<std::string> names;
+	std::vector<Action> entity_actions;
 	int names_iterator = 0;
 
 	iPoint label1_pos{ 15,20 };
@@ -51,6 +53,7 @@ public:
 	uint menu_back_fx = 0;
 
 	bool selecting_enemy = false;
+	bool executed_command = false;
 
 public:
 

@@ -21,7 +21,7 @@
 			</items>
 		</heroe>
 		<heroe name="dwarf">
-			<values health_points="78" mana_points="52" />
+			<values health_points="91" mana_points="52" />
 			<skills>
 				<skill name="test" mana_cost="10" etc="etc" />
 			</skills>

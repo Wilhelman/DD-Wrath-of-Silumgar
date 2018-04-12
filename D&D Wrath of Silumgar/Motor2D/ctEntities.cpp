@@ -382,19 +382,19 @@ void ctEntities::AssignPriorityDraw()
 			{
 				if (entities[i]->initial_position.y == App->map->heroes_position_coords[0].y)
 				{
-					entities[i]->priority_draw_order = 4;
+					entities[i]->priority_draw_order = 8;
 				}
 				else if (entities[i]->initial_position.y == App->map->heroes_position_coords[1].y)
 				{
-					entities[i]->priority_draw_order = 2;
+					entities[i]->priority_draw_order = 7;
 				}
 				else if (entities[i]->initial_position.y == App->map->heroes_position_coords[2].y)
 				{
-					entities[i]->priority_draw_order = 3;
+					entities[i]->priority_draw_order = 6;
 				}
 				else if (entities[i]->initial_position.y == App->map->heroes_position_coords[3].y)
 				{
-					entities[i]->priority_draw_order = 1;
+					entities[i]->priority_draw_order = 5;
 				}
 
 			}

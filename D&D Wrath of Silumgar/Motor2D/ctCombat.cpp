@@ -187,6 +187,19 @@ bool ctCombat::Update(float dt)
 		App->render->camera.x -= 10;
 	}
 
+	std::vector<Entity*>::const_iterator it_vector = enemies.begin();
+	while (it_vector != enemies.end()) {
+		if ((*it_vector)->animation != &(*it_vector)->idle) {
+			UIBar* current_entity_bar = GetUIBarFromEntity((*it_vector));
+			current_entity_bar->MakeElementsInvisible();
+			it_vector++;
+		}
+		else {
+			UIBar* current_entity_bar = GetUIBarFromEntity((*it_vector));
+			current_entity_bar->MakeElementsVisible();
+			it_vector++;
+		}
+	}
 	
 	// Draw everything --------------------------------------
 	App->map->Draw();

@@ -203,11 +203,15 @@ int UIBar::CurrentQuantity() {
 void UIBar::MakeElementsInvisible() {
 	lower_bar->non_drawable = true;
 	upper_bar->non_drawable = true;
-	yellow_bar->non_drawable = true;
+	if (yellow_bar != nullptr) {
+		yellow_bar->non_drawable = true;
+	}
 }
 
 void UIBar::MakeElementsVisible() {
 	lower_bar->non_drawable = false;
 	upper_bar->non_drawable = false;
-	yellow_bar->non_drawable = false;
+	if (yellow_bar!=nullptr) {
+		yellow_bar->non_drawable = false;
+	}
 }

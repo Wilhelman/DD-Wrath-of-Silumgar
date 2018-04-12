@@ -26,6 +26,7 @@ enum UI_Type
 	DECISION,
 	FLOATING_VALUE,
 	LEVELUPINFO,
+	VERTICALSLICEINFO,
 
 	UI_NOT_DEF
 };
@@ -73,6 +74,7 @@ public:
 	UIElement* AddUIDecision(int x, int y, int decision_number, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent = nullptr);
 	UIElement* AddUIFloatingValue(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback = nullptr, UIElement* parent = nullptr, const char* path = DEFAULT_FONT);
 	UIElement* AddUILevelUpInfo(int position_x, int position_y, EntityType hero, ctModule* callback = nullptr, UIElement* parent = nullptr);
+	UIElement* AddUIVerticalSliceInfo(int position_x, int position_y, bool overcome , ctModule* callback = nullptr, UIElement* parent = nullptr);
 	UIElement* GetElementUnderMouse(int x, int y);
 
 private:

@@ -193,6 +193,15 @@ UIElement* ctGui::AddUILevelUpInfo(int position_x, int position_y, EntityType he
 	return nullptr;
 }
 
+UIElement* ctGui::AddUIVerticalSliceInfo(int position_x, int position_y, bool overcome, ctModule* callback, UIElement* parent) {
+	//UIElement* tmp_cmenu = new UILevelUpInfo(position_x, position_y, LEVELUPINFO, hero, callback, parent);
+	//ui_elements.push_back(tmp_cmenu);
+	//return tmp_cmenu;
+
+	LOG("Error: Cant add the UILevelUpInfo");
+	return nullptr;
+}
+
 UIElement* ctGui::AddUITextBox(int position_x, int position_y, int size, int box_width, std::string text, SDL_Color color, UIElement* parent, const char* path) {
 	UIElement* tmp_lbl = nullptr;
 

@@ -8,7 +8,7 @@ UILevelUpInfo::UILevelUpInfo(int x, int y, UI_Type type, EntityType hero, ctModu
 {
 	this->callback = callback;
 
-	background = App->gui->AddUIImage(x, y, { 865,503,340,179 }, callback);
+	background = App->gui->AddUIImage(x, y, { 1141,484,340,178 }, callback);
 	if (hero == WARRIOR)
 	{
 		image_hero = App->gui->AddUIImage(x+30, y+27, {316,152,52,29}, callback);

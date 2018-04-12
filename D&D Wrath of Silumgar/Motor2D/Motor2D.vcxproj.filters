@@ -162,6 +162,9 @@
     <ClCompile Include="ctTabernScene.cpp">
       <Filter>Core\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="UIVerticalSliceInfo.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -307,6 +310,9 @@
     </ClInclude>
     <ClInclude Include="ctTabernScene.h">
       <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="UIVerticalSliceInfo.h">
+      <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

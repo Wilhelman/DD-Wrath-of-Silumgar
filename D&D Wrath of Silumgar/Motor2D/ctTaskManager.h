@@ -35,6 +35,8 @@ public:
 	bool Update(float dt);
 	bool CleanUp();
 
+	void PerformAllTheTasks();
+
 	bool TaskOrderer();
 	bool AddTask(Task* task);
 	bool DoTask();

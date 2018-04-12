@@ -256,6 +256,9 @@ bool j1Map::CleanUp()
 	// Clean up the pugui tree
 	map_file.reset();
 
+	enemies_position_coords.clear();
+	heroes_position_coords.clear();
+
 	return true;
 }
 

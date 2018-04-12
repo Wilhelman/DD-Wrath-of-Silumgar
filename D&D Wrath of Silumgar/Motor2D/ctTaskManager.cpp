@@ -42,7 +42,7 @@ bool MoveToEntity::Execute()
 
 		if (((entity_to_move->position.x + 25) >= x_objective && (entity_to_move->position.x - 25) <= x_objective) && ((entity_to_move->position.y + 25) >= entity_to_go->position.y && (entity_to_move->position.y - 25) <= entity_to_go->position.y))
 		{
-			entity_to_move->animation = &entity_to_move->idle;
+			//entity_to_move->animation = &entity_to_move->idle;
 			ret = true;
 		}
 		else {
@@ -171,7 +171,7 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->Attack();
 				actioner_entity->attack.Reset();
-				actioner_entity->animation = &actioner_entity->idle;
+				//actioner_entity->animation = &actioner_entity->idle;
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -233,14 +233,6 @@ bool ctTaskManager::Update(float dt)
 	TaskOrderer();
 
 	bool ret = false;
-	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)
-	{
-		if (aux_task == nullptr && TaskQueue.size() != 0)
-		{
-			aux_task = TaskQueue.front();
-			TaskQueue.pop();
-		}
-	}
 
 	ret = DoTask();
 
@@ -261,6 +253,15 @@ bool ctTaskManager::CleanUp()
 		TaskQueue.pop();
 	}
 	return true;
+}
+
+void ctTaskManager::PerformAllTheTasks()
+{
+	if (aux_task == nullptr && TaskQueue.size() != 0)
+	{
+		aux_task = TaskQueue.front();
+		TaskQueue.pop();
+	}
 }
 
 bool ctTaskManager::AddTask(Task * task)

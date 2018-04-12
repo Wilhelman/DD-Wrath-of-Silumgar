@@ -82,6 +82,9 @@ private:
 	//Set the values for the health and mana bar and all the things in the UI from the data of entities
 	void SetDataToUI();
 
+	//Set visible or invisible enemy bars
+	void EnemiesBarShouldBeVisible();
+
 	void OrderTurnPriority();
 	void DrawTurnPriority();
 
@@ -101,10 +104,10 @@ private:
 
 	//UICombat stuff
 	UICombatMenu* combat_menu = nullptr;
-	UIElement* ready_player1 = nullptr;
-	UIElement* ready_player2 = nullptr;
-	UIElement* ready_player3 = nullptr;
-	UIElement* ready_player4 = nullptr;
+	UIElement* ready_cleric = nullptr;
+	UIElement* ready_warrior = nullptr;
+	UIElement* ready_dwarf = nullptr;
+	UIElement* ready_elf = nullptr;
 
 	//UI STUFF
 	UIElement* cleric_background = nullptr;

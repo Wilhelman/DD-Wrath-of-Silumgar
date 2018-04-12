@@ -127,6 +127,24 @@ bool ctCombat::Update(float dt)
 {
 
 	if (turn_priority_entity.size() == 0) {
+		if (ready_cleric != nullptr) {
+			App->gui->DeleteUIElement(*ready_cleric);
+			ready_cleric = nullptr;
+		}
+		if (ready_warrior != nullptr) {
+			App->gui->DeleteUIElement(*ready_warrior);
+			ready_warrior = nullptr;
+		}
+		if (ready_dwarf != nullptr) {
+			App->gui->DeleteUIElement(*ready_dwarf);
+			ready_dwarf = nullptr;
+		}
+		if (ready_elf != nullptr) {
+			App->gui->DeleteUIElement(*ready_elf);
+			ready_elf = nullptr;
+		}
+		App->task_manager->PerformAllTheTasks();
+
 		int current_entities = 0;
 		if (App->task_manager->TaskQueue.size() == 0 && App->task_manager->aux_task == nullptr) {
 			for (std::vector<Entity *>::iterator it_heroe = heroes.begin(); it_heroe != heroes.end(); ++it_heroe) {
@@ -162,6 +180,7 @@ bool ctCombat::Update(float dt)
 			turn_priority_entity.erase(turn_priority_entity.cbegin());
 			turn_priority_entity.shrink_to_fit();
 
+
 		}
 	}
 	
@@ -186,24 +205,13 @@ bool ctCombat::Update(float dt)
 	{
 		App->render->camera.x -= 10;
 	}
-
-	std::vector<Entity*>::const_iterator it_vector = enemies.begin();
-	while (it_vector != enemies.end()) {
-		if ((*it_vector)->animation != &(*it_vector)->idle) {
-			UIBar* current_entity_bar = GetUIBarFromEntity((*it_vector));
-			current_entity_bar->MakeElementsInvisible();
-			it_vector++;
-		}
-		else {
-			UIBar* current_entity_bar = GetUIBarFromEntity((*it_vector));
-			current_entity_bar->MakeElementsVisible();
-			it_vector++;
-		}
-	}
 	
 	// Draw everything --------------------------------------
 	App->map->Draw();
 	DrawTurnPriority();
+
+	EnemiesBarShouldBeVisible();
+
 	return true;
 }
 
@@ -533,6 +541,23 @@ void ctCombat::SetDataToUI()
 	dwarf_mana_bar->LowerBar((dwarf_mana_bar->max_capacity - dwarf->GetCurrentManaPoints())* - 1);
 }
 
+void ctCombat::EnemiesBarShouldBeVisible()
+{
+	std::vector<Entity*>::const_iterator it_vector = enemies.begin();
+	while (it_vector != enemies.end()) {
+		if ((*it_vector)->animation == &(*it_vector)->idle || (*it_vector)->animation == &(*it_vector)->hit || (*it_vector)->animation == &(*it_vector)->death) {
+			UIBar* current_entity_bar = GetUIBarFromEntity((*it_vector));
+			current_entity_bar->MakeElementsVisible();
+			it_vector++;
+		}
+		else {
+			UIBar* current_entity_bar = GetUIBarFromEntity((*it_vector));
+			current_entity_bar->MakeElementsInvisible();
+			it_vector++;
+		}
+	}
+}
+
 void ctCombat::OrderTurnPriority()
 {
 	bool ordered = false;
@@ -636,6 +661,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			}
 			else {
 				if (combat_menu->background == nullptr) {
+					ready_cleric = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
 					combat_menu->~UICombatMenu();
 					App->gui->DeleteUIElement(*combat_menu);
 					combat_menu = nullptr;
@@ -651,6 +677,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			}
 			else {
 				if (combat_menu->background == nullptr) {
+					ready_dwarf = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
 					combat_menu->~UICombatMenu();
 					App->gui->DeleteUIElement(*combat_menu);
 					combat_menu = nullptr;
@@ -666,6 +693,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			}
 			else {
 				if (combat_menu->background == nullptr) {
+					ready_elf = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
 					combat_menu->~UICombatMenu();
 					App->gui->DeleteUIElement(*combat_menu);
 					combat_menu = nullptr;
@@ -681,6 +709,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			}
 			else {
 				if (combat_menu->background == nullptr) {
+					ready_warrior = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y- entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
 					combat_menu->~UICombatMenu();
 					App->gui->DeleteUIElement(*combat_menu);
 					combat_menu = nullptr;

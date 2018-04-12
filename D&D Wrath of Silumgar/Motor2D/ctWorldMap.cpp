@@ -164,11 +164,36 @@ bool ctWorldMap::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
 		App->audio->PlayFx(walk_fx,3); //TODO Change if we dont move at the same time we press 1
 		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y - 20 }));
+		elf_level_up = App->gui->AddUILevelUpInfo(30, 10, ELF, this, nullptr);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
+	else if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
 		
 		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y + 20 }));
+		
+		warrior_level_up = App->gui->AddUILevelUpInfo(30,10,WARRIOR,this,nullptr);
+	}
+	else if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN) {
+
+		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y + 20 }));
+		dwarf_level_up = App->gui->AddUILevelUpInfo(30, 10, DWARF, this, nullptr);
+	}
+	else if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN) {
+
+		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y + 20 }));
+		cleric_level_up = App->gui->AddUILevelUpInfo(30, 10, CLERIC, this, nullptr);
+	}
+	else if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN) {
+
+		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y + 20 }));
+		if (cleric_level_up != nullptr && dwarf_level_up != nullptr && warrior_level_up != nullptr && elf_level_up != nullptr)
+		{
+			cleric_level_up->~UIElement();
+			dwarf_level_up->~UIElement();
+			warrior_level_up->~UIElement();
+			elf_level_up->~UIElement();
+		}
+		
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
@@ -239,6 +264,10 @@ bool ctWorldMap::CleanUp()
 	App->audio->UnLoadFx(menu_move_fx);
 	App->audio->UnLoadFx(menu_select_fx);
 	App->audio->UnLoadFx(walk_fx);
+	cleric_level_up->~UIElement();
+	dwarf_level_up->~UIElement();
+	warrior_level_up->~UIElement();
+	elf_level_up->~UIElement();
 	
 
 

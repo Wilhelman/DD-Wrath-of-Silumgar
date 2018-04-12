@@ -84,7 +84,22 @@ UILevelUpInfo::UILevelUpInfo(int x, int y, UI_Type type, EntityType hero, ctModu
 }
 
 UILevelUpInfo::~UILevelUpInfo() {
-	
+
+	background->to_destroy = true;
+	image_hero->to_destroy = true;
+	text->to_destroy = true;
+	level_number->to_destroy = true;
+	constitution->to_destroy = true;
+	focus->to_destroy = true;
+	force->to_destroy = true;
+	skill->to_destroy = true;
+	luck->to_destroy = true;
+	agility->to_destroy = true;
+	intelligence->to_destroy = true;
+	physical_defense->to_destroy = true;
+	magic_defense->to_destroy = true;
+	ability_unlock->to_destroy = true;
+	name_ability->to_destroy = true;
 }
 
 void UILevelUpInfo::Update()

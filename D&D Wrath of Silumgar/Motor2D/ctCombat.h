@@ -67,6 +67,11 @@ public:
 	//UICombat stuff
 	std::vector<Entity*> enemies;
 	std::vector<Entity*> heroes;
+
+	//only gets the lowest hp
+	Entity* GetTheWeakestHeroe();
+
+	Entity* GetRandomHeroe();
 	
 private:
 	
@@ -93,10 +98,10 @@ private:
 	bool PerformActionWithEntity(Entity* entity_to_perform_action);
 
 	//IA STUFF
-	///judgement die
-	bool IsGoingToDoAnythingClever(Entity* entity);
 
 	UIBar* GetUIBarFromEntity(Entity* entity);
+
+
 
 	
 private:
@@ -130,10 +135,7 @@ private:
 	UIElement* elf_name;
 
 
-	///only gets the lowest hp
-	Entity* GetTheWeakestHeroe();
-
-	Entity* GetRandomHeroe();
+	
 	//END IA STUFF
 
 	std::vector<UIBar*> enemies_bars;

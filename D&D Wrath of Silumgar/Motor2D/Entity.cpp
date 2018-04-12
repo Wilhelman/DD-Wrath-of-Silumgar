@@ -3,9 +3,16 @@
 #include "ctRender.h"
 #include "ctAudio.h"
 
+//randomize libs
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+
 Entity::Entity(int x, int y, EntityType type) : position(x, y), type(type)
 {
 	initial_position = iPoint(x, y);
+
+	/* initialize random seed: */
+	srand(time(NULL));
 }
 
 Entity::~Entity()
@@ -138,4 +145,10 @@ void Entity::SetCurrentManaPoints(int new_mana_points)
 void Entity::AddAction(Action new_action)
 {
 	abilities.push_back(new_action);
+}
+
+bool Entity::IsGoingToDoAnythingClever()
+{
+	int random_number = (rand() % 100) + 1; //random del 1-100
+	return this->GetCurrentJudgement() <= random_number;
 }

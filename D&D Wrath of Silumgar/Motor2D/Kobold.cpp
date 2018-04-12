@@ -7,6 +7,8 @@
 #include "ctFadeToBlack.h"
 #include "ctAudio.h"
 #include "ctEntities.h"
+#include "ctCombat.h"
+#include "ctTaskManager.h"
 
 #include "Kobold.h"
 
@@ -105,4 +107,21 @@ void  Kobold::Run() {
 }
 void  Kobold::Damaged() {
 	App->audio->PlayFx(damaged_fx, 0);
+}
+
+void Kobold::PerformAction()
+{
+	Entity* entity_objective = nullptr;
+	if (IsGoingToDoAnythingClever()) {
+		//in this case the kobold will search the weakest heroe since we dont have abilities
+		entity_objective = App->combat->GetTheWeakestHeroe();
+	}
+	else {
+		//in this case, the kobold will attack one random heroe
+		entity_objective = App->combat->GetRandomHeroe();
+	}
+
+	App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+	App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
+	App->task_manager->AddTask(new MoveToInitialPosition(this));
 }

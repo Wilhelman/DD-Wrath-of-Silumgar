@@ -36,6 +36,8 @@ public:
 	void Death();
 	void Run();
 	void Damaged();
+
+	void PerformAction();
 };
 
 #endif

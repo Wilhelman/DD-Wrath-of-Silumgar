@@ -156,6 +156,8 @@ public:
 	virtual void Death() {};
 	virtual void Damaged() {};
 
+	virtual void PerformAction() {};
+
 	int GetCurrentHealthPoints();
 	int GetCurrentManaPoints();
 	int GetCurrentAgilityPoints();
@@ -166,6 +168,8 @@ public:
 
 	void SetCurrentHealthPoints(int new_health_points);
 	void SetCurrentManaPoints(int new_mana_points);
+
+	bool IsGoingToDoAnythingClever();
 
 	void AddAction(Action new_action);
 };

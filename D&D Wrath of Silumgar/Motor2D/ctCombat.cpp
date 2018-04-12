@@ -457,7 +457,7 @@ void ctCombat::LoadDataFromXML()
 			App->entities->GetCleric()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 			App->entities->GetCleric()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
-				LoadSkill(skill, App->entities->GetWarrior());
+				LoadSkill(skill, App->entities->GetCleric());
 		}
 		else if (tmp == "warrior") {
 			App->entities->GetWarrior()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
@@ -469,13 +469,13 @@ void ctCombat::LoadDataFromXML()
 			App->entities->GetDwarf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 			App->entities->GetDwarf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
-				LoadSkill(skill, App->entities->GetWarrior());
+				LoadSkill(skill, App->entities->GetDwarf());
 		}
 		else if (tmp == "elf") {
 			App->entities->GetElf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 			App->entities->GetElf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
-				LoadSkill(skill, App->entities->GetWarrior());
+				LoadSkill(skill, App->entities->GetElf());
 		}
 
 	}
@@ -738,35 +738,14 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			}
 			break;
 		case KOBOLD: {
-			//entity_to_perform_action.PerformAction();
-			if (IsGoingToDoAnythingClever(entity_to_perform_action)) {
-				//in this case the kobold will search the weakest heroe since we dont have abilities
-				entity_objective = GetTheWeakestHeroe();
-			}
-			else {
-				//in this case, the kobold will attack one random heroe
-				entity_objective = GetRandomHeroe();
-			}
-			App->task_manager->AddTask(new MoveToEntity(entity_to_perform_action, entity_objective, 20));
-			App->task_manager->AddTask(new PerformActionToEntity(entity_to_perform_action, entity_to_perform_action->default_attack, entity_objective));
-			App->task_manager->AddTask(new MoveToInitialPosition(entity_to_perform_action));
-
+			entity_to_perform_action->PerformAction();
+			
 			established_action = true;
 		}
 					 break;
 		case GNOLL:
 		{
-			if (IsGoingToDoAnythingClever(entity_to_perform_action)) {
-				//in this case the kobold will search the weakest heroe since we dont have abilities
-				entity_objective = GetTheWeakestHeroe();
-			}
-			else {
-				//in this case, the kobold will attack one random heroe
-				entity_objective = GetRandomHeroe();
-			}
-			App->task_manager->AddTask(new MoveToEntity(entity_to_perform_action, entity_objective, 20));
-			App->task_manager->AddTask(new PerformActionToEntity(entity_to_perform_action, entity_to_perform_action->default_attack, entity_objective));
-			App->task_manager->AddTask(new MoveToInitialPosition(entity_to_perform_action));
+			entity_to_perform_action->PerformAction();
 
 			established_action = true;
 		}
@@ -786,14 +765,6 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 	
 
 	return established_action;
-}
-
-bool ctCombat::IsGoingToDoAnythingClever(Entity * entity)
-{
-
-	int random_number = (rand() % 100) + 1; //random del 1-100
-
-	return entity->GetCurrentJudgement()<=random_number;
 }
 
 Entity * ctCombat::GetTheWeakestHeroe()

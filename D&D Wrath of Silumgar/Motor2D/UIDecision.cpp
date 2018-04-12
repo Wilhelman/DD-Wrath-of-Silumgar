@@ -12,13 +12,20 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	this->callback = callback;
 	UIElement* aux_element;
 
-	aux_element = App->gui->AddUIImage(x, y, { 0,648,264,169 }, nullptr, this);
+	//Dont delete. Will be useful later
+	/*aux_element = App->gui->AddUIImage(x, y, { 0,648,264,169 }, nullptr, this);
 	this->image_border = aux_element;
 
 	aux_element = App->gui->AddUIImage(x, y + 165, { 0,485,264,162 }, nullptr, this);
 	this->text_border = aux_element;
 
 	aux_element = App->gui->AddUITextBox(x + 20, y + 165 + 26, size, 222, text, { 255,255,255,255 }, this);
+	this->text_decision = aux_element;*/
+
+	aux_element = App->gui->AddUIImage(x, y, { 843,484,264,273 }, nullptr, this);
+	this->text_border = aux_element;
+
+	aux_element = App->gui->AddUITextBox(x + 20, y + 26, size, 222, text, { 255,255,255,255 }, this);
 	this->text_decision = aux_element;
 
 
@@ -28,8 +35,8 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	for (int i = 1; i >= 0; i--) {
 
 		if (!text_options[i].empty() && !text_options[i].empty()) { //text box for every option
-			aux_element = App->gui->AddUITextBox(x + 20, 300 - extra_h, size, 150, text_options[i], { 255,255,255,255 }, this);
-			//this->ui_options[i] = aux_element;
+			aux_element = App->gui->AddUITextBox(x + 20, 230 - extra_h, size, 150, text_options[i], { 255,255,255,255 }, this);   //Old: 300 - extra_h 
+																																  //this->ui_options[i] = aux_element;
 			options.push_back(aux_element);
 			extra_h += 16;
 		}

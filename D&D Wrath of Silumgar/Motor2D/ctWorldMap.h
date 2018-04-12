@@ -88,6 +88,12 @@ private:
 	UIElement* arrow = nullptr;
 	std::vector<UIElement*> options;
 
+	UIElement* warrior_level_up = nullptr;
+	UIElement* elf_level_up = nullptr;
+	UIElement* dwarf_level_up = nullptr;
+	UIElement* cleric_level_up = nullptr;
+
+
 	uint menu_move_fx = 0;
 	uint menu_select_fx = 0;
 	uint walk_fx = 0;

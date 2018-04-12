@@ -14,14 +14,14 @@
 		<heroe name="warrior">
 			<values health_points="117" mana_points="52" />
 			<skills>
-				<skill name="test" mana_cost="10" etc="etc" />
+				<skill name="Kick" description="Physical attack that deals damage based on strength and has a chance to stun the enemy" mana_points_effect_to_himself="18" health_points_effect="10" stun_chance="80" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />
 			</items>
 		</heroe>
 		<heroe name="dwarf">
-			<values health_points="91" mana_points="52" />
+			<values health_points="78" mana_points="52" />
 			<skills>
 				<skill name="test" mana_cost="10" etc="etc" />
 			</skills>

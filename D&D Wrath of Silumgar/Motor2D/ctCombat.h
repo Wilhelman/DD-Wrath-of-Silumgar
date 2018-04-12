@@ -76,6 +76,8 @@ private:
 	//load all the values like health and mana from the xml
 	void LoadDataFromXML();
 
+	void LoadSkill(pugi::xml_node skill_node, Entity* entity);
+
 	//set the base data at the start of the first combat here we write in the xml.
 	void SaveDataToXML();
 

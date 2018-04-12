@@ -7,6 +7,8 @@
 #include "ctTextures.h"
 #include "SDL/include/SDL.h"
 
+#include <vector>
+
 struct SDL_Texture;
 
 struct Stats {
@@ -57,6 +59,7 @@ struct Item {
 
 enum ActionType {
 	DEFAULT_ATTACK,
+	KICK,
 
 	ACTION_NOT_DEFINED
 };
@@ -64,6 +67,7 @@ enum ActionType {
 struct Action {
 
 	std::string name;
+	std::string description;
 	ActionType type = ACTION_NOT_DEFINED;
 	uint mana_cost = 0u;
 
@@ -122,8 +126,11 @@ public:
 
 	//Priority Draw Order
 	uint priority_draw_order = 0u;
+
 	//Combat stuff
 	Action default_attack;
+
+	std::vector<Action> abilities;
 
 	//Sounds stuff
 	uint attack_fx = 0u;
@@ -159,6 +166,8 @@ public:
 
 	void SetCurrentHealthPoints(int new_health_points);
 	void SetCurrentManaPoints(int new_mana_points);
+
+	void AddAction(Action new_action);
 };
 
 #endif // __ENTITY_H__

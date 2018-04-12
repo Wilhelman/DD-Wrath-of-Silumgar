@@ -134,3 +134,8 @@ void Entity::SetCurrentManaPoints(int new_mana_points)
 {
 	current_mana_points = new_mana_points;
 }
+
+void Entity::AddAction(Action new_action)
+{
+	abilities.push_back(new_action);
+}

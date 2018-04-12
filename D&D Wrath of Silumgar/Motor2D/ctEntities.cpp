@@ -56,7 +56,7 @@ bool ctEntities::Awake(pugi::xml_node& config)
 
 bool ctEntities::Start()
 {
-
+	
 
 	return true;
 }
@@ -70,6 +70,11 @@ bool ctEntities::PreUpdate()
 			entities.erase(entities.cbegin() + i);
 			entities.shrink_to_fit();
 		}
+	}
+
+	if (entities.size() != draw_priority_entities.size())
+	{
+		draw_priority_entities = entities;
 	}
 
 	OrderDrawEntities();
@@ -330,10 +335,8 @@ MiniHeroes* ctEntities::GetMiniheroes() const {
 void ctEntities::OrderDrawEntities()
 {
 	bool ordered = false;
-
 	
-	
-	std::vector<Entity*> order_entity = entities;
+	std::vector<Entity*> order_entity = draw_priority_entities;
 
 	while (!ordered)
 	{
@@ -346,7 +349,7 @@ void ctEntities::OrderDrawEntities()
 			count++;
 			if (count != order_entity.size())
 			{
-				if ((*it)->initial_position.y > (*itnext)->initial_position.y )
+				if ((*it)->position.y > (*itnext)->position.y )
 				{
 					Entity* entity_tmp = (*it);
 
@@ -355,6 +358,21 @@ void ctEntities::OrderDrawEntities()
 					(*it) = entity_tmp;
 					it--;
 					ordered = false;
+
+				}
+				else if ((*it)->position.y == (*itnext)->position.y)
+				{
+
+					if (((*itnext)->type != CLERIC && (*itnext)->type != WARRIOR && (*itnext)->type != ELF && (*itnext)->type != DWARF) && ((*it)->type == CLERIC || (*it)->type == WARRIOR || (*it)->type == ELF || (*it)->type == DWARF))
+					{
+						Entity* entity_tmp = (*it);
+
+						(*it) = (*itnext);
+						it++;
+						(*it) = entity_tmp;
+						it--;
+						ordered = false;
+					}
 				}
 				
 			}
@@ -368,37 +386,6 @@ void ctEntities::OrderDrawEntities()
 	ordered = false;
 
 
-	while (!ordered)
-	{
-		ordered = true;
-		std::vector<Entity*>::iterator itnext = order_entity.begin();
-		int count = 0;
-		for (std::vector<Entity*>::iterator it = order_entity.begin(); it != order_entity.end(); ++it)
-		{
-			itnext++;
-			count++;
-			if (count != order_entity.size())
-			{
-				if (((*itnext)->type != CLERIC && (*itnext)->type != WARRIOR && (*itnext)->type != ELF && (*itnext)->type != DWARF) && ((*it)->type == CLERIC || (*it)->type == WARRIOR || (*it)->type == ELF || (*it)->type == DWARF))
-				{
-					Entity* entity_tmp = (*it);
-
-					(*it) = (*itnext);
-					it++;
-					(*it) = entity_tmp;
-					it--;
-					ordered = false;
-				}
-
-			}
-			else {
-				break;
-			}
-
-
-		}
-
-	}
 
 
 

@@ -13,26 +13,26 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	this->callback = callback;
 	if (entity->type == CLERIC) {
 		background = App->gui->AddUIImage(x, y, { 1141, 338, 60, 90 }, callback);
-		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 1141, 338, 60, 90 }, callback);
+		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 3, 622, 226, 33 }, callback);
 	}
 	if (entity->type == WARRIOR) {
 		background = App->gui->AddUIImage(x, y, { 1261, 209, 60, 90 }, callback);
-		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 1141, 338, 60, 90 }, callback);
+		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 3, 552, 226, 33 }, callback);
 	}
 	if (entity->type == DWARF) {
 		background = App->gui->AddUIImage(x, y, { 1201, 338, 60, 90 }, callback);
-		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 1141, 338, 60, 90 }, callback);
+		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 3, 762, 226, 33 }, callback);
 	}
 	if (entity->type == ELF) {
 		background = App->gui->AddUIImage(x, y, { 1261, 299, 60, 90 }, callback);
-		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 1141, 338, 60, 90 }, callback);
+		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 3, 693, 226, 33 }, callback);
 	}
 	//background = App->gui->AddUIImage(x, y, { 1260, 208, 60, 90 }, callback);
 	attack_label = App->gui->AddUILabel(x + main_label1_pos.x, y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
 	abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
 	items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
 	attack_label->current_state = STATE_FOCUSED;
-	explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, ATTACKEXPLANATION, {255,255,255,255});
+	explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, ATTACKEXPLANATION, {255,255,255,255});
 	explanation_label->SetParent(explanation_background);
 	arrow = App->gui->AddUIImage(x - (main_label1_pos.x / 1.5), y, { 1333, 272, 7, 14 }, callback, background);
 	main_labels.push_back(attack_label);
@@ -150,10 +150,7 @@ void UICombatMenu::Update()
 	}
 	
 	if (executed_command == true) {
-		if (main_labels.size() != 0) {
-			ChangeExplanation(main_labels);
-		}
-		else if (abilities.size() != 0) {
+		if (abilities.size() != 0) {
 			ChangeExplanation(abilities);
 		}
 		else if (items.size() != 0) {
@@ -573,17 +570,17 @@ void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 		while (it_vector != current_vector.end()) {
 			if ((*it_vector)->current_state == STATE_FOCUSED) {
 				if ((*it_vector) == attack_label) {
-					explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, ATTACKEXPLANATION, { 255,255,255,255 });
+					explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, ATTACKEXPLANATION, { 255,255,255,255 });
 					explanation_label->SetParent(explanation_background);
 					break;
 				}
 				else if ((*it_vector) == abilities_label) {
-					explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, ABILITIESEXPLANATION, { 255,255,255,255 });
+					explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, ABILITIESEXPLANATION, { 255,255,255,255 });
 					explanation_label->SetParent(explanation_background);
 					break;
 				}
 				else if ((*it_vector) == items_label) {
-					explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, ITEMSEXPLANATION, { 255,255,255,255 });
+					explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, ITEMSEXPLANATION, { 255,255,255,255 });
 					explanation_label->SetParent(explanation_background);
 					break;
 				}
@@ -597,11 +594,11 @@ void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 		}
 		if (entity->abilities.size() != 0) {
 			string description = entity->abilities.at(names_iterator).description;
-			explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, description, { 255,255,255,255 });
+			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, description, { 255,255,255,255 });
 			explanation_label->SetParent(explanation_background);
 		}
 		else {
-			explanation_label = App->gui->AddUITextBox(0, 0, 15, 155, "You have non abilities in this moment", { 255,255,255,255 });
+			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, "You have non abilities in this moment", { 255,255,255,255 });
 			explanation_label->SetParent(explanation_background);
 		}
 	}

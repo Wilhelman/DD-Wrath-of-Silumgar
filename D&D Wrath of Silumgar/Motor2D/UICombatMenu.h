@@ -44,7 +44,7 @@ public:
 	iPoint main_label2_pos{ 15,40 };
 	iPoint main_label3_pos{ 15,70 };
 
-	iPoint explanationPos{242,31};
+	iPoint explanationPos{129,31};
 
 	int font_size = 12;
 

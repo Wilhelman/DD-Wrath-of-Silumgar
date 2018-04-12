@@ -264,10 +264,10 @@ bool ctWorldMap::CleanUp()
 	App->audio->UnLoadFx(menu_move_fx);
 	App->audio->UnLoadFx(menu_select_fx);
 	App->audio->UnLoadFx(walk_fx);
-	cleric_level_up->~UIElement();
-	dwarf_level_up->~UIElement();
-	warrior_level_up->~UIElement();
-	elf_level_up->~UIElement();
+	//cleric_level_up->~UIElement();
+	//dwarf_level_up->~UIElement();
+	//warrior_level_up->~UIElement();
+	//elf_level_up->~UIElement();
 	
 
 

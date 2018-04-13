@@ -101,6 +101,7 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 	/* ADDING BASIC ACTION FOR ALL THE ENTITIES THIS SHOULD BE CHANGED */
 	default_attack.name = "Attack";
 	default_attack.type = DEFAULT_ATTACK;
+	default_attack.objective = ENEMIES;
 	default_attack.health_points_effect = -(int)base_stats.base_strength * StatisticsValues::STRENGTH;
 
 	//todo change this

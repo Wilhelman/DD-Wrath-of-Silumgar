@@ -79,30 +79,19 @@ bool ctMainMenu::PreUpdate()
 // Called each loop iteration
 bool ctMainMenu::Update(float dt)
 {
-
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
-
-		//this block will be like we call "new game"
-		is_new_game = true;
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0f);
-
-	}
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN ) {
-		
-	}
 		
 	//Go down
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(menu_move_fx);
 		NavigateDown(labels);
 	}
 	//Go up
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(menu_move_fx);
 		NavigateUp(labels);
 	}
 	//Execute
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		is_new_game = true;
 		App->audio->PlayFx(menu_select_fx);
 		ExecuteComand(labels);

@@ -131,6 +131,7 @@ public:
 	//custom animations
 	ctAnimation kick = ctAnimation();
 	ctAnimation high_axe = ctAnimation();
+	ctAnimation heal = ctAnimation();
 
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);

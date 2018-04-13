@@ -60,8 +60,10 @@ void UIElement::Draw(SDL_Texture* sprites)
 			App->render->Blit(sprites, screen_position.x, screen_position.y, &current_rect);
 				break;
 		case LABEL:
-		case FLOATING_VALUE:
 			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect);
+			break;
+		case FLOATING_VALUE:
+			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect,2.0f,0.0,this->alpha);
 			break;
 		case TEXTBOX:
 			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect);

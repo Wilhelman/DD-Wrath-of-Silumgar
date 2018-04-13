@@ -8,10 +8,7 @@ class UIFloatingValue : public UIElement
 {
 public:
 
-	int alpha = 255;
-	SDL_Color color;
 	std::string text;
-	_TTF_Font* newFont;
 
 	void Update();
 

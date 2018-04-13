@@ -34,6 +34,7 @@ protected:
 	int tmp_mouse_x, tmp_mouse_y;
 	uint pressed_fx = 0u;
 	SDL_Texture* texture = nullptr;
+	int alpha = 255;
 
 private:
 	bool debug_draw = false;

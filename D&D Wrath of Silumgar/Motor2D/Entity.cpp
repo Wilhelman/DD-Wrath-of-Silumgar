@@ -34,7 +34,7 @@ void Entity::Draw()
 		if (flip_texture == false)
 		App->render->Blit(texture, position.x, position.y - r.h, &(animation->GetCurrentFrame()));
 		else {
-		App->render->Blit(texture, position.x, position.y - r.h, &(animation->GetCurrentFrame()), NULL,NULL, SDL_FLIP_HORIZONTAL);
+		App->render->Blit(texture, position.x, position.y - r.h, &(animation->GetCurrentFrame()), NULL,NULL,255, SDL_FLIP_HORIZONTAL);
 		}
 	}
 

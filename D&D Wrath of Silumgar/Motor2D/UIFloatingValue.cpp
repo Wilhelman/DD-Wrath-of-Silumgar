@@ -10,10 +10,8 @@ UIFloatingValue::UIFloatingValue(int x, int y, UI_Type type, std::string text, S
 	this->callback = callback;
 	this->text = text;
 
-	this->color = color;
-	this->color.a = 0;
 	App->fonts->size = size;
-	newFont = App->fonts->Load(path, size);
+	_TTF_Font* newFont = App->fonts->Load(path, size);
 
 	texture = App->fonts->Print(text.c_str(), color, newFont);
 
@@ -26,8 +24,9 @@ UIFloatingValue::UIFloatingValue(int x, int y, UI_Type type, std::string text, S
 void UIFloatingValue::Update()
 {
 	this->screen_position.y--;
-	App->tex->UnLoad(this->texture);
 
-	this->color.a--;
-	texture = App->fonts->Print(text.c_str(), color, newFont);
+	alpha -= 4;
+	if (alpha <= 0)
+		alpha = 0;
+		
 }

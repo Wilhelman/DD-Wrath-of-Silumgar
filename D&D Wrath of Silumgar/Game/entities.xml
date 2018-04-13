@@ -242,8 +242,8 @@
 
         <animation name="stun" speed="0.5" loop="false">
           <frame x="228" y="438" width="60" height="17"/>
-          <frame x="162" y="493" width="60" height="17"/>
-          <frame x="94" y="493" width="60" height="17"/>
+          <frame x="162" y="438" width="60" height="17"/>
+          <frame x="94" y="438" width="60" height="17"/>
         </animation>
 
         <animation name="head" speed="5.0" loop="false">

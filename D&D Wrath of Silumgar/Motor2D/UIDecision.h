@@ -4,6 +4,8 @@
 //#include "j1Fonts.h"
 #include "ctGui.h"
 #include "UIElement.h"
+#include "ctRender.h"
+#include "ctWindow.h"
 
 struct Option {
 	uint option_number;

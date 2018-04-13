@@ -116,6 +116,7 @@ bool ctWorldMap::Start()
 
 	// MORE TIER
 	App->map->actual_tier ;
+
 	switch (App->map->actual_tier)
 	{
 	case TIER_MAP_0:

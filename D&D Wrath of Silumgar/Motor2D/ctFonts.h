@@ -6,6 +6,7 @@
 
 #define DEFAULT_FONT "Fonts/8bitlim.ttf"
 #define Second_Font "Fonts/FritzQuadrata Regular.ttf"
+#define Third_Font "Fonts/Beyond Wonderland.ttf"
 #define DEFAULT_FONT_SIZE 15
 
 struct SDL_Texture;

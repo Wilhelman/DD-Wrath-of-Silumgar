@@ -115,6 +115,9 @@ public:
 	ctAnimation hit = ctAnimation();
 	ctAnimation death = ctAnimation();
 
+	//custom animations
+	ctAnimation kick = ctAnimation();
+
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);
 	iPoint initial_position = iPoint(0, 0);

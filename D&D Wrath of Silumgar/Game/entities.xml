@@ -711,7 +711,7 @@
           <frame x="1404" y="2207" width="96" height="79"/>
         </animation>
 
-        <animation name="kick" speed="0.5" loop="false">
+        <animation name="kick" speed="0.1" loop="false">
           <frame x="79" y="3376" width="124" height="102"/>
           <frame x="245" y="3376" width="124" height="102"/>
           <frame x="418" y="3376" width="124" height="102"/>

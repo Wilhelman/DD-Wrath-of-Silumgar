@@ -37,23 +37,16 @@
 				<entity name="GNOLL" />
 				<entity name="KOBOLD" />
 				<entity name="GNOLL" />
-				<scene name="tavern.tmx" />
-				<icon_coords x="64" y="480" width="32" height="32" />
-			</map_element>
-			<map_element>
-				<tier type="2" />
-				<entity name="KOBOLD" />
-				<entity name="GNOLL" />
-				<entity name="KOBOLD" />
-				<entity name="GNOLL" />
-				<scene name="tavern.tmx" />
+				<scene name="forest.tmx" />
 				<icon_coords x="96" y="512" width="32" height="32" />
 			</map_element>
 			<map_element>
 				<tier type="2" />
 				<entity name="KOBOLD" />
 				<entity name="GNOLL" />
-				<scene name="tavern.tmx" />
+				<entity name="KOBOLD" />
+				<entity name="GNOLL" />
+				<scene name="cave_03.tmx" />
 				<icon_coords x="128" y="480" width="32" height="32" />
 			</map_element>
 			<map_element>
@@ -61,7 +54,6 @@
 				<entity name="KOBOLD" />
 				<entity name="GNOLL" />
 				<entity name="KOBOLD" />
-				<entity name="GNOLL" />
 				<scene name="tavern.tmx" />
 				<icon_coords x="0" y="480" width="32" height="32" />
 			</map_element>

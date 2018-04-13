@@ -103,6 +103,7 @@ bool ctMainMenu::Update(float dt)
 	}
 	//Execute
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+		is_new_game = true;
 		App->audio->PlayFx(menu_select_fx);
 		ExecuteComand(labels);
 	}

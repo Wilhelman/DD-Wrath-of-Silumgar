@@ -212,9 +212,24 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 				current_vector.at(i) = nullptr;
 			}
 			current_vector.clear();
-			current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(names_iterator - 1), { 255,255,255,255 }, font_size, nullptr, background));
-			current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(names_iterator), { 255,255,255,255 }, font_size, nullptr, background));
-			current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(names_iterator + 1), { 255,255,255,255 }, font_size, nullptr, background));
+			if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator - 1).mana_points_effect_to_himself) {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(names_iterator - 1), { 255,255,255,255 }, font_size, nullptr, background));
+			}
+			else {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(names_iterator - 1), { 255,0,0,255 }, font_size, nullptr, background));
+			}
+			if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator).mana_points_effect_to_himself) {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(names_iterator), { 255,255,255,255 }, font_size, nullptr, background));
+			}
+			else {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(names_iterator), { 255,0,0,255 }, font_size, nullptr, background));
+			}
+			if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator + 1).mana_points_effect_to_himself) {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(names_iterator + 1), { 255,255,255,255 }, font_size, nullptr, background));
+			}
+			else {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(names_iterator + 1), { 255,0,0,255 }, font_size, nullptr, background));
+			}
 			names_iterator++;
 			current_vector.back()->current_state = STATE_FOCUSED;
 			arrow->SetParent(current_vector.back());
@@ -265,9 +280,24 @@ void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 				current_vector.at(i) = nullptr;
 			}
 			current_vector.clear();
-			current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(names_iterator - 3), { 255,255,255,255 }, font_size, nullptr, background));
-			current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(names_iterator - 2), { 255,255,255,255 }, font_size, nullptr, background));
-			current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(names_iterator - 1), { 255,255,255,255 }, font_size, nullptr, background));
+			if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator - 3).mana_points_effect_to_himself) {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(names_iterator - 3), { 255,255,255,255 }, font_size, nullptr, background));
+			}
+			else {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(names_iterator - 3), { 255,0,0,255 }, font_size, nullptr, background));
+			}
+			if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator - 2).mana_points_effect_to_himself) {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(names_iterator - 2), { 255,255,255,255 }, font_size, nullptr, background));
+			}
+			else {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(names_iterator - 2), { 255,0,0,255 }, font_size, nullptr, background));
+			}
+			if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator - 1).mana_points_effect_to_himself) {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(names_iterator - 1), { 255,255,255,255 }, font_size, nullptr, background));
+			}
+			else {
+				current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(names_iterator - 1), { 255,0,0,255 }, font_size, nullptr, background));
+			}
 			names_iterator--;
 			current_vector.front()->current_state = STATE_FOCUSED;
 			arrow->SetParent(current_vector.front());
@@ -309,7 +339,9 @@ void UICombatMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	}
 
 	if (current_vector == abilities) {
-		selecting_enemy = true;
+		if (entity->GetCurrentManaPoints()>=entity->abilities.at(names_iterator).mana_points_effect_to_himself) {
+			selecting_enemy = true;
+		}
 		/*App->gui->DeleteUIElement(*arrow);
 		arrow = nullptr;
 		App->gui->DeleteUIElement(*background);
@@ -381,18 +413,48 @@ void UICombatMenu::LoadAbilities() {
 	//names.push_back("Ability9");
 
 	if (names.size() > 3) {
-		abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
-		abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background));
-		abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background));
+		if (entity->GetCurrentManaPoints() >= entity->abilities.at(0).mana_points_effect_to_himself) {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
+		}
+		else {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,0,0,255 }, font_size, nullptr, background));
+		}
+		if (entity->GetCurrentManaPoints() >= entity->abilities.at(1).mana_points_effect_to_himself) {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background));
+		}
+		else {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,0,0,0 }, font_size, nullptr, background));
+		}
+		if (entity->GetCurrentManaPoints() >= entity->abilities.at(2).mana_points_effect_to_himself) {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background));
+		}
+		else {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background));
+		}
 		names_iterator = 2;
 	}
 	else if (names.size() == 2) {
-		abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
-		abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background));
+		if (entity->GetCurrentManaPoints() >= entity->abilities.at(0).mana_points_effect_to_himself) {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
+		}
+		else {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,0,0,255 }, font_size, nullptr, background));
+		}
+		if (entity->GetCurrentManaPoints() >= entity->abilities.at(1).mana_points_effect_to_himself) {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background));
+		}
+		else {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,0,0,0 }, font_size, nullptr, background));
+		}
 		names_iterator = 1;
 	}
 	else if (names.size() == 1) {
-		abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
+		if (entity->GetCurrentManaPoints() >= entity->abilities.at(0).mana_points_effect_to_himself) {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
+		}
+		else {
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,0,0,255 }, font_size, nullptr, background));
+		}
 		names_iterator = 0;
 	}
 

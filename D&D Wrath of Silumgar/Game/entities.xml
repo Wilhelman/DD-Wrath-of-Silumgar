@@ -96,6 +96,12 @@
           <frame x="510" y="467" width="66" height="57"/>
         </animation>
 
+        <animation name="stun" speed="0.5" loop="false">
+          <frame x="163" y="493" width="60" height="17"/>
+          <frame x="97" y="493" width="60" height="17"/>
+          <frame x="29" y="493" width="60" height="17"/>
+        </animation>
+
         <animation name="head" speed="5.0" loop="false">
           <frame x="881" y="71" width="26" height="26"/>
         </animation>
@@ -232,6 +238,12 @@
           <frame x="718" y="396" width="125" height="81"/>
           <frame x="403" y="396" width="125" height="81"/>
           <frame x="563" y="396" width="125" height="81"/>
+        </animation>
+
+        <animation name="stun" speed="0.5" loop="false">
+          <frame x="228" y="438" width="60" height="17"/>
+          <frame x="162" y="493" width="60" height="17"/>
+          <frame x="94" y="493" width="60" height="17"/>
         </animation>
 
         <animation name="head" speed="5.0" loop="false">

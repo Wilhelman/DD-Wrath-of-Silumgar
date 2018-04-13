@@ -5,7 +5,7 @@
 		<heroe name="cleric">
 			<values health_points="78" mana_points="65" />
 			<skills>
-				<skill name="test" mana_cost="10" etc="etc" />
+				<skill name="Heal" description="Heals one ally based on his intelligence" mana_points_effect_to_himself="20" health_points_effect="30" objective="0" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />

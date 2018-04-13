@@ -523,6 +523,8 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 		new_action.type = KICK;
 	else if (tmp == "Double Ax")
 		new_action.type = HIGH_AXE;
+	else if (tmp == "Heal")
+		new_action.type = HEAL;
 
 	if (skill_node.attribute("objective").as_int()) 
 		new_action.objective = ENEMIES;

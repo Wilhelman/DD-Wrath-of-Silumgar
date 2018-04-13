@@ -317,6 +317,30 @@ void ctCombat::UpdateHPBarOfEntity(Entity * entity_to_update_bar, int quantity)
 
 void ctCombat::UpdateManaBarOfEntity(Entity * entity_to_update_bar, int quantity)
 {
+	switch (entity_to_update_bar->type)
+	{
+	case CLERIC:
+		cleric_mana_bar->LowerBar(quantity);
+		break;
+	case DWARF:
+		dwarf_mana_bar->LowerBar(quantity);
+		break;
+	case ELF:
+		elf_mana_bar->LowerBar(quantity);
+		break;
+	case WARRIOR:
+		warrior_mana_bar->LowerBar(quantity);
+		break;
+	case KOBOLD:
+	case GNOLL:
+	case GNOLL_ARCHER:
+	case OWLBEAR:
+	case MINIHEROES:
+	case NO_TYPE:
+		break;
+	default:
+		break;
+	}
 }
 
 /*uint ctCombat::CalculatedDamage(Entity* attacker, Entity* defender)	TODO: esto esta en cuarentena porque no entiendo nada

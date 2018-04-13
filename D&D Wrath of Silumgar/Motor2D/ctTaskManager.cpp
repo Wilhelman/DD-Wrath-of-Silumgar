@@ -220,6 +220,7 @@ bool PerformActionToEntity::Execute()
 		break;
 		case KICK: {
 
+			//todo esta comprobacion en todas
 			if (receiver_entity->GetCurrentHealthPoints() == 0) {
 				if (actioner_entity->type == ELF || actioner_entity->type == CLERIC || actioner_entity->type == WARRIOR || actioner_entity->type == DWARF) {
 					for (int i = 0; i < App->combat->enemies.size(); i++)
@@ -275,9 +276,11 @@ bool PerformActionToEntity::Execute()
 							critical = true;
 						}
 						damage_to_deal = damage_to_deal - damage_reduction;
+						actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 						receiver_entity->animation = &receiver_entity->hit;
 						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+						App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 						std::string tmp_dmg = std::to_string(damage_to_deal);
 						if (!critical)
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);

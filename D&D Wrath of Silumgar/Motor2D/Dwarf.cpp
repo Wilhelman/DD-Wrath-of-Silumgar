@@ -40,6 +40,8 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &hit);
 		else if (tmp == "death")
 			LoadAnimation(animations, &death);
+		else if (tmp == "high_axe")
+			LoadAnimation(animations, &high_axe);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

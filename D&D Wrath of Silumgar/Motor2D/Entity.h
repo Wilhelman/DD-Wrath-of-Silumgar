@@ -60,6 +60,7 @@ struct Item {
 enum ActionType {
 	DEFAULT_ATTACK,
 	KICK,
+	HIGH_AXE,
 
 	ACTION_NOT_DEFINED
 };
@@ -117,6 +118,7 @@ public:
 
 	//custom animations
 	ctAnimation kick = ctAnimation();
+	ctAnimation high_axe = ctAnimation();
 
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);

@@ -574,7 +574,7 @@
           <frame x="944" y="331" width="99" height="87"/>
         </animation>
 
-        <animation name="doublehit" speed="0.5" loop="false">
+        <animation name="high_axe" speed="0.2" loop="false">
           <frame x="3166" y="1001" width="134" height="87"/>
           <frame x="2973" y="1001" width="134" height="87"/>
           <frame x="2788" y="1001" width="134" height="87"/>

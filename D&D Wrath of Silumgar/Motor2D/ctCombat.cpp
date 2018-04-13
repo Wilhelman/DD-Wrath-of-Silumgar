@@ -513,6 +513,8 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 
 	if (tmp == "Kick")
 		new_action.type = KICK;
+	else if (tmp == "Double Ax")
+		new_action.type = HIGH_AXE;
 
 	new_action.description = skill_node.attribute("description").as_string();
 	new_action.mana_points_effect_to_himself = skill_node.attribute("mana_points_effect_to_himself").as_int();

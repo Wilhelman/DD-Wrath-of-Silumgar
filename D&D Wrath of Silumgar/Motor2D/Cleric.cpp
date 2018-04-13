@@ -41,6 +41,8 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &hit);
 		else if (tmp == "death")
 			LoadAnimation(animations, &death);
+		else if (tmp == "heal")
+			LoadAnimation(animations, &heal);
 	}
 	LoadProperties(node->child("statistics"));
 

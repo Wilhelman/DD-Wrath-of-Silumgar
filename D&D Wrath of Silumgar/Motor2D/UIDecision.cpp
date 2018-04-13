@@ -22,6 +22,8 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	aux_element = App->gui->AddUITextBox(x + 20, y + 165 + 26, size, 222, text, { 255,255,255,255 }, this);
 	this->text_decision = aux_element;*/
 
+
+	//TO SOLVE: if we use AddUIImage or text box, when we create one UIDecision element 3 elements are pushed to GUI list: the image, the textbox and the UIDecision. We should use constructor from each element and only push to the list one element UIDecision.
 	aux_element = App->gui->AddUIImage(x, y, { 843,484,264,273 }, nullptr, this);
 	this->text_border = aux_element;
 
@@ -58,3 +60,4 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 
 	this->options = options;
 }
+

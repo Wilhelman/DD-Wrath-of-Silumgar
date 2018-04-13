@@ -26,14 +26,12 @@ class UIElement
 {
 protected:
 	ctModule* callback = nullptr;
-	SDL_Rect current_rect = { 0,0,0,0 };
 	iPoint local_position = iPoint(0,0);
 	//iPoint screen_position = iPoint(0, 0);
 	uint mouse_in_fx = 0u;
 	int mouse_motion_x = 0, mouse_motion_y = 0;
 	int tmp_mouse_x, tmp_mouse_y;
 	uint pressed_fx = 0u;
-	SDL_Texture* texture = nullptr;
 	int alpha = 255;
 
 private:
@@ -43,6 +41,8 @@ public:
 	bool draggable = false;
 	bool to_destroy = false;
 	bool non_drawable = false;
+	SDL_Texture* texture = nullptr;
+	SDL_Rect current_rect = { 0,0,0,0 };
 	UIElement* parent = nullptr;
 	UI_Type type = UI_NOT_DEF;
 	UI_State current_state = STATE_NO_DEF;
@@ -56,7 +56,6 @@ public:
 
 	virtual void Update();
 	virtual void Draw(SDL_Texture* sprites);
-
 	iPoint GetLocalPosition() const;
 	iPoint GetScreenPosition() const;
 	SDL_Rect GetRect() const;

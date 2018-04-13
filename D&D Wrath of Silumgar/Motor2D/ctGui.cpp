@@ -12,6 +12,7 @@
 #include "UIButton.h"
 #include "UICombatMenu.h"
 #include "UITextBox.h"
+#include "UIDIalogBox.h"
 #include "UIBar.h"
 #include "UIDecision.h"
 #include "UIFloatingValue.h"
@@ -69,9 +70,16 @@ bool ctGui::PreUpdate()
 bool ctGui::PostUpdate()
 {
 
-	for (int i = 0; i < ui_elements.size(); i++)
-		if (ui_elements.at(i) != nullptr  && ui_elements.at(i)->non_drawable == false) ui_elements[i]->Draw(atlas);
+	for (int i = 0; i < ui_elements.size(); i++) {
+		if (ui_elements.at(i)->type != DIALOGBOX) {
+			if (ui_elements.at(i) != nullptr  && ui_elements.at(i)->non_drawable == false) ui_elements[i]->Draw(atlas);
+		}
+		else {
+			UIDialogBox* aux = (UIDialogBox*)ui_elements.at(i);
+			aux->Draw(atlas);
+		}
 
+	}
 	for (int i = 0; i < ui_elements.size(); i++) {
 		if (ui_elements[i]->to_destroy) {
 			delete(ui_elements[i]);
@@ -207,6 +215,15 @@ UIElement* ctGui::AddUITextBox(int position_x, int position_y, int size, int box
 	UIElement* tmp_lbl = nullptr;
 
 	tmp_lbl = new UITextBox(position_x, position_y, TEXTBOX, text, color, size, box_width, path, parent);
+	ui_elements.push_back(tmp_lbl);
+
+	return tmp_lbl;
+}
+
+UIElement* ctGui::AddUIDialogBox(int position_x, int position_y, int size, int box_width, std::string text, SDL_Color color, UIElement* parent, const char* path) {
+	UIElement* tmp_lbl = nullptr;
+
+	tmp_lbl = new UIDialogBox(position_x, position_y, DIALOGBOX, text, color, size, box_width, path, parent);
 	ui_elements.push_back(tmp_lbl);
 
 	return tmp_lbl;

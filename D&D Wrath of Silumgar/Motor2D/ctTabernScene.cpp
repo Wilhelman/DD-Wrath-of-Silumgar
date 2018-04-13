@@ -20,6 +20,7 @@
 
 #include "ctGui.h"
 #include "UIElement.h"
+#include "UIImage.h"
 #include "UIDecision.h"
 
 
@@ -54,8 +55,20 @@ bool ctTabernScene::Awake(pugi::xml_node& config)
 bool ctTabernScene::Start()
 {
 	bool ret = true;
+	Dialog_Box =App->gui->AddUIDialogBox(0, 200, 15, 224, "Alex Campamar es un buen mozo, es simpatico, alto, guapo , delgado(eso ahora),\n pero un poco gilipollas a veces tiene una hostia. Como por ejemplo pedirle ayuda\n a un chaval enfermo para que le solucione un problema. El problema? Al crear un DialogBox no hacía new DialogBox\n, hacia New TextBox", { 255,255,255,255 }, nullptr, Second_Font);
+	
+	
+	
+	
+	App->map->sceneName == "world_map.tmx";
+	App->map->Load(App->map->sceneName.c_str());
+	App->map->LayersSetUp();
+	App->map->setAllLogicForMap();
 
-	background = App->gui->AddUIImage(0, 0, { 313, 144, 484, 324 }, this);
+	App->entities->SpawnEntity(50, 100, CLERIC);
+	App->entities->SpawnEntity(100, 125, WARRIOR);
+	App->entities->SpawnEntity(50, 150, ELF);
+	App->entities->SpawnEntity(100, 175, DWARF);
 
 	return ret;
 }
@@ -74,7 +87,6 @@ bool ctTabernScene::Update(float dt)
 
 	// Draw everything --------------------------------------
 	App->map->Draw();
-	
 	return true;
 }
 

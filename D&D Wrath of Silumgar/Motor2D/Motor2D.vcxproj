@@ -47,6 +47,7 @@
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UICombatMenu.cpp" />
     <ClCompile Include="UIDecision.cpp" />
+    <ClCompile Include="UIDIalogBox.cpp" />
     <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="UIFloatingValue.cpp" />
     <ClCompile Include="UIImage.cpp" />
@@ -98,6 +99,7 @@
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UICombatMenu.h" />
     <ClInclude Include="UIDecision.h" />
+    <ClInclude Include="UIDialogBox.h" />
     <ClInclude Include="UIElement.h" />
     <ClInclude Include="UIFloatingValue.h" />
     <ClInclude Include="UIImage.h" />

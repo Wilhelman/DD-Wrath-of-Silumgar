@@ -53,7 +53,7 @@ public:
 
 private:
 
-	UIElement* background = nullptr;
+	UIElement* Dialog_Box = nullptr;
 
 
 };

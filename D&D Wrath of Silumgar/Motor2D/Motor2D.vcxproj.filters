@@ -165,6 +165,9 @@
     <ClCompile Include="UIVerticalSliceInfo.cpp">
       <Filter>Core\Modules\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="UIDIalogBox.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -312,6 +315,9 @@
       <Filter>Core\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="UIVerticalSliceInfo.h">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIDialogBox.h">
       <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
   </ItemGroup>

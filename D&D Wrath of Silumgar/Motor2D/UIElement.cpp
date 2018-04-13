@@ -47,6 +47,7 @@ void UIElement::Update()
 	
 	if(callback != nullptr)
 		callback->OnUITrigger(this, current_state);
+
 }
 
 void UIElement::Draw(SDL_Texture* sprites)
@@ -66,6 +67,9 @@ void UIElement::Draw(SDL_Texture* sprites)
 			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect,2.0f,0.0,this->alpha);
 			break;
 		case TEXTBOX:
+			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect);
+			break;
+		case DIALOGBOX:
 			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect);
 		default:
 			break;

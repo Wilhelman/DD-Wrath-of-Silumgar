@@ -210,7 +210,7 @@ bool ctWorldMap::Update(float dt)
 		
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver()) {
+	if ((App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() ) {
 
 		WorldMapElement* tmp_map_element = final_map_elements.back();
 

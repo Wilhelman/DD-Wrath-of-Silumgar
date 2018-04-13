@@ -143,7 +143,7 @@ bool ctCombat::Update(float dt)
 			App->gui->DeleteUIElement(*ready_elf);
 			ready_elf = nullptr;
 		}
-		App->task_manager->OrderTasksByEntities(turn_priority_entity);
+		App->task_manager->OrderTasksByEntities(draw_turn_priority_entity);
 		App->task_manager->PerformAllTheTasks();
 
 		int current_entities = 0;

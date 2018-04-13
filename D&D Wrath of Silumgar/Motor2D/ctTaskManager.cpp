@@ -458,8 +458,27 @@ void ctTaskManager::PerformAllTheTasks()
 
 void ctTaskManager::OrderTasksByEntities(std::vector<Entity*> turn_priority_entity)
 {
-	std::list<Task*>::const_iterator it_list = TaskQueue.begin();
-	(*it_list)->performed_by;
+	std::list<Task*> task_tmp;
+	
+	//(*it_list)->performed_by;
+
+	int i = 0;
+	
+	while (i < turn_priority_entity.size())
+	{
+		for (std::list<Task*>::const_iterator it_list = TaskQueue.begin(); it_list != TaskQueue.end(); ++it_list)
+		{
+			if ((*it_list)->performed_by == turn_priority_entity[i])
+			{
+				task_tmp.push_back((*it_list));
+			}
+
+		}
+
+		i++;
+	}
+	int e = 0;
+
 }
 
 void ctTaskManager::DeleteTasksFromEntity(Entity * entity)

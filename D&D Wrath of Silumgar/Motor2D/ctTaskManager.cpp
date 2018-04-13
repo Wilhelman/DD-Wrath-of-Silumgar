@@ -458,10 +458,10 @@ void ctTaskManager::PerformAllTheTasks()
 
 void ctTaskManager::DeleteTasksFromEntity(Entity * entity)
 {
-	for (int i = 0; i < TaskQueue.size(); i++)
+	/*for (int i = 0; i < TaskQueue.size(); i++)
 	{
 		if(TaskQueue.)
-	}
+	}*/
 }
 
 bool ctTaskManager::AddTask(Task * task)

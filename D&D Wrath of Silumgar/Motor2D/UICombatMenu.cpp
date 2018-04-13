@@ -122,8 +122,12 @@ void UICombatMenu::Update()
 	}
 	//Go back to the start combat menu
 	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && selecting_enemy == false) {
-
-		GoBack();
+		if (main_labels.size() != 0){
+			App->combat->SelectWithPreviousHeroe();
+		}
+		else {
+			GoBack();
+		}
 	}
 
 	if (names.size() != 0 && lower_points == nullptr && names_iterator < names.size() - 1) {

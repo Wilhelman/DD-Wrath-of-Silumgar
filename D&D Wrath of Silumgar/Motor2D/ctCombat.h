@@ -72,6 +72,8 @@ public:
 	Entity* GetTheWeakestHeroe();
 
 	Entity* GetRandomHeroe();
+
+	void SelectWithPreviousHeroe();
 	
 private:
 	
@@ -100,8 +102,6 @@ private:
 	//IA STUFF
 
 	UIBar* GetUIBarFromEntity(Entity* entity);
-
-	void SelectWithPreviousHeroe();
 
 	
 private:

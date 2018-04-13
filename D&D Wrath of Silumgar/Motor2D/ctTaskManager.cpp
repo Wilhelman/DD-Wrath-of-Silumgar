@@ -460,8 +460,6 @@ void ctTaskManager::OrderTasksByEntities(std::vector<Entity*> turn_priority_enti
 {
 	std::list<Task*> task_tmp;
 	
-	//(*it_list)->performed_by;
-
 	int i = 0;
 	
 	while (i < turn_priority_entity.size())
@@ -477,8 +475,7 @@ void ctTaskManager::OrderTasksByEntities(std::vector<Entity*> turn_priority_enti
 
 		i++;
 	}
-	int e = 0;
-
+	TaskQueue = task_tmp;
 }
 
 void ctTaskManager::DeleteTasksFromEntity(Entity * entity)

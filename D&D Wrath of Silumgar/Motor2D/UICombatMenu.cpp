@@ -581,6 +581,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 			}
 		}
 		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		App->audio->PlayFx(combat_menu_move_fx);
 	}
 	//if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
 	//	if (selected_enemy != App->combat->enemies.begin()) {
@@ -602,6 +603,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 	//		enemy_select_arrow = nullptr;
 	//	}
 	//	enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+	//	App->audio->PlayFx(combat_menu_move_fx);
 	//}
 
 	if (App->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN) {
@@ -618,6 +620,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 			App->gui->DeleteUIElement(*current_vector.at(i));
 		}
 
+		//App->audio->PlayFx(combat_menu_select_fx);
 		current_vector.clear();
 
 		selecting_enemy = false;

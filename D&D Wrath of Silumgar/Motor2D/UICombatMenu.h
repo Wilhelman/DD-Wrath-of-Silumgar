@@ -48,9 +48,9 @@ public:
 
 	int font_size = 12;
 
-	uint menu_move_fx = 0;
-	uint menu_select_fx = 0;
-	uint menu_back_fx = 0;
+	uint combat_menu_move_fx = 0;
+	uint combat_menu_select_fx = 0;
+	uint combat_menu_back_fx = 0;
 
 	bool selecting_enemy = false;
 	bool executed_command = false;

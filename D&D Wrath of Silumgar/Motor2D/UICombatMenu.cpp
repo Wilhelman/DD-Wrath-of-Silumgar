@@ -556,7 +556,12 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		//perform tasks!
 		//(*selected_enemy)
 		App->task_manager->AddTask(new MoveToEntity(entity, (*selected_enemy), -20));
-		App->task_manager->AddTask(new PerformActionToEntity(entity, entity->default_attack, (*selected_enemy)));
+		if (attack_label->current_state == STATE_EXECUTED) {
+			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->default_attack, (*selected_enemy)));
+		}
+		else if(abilities_label->current_state == STATE_EXECUTED && entity->abilities.size() != 0){
+			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(names_iterator), (*selected_enemy)));
+		}
 		App->task_manager->AddTask(new MoveToInitialPosition(entity));
 	}
 

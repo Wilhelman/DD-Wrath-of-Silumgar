@@ -61,8 +61,15 @@ enum ActionType {
 	DEFAULT_ATTACK,
 	KICK,
 	HIGH_AXE,
+	HEAL,
 
 	ACTION_NOT_DEFINED
+};
+
+enum ActionObjectiveType {
+	HEROES,
+	ENEMIES,
+	OBJECTIVE_NOT_DEFINED
 };
 
 struct Action {
@@ -70,6 +77,8 @@ struct Action {
 	std::string name;
 	std::string description;
 	ActionType type = ACTION_NOT_DEFINED;
+	ActionObjectiveType objective = OBJECTIVE_NOT_DEFINED;
+
 	uint mana_cost = 0u;
 
 	int health_points_effect_to_himself = 0;

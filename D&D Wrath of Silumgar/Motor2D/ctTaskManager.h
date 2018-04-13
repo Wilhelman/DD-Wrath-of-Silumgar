@@ -39,6 +39,8 @@ public:
 
 	void PerformAllTheTasks();
 
+	void OrderTasksByEntities(std::vector<Entity*> turn_priority_entity);
+
 	void DeleteTasksFromEntity(Entity* entity);
 
 	bool TaskOrderer();
@@ -60,7 +62,7 @@ private:
 
 
 public:
-	std::queue<Task*> TaskQueue;
+	std::list<Task*> TaskQueue;
 
 	Task * aux_task = nullptr;
 	iPoint posaux = { 0,0 };

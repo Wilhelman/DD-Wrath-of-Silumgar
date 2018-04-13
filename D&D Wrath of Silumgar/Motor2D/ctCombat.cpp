@@ -524,6 +524,11 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 	else if (tmp == "Double Ax")
 		new_action.type = HIGH_AXE;
 
+	if (skill_node.attribute("objective").as_int()) 
+		new_action.objective = ENEMIES;
+	else 
+		new_action.objective = HEROES;
+
 	new_action.description = skill_node.attribute("description").as_string();
 	new_action.mana_points_effect_to_himself = skill_node.attribute("mana_points_effect_to_himself").as_int();
 	new_action.health_points_effect = skill_node.attribute("health_points_effect").as_int();
@@ -916,7 +921,7 @@ void ctCombat::SelectWithPreviousHeroe() {
 					auxiliar_vector.push_back((*it_vector2));
 					it_vector2++;
 				}
-				//it_vector
+				App->task_manager->DeleteTasksFromEntity((*it_vector));
 				turn_priority_entity = auxiliar_vector;
 				break;
 			}

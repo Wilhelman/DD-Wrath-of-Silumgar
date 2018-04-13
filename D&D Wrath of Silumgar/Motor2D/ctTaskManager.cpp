@@ -442,7 +442,7 @@ bool ctTaskManager::CleanUp()
 {
 	while (TaskQueue.size() != 0)
 	{
-		TaskQueue.pop();
+		TaskQueue.pop_front();
 	}
 	return true;
 }
@@ -452,22 +452,32 @@ void ctTaskManager::PerformAllTheTasks()
 	if (aux_task == nullptr && TaskQueue.size() != 0)
 	{
 		aux_task = TaskQueue.front();
-		TaskQueue.pop();
+		TaskQueue.pop_front();
 	}
+}
+
+void ctTaskManager::OrderTasksByEntities(std::vector<Entity*> turn_priority_entity)
+{
+	std::list<Task*>::const_iterator it_list = TaskQueue.begin();
+	(*it_list)->performed_by;
 }
 
 void ctTaskManager::DeleteTasksFromEntity(Entity * entity)
 {
-	/*for (int i = 0; i < TaskQueue.size(); i++)
-	{
-		if(TaskQueue.)
-	}*/
+	std::list<Task*>::const_iterator it_list = TaskQueue.begin();
+
+	while (it_list != TaskQueue.end()) {
+		if ((*it_list)->performed_by == entity) {
+			TaskQueue.remove((*it_list));
+		}
+		it_list++;
+	}
 }
 
 bool ctTaskManager::AddTask(Task * task)
 {
 	//TODO 3 Add the new task to the list
-	TaskQueue.push(task);
+	TaskQueue.push_back(task);
 
 	return true;
 }
@@ -482,7 +492,7 @@ bool ctTaskManager::DoTask()
 			if (TaskQueue.size() != 0)
 			{
 				aux_task = TaskQueue.front();
-				TaskQueue.pop();
+				TaskQueue.pop_front();
 			}
 			else 
 				aux_task = nullptr;

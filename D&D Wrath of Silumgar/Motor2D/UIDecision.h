@@ -34,7 +34,7 @@ public:
 
 	~UIDecision()
 	{
-		image_border->to_destroy = true;
+		//image_border->to_destroy = true;
 		//image_decision->to_destroy = true;
 		text_border->to_destroy = true;
 		text_decision->to_destroy = true;

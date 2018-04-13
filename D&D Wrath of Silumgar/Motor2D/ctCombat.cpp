@@ -772,23 +772,25 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 				}
 			}
 			break;
-		case KOBOLD: {
-			entity_to_perform_action->PerformAction();
-			
-			established_action = true;
-		}
-					 break;
+		case KOBOLD: 
 		case GNOLL:
+		case GNOLL_ARCHER:
+		case OWLBEAR:
 		{
-			entity_to_perform_action->PerformAction();
+			bool can_perform_action = true;
+			//todo do an action like IsStunned()
+			for (int i = 0; i < entity_to_perform_action->altered_stats.size(); i++)
+			{
+				if (entity_to_perform_action->altered_stats.at(i).stun)
+					can_perform_action = false;
+			}
+
+			if (can_perform_action)
+				entity_to_perform_action->PerformAction();
 
 			established_action = true;
 		}
 		break;
-		case GNOLL_ARCHER:
-			break;
-		case OWLBEAR:
-			break;
 		case MINIHEROES:
 		case NO_TYPE:
 			LOG("this should not happen");

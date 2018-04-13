@@ -109,12 +109,15 @@ protected:
 
 public:
 	ctAnimation* animation = nullptr;
+	ctAnimation* stun_animation = nullptr;
+
 	ctAnimation idle = ctAnimation();
 	ctAnimation run_forward = ctAnimation();
 	ctAnimation run_backward = ctAnimation();
 	ctAnimation attack = ctAnimation();
 	ctAnimation hit = ctAnimation();
 	ctAnimation death = ctAnimation();
+	ctAnimation stun = ctAnimation();
 
 	//custom animations
 	ctAnimation kick = ctAnimation();

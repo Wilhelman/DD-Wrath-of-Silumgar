@@ -295,6 +295,12 @@ bool PerformActionToEntity::Execute()
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
 
 						receiver_entity->Damaged();
+
+						Altered_Stat stun;
+						stun.stun = true;
+						stun.turn_left = 2;
+
+						receiver_entity->AddAlteredStat(stun);
 					}
 				}
 				else {//ACTIONER MISSES!
@@ -344,7 +350,7 @@ bool PerformActionToEntity::Execute()
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				//actioner_entity->Attack();  TODO DO THE KICK
-				actioner_entity->kick.Reset();
+				actioner_entity->high_axe.Reset();
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -369,6 +375,19 @@ bool PerformActionToEntity::Execute()
 							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
 							critical = true;
 						}
+						
+						//todo isStunned()
+						bool isStunned = false;
+						for (int i = 0; i < receiver_entity->altered_stats.size(); i++)
+						{
+							if (receiver_entity->altered_stats.at(i).stun) {
+								isStunned = true;
+								break;
+							}
+						}
+						if (isStunned)
+							damage_to_deal = damage_to_deal * 2;
+						//end todo
 						damage_to_deal = damage_to_deal - damage_reduction;
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 						receiver_entity->animation = &receiver_entity->hit;

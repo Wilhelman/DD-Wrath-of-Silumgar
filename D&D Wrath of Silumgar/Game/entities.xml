@@ -96,7 +96,7 @@
           <frame x="510" y="467" width="66" height="57"/>
         </animation>
 
-        <animation name="stun" speed="0.5" loop="false">
+        <animation name="stun" speed="0.05" loop="true">
           <frame x="163" y="493" width="60" height="17"/>
           <frame x="97" y="493" width="60" height="17"/>
           <frame x="29" y="493" width="60" height="17"/>
@@ -240,7 +240,7 @@
           <frame x="563" y="396" width="125" height="81"/>
         </animation>
 
-        <animation name="stun" speed="0.5" loop="false">
+        <animation name="stun" speed="0.05" loop="true">
           <frame x="228" y="438" width="60" height="17"/>
           <frame x="162" y="438" width="60" height="17"/>
           <frame x="94" y="438" width="60" height="17"/>

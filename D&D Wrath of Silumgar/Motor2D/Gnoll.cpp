@@ -42,6 +42,8 @@ Gnoll::Gnoll(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &hit);
 		else if (tmp == "death")
 			LoadAnimation(animations, &death);
+		else if (tmp == "stun")
+			LoadAnimation(animations, &stun);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

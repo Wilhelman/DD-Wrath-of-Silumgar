@@ -29,6 +29,7 @@ Entity::~Entity()
 void Entity::Draw()
 {
 	SDL_Rect r = animation->GetCurrentFrame();
+	
 
 	if (animation != nullptr) {
 		if (flip_texture == false)
@@ -37,6 +38,26 @@ void Entity::Draw()
 		App->render->Blit(texture, position.x, position.y - r.h, &(animation->GetCurrentFrame()), NULL,NULL,255, SDL_FLIP_HORIZONTAL);
 		}
 	}
+
+	/*stun todo better*/
+
+	if (stun_animation != nullptr) {
+		SDL_Rect a = stun_animation->GetCurrentFrame();
+		App->render->Blit(texture, (position.x + r.w / 2) - a.w/2, position.y - r.h, &(stun_animation->GetCurrentFrame()));
+	}
+
+	for (int i = 0; i < altered_stats.size(); i++)
+	{
+		if (altered_stats.at(i).stun) {
+			stun_animation = &stun;
+		}
+		else {
+			stun_animation = nullptr;
+		}
+	}
+
+
+	/*end stun*/
 
 	if (hit.Finished()) {
 		this->animation = &idle;
@@ -98,9 +119,10 @@ void Entity::NewTurn()
 {
 	for (int i = 0; i < altered_stats.size(); i++)
 	{
-		Altered_Stat stat = altered_stats.at(i);
-		stat.turn_left--;
-		if (stat.turn_left == 0) {
+		altered_stats.at(i).turn_left--;
+		if (altered_stats.at(i).turn_left == 0) {
+			if (altered_stats.at(i).stun)
+				stun_animation = nullptr;
 			altered_stats.erase(altered_stats.cbegin() + i);
 			altered_stats.shrink_to_fit();
 		}

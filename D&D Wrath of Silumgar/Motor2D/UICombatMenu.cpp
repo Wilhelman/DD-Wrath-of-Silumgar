@@ -562,14 +562,29 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 
 		//perform tasks!
 		//(*selected_enemy)
-		App->task_manager->AddTask(new MoveToEntity(entity, (*selected_enemy), -20));
 		if (attack_label->current_state == STATE_EXECUTED) {
+			App->task_manager->AddTask(new MoveToEntity(entity, (*selected_enemy), -20));
 			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->default_attack, (*selected_enemy)));
+			App->task_manager->AddTask(new MoveToInitialPosition(entity));
 		}
 		else if(abilities_label->current_state == STATE_EXECUTED && entity->abilities.size() != 0){
-			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(names_iterator), (*selected_enemy)));
+			if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator).mana_points_effect_to_himself) {
+				App->task_manager->AddTask(new MoveToEntity(entity, (*selected_enemy), -20));
+				App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(names_iterator), (*selected_enemy)));
+				App->task_manager->AddTask(new MoveToInitialPosition(entity));
+			}
+			else{
+				selected_enemy = App->combat->enemies.begin();
+				App->gui->DeleteUIElement(*enemy_select_arrow);
+				enemy_select_arrow = nullptr;
+				selecting_enemy = false;
+				for (int i = 0; i < current_vector.size(); i++) {
+					if (current_vector.at(i)->current_state == STATE_EXECUTED) {
+						current_vector.at(i)->current_state = STATE_FOCUSED;
+					}
+				}
+			}
 		}
-		App->task_manager->AddTask(new MoveToInitialPosition(entity));
 	}
 
 

@@ -17,7 +17,8 @@ enum TierList
 {
 	TIER_MAP_0,
 	TIER_MAP_1,
-	TIER_MAP_2
+	TIER_MAP_2,
+	TIER_MAP_3,
 };
 
 

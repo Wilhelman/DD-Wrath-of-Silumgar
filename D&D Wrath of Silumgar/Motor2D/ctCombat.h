@@ -139,7 +139,8 @@ private:
 	//END IA STUFF
 
 	std::vector<UIBar*> enemies_bars;
-
+public:
+	bool condition_victory = true;
 };
 
 

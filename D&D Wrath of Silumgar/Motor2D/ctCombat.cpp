@@ -155,6 +155,7 @@ bool ctCombat::Update(float dt)
 
 			if (turn_priority_entity.size() == 0) { //all heroes are dead!
 				LOG("All heroes are dead!");
+				condition_victory = false;
 				if (App->fadeToBlack->FadeIsOver())
 					App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 			}

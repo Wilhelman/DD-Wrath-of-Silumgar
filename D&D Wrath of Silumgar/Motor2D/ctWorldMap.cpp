@@ -9,6 +9,7 @@
 #include "ctEntities.h"
 #include "ctTaskManager.h"
 #include "j1Map.h"
+#include "ctMainMenu.h"
 
 #include "ctWorldMap.h"
 #include "ctCombat.h"
@@ -126,7 +127,19 @@ bool ctWorldMap::Start()
 		App->map->actual_tier = TierList::TIER_MAP_2;
 		break;
 	case TIER_MAP_2:
+		App->map->actual_tier = TierList::TIER_MAP_3;
 		break;
+	case TIER_MAP_3:
+		break;
+	}
+
+	if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
+	{
+		App->gui->AddUIVerticalSliceInfo(30, 30, App->combat->condition_victory, this, nullptr);
+	}
+	if (App->combat->condition_victory == false)
+	{
+		App->gui->AddUIVerticalSliceInfo(30, 30, App->combat->condition_victory, this, nullptr);
 	}
 	//Decision call example
 
@@ -205,6 +218,19 @@ bool ctWorldMap::Update(float dt)
 		App->combat->entities_to_spawn = tmp_map_element->entities;
 
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat,1.0f);
+
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+
+		if (App->combat->condition_victory == true)
+		{
+			App->fadeToBlack->FadeToBlackBetweenModules(this,App->main_menu,1.0f);
+		}
+		else if (App->combat->condition_victory == false)
+		{
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+		}
 
 	}
 

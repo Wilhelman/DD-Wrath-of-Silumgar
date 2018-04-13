@@ -867,48 +867,51 @@ UIBar* ctCombat::GetUIBarFromEntity(Entity* entity) {
 }
 
 void ctCombat::SelectWithPreviousHeroe() {
-	//std::vector<Entity*> auxiliar_vector;
-	//std::vector<Entity*>::const_iterator it_vector = heroes.begin();
-	//while (it_vector != heroes.end()) {
-	//	if ((*it_vector) == combat_menu->entity) {
-	//		if (it_vector != heroes.begin()) {
-	//			making_decision = false;
-	//			it_vector--;
-	//			while ((*it_vector)->GetCurrentHealthPoints()<=0) {
-	//				if (it_vector != heroes.begin()) {
-	//					it_vector--;
-	//				}
-	//			}
-	//			if ((*it_vector)->type == ELF) {
-	//				App->gui->DeleteUIElement(*ready_elf);
-	//				ready_elf = nullptr;
-	//			}
-	//			else if ((*it_vector)->type == CLERIC) {
-	//				App->gui->DeleteUIElement(*ready_cleric);
-	//				ready_elf = nullptr;
-	//			}
-	//			else if ((*it_vector)->type == DWARF) {
-	//				App->gui->DeleteUIElement(*ready_dwarf);
-	//				ready_elf = nullptr;
-	//			}
-	//			else if ((*it_vector)->type == WARRIOR) {
-	//				App->gui->DeleteUIElement(*ready_warrior);
-	//				ready_elf = nullptr;
-	//			}
-	//			App->gui->DeleteUIElement(*combat_menu);
-	//			auxiliar_vector.push_back((*it_vector));
-	//			std::vector<Entity*>::const_iterator it_vector2 = turn_priority_entity.begin();
-	//			while (it_vector2 != turn_priority_entity.end()) {
-	//				auxiliar_vector.push_back((*it_vector2));
-	//				it_vector2++;
-	//			}
-	//			turn_priority_entity = auxiliar_vector;
-	//			break;
-	//		}
-	//		break;
-	//	}
-	//	else {
-	//		it_vector++;
-	//	}
-	//}
+	std::vector<Entity*> auxiliar_vector;
+	std::vector<Entity*>::const_iterator it_vector = heroes.begin();
+	while (it_vector != heroes.end()) {
+		if ((*it_vector) == combat_menu->entity) {
+			if (it_vector != heroes.begin()) {
+				making_decision = false;
+				it_vector--;
+				while ((*it_vector)->GetCurrentHealthPoints()<=0) {
+					if (it_vector != heroes.begin()) {
+						it_vector--;
+					}
+					else {
+						it_vector = heroes.end();
+					}
+				}
+				if ((*it_vector)->type == ELF) {
+					App->gui->DeleteUIElement(*ready_elf);
+					ready_elf = nullptr;
+				}
+				else if ((*it_vector)->type == CLERIC) {
+					App->gui->DeleteUIElement(*ready_cleric);
+					ready_elf = nullptr;
+				}
+				else if ((*it_vector)->type == DWARF) {
+					App->gui->DeleteUIElement(*ready_dwarf);
+					ready_elf = nullptr;
+				}
+				else if ((*it_vector)->type == WARRIOR) {
+					App->gui->DeleteUIElement(*ready_warrior);
+					ready_elf = nullptr;
+				}
+				App->gui->DeleteUIElement(*combat_menu);
+				auxiliar_vector.push_back((*it_vector));
+				std::vector<Entity*>::const_iterator it_vector2 = turn_priority_entity.begin();
+				while (it_vector2 != turn_priority_entity.end()) {
+					auxiliar_vector.push_back((*it_vector2));
+					it_vector2++;
+				}
+				turn_priority_entity = auxiliar_vector;
+				break;
+			}
+			break;
+		}
+		else {
+			it_vector++;
+		}
+	}
 }

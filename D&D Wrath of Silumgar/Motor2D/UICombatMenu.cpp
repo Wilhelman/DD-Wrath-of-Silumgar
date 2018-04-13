@@ -608,7 +608,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 	//	App->audio->PlayFx(combat_menu_move_fx);
 	//}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 1000) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500) {
 		App->gui->DeleteUIElement(*arrow);
 		arrow = nullptr;
 		App->gui->DeleteUIElement(*background);

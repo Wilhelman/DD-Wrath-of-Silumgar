@@ -456,6 +456,14 @@ void ctTaskManager::PerformAllTheTasks()
 	}
 }
 
+void ctTaskManager::DeleteTasksFromEntity(Entity * entity)
+{
+	for (int i = 0; i < TaskQueue.size(); i++)
+	{
+		if(TaskQueue.)
+	}
+}
+
 bool ctTaskManager::AddTask(Task * task)
 {
 	//TODO 3 Add the new task to the list

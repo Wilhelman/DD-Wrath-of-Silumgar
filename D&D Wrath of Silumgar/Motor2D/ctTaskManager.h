@@ -21,6 +21,8 @@ public:
 	virtual ~Task() {};
 	virtual bool Execute() { return true; };
 
+	Entity* performed_by = nullptr;
+
 private:
 
 };
@@ -36,6 +38,8 @@ public:
 	bool CleanUp();
 
 	void PerformAllTheTasks();
+
+	void DeleteTasksFromEntity(Entity* entity);
 
 	bool TaskOrderer();
 	bool AddTask(Task* task);
@@ -71,6 +75,7 @@ public:
 		this->entity_to_move = entity_to_move;
 		this->entity_to_go = entity_to_go;
 		this->offset = offset;
+		performed_by = entity_to_move;
 	};
 	~MoveToEntity() {};
 
@@ -86,6 +91,7 @@ class MoveToInitialPosition : public Task
 public:
 	MoveToInitialPosition(Entity* entity_to_move) {
 		this->entity_to_move = entity_to_move;
+		performed_by = entity_to_move;
 	};
 	~MoveToInitialPosition() {};
 
@@ -101,6 +107,7 @@ public:
 		this->actioner_entity = actioner_entity;
 		this->action_to_perform = action_to_perform;
 		this->receiver_entity = receiver_entity;
+		performed_by = actioner_entity;
 	};
 	virtual  ~PerformActionToEntity() {};
 

@@ -154,25 +154,29 @@ bool ctCombat::Update(float dt)
 
 			if (turn_priority_entity.size() == 0) { //all heroes are dead!
 				LOG("All heroes are dead!");
-				//todo go to game over screen or main menu screen.
+				if (App->fadeToBlack->FadeIsOver())
+					App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 			}
 			else 
 				current_entities = turn_priority_entity.size();
 
-			for (std::vector<Entity *>::iterator it_enemy = enemies.begin(); it_enemy != enemies.end(); ++it_enemy) {
-				if ((*it_enemy)->GetCurrentHealthPoints()>0)
-					turn_priority_entity.push_back(*it_enemy);
-			}
+			if (App->fadeToBlack->FadeIsOver()) {
+				for (std::vector<Entity *>::iterator it_enemy = enemies.begin(); it_enemy != enemies.end(); ++it_enemy) {
+					if ((*it_enemy)->GetCurrentHealthPoints()>0)
+						turn_priority_entity.push_back(*it_enemy);
+				}
 
-			if (turn_priority_entity.size() == current_entities) { //all enemies are dead!
-				LOG("All enemies are dead!");
-				App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
-			}
+				if (turn_priority_entity.size() == current_entities) { //all enemies are dead!
+					LOG("All enemies are dead!");
+					if (App->fadeToBlack->FadeIsOver())
+						App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+				}
 
-			OrderTurnPriority();
-			for (int i = 0; i < App->entities->entities.size(); i++)
-			{
-				App->entities->entities.at(i)->NewTurn();
+				OrderTurnPriority();
+				for (int i = 0; i < App->entities->entities.size(); i++)
+				{
+					App->entities->entities.at(i)->NewTurn();
+				}
 			}
 
 		}
@@ -873,6 +877,7 @@ UIBar* ctCombat::GetUIBarFromEntity(Entity* entity) {
 }
 
 void ctCombat::SelectWithPreviousHeroe() {
+
 	std::vector<Entity*> auxiliar_vector;
 	std::vector<Entity*>::const_iterator it_vector = heroes.begin();
 	while (it_vector != heroes.end()) {
@@ -911,6 +916,7 @@ void ctCombat::SelectWithPreviousHeroe() {
 					auxiliar_vector.push_back((*it_vector2));
 					it_vector2++;
 				}
+				//it_vector
 				turn_priority_entity = auxiliar_vector;
 				break;
 			}

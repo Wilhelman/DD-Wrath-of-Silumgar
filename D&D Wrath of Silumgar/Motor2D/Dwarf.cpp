@@ -24,6 +24,7 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 	death_fx = App->audio->LoadFx(node->child("sounds").attribute("death_fx").as_string());
 	damaged_fx = App->audio->LoadFx(node->child("sounds").attribute("damaged_fx").as_string());
 	run_fx = App->audio->LoadFx(node->child("sounds").attribute("run_fx").as_string());
+	ability_1_fx = App->audio->LoadFx(node->child("sounds").attribute("ability_1_fx").as_string());
 	//todo get the stats
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
@@ -109,4 +110,7 @@ void  Dwarf::Run() {
 }
 void  Dwarf::Damaged() {
 	App->audio->PlayFx(damaged_fx, 0);
+}
+void  Dwarf::Ability1() {
+	App->audio->PlayFx(ability_1_fx, 0);
 }

@@ -23,6 +23,7 @@ Entity::~Entity()
 	App->audio->UnLoadFx(run_fx);
 	App->audio->UnLoadFx(death_fx);
 	App->audio->UnLoadFx(damaged_fx);
+	App->audio->UnLoadFx(ability_1_fx);
 	
 }
 

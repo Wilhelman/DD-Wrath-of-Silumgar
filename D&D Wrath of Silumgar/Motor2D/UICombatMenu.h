@@ -74,11 +74,13 @@ public:
 	void GoBack();
 
 	void SelectEnemy(std::vector<UIElement*> &current_vector);
+	void SelectAlly(std::vector<UIElement*> &current_vector);
 
 	void ChangeExplanation(std::vector<UIElement*> &current_vector);
 
 private:
 	std::vector<Entity*>::const_iterator selected_enemy;
+	std::vector<Entity*>::const_iterator selected_ally;
 	ctPerfTimer execute_comand_time;
 };
 

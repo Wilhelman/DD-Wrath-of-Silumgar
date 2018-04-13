@@ -23,7 +23,7 @@
 		<heroe name="dwarf">
 			<values health_points="91" mana_points="52" />
 			<skills>
-				<skill name="Double Ax" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="20" health_points_effect="-17"/>
+				<skill name="Double Ax" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="20" health_points_effect="-17" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />

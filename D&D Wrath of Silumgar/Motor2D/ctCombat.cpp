@@ -883,7 +883,7 @@ void ctCombat::SelectWithPreviousHeroe() {
 						it_vector--;
 					}
 					else {
-						it_vector = heroes.end();
+						break;
 					}
 				}
 				if ((*it_vector)->type == ELF) {

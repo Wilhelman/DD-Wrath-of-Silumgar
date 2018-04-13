@@ -11,6 +11,7 @@
 
 struct Entity;
 struct Action;
+struct 	ctPerfTimer;
 
 class UICombatMenu : public UIElement
 {
@@ -78,6 +79,7 @@ public:
 
 private:
 	std::vector<Entity*>::const_iterator selected_enemy;
+	ctPerfTimer execute_comand_time;
 };
 
 #endif //__UICOMBATMENU_H__

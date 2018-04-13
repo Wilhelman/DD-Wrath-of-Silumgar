@@ -6,6 +6,7 @@
 #include "ctCombat.h"
 #include "Entity.h"
 #include "ctTaskManager.h"
+#include "ctPerfTimer.h"
 
 UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
@@ -117,6 +118,7 @@ void UICombatMenu::Update()
 	//Execute
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false) {
 		App->audio->PlayFx(combat_menu_select_fx);
+		execute_comand_time.Start();
 		if (main_labels.size() != 0) {
 			ExecuteComand(main_labels);
 		}
@@ -606,7 +608,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 	//	App->audio->PlayFx(combat_menu_move_fx);
 	//}
 
-	if (App->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 1000) {
 		App->gui->DeleteUIElement(*arrow);
 		arrow = nullptr;
 		App->gui->DeleteUIElement(*background);

@@ -170,6 +170,7 @@ bool ctCombat::Update(float dt)
 			}
 
 			OrderTurnPriority();
+
 		}
 	}
 	else {
@@ -179,7 +180,6 @@ bool ctCombat::Update(float dt)
 			
 			turn_priority_entity.erase(turn_priority_entity.cbegin());
 			turn_priority_entity.shrink_to_fit();
-
 
 		}
 	}

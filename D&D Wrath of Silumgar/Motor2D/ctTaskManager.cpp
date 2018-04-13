@@ -124,6 +124,12 @@ bool MoveToInitialPosition::Execute()
 	}
 	else
 		ret = true;
+
+	//todo check this
+	if (ret) {
+		App->combat->draw_turn_priority_entity.erase(App->combat->draw_turn_priority_entity.cbegin());
+		App->combat->draw_turn_priority_entity.shrink_to_fit();
+	}
 	
 
 	return ret;

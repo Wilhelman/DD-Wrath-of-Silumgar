@@ -94,6 +94,24 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 	return ret;
 }
 
+void Entity::NewTurn()
+{
+	for (int i = 0; i < altered_stats.size(); i++)
+	{
+		Altered_Stat stat = altered_stats.at(i);
+		stat.turn_left--;
+		if (stat.turn_left == 0) {
+			altered_stats.erase(altered_stats.cbegin() + i);
+			altered_stats.shrink_to_fit();
+		}
+	}
+}
+
+void Entity::AddAlteredStat(Altered_Stat new_altered_stat)
+{
+	altered_stats.push_back(new_altered_stat);
+}
+
 int Entity::GetCurrentHealthPoints()
 {
 	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper

@@ -24,7 +24,7 @@ struct Stats {
 	int base_judgement = 0u;
 };
 
-struct Altered_Stats {
+struct Altered_Stat {
 	uint turn_left = 0u;
 
 	bool stun = false;
@@ -136,6 +136,7 @@ public:
 	Action default_attack;
 
 	std::vector<Action> abilities;
+	std::vector<Altered_Stat> altered_stats;
 
 	//Sounds stuff
 	uint attack_fx = 0u;
@@ -161,7 +162,13 @@ public:
 	virtual void Death() {};
 	virtual void Damaged() {};
 
+	//Combat stuff
+
+	virtual void NewTurn();
+
 	virtual void PerformAction() {};
+
+	void AddAlteredStat(Altered_Stat new_altered_stat);
 
 	int GetCurrentHealthPoints();
 	int GetCurrentManaPoints();

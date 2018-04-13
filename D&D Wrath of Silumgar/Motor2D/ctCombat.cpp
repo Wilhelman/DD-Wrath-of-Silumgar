@@ -170,6 +170,10 @@ bool ctCombat::Update(float dt)
 			}
 
 			OrderTurnPriority();
+			for (int i = 0; i < App->entities->entities.size(); i++)
+			{
+				App->entities->entities.at(i)->NewTurn();
+			}
 
 		}
 	}

@@ -4,6 +4,7 @@
 #include "ctInput.h"
 #include "ctCombat.h"
 
+
 //randomize libs
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
@@ -175,7 +176,7 @@ bool PerformActionToEntity::Execute()
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->Attack();
+				//actioner_entity->Attack();
 				actioner_entity->attack.Reset();
 				//actioner_entity->animation = &actioner_entity->idle;
 
@@ -219,6 +220,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,255,0,255 }, 14, nullptr, nullptr);
 				}
 				//todo animate the receiver to hit + audio or smth
+				actioner_entity->Attack();
 				
 				
 			}
@@ -307,7 +309,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,255,0,255 }, 14, nullptr, nullptr);
 				}
 				//todo animate the receiver to hit + audio or smth
-
+				actioner_entity->Ability1();
 
 			}
 		}
@@ -405,7 +407,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,255,0,255 }, 14, nullptr, nullptr);
 				}
 				//todo animate the receiver to hit + audio or smth
-
+				actioner_entity->Ability1();
 
 			}
 		}

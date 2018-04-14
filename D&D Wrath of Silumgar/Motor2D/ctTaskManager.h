@@ -69,6 +69,21 @@ public:
 
 };
 
+class MoveAvatarsToPosition : public Task
+{
+public:
+	MoveAvatarsToPosition(Entity* entity_to_move,iPoint position_to_go) {
+		this->entity_to_move = entity_to_move;
+		this->position_to_go = position_to_go;
+	};
+	~MoveAvatarsToPosition() {};
+
+	bool Execute();
+private:
+	Entity* entity_to_move = nullptr;
+	iPoint position_to_go = { 0,0 };
+};
+
 
 class MoveToEntity : public Task
 {

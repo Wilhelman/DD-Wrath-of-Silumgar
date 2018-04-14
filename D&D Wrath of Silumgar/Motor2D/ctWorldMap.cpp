@@ -358,14 +358,16 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 		{
 			if (decision->options[0]->current_state == STATE_FOCUSED)
 			{
-				avatar->position.x += 40, avatar->position.y += 20;
-				App->map->sceneName = "forest.tmx";
+				App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(2)->coords_in_map.x, final_map_elements.at(2)->coords_in_map.y)));
+				App->map->sceneName = "cave_03.tmx";
 			}
 			else
 			{
-				avatar->position.x += 40, avatar->position.y -= 20;
-				App->map->sceneName = "cave_03.tmx";
+				App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(1)->coords_in_map.x, final_map_elements.at(1)->coords_in_map.y)));
+				App->map->sceneName = "forest.tmx"; 
 			}
+
+			App->task_manager->PerformAllTheTasks();
 
 			decision->to_destroy = true;
 		}
@@ -430,7 +432,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 			random_number = rand() % tier_2_vec.size();
 		last_random = random_number;
 
-		tier_2_vec.at(random_number)->coords_in_map = App->map->tier_2_coords.at(i);
+		tier_2_vec.at(i)->coords_in_map = App->map->tier_2_coords.at(i);
 
 		final_map_elements.push_back(tier_2_vec.at(random_number));
 	}

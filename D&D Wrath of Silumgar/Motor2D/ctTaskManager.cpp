@@ -595,3 +595,45 @@ bool ctTaskManager::TaskOrderer()
 	
 	return true;
 }
+
+bool MoveAvatarsToPosition::Execute()
+{
+	bool ret = false;
+
+
+	if (((entity_to_move->position.x + 10) >= position_to_go.x && (entity_to_move->position.x - 10) <= position_to_go.x) && ((entity_to_move->position.y + 10) >= position_to_go.y && (entity_to_move->position.y - 10) <= position_to_go.y))
+	{
+		//entity_to_move->animation = &entity_to_move->idle;
+		ret = true;
+	}
+	else {
+		if (entity_to_move->position.x < position_to_go.x)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.x += BASE_SPEED;
+		}
+
+		else if (entity_to_move->position.x > position_to_go.x)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.x -= BASE_SPEED;
+		}
+
+		if (entity_to_move->position.y < position_to_go.y)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.y += BASE_SPEED;
+		}
+
+		else if (entity_to_move->position.y > position_to_go.y)
+		{
+			entity_to_move->animation = &entity_to_move->run_forward;
+			entity_to_move->position.y -= BASE_SPEED;
+		}
+	}
+
+
+
+
+	return ret;
+}

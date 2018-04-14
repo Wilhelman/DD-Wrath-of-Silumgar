@@ -38,8 +38,8 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
-	uint music_volume_value = 64;
-	uint fx_volume_value = 64;
+	uint music_volume_value = 24;
+	uint fx_volume_value = 10;
 
 private:
 	bool quit_pressed = false;

@@ -180,6 +180,17 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->attack.Reset();
 				//actioner_entity->animation = &actioner_entity->idle;
 
+				//todo isStunned()
+				bool isStunned = false;
+				for (int i = 0; i < receiver_entity->altered_stats.size(); i++)
+				{
+					if (receiver_entity->altered_stats.at(i).stun) {
+						isStunned = true;
+						break;
+					}
+				}
+				//end todo
+
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
@@ -188,7 +199,7 @@ bool PerformActionToEntity::Execute()
 					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
 					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility) {// THE RECEIVER DODGES THE ATTACK
+					if (random_thousand_faces_die <= receiver_agility && !isStunned) {// THE RECEIVER DODGES THE ATTACK
 						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 0,255,0,255 }, 14, nullptr, nullptr);
 					}
 					else {// THE ATTACK HITS
@@ -263,11 +274,22 @@ bool PerformActionToEntity::Execute()
 				//actioner_entity->Attack();  TODO DO THE KICK
 				actioner_entity->kick.Reset();
 
+				//todo isStunned()
+				bool isStunned = false;
+				for (int i = 0; i < receiver_entity->altered_stats.size(); i++)
+				{
+					if (receiver_entity->altered_stats.at(i).stun) {
+						isStunned = true;
+						break;
+					}
+				}
+				//end todo
+
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 
-				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
+				if (random_thousand_faces_die <= actioner_dexterity && !isStunned) {// THE ACTIONER HITS THE RECEIVER
 					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
 					random_thousand_faces_die = (rand() % 100) + 1;
@@ -351,6 +373,17 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
+				//todo isStunned()
+				bool isStunned = false;
+				for (int i = 0; i < receiver_entity->altered_stats.size(); i++)
+				{
+					if (receiver_entity->altered_stats.at(i).stun) {
+						isStunned = true;
+						break;
+					}
+				}
+				//end todo
+
 				//actioner_entity->Attack();  TODO DO THE KICK
 				actioner_entity->high_axe.Reset();
 
@@ -358,11 +391,11 @@ bool PerformActionToEntity::Execute()
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 
-				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
+				if (random_thousand_faces_die <= actioner_dexterity || isStunned) {// THE ACTIONER HITS THE RECEIVER
 					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
 					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility) {// THE RECEIVER DODGES THE ATTACK
+					if (random_thousand_faces_die <= receiver_agility && !isStunned) {// THE RECEIVER DODGES THE ATTACK
 						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
 					}
 					else {// THE ATTACK HITS
@@ -378,18 +411,9 @@ bool PerformActionToEntity::Execute()
 							critical = true;
 						}
 						
-						//todo isStunned()
-						bool isStunned = false;
-						for (int i = 0; i < receiver_entity->altered_stats.size(); i++)
-						{
-							if (receiver_entity->altered_stats.at(i).stun) {
-								isStunned = true;
-								break;
-							}
-						}
 						if (isStunned)
 							damage_to_deal = damage_to_deal * 2;
-						//end todo
+						
 						damage_to_deal = damage_to_deal - damage_reduction;
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 						receiver_entity->animation = &receiver_entity->hit;

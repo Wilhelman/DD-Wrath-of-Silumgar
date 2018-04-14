@@ -517,7 +517,7 @@
           <frame x="514" y="1283" width="145" height="78"/>
         </animation>
 
-        <animation name="heal" speed="0.5" loop="false">
+        <animation name="heal" speed="0.05" loop="false">
           <frame x="696" y="2741" width="90" height="112"/>
           <frame x="536" y="2741" width="90" height="112"/>
           <frame x="397" y="2741" width="90" height="112"/>

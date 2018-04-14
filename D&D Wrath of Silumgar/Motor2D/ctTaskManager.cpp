@@ -363,7 +363,7 @@ bool PerformActionToEntity::Execute()
 
 					random_thousand_faces_die = (rand() % 100) + 1;
 					if (random_thousand_faces_die <= receiver_agility) {// THE RECEIVER DODGES THE ATTACK
-						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 0,255,0,255 }, 14, nullptr, nullptr);
+						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
 					}
 					else {// THE ATTACK HITS
 
@@ -404,7 +404,7 @@ bool PerformActionToEntity::Execute()
 					}
 				}
 				else {//ACTIONER MISSES!
-					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,255,0,255 }, 14, nullptr, nullptr);
+					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//todo animate the receiver to hit + audio or smth
 				actioner_entity->Ability1();
@@ -412,6 +412,52 @@ bool PerformActionToEntity::Execute()
 			}
 		}
 		break;
+		case HEAL: {
+
+			//todo esta comprobacion en todas
+			if (receiver_entity->GetCurrentHealthPoints() == 0) {
+				
+				for (int i = 0; i < App->combat->heroes.size(); i++)
+				{
+					receiver_entity = App->combat->heroes.at(i);
+					if (receiver_entity->GetCurrentHealthPoints() != 0)
+						break;
+				}
+				if (receiver_entity->GetCurrentHealthPoints() == 0)
+					return true;
+				
+			}
+
+			actioner_entity->animation = &actioner_entity->heal;
+
+
+
+			ret = actioner_entity->animation->Finished();
+
+			if (ret == true) {
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
+				actioner_entity->heal.Reset();
+
+				bool critical = false;
+
+				int damage_to_deal = action_to_perform.health_points_effect;
+
+				damage_to_deal = damage_to_deal;
+				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
+				receiver_entity->animation = &receiver_entity->hit;
+				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+				std::string tmp_dmg = std::to_string(damage_to_deal);
+
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 0,255,0,255 }, 14, nullptr, nullptr);
+				
+				//receiver_entity->Damaged();
+
+			}
+		}
+					   break;
 		default:
 			break;
 		}

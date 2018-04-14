@@ -12,12 +12,12 @@ UIVerticalSliceInfo:: UIVerticalSliceInfo(int x, int y,bool overcome,ctModule* c
 	if (overcome == true)
 	{
 		congratulations = App->gui->AddUITextBox(x+20, y+20, 15, 200, "CONGRATULATIONS!!", {255,255,255,255},this, Second_Font);
-		text = App->gui->AddUITextBox(x+20,y+50, 12,320,"You have managed to overcome the first part of this adventure. We hope you have enjoyed this gameplay. Thanks for playing and we hope to see you soon.", { 255,255,255,255 }, this, Second_Font);
+		text = App->gui->AddUITextBox(x+20,y+50, 12,320,"You have managed to overcome the first part of this adventure. We hope you've enjoyed this gameplay. Thanks for playing and we hope to see you soon.", { 255,255,255,255 }, this, Second_Font);
 	}
 	else if (overcome == false)
 	{
 		congratulations = App->gui->AddUITextBox(x + 20, y + 20, 15, 200, "TRY AGAIN!!", { 255,255,255,255 }, this, Second_Font);
-		text = App->gui->AddUITextBox(x + 20, y + 50, 12, 320, "Your efforts have not been enough to defeat Lich's troops, try again!.", { 255,255,255,255 }, this, Second_Font);
+		text = App->gui->AddUITextBox(x + 20, y + 50, 12, 320, "Your efforts have not been enough to defeat Lich's troops, try again!", { 255,255,255,255 }, this, Second_Font);
 	}
 
 	

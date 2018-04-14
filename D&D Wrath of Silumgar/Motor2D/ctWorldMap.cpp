@@ -135,20 +135,33 @@ bool ctWorldMap::Start()
 
 	if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
 	{
-		App->gui->AddUIVerticalSliceInfo(30, 30, App->combat->condition_victory, this, nullptr);
+		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
+		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
+		App->gui->AddUIVerticalSliceInfo(xE, yE, App->combat->condition_victory, this, nullptr);
 	}
-	if (App->combat->condition_victory == false)
+	else if (App->combat->condition_victory == false)
 	{
-		App->gui->AddUIVerticalSliceInfo(30, 30, App->combat->condition_victory, this, nullptr);
+		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
+		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
+		App->gui->AddUIVerticalSliceInfo(xE, yE,App->combat->condition_victory, this, nullptr);
 	}
 	//Decision call example
 
 	if (App->map->actual_tier == TierList::TIER_MAP_2)
 	{
+		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
+		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
+		elf_level_up = App->gui->AddUILevelUpInfo(xE, yE, ELF, this, nullptr);
+		warrior_level_up = App->gui->AddUILevelUpInfo(xE, yE, WARRIOR, this, nullptr);
+		dwarf_level_up = App->gui->AddUILevelUpInfo(xE, yE, DWARF, this, nullptr);
+		cleric_level_up = App->gui->AddUILevelUpInfo(xE, yE, CLERIC, this, nullptr);
+	}
+	/*if (App->map->actual_tier == TierList::TIER_MAP_2)
+	{
 		decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this); 
 		(*options.rbegin())->current_state = STATE_FOCUSED;
 		arrow->SetParent(*options.rbegin());
-	}
+	}*/
 	
 
 	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 05 The Journey (Stage 1).ogg", -1)) {
@@ -178,38 +191,39 @@ bool ctWorldMap::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
 		App->audio->PlayFx(walk_fx,3); //TODO Change if we dont move at the same time we press 1
 		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y - 20 }));
-		elf_level_up = App->gui->AddUILevelUpInfo(30, 10, ELF, this, nullptr);
-	}
-
-	else if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
 		
-		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y + 20 }));
+	}
+
+	else if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
 		
-		warrior_level_up = App->gui->AddUILevelUpInfo(30,10,WARRIOR,this,nullptr);
-	}
-	else if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN) {
-
-		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y + 20 }));
-		dwarf_level_up = App->gui->AddUILevelUpInfo(30, 10, DWARF, this, nullptr);
-	}
-	else if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN) {
-
-		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y + 20 }));
-		cleric_level_up = App->gui->AddUILevelUpInfo(30, 10, CLERIC, this, nullptr);
-	}
-	else if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN) {
-
-		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y + 20 }));
-		if (cleric_level_up != nullptr && dwarf_level_up != nullptr && warrior_level_up != nullptr && elf_level_up != nullptr)
+		if (cleric_level_up != nullptr)
 		{
-			cleric_level_up->~UIElement();
-			dwarf_level_up->~UIElement();
-			warrior_level_up->~UIElement();
-			elf_level_up->~UIElement();
+			cleric_level_up->to_destroy = true;
+			cleric_level_up = nullptr;
+		}
+		else if (cleric_level_up == nullptr && dwarf_level_up != nullptr)
+		{
+			dwarf_level_up->to_destroy = true;
+			dwarf_level_up = nullptr;
+		}
+		else if (dwarf_level_up == nullptr && warrior_level_up != nullptr)
+		{
+			warrior_level_up->to_destroy = true;
+			warrior_level_up = nullptr;
+		}
+		else if (warrior_level_up == nullptr && elf_level_up != nullptr)
+		{
+			elf_level_up->to_destroy = true;
+			elf_level_up = nullptr;
+
+			decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this);
+			(*options.rbegin())->current_state = STATE_FOCUSED;
+			arrow->SetParent(*options.rbegin());
 		}
 		
+		
 	}
-
+	
 	if ((App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() ) {
 
 		WorldMapElement* tmp_map_element = final_map_elements.back();

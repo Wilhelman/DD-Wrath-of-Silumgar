@@ -591,28 +591,32 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
 		App->audio->PlayFx(combat_menu_move_fx);
 	}
-	//if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
-	//	if (selected_enemy != App->combat->enemies.begin()) {
-	//		selected_enemy--;
-	//	}
-	//	//if (selected_enemy == app->combat->enemies.begin()) {
-	//	//	selected_enemy = app->combat->enemies.end();
-	//	//}
-	//	while ((*selected_enemy)->GetCurrentHealthPoints() <= 0) {
-	//		if (selected_enemy != App->combat->enemies.begin()) {
-	//			selected_enemy--;
-	//		}
-	//		else {
-	//			selected_enemy = App->combat->enemies.end();
-	//		}
-	//	}
-	//	if (enemy_select_arrow != nullptr) {
-	//		App->gui->DeleteUIElement(*enemy_select_arrow);
-	//		enemy_select_arrow = nullptr;
-	//	}
-	//	enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
-	//	App->audio->PlayFx(combat_menu_move_fx);
-	//}
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+		if (selected_enemy != App->combat->enemies.begin()-1) {
+			selected_enemy--;
+		}
+		if (selected_enemy == App->combat->enemies.begin()-1) {
+			while (selected_enemy != App->combat->enemies.end()-1) {
+				selected_enemy++;
+			}
+		}
+		while ((*selected_enemy)->GetCurrentHealthPoints() <= 0) {
+			if (selected_enemy != App->combat->enemies.begin()) {
+				selected_enemy--;
+			}
+			else {
+				while (selected_enemy != App->combat->enemies.end() - 1) {
+					selected_enemy++;
+				}
+			}
+		}
+		if (enemy_select_arrow != nullptr) {
+			App->gui->DeleteUIElement(*enemy_select_arrow);
+			enemy_select_arrow = nullptr;
+		}
+		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		App->audio->PlayFx(combat_menu_move_fx);
+	}
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500) {
 		App->gui->DeleteUIElement(*arrow);
@@ -710,28 +714,32 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
 		App->audio->PlayFx(combat_menu_move_fx);
 	}
-	//if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
-	//	if (selected_ally != App->combat->heroes.begin()) {
-	//		selected_ally--;
-	//	}
-	//	//if (selected_ally == app->combat->heroes.begin()) {
-	//	//	selected_ally = app->combat->heroes.end();
-	//	//}
-	//	while ((*selected_ally)->GetCurrentHealthPoints() <= 0) {
-	//		if (selected_ally != App->combat->heroes.begin()) {
-	//			selected_ally--;
-	//		}
-	//		else {
-	//			selected_ally = App->combat->heroes.end();
-	//		}
-	//	}
-	//	if (enemy_select_arrow != nullptr) {
-	//		App->gui->DeleteUIElement(*enemy_select_arrow);
-	//		enemy_select_arrow = nullptr;
-	//	}
-	//	enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
-	//	App->audio->PlayFx(combat_menu_move_fx);
-	//}
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+		if (selected_ally != App->combat->heroes.begin()-1) {
+			selected_ally--;
+		}
+		if (selected_ally == App->combat->heroes.begin()-1) {
+			while (selected_ally != App->combat->heroes.end()-1) {
+				selected_ally++;
+			}
+		}
+		while ((*selected_ally)->GetCurrentHealthPoints() <= 0) {
+			if (selected_ally != App->combat->heroes.begin()) {
+				selected_ally--;
+			}
+			else {
+				while (selected_ally != App->combat->heroes.end() - 1) {
+					selected_ally++;
+				}
+			}
+		}
+		if (enemy_select_arrow != nullptr) {
+			App->gui->DeleteUIElement(*enemy_select_arrow);
+			enemy_select_arrow = nullptr;
+		}
+		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		App->audio->PlayFx(combat_menu_move_fx);
+	}
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500) {
 		App->gui->DeleteUIElement(*arrow);
@@ -753,7 +761,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 		selecting_enemy = false;
 
 		//perform tasks!
-		//(*selected_enemy)
+		//(*selected_ally)
 		if (attack_label->current_state == STATE_EXECUTED) {
 			App->task_manager->AddTask(new MoveToEntity(entity, (*selected_ally), -20));
 			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->default_attack, (*selected_ally)));

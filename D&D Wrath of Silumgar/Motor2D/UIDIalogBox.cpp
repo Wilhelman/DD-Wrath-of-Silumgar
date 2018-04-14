@@ -12,8 +12,8 @@ UIDialogBox::UIDialogBox(int x, int y, UI_Type type, std::string text, SDL_Color
 
 	//Dialog_Image = App->gui->AddUIImage(x, y, { 843,484,264,273 }, nullptr);
 	//Dialog_Text = App->gui->AddUITextBox(2, 2, size, box_width, text, color, Dialog_Image, Second_Font);
-	Dialog_Image = new UIImage(x, y, IMAGE, { 843,484,264,273 }, nullptr, this); 
-	Dialog_Text = new UITextBox(20, 250, TEXTBOX, text, color, 15, 434, path, Dialog_Image); 
+	Dialog_Image = new UIImage(x, y, IMAGE, { 840,768,448,169 }, nullptr, this); 
+	Dialog_Text = new UITextBox(20, 220, TEXTBOX, text, color, 15, 428, path, Dialog_Image); 
 }
 
 void UIDialogBox::Draw(SDL_Texture* sprites) 

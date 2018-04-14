@@ -54,6 +54,7 @@ public:
 private:
 
 	UIElement* Dialog_Box = nullptr;
+	uint times_x_pressed = 0;
 
 
 };

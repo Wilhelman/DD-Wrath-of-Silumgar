@@ -226,12 +226,12 @@ bool ctWorldMap::Update(float dt)
 	
 	if ((App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() ) {
 
-		WorldMapElement* tmp_map_element = final_map_elements.back();
+		WorldMapElement* tmp_map_element = final_map_elements.at(0);
 
 		App->combat->SetSceneName(tmp_map_element->scene_name);
 		App->combat->entities_to_spawn = tmp_map_element->entities;
 
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat,1.0f);
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
 
 	}
 
@@ -359,12 +359,24 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 			if (decision->options[0]->current_state == STATE_FOCUSED)
 			{
 				App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(2)->coords_in_map.x, final_map_elements.at(2)->coords_in_map.y)));
-				App->map->sceneName = "cave_03.tmx";
+
+				WorldMapElement* tmp_map_element = final_map_elements.at(2);
+
+				App->combat->SetSceneName(tmp_map_element->scene_name);
+				App->combat->entities_to_spawn = tmp_map_element->entities;
+
+				App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
 			}
 			else
 			{
 				App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(1)->coords_in_map.x, final_map_elements.at(1)->coords_in_map.y)));
-				App->map->sceneName = "forest.tmx"; 
+				
+				WorldMapElement* tmp_map_element = final_map_elements.at(1);
+
+				App->combat->SetSceneName(tmp_map_element->scene_name);
+				App->combat->entities_to_spawn = tmp_map_element->entities;
+
+				App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
 			}
 
 			App->task_manager->PerformAllTheTasks();

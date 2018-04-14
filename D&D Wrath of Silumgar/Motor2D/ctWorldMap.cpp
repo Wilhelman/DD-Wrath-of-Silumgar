@@ -195,7 +195,7 @@ bool ctWorldMap::Update(float dt)
 		
 	}
 
-	else if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+	else if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		
 		if (cleric_level_up != nullptr)
 		{
@@ -216,16 +216,17 @@ bool ctWorldMap::Update(float dt)
 		{
 			elf_level_up->to_destroy = true;
 			elf_level_up = nullptr;
-
-			decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this);
-			(*options.rbegin())->current_state = STATE_FOCUSED;
-			arrow->SetParent(*options.rbegin());
+			
+				decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this);
+				(*options.rbegin())->current_state = STATE_FOCUSED;
+				arrow->SetParent(*options.rbegin());
+			
 		}
 		
 		
 	}
 	
-	if ((App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() ) {
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver() ) {
 
 		WorldMapElement* tmp_map_element = final_map_elements.at(0);
 
@@ -236,7 +237,7 @@ bool ctWorldMap::Update(float dt)
 
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 
 		if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
 		{
@@ -274,13 +275,13 @@ bool ctWorldMap::Update(float dt)
 	// FIRTS DECISIÖN TIER 1 to 2
 	if (App->map->actual_tier == TierList::TIER_MAP_2)
 	{
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr)
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 		{
 			App->audio->PlayFx(walk_fx);
 			NavigateUp(options);
 		}
 
-		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr)
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 		{
 			App->audio->PlayFx(walk_fx);
 			NavigateDown(options);

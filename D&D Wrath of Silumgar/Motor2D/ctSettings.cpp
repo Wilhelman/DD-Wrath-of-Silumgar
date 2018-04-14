@@ -82,27 +82,27 @@ bool ctSettings::Update(float dt)
 {
 
 	//Go down
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(menu_move_fx);
 		NavigateDown(labels);
 	}
 	//Go up
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(menu_move_fx);
 		NavigateUp(labels);
 	}
 	//Execute
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		/*App->audio->PlayFx(menu_select_fx);*/
 		ExecuteComand(labels);
 	}
 	//TurnUp volume
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(menu_move_fx);
 		TurnUp(labels);
 	}
 	//TurnDownVolume
-	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(menu_move_fx);
 		TurnDown(labels);
 	}

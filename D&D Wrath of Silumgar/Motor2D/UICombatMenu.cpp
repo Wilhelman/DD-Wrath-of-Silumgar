@@ -92,7 +92,7 @@ UICombatMenu::~UICombatMenu() {
 void UICombatMenu::Update()
 {
 	//Go down
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && selecting_enemy == false) {
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 
 		if (main_labels.size() != 0) {
 			NavigateDown(main_labels);
@@ -105,7 +105,7 @@ void UICombatMenu::Update()
 		}
 	}
 	//Go up
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && selecting_enemy == false) {
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if (main_labels.size() != 0) {
 			NavigateUp(main_labels);
 		}
@@ -117,7 +117,7 @@ void UICombatMenu::Update()
 		}
 	}
 	//Execute
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(combat_menu_select_fx);
 		execute_comand_time.Start();
 		if (main_labels.size() != 0) {
@@ -132,6 +132,7 @@ void UICombatMenu::Update()
 	}
 	//Go back to the start combat menu
 	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && selecting_enemy == false) {
+		
 		if (main_labels.size() != 0){
 			App->combat->SelectWithPreviousHeroe();
 		}
@@ -569,7 +570,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		}
 		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
 	}
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if (selected_enemy != App->combat->enemies.end()) {
 			selected_enemy++;
 		}
@@ -591,7 +592,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
 		App->audio->PlayFx(combat_menu_move_fx);
 	}
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if (selected_enemy != App->combat->enemies.begin()-1) {
 			selected_enemy--;
 		}
@@ -618,7 +619,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		App->audio->PlayFx(combat_menu_move_fx);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.X == GAMEPAD_STATE::PAD_BUTTON_DOWN ) {
 		App->gui->DeleteUIElement(*arrow);
 		arrow = nullptr;
 		App->gui->DeleteUIElement(*background);
@@ -666,7 +667,8 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 	}
 
 
-	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		
 		selected_enemy = App->combat->enemies.begin();
 		App->gui->DeleteUIElement(*enemy_select_arrow);
 		enemy_select_arrow = nullptr;
@@ -677,7 +679,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 			}
 		}
 	}
-
+	
 }
 
 void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
@@ -692,7 +694,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 		}
 		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
 	}
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if (selected_ally != App->combat->heroes.end()) {
 			selected_ally++;
 		}
@@ -714,7 +716,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
 		App->audio->PlayFx(combat_menu_move_fx);
 	}
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if (selected_ally != App->combat->heroes.begin()-1) {
 			selected_ally--;
 		}
@@ -741,7 +743,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 		App->audio->PlayFx(combat_menu_move_fx);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.X == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->gui->DeleteUIElement(*arrow);
 		arrow = nullptr;
 		App->gui->DeleteUIElement(*background);
@@ -788,7 +790,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 	}
 
 
-	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		selected_ally = App->combat->heroes.begin();
 		App->gui->DeleteUIElement(*enemy_select_arrow);
 		enemy_select_arrow = nullptr;

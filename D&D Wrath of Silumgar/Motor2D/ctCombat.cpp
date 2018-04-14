@@ -174,11 +174,13 @@ bool ctCombat::Update(float dt)
 						App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 				}
 
-				OrderTurnPriority();
 				for (int i = 0; i < App->entities->entities.size(); i++)
 				{
 					App->entities->entities.at(i)->NewTurn();
 				}
+
+				OrderTurnPriority();
+				
 			}
 
 		}

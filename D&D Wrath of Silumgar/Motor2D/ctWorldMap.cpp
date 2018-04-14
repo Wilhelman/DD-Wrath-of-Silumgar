@@ -240,24 +240,22 @@ bool ctWorldMap::Update(float dt)
 
 		if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
 		{
-			
-			
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 			condition_win->to_destroy = true;
 			App->main_menu->is_new_game = false;
 			App->map->actual_tier = TierList::TIER_MAP_0;
-		
+			if (App->fadeToBlack->FadeIsOver())
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 			
 			
 		}
 		else if (App->combat->condition_victory == false)
 		{
-			
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 			condition_lose->to_destroy = true;
 			App->combat->condition_victory = true;
 			App->main_menu->is_new_game = false;
 			App->map->actual_tier = TierList::TIER_MAP_0;
+			if (App->fadeToBlack->FadeIsOver())
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 			
 			
 		}

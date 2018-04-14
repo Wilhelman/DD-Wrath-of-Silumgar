@@ -90,7 +90,7 @@ bool ctCombat::Start()
 
 	SetDataToUI();
 
-	OrderTurnPriority();
+	
 
 	for (std::vector<Entity *>::iterator it = turn_priority_entity.begin(); it != turn_priority_entity.end(); ++it) {
 		if ((*it)->type != CLERIC && (*it)->type != WARRIOR && (*it)->type != DWARF && (*it)->type != ELF) {
@@ -102,6 +102,19 @@ bool ctCombat::Start()
 				heroes.push_back(*it);
 		}
 	}
+
+	turn_priority_entity.clear();
+
+	for (std::vector<Entity *>::iterator it_heroe = heroes.begin(); it_heroe != heroes.end(); ++it_heroe) {
+		if ((*it_heroe)->GetCurrentHealthPoints()>0)
+			turn_priority_entity.push_back(*it_heroe);
+	}
+	for (std::vector<Entity *>::iterator it_enemy = enemies.begin(); it_enemy != enemies.end(); ++it_enemy) {
+		if ((*it_enemy)->GetCurrentHealthPoints()>0)
+			turn_priority_entity.push_back(*it_enemy);
+	}
+
+	OrderTurnPriority();
 
 	for (int i = 0; i < enemies.size(); i++) {
 		int pos_x = enemies.at(i)->position.x + (enemies.at(i)->animation->GetCurrentFrame().w / 2) - 25;

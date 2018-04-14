@@ -93,6 +93,9 @@ private:
 	UIElement* dwarf_level_up = nullptr;
 	UIElement* cleric_level_up = nullptr;
 
+	UIElement* condition_win = nullptr;
+	UIElement* condition_lose = nullptr;
+
 
 	uint menu_move_fx = 0;
 	uint menu_select_fx = 0;

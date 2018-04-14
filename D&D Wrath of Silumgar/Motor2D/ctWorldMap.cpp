@@ -137,17 +137,18 @@ bool ctWorldMap::Start()
 	{
 		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
 		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-		App->gui->AddUIVerticalSliceInfo(xE, yE, App->combat->condition_victory, this, nullptr);
+		condition_win = App->gui->AddUIVerticalSliceInfo(xE, yE, App->combat->condition_victory, this, nullptr);
 	}
-	else if (App->combat->condition_victory == false)
+
+	if (App->combat->condition_victory == false)
 	{
 		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
 		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-		App->gui->AddUIVerticalSliceInfo(xE, yE,App->combat->condition_victory, this, nullptr);
+		condition_lose = App->gui->AddUIVerticalSliceInfo(xE, yE,App->combat->condition_victory, this, nullptr);
 	}
 	//Decision call example
 
-	if (App->map->actual_tier == TierList::TIER_MAP_2)
+	if (App->map->actual_tier == TierList::TIER_MAP_2 && App->combat->condition_victory == true)
 	{
 		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
 		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
@@ -239,11 +240,26 @@ bool ctWorldMap::Update(float dt)
 
 		if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
 		{
-			App->fadeToBlack->FadeToBlackBetweenModules(this,App->main_menu,1.0f);
+			
+			
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+			condition_win->to_destroy = true;
+			App->main_menu->is_new_game = false;
+			App->map->actual_tier = TierList::TIER_MAP_0;
+		
+			
+			
 		}
 		else if (App->combat->condition_victory == false)
 		{
+			
 			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+			condition_lose->to_destroy = true;
+			App->combat->condition_victory = true;
+			App->main_menu->is_new_game = false;
+			App->map->actual_tier = TierList::TIER_MAP_0;
+			
+			
 		}
 
 	}
@@ -315,6 +331,10 @@ bool ctWorldMap::CleanUp()
 		cleric_level_up->to_destroy = true;
 	if (cleric_level_up != nullptr)
 		cleric_level_up->to_destroy = true;
+	if (condition_lose != nullptr)
+		condition_lose->to_destroy = true;
+	if (condition_win != nullptr)
+		condition_win->to_destroy = true;
 	
 
 

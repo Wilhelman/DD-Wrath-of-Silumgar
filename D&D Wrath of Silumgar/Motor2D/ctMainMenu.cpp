@@ -58,7 +58,8 @@ bool ctMainMenu::Start()
 	//labels.push_back(about_label);
 	labels.push_back(quit_label);
 
-
+	Mix_VolumeMusic(App->settings->music_volume_value);
+	Mix_Volume(-1, App->settings->fx_volume_value);
 
 	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 00 Fanfare.ogg",1)) {
 		

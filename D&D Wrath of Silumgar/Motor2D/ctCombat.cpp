@@ -932,15 +932,15 @@ void ctCombat::SelectWithPreviousHeroe() {
 				}
 				else if ((*it_vector)->type == CLERIC) {
 					App->gui->DeleteUIElement(*ready_cleric);
-					ready_elf = nullptr;
+					ready_cleric = nullptr;
 				}
 				else if ((*it_vector)->type == DWARF) {
 					App->gui->DeleteUIElement(*ready_dwarf);
-					ready_elf = nullptr;
+					ready_dwarf = nullptr;
 				}
 				else if ((*it_vector)->type == WARRIOR) {
 					App->gui->DeleteUIElement(*ready_warrior);
-					ready_elf = nullptr;
+					ready_warrior = nullptr;
 				}
 				App->gui->DeleteUIElement(*combat_menu);
 				auxiliar_vector.push_back((*it_vector));

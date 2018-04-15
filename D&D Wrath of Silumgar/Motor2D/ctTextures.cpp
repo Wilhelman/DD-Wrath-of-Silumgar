@@ -73,25 +73,35 @@ SDL_Texture* const ctTextures::Load(const char* path)
 		SDL_FreeSurface(surface);
 	}
 
+	if (texture != NULL)
+		textures.push_back(texture);
+	else
+		return NULL;
+
+
 	return texture;
 }
 
 // Unload texture
+
+
 bool ctTextures::UnLoad(SDL_Texture* texture)
 {
-	
-	for (std::list<SDL_Texture*>::iterator it = textures.begin(); it != textures.end(); ++it)
+	std::list<SDL_Texture*>::const_iterator item;
+
+	for (item = textures.begin(); item != textures.end(); ++item)
 	{
-		if (texture == *it)
+		if (texture == (*item))
 		{
-			SDL_DestroyTexture(texture);
-			textures.remove(texture);
+			SDL_DestroyTexture(*item);
+			textures.remove(*item);
 			return true;
 		}
 	}
 
 	return false;
 }
+
 
 // Translate a surface into a texture
 SDL_Texture* const ctTextures::LoadSurface(SDL_Surface* surface)

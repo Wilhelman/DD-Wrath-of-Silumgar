@@ -440,7 +440,7 @@ bool PerformActionToEntity::Execute()
 
 			//todo esta comprobacion en todas
 			if (receiver_entity->GetCurrentHealthPoints() == 0) {
-				
+
 				for (int i = 0; i < App->combat->heroes.size(); i++)
 				{
 					receiver_entity = App->combat->heroes.at(i);
@@ -449,7 +449,7 @@ bool PerformActionToEntity::Execute()
 				}
 				if (receiver_entity->GetCurrentHealthPoints() == 0)
 					return true;
-				
+
 			}
 
 			actioner_entity->animation = &actioner_entity->heal;
@@ -471,12 +471,12 @@ bool PerformActionToEntity::Execute()
 
 				damage_to_deal = damage_to_deal;
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-				receiver_entity->animation = &receiver_entity->hit;
+				//receiver_entity->animation = &receiver_entity->hit;
 				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
 				std::string tmp_dmg = std::to_string(damage_to_deal);
 
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 0,255,0,255 }, 14, nullptr, nullptr);
-				
+
 				//receiver_entity->Damaged();
 
 			}

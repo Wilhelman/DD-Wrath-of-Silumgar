@@ -123,6 +123,8 @@ bool ctMainMenu::CleanUp()
 	App->audio->UnLoadFx(menu_move_fx);
 	App->audio->UnLoadFx(menu_select_fx);
 
+	App->gui->DeleteUIElement(*arrow);
+	arrow = nullptr;
 	App->gui->DeleteUIElement(*background);
 	background = nullptr;
 	App->gui->DeleteUIElement(*continue_label);
@@ -135,14 +137,13 @@ bool ctMainMenu::CleanUp()
 	about_label = nullptr;
 	App->gui->DeleteUIElement(*quit_label);
 	quit_label = nullptr;
-	App->gui->DeleteUIElement(*arrow);
-	arrow = nullptr;
 
 	for (int i = 0; i < labels.size(); i++)
 	{
 		App->gui->DeleteUIElement(*labels[i]);
 
 	}
+	labels.clear();
 	
 	
 	return true;

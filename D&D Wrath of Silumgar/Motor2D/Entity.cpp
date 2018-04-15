@@ -65,6 +65,11 @@ void Entity::Draw()
 		hit.Reset();
 	}
 
+	if (dodge.Finished()) {
+		this->animation = &idle;
+		dodge.Reset();
+	}
+
 	if (this->GetCurrentHealthPoints() == 0 && !dead && this->type!=MINIHEROES) {
 		this->animation = &death;
 		dead = true;

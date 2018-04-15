@@ -43,8 +43,8 @@ Elf::Elf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &death);
 		else if (tmp == "dodge")
 			LoadAnimation(animations, &dodge);
-		else if (tmp == "mind_blown")
-			LoadAnimation(animations, &mind_blown);
+		//else if (tmp == "mind_blown")
+			//LoadAnimation(animations, &mind_blown);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

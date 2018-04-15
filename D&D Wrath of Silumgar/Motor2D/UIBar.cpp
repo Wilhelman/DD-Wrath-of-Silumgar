@@ -180,8 +180,11 @@ void UIBar::DrawYellowBar() {
 
 void UIBar::DeleteElements() {
 	App->gui->DeleteUIElement(*lower_bar);
+	lower_bar = nullptr;
 	App->gui->DeleteUIElement(*upper_bar);
+	upper_bar = nullptr;
 	App->gui->DeleteUIElement(*yellow_bar);
+	yellow_bar = nullptr;
 }
 
 int UIBar::CalculateBarWidth(int quantity) {

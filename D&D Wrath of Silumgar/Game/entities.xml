@@ -106,8 +106,12 @@
           <frame x="881" y="71" width="26" height="26"/>
         </animation>
 
-		<animation name="dodge" speed="0.05" loop="true">
+		<animation name="dodge" speed="0.05" loop="false">
           <frame x="386" y="16" width="62" height="47"/>
+		  <frame x="454" y="16" width="62" height="47"/>
+		  <frame x="386" y="16" width="62" height="47"/>
+		  <frame x="454" y="16" width="62" height="47"/>
+		  <frame x="386" y="16" width="62" height="47"/>
 		  <frame x="454" y="16" width="62" height="47"/>
         </animation>
 		
@@ -543,7 +547,7 @@
           <frame x="142" y="2652" width="26" height="26"/>
         </animation>
 
-		<animation name="dodge" speed="0.05" loop="false">
+		<animation name="dodge" speed="0.1" loop="false">
           <frame x="1413" y="807" width="88" height="73"/>
 		  <frame x="1897" y="807" width="88" height="73"/>
 		  <frame x="1798" y="807" width="88" height="73"/>
@@ -633,7 +637,7 @@
           <frame x="81" y="333" width="26" height="26"/>
         </animation>
 
-		<animation name="dodge" speed="0.05" loop="false">
+		<animation name="dodge" speed="0.1" loop="false">
           <frame x="624" y="1369" width="76" height="57"/>
 		  <frame x="702" y="1369" width="76" height="57"/>
 		  <frame x="1906" y="1608" width="76" height="57"/>
@@ -695,23 +699,23 @@
           <frame x="2179" y="119" width="95" height="89"/>
           <frame x="2054" y="119" width="95" height="89"/>
           <frame x="1929" y="119" width="95" height="89"/>
-          <frame x="1848" y="119" width="95" height="89"/>
-          <frame x="1729" y="119" width="95" height="89"/>
-          <frame x="1600" y="119" width="95" height="89"/>
+          <frame x="1806" y="119" width="95" height="89"/>
+          <frame x="1687" y="119" width="95" height="89"/>
+          <frame x="1558" y="119" width="95" height="89"/>
           <frame x="1432" y="119" width="95" height="89"/>
           <frame x="1312" y="119" width="95" height="89"/>
-          <frame x="1234" y="119" width="95" height="89"/>
+          <frame x="1192" y="119" width="95" height="89"/>
         </animation>
 
         <animation name="head" speed="5.0" loop="false">
           <frame x="852" y="2150" width="26" height="26"/>
         </animation>
 
-		<animation name="dodge" speed="0.05" loop="false">
-          <frame x="448" y="1356" width="87" height="54"/>
+		<animation name="dodge" speed="0.1" loop="false">
+          <frame x="448" y="1356" width="77" height="54"/>
 		  <frame x="527" y="1356" width="87" height="54"/>
-		  <frame x="633" y="1356" width="87" height="54"/>
-		  <frame x="715" y="1357" width="59" height="54"/>
+		  <frame x="633" y="1356" width="65" height="54"/>
+		  <frame x="715" y="1357" width="50" height="54"/>
 		  <frame x="181" y="1441" width="59" height="54"/>
 		  <frame x="696" y="1444" width="87" height="54"/>
 		  
@@ -783,7 +787,7 @@
           <frame x="1183" y="112" width="26" height="26"/>
         </animation>
 		
-		<animation name="dodge" speed="0.05" loop="false">
+		<animation name="dodge" speed="0.08" loop="false">
           <frame x="744" y="346" width="75" height="102"/>
 		  <frame x="828" y="351" width="75" height="102"/>
 		  <frame x="917" y="364" width="75" height="102"/>

@@ -24,7 +24,7 @@
 		<resizable value="false" />
 		<fullscreen_window value="false" />
 	</window>
-	<music fx="10" music="24">
+	<music fx="25" music="50">
 		<lvlMusic name="textures/source_spritesheet.png" />
 	</music>
 	<world_map>

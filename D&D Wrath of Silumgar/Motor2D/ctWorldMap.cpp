@@ -304,24 +304,24 @@ bool ctWorldMap::CleanUp()
 	App->audio->UnLoadFx(menu_select_fx);
 	App->audio->UnLoadFx(walk_fx);
 	if (dwarf_level_up != nullptr)
-		dwarf_level_up->to_destroy = true;
+		App->gui->DeleteUIElement(*dwarf_level_up);
 	if (elf_level_up != nullptr)
-		elf_level_up->to_destroy = true;
+		App->gui->DeleteUIElement(*elf_level_up);
 	if (warrior_level_up != nullptr)
-		warrior_level_up->to_destroy = true;
+		App->gui->DeleteUIElement(*warrior_level_up);
 	if (cleric_level_up != nullptr)
-		cleric_level_up->to_destroy = true;
+		App->gui->DeleteUIElement(*cleric_level_up);
 	if (cleric_level_up != nullptr)
-		cleric_level_up->to_destroy = true;
+		App->gui->DeleteUIElement(*cleric_level_up);
 	if (condition_lose != nullptr)
-		condition_lose->to_destroy = true;
+		App->gui->DeleteUIElement(*condition_lose);
 	if (condition_win != nullptr)
-		condition_win->to_destroy = true;
+		App->gui->DeleteUIElement(*condition_win);
 	
 	if (decision != nullptr)
-		decision->to_destroy = true;
+		App->gui->DeleteUIElement(*decision);
 	if (arrow != nullptr)
-		arrow->to_destroy = true;
+		App->gui->DeleteUIElement(*arrow);
 
 	//TODO CLEAN THIS
 	/*std::vector<WorldMapElement*>::const_iterator it_map_elements = map_elements.begin();
@@ -335,8 +335,6 @@ bool ctWorldMap::CleanUp()
 
 	if (App->entities->GetMiniheroes() != nullptr)
 		App->entities->GetMiniheroes()->to_destroy = true;
-
-	App->gui->DeleteAllUIElements();
 
 	App->map->CleanUp();
 

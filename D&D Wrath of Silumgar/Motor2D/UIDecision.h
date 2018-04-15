@@ -48,8 +48,6 @@ public:
 		App->tex->UnLoad(texture);
 
 		options.clear();
-
-
 	}
 	//Decision call example
 

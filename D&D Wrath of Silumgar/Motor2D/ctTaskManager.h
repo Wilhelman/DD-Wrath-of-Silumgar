@@ -9,7 +9,7 @@
 
 #define BASE_SPEED 3
 #define BASE_DEXTERITY 70
-#define BASE_AGILITY 100
+#define BASE_AGILITY 0
 #define CRITICAL_VALUE 2
 
 class Entity;

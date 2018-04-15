@@ -35,20 +35,7 @@ public:
 		return options;
 	}
 
-	~UIDecision()
-	{
-		//image_border->to_destroy = true;
-		//image_decision->to_destroy = true;
-		App->gui->DeleteUIElement(*text_border);
-		App->gui->DeleteUIElement(*text_decision);
-		App->gui->DeleteUIElement(*arrow);
-		App->gui->DeleteUIElement(*first_option);
-		App->gui->DeleteUIElement(*options[2]);
-		App->gui->DeleteUIElement(*aux_element);
-		App->tex->UnLoad(texture);
-
-		options.clear();
-	}
+	~UIDecision();
 	//Decision call example
 
 	//decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this); 

@@ -10,7 +10,7 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	std::string text = "Decided to set out on a new adventure with your weapons in hand, you leave the village without looking back, looking for the origin of the attack. But you stumble upon the first decision you must take which will mark your destiny and path.";
 	std::string text_options[] = { "!A. Follow the footprints that comes from    the forest.", "!B.Take a shortcut through the cave, dark, narrow and full of threats. Even the most experienced adventurers can not get out without a wound. "};
 	this->callback = callback;
-	UIElement* aux_element;
+	
 
 	//Dont delete. Will be useful later
 	/*aux_element = App->gui->AddUIImage(x, y, { 0,648,264,169 }, nullptr, this);
@@ -64,5 +64,6 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	first_option = options.back();
 
 	this->options = options;
+
 }
 

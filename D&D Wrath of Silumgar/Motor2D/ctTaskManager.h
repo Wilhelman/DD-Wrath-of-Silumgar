@@ -8,7 +8,7 @@
 #include "SDL/include/SDL.h"
 
 #define BASE_SPEED 3
-#define BASE_DEXTERITY 70
+#define BASE_DEXTERITY 75
 #define BASE_AGILITY 0
 #define CRITICAL_VALUE 2
 

@@ -35,11 +35,6 @@ GnollArcher::GnollArcher(int x, int y, EntityType type) : Entity(x, y, type) {
 
 }
 
-GnollArcher::~GnollArcher()
-{
-	LOG("Freeing the player");
-
-}
 
 // Called each loop iteration
 void GnollArcher::Update(float dt)

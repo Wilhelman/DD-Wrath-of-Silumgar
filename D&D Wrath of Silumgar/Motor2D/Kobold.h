@@ -29,7 +29,6 @@ private:
 public:
 
 	Kobold(int x, int y, EntityType type);
-	~Kobold();
 
 	void Update(float dt);
 	void Attack();

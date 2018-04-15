@@ -29,7 +29,6 @@ private:
 public:
 
 	Owlbear(int x, int y, EntityType type);
-	~Owlbear();
 
 	void Update(float dt);
 };

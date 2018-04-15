@@ -28,7 +28,6 @@ private:
 public:
 
 	Dwarf(int x, int y, EntityType type);
-	~Dwarf();
 
 	void Update(float dt);
 	void Attack();

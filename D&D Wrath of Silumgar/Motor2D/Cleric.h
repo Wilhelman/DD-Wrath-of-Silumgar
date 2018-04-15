@@ -32,7 +32,6 @@ private:
 public:
 
 	Cleric(int x, int y, EntityType type);
-	~Cleric();
 
 	void Update(float dt);
 	void Attack();

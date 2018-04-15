@@ -29,7 +29,6 @@ private:
 public:
 
 	Warrior(int x, int y, EntityType type);
-	~Warrior();
 
 	void Update(float dt);
 	void Attack();

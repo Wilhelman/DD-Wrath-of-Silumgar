@@ -29,7 +29,6 @@ private:
 public:
 
 	Gnoll(int x, int y, EntityType type);
-	~Gnoll();
 
 	void Update(float dt);
 	void Attack();

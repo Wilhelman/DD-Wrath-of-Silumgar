@@ -18,12 +18,14 @@ Entity::Entity(int x, int y, EntityType type) : position(x, y), type(type)
 Entity::~Entity()
 {
 	App->tex->UnLoad(texture);
-	App->tex->UnLoad(texture);
 	App->audio->UnLoadFx(attack_fx);
 	App->audio->UnLoadFx(run_fx);
 	App->audio->UnLoadFx(death_fx);
 	App->audio->UnLoadFx(damaged_fx);
 	App->audio->UnLoadFx(ability_1_fx);
+
+	abilities.clear();
+	altered_stats.clear();
 	
 }
 

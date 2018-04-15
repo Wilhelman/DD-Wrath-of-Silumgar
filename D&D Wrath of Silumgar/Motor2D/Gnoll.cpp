@@ -52,11 +52,7 @@ Gnoll::Gnoll(int x, int y, EntityType type) : Entity(x, y, type) {
 
 }
 
-Gnoll::~Gnoll()
-{
-	LOG("Freeing the player");
 
-}
 
 // Called each loop iteration
 void Gnoll::Update(float dt)

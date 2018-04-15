@@ -56,12 +56,7 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 
 }
 
-Cleric::~Cleric()
-{
-	LOG("Freeing the player");
 
-	App->audio->UnLoadFx(attack_fx);
-}
 
 // Called each loop iteration
 void Cleric::Update(float dt)

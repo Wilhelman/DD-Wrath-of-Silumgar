@@ -51,12 +51,6 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 
 }
 
-Dwarf::~Dwarf()
-{
-	LOG("Freeing the player");
-
-}
-
 // Called each loop iteration
 void Dwarf::Update(float dt)
 {

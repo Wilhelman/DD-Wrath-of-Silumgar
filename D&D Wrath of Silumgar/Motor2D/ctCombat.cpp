@@ -192,10 +192,17 @@ bool ctCombat::Update(float dt)
 					App->entities->entities.at(i)->NewTurn();
 				}
 
-				UpdateManaBarOfEntity(App->entities->GetCleric(), App->entities->GetCleric()->GetCurrentManaPoints());
-				UpdateManaBarOfEntity(App->entities->GetElf(), App->entities->GetElf()->GetCurrentManaPoints());
-				UpdateManaBarOfEntity(App->entities->GetWarrior(), App->entities->GetWarrior()->GetCurrentManaPoints());
-				UpdateManaBarOfEntity(App->entities->GetDwarf(), App->entities->GetDwarf()->GetCurrentManaPoints());
+				if(!(App->entities->GetCleric()->GetCurrentManaPoints() >= cleric_mana_bar->max_capacity))
+					cleric_mana_bar->LowerBar(8);
+
+				if (!(App->entities->GetElf()->GetCurrentManaPoints() >= elf_mana_bar->max_capacity))
+					elf_mana_bar->LowerBar(8);
+
+				if (!(App->entities->GetWarrior()->GetCurrentManaPoints() >= warrior_mana_bar->max_capacity))
+					warrior_mana_bar->LowerBar(8);
+
+				if (!(App->entities->GetDwarf()->GetCurrentManaPoints() >= dwarf_mana_bar->max_capacity))
+					dwarf_mana_bar->LowerBar(8);
 
 				OrderTurnPriority();
 				

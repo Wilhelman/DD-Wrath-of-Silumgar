@@ -14,6 +14,15 @@ bool MoveToEntity::Execute()
 {
 	bool ret = false;
 
+	//todo isStunned()
+	for (int i = 0; i < entity_to_move->altered_stats.size(); i++)
+	{
+		if (entity_to_move->altered_stats.at(i).stun) {
+			return true;
+		}
+	}
+	//end todo
+
 	if (entity_to_move->GetCurrentHealthPoints() != 0) {
 		if (entity_to_go->GetCurrentHealthPoints() == 0) {
 			if (entity_to_move->type == ELF || entity_to_move->type == CLERIC || entity_to_move->type == WARRIOR || entity_to_move->type == DWARF) {
@@ -84,6 +93,15 @@ bool MoveToInitialPosition::Execute()
 {
 	bool ret = false;
 
+	//todo isStunned()
+	for (int i = 0; i < entity_to_move->altered_stats.size(); i++)
+	{
+		if (entity_to_move->altered_stats.at(i).stun) {
+			return true;
+		}
+	}
+	//end todo
+
 	//offset?
 
 	if (entity_to_move->GetCurrentHealthPoints() != 0) {
@@ -142,6 +160,15 @@ bool PerformActionToEntity::Execute()
 {
 
 	bool ret = false;
+
+	//todo isStunned()
+	for (int i = 0; i < actioner_entity->altered_stats.size(); i++)
+	{
+		if (actioner_entity->altered_stats.at(i).stun) {
+			return true;
+		}
+	}
+	//end todo
 
 	if (actioner_entity->GetCurrentHealthPoints() != 0) {
 		switch (action_to_perform.type)

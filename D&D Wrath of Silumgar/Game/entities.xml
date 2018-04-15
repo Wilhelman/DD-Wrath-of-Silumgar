@@ -691,7 +691,7 @@
           <frame x="2375" y="1663" width="121" height="67"/>
         </animation>
 
-        <animation name="fireball" speed="0.5" loop="false">
+        <animation name="mind_blown" speed="0.1" loop="false">
           <frame x="2179" y="119" width="95" height="89"/>
           <frame x="2054" y="119" width="95" height="89"/>
           <frame x="1929" y="119" width="95" height="89"/>

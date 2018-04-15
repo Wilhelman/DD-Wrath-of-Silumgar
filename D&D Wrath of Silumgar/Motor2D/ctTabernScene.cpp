@@ -64,7 +64,7 @@ bool ctTabernScene::PreUpdate()
 // Called each loop iteration
 bool ctTabernScene::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN ||App->input->gamepad.X == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 
 		times_x_pressed++;
 

@@ -128,7 +128,6 @@ bool ctSettings::CleanUp()
 
 	App->audio->StopMusic();
 
-	App->gui->DeleteAllUIElements();
 	background = nullptr;
 	music_volume_label = nullptr;
 	fx_volume_label = nullptr;

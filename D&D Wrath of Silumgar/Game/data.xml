@@ -3,7 +3,7 @@
 	<world_map current_location="here_the_coords_maybe" />
 	<heroes>
 		<heroe name="cleric">
-			<values health_points="64" mana_points="65" />
+			<values health_points="42" mana_points="25" />
 			<skills>
 				<skill name="Heal" description="Heals one ally based on his intelligence" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
 			</skills>
@@ -12,7 +12,7 @@
 			</items>
 		</heroe>
 		<heroe name="warrior">
-			<values health_points="103" mana_points="52" />
+			<values health_points="80" mana_points="28" />
 			<skills>
 				<skill name="Kick" description="Physical attack that has a chance (80%) to stun the enemy" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
 			</skills>
@@ -21,16 +21,16 @@
 			</items>
 		</heroe>
 		<heroe name="dwarf">
-			<values health_points="91" mana_points="52" />
+			<values health_points="77" mana_points="22" />
 			<skills>
-				<skill name="H. Axe" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="31" health_points_effect="-18" objective="1" />
+				<skill name="H. Axe" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />
 			</items>
 		</heroe>
 		<heroe name="elf">
-			<values health_points="0" mana_points="91" />
+			<values health_points="65" mana_points="33" />
 			<skills>
 				<skill name="Mindblown" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
 			</skills>

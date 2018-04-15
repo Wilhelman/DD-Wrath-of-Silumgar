@@ -27,7 +27,7 @@ UIVerticalSliceInfo::~UIVerticalSliceInfo() {
 	background->to_destroy = true;
 	congratulations->to_destroy = true;
 	text->to_destroy = true;
-
+	callback = nullptr;
 	
 }
 

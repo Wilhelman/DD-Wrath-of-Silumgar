@@ -94,8 +94,6 @@ bool ctMainMenu::Update(float dt)
 	}
 	//Execute
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		is_new_game = true;
-		
 		ExecuteComand(labels);
 	}
 
@@ -242,8 +240,10 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 
 			LOG("Error playing music in ctMainMenu Start");
 		}
-		if (App->fadeToBlack->FadeIsOver())
+		if (App->fadeToBlack->FadeIsOver()) {
+			is_new_game = true;
 			App->fadeToBlack->FadeToBlackBetweenModules(this, App->tabern_scene, 1.0f);
+		}
 	}
 	if (settings_label->current_state == STATE_EXECUTED) {
 		LOG("settings_label pressed");

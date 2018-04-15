@@ -30,7 +30,7 @@ public:
 
 public:
 	UIDecision(int x, int y, int decision_number, UI_Type type, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent = nullptr);
-
+	UIElement* aux_element;
 	std::vector<UIElement*> GetOptionsUIElements() {
 		return options;
 	}
@@ -39,14 +39,17 @@ public:
 	{
 		//image_border->to_destroy = true;
 		//image_decision->to_destroy = true;
+		App->gui->DeleteUIElement(*text_border);
+		App->gui->DeleteUIElement(*text_decision);
+		App->gui->DeleteUIElement(*arrow);
+		App->gui->DeleteUIElement(*first_option);
+		App->gui->DeleteUIElement(*options[2]);
+		App->gui->DeleteUIElement(*aux_element);
 		App->tex->UnLoad(texture);
-		text_border->to_destroy = true;
-		text_decision->to_destroy = true;
-		arrow->to_destroy = true;
-		options[0]->to_destroy = true;
-		options[1]->to_destroy = true;
 
-		first_option->to_destroy = true;
+		options.clear();
+
+
 	}
 	//Decision call example
 

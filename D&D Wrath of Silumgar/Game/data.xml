@@ -5,7 +5,7 @@
 		<heroe name="cleric">
 			<values health_points="78" mana_points="65" />
 			<skills>
-				<skill name="Heal" description="Heals one ally based on his intelligence" mana_points_effect_to_himself="20" health_points_effect="30" objective="0" />
+				<skill name="Heal" description="Heals one ally based on his intelligence" mana_points_effect_to_himself="35" health_points_effect="30" objective="0" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />
@@ -14,7 +14,7 @@
 		<heroe name="warrior">
 			<values health_points="117" mana_points="52" />
 			<skills>
-				<skill name="Kick" description="Physical attack that has a chance (80%) to stun the enemy" mana_points_effect_to_himself="18" health_points_effect="-16" stun_chance="80" objective="1" />
+				<skill name="Kick" description="Physical attack that has a chance (80%) to stun the enemy" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />
@@ -23,7 +23,7 @@
 		<heroe name="dwarf">
 			<values health_points="91" mana_points="52" />
 			<skills>
-				<skill name="H. Axe" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="20" health_points_effect="-17" objective="1" />
+				<skill name="H. Axe" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="31" health_points_effect="-17" objective="1" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />
@@ -32,7 +32,7 @@
 		<heroe name="elf">
 			<values health_points="65" mana_points="91" />
 			<skills>
-				<skill name="Mindblown" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="21" health_points_effect="-25" objective="1" />
+				<skill name="Mindblown" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />

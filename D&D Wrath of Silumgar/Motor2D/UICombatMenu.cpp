@@ -192,6 +192,17 @@ void UICombatMenu::Update()
 
 void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();
+
+	UIElement* it_focused_element = nullptr;
+
+	bool focused_found = false;
+
+	for (int i = 0; i < current_vector.size() && focused_found ==false; i++) {
+		if (current_vector.at(i)->current_state == STATE_FOCUSED)
+			it_focused_element = current_vector.at(i);
+	}
+
+
 	if (current_vector == main_labels) {
 		while (it_vector != current_vector.end()) {
 			if ((*it_vector)->current_state == STATE_FOCUSED) {
@@ -253,13 +264,30 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 		}
 	}
 
-	ChangeExplanation(current_vector);
+	focused_found = false;
 
+	for (int i = 0; i < current_vector.size() && focused_found == false; i++) {
+		if (current_vector.at(i)->current_state == STATE_FOCUSED)
+			if(it_focused_element != current_vector.at(i))
+				ChangeExplanation(current_vector);
+	}
+	
 }
 
 
 void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();
+
+	UIElement* it_focused_element = nullptr;
+
+	bool focused_found = false;
+
+	for (int i = 0; i < current_vector.size() && focused_found == false; i++) {
+		if (current_vector.at(i)->current_state == STATE_FOCUSED)
+			it_focused_element = current_vector.at(i);
+	}
+
+
 	if (current_vector == main_labels) {
 		while (it_vector != current_vector.end()) {
 			if ((*it_vector)->current_state == STATE_FOCUSED) {
@@ -321,7 +349,13 @@ void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 		}
 	}
 
-	ChangeExplanation(current_vector);
+	focused_found = false;
+
+	for (int i = 0; i < current_vector.size() && focused_found == false; i++) {
+		if (current_vector.at(i)->current_state == STATE_FOCUSED)
+			if (it_focused_element != current_vector.at(i))
+				ChangeExplanation(current_vector);
+	}
 
 }
 

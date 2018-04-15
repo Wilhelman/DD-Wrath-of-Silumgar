@@ -229,7 +229,7 @@ bool ctWorldMap::Update(float dt)
 			App->main_menu->is_new_game = false;
 			App->map->actual_tier = TierList::TIER_MAP_0;
 			if (App->fadeToBlack->FadeIsOver())
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+				App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 			
 			
 		}
@@ -240,9 +240,7 @@ bool ctWorldMap::Update(float dt)
 			App->main_menu->is_new_game = false;
 			App->map->actual_tier = TierList::TIER_MAP_0;
 			if (App->fadeToBlack->FadeIsOver())
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
-			
-			
+				App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 		}
 
 	}
@@ -372,6 +370,8 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 				App->combat->entities_to_spawn = tmp_map_element->entities;
 
 				App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
+
+
 			}
 			else
 			{

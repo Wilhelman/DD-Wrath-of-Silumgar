@@ -110,15 +110,7 @@ bool ctTabernScene::Update(float dt)
 		}
 
 		if (times_x_pressed == 6) {
-
-			App->world_map->GenerateNewRandomlyMap();
-
-			WorldMapElement* tmp_map_element = App->world_map->final_map_elements.at(0);
-
-			App->combat->SetSceneName(tmp_map_element->scene_name);
-			App->combat->entities_to_spawn = tmp_map_element->entities;
-
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 
 		}
 	}

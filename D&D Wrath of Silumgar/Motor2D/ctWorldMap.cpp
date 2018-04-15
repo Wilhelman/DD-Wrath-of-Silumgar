@@ -225,22 +225,23 @@ bool ctWorldMap::Update(float dt)
 
 		if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
 		{
-			condition_win->to_destroy = true;
-			App->main_menu->is_new_game = false;
-			App->map->actual_tier = TierList::TIER_MAP_0;
-			if (App->fadeToBlack->FadeIsOver())
+			if (App->fadeToBlack->FadeIsOver()) {
+				condition_win->to_destroy = true;
+				App->main_menu->is_new_game = false;
+				App->map->actual_tier = TierList::TIER_MAP_0;
 				App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
-			
+			}
 			
 		}
 		else if (App->combat->condition_victory == false)
 		{
-			condition_lose->to_destroy = true;
-			App->combat->condition_victory = true;
-			App->main_menu->is_new_game = false;
-			App->map->actual_tier = TierList::TIER_MAP_0;
-			if (App->fadeToBlack->FadeIsOver())
+			if (App->fadeToBlack->FadeIsOver()) {
+				condition_lose->to_destroy = true;
+				App->combat->condition_victory = true;
+				App->main_menu->is_new_game = false;
+				App->map->actual_tier = TierList::TIER_MAP_0;
 				App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+			}
 		}
 
 	}
@@ -335,6 +336,8 @@ bool ctWorldMap::CleanUp()
 	if (App->entities->GetMiniheroes() != nullptr)
 		App->entities->GetMiniheroes()->to_destroy = true;
 
+	App->gui->DeleteAllUIElements();
+
 	App->map->CleanUp();
 
 	return true;
@@ -362,27 +365,36 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 		{
 			if (decision->options[0]->current_state == STATE_FOCUSED)
 			{
-				App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(2)->coords_in_map.x, final_map_elements.at(2)->coords_in_map.y)));
 
-				WorldMapElement* tmp_map_element = final_map_elements.at(2);
+				for (int i = 0; i < final_map_elements.size(); i++)
+				{
+					WorldMapElement* tmp_map_element = final_map_elements.at(i);
+					if (tmp_map_element->scene_name == "cave_03.tmx") {
+						App->combat->SetSceneName(tmp_map_element->scene_name);
+						App->combat->entities_to_spawn = tmp_map_element->entities;
 
-				App->combat->SetSceneName(tmp_map_element->scene_name);
-				App->combat->entities_to_spawn = tmp_map_element->entities;
-
-				App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
-
+						App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
+						App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y)));
+						break;
+					}
+				}
 
 			}
 			else
 			{
-				App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(1)->coords_in_map.x, final_map_elements.at(1)->coords_in_map.y)));
-				
-				WorldMapElement* tmp_map_element = final_map_elements.at(1);
 
-				App->combat->SetSceneName(tmp_map_element->scene_name);
-				App->combat->entities_to_spawn = tmp_map_element->entities;
+				for (int i = 0; i < final_map_elements.size(); i++)
+				{
+					WorldMapElement* tmp_map_element = final_map_elements.at(i);
+					if (tmp_map_element->scene_name == "forest.tmx") {
+						App->combat->SetSceneName(tmp_map_element->scene_name);
+						App->combat->entities_to_spawn = tmp_map_element->entities;
 
-				App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
+						App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
+						App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y)));
+						break;
+					}
+				}
 			}
 
 			App->task_manager->PerformAllTheTasks();

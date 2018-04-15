@@ -7,6 +7,7 @@
 #include "Entity.h"
 #include "ctTaskManager.h"
 #include "ctPerfTimer.h"
+#include "ctFadeToBlack.h"
 
 UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
@@ -98,95 +99,96 @@ UICombatMenu::~UICombatMenu() {
 
 void UICombatMenu::Update()
 {
-	//Go down
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->fadeToBlack->FadeIsOver() == true) {
+		//Go down
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 
-		if (main_labels.size() != 0) {
-			NavigateDown(main_labels);
+			if (main_labels.size() != 0) {
+				NavigateDown(main_labels);
+			}
+			else if (abilities.size() != 0) {
+				NavigateDown(abilities);
+			}
+			else if (items.size() != 0) {
+				NavigateDown(items);
+			}
 		}
-		else if (abilities.size() != 0) {
-			NavigateDown(abilities);
+		//Go up
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			if (main_labels.size() != 0) {
+				NavigateUp(main_labels);
+			}
+			else if (abilities.size() != 0) {
+				NavigateUp(abilities);
+			}
+			else if (items.size() != 0) {
+				NavigateUp(items);
+			}
 		}
-		else if (items.size() != 0) {
-			NavigateDown(items);
+		//Execute
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
+			App->audio->PlayFx(combat_menu_select_fx);
+			execute_comand_time.Start();
+			if (main_labels.size() != 0) {
+				ExecuteComand(main_labels);
+			}
+			else if (abilities.size() != 0) {
+				ExecuteComand(abilities);
+			}
+			else if (items.size() != 0) {
+				ExecuteComand(items);
+			}
 		}
-	}
-	//Go up
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		if (main_labels.size() != 0) {
-			NavigateUp(main_labels);
-		}
-		else if (abilities.size() != 0) {
-			NavigateUp(abilities);
-		}
-		else if (items.size() != 0) {
-			NavigateUp(items);
-		}
-	}
-	//Execute
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
-		App->audio->PlayFx(combat_menu_select_fx);
-		execute_comand_time.Start();
-		if (main_labels.size() != 0) {
-			ExecuteComand(main_labels);
-		}
-		else if (abilities.size() != 0) {
-			ExecuteComand(abilities);
-		}
-		else if (items.size() != 0) {
-			ExecuteComand(items);
-		}
-	}
-	//Go back to the start combat menu
-	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
-		
-		if (main_labels.size() != 0){
-			App->combat->SelectWithPreviousHeroe();
-		}
-		else {
-			GoBack();
-		}
-	}
+		//Go back to the start combat menu
+		if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
 
-	if (names.size() != 0 && lower_points == nullptr && names_iterator < names.size() - 1) {
-		lower_points = App->gui->AddUILabel(lower_points_pos.x, lower_points_pos.y, "...", { 255,255,255,255 }, 50, nullptr, nullptr, Second_Font);
-	}
-	if (names.size() != 0 && lower_points != nullptr && names_iterator == names.size() - 1) {
-		App->gui->DeleteUIElement(*lower_points);
-		lower_points = nullptr;
-	}
-	if (names.size() != 0 && upper_points == nullptr && names_iterator > 2) {
-		upper_points = App->gui->AddUILabel(upper_points_pos.x, upper_points_pos.y, "...", { 255,255,255,255 }, 50, nullptr, nullptr, Second_Font);
-	}
-	if (names.size() != 0 && upper_points != nullptr && names_iterator < 3) {
-		App->gui->DeleteUIElement(*upper_points);
-		upper_points = nullptr;
-	}
+			if (main_labels.size() != 0) {
+				App->combat->SelectWithPreviousHeroe();
+			}
+			else {
+				GoBack();
+			}
+		}
 
-	//Select Enemy to attack
-	if (main_labels.size() != 0 && selecting_enemy == true) {
-		SelectEnemy(main_labels);
-	}
-	else if (abilities.size() != 0 && selecting_enemy == true) {
-		if (entity->abilities.at(names_iterator).objective == ENEMIES) {
-			SelectEnemy(abilities);
+		if (names.size() != 0 && lower_points == nullptr && names_iterator < names.size() - 1) {
+			lower_points = App->gui->AddUILabel(lower_points_pos.x, lower_points_pos.y, "...", { 255,255,255,255 }, 50, nullptr, nullptr, Second_Font);
 		}
-		else {
-			SelectAlly(abilities);
+		if (names.size() != 0 && lower_points != nullptr && names_iterator == names.size() - 1) {
+			App->gui->DeleteUIElement(*lower_points);
+			lower_points = nullptr;
 		}
-	}
-	
-	if (executed_command == true) {
-		if (abilities.size() != 0) {
-			ChangeExplanation(abilities);
+		if (names.size() != 0 && upper_points == nullptr && names_iterator > 2) {
+			upper_points = App->gui->AddUILabel(upper_points_pos.x, upper_points_pos.y, "...", { 255,255,255,255 }, 50, nullptr, nullptr, Second_Font);
 		}
-		else if (items.size() != 0) {
-			ChangeExplanation(items);
+		if (names.size() != 0 && upper_points != nullptr && names_iterator < 3) {
+			App->gui->DeleteUIElement(*upper_points);
+			upper_points = nullptr;
 		}
-	}
 
-	executed_command = false;
+		//Select Enemy to attack
+		if (main_labels.size() != 0 && selecting_enemy == true) {
+			SelectEnemy(main_labels);
+		}
+		else if (abilities.size() != 0 && selecting_enemy == true) {
+			if (entity->abilities.at(names_iterator).objective == ENEMIES) {
+				SelectEnemy(abilities);
+			}
+			else {
+				SelectAlly(abilities);
+			}
+		}
 
+		if (executed_command == true) {
+			if (abilities.size() != 0) {
+				ChangeExplanation(abilities);
+			}
+			else if (items.size() != 0) {
+				ChangeExplanation(items);
+			}
+		}
+
+		executed_command = false;
+	}
 }
 
 

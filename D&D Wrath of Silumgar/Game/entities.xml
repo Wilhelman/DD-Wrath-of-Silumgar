@@ -695,12 +695,12 @@
           <frame x="2179" y="119" width="95" height="89"/>
           <frame x="2054" y="119" width="95" height="89"/>
           <frame x="1929" y="119" width="95" height="89"/>
-          <frame x="1848" y="119" width="95" height="89"/>
-          <frame x="1729" y="119" width="95" height="89"/>
-          <frame x="1600" y="119" width="95" height="89"/>
+          <frame x="1806" y="119" width="95" height="89"/>
+          <frame x="1687" y="119" width="95" height="89"/>
+          <frame x="1558" y="119" width="95" height="89"/>
           <frame x="1432" y="119" width="95" height="89"/>
           <frame x="1312" y="119" width="95" height="89"/>
-          <frame x="1234" y="119" width="95" height="89"/>
+          <frame x="1192" y="119" width="95" height="89"/>
         </animation>
 
         <animation name="head" speed="5.0" loop="false">

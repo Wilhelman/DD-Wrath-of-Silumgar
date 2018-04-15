@@ -87,6 +87,13 @@ UICombatMenu::~UICombatMenu() {
 
 	App->gui->DeleteUIElement(*items_label);
 	items_label = nullptr;
+
+	main_labels.clear();
+	abilities.clear();
+	items.clear();
+	names.clear();
+	entity_actions.clear();
+	entity = nullptr;
 }
 
 void UICombatMenu::Update()

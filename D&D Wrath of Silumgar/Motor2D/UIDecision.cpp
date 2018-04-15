@@ -67,3 +67,17 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 
 }
 
+UIDecision::~UIDecision(){
+	App->gui->DeleteUIElement(*text_border);
+	App->gui->DeleteUIElement(*text_decision);
+	App->gui->DeleteUIElement(*arrow);
+	App->gui->DeleteUIElement(*first_option);
+	for (int i = 0; i < options.size(); i++) {
+	if(options.at(i)!=nullptr)
+		App->gui->DeleteUIElement(*options.at(i));
+	}
+	App->tex->UnLoad(texture);
+
+	options.clear();
+}
+

@@ -183,22 +183,22 @@ bool ctWorldMap::Update(float dt)
 		
 		if (cleric_level_up != nullptr)
 		{
-			cleric_level_up->to_destroy = true;
+			App->gui->DeleteUIElement(*cleric_level_up);
 			cleric_level_up = nullptr;
 		}
 		else if (cleric_level_up == nullptr && dwarf_level_up != nullptr)
 		{
-			dwarf_level_up->to_destroy = true;
+			App->gui->DeleteUIElement(*dwarf_level_up);
 			dwarf_level_up = nullptr;
 		}
 		else if (dwarf_level_up == nullptr && warrior_level_up != nullptr)
 		{
-			warrior_level_up->to_destroy = true;
+			App->gui->DeleteUIElement(*warrior_level_up);
 			warrior_level_up = nullptr;
 		}
 		else if (warrior_level_up == nullptr && elf_level_up != nullptr)
 		{
-			elf_level_up->to_destroy = true;
+			App->gui->DeleteUIElement(*elf_level_up);
 			elf_level_up = nullptr;
 			
 				decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this);
@@ -207,10 +207,15 @@ bool ctWorldMap::Update(float dt)
 			
 		}
 		
+		else if (decision != nullptr)
+		{
+			App->gui->DeleteUIElement(*decision);
+			decision = nullptr;
+		}
 		
 	}
 	
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver() ) {
+	if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN)&& App->fadeToBlack->FadeIsOver() && App->map->actual_tier == TIER_MAP_1) {
 
 		WorldMapElement* tmp_map_element = final_map_elements.at(0);
 

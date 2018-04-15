@@ -201,6 +201,7 @@ bool PerformActionToEntity::Execute()
 					random_thousand_faces_die = (rand() % 100) + 1;
 					if (random_thousand_faces_die <= receiver_agility && !isStunned) {// THE RECEIVER DODGES THE ATTACK
 						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 0,255,0,255 }, 14, nullptr, nullptr);
+						receiver_entity->animation = &receiver_entity->dodge;
 					}
 					else {// THE ATTACK HITS
 
@@ -295,6 +296,7 @@ bool PerformActionToEntity::Execute()
 					random_thousand_faces_die = (rand() % 100) + 1;
 					if (random_thousand_faces_die <= receiver_agility) {// THE RECEIVER DODGES THE ATTACK
 						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 0,255,0,255 }, 14, nullptr, nullptr);
+						receiver_entity->animation = &receiver_entity->dodge;
 					}
 					else {// THE ATTACK HITS
 
@@ -397,6 +399,7 @@ bool PerformActionToEntity::Execute()
 					random_thousand_faces_die = (rand() % 100) + 1;
 					if (random_thousand_faces_die <= receiver_agility && !isStunned) {// THE RECEIVER DODGES THE ATTACK
 						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
+						receiver_entity->animation = &receiver_entity->dodge;
 					}
 					else {// THE ATTACK HITS
 
@@ -543,6 +546,7 @@ bool PerformActionToEntity::Execute()
 					random_thousand_faces_die = (rand() % 100) + 1;
 					if (random_thousand_faces_die <= receiver_agility && !isStunned) {// THE RECEIVER DODGES THE ATTACK
 						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
+						receiver_entity->animation = &receiver_entity->dodge;
 					}
 					else {// THE ATTACK HITS
 

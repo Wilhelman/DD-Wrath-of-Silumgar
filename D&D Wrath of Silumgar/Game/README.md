@@ -1,11 +1,10 @@
 ﻿# DUNGEONS & DRAGONS: WRATH OF SILUMGAR
 
-This is a videogame based on Dungeons & dragons: Shadows over mystara. The goal was 
+This is a videogame based on Dungeons & dragons: Shadows over mystara.
 
-This project has been done by seven catalan students of CITM - UPC (Terrasa, Spain).  
+This project has been done by seven students of CITM - UPC (Terrasa, Spain).  
 
-* [Github repository](https://github.com/nintervik/Temple-Escape)  
-* [Website](https://nintervik.github.io/Temple-Escape/)
+* [Github repository](https://github.com/Wilhelman/DD-Wrath-of-Silumgar)
 
 ## About the game
 The objective of the game is defeat Silumgar, a mage with a huge power thanks to Ullosip, the god of war. You can read more about our game [here](https://github.com/Wilhelman/DD-Wrath-of-Silumgar/wiki)
@@ -33,55 +32,43 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 
 ## Team members
 
-
-
 García Subirana, Guillermo 
 * Lead
-* 
-[Github account](https://github.com/Wilhelman)
-
+* [Github account](https://github.com/Wilhelman)
 
 
 Sánchez-Cortés Puerta, Alfonso 
 
 * Code
-* 
-[Github account](https://github.com/Siitoo)
-
+* [Github account](https://github.com/Siitoo)
 
 
 Gutiérrez Llenas, Ricardo 
 
 * Management
-* 
-[Github account](https://github.com/Ricardogll)
-
+* [Github account](https://github.com/Ricardogll)
 
 
 Tirado Fernández, Victor
 
 * Design
-* 
-[Github account](https://github.com/VictorTirado)
-
+* [Github account](https://github.com/VictorTirado)
 
 
 Tarrés i Urbieta, Marc
 
 * Art + Audio
-* 
-[Github account](https://github.com/MAtaur00)
+* [Github account](https://github.com/MAtaur00)
 
 Campamar Redol, Alex
 
 * UI
-* 
-[Github account](https://github.com/Acaree)
+* [Github account](https://github.com/Acaree)
+
 
 Mourelo Montero, Manel
 * QA
-* 
-[Github account](https://github.com/manelmourelo)
+* [Github account](https://github.com/manelmourelo)
 
 
 

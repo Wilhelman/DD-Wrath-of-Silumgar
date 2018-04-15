@@ -148,6 +148,7 @@ bool ctSettings::CleanUp()
 		App->gui->DeleteUIElement(*labels[i]);
 
 	}
+	labels.clear();
 	
 	App->audio->UnLoadFx(menu_move_fx);
 	App->audio->UnLoadFx(menu_select_fx);

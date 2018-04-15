@@ -36,6 +36,7 @@ public:
 	UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, Entity* entity,UIElement* parent = nullptr);
 	~UIBar()
 	{
+		entity = nullptr;
 		lower_bar->to_destroy = true;
 		upper_bar->to_destroy = true;
 		if( yellow_bar != nullptr)

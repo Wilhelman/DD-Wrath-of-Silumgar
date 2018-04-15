@@ -226,22 +226,22 @@ bool ctCombat::Update(float dt)
 
 	// ZOOM
 
-	if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
-	{
-		App->render->scale_factor += 0.1;
-	}
-	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
-	{
-		App->render->scale_factor -= 0.1;
-	}
-	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
-	{
-		App->render->camera.x+=10;
-	}
-	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
-	{
-		App->render->camera.x -= 10;
-	}
+	//if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
+	//{
+	//	App->render->scale_factor += 0.1;
+	//}
+	//if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	//{
+	//	App->render->scale_factor -= 0.1;
+	//}
+	//if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+	//{
+	//	App->render->camera.x+=10;
+	//}
+	//if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
+	//{
+	//	App->render->camera.x -= 10;
+	//}
 	
 	// Draw everything --------------------------------------
 	App->map->Draw();

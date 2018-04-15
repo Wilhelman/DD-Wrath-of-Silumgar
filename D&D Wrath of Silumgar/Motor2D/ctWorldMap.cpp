@@ -270,14 +270,14 @@ bool ctWorldMap::Update(float dt)
 
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
-	{
-		App->render->scale_factor += 0.1;
-	}
-	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
-	{
-		App->render->scale_factor -= 0.1;
-	}
+	//if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
+	//{
+	//	App->render->scale_factor += 0.1;
+	//}
+	//if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	//{
+	//	App->render->scale_factor -= 0.1;
+	//}
 
 	// FIRTS DECISIÖN TIER 1 to 2
 	if (App->map->actual_tier == TierList::TIER_MAP_2)

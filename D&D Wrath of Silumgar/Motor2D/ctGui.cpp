@@ -60,6 +60,8 @@ bool ctGui::Start()
 // Update all guis
 bool ctGui::PreUpdate()
 {
+	ui_elements.shrink_to_fit();
+
 	for (int i = 0; i < ui_elements.size(); i++)
 		if (ui_elements.at(i) != nullptr) ui_elements[i]->Update();
 

@@ -64,7 +64,9 @@ bool ctTabernScene::PreUpdate()
 bool ctTabernScene::Update(float dt)
 {
 	if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN) {
-		
+		if (times_x_pressed >= 6)
+			times_x_pressed = 0;
+
 		times_x_pressed++;
 
 		if (times_x_pressed == 1) {

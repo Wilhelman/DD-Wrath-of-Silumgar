@@ -37,13 +37,13 @@ public:
 	std::vector<Action> entity_actions;
 	int names_iterator = 0;
 
-	iPoint label1_pos{ 15,20 };
-	iPoint label2_pos{ 15,40 };
-	iPoint label3_pos{ 15,60 };
+	iPoint label1_pos{ 10,20 };
+	iPoint label2_pos{ 10,40 };
+	iPoint label3_pos{ 10,60 };
 
-	iPoint main_label1_pos{ 15,10 };
-	iPoint main_label2_pos{ 15,40 };
-	iPoint main_label3_pos{ 15,70 };
+	iPoint main_label1_pos{ 10,10 };
+	iPoint main_label2_pos{ 10,40 };
+	iPoint main_label3_pos{ 10,70 };
 
 	iPoint explanationPos{129,31};
 

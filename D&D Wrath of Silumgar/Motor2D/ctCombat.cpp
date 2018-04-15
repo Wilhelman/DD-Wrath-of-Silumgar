@@ -90,7 +90,7 @@ bool ctCombat::Start()
 
 	SetDataToUI();
 
-	//OrderTurnPriority();
+	OrderTurnPriority();
 
 	for (std::vector<Entity *>::iterator it = turn_priority_entity.begin(); it != turn_priority_entity.end(); ++it) {
 		if ((*it)->type != CLERIC && (*it)->type != WARRIOR && (*it)->type != DWARF && (*it)->type != ELF) {

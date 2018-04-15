@@ -190,6 +190,10 @@ bool ctCombat::Update(float dt)
 				for (int i = 0; i < App->entities->entities.size(); i++)
 				{
 					App->entities->entities.at(i)->NewTurn();
+					UpdateManaBarOfEntity(App->entities->GetCleric(), App->entities->GetCleric()->GetCurrentManaPoints());
+					UpdateManaBarOfEntity(App->entities->GetElf(), App->entities->GetElf()->GetCurrentManaPoints());
+					UpdateManaBarOfEntity(App->entities->GetWarrior(), App->entities->GetWarrior()->GetCurrentManaPoints());
+					UpdateManaBarOfEntity(App->entities->GetDwarf(), App->entities->GetDwarf()->GetCurrentManaPoints());
 				}
 
 				OrderTurnPriority();

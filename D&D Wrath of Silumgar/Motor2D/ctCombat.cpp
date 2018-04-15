@@ -255,8 +255,6 @@ bool ctCombat::CleanUp()
 	LOG("Freeing combat");
 
 	//todo: despawn entities
-	
-	App->gui->DeleteAllUIElements();
 
 	App->map->CleanUp();
 

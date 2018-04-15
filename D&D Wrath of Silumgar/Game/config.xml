@@ -22,7 +22,7 @@
 		<fullscreen value="false" />
 		<borderless value="false" />
 		<resizable value="false" />
-		<fullscreen_window value="false" />
+		<fullscreen_window value="true" />
 	</window>
 	<music fx="10" music="24">
 		<lvlMusic name="textures/source_spritesheet.png" />

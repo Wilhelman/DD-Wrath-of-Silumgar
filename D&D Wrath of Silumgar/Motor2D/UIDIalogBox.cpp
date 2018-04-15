@@ -16,6 +16,13 @@ UIDialogBox::UIDialogBox(int x, int y, UI_Type type, std::string text, SDL_Color
 	Dialog_Text = new UITextBox(50, 333, TEXTBOX, text, color, 15, 428, path, Dialog_Image);
 }
 
+UIDialogBox::~UIDialogBox() {
+	App->gui->DeleteUIElement(*Dialog_Image);
+	Dialog_Image = nullptr;
+	App->gui->DeleteUIElement(*Dialog_Text);
+	Dialog_Text = nullptr;
+}
+
 void UIDialogBox::Draw(SDL_Texture* sprites) 
 {
 	App->render->Blit(sprites, Dialog_Image->screen_position.x, Dialog_Image->screen_position.y, &Dialog_Image->current_rect);

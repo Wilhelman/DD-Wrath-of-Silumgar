@@ -94,6 +94,8 @@ UILevelUpInfo::~UILevelUpInfo() {
 	constitution = nullptr;
 	App->gui->DeleteUIElement(*focus);
 	focus = nullptr;
+	App->gui->DeleteUIElement(*force);
+	force = nullptr;
 	App->gui->DeleteUIElement(*agility);
 	agility = nullptr;
 	App->gui->DeleteUIElement(*skill);

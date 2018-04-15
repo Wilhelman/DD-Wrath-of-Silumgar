@@ -7,8 +7,8 @@
 UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
 	int size = 15;
-	std::string text = "Decided to set out on a new adventure with your weapons in hand, you leave the village without looking back, looking for the origin of the attack. But you stumble upon the first decision you must take which will mark your destiny and path.";
-	std::string text_options[] = { "!A. Follow the footprints that comes from the forest.", "!B.Take a shortcut through the cave,  dark, narrow and full of threats. Even the most experienced adventurers can   not get out without a wound. "};
+	std::string text = "Decided to set out on a new adventure with\n your weapons in hand, you leave the village without looking back, looking for the origin\n of the attack. But you stumble upon the first decision you must take which will mark your destiny and path.";
+	std::string text_options[] = { "!A. Follow the footprints that comes from\n the forest.", "!B.Take a shortcut through the cave,  dark, narrow and full of threats. Even the most experienced adventurers can   not get out without a wound. "};
 	this->callback = callback;
 	
 
@@ -32,7 +32,7 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	
 	
 
-	aux_element = App->gui->AddUITextBox( xE + 20, yE + 24, size, 222, text, { 255,255,255,255 }, this);
+	aux_element = App->gui->AddUITextBox( xE + 20, yE + 24, 12, 260, text, { 255,255,255,255 }, this, Second_Font);
 	this->text_decision = aux_element;
 
 
@@ -42,7 +42,7 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	for (int i = 1; i >= 0; i--) {
 
 		if (!text_options[i].empty() && !text_options[i].empty()) { //text box for every option
-			aux_element = App->gui->AddUITextBox(xE + 20, 208 - extra_h, 8, 245, text_options[i], { 255,255,255,255 }, this,Third_Font);   //Old: 300 - extra_h 
+			aux_element = App->gui->AddUITextBox(xE + 20, 208 - extra_h, 12, 245, text_options[i], { 255,255,255,255 }, this,Second_Font);   //Old: 300 - extra_h 
 																																  //this->ui_options[i] = aux_element;
 			options.push_back(aux_element);
 			extra_h += 40;

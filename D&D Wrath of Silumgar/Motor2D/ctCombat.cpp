@@ -283,25 +283,51 @@ bool ctCombat::CleanUp()
 	entities_to_spawn.clear();
 	App->gui->DeleteUIElement(*combat_menu);
 
+	App->gui->DeleteUIElement(*ready_cleric);
+	ready_cleric = nullptr;
+	App->gui->DeleteUIElement(*ready_warrior);
+	ready_warrior = nullptr;
+	App->gui->DeleteUIElement(*ready_dwarf);
+	ready_dwarf = nullptr;
+	App->gui->DeleteUIElement(*ready_elf);
+	ready_elf = nullptr;
+
 	App->gui->DeleteUIElement(*cleric_background);
+	cleric_background = nullptr;
 	App->gui->DeleteUIElement(*cleric_HP_bar);
+	cleric_HP_bar = nullptr;
 	App->gui->DeleteUIElement(*cleric_mana_bar);
+	cleric_mana_bar = nullptr;
 	App->gui->DeleteUIElement(*cleric_name);
+	cleric_name = nullptr;
 
 	App->gui->DeleteUIElement(*dwarf_background);
+	dwarf_background = nullptr;
 	App->gui->DeleteUIElement(*dwarf_HP_bar);
+	dwarf_HP_bar = nullptr;
 	App->gui->DeleteUIElement(*dwarf_mana_bar);
+	dwarf_mana_bar = nullptr;
 	App->gui->DeleteUIElement(*dwarf_name);
+	dwarf_name = nullptr;
 
 	App->gui->DeleteUIElement(*elf_background);
+	elf_background = nullptr;
 	App->gui->DeleteUIElement(*elf_HP_bar);
+	elf_HP_bar = nullptr;
 	App->gui->DeleteUIElement(*elf_mana_bar);
+	elf_mana_bar = nullptr;
 	App->gui->DeleteUIElement(*elf_name);
+	elf_name = nullptr;
 
 	App->gui->DeleteUIElement(*warrior_background);
+	warrior_background = nullptr;
 	App->gui->DeleteUIElement(*warrior_HP_bar);
+	warrior_HP_bar = nullptr;
 	App->gui->DeleteUIElement(*warrior_mana_bar);
+	warrior_mana_bar = nullptr;
 	App->gui->DeleteUIElement(*warrior_name);
+	warrior_name = nullptr;
+
 	App->task_manager->CleanUp();
 
 	

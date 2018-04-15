@@ -111,7 +111,7 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 	current_agility_points = base_stats.base_agility * StatisticsValues::AGILITY;
 	current_dexterity_points = base_stats.base_dexterity * StatisticsValues::DEXTERITY;
 	current_physical_defense_points = base_stats.base_physical_defense * StatisticsValues::PHYSICAL_DEFENSE;
-
+	current_magical_defense_points = base_stats.base_magical_defense * StatisticsValues::MAGICAL_DEFENSE;
 	current_judgement = base_stats.base_judgement * StatisticsValues::JUDGEMENT;
 
 	return ret;
@@ -164,6 +164,11 @@ int Entity::GetCurrentPhysicalDefensePoints()
 {
 	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
 	return current_physical_defense_points;
+}
+
+int Entity::GetCurrentMagicalDefensePoints()
+{
+	return current_magical_defense_points;
 }
 
 int Entity::GetCurrentJudgement()

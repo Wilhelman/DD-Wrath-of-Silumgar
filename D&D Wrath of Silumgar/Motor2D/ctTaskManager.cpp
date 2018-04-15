@@ -482,6 +482,106 @@ bool PerformActionToEntity::Execute()
 			}
 		}
 					   break;
+		case MINDBLOWN: {
+
+			//todo esta comprobacion en todas
+			if (receiver_entity->GetCurrentHealthPoints() == 0) {
+				if (actioner_entity->type == ELF || actioner_entity->type == CLERIC || actioner_entity->type == WARRIOR || actioner_entity->type == DWARF) {
+					for (int i = 0; i < App->combat->enemies.size(); i++)
+					{
+						receiver_entity = App->combat->enemies.at(i);
+						if (receiver_entity->GetCurrentHealthPoints() != 0)
+							break;
+					}
+					if (receiver_entity->GetCurrentHealthPoints() == 0)
+						return true;
+				}
+				else {
+					for (int i = 0; i < App->combat->heroes.size(); i++)
+					{
+						receiver_entity = App->combat->heroes.at(i);
+						if (receiver_entity->GetCurrentHealthPoints() != 0)
+							break;
+					}
+					if (receiver_entity->GetCurrentHealthPoints() == 0)
+						return true;
+				}
+			}
+
+			actioner_entity->animation = &actioner_entity->mind_blown;
+
+
+
+			ret = actioner_entity->animation->Finished();
+
+			if (ret == true) {
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
+				//todo isStunned()
+				bool isStunned = false;
+				for (int i = 0; i < receiver_entity->altered_stats.size(); i++)
+				{
+					if (receiver_entity->altered_stats.at(i).stun) {
+						isStunned = true;
+						break;
+					}
+				}
+				//end todo
+
+				//actioner_entity->Attack();  TODO DO THE KICK
+				actioner_entity->mind_blown.Reset();
+
+				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
+
+				int random_thousand_faces_die = (rand() % 100) + 1;
+
+				if (random_thousand_faces_die <= actioner_dexterity || isStunned) {// THE ACTIONER HITS THE RECEIVER
+					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
+
+					random_thousand_faces_die = (rand() % 100) + 1;
+					if (random_thousand_faces_die <= receiver_agility && !isStunned) {// THE RECEIVER DODGES THE ATTACK
+						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
+					}
+					else {// THE ATTACK HITS
+
+						bool critical = false;
+
+						int damage_to_deal = action_to_perform.health_points_effect;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicDefensePoints() / 100 * (float)damage_to_deal;
+						actioner_dexterity = actioner_dexterity / 10;
+						random_thousand_faces_die = (rand() % 100) + 1;
+						if (random_thousand_faces_die <= actioner_dexterity) {
+							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
+							critical = true;
+						}
+
+						if (isStunned)
+							damage_to_deal = damage_to_deal * 2;
+
+						damage_to_deal = damage_to_deal - damage_reduction;
+						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
+						receiver_entity->animation = &receiver_entity->hit;
+						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+						std::string tmp_dmg = std::to_string(damage_to_deal);
+						if (!critical)
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+						else
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
+
+						receiver_entity->Damaged();
+					}
+				}
+				else {//ACTIONER MISSES!
+					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
+				}
+				//todo animate the receiver to hit + audio or smth
+				actioner_entity->Ability1();
+
+			}
+		}
+					   break;
 		default:
 			break;
 		}

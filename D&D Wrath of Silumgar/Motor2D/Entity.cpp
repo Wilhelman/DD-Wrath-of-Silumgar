@@ -215,5 +215,5 @@ void Entity::AddAction(Action new_action)
 bool Entity::IsGoingToDoAnythingClever()
 {
 	int random_number = (rand() % 100) + 1; //random del 1-100
-	return this->GetCurrentJudgement() <= random_number;
+	return this->GetCurrentJudgement() >= random_number;
 }

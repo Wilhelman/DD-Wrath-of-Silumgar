@@ -112,6 +112,7 @@ void  Gnoll::Damaged() {
 void Gnoll::PerformAction()
 {
 	Entity* entity_objective = nullptr;
+
 	if (IsGoingToDoAnythingClever()) {
 		//in this case the kobold will search the weakest heroe since we dont have abilities
 		entity_objective = App->combat->GetTheWeakestHeroe();

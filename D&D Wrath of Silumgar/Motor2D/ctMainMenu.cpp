@@ -95,7 +95,7 @@ bool ctMainMenu::Update(float dt)
 	//Execute
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		is_new_game = true;
-		App->audio->PlayFx(menu_select_fx);
+		
 		ExecuteComand(labels);
 	}
 
@@ -222,7 +222,7 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	
 	if (continue_label->current_state == STATE_EXECUTED) {
 		LOG("continue_label pressed");
-
+		App->audio->PlayFx(menu_select_fx);
 
 
 		if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 02  Dungeons & Dragons.ogg", 1, 0)) {

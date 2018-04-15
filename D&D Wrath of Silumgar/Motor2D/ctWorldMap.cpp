@@ -308,6 +308,7 @@ bool ctWorldMap::CleanUp()
 	App->audio->UnLoadFx(menu_move_fx);
 	App->audio->UnLoadFx(menu_select_fx);
 	App->audio->UnLoadFx(walk_fx);
+
 	if (dwarf_level_up != nullptr)
 		App->gui->DeleteUIElement(*dwarf_level_up);
 	if (elf_level_up != nullptr)
@@ -316,8 +317,7 @@ bool ctWorldMap::CleanUp()
 		App->gui->DeleteUIElement(*warrior_level_up);
 	if (cleric_level_up != nullptr)
 		App->gui->DeleteUIElement(*cleric_level_up);
-	if (cleric_level_up != nullptr)
-		App->gui->DeleteUIElement(*cleric_level_up);
+
 	if (condition_lose != nullptr)
 		App->gui->DeleteUIElement(*condition_lose);
 	if (condition_win != nullptr)
@@ -327,16 +327,9 @@ bool ctWorldMap::CleanUp()
 		App->gui->DeleteUIElement(*decision);
 	if (arrow != nullptr)
 		App->gui->DeleteUIElement(*arrow);
+	if (options.size() != 0)
+		options.clear();
 
-	//TODO CLEAN THIS
-	/*std::vector<WorldMapElement*>::const_iterator it_map_elements = map_elements.begin();
-
-	while (it_map_elements != map_elements.end()) {
-		delete *it_map_elements;
-		it_map_elements++;
-	}
-
-	map_elements.clear();*/
 
 	if (App->entities->GetMiniheroes() != nullptr)
 		App->entities->GetMiniheroes()->to_destroy = true;

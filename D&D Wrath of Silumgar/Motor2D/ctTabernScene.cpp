@@ -112,7 +112,7 @@ bool ctTabernScene::Update(float dt)
 			Background = App->gui->AddUIImage(0, -40, { 1,836,485,200 });
 		}
 
-		if (times_x_pressed == 6) {
+		if (times_x_pressed >= 6) {
 			if(App->fadeToBlack->FadeIsOver())
 				App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 

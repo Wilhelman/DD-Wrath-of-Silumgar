@@ -114,7 +114,7 @@ protected:
 	bool key_entities_speed = false;
 
 	int current_health_points, current_mana_points, current_agility_points, current_dexterity_points, current_physical_defense_points, current_magical_defense_points, current_judgement = 0;
-
+	int max_health_points, max_mana_points = 0;
 	bool dead = false;
 
 public:

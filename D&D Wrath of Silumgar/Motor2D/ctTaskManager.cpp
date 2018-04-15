@@ -711,25 +711,25 @@ bool MoveAvatarsToPosition::Execute()
 		if (entity_to_move->position.x < position_to_go.x)
 		{
 			entity_to_move->animation = &entity_to_move->run_forward;
-			entity_to_move->position.x += BASE_SPEED;
+			entity_to_move->position.x += 1;
 		}
 
 		else if (entity_to_move->position.x > position_to_go.x)
 		{
 			entity_to_move->animation = &entity_to_move->run_forward;
-			entity_to_move->position.x -= BASE_SPEED;
+			entity_to_move->position.x -= 1;
 		}
 
 		if (entity_to_move->position.y < position_to_go.y)
 		{
 			entity_to_move->animation = &entity_to_move->run_forward;
-			entity_to_move->position.y += BASE_SPEED;
+			entity_to_move->position.y += 1;
 		}
 
 		else if (entity_to_move->position.y > position_to_go.y)
 		{
 			entity_to_move->animation = &entity_to_move->run_forward;
-			entity_to_move->position.y -= BASE_SPEED;
+			entity_to_move->position.y -= 1;
 		}
 	}
 

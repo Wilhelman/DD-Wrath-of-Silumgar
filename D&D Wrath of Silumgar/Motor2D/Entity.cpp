@@ -113,8 +113,9 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 	default_attack.health_points_effect = -(int)base_stats.base_strength * StatisticsValues::STRENGTH;
 
 	//todo change this
-	current_health_points = base_stats.base_constitution * StatisticsValues::CONSTITUTION;
-	current_mana_points = base_stats.base_focus * StatisticsValues::FOCUS;
+	
+	max_health_points = current_health_points = base_stats.base_constitution * StatisticsValues::CONSTITUTION;
+	max_mana_points = current_mana_points = base_stats.base_focus * StatisticsValues::FOCUS;
 	current_agility_points = base_stats.base_agility * StatisticsValues::AGILITY;
 	current_dexterity_points = base_stats.base_dexterity * StatisticsValues::DEXTERITY;
 	current_physical_defense_points = base_stats.base_physical_defense * StatisticsValues::PHYSICAL_DEFENSE;
@@ -126,6 +127,9 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 
 void Entity::NewTurn()
 {
+	if (current_health_points > 0)
+		this->SetCurrentManaPoints(current_mana_points + 8);
+
 	for (int i = 0; i < altered_stats.size(); i++)
 	{
 		altered_stats.at(i).turn_left--;
@@ -185,7 +189,9 @@ int Entity::GetCurrentJudgement()
 
 void Entity::SetCurrentHealthPoints(int new_health_points)
 {
-	if (new_health_points <= 0)
+	if (new_health_points >= max_health_points)
+		current_health_points = max_health_points;
+	else if (new_health_points <= 0)
 		current_health_points = 0;
 	else
 		current_health_points = new_health_points;
@@ -193,7 +199,12 @@ void Entity::SetCurrentHealthPoints(int new_health_points)
 
 void Entity::SetCurrentManaPoints(int new_mana_points)
 {
-	current_mana_points = new_mana_points;
+	if (new_mana_points >= max_mana_points)
+		current_mana_points = max_mana_points;
+	else if (new_mana_points <= 0)
+		current_mana_points = 0;
+	else
+		current_mana_points = new_mana_points;
 }
 
 void Entity::AddAction(Action new_action)

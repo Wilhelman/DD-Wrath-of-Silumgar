@@ -12,19 +12,9 @@ public:
 	UIElement* congratulations = nullptr;
 	UIElement* text = nullptr;
 
-
-
-
-
-
 public:
 	UIVerticalSliceInfo(int x, int y,bool overcome, ctModule* callback, UIElement* parent = nullptr);
 	virtual ~UIVerticalSliceInfo();
-
-
-	void Update();
-
-
 };
 
 #endif // __UIVERTICALSLICEINFO_H__

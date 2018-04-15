@@ -378,7 +378,7 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 						App->combat->entities_to_spawn = tmp_map_element->entities;
 
 						App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
-						App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y)));
+						App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(i)->coords_in_map.x + 5, final_map_elements.at(i)->coords_in_map.y + 30)));
 						break;
 					}
 				}
@@ -395,7 +395,7 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 						App->combat->entities_to_spawn = tmp_map_element->entities;
 
 						App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
-						App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y)));
+						App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y + 35)));
 						break;
 					}
 				}

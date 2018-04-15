@@ -655,7 +655,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		else if(abilities_label->current_state == STATE_EXECUTED && entity->abilities.size() != 0){
 			if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator).mana_points_effect_to_himself) {
 				if (entity->abilities.at(names_iterator).name == "Mindblown") {
-					App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(names_iterator), (*selected_ally)));
+					App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(names_iterator), (*selected_enemy)));
 					App->task_manager->AddTask(new MoveToInitialPosition(entity));
 				}
 				else {

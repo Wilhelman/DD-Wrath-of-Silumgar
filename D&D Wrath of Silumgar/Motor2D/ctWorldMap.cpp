@@ -228,7 +228,8 @@ bool ctWorldMap::Update(float dt)
 		App->combat->SetSceneName(tmp_map_element->scene_name);
 		App->combat->entities_to_spawn = tmp_map_element->entities;
 
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
+		if (App->fadeToBlack->FadeIsOver())
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
 
 	}
 
@@ -240,7 +241,8 @@ bool ctWorldMap::Update(float dt)
 				condition_win->to_destroy = true;
 				App->main_menu->is_new_game = false;
 				App->map->actual_tier = TierList::TIER_MAP_0;
-				App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+				if (App->fadeToBlack->FadeIsOver())
+					App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 			}
 			
 		}
@@ -251,7 +253,8 @@ bool ctWorldMap::Update(float dt)
 				App->combat->condition_victory = true;
 				App->main_menu->is_new_game = false;
 				App->map->actual_tier = TierList::TIER_MAP_0;
-				App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+				if (App->fadeToBlack->FadeIsOver())
+					App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 			}
 		}
 
@@ -377,7 +380,8 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 						App->combat->SetSceneName(tmp_map_element->scene_name);
 						App->combat->entities_to_spawn = tmp_map_element->entities;
 
-						App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
+						if(App->fadeToBlack->FadeIsOver())
+							App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
 						App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(i)->coords_in_map.x + 5, final_map_elements.at(i)->coords_in_map.y + 30)));
 						break;
 					}
@@ -393,8 +397,8 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 					if (tmp_map_element->scene_name == "forest.tmx") {
 						App->combat->SetSceneName(tmp_map_element->scene_name);
 						App->combat->entities_to_spawn = tmp_map_element->entities;
-
-						App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
+						if (App->fadeToBlack->FadeIsOver())
+							App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
 						App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y + 35)));
 						break;
 					}

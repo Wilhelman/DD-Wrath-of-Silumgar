@@ -217,8 +217,8 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 
 			LOG("Error playing music in ctMainMenu Start");
 		}
-
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 5.0f);
+		if (App->fadeToBlack->FadeIsOver())
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 5.0f);
 
 		
 	}
@@ -229,12 +229,13 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 
 			LOG("Error playing music in ctMainMenu Start");
 		}
-
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->tabern_scene, 1.0f);
+		if (App->fadeToBlack->FadeIsOver())
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->tabern_scene, 1.0f);
 	}
 	if (settings_label->current_state == STATE_EXECUTED) {
 		LOG("settings_label pressed");
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->settings, 1.0f);
+		if(App->fadeToBlack->FadeIsOver())
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->settings, 1.0f);
 		settings_label->current_state = STATE_FOCUSED;
 	}
 	if (about_label->current_state == STATE_EXECUTED) {

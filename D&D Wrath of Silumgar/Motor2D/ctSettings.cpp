@@ -227,7 +227,8 @@ void ctSettings::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	if (back_label->current_state == STATE_EXECUTED) {
 		LOG("back_label pressed");
 		App->audio->PlayFx(menu_select_fx);
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+		if(App->fadeToBlack->FadeIsOver())
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 	}
 
 }

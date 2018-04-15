@@ -113,7 +113,8 @@ bool ctTabernScene::Update(float dt)
 		}
 
 		if (times_x_pressed == 6) {
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+			if(App->fadeToBlack->FadeIsOver())
+				App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 
 		}
 	}

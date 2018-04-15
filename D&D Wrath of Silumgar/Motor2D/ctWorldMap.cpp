@@ -309,6 +309,9 @@ bool ctWorldMap::CleanUp()
 	App->audio->UnLoadFx(menu_select_fx);
 	App->audio->UnLoadFx(walk_fx);
 
+	App->tex->UnLoad(spritesheet_world_map);
+	if (avatar != nullptr)
+		avatar->to_destroy = true;
 	if (dwarf_level_up != nullptr)
 		App->gui->DeleteUIElement(*dwarf_level_up);
 	if (elf_level_up != nullptr)

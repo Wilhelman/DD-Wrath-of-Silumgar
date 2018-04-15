@@ -654,7 +654,7 @@
 
 
     <elf>
-      <statistics constitution ="1" focus="7" strength="8" agility="6" dexterity ="3" intelligence="9"  physicalDefense="2" magicalDefense="3" luck="3"/>
+      <statistics constitution ="5" focus="7" strength="8" agility="6" dexterity ="3" intelligence="9"  physicalDefense="2" magicalDefense="3" luck="3"/>
       <animations>
 
         <animation name="idle" speed="1.0" loop="true">

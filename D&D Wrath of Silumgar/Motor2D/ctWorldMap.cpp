@@ -225,22 +225,23 @@ bool ctWorldMap::Update(float dt)
 
 		if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
 		{
-			condition_win->to_destroy = true;
-			App->main_menu->is_new_game = false;
-			App->map->actual_tier = TierList::TIER_MAP_0;
-			if (App->fadeToBlack->FadeIsOver())
+			if (App->fadeToBlack->FadeIsOver()) {
+				condition_win->to_destroy = true;
+				App->main_menu->is_new_game = false;
+				App->map->actual_tier = TierList::TIER_MAP_0;
 				App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
-			
+			}
 			
 		}
 		else if (App->combat->condition_victory == false)
 		{
-			condition_lose->to_destroy = true;
-			App->combat->condition_victory = true;
-			App->main_menu->is_new_game = false;
-			App->map->actual_tier = TierList::TIER_MAP_0;
-			if (App->fadeToBlack->FadeIsOver())
+			if (App->fadeToBlack->FadeIsOver()) {
+				condition_lose->to_destroy = true;
+				App->combat->condition_victory = true;
+				App->main_menu->is_new_game = false;
+				App->map->actual_tier = TierList::TIER_MAP_0;
 				App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+			}
 		}
 
 	}
@@ -334,6 +335,8 @@ bool ctWorldMap::CleanUp()
 
 	if (App->entities->GetMiniheroes() != nullptr)
 		App->entities->GetMiniheroes()->to_destroy = true;
+
+	App->gui->DeleteAllUIElements();
 
 	App->map->CleanUp();
 

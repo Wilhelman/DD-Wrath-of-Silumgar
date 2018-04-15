@@ -15,6 +15,7 @@ private:
 
 public:
 	UIDialogBox(int x, int y, UI_Type type, std::string text, SDL_Color color, int size, uint32 box_width, const char* path, UIElement* parent);
+	~UIDialogBox();
 	void Draw(SDL_Texture* sprite);
 };
 

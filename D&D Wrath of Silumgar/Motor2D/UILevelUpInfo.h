@@ -30,7 +30,7 @@ public:
 
 public:
 	UILevelUpInfo(int x, int y, UI_Type type, EntityType hero, ctModule* callback, UIElement* parent = nullptr);
-	virtual ~UILevelUpInfo();
+	~UILevelUpInfo();
 
 
 	void Update();

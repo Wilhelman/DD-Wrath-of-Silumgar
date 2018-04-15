@@ -84,22 +84,34 @@ UILevelUpInfo::UILevelUpInfo(int x, int y, UI_Type type, EntityType hero, ctModu
 }
 
 UILevelUpInfo::~UILevelUpInfo() {
-
-	background->to_destroy = true;
-	image_hero->to_destroy = true;
-	text->to_destroy = true;
-	level_number->to_destroy = true;
-	constitution->to_destroy = true;
-	focus->to_destroy = true;
-	force->to_destroy = true;
-	skill->to_destroy = true;
-	luck->to_destroy = true;
-	agility->to_destroy = true;
-	intelligence->to_destroy = true;
-	physical_defense->to_destroy = true;
-	magic_defense->to_destroy = true;
-	ability_unlock->to_destroy = true;
-	name_ability->to_destroy = true;
+	App->gui->DeleteUIElement(*background);
+	background = nullptr;
+	App->gui->DeleteUIElement(*image_hero);
+	image_hero = nullptr;
+	App->gui->DeleteUIElement(*text);
+	text = nullptr;
+	App->gui->DeleteUIElement(*constitution);
+	constitution = nullptr;
+	App->gui->DeleteUIElement(*focus);
+	focus = nullptr;
+	App->gui->DeleteUIElement(*agility);
+	agility = nullptr;
+	App->gui->DeleteUIElement(*skill);
+	skill = nullptr;
+	App->gui->DeleteUIElement(*intelligence);
+	intelligence = nullptr;
+	App->gui->DeleteUIElement(*physical_defense);
+	physical_defense = nullptr;
+	App->gui->DeleteUIElement(*magic_defense);
+	magic_defense = nullptr;
+	App->gui->DeleteUIElement(*luck);
+	luck = nullptr;
+	App->gui->DeleteUIElement(*ability_unlock);
+	ability_unlock = nullptr;
+	App->gui->DeleteUIElement(*level_number);
+	level_number = nullptr;
+	App->gui->DeleteUIElement(*name_ability);
+	name_ability = nullptr;
 }
 
 void UILevelUpInfo::Update()

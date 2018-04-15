@@ -6,6 +6,7 @@
 #include "UIElement.h"
 #include "ctRender.h"
 #include "ctWindow.h"
+#include "ctTextures.h"
 
 struct Option {
 	uint option_number;
@@ -16,7 +17,7 @@ class UIDecision : public UIElement
 {
 public:
 
-	UIElement * image_border;
+
 	//UIElement* image_decision;
 	UIElement* text_border;
 	UIElement* text_decision;
@@ -38,12 +39,13 @@ public:
 	{
 		//image_border->to_destroy = true;
 		//image_decision->to_destroy = true;
+		App->tex->UnLoad(texture);
 		text_border->to_destroy = true;
 		text_decision->to_destroy = true;
 		arrow->to_destroy = true;
 		options[0]->to_destroy = true;
 		options[1]->to_destroy = true;
-	
+
 		first_option->to_destroy = true;
 	}
 	//Decision call example

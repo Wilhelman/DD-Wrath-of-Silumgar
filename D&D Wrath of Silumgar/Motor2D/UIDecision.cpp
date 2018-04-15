@@ -27,12 +27,12 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	
 	int xE = App->win->screen_surface->w / App->win->GetHScalade() / 9;
 	int yE = App->win->screen_surface->h / App->win->GetHScalade() / 50;
-	aux_element = App->gui->AddUIImage(xE, yE, { 843,484,264,500 }, nullptr, this);
+	text_border = App->gui->AddUIImage(xE, yE, { 843,484,264,280 }, nullptr, this);
 
 	
-	this->text_border = aux_element;
+	
 
-	aux_element = App->gui->AddUITextBox( xE + 20, yE + 26, size, 222, text, { 255,255,255,255 }, this);
+	aux_element = App->gui->AddUITextBox( xE + 20, yE + 24, size, 222, text, { 255,255,255,255 }, this);
 	this->text_decision = aux_element;
 
 
@@ -42,7 +42,7 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	for (int i = 1; i >= 0; i--) {
 
 		if (!text_options[i].empty() && !text_options[i].empty()) { //text box for every option
-			aux_element = App->gui->AddUITextBox(xE + 20, 210 - extra_h, 14, 260, text_options[i], { 255,255,255,255 }, this,Third_Font);   //Old: 300 - extra_h 
+			aux_element = App->gui->AddUITextBox(xE + 20, 208 - extra_h, 14, 260, text_options[i], { 255,255,255,255 }, this,Third_Font);   //Old: 300 - extra_h 
 																																  //this->ui_options[i] = aux_element;
 			options.push_back(aux_element);
 			extra_h += 40;

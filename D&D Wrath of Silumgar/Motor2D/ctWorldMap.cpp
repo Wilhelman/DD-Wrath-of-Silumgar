@@ -75,17 +75,7 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 		
 	}
 
-	//TO DELETE 1
-	/*spritesheet_name = config.child("spritesheet").attribute("name").as_string();
 
-	//read rects from node
-	for (pugi::xml_node rects = config.child("rects").child("rect"); rects && ret; rects = rects.next_sibling("rect"))
-	{
-		std::string tmp(rects.attribute("name").as_string());
-
-		if (tmp == "background")
-			LoadRect(rects, &background);
-	}*/
 
 	return ret;
 }
@@ -157,13 +147,7 @@ bool ctWorldMap::Start()
 		dwarf_level_up = App->gui->AddUILevelUpInfo(xE, yE, DWARF, this, nullptr);
 		cleric_level_up = App->gui->AddUILevelUpInfo(xE, yE, CLERIC, this, nullptr);
 	}
-	/*if (App->map->actual_tier == TierList::TIER_MAP_2)
-	{
-		decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this); 
-		(*options.rbegin())->current_state = STATE_FOCUSED;
-		arrow->SetParent(*options.rbegin());
-	}*/
-	
+
 
 	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 05 The Journey (Stage 1).ogg", -1)) {
 		
@@ -335,7 +319,10 @@ bool ctWorldMap::CleanUp()
 	if (condition_win != nullptr)
 		condition_win->to_destroy = true;
 	
-
+	if (decision != nullptr)
+		decision->to_destroy = true;
+	if (arrow != nullptr)
+		arrow->to_destroy = true;
 
 	//TODO CLEAN THIS
 	/*std::vector<WorldMapElement*>::const_iterator it_map_elements = map_elements.begin();

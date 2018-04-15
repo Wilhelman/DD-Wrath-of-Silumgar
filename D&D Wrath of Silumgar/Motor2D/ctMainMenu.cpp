@@ -123,7 +123,7 @@ bool ctMainMenu::CleanUp()
 	App->audio->UnLoadFx(menu_move_fx);
 	App->audio->UnLoadFx(menu_select_fx);
 
-	App->gui->DeleteAllUIElements();
+
 	background = nullptr;
 	continue_label = nullptr;
 	new_game_label = nullptr;

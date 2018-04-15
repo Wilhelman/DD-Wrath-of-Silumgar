@@ -5,7 +5,7 @@
   <enemies>
 
     <kobold>
-      <statistics constitution ="6" focus="5" strength="5" agility="7" dexterity ="4" intelligence="4" physicalDefense="3" magicalDefense="2" judgement="40"/>
+      <statistics constitution ="5" focus="5" strength="3" agility="7" dexterity ="4" intelligence="4" physicalDefense="2" magicalDefense="2" judgement="25"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -206,7 +206,7 @@
     </heavyGoblin>
 
     <gnoll>
-      <statistics constitution ="8" focus="6" strength="7" agility="6"  dexterity ="6" intelligence="3" physicalDefense="10" magicalDefense="2" judgement="40"/>
+      <statistics constitution ="8" focus="6" strength="7" agility="6"  dexterity ="6" intelligence="3" physicalDefense="7" magicalDefense="1" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -654,7 +654,7 @@
 
 
     <elf>
-      <statistics constitution ="5" focus="7" strength="8" agility="6" dexterity ="3" intelligence="9"  physicalDefense="2" magicalDefense="3" luck="3"/>
+      <statistics constitution ="5" focus="7" strength="8" agility="6" dexterity ="3" intelligence="10"  physicalDefense="2" magicalDefense="3" luck="3"/>
       <animations>
 
         <animation name="idle" speed="1.0" loop="true">

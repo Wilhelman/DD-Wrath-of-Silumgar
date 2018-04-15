@@ -7,6 +7,7 @@
 #include "ctEntities.h"
 #include "ctTabernScene.h"
 #include "ctWorldMap.h"
+#include "ctCombat.h"
 #include "ctFadeToBlack.h"
 #include "ctGui.h"
 #include "UIElement.h"
@@ -64,57 +65,61 @@ bool ctTabernScene::PreUpdate()
 bool ctTabernScene::Update(float dt)
 {
 	if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN) {
-		if (times_x_pressed >= 6)
-			times_x_pressed = 0;
 
 		times_x_pressed++;
 
 		if (times_x_pressed == 1) {
-			Dialog_Box->to_destroy = true;
+			App->gui->DeleteUIElement(*Dialog_Box);
 			Dialog_Box = App->gui->AddUIDialogBox(20, 158, 15, 224, "Usollip bored of having everything he wanted, decided to start playing with them. As god of war, he distributed a great artifact called, Sorez, which contained an unlimited power capable of dominating the whole earth. Once all the nations learned, great conflicts and crusades began to get Sorez.", { 255,255,255,255 }, nullptr, Second_Font);
-			Text_continue->to_destroy = true;
+			App->gui->DeleteUIElement(*Text_continue);
 			Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
-			//Background->to_destroy = true;
-			//Background = App->gui->AddUIImage(0, -40, { 1,836,485,200 });
+			
 		}
 
 		if (times_x_pressed == 2) {
-			Dialog_Box->to_destroy = true;
+			App->gui->DeleteUIElement(*Dialog_Box);
 			Dialog_Box = App->gui->AddUIDialogBox(20, 158, 15, 224, "When the gods learned what Usollip was doing, they decided to lock him in hell, from which he could never leave. Sorez finished in the hands of Silumgar Dragon Blood, with this power began to attack all continents. His desire to generate wars has induced the world into chaos.", { 255,255,255,255 }, nullptr, Second_Font);
-			Text_continue->to_destroy = true;
+			App->gui->DeleteUIElement(*Text_continue);
 			Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
-			//Background->to_destroy = true;
-			//Background = App->gui->AddUIImage(0, -40, { 1,836,485,200 });
+			
 		}
 
 		if (times_x_pressed == 3) {
-			Dialog_Box->to_destroy = true;
+			App->gui->DeleteUIElement(*Dialog_Box);
 			Dialog_Box = App->gui->AddUIDialogBox(20, 158, 15, 224, "That is why the rest of the Gods: Wilhelman, Kira, Arla, Alfa, Acare, Sito and Rikarudo have guided a small group of heroes to return the balance to the world.", { 255,255,255,255 }, nullptr, Second_Font);
-			Text_continue->to_destroy = true;
+			App->gui->DeleteUIElement(*Text_continue);
 			Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
-			//Background->to_destroy = true;
-			//Background = App->gui->AddUIImage(0, -40, { 1,836,485,200 });
+			
 		}
 
 		if (times_x_pressed == 4) {
-			Dialog_Box->to_destroy = true;
+			App->gui->DeleteUIElement(*Dialog_Box);
 			Dialog_Box = App->gui->AddUIDialogBox(20, 158, 15, 224, "We are in Allarad, the last peaceful place of all Mystara. The heroes have been gathered in the tavern of the city through messages and guides sent by the gods themselves, knowing already, what was going to happen.", { 255,255,255,255 }, nullptr, Second_Font);
-			Text_continue->to_destroy = true;
+			App->gui->DeleteUIElement(*Text_continue);
 			Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
 			Background = App->gui->AddUIImage(0, -40,{ 524,836,485,200 });
 		}
 
 		if (times_x_pressed == 5) {
-			Dialog_Box->to_destroy = true;
+			App->gui->DeleteUIElement(*Dialog_Box);
 			Dialog_Box = App->gui->AddUIDialogBox(20, 158, 15, 224, "This peace would soon end when a great army approached the city of Allard to burn with everything that was in it. The heroes followed the responsibles of fire and they are going to pay that. ", { 255,255,255,255 }, nullptr, Second_Font);
-			Text_continue->to_destroy = true;
+			App->gui->DeleteUIElement(*Text_continue);
 			Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
-			Background->to_destroy = true;
+			App->gui->DeleteUIElement(*Background);
 			Background = App->gui->AddUIImage(0, -40, { 1,836,485,200 });
 		}
 
 		if (times_x_pressed == 6) {
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+
+			App->world_map->GenerateNewRandomlyMap();
+
+			WorldMapElement* tmp_map_element = App->world_map->final_map_elements.at(0);
+
+			App->combat->SetSceneName(tmp_map_element->scene_name);
+			App->combat->entities_to_spawn = tmp_map_element->entities;
+
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
+
 		}
 	}
 
@@ -135,9 +140,11 @@ bool ctTabernScene::CleanUp()
 {
 	LOG("Freeing ctWorldMap");
 
-	Dialog_Box->to_destroy = true;
-	Text_continue->to_destroy = true;
-	Background->to_destroy = true;
+	times_x_pressed = 0;
+	App->gui->DeleteUIElement(*Dialog_Box);
+	App->gui->DeleteUIElement(*Text_continue);
+	App->gui->DeleteUIElement(*Background);
+	
 
 	return true;
 }

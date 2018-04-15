@@ -11,6 +11,7 @@ class Entity;
 //class MiniHeroes;
 class UIDecision;
 
+
 class ctTabernScene : public ctModule
 {
 

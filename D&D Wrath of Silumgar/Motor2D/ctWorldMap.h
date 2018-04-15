@@ -12,16 +12,17 @@ class MiniHeroes;
 class UIDecision;
 
 enum TierList;
+
+struct WorldMapElement {
+	uint tier = 0u;
+	std::vector<EntityType> entities;
+	std::string scene_name;
+	SDL_Rect icon_rect;
+	iPoint coords_in_map = { 0,0 };
+};
+
 class ctWorldMap : public ctModule
 {
-
-	struct WorldMapElement {
-		uint tier = 0u;
-		std::vector<EntityType> entities;
-		std::string scene_name;
-		SDL_Rect icon_rect;
-		iPoint coords_in_map = { 0,0 };
-	};
 
 public:
 
@@ -56,14 +57,14 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
+	std::vector<WorldMapElement*> final_map_elements;
 
+	void GenerateNewRandomlyMap();
 
 private:
 
 	//used to load easily a rect from XML
 	void LoadRect(pugi::xml_node rect_node, SDL_Rect* rect);
-
-	void GenerateNewRandomlyMap();
 
 	void NavigateDown(std::vector<UIElement*> &current_vector);
 
@@ -74,7 +75,7 @@ private:
 
 	std::vector<WorldMapElement*> all_map_elements;
 
-	std::vector<WorldMapElement*> final_map_elements;
+	
 
 	std::string world_map_tmx;
 

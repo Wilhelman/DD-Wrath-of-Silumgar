@@ -23,7 +23,7 @@
 		<heroe name="dwarf">
 			<values health_points="91" mana_points="52" />
 			<skills>
-				<skill name="Double Ax" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="20" health_points_effect="-17" objective="1" />
+				<skill name="H. Axe" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="20" health_points_effect="-17" objective="1" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />
@@ -32,7 +32,7 @@
 		<heroe name="elf">
 			<values health_points="13" mana_points="91" />
 			<skills>
-				<skill name="test" mana_cost="10" etc="etc" />
+				<skill name="Mindblown" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="21" health_points_effect="-25" objective="1" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />

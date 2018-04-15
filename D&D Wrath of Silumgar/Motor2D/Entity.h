@@ -62,6 +62,7 @@ enum ActionType {
 	KICK,
 	HIGH_AXE,
 	HEAL,
+	MINDBLOWN,
 
 	ACTION_NOT_DEFINED
 };
@@ -133,6 +134,7 @@ public:
 	ctAnimation kick = ctAnimation();
 	ctAnimation high_axe = ctAnimation();
 	ctAnimation heal = ctAnimation();
+	ctAnimation mindblown = ctAnimation();
 
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);

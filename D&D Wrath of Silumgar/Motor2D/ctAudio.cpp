@@ -86,6 +86,7 @@ bool ctAudio::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_KP_PLUS) == KEY_DOWN) {
 		Mix_VolumeMusic(Mix_VolumeMusic(-1) + 10);
+		Mix_Volume(-1, Mix_Volume(-1, -1) + 10);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_KP_MINUS) == KEY_DOWN) {
@@ -93,6 +94,8 @@ bool ctAudio::Update(float dt)
 			Mix_VolumeMusic(0);
 		else
 			Mix_VolumeMusic(Mix_VolumeMusic(-1) - 10);
+
+		Mix_Volume(-1, Mix_Volume(-1, -1) - 10);
 	}
 
 	return true;

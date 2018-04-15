@@ -186,13 +186,7 @@ bool ctWorldMap::PreUpdate()
 bool ctWorldMap::Update(float dt)
 {
 
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
-		App->audio->PlayFx(walk_fx,3); //TODO Change if we dont move at the same time we press 1
-		//App->task_manager->AddTask(new MoveForward(avatar, { avatar->position.x + 40,avatar->position.y - 20 }));
-		
-	}
-
-	else if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		
 		if (cleric_level_up != nullptr)
 		{

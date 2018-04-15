@@ -508,6 +508,7 @@ bool PerformActionToEntity::Execute()
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 0,255,0,255 }, 14, nullptr, nullptr);
 
 				//receiver_entity->Damaged();
+				actioner_entity->Ability1();
 
 			}
 		}

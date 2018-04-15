@@ -693,7 +693,7 @@ void ctCombat::EnemiesBarShouldBeVisible()
 {
 	std::vector<Entity*>::const_iterator it_vector = enemies.begin();
 	while (it_vector != enemies.end()) {
-		if ((*it_vector)->animation == &(*it_vector)->idle || (*it_vector)->animation == &(*it_vector)->hit || (*it_vector)->animation == &(*it_vector)->death) {
+		if ((*it_vector)->animation == &(*it_vector)->idle || (*it_vector)->animation == &(*it_vector)->hit || (*it_vector)->animation == &(*it_vector)->death || (*it_vector)->animation == &(*it_vector)->dodge) {
 			UIBar* current_entity_bar = GetUIBarFromEntity((*it_vector));
 			current_entity_bar->MakeElementsVisible();
 			it_vector++;

@@ -206,7 +206,7 @@
     </heavyGoblin>
 
     <gnoll>
-      <statistics constitution ="8" focus="6" strength="7" agility="6"  dexterity ="6" intelligence="3" physicalDefense="7" magicalDefense="1" judgement="60"/>
+      <statistics constitution ="9" focus="6" strength="8" agility="6"  dexterity ="6" intelligence="3" physicalDefense="10" magicalDefense="1" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">

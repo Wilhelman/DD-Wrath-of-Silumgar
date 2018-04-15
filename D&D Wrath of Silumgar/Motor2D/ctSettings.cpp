@@ -107,6 +107,12 @@ bool ctSettings::Update(float dt)
 		TurnDown(labels);
 	}
 
+	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		fx_volume_label->current_state = STATE_NORMAL;
+		back_label->current_state = STATE_EXECUTED;
+		ExecuteComand(labels);
+	}
+
 	return true;
 }
 

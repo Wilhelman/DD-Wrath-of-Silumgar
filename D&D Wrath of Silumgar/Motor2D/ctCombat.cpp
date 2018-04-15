@@ -244,7 +244,8 @@ bool ctCombat::Update(float dt)
 bool ctCombat::PostUpdate()
 {
 	bool ret = true;
-
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		ret = false;
 
 	return ret;
 }

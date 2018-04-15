@@ -47,7 +47,7 @@ bool ctTabernScene::Start()
 {
 	bool ret = true;
 	Dialog_Box =App->gui->AddUIDialogBox(20, 158, 15, 224, " Usollip, the god of war has been judged and condemned in the great Olympus by the rest of the gods for him having meddled too much in the lives of human beings. In the world of the gods there are few laws, one of these is not to intervene in the world of humans. ", { 255,255,255,255 }, nullptr, Second_Font);
-	Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
+	Text_continue = App->gui->AddUITextBox(320, 293, 10, 224, "Press ENTER or A to continue", { 255,255,255,255 }, nullptr, Second_Font);
 	
 	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 04 Prologue (Stage 1).ogg", 1)) {
 
@@ -67,7 +67,7 @@ bool ctTabernScene::PreUpdate()
 // Called each loop iteration
 bool ctTabernScene::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN ||App->input->gamepad.X == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN ||App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 
 		times_x_pressed++;
 
@@ -75,7 +75,7 @@ bool ctTabernScene::Update(float dt)
 			App->gui->DeleteUIElement(*Dialog_Box);
 			Dialog_Box = App->gui->AddUIDialogBox(20, 158, 15, 224, "Usollip bored of having everything he wanted, decided to start playing with them. As god of war, he distributed a great artifact called, Sorez, which contained an unlimited power capable of dominating the whole earth. Once all the nations learned, great conflicts and crusades began to get Sorez.", { 255,255,255,255 }, nullptr, Second_Font);
 			App->gui->DeleteUIElement(*Text_continue);
-			Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
+			Text_continue = App->gui->AddUITextBox(320, 293, 10, 224, "Press ENTER or A to continue", { 255,255,255,255 }, nullptr, Second_Font);
 			
 		}
 
@@ -83,7 +83,7 @@ bool ctTabernScene::Update(float dt)
 			App->gui->DeleteUIElement(*Dialog_Box);
 			Dialog_Box = App->gui->AddUIDialogBox(20, 158, 15, 224, "When the gods learned what Usollip was doing, they decided to lock him in hell, from which he could never leave. Sorez finished in the hands of Silumgar Dragon Blood, with this power began to attack all continents. His desire to generate wars has induced the world into chaos.", { 255,255,255,255 }, nullptr, Second_Font);
 			App->gui->DeleteUIElement(*Text_continue);
-			Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
+			Text_continue = App->gui->AddUITextBox(320, 293, 10, 224, "Press ENTER or A to continue", { 255,255,255,255 }, nullptr, Second_Font);
 			
 		}
 
@@ -91,7 +91,7 @@ bool ctTabernScene::Update(float dt)
 			App->gui->DeleteUIElement(*Dialog_Box);
 			Dialog_Box = App->gui->AddUIDialogBox(20, 158, 15, 224, "That is why the rest of the Gods: Wilhelman, Kira, Arla, Alfa, Acare, Sito and Rikarudo have guided a small group of heroes to return the balance to the world.", { 255,255,255,255 }, nullptr, Second_Font);
 			App->gui->DeleteUIElement(*Text_continue);
-			Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
+			Text_continue = App->gui->AddUITextBox(320, 293, 10, 224, "Press ENTER or A to continue", { 255,255,255,255 }, nullptr, Second_Font);
 			
 		}
 
@@ -99,7 +99,7 @@ bool ctTabernScene::Update(float dt)
 			App->gui->DeleteUIElement(*Dialog_Box);
 			Dialog_Box = App->gui->AddUIDialogBox(20, 158, 15, 224, "We are in Allarad, the last peaceful place of all Mystara. The heroes have been gathered in the tavern of the city through messages and guides sent by the gods themselves, knowing already, what was going to happen.", { 255,255,255,255 }, nullptr, Second_Font);
 			App->gui->DeleteUIElement(*Text_continue);
-			Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
+			Text_continue = App->gui->AddUITextBox(320, 293, 10, 224, "Press ENTER or A to continue", { 255,255,255,255 }, nullptr, Second_Font);
 			Background = App->gui->AddUIImage(0, -40,{ 524,836,485,200 });
 		}
 
@@ -107,7 +107,7 @@ bool ctTabernScene::Update(float dt)
 			App->gui->DeleteUIElement(*Dialog_Box);
 			Dialog_Box = App->gui->AddUIDialogBox(20, 158, 15, 224, "This peace would soon end when a great army approached the city of Allard to burn with everything that was in it. The heroes followed the responsibles of fire and they are going to pay that. ", { 255,255,255,255 }, nullptr, Second_Font);
 			App->gui->DeleteUIElement(*Text_continue);
-			Text_continue = App->gui->AddUITextBox(350, 293, 10, 224, "Press X to continue", { 255,255,255,255 }, nullptr, Second_Font);
+			Text_continue = App->gui->AddUITextBox(320, 293, 10, 224, "Press ENTER or A to continue", { 255,255,255,255 }, nullptr, Second_Font);
 			App->gui->DeleteUIElement(*Background);
 			Background = App->gui->AddUIImage(0, -40, { 1,836,485,200 });
 		}
@@ -126,6 +126,8 @@ bool ctTabernScene::Update(float dt)
 bool ctTabernScene::PostUpdate()
 {
 	bool ret = true;
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		ret = false;
 
 
 	return ret;

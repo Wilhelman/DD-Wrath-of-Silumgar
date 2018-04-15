@@ -303,7 +303,8 @@ bool ctWorldMap::Update(float dt)
 bool ctWorldMap::PostUpdate()
 {
 	bool ret = true;
-
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		ret = false;
 
 	return ret;
 }

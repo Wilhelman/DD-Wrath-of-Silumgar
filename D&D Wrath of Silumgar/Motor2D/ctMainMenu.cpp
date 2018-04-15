@@ -107,7 +107,7 @@ bool ctMainMenu::PostUpdate()
 {
 	bool ret = true;
 
-	if (quit_pressed)
+	if (quit_pressed ||App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 
 	return ret;

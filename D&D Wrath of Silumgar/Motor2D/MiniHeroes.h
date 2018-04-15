@@ -30,7 +30,6 @@ private:
 public:
 
 	MiniHeroes(int x, int y, EntityType type);
-	~MiniHeroes();
 
 	void Update(float dt);
 };

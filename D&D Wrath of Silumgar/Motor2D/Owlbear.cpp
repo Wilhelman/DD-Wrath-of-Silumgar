@@ -35,11 +35,6 @@ Owlbear::Owlbear(int x, int y, EntityType type) : Entity(x, y, type) {
 
 }
 
-Owlbear::~Owlbear()
-{
-	LOG("Freeing the player");
-
-}
 
 // Called each loop iteration
 void Owlbear::Update(float dt)

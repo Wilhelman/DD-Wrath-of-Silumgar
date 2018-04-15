@@ -29,7 +29,6 @@ private:
 public:
 
 	Elf(int x, int y, EntityType type);
-	~Elf();
 
 	void Update(float dt);
 	void Attack();

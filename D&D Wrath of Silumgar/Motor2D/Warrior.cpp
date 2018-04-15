@@ -51,11 +51,7 @@ Warrior::Warrior(int x, int y, EntityType type) : Entity(x, y, type) {
 
 }
 
-Warrior::~Warrior()
-{
-	LOG("Freeing the player");
 
-}
 
 // Called each loop iteration
 void Warrior::Update(float dt)

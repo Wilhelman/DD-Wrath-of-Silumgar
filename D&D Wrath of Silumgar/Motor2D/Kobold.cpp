@@ -52,11 +52,7 @@ Kobold::Kobold(int x, int y, EntityType type) : Entity(x, y, type) {
 
 }
 
-Kobold::~Kobold()
-{
-	LOG("Freeing the player");
 
-}
 
 // Called each loop iteration
 void Kobold::Update(float dt)

@@ -34,11 +34,6 @@ MiniHeroes::MiniHeroes(int x, int y, EntityType type) : Entity(x, y, type) {
 
 }
 
-MiniHeroes::~MiniHeroes()
-{
-	LOG("Freeing the player");
-
-}
 
 // Called each loop iteration
 void MiniHeroes::Update(float dt)

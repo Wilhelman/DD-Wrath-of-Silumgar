@@ -31,7 +31,6 @@ private:
 public:
 
 	GnollArcher(int x, int y, EntityType type);
-	~GnollArcher();
 
 	void Update(float dt);
 };

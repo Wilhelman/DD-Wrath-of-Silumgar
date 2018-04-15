@@ -273,13 +273,40 @@ bool ctCombat::CleanUp()
 
 	enemies.clear();
 	heroes.clear();
+	for (int i = 0; i < enemies_bars.size(); i++)
+	{
+		App->gui->DeleteUIElement(*enemies_bars[i]);
+		
+	}
 	enemies_bars.clear();
+	
 	turn_priority_entity.clear();
 	draw_turn_priority_entity.clear();
 	entities_to_spawn.clear();
+	App->gui->DeleteUIElement(*combat_menu);
 
+	App->gui->DeleteUIElement(*cleric_background);
+	App->gui->DeleteUIElement(*cleric_HP_bar);
+	App->gui->DeleteUIElement(*cleric_mana_bar);
+	App->gui->DeleteUIElement(*cleric_name);
+
+	App->gui->DeleteUIElement(*dwarf_background);
+	App->gui->DeleteUIElement(*dwarf_HP_bar);
+	App->gui->DeleteUIElement(*dwarf_mana_bar);
+	App->gui->DeleteUIElement(*dwarf_name);
+
+	App->gui->DeleteUIElement(*elf_background);
+	App->gui->DeleteUIElement(*elf_HP_bar);
+	App->gui->DeleteUIElement(*elf_mana_bar);
+	App->gui->DeleteUIElement(*elf_name);
+
+	App->gui->DeleteUIElement(*warrior_background);
+	App->gui->DeleteUIElement(*warrior_HP_bar);
+	App->gui->DeleteUIElement(*warrior_mana_bar);
+	App->gui->DeleteUIElement(*warrior_name);
 	App->task_manager->CleanUp();
 
+	
 	return true;
 }
 
@@ -543,7 +570,7 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 	else if (tmp == "Heal")
 		new_action.type = HEAL;
 	else if (tmp == "Mindblown")
-		new_action.type = MINDBLOWN;
+		//new_action.type = MINDBLOWN;
 
 	if (skill_node.attribute("objective").as_int()) 
 		new_action.objective = ENEMIES;

@@ -113,7 +113,7 @@ protected:
 	
 	bool key_entities_speed = false;
 
-	int current_health_points, current_mana_points, current_agility_points, current_dexterity_points, current_physical_defense_points, current_judgement = 0;
+	int current_health_points, current_mana_points, current_agility_points, current_dexterity_points, current_physical_defense_points, current_magical_defense_points, current_judgement = 0;
 
 	bool dead = false;
 
@@ -134,7 +134,7 @@ public:
 	ctAnimation kick = ctAnimation();
 	ctAnimation high_axe = ctAnimation();
 	ctAnimation heal = ctAnimation();
-	ctAnimation mindblown = ctAnimation();
+	ctAnimation mind_blown = ctAnimation();
 
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);
@@ -193,6 +193,7 @@ public:
 	int GetCurrentAgilityPoints();
 	int GetCurrentDexterityPoints();
 	int GetCurrentPhysicalDefensePoints();
+	int GetCurrentMagicalDefensePoints();
 
 	int GetCurrentJudgement();
 

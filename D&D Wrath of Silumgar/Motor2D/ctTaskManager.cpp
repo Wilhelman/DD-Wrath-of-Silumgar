@@ -549,16 +549,13 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect;
-						float damage_reduction = (float)receiver_entity->GetCurrentMagicDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 						random_thousand_faces_die = (rand() % 100) + 1;
 						if (random_thousand_faces_die <= actioner_dexterity) {
 							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
 							critical = true;
 						}
-
-						if (isStunned)
-							damage_to_deal = damage_to_deal * 2;
 
 						damage_to_deal = damage_to_deal - damage_reduction;
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);

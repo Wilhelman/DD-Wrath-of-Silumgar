@@ -12,6 +12,7 @@
 
 #include "ctFadeToBlack.h"
 #include "ctWorldMap.h"
+#include "ctTabernScene.h"
 #include "ctSettings.h"
 #include "ctSkillTree.h"
 
@@ -229,7 +230,7 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 			LOG("Error playing music in ctMainMenu Start");
 		}
 
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->tabern_scene, 1.0f);
 	}
 	if (settings_label->current_state == STATE_EXECUTED) {
 		LOG("settings_label pressed");

@@ -54,6 +54,8 @@ public:
 private:
 
 	UIElement* Dialog_Box = nullptr;
+	UIElement* Text_continue = nullptr;
+	UIElement* Background = nullptr;
 	uint times_x_pressed = 0;
 
 

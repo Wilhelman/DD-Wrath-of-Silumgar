@@ -221,8 +221,8 @@ bool ctCombat::Update(float dt)
 		}
 	}
 	
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
+		//App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 
 	// ZOOM
 

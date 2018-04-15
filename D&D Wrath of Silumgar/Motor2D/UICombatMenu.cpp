@@ -771,9 +771,15 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 		}
 		else if (abilities_label->current_state == STATE_EXECUTED && entity->abilities.size() != 0) {
 			if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator).mana_points_effect_to_himself) {
-				App->task_manager->AddTask(new MoveToEntity(entity, (*selected_ally), -20));
-				App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(names_iterator), (*selected_ally)));
-				App->task_manager->AddTask(new MoveToInitialPosition(entity));
+				if (entity->abilities.at(names_iterator).name == "Heal") {
+					App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(names_iterator), (*selected_ally)));
+					App->task_manager->AddTask(new MoveToInitialPosition(entity));
+				}
+				else {
+					App->task_manager->AddTask(new MoveToEntity(entity, (*selected_ally), -20));
+					App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(names_iterator), (*selected_ally)));
+					App->task_manager->AddTask(new MoveToInitialPosition(entity));
+				}
 			}
 			else {
 				selected_ally = App->combat->heroes.begin();

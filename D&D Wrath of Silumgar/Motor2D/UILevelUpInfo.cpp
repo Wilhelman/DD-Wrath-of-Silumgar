@@ -43,7 +43,7 @@ UILevelUpInfo::UILevelUpInfo(int x, int y, UI_Type type, EntityType hero, ctModu
 		magic_defense = App->gui->AddUITextBox(x + 190, y + 130, 12, 200, "Magic Defense: 3 -> 5 ", { 255,255,255,255 }, this, Second_Font);
 		luck = App->gui->AddUITextBox(x + 190, y + 145, 12, 130, "Luck: 3 -> 4 ", { 255,255,255,255 }, this, Second_Font);
 		ability_unlock = App->gui->AddUITextBox(x + 30, y + 110, 15, 100, "New ability:", { 255,255,255,255 }, this, Second_Font);
-		name_ability = App->gui->AddUITextBox(x + 30, y + 125, 15, 100, "FIREBALL", { 255,0,0,255 }, this, Second_Font);
+		name_ability = App->gui->AddUITextBox(x + 30, y + 125, 15, 100, "MINDBLOWN", { 255,0,0,255 }, this, Second_Font);
 	}
 	if (hero == DWARF)
 	{
@@ -61,7 +61,7 @@ UILevelUpInfo::UILevelUpInfo(int x, int y, UI_Type type, EntityType hero, ctModu
 		magic_defense = App->gui->AddUITextBox(x + 190, y + 130, 12, 200, "Magic Defense: 3 -> 4 ", { 255,255,255,255 }, this, Second_Font);
 		luck = App->gui->AddUITextBox(x + 190, y + 145, 12, 130, "Luck: 5 -> 7 ", { 255,255,255,255 }, this, Second_Font);
 		ability_unlock = App->gui->AddUITextBox(x + 30, y + 110, 15, 100, "New ability:", { 255,255,255,255 }, this, Second_Font);
-		name_ability = App->gui->AddUITextBox(x + 30, y + 125, 15, 100, "ALGO", { 255,0,0,255 }, this, Second_Font);
+		name_ability = App->gui->AddUITextBox(x + 30, y + 125, 15, 100, "HIGH AXE", { 255,0,0,255 }, this, Second_Font);
 	}
 	if (hero == CLERIC)
 	{

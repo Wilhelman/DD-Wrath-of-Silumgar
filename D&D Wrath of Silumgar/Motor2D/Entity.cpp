@@ -44,7 +44,7 @@ void Entity::Draw()
 
 	/*stun todo better*/
 
-	if (stun_animation != nullptr) {
+	if (stun_animation != nullptr && current_health_points > 0) {
 		SDL_Rect a = stun_animation->GetCurrentFrame();
 		App->render->Blit(texture, (position.x + r.w / 2) - a.w/2, position.y - r.h, &(stun_animation->GetCurrentFrame()));
 	}

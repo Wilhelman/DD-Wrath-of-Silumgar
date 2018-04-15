@@ -124,7 +124,7 @@ void UICombatMenu::Update()
 		}
 	}
 	//Execute
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
 		App->audio->PlayFx(combat_menu_select_fx);
 		execute_comand_time.Start();
 		if (main_labels.size() != 0) {
@@ -138,7 +138,7 @@ void UICombatMenu::Update()
 		}
 	}
 	//Go back to the start combat menu
-	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && selecting_enemy == false) {
+	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
 		
 		if (main_labels.size() != 0){
 			App->combat->SelectWithPreviousHeroe();
@@ -626,7 +626,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		App->audio->PlayFx(combat_menu_move_fx);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.X == GAMEPAD_STATE::PAD_BUTTON_DOWN ) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
 		App->gui->DeleteUIElement(*arrow);
 		arrow = nullptr;
 		App->gui->DeleteUIElement(*background);
@@ -755,7 +755,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 		App->audio->PlayFx(combat_menu_move_fx);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.X == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
 		App->gui->DeleteUIElement(*arrow);
 		arrow = nullptr;
 		App->gui->DeleteUIElement(*background);

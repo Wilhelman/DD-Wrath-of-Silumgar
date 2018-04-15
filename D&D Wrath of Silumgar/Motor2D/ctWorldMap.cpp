@@ -142,9 +142,6 @@ bool ctWorldMap::Start()
 	{
 		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
 		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-		elf_level_up = App->gui->AddUILevelUpInfo(xE, yE, ELF, this, nullptr);
-		warrior_level_up = App->gui->AddUILevelUpInfo(xE, yE, WARRIOR, this, nullptr);
-		dwarf_level_up = App->gui->AddUILevelUpInfo(xE, yE, DWARF, this, nullptr);
 		cleric_level_up = App->gui->AddUILevelUpInfo(xE, yE, CLERIC, this, nullptr);
 	}
 
@@ -184,17 +181,26 @@ bool ctWorldMap::Update(float dt)
 		if (cleric_level_up != nullptr)
 		{
 			App->gui->DeleteUIElement(*cleric_level_up);
+			int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
+			int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
 			cleric_level_up = nullptr;
+			dwarf_level_up = App->gui->AddUILevelUpInfo(xE, yE, DWARF, this, nullptr);
 		}
 		else if (cleric_level_up == nullptr && dwarf_level_up != nullptr)
 		{
 			App->gui->DeleteUIElement(*dwarf_level_up);
 			dwarf_level_up = nullptr;
+			int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
+			int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
+			warrior_level_up = App->gui->AddUILevelUpInfo(xE, yE, WARRIOR, this, nullptr);
 		}
 		else if (dwarf_level_up == nullptr && warrior_level_up != nullptr)
 		{
 			App->gui->DeleteUIElement(*warrior_level_up);
 			warrior_level_up = nullptr;
+			int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
+			int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
+			elf_level_up = App->gui->AddUILevelUpInfo(xE, yE, ELF, this, nullptr);
 		}
 		else if (warrior_level_up == nullptr && elf_level_up != nullptr)
 		{

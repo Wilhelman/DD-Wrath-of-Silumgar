@@ -32,12 +32,13 @@ protected:
 	int mouse_motion_x = 0, mouse_motion_y = 0;
 	int tmp_mouse_x, tmp_mouse_y;
 	uint pressed_fx = 0u;
-	int alpha = 255;
+	
 
 private:
 	bool debug_draw = false;
 
 public:
+	int alpha = 255;
 	bool draggable = false;
 	bool to_destroy = false;
 	bool non_drawable = false;

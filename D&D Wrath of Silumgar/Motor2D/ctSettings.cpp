@@ -128,14 +128,26 @@ bool ctSettings::CleanUp()
 
 	App->audio->StopMusic();
 
+	App->gui->DeleteUIElement(*background);
 	background = nullptr;
+	App->gui->DeleteUIElement(*music_volume_label);
 	music_volume_label = nullptr;
+	App->gui->DeleteUIElement(*fx_volume_label);
 	fx_volume_label = nullptr;
+	App->gui->DeleteUIElement(*back_label);
 	back_label = nullptr;
+	App->gui->DeleteUIElement(*music_volume);
 	music_volume = nullptr;
+	App->gui->DeleteUIElement(*fx_volume);
 	fx_volume = nullptr;
+	App->gui->DeleteUIElement(*arrow);
 	arrow = nullptr;
-	labels.clear();
+
+	for (int i = 0; i < labels.size(); i++)
+	{
+		App->gui->DeleteUIElement(*labels[i]);
+
+	}
 	
 	App->audio->UnLoadFx(menu_move_fx);
 	App->audio->UnLoadFx(menu_select_fx);

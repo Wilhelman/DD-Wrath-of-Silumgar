@@ -123,15 +123,27 @@ bool ctMainMenu::CleanUp()
 	App->audio->UnLoadFx(menu_move_fx);
 	App->audio->UnLoadFx(menu_select_fx);
 
-	App->gui->DeleteAllUIElements();
+	App->gui->DeleteUIElement(*background);
 	background = nullptr;
+	App->gui->DeleteUIElement(*continue_label);
 	continue_label = nullptr;
+	App->gui->DeleteUIElement(*new_game_label);
 	new_game_label = nullptr;
+	App->gui->DeleteUIElement(*settings_label);
 	settings_label = nullptr;
+	App->gui->DeleteUIElement(*about_label);
 	about_label = nullptr;
+	App->gui->DeleteUIElement(*quit_label);
 	quit_label = nullptr;
+	App->gui->DeleteUIElement(*arrow);
 	arrow = nullptr;
-	labels.clear();
+
+	for (int i = 0; i < labels.size(); i++)
+	{
+		App->gui->DeleteUIElement(*labels[i]);
+
+	}
+	
 	
 	return true;
 }

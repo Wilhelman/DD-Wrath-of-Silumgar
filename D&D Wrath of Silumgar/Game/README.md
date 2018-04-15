@@ -1,4 +1,4 @@
-Ôªø# DUNGEONS & DRAGONS: WRATH OF SILUMGAR
+# DUNGEONS & DRAGONS: WRATH OF SILUMGAR
 
 This is a videogame based on Dungeons & dragons: Shadows over mystara.
 
@@ -7,7 +7,7 @@ This project has been done by seven students of CITM - UPC (Terrasa, Spain).
 * [Github repository](https://github.com/Wilhelman/DD-Wrath-of-Silumgar)
 
 ## About the game
-The objective of the game is defeat Silumgar, a mage with a huge power thanks to Ullosip, the god of war. You can read more about our game [here](https://github.com/Wilhelman/DD-Wrath-of-Silumgar/wiki)
+The objective of the game is defeat Silumgar, a mage with a huge power thanks to Usollip, the god of war. You can read more about our game [here](https://github.com/Wilhelman/DD-Wrath-of-Silumgar/wiki)
 
 ## Installation instructions
 
@@ -32,30 +32,30 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 
 ## Team members
 
-Garc√≠a Subirana, Guillermo 
+GarcÌa Subirana, Guillermo 
 * Lead
 * [Github account](https://github.com/Wilhelman)
 
 
-S√°nchez-Cort√©s Puerta, Alfonso 
+S·nchez-CortÈs Puerta, Alfonso 
 
 * Code
 * [Github account](https://github.com/Siitoo)
 
 
-Guti√©rrez Llenas, Ricardo 
+GutiÈrrez Llenas, Ricardo 
 
 * Management
 * [Github account](https://github.com/Ricardogll)
 
 
-Tirado Fern√°ndez, Victor
+Tirado Fern·ndez, Victor
 
 * Design
 * [Github account](https://github.com/VictorTirado)
 
 
-Tarr√©s i Urbieta, Marc
+TarrÈs i Urbieta, Marc
 
 * Art + Audio
 * [Github account](https://github.com/MAtaur00)
@@ -91,14 +91,6 @@ Mourelo Montero, Manel
 * Code repository: GitHub
 
 * Others: Adobe Photoshop CS6 / MS Paint / Aseprite
-
-## Credits for artwork, music/sound fx and fonts
-
-* Ripped Sprites:
-
-* Music:
-
-* Fonts:
 
 
 ## Credits for artwork, music/sound fx and fonts

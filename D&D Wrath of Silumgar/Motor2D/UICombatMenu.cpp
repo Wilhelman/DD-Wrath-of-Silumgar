@@ -55,7 +55,7 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	LOG("UICombatMenu created in x:%i, y:%i", x, y);
 	combat_menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/CombatMenuMove.wav");
 	combat_menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/CombatMenuSelect.wav");
-	combat_menu_back_fx = App->audio->LoadFx("audio/sounds/UI and Menus/CombatMenuBack.wav"); //TODO change this sound if you find any better
+	combat_menu_back_fx = App->audio->LoadFx("audio/sounds/UI and Menus/CombatMenuBack.wav");
 
 	selected_enemy = App->combat->enemies.begin();
 	selected_ally = App->combat->heroes.begin();

@@ -84,7 +84,7 @@ bool ctCombat::Start()
 	SpawnEntities();
 
 	if (!App->main_menu->is_new_game) {
-		//todo load from data.xml the current health, mana, items that have the heroes
+		//load from data.xml the current health, mana, items that have the heroes
 		LoadDataFromXML();
 	}
 
@@ -267,8 +267,6 @@ bool ctCombat::CleanUp()
 {
 	LOG("Freeing combat");
 
-	//todo: despawn entities
-
 	App->map->CleanUp();
 
 	if (App->main_menu->is_new_game)
@@ -431,11 +429,6 @@ void ctCombat::UpdateManaBarOfEntity(Entity * entity_to_update_bar, int quantity
 		break;
 	}
 }
-
-/*uint ctCombat::CalculatedDamage(Entity* attacker, Entity* defender)	TODO: esto esta en cuarentena porque no entiendo nada
-{
-	return ((attacker->base_stats.base_constitution * 3)*(100 - defender->base_stats.base_physical_defense)) / 100;
-}*/
 
 void ctCombat::SpawnEntities()
 {
@@ -744,8 +737,7 @@ void ctCombat::OrderTurnPriority()
 
 	for (int i = 0; i < draw_turn_priority_entity.size(); i++)
 	{
-		//TODO GUARRADA
-		if (draw_turn_priority_entity.at(i)->altered_stats.size() > 0) {
+		if (draw_turn_priority_entity.at(i)->IsStunned()) {
 			draw_turn_priority_entity.erase(draw_turn_priority_entity.cbegin() + i);
 			draw_turn_priority_entity.shrink_to_fit();
 		}
@@ -882,11 +874,8 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		{
 			bool can_perform_action = true;
 			//todo do an action like IsStunned()
-			for (int i = 0; i < entity_to_perform_action->altered_stats.size(); i++)
-			{
-				if (entity_to_perform_action->altered_stats.at(i).stun)
+			if(entity_to_perform_action->IsStunned())
 					can_perform_action = false;
-			}
 
 			if (can_perform_action)
 				entity_to_perform_action->PerformAction();

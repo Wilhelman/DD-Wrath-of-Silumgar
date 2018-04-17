@@ -26,8 +26,6 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 	run_fx = App->audio->LoadFx(node->child("sounds").attribute("run_fx").as_string());
 	ability_1_fx = App->audio->LoadFx(node->child("sounds").attribute("ability_1_fx").as_string());
 
-	//todo get the stats
-
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
 	{
 		std::string tmp(animations.attribute("name").as_string());

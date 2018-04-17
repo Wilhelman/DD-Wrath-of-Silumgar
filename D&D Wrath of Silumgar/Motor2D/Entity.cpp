@@ -112,7 +112,7 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 	default_attack.objective = ENEMIES;
 	default_attack.health_points_effect = -(int)base_stats.base_strength * StatisticsValues::STRENGTH;
 
-	//todo change this
+	//todo calculate current_stats
 	
 	max_health_points = current_health_points = base_stats.base_constitution * StatisticsValues::CONSTITUTION;
 	max_mana_points = current_mana_points = base_stats.base_focus * StatisticsValues::FOCUS;

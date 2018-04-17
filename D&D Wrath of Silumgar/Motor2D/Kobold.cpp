@@ -26,7 +26,6 @@ Kobold::Kobold(int x, int y, EntityType type) : Entity(x, y, type) {
 	death_fx = App->audio->LoadFx(node->child("sounds").attribute("death_fx").as_string());
 	damaged_fx = App->audio->LoadFx(node->child("sounds").attribute("damaged_fx").as_string());
 	run_fx = App->audio->LoadFx(node->child("sounds").attribute("run_fx").as_string());
-	//todo get the stats
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
 	{

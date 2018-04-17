@@ -549,7 +549,7 @@ bool j1Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 	{
 		MapLayer* layer = item->data;
 
-		//TODO CHECK THIS
+		
 		if (layer->properties.Get("Navigation", 0) == 0)
 			continue;
 

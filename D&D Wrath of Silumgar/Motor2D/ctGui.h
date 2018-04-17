@@ -58,7 +58,6 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	// TODO 2: Create the factory methods
 	// Gui creation functions
 
 	const SDL_Texture* GetAtlas() const;

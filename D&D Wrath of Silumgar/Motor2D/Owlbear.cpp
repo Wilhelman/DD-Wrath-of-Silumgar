@@ -19,7 +19,6 @@ Owlbear::Owlbear(int x, int y, EntityType type) : Entity(x, y, type) {
 	pugi::xml_node* node = &App->LoadEntities(config_file);
 	node = &node->child("enemies").child("owlbear");
 	texture = App->tex->Load(App->entities->owlbear_spritesheet_name.data());
-	//todo get the stats
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
 	{

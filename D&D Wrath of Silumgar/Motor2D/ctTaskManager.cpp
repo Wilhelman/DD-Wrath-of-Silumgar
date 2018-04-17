@@ -204,7 +204,7 @@ bool PerformActionToEntity::Execute()
 				else {//ACTIONER MISSES!
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
-				//todo animate the receiver to hit + audio or smth
+				//animate the receiver to hit + audio or smth
 				actioner_entity->Attack();
 
 			}
@@ -271,7 +271,7 @@ bool PerformActionToEntity::Execute()
 				else {//ACTIONER MISSES!
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
-				//todo animate the receiver to hit + audio or smth
+				//animate the receiver to hit + audio or smth
 				actioner_entity->Ability1();
 
 			}
@@ -341,7 +341,7 @@ bool PerformActionToEntity::Execute()
 				else {//ACTIONER MISSES!
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
-				//todo animate the receiver to hit + audio or smth
+				//animate the receiver to hit + audio or smth
 				actioner_entity->Ability1();
 
 			}
@@ -397,29 +397,17 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
-				//todo isStunned()
-				bool isStunned = false;
-				for (int i = 0; i < receiver_entity->altered_stats.size(); i++)
-				{
-					if (receiver_entity->altered_stats.at(i).stun) {
-						isStunned = true;
-						break;
-					}
-				}
-				//end todo
-
-				//actioner_entity->Attack();  TODO DO THE KICK
 				actioner_entity->mind_blown.Reset();
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 
-				if (random_thousand_faces_die <= actioner_dexterity || isStunned) {// THE ACTIONER HITS THE RECEIVER
+				if (random_thousand_faces_die <= actioner_dexterity || receiver_entity->IsStunned()) {// THE ACTIONER HITS THE RECEIVER
 					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
 					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility && !isStunned) {// THE RECEIVER DODGES THE ATTACK
+					if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK
 						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
 						receiver_entity->animation = &receiver_entity->dodge;
 					}
@@ -452,7 +440,7 @@ bool PerformActionToEntity::Execute()
 				else {//ACTIONER MISSES!
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
-				//todo animate the receiver to hit + audio or smth
+				//animate the receiver to hit + audio or smth
 				actioner_entity->Ability1();
 
 			}
@@ -586,9 +574,7 @@ void ctTaskManager::DeleteTasksFromEntity(Entity * entity)
 
 bool ctTaskManager::AddTask(Task * task)
 {
-	//TODO 3 Add the new task to the list
 	TaskQueue.push_back(task);
-
 	return true;
 }
 

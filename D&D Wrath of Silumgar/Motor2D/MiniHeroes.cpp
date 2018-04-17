@@ -19,7 +19,6 @@ MiniHeroes::MiniHeroes(int x, int y, EntityType type) : Entity(x, y, type) {
 	pugi::xml_node* node = &App->LoadEntities(config_file);
 	node = &node->child("heroes").child("miniheroes");
 	texture = App->tex->Load(App->entities->miniheroes_spritesheet_name.data());
-	//todo get the stats
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
 	{

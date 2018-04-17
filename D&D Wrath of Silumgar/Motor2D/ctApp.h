@@ -23,6 +23,7 @@ class ctCombat;
 class ctEntities;
 class ctGui;
 class ctFonts;
+class j1Language;
 class ctTaskManager;
 class ctFadeToBlack;
 class ctSkillTree;
@@ -67,6 +68,9 @@ public:
 	// Load data file
 	pugi::xml_node LoadData(pugi::xml_document&) const;
 
+	// Load languages file
+	pugi::xml_node LoadLanguages(pugi::xml_document&) const;
+
 private:
 
 	// Call modules before each loop iteration
@@ -100,6 +104,7 @@ public:
 	ctCombat*			combat = nullptr;
 	ctEntities*			entities = nullptr;
 	ctGui*				gui = nullptr;
+	j1Language*			language = nullptr;
 	ctFonts*			fonts = nullptr;
 	ctTaskManager*		task_manager = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;

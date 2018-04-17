@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<languages>
+
+	<ENG>
+		<MM_quit_btn string="Quit" />
+		<MM_new_game_btn string="New Game" />
+		<MM_continue_btn string="Continue" />
+		<MM_settings_btn string="Settings" />
+		<MM_about_btn string="About" />
+	</ENG>
+	
+	<CAT>
+		<MM_quit_btn string="Sortir" />
+		<MM_new_game_btn string="Nova partida" />
+		<MM_continue_btn string="Continuar" />
+		<MM_settings_btn string="Configuració" />
+		<MM_about_btn string="Sobre nosaltres" />
+	</CAT>
+	
+	<ESP>
+		<MM_quit_btn string="Salir" />
+		<MM_new_game_btn string="Partida nueva" />
+		<MM_continue_btn string="Continuar" />
+		<MM_settings_btn string="Configuración" />
+		<MM_about_btn string="Sobre nosotros" />
+	</ESP>
+</languages>

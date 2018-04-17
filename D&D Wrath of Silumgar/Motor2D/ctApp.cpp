@@ -22,6 +22,7 @@
 #include "ctTaskManager.h"
 #include "ctFadeToBlack.h"
 #include "ctSkillTree.h"
+#include "j1Language.h"
 
 
 // Constructor
@@ -39,6 +40,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	tabern_scene = new ctTabernScene();
 	world_map = new ctWorldMap();
 	settings = new ctSettings();
+	language = new j1Language();
 	entities = new ctEntities();
 	combat = new ctCombat();
 	gui = new ctGui();
@@ -60,6 +62,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(settings);
 	AddModule(combat);
 	AddModule(entities);
+	AddModule(language);
 	AddModule(gui);
 	AddModule(fonts);
 	AddModule(task_manager);
@@ -205,6 +208,20 @@ pugi::xml_node ctApp::LoadConfig(pugi::xml_document& config_file) const
 		LOG("Could not load xml file config.xml. pugi error: %s", result.description());
 	else
 		ret = config_file.child("config");
+	return ret;
+}
+
+// ---------------------------------------------
+pugi::xml_node ctApp::LoadLanguages(pugi::xml_document& language_file) const
+{
+	pugi::xml_node ret;
+
+	pugi::xml_parse_result result = language_file.load_file("languages");
+
+	if (result == NULL)
+		LOG("Could not load xml file config.xml. pugi error: %s", result.description());
+	else
+		ret = language_file.child("languages");
 	return ret;
 }
 

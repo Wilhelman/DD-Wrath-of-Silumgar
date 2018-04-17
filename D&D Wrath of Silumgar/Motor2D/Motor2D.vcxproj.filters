@@ -168,6 +168,9 @@
     <ClCompile Include="UIDIalogBox.cpp">
       <Filter>Core\Modules\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="j1Language.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -319,6 +322,9 @@
     </ClInclude>
     <ClInclude Include="UIDialogBox.h">
       <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Language.h">
+      <Filter>Core\Modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

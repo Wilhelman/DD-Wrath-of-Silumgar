@@ -16,6 +16,8 @@
 #include "ctSettings.h"
 #include "ctSkillTree.h"
 
+#include "j1Language.h"
+
 
 
 ctMainMenu::ctMainMenu() : ctModule()
@@ -43,11 +45,11 @@ bool ctMainMenu::Start()
 	bool ret = true;
 
 	background = App->gui->AddUIImage(0, 0, { 337, 479, 484, 324 }, this);
-	continue_label = App->gui->AddUILabel(35, 10, "Continue", { 255,0,0,255 }, 15, this);
-	new_game_label = App->gui->AddUILabel(35, 30, "New Game", { 255,255,255,255 }, 15, this);
-	settings_label = App->gui->AddUILabel(35, 50, "Settings", { 255,255,255,255 }, 15, this);
-	about_label = App->gui->AddUILabel(35, 70, "About", { 255,0,0,255 }, 15, this);
-	quit_label = App->gui->AddUILabel(35, 90, "Quit", { 255,255,255,255 }, 15, this);
+	continue_label = App->gui->AddUILabel(35, 10, App->language->GetDictionary().MM_continue_btn.c_str(), { 255,0,0,255 }, 15, this);
+	new_game_label = App->gui->AddUILabel(35, 30, App->language->GetDictionary().MM_new_game_btn.c_str(), { 255,255,255,255 }, 15, this);
+	settings_label = App->gui->AddUILabel(35, 50, App->language->GetDictionary().MM_settings_btn.c_str(), { 255,255,255,255 }, 15, this);
+	about_label = App->gui->AddUILabel(35, 70, App->language->GetDictionary().MM_about_btn.c_str(), { 255,0,0,255 }, 15, this);
+	quit_label = App->gui->AddUILabel(35, 90, App->language->GetDictionary().MM_quit_btn.c_str(), { 255,255,255,255 }, 15, this);
 	arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this);
 	//continue_label->current_state = STATE_FOCUSED;
 	new_game_label->current_state = STATE_FOCUSED;

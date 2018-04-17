@@ -14,14 +14,8 @@ bool MoveToEntity::Execute()
 {
 	bool ret = false;
 
-	//todo isStunned()
-	for (int i = 0; i < entity_to_move->altered_stats.size(); i++)
-	{
-		if (entity_to_move->altered_stats.at(i).stun) {
+	if (entity_to_move->IsStunned())
 			return true;
-		}
-	}
-	//end todo
 
 	if (entity_to_move->GetCurrentHealthPoints() != 0) {
 		if (entity_to_go->GetCurrentHealthPoints() == 0) {
@@ -52,7 +46,6 @@ bool MoveToEntity::Execute()
 
 		if (((entity_to_move->position.x + 25) >= x_objective && (entity_to_move->position.x - 25) <= x_objective) && ((entity_to_move->position.y + 25) >= entity_to_go->position.y && (entity_to_move->position.y - 25) <= entity_to_go->position.y))
 		{
-			//entity_to_move->animation = &entity_to_move->idle;
 			ret = true;
 		}
 		else {
@@ -93,16 +86,8 @@ bool MoveToInitialPosition::Execute()
 {
 	bool ret = false;
 
-	//todo isStunned()
-	for (int i = 0; i < entity_to_move->altered_stats.size(); i++)
-	{
-		if (entity_to_move->altered_stats.at(i).stun) {
+	if(entity_to_move->IsStunned())
 			return true;
-		}
-	}
-	//end todo
-
-	//offset?
 
 	if (entity_to_move->GetCurrentHealthPoints() != 0) {
 		if (entity_to_move->flip_texture != true) {
@@ -161,62 +146,23 @@ bool PerformActionToEntity::Execute()
 
 	bool ret = false;
 
-	//todo isStunned()
-	for (int i = 0; i < actioner_entity->altered_stats.size(); i++)
-	{
-		if (actioner_entity->altered_stats.at(i).stun) {
+	if (actioner_entity->IsStunned())
 			return true;
-		}
-	}
-	//end todo
 
 	if (actioner_entity->GetCurrentHealthPoints() != 0) {
 		switch (action_to_perform.type)
 		{
 		case DEFAULT_ATTACK: {
 
-			if (receiver_entity->GetCurrentHealthPoints() == 0) {
-				if (actioner_entity->type == ELF || actioner_entity->type == CLERIC || actioner_entity->type == WARRIOR || actioner_entity->type == DWARF) {
-					for (int i = 0; i < App->combat->enemies.size(); i++)
-					{
-						receiver_entity = App->combat->enemies.at(i);
-						if (receiver_entity->GetCurrentHealthPoints() != 0)
-							break;
-					}
-					if (receiver_entity->GetCurrentHealthPoints() == 0)
-						return true;
-				}
-				else {
-					for (int i = 0; i < App->combat->heroes.size(); i++)
-					{
-						receiver_entity = App->combat->heroes.at(i);
-						if (receiver_entity->GetCurrentHealthPoints() != 0)
-							break;
-					}
-					if (receiver_entity->GetCurrentHealthPoints() == 0)
-						return true;
-				}
-			}
+			if (!HaveObjective())
+				return true;
 
 			actioner_entity->animation = &actioner_entity->attack;
 
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				//actioner_entity->Attack();
 				actioner_entity->attack.Reset();
-				//actioner_entity->animation = &actioner_entity->idle;
-
-				//todo isStunned()
-				bool isStunned = false;
-				for (int i = 0; i < receiver_entity->altered_stats.size(); i++)
-				{
-					if (receiver_entity->altered_stats.at(i).stun) {
-						isStunned = true;
-						break;
-					}
-				}
-				//end todo
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -226,7 +172,7 @@ bool PerformActionToEntity::Execute()
 					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
 					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility && !isStunned) {// THE RECEIVER DODGES THE ATTACK
+					if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK
 						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
 						receiver_entity->animation = &receiver_entity->dodge;
 					}
@@ -260,36 +206,14 @@ bool PerformActionToEntity::Execute()
 				}
 				//todo animate the receiver to hit + audio or smth
 				actioner_entity->Attack();
-				
-				
+
 			}
 		}
 		break;
 		case KICK: {
 
-			//todo esta comprobacion en todas
-			if (receiver_entity->GetCurrentHealthPoints() == 0) {
-				if (actioner_entity->type == ELF || actioner_entity->type == CLERIC || actioner_entity->type == WARRIOR || actioner_entity->type == DWARF) {
-					for (int i = 0; i < App->combat->enemies.size(); i++)
-					{
-						receiver_entity = App->combat->enemies.at(i);
-						if (receiver_entity->GetCurrentHealthPoints() != 0)
-							break;
-					}
-					if (receiver_entity->GetCurrentHealthPoints() == 0)
-						return true;
-				}
-				else {
-					for (int i = 0; i < App->combat->heroes.size(); i++)
-					{
-						receiver_entity = App->combat->heroes.at(i);
-						if (receiver_entity->GetCurrentHealthPoints() != 0)
-							break;
-					}
-					if (receiver_entity->GetCurrentHealthPoints() == 0)
-						return true;
-				}
-			}
+			if (!HaveObjective())
+				return true;
 
 			actioner_entity->animation = &actioner_entity->kick;
 
@@ -299,25 +223,13 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
-				//actioner_entity->Attack();  TODO DO THE KICK
 				actioner_entity->kick.Reset();
-
-				//todo isStunned()
-				bool isStunned = false;
-				for (int i = 0; i < receiver_entity->altered_stats.size(); i++)
-				{
-					if (receiver_entity->altered_stats.at(i).stun) {
-						isStunned = true;
-						break;
-					}
-				}
-				//end todo
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 
-				if (random_thousand_faces_die <= actioner_dexterity && !isStunned) {// THE ACTIONER HITS THE RECEIVER
+				if (random_thousand_faces_die <= actioner_dexterity && !receiver_entity->IsStunned()) {// THE ACTIONER HITS THE RECEIVER
 					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
 					random_thousand_faces_die = (rand() % 100) + 1;
@@ -367,29 +279,8 @@ bool PerformActionToEntity::Execute()
 		break;
 		case HIGH_AXE: {
 
-			//todo esta comprobacion en todas
-			if (receiver_entity->GetCurrentHealthPoints() == 0) {
-				if (actioner_entity->type == ELF || actioner_entity->type == CLERIC || actioner_entity->type == WARRIOR || actioner_entity->type == DWARF) {
-					for (int i = 0; i < App->combat->enemies.size(); i++)
-					{
-						receiver_entity = App->combat->enemies.at(i);
-						if (receiver_entity->GetCurrentHealthPoints() != 0)
-							break;
-					}
-					if (receiver_entity->GetCurrentHealthPoints() == 0)
-						return true;
-				}
-				else {
-					for (int i = 0; i < App->combat->heroes.size(); i++)
-					{
-						receiver_entity = App->combat->heroes.at(i);
-						if (receiver_entity->GetCurrentHealthPoints() != 0)
-							break;
-					}
-					if (receiver_entity->GetCurrentHealthPoints() == 0)
-						return true;
-				}
-			}
+			if (!HaveObjective())
+				return true;
 
 			actioner_entity->animation = &actioner_entity->high_axe;
 
@@ -402,29 +293,17 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
-				//todo isStunned()
-				bool isStunned = false;
-				for (int i = 0; i < receiver_entity->altered_stats.size(); i++)
-				{
-					if (receiver_entity->altered_stats.at(i).stun) {
-						isStunned = true;
-						break;
-					}
-				}
-				//end todo
-
-				//actioner_entity->Attack();  TODO DO THE KICK
 				actioner_entity->high_axe.Reset();
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 
-				if (random_thousand_faces_die <= actioner_dexterity || isStunned) {// THE ACTIONER HITS THE RECEIVER
+				if (random_thousand_faces_die <= actioner_dexterity || receiver_entity->IsStunned()) {// THE ACTIONER HITS THE RECEIVER
 					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
 					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility && !isStunned) {// THE RECEIVER DODGES THE ATTACK
+					if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK
 						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
 						receiver_entity->animation = &receiver_entity->dodge;
 					}
@@ -441,7 +320,7 @@ bool PerformActionToEntity::Execute()
 							critical = true;
 						}
 						
-						if (isStunned)
+						if (receiver_entity->IsStunned())
 							damage_to_deal = damage_to_deal * 2;
 						
 						damage_to_deal = damage_to_deal - damage_reduction;
@@ -449,10 +328,12 @@ bool PerformActionToEntity::Execute()
 						receiver_entity->animation = &receiver_entity->hit;
 						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
 						std::string tmp_dmg = std::to_string(damage_to_deal);
-						if (critical || isStunned)
+						if (critical)
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
+						else if(receiver_entity->IsStunned())
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 253,103,6,255 }, 16, nullptr, nullptr);
 						else
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 },14, nullptr, nullptr);
 
 						receiver_entity->Damaged();
 					}
@@ -467,24 +348,11 @@ bool PerformActionToEntity::Execute()
 		}
 		break;
 		case HEAL: {
-
-			//todo esta comprobacion en todas
-			if (receiver_entity->GetCurrentHealthPoints() == 0) {
-
-				for (int i = 0; i < App->combat->heroes.size(); i++)
-				{
-					receiver_entity = App->combat->heroes.at(i);
-					if (receiver_entity->GetCurrentHealthPoints() != 0)
-						break;
-				}
-				if (receiver_entity->GetCurrentHealthPoints() == 0)
-					return true;
-
-			}
+			
+			if (!HaveTeamObjective())
+				return true;
 
 			actioner_entity->animation = &actioner_entity->heal;
-
-
 
 			ret = actioner_entity->animation->Finished();
 
@@ -515,29 +383,8 @@ bool PerformActionToEntity::Execute()
 					   break;
 		case MINDBLOWN: {
 
-			//todo esta comprobacion en todas
-			if (receiver_entity->GetCurrentHealthPoints() == 0) {
-				if (actioner_entity->type == ELF || actioner_entity->type == CLERIC || actioner_entity->type == WARRIOR || actioner_entity->type == DWARF) {
-					for (int i = 0; i < App->combat->enemies.size(); i++)
-					{
-						receiver_entity = App->combat->enemies.at(i);
-						if (receiver_entity->GetCurrentHealthPoints() != 0)
-							break;
-					}
-					if (receiver_entity->GetCurrentHealthPoints() == 0)
-						return true;
-				}
-				else {
-					for (int i = 0; i < App->combat->heroes.size(); i++)
-					{
-						receiver_entity = App->combat->heroes.at(i);
-						if (receiver_entity->GetCurrentHealthPoints() != 0)
-							break;
-					}
-					if (receiver_entity->GetCurrentHealthPoints() == 0)
-						return true;
-				}
-			}
+			if (!HaveObjective())
+				return true;
 
 			actioner_entity->animation = &actioner_entity->mind_blown;
 
@@ -619,6 +466,52 @@ bool PerformActionToEntity::Execute()
 		ret = true;
 
 	return ret;
+}
+
+bool PerformActionToEntity::HaveObjective()
+{
+
+	if (receiver_entity->GetCurrentHealthPoints() == 0) {
+		if (actioner_entity->type == ELF || actioner_entity->type == CLERIC || actioner_entity->type == WARRIOR || actioner_entity->type == DWARF) {
+			for (int i = 0; i < App->combat->enemies.size(); i++)
+			{
+				receiver_entity = App->combat->enemies.at(i);
+				if (receiver_entity->GetCurrentHealthPoints() != 0)
+					break;
+			}
+			if (receiver_entity->GetCurrentHealthPoints() == 0)
+				return false;
+		}
+		else {
+			for (int i = 0; i < App->combat->heroes.size(); i++)
+			{
+				receiver_entity = App->combat->heroes.at(i);
+				if (receiver_entity->GetCurrentHealthPoints() != 0)
+					break;
+			}
+			if (receiver_entity->GetCurrentHealthPoints() == 0)
+				return false;
+		}
+	}
+
+	return true;
+}
+
+bool PerformActionToEntity::HaveTeamObjective()
+{
+	if (receiver_entity->GetCurrentHealthPoints() == 0) {
+
+		for (int i = 0; i < App->combat->heroes.size(); i++)
+		{
+			receiver_entity = App->combat->heroes.at(i);
+			if (receiver_entity->GetCurrentHealthPoints() != 0)
+				break;
+		}
+		if (receiver_entity->GetCurrentHealthPoints() == 0)
+			return false;
+
+	}
+	return true;
 }
 
 bool ctTaskManager::Update(float dt)

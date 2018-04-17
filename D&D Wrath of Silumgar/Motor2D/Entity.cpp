@@ -147,6 +147,17 @@ void Entity::AddAlteredStat(Altered_Stat new_altered_stat)
 	altered_stats.push_back(new_altered_stat);
 }
 
+bool Entity::IsStunned() const
+{
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).stun) {
+			return true;
+		}
+	}
+	return false;
+}
+
 int Entity::GetCurrentHealthPoints()
 {
 	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper

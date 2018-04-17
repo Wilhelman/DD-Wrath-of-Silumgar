@@ -129,6 +129,8 @@ public:
 	virtual  ~PerformActionToEntity() {};
 
 	bool Execute();
+	bool HaveObjective();
+	bool HaveTeamObjective();
 
 private:
 	Entity* actioner_entity = nullptr;

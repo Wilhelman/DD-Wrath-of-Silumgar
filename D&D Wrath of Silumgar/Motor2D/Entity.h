@@ -114,7 +114,9 @@ protected:
 	bool key_entities_speed = false;
 
 	int current_health_points, current_mana_points, current_agility_points, current_dexterity_points, current_physical_defense_points, current_magical_defense_points, current_judgement = 0;
+
 	int max_health_points, max_mana_points = 0;
+
 	bool dead = false;
 
 public:
@@ -162,7 +164,9 @@ public:
 	uint ability_1_fx = 0u;
 	uint steps_timer = 0u;
 	uint current_timer = 0u;
+
 public:
+
 	Entity(int x, int y, EntityType type);
 	virtual ~Entity();
 
@@ -187,6 +191,8 @@ public:
 	virtual void PerformAction() {};
 
 	void AddAlteredStat(Altered_Stat new_altered_stat);
+
+	bool IsStunned()const;
 
 	int GetCurrentHealthPoints();
 	int GetCurrentManaPoints();

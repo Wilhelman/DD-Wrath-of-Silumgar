@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<items>
+
+	<usables>
+	
+		<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER"><!--- 1==Objetivo enemigo | 0 Aliado -->
+		
+			<draw_coords x="0" y="2" width="16" height="8"/>
+		
+		</item>
+  
+	</usables>
+  
+	<equips>
+	
+		<equip name="Speed Boots" tier="3" type="BOOT">
+		
+			<draw_coords x="0" y="2" width="16" height="8"/>
+		
+			<stats>
+				<stat name="str" value="0"/>
+				<stat name="int" value="0"/>
+				<stat name="agi" value="2"/>
+			</stats>
+		
+		</equip>
+		
+		<equip name="ejemplo" tier="2" type="HELM" passive="EJEMPLO_BLABLA">
+		
+			<draw_coords x="0" y="2" width="16" height="8"/>
+			
+			<stats>
+				<stat name="str" value="0"/>
+				<stat name="int" value="0"/>
+				<stat name="agi" value="2"/>
+			</stats>
+		
+		</equip>
+  
+	</equips>
+  
+</items>

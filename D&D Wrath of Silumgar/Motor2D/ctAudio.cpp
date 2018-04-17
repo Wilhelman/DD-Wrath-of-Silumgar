@@ -95,7 +95,10 @@ bool ctAudio::Update(float dt)
 		else
 			Mix_VolumeMusic(Mix_VolumeMusic(-1) - 10);
 
-		Mix_Volume(-1, Mix_Volume(-1, -1) - 10);
+		if (Mix_Volume(-1, -1) < 10)
+			Mix_Volume(-1, 0);
+		else
+			Mix_Volume(-1, Mix_Volume(-1, -1) - 10);
 	}
 
 	return true;

@@ -119,7 +119,7 @@ bool ctCombat::Start()
 	for (int i = 0; i < enemies.size(); i++) {
 		int pos_x = enemies.at(i)->position.x + (enemies.at(i)->animation->GetCurrentFrame().w / 2) - 25;
 		int pos_y = enemies.at(i)->position.y - enemies.at(i)->animation->GetCurrentFrame().h - 5;
-		UIBar* bar = (UIBar*)App->gui->AddUIBar(pos_x, pos_y, enemies.at(i)->base_stats.base_constitution * 13, ENEMYLIFEBAR, enemies.at(i), this, nullptr);
+		UIBar* bar = (UIBar*)App->gui->AddUIBar(pos_x, pos_y, enemies.at(i)->base_stats.constitution * 13, ENEMYLIFEBAR, enemies.at(i), this, nullptr);
 		enemies_bars.push_back(bar);
 	}
 	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 07 Battle at Trintan Village (Stage 2).ogg", -1)) {
@@ -655,21 +655,21 @@ void ctCombat::SetDataToUI()
 
 	Entity* cleric = App->entities->GetCleric();
 	//cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
-	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.base_constitution * StatisticsValues::CONSTITUTION, LIFEBAR, cleric);
-	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->base_stats.base_focus * StatisticsValues::FOCUS, MANABAR, cleric);
+	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.constitution * StatisticsValues::CONSTITUTION, LIFEBAR, cleric);
+	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->base_stats.focus * StatisticsValues::FOCUS, MANABAR, cleric);
 
 	Entity* warrior = App->entities->GetWarrior();
-	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->base_stats.base_constitution * StatisticsValues::CONSTITUTION, LIFEBAR, warrior);
-	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(277, 10, warrior->base_stats.base_focus * StatisticsValues::FOCUS, MANABAR, warrior);
+	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->base_stats.constitution * StatisticsValues::CONSTITUTION, LIFEBAR, warrior);
+	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(277, 10, warrior->base_stats.focus * StatisticsValues::FOCUS, MANABAR, warrior);
 
 	Entity* elf = App->entities->GetElf();
-	int to_do = elf->base_stats.base_focus * StatisticsValues::FOCUS;
-	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->base_stats.base_constitution * StatisticsValues::CONSTITUTION, LIFEBAR, elf);
+	int to_do = elf->base_stats.focus * StatisticsValues::FOCUS;
+	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->base_stats.constitution * StatisticsValues::CONSTITUTION, LIFEBAR, elf);
 	elf_mana_bar = (UIBar*)App->gui->AddUIBar(34, 304, to_do, MANABAR, elf);
 
 	Entity* dwarf = App->entities->GetDwarf();
-	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->base_stats.base_constitution * StatisticsValues::CONSTITUTION, LIFEBAR, dwarf);
-	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.base_focus * StatisticsValues::FOCUS, MANABAR, dwarf);
+	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->base_stats.constitution * StatisticsValues::CONSTITUTION, LIFEBAR, dwarf);
+	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.focus * StatisticsValues::FOCUS, MANABAR, dwarf);
 
 	//update bar
 	cleric_HP_bar->LowerBar((cleric_HP_bar->max_capacity - cleric->GetCurrentHealthPoints()) * -1);
@@ -714,7 +714,7 @@ void ctCombat::OrderTurnPriority()
 			count++;
 			if (count != turn_priority_entity.size())
 			{
-				if ((*it)->base_stats.base_agility < (*itnext)->base_stats.base_agility)
+				if ((*it)->base_stats.agility < (*itnext)->base_stats.agility)
 				{
 					Entity* entity_tmp = (*it);
 

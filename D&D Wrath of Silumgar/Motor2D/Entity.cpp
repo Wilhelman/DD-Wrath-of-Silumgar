@@ -95,32 +95,32 @@ void Entity::Draw()
 bool Entity::LoadProperties(pugi::xml_node properties) {
 	bool ret = true;
 
-	base_stats.base_constitution = properties.attribute("constitution").as_uint();
-	base_stats.base_focus = properties.attribute("focus").as_uint();
-	base_stats.base_strength = properties.attribute("strength").as_uint();
-	base_stats.base_agility = properties.attribute("agility").as_uint();
-	base_stats.base_dexterity = properties.attribute("dexterity").as_uint();
-	base_stats.base_intelligence = properties.attribute("intelligence").as_uint();
-	base_stats.base_physical_defense = properties.attribute("physicalDefense").as_uint();
-	base_stats.base_magical_defense = properties.attribute("magicalDefense").as_uint();
-	base_stats.base_luck = properties.attribute("luck").as_uint();
-	base_stats.base_judgement = properties.attribute("judgement").as_uint();
+	base_stats.constitution = properties.attribute("constitution").as_uint();
+	base_stats.focus = properties.attribute("focus").as_uint();
+	base_stats.strength = properties.attribute("strength").as_uint();
+	base_stats.agility = properties.attribute("agility").as_uint();
+	base_stats.dexterity = properties.attribute("dexterity").as_uint();
+	base_stats.intelligence = properties.attribute("intelligence").as_uint();
+	base_stats.physical_defense = properties.attribute("physicalDefense").as_uint();
+	base_stats.magical_defense = properties.attribute("magicalDefense").as_uint();
+	base_stats.luck = properties.attribute("luck").as_uint();
+	base_stats.judgement = properties.attribute("judgement").as_uint();
 
 	/* ADDING BASIC ACTION FOR ALL THE ENTITIES THIS SHOULD BE CHANGED */
 	default_attack.name = "Attack";
 	default_attack.type = DEFAULT_ATTACK;
 	default_attack.objective = ENEMIES;
-	default_attack.health_points_effect = -(int)base_stats.base_strength * StatisticsValues::STRENGTH;
+	default_attack.health_points_effect = -(int)base_stats.strength * StatisticsValues::STRENGTH;
 
 	//todo calculate current_stats
 	
-	max_health_points = current_health_points = base_stats.base_constitution * StatisticsValues::CONSTITUTION;
-	max_mana_points = current_mana_points = base_stats.base_focus * StatisticsValues::FOCUS;
-	current_agility_points = base_stats.base_agility * StatisticsValues::AGILITY;
-	current_dexterity_points = base_stats.base_dexterity * StatisticsValues::DEXTERITY;
-	current_physical_defense_points = base_stats.base_physical_defense * StatisticsValues::PHYSICAL_DEFENSE;
-	current_magical_defense_points = base_stats.base_magical_defense * StatisticsValues::MAGICAL_DEFENSE;
-	current_judgement = base_stats.base_judgement * StatisticsValues::JUDGEMENT;
+	max_health_points = current_health_points = base_stats.constitution * StatisticsValues::CONSTITUTION;
+	max_mana_points = current_mana_points = base_stats.focus * StatisticsValues::FOCUS;
+	current_agility_points = base_stats.agility * StatisticsValues::AGILITY;
+	current_dexterity_points = base_stats.dexterity * StatisticsValues::DEXTERITY;
+	current_physical_defense_points = base_stats.physical_defense * StatisticsValues::PHYSICAL_DEFENSE;
+	current_magical_defense_points = base_stats.magical_defense * StatisticsValues::MAGICAL_DEFENSE;
+	current_judgement = base_stats.judgement * StatisticsValues::JUDGEMENT;
 
 	return ret;
 }

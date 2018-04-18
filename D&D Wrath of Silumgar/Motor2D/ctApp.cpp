@@ -67,7 +67,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(fonts);
 	AddModule(task_manager);
 	AddModule(fadeToBlack);
-	AddModule(skill_tree);
+	//AddModule(skill_tree);
 
 	// render last to swap buffer
 	AddModule(render);
@@ -78,7 +78,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	world_map->active = false;
 	settings->active = false;
 	combat->active = false;
-	skill_tree->active = false;
+	//skill_tree->active = false;
 
 	PERF_PEEK(ptimer);
 }

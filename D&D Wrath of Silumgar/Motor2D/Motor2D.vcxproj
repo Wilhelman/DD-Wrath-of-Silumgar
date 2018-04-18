@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cleric.cpp" />
+    <ClCompile Include="ctItems.cpp" />
     <ClCompile Include="ctSkillTree.cpp" />
     <ClCompile Include="ctApp.cpp" />
     <ClCompile Include="ctAudio.cpp" />
@@ -60,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cleric.h" />
+    <ClInclude Include="ctItems.h" />
     <ClInclude Include="ctSkillTree.h" />
     <ClInclude Include="ctAnimation.h" />
     <ClInclude Include="ctApp.h" />

@@ -12,16 +12,16 @@
 struct SDL_Texture;
 
 struct Stats {
-	int base_constitution = 0u;
-	int base_focus = 0u;
-	int base_strength = 0u;
-	int base_intelligence = 0u;
-	int base_dexterity = 0u;
-	int base_agility = 0u;
-	int base_physical_defense = 0u;
-	int base_magical_defense = 0u;
-	int base_luck = 0u;
-	int base_judgement = 0u;
+	int constitution = 0;
+	int focus = 0;
+	int strength = 0;
+	int intelligence = 0;
+	int dexterity = 0;
+	int agility = 0;
+	int physical_defense = 0;
+	int magical_defense = 0;
+	int luck = 0;
+	int judgement = 0;
 };
 
 struct Altered_Stat {
@@ -42,19 +42,6 @@ struct Altered_Stat {
 	int stat_effect_magical_defense = 0;
 	int stat_effect_luck = 0;
 	int stat_effect_judgement = 0;
-};
-
-struct Item {
-	uint constitution = 0u;
-	uint focus = 0u;
-	uint strength = 0u;
-	uint intelligence = 0u;
-	uint dexterity = 0u;
-	uint agility = 0u;
-	uint physical_defense = 0u;
-	uint magical_defense = 0u;
-	uint luck = 0u;
-	uint judgement = 0u;
 };
 
 enum ActionType {

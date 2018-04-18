@@ -118,10 +118,13 @@ bool ctMainMenu::CleanUp()
 {
 	LOG("Freeing main_menu");
 
-	//App->audio->StopMusic();
+	if(!App->audio->UnLoadFx(menu_move_fx))
+		LOG("Error unloading menu_move_fx");
+	LOG("1");
+	if(!App->audio->UnLoadFx(menu_select_fx))
+		LOG("Error unloading menu_select_fx");
 
-	App->audio->UnLoadFx(menu_move_fx);
-	App->audio->UnLoadFx(menu_select_fx);
+	App->audio->StopMusic();
 
 	App->gui->DeleteUIElement(*arrow);
 	arrow = nullptr;

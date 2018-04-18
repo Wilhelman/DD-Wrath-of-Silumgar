@@ -132,6 +132,12 @@ bool ctSettings::CleanUp()
 {
 	LOG("Freeing main_menu");
 
+	if (!App->audio->UnLoadFx(menu_select_fx))
+		LOG("Error unloading menu_select_fx");
+
+	if(!App->audio->UnLoadFx(menu_move_fx))
+		LOG("Error unloading menu_move_fx");
+
 	App->audio->StopMusic();
 
 	App->gui->DeleteUIElement(*background);
@@ -155,9 +161,6 @@ bool ctSettings::CleanUp()
 
 	}
 	labels.clear();
-	
-	App->audio->UnLoadFx(menu_move_fx);
-	App->audio->UnLoadFx(menu_select_fx);
 
 	return true;
 }

@@ -54,26 +54,9 @@ void UIElement::Draw(SDL_Texture* sprites)
 {
 	if (current_rect.w > 0 && current_rect.h > 0) 
 	{
-		switch (this->type)
-		{
-		case IMAGE:
-		case BUTTON:
-			App->render->Blit(sprites, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
-				break;
-		case LABEL:
-			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
-			break;
-		case FLOATING_VALUE:
-			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect,2.0f,0.0,this->alpha);
-			break;
-		case TEXTBOX:
-			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
-			break;
-		case DIALOGBOX:
-			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
-		default:
-			break;
-		}
+		
+		App->render->Blit(sprites, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
+
 
 		if (debug_draw) {
 			SDL_Rect tmp_rect{ screen_position.x,screen_position.y,current_rect.w,current_rect.h };

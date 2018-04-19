@@ -29,6 +29,18 @@
     </item>
   
 	</usables>
+
+  <!--- str -> strengh
+        int -> intelligence
+        agi -> agility
+        cnst -> constitution
+        dext -> dexterity
+        mr -> magic resist
+        pr -> physical resist
+        lck -> luck
+        fcs -> focus -->
+
+  <!--- VALUES: 1 (),2 ->(+),3->(++) -1->(),-2->(-),-3 (-x2) -->
   
 	<equips>
     <!--- BOOTS -->
@@ -37,21 +49,18 @@
 			<draw_coords x="0" y="2" width="16" height="8"/>
 		
 			<stats>
-				<stat name="str" value="0"/>
-				<stat name="int" value="0"/>
-				<stat name="agi" value="2"/>
+				<stat name="fcs" value="2"/>
+				<stat name="agi" value="3"/>
 			</stats>
 		
 		</equip>
     
-    <equip name="Assasins Boots" tier="3" type="BOOT">
+    <equip name="Assasins Boots" tier="3" type="BOOT" passive =" CRITIC">
 
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
-        <stat name="int" value="0"/>
-        <stat name="agi" value="2"/>
+        <stat name="dext" value="2"/>
       </stats>
 
     </equip>
@@ -61,9 +70,7 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
-        <stat name="int" value="0"/>
-        <stat name="agi" value="2"/>
+        <stat name="pr" value="2"/>
       </stats>
 
     </equip>
@@ -73,9 +80,9 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
-        <stat name="int" value="0"/>
-        <stat name="agi" value="2"/>
+        <stat name="pr" value="2"/>
+        <stat name="mr" value="2"/>
+        <stat name="agi" value="3"/>
       </stats>
 
     </equip>
@@ -84,8 +91,8 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
-        <stat name="int" value="0"/>
+        <stat name="pr" value="2"/>
+        <stat name="mr" value="2"/>
         <stat name="agi" value="2"/>
       </stats>
 
@@ -96,9 +103,7 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
-        <stat name="int" value="0"/>
-        <stat name="agi" value="2"/>
+        <stat name="lck" value="2"/>
       </stats>
 
     </equip>
@@ -108,9 +113,8 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
-        <stat name="int" value="0"/>
-        <stat name="agi" value="2"/>
+        <stat name="pr" value="2"/>
+        <stat name="agi" value="-2"/>
       </stats>
 
     </equip>
@@ -120,9 +124,8 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
-        <stat name="int" value="0"/>
-        <stat name="agi" value="2"/>
+        <stat name="cnst" value="2"/>
+        <stat name="str" value="2"/>
       </stats>
 
     </equip>
@@ -132,8 +135,7 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
-        <stat name="int" value="0"/>
+        <stat name="cnst" value="3"/>
         <stat name="agi" value="2"/>
       </stats>
 
@@ -144,9 +146,8 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
-        <stat name="int" value="0"/>
-        <stat name="agi" value="2"/>
+        <stat name="agi" value="-2"/>
+        <stat name="fcs" value="3"/>
       </stats>
 
     </equip>
@@ -159,7 +160,7 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="cnst" value="0"/>
+        <stat name="cnst" value="3"/>
       </stats>
 
     </equip>
@@ -169,8 +170,8 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="int" value="0"/>
-        <stat name="agi" value="2"/>
+        <stat name="int" value="1"/>
+        <stat name="agi" value="1"/>
       </stats>
 
     </equip>
@@ -180,8 +181,8 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="mr" value="0"/>
-        <stat name="pr" value="0"/>
+        <stat name="mr" value="2"/>
+        <stat name="pr" value="2"/>
       </stats>
 
     </equip>
@@ -191,7 +192,7 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="int" value="0"/>
+        <stat name="int" value="1"/>
       </stats>
 
     </equip>
@@ -201,8 +202,8 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="mr" value="0"/>
-        <stat name="lck" value="0"/>
+        <stat name="mr" value="1"/>
+        <stat name="lck" value="1"/>
       </stats>
 
     </equip>
@@ -212,8 +213,8 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="pr" value="0"/>
-        <stat name="agi" value="2"/>
+        <stat name="pr" value="1"/>
+        <stat name="agi" value="-2"/>
       </stats>
 
     </equip>
@@ -223,8 +224,8 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="cnst" value="0"/>
-        <stat name="dext" value="0"/>
+        <stat name="cnst" value="1"/>
+        <stat name="dext" value="1"/>
       </stats>
 
     </equip>
@@ -234,7 +235,7 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
+        <stat name="str" value="-2"/>
         <stat name="agi" value="2"/>
       </stats>
 
@@ -245,8 +246,8 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="mr" value="0"/>
-        <stat name="lck" value="0"/>
+        <stat name="mr" value="-2"/>
+        <stat name="lck" value="2"/>
       </stats>
 
     </equip>
@@ -256,15 +257,13 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
-        <stat name="cnst" value="0"/>
-        <stat name="pr" value="2"/>
+        <stat name="str" value="2"/>
+        <stat name="cnst" value="1"/>
+        <stat name="pr" value="1"/>
       </stats>
 
     </equip>
-    
-    
-    
+
     <!--- FINAL ARMS -->
 		<equip name="ejemplo" tier="2" type="HELM" passive="EJEMPLO_BLABLA">
 		
@@ -279,12 +278,13 @@
 		</equip>
 
     <!--- HANDS -->
+    
     <equip name="Amber Ring" tier="1" type="HANDS">
 
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="str" value="0"/>
+        <stat name="str" value="1"/>
       </stats>
 
     </equip>
@@ -294,7 +294,7 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="cnst" value="0"/>
+        <stat name="cnst" value="1"/>
       </stats>
 
     </equip>
@@ -304,23 +304,325 @@
       <draw_coords x="0" y="2" width="16" height="8"/>
 
       <stats>
-        <stat name="cnst" value="0"/>
+        <stat name="cnst" value="-2"/>
+        <stat name="agi" value="1"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Broken Ring" tier="1" type="HANDS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="-2"/>
+        <stat name="cnst" value="1"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Bronze Ring" tier="1" type="HANDS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="pr" value="-2"/>
+        <stat name="str" value="1"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Esmerald Ring" tier="3" type="HANDS" passive= "EXTRA_MANA">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="int" value="2"/>
+        <stat name="dext" value="1"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Gold Ring" tier="2" type="HANDS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="lck" value="1"/>
+        <stat name="cnst" value="1"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Sapphire Ring" tier="1" type="HANDS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="fcs" value="3"/>
+      </stats>
+
+    </equip>
+
+    <equip name=" Topaz Ring" tier="3" type="HANDS" passive ="MORE_LIFE_REGENERATION_OUT">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="pr" value="1"/>
+        <stat name="mr" value="1"/>
+      </stats>
+
+    </equip>
+
+    <equip name=" Red Ring" tier="1" type="HANDS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="agi" value="1"/>
+      </stats>
+
+    </equip>
+    <!--- FINAL HANDS -->
+
+    <!--- ACCESSORIES -->
+    
+    <equip name="Berserker Greaves" tier="3" type="HANDS" passive ="More Life regeneration">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="pr" value="0"/>
+        <stat name="mr" value="0"/>
+      </stats>
+
+    </equip>
+
+    <!--- FINAL ACCESSORIES -->
+
+    <!--- ARMOR -->
+    <equip name="Archmage Cloak" tier="3" type="ARMOR">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="mr" value="3"/>
+        <stat name="pr" value="3"/>
+        <stat name="agi" value="-2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Coat Mail" tier="2" type="ARMOR">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="mr" value="2"/>
+        <stat name="cnst" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Coat Scales" tier="2" type="ARMOR">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="pr" value="2"/>
+        <stat name="cnst" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Coat Jade" tier="1" type="ARMOR" passive ="MORE_LIFE_REGENERATION_COMBAT">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="cnst" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Esmerald Armor" tier="1" type="ARMOR">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="2"/>
+        <stat name="dext" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Gold Armor" tier="3" type="ARMOR">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="cnst" value="1"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Leather Armor" tier="1" type="ARMOR">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="pr" value="2"/>
+        <stat name="dext" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Magic Cape" tier="1" type="ARMOR" passive ="MANA_REGENERATION">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="agi" value="1"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Silver Armor" tier="3" type="ARMOR">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="mr" value="3"/>
+        <stat name="pr" value="3"/>
+        <stat name="agi" value="-2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Worn Layer" tier="1" type="ARMOR">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="agi" value="2"/>
+        <stat name="lck" value="3"/>
+      </stats>
+
+    </equip>
+    <!--- FINAL ARMOR -->
+
+    <!--- HELMETS -->
+    
+    <equip name="Apprentice Hat" tier="1" type="HELMET">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="fcs" value="2"/>
+
+      </stats>
+
+    </equip>
+
+    <equip name="Coat" tier="2" type="HELMET">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="dext" value="2"/>
         <stat name="agi" value="2"/>
       </stats>
 
     </equip>
 
-    <!--- FINAL HANDS -->
+    <equip name="Diadem" tier="1" type="HELMET">
 
-    <!--- ACCESSORIES -->
+      <draw_coords x="0" y="2" width="16" height="8"/>
 
-    <!--- FINAL ACCESSORIES -->
+      <stats>
+        <stat name="mr" value="2"/>
+      </stats>
 
-    <!--- ARMOR -->
+    </equip>
 
-    <!--- FINAL ARMOR -->
+    <equip name="Gold Helmet" tier="3" type="HELMET">
 
-    <!--- HELMETS -->
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="cnst" value="2"/>
+
+      </stats>
+
+    </equip>
+
+    <equip name="Hair Ribbon" tier="2" type="HELMET">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="int" value="2"/>
+        <stat name="agi" value="2"/>
+        <stat name="fcs" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Leather Helmet" tier="1" type="HELMET">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="pr" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Magician Hat" tier="3" type="HELMET">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="int" value="3"/>
+        <stat name="mr" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Miter" tier="2" type="HELMET">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="lck" value="3"/>
+        <stat name="cnst" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name= "Silver Helmet" tier="2" type="HELMET">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="mr" value="2"/>
+        <stat name="pr" value="2"/>
+        <stat name="agi" value="-2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Worm Coat" tier="1" type="HELMET">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="dext" value="2"/>
+      </stats>
+
+    </equip>
+    
 
     <!--- FINAL HELMETS -->
   

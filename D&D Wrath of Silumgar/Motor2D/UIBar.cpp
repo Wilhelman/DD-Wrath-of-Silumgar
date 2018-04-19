@@ -14,49 +14,50 @@ UIBar::UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, E
 	this->max_capacity = max_capacity;
 	current_quantity = max_capacity;
 
+	//LifeBar y ManaBar son iguales
 	if (type == LIFEBAR) {
-		max_width = max_player_bar_width;
-		current_width = max_width;
-		previous_width = max_width;
-		bar_height = player_bar_height;
+		max_width = 160;
+		current_width = 570;
+		previous_width = 200;
+		bar_height = 11;
 		lower_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 571,107,max_width,bar_height });
 		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,107,max_width,bar_height });
 	}
 	else if (type == MANABAR) {
-		max_width = max_player_bar_width;
-		current_width = max_width;
-		previous_width = max_width;
-		bar_height = player_bar_height;
+		max_width = 160;
+		current_width = 570;
+		previous_width =200;
+		bar_height = 11;
 		lower_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 0,129,max_width,bar_height });
 		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 318,445,max_width,bar_height });
 	}
 	else if (type == ENEMYLIFEBAR) {
-		max_width = max_enemy_bar_width;
-		current_width = max_width;
-		previous_width = max_width;
-		bar_height = enemy_bar_height;
+		max_width = 50;
+		current_width = 570;
+		previous_width = 570;
+		bar_height = 5;
 		lower_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 571,110,max_width,bar_height });
 		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,110,max_width,bar_height });
 	}
-
+	//-----------------------------------------------------------------------------
 	LOG("UIBar created in x:%i, y:%i", x, y);
 }
 
 void UIBar::Update()
 {
+	//Podemos colocar que vaya bajando el ancho de la barra amarilla conforme pasen los segundos
+	// y cuando llege a un valor proximo a 0 deletearlo
+	//-------------------------------------------------------------
+
 	//Destroy the yellowbar after 500ms
 	if (yellow_bar != nullptr && yellow_bar_time.ReadMs() > 500) {
 		App->gui->DeleteUIElement(*yellow_bar);
 		yellow_bar = nullptr;
 	}
-	//if (current_quantity <=0 && bar_type == LIFEBAR) {
-	//	DeleteElements();
-	//	lower_bar = nullptr;
-	//	upper_bar = nullptr;
-	//	yellow_bar = nullptr;
-	//}
+
 }
 
+//Em esto se puede hacer en "10 líneas"
 void UIBar::LowerBar(int quantity)
 {
 	//Lower width of the bar when losing hp/mana
@@ -130,7 +131,9 @@ void UIBar::LowerBar(int quantity)
 
 	}
 }
+//------------------------------------------------------------------------------
 
+//Con un valor fijo se puede aumentar de una manera mucho mas rápida y facil
 void UIBar::RecoverBar(int quantity)
 {
 	//Recover width of the bar when wining hp/mana
@@ -163,7 +166,9 @@ void UIBar::RecoverBar(int quantity)
 		}
 	}
 }
+//----------------------------------------------------------------------------------------
 
+//Si hacemos lo de que vaya bajando poco a poco esto se va a la mierda
 void UIBar::DrawYellowBar() {
 	//Draw a yellow bar showing what you've lost
 	if (yellow_bar != nullptr) {
@@ -177,6 +182,7 @@ void UIBar::DrawYellowBar() {
 	}
 	yellow_bar_time.Start();
 }
+//-------------------------------------------------
 
 void UIBar::DeleteElements() {
 	App->gui->DeleteUIElement(*lower_bar);
@@ -187,6 +193,7 @@ void UIBar::DeleteElements() {
 	yellow_bar = nullptr;
 }
 
+//Esto se puede rehacer entero en "3 líneas"
 int UIBar::CalculateBarWidth(int quantity) {
 	//Calculate the new bar width when losing/wining hp/mana quantity 
 	int new_width = current_width;
@@ -198,11 +205,13 @@ int UIBar::CalculateBarWidth(int quantity) {
 
 	return new_width;
 }
+//---------------------------------
 
 int UIBar::CurrentQuantity() {
 	return current_quantity;
 }
 
+//Se puede hacer en una sola función
 void UIBar::MakeElementsInvisible() {
 	lower_bar->non_drawable = true;
 	upper_bar->non_drawable = true;
@@ -219,3 +228,4 @@ void UIBar::MakeElementsVisible() {
 		yellow_bar->non_drawable = false;
 	}
 }
+//---------------------------------------

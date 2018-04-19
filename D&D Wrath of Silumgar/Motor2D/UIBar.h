@@ -15,10 +15,7 @@ public:
 	UIElement* lower_bar = nullptr;
 	UIElement* upper_bar = nullptr;
 	UIElement* yellow_bar = nullptr;
-	int player_bar_height = 11;
-	int enemy_bar_height = 5;
-	int max_player_bar_width = 160;
-	int max_enemy_bar_width = 50;
+
 	int bar_height = 22;
 	int max_width = 570;
 	int previous_width = 200;

@@ -375,16 +375,7 @@ void UICombatMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 
 	if (current_vector == main_labels) {
 		if (attack_label->current_state == STATE_EXECUTED) {
-			//App->gui->DeleteUIElement(*arrow);
-			//arrow = nullptr;
-			//App->gui->DeleteUIElement(*background);
-			//background = nullptr;
-			//App->gui->DeleteUIElement(*upper_points);
-			//upper_points = nullptr;
-			//App->gui->DeleteUIElement(*lower_points);
-			//lower_points = nullptr;
 			selecting_enemy = true;
-			//Call function to attack
 		}
 		else if (abilities_label->current_state == STATE_EXECUTED) {
 			LoadAbilities();
@@ -398,15 +389,6 @@ void UICombatMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		if (entity->GetCurrentManaPoints()>=entity->abilities.at(names_iterator).mana_points_effect_to_himself) {
 			selecting_enemy = true;
 		}
-		/*App->gui->DeleteUIElement(*arrow);
-		arrow = nullptr;
-		App->gui->DeleteUIElement(*background);
-		background = nullptr;
-		App->gui->DeleteUIElement(*upper_points);
-		upper_points = nullptr;
-		App->gui->DeleteUIElement(*lower_points);
-		lower_points = nullptr;*/
-		//Use Abilitie
 	}
 
 	if (current_vector == items) {
@@ -458,15 +440,6 @@ void UICombatMenu::LoadAbilities() {
 		names.push_back("0 Abilities");
 	}
 
-	//names.push_back("Ability1");
-	//names.push_back("Ability2");
-	//names.push_back("Ability3");
-	//names.push_back("Ability4");
-	//names.push_back("Ability5");
-	//names.push_back("Ability6");
-	//names.push_back("Ability7");
-	//names.push_back("Ability8");
-	//names.push_back("Ability9");
 
 	if (names.size() > 3) {
 		if (entity->GetCurrentManaPoints() >= entity->abilities.at(0).mana_points_effect_to_himself) {
@@ -585,7 +558,7 @@ void UICombatMenu::GoBack() {
 		arrow->SetParent(attack_label);
 		main_labels.push_back(attack_label);
 		main_labels.push_back(abilities_label);
-		//main_labels.push_back(items_label);
+	
 
 		App->audio->PlayFx(combat_menu_back_fx);
 	}

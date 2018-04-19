@@ -8,6 +8,7 @@
 class UILevelUpInfo : public UIElement
 {
 public:
+	//Se puede hacer de otra manera
 	UIElement* background = nullptr;
 	UIElement* image_hero = nullptr;
 	UIElement* text = nullptr;
@@ -25,15 +26,12 @@ public:
 	UIElement* ability_unlock = nullptr;
 	UIElement* level_number = nullptr;
 	UIElement* name_ability = nullptr;
-
+	//---------------------------------
 	
 
 public:
 	UILevelUpInfo(int x, int y, UI_Type type, EntityType hero, ctModule* callback, UIElement* parent = nullptr);
 	~UILevelUpInfo();
-
-
-	void Update();
 
 	
 };

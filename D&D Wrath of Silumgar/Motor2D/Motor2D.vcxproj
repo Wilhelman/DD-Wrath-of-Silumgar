@@ -55,7 +55,6 @@
     <ClCompile Include="UILabel.cpp" />
     <ClCompile Include="UILevelUpInfo.cpp" />
     <ClCompile Include="UITextBox.cpp" />
-    <ClCompile Include="UIVerticalSliceInfo.cpp" />
     <ClCompile Include="Warrior.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -108,7 +107,6 @@
     <ClInclude Include="UILabel.h" />
     <ClInclude Include="UILevelUpInfo.h" />
     <ClInclude Include="UITextBox.h" />
-    <ClInclude Include="UIVerticalSliceInfo.h" />
     <ClInclude Include="Warrior.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

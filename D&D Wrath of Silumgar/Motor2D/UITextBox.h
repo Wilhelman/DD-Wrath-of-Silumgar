@@ -5,7 +5,7 @@
 #include <string>
 #include "ctFonts.h"
 
-
+//Se puede hacer igual que un Dialog Box
 
 class UITextBox : public UIElement
 {

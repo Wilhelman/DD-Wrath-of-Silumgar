@@ -10,18 +10,6 @@ UIDecision::UIDecision(int x, int y, int decision_number, UI_Type type, UIElemen
 	std::string text = "Decided to set out on a new adventure with\n your weapons in hand, you leave the village without looking back, looking for the origin\n of the attack. But you stumble upon the first decision you must take which will mark your destiny and path.";
 	std::string text_options[] = { "!A. Follow the footprints that comes from\n the forest.", "!B.Take a shortcut through the cave,  dark, narrow and full of threats."};
 	this->callback = callback;
-	
-
-	//Dont delete. Will be useful later
-	/*aux_element = App->gui->AddUIImage(x, y, { 0,648,264,169 }, nullptr, this);
-	this->image_border = aux_element;
-
-	aux_element = App->gui->AddUIImage(x, y + 165, { 0,485,264,162 }, nullptr, this);
-	this->text_border = aux_element;
-
-	aux_element = App->gui->AddUITextBox(x + 20, y + 165 + 26, size, 222, text, { 255,255,255,255 }, this);
-	this->text_decision = aux_element;*/
-
 
 	//TO SOLVE: if we use AddUIImage or text box, when we create one UIDecision element 3 elements are pushed to GUI list: the image, the textbox and the UIDecision. We should use constructor from each element and only push to the list one element UIDecision.
 	

@@ -131,32 +131,6 @@ bool ctWorldMap::Start()
 		LOG("Error playing music in ctMainMenu Start");
 	}
 
-
-	if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
-	{
-
-		if (!App->audio->PlayMusic("audio/music/D_D-Shadow-Over-Mystara-Song-38-Epiloge-_Stage-10_.ogg", -1)) {
-
-			LOG("Error playing music in ctMainMenu Start");
-		}
-
-		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
-		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-		condition_win = App->gui->AddUIVerticalSliceInfo(xE, yE, App->combat->condition_victory, this, nullptr);
-	}
-
-	if (App->combat->condition_victory == false)
-	{
-
-		if (!App->audio->PlayMusic("audio/music/D_D-Shadow-Over-Mystara-Song-39-Our-Divine-Protection-First-Child-Amidst-Death.ogg", -1)) {
-
-			LOG("Error playing music in ctMainMenu Start");
-		}
-
-		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
-		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-		condition_lose = App->gui->AddUIVerticalSliceInfo(xE, yE,App->combat->condition_victory, this, nullptr);
-	}
 	//Decision call example
 
 	if (App->map->actual_tier == TierList::TIER_MAP_2 && App->combat->condition_victory == true)

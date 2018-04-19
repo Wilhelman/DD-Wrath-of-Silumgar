@@ -4,6 +4,7 @@
 #include "ctInput.h"
 #include "ctAudio.h"
 
+//GENERALIZAAAR
 UILevelUpInfo::UILevelUpInfo(int x, int y, UI_Type type, EntityType hero, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
 	this->callback = callback;
@@ -82,7 +83,7 @@ UILevelUpInfo::UILevelUpInfo(int x, int y, UI_Type type, EntityType hero, ctModu
 		name_ability = App->gui->AddUITextBox(x + 30, y + 125, 15, 100, "HEAL", { 255,0,0,255 }, this, Second_Font);
 	}
 }
-
+//----------------------------------------------------------------------------------------------------------------------
 UILevelUpInfo::~UILevelUpInfo() {
 	App->gui->DeleteUIElement(*background);
 	background = nullptr;
@@ -116,8 +117,3 @@ UILevelUpInfo::~UILevelUpInfo() {
 	name_ability = nullptr;
 }
 
-void UILevelUpInfo::Update()
-{
-	
-
-}

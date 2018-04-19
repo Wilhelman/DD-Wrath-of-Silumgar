@@ -9,11 +9,29 @@
 			<draw_coords x="0" y="2" width="16" height="8"/>
 		
 		</item>
+    <item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER">
+      <draw_coords x="0" y="2" width="16" height="8"/>
+    </item>
+    <item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER">
+      <draw_coords x="0" y="2" width="16" height="8"/>
+    </item>
+    <item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER">
+      <draw_coords x="0" y="2" width="16" height="8"/>
+    </item>
+    <item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER">
+      <draw_coords x="0" y="2" width="16" height="8"/>
+    </item>
+    <item name="Dragon Essence" objective="1" use="BURN_TARGET">
+      <draw_coords x="0" y="2" width="16" height="8"/>
+    </item>
+    <item name="Fenix Tears" objective="0" use="REVIVE_AN_ALLY">
+      <draw_coords x="0" y="2" width="16" height="8"/>
+    </item>
   
 	</usables>
   
 	<equips>
-	
+    <!--- BOOTS -->
 		<equip name="Speed Boots" tier="3" type="BOOT">
 		
 			<draw_coords x="0" y="2" width="16" height="8"/>
@@ -25,7 +43,229 @@
 			</stats>
 		
 		</equip>
-		
+    
+    <equip name="Assasins Boots" tier="3" type="BOOT">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="int" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Boots" tier="1" type="BOOT">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="int" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Fire Boots" tier="1" type="BOOT">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="int" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+    <equip name="Heavy Boots" tier="2" type="BOOT">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="int" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+    
+    <equip name="Light Boots" tier="2" type="BOOT" passive ="ATTACK_FIRST">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="int" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+    
+    <equip name="Old Boots" tier="1" type="BOOT">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="int" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Silver Boots" tier="2" type="BOOT">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="int" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Titanic Boots" tier="3" type="BOOT">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="int" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Wise Boots" tier="2" type="BOOT">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="int" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+
+    <!---FINAL BOOTS -->
+
+    <!--- ARMS -->
+    <equip name="Captain Gauntlets" tier="1" type="ARMS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="cnst" value="0"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Cloth Gauntlets" tier="1" type="ARMS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="int" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Dragon Gauntlets" tier="3" type="ARMS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="mr" value="0"/>
+        <stat name="pr" value="0"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Esmerald Gauntlets" tier="3" type="ARMS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="int" value="0"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Gold Gauntlets" tier="2" type="ARMS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="mr" value="0"/>
+        <stat name="lck" value="0"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Heavy Gauntlets" tier="3" type="ARMS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="pr" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Leather Gauntlets" tier="2" type="ARMS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="cnst" value="0"/>
+        <stat name="dext" value="0"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Ligtweight Gauntlets" tier="2" type="ARMS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Luck Gauntlets" tier="2" type="ARMS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="mr" value="0"/>
+        <stat name="lck" value="0"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Silver Gauntlets" tier="2" type="ARMS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+        <stat name="cnst" value="0"/>
+        <stat name="pr" value="2"/>
+      </stats>
+
+    </equip>
+    
+    
+    
+    <!--- FINAL ARMS -->
 		<equip name="ejemplo" tier="2" type="HELM" passive="EJEMPLO_BLABLA">
 		
 			<draw_coords x="0" y="2" width="16" height="8"/>
@@ -37,6 +277,52 @@
 			</stats>
 		
 		</equip>
+
+    <!--- HANDS -->
+    <equip name="Amber Ring" tier="1" type="HANDS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="str" value="0"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Amethyst Ring" tier="1" type="HANDS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="cnst" value="0"/>
+      </stats>
+
+    </equip>
+
+    <equip name="Bones Ring" tier="2" type="HANDS">
+
+      <draw_coords x="0" y="2" width="16" height="8"/>
+
+      <stats>
+        <stat name="cnst" value="0"/>
+        <stat name="agi" value="2"/>
+      </stats>
+
+    </equip>
+
+    <!--- FINAL HANDS -->
+
+    <!--- ACCESSORIES -->
+
+    <!--- FINAL ACCESSORIES -->
+
+    <!--- ARMOR -->
+
+    <!--- FINAL ARMOR -->
+
+    <!--- HELMETS -->
+
+    <!--- FINAL HELMETS -->
   
 	</equips>
   

@@ -71,6 +71,9 @@ public:
 	// Load languages file
 	pugi::xml_node LoadLanguages(pugi::xml_document&) const;
 
+	//Load items
+	pugi::xml_node LoadItems(pugi::xml_document&) const;
+
 private:
 
 	// Call modules before each loop iteration

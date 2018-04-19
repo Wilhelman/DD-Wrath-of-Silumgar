@@ -31,24 +31,22 @@ bool ctItems::Awake(pugi::xml_node& config)
 	LOG("Loading Items");
 	bool ret = true;
 
-	/*pugi::xml_document	language_file;
-	pugi::xml_node* node = &App->LoadLanguages(language_file);
-	current_language = config.attribute("current").as_string();
+	pugi::xml_document	items_file;
+	pugi::xml_node* node = &App->LoadItems(items_file);
+	node = &node->child("usables");
 
-	for (pugi::xml_node languages = node->first_child(); languages && ret; languages = languages.next_sibling())
+
+	for (pugi::xml_node usable = node->child("item"); usable && ret; usable = usable.next_sibling("item"))
 	{
-		string tmp_language;
-		tmp_language = languages.name();
-		posible_languages.push_back(tmp_language);
+		Item*  items = new Item();
+		items->name = usable.attribute("name").as_string();
+		items->objective = usable.attribute("objective").as_int();
+		//items->usable_effects = usable.attribute("use").as_int();
 	}
+	
 
-	node = &node->child(current_language.c_str());
 
-	dictionary.MM_about_btn = (node->child("MM_about_btn").attribute("string").as_string());
-	dictionary.MM_continue_btn = (node->child("MM_continue_btn").attribute("string").as_string());
-	dictionary.MM_new_game_btn = (node->child("MM_new_game_btn").attribute("string").as_string());
-	dictionary.MM_quit_btn = (node->child("MM_quit_btn").attribute("string").as_string());
-	dictionary.MM_settings_btn = (node->child("MM_settings_btn").attribute("string").as_string());*/
+	
 
 	return ret;
 }

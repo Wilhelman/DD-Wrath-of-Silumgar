@@ -86,16 +86,16 @@ void UIBar::Draw(SDL_Texture* tex)
 
 			App->render->Blit(tex, yellow_bar_position.x, yellow_bar_position.y, &yellow_bar_rect, 2.0f, 0.0, alpha);
 			
-			dat += 1.0f/3;
-			if (dat > 1)
+			speed += 1.0f/3;
+			if (speed > 1)
 			{
-				previous_width -= dat;
-				dat = 0;
+				previous_width -= speed;
+				speed = 0;
 			}
 		}
 		else
 		{
-			previous_width = current_quantity;
+			previous_width = current_width;
 		}
 
 		App->render->Blit(tex, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, alpha);
@@ -115,8 +115,6 @@ void UIBar::LowerBar(int quantity)
 
 		bar->current_rect.w = current_width;
 		
-		if (previous_width != current_width)
-				yellow_bar_time.Start();
 
 		/*if (quantity<0) {
 			if ((current_quantity - quantity) >= 0) {
@@ -190,10 +188,10 @@ void UIBar::LowerBar(int quantity)
 //------------------------------------------------------------------------------
 
 //Con un valor fijo se puede aumentar de una manera mucho mas rápida y facil
-void UIBar::RecoverBar(int quantity)
+/*void UIBar::RecoverBar(int quantity)
 {
 	//Recover width of the bar when wining hp/mana
-	/*if (lower_bar != nullptr) {
+	if (lower_bar != nullptr) {
 		if ((current_quantity + quantity) < max_capacity) {
 			current_width = CalculateBarWidth(quantity);
 			App->gui->DeleteUIElement(*upper_bar);
@@ -220,14 +218,14 @@ void UIBar::RecoverBar(int quantity)
 				upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,110,current_width,bar_height });
 			}
 		}
-	}*/
-}
+	}
+}*/
 //----------------------------------------------------------------------------------------
 
 //Si hacemos lo de que vaya bajando poco a poco esto se va a la mierda
-void UIBar::DrawYellowBar() {
+/*void UIBar::DrawYellowBar() {
 	//Draw a yellow bar showing what you've lost
-	/*if (yellow_bar != nullptr) {
+	if (yellow_bar != nullptr) {
 		App->gui->DeleteUIElement(*yellow_bar);
 	}
 	if (current_width > 0) {
@@ -236,18 +234,18 @@ void UIBar::DrawYellowBar() {
 	else {
 		yellow_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 583,130,(previous_width),bar_height });
 	}
-	yellow_bar_time.Start();*/
-}
+	yellow_bar_time.Start();
+}*/
 //-------------------------------------------------
 
-void UIBar::DeleteElements() {
-	/*App->gui->DeleteUIElement(*lower_bar);
+/*void UIBar::DeleteElements() {
+	App->gui->DeleteUIElement(*lower_bar);
 	lower_bar = nullptr;
 	App->gui->DeleteUIElement(*upper_bar);
 	upper_bar = nullptr;
 	App->gui->DeleteUIElement(*yellow_bar);
-	yellow_bar = nullptr;*/
-}
+	yellow_bar = nullptr;
+}*/
 
 //Esto se puede rehacer entero en "3 líneas"
 

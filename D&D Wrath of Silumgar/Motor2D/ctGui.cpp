@@ -3,7 +3,7 @@
 #include "ctApp.h"
 #include "ctRender.h"
 #include "ctTextures.h"
-//#include "ctFonts.h"
+
 #include "ctInput.h"
 #include "ctGui.h"
 
@@ -231,21 +231,6 @@ UIElement* ctGui::AddUIDecision(int x, int y, int decision_number, UIElement* &a
 	return tmp_decision;
 
 	LOG("Error: Cant add the UIDecision");
-	return nullptr;
-}
-
-UIElement* ctGui::GetElementUnderMouse(int x, int y)
-{
-	for (int i = ui_elements.size() - 1; i >= 0; i--) {
-		if (ui_elements[i] != nullptr)
-		{
-			if ((x > ui_elements[i]->GetScreenPosition().x && x < ui_elements[i]->GetScreenPosition().x + ui_elements[i]->GetRect().w) && (y > ui_elements[i]->GetScreenPosition().y && y < ui_elements[i]->GetScreenPosition().y + ui_elements[i]->GetRect().h))
-			{
-				UIElement* tmp_element_to_return = ui_elements[i];
-				return tmp_element_to_return;
-			}
-		}
-	}
 	return nullptr;
 }
 

@@ -141,10 +141,6 @@ bool ctWorldMap::Start()
 	}
 
 
-	
-	
-
-
 	menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuMove.wav");
 	menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuSelect.wav");
 	walk_fx = App->audio->LoadFx("audio/sounds/Others/WorldMapWalk.wav"); //TODO Change fx if you find better

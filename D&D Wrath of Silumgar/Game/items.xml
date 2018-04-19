@@ -281,7 +281,7 @@
     
     <equip name="Amber Ring" tier="1" type="HANDS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="128" y="192" width="64" height="32"/>
 
       <stats>
         <stat name="str" value="1"/>
@@ -291,8 +291,7 @@
 
     <equip name="Amethyst Ring" tier="1" type="HANDS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
-
+      <draw_coords x="128" y="160" width="64" height="32"/>
       <stats>
         <stat name="cnst" value="1"/>
       </stats>
@@ -301,8 +300,7 @@
 
     <equip name="Bones Ring" tier="2" type="HANDS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
-
+      <draw_coords x="192" y="160" width="64" height="32"/>
       <stats>
         <stat name="cnst" value="-2"/>
         <stat name="agi" value="1"/>
@@ -312,8 +310,7 @@
 
     <equip name="Broken Ring" tier="1" type="HANDS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
-
+      <draw_coords x="256" y="160" width="64" height="32"/>
       <stats>
         <stat name="str" value="-2"/>
         <stat name="cnst" value="1"/>
@@ -323,8 +320,7 @@
 
     <equip name="Bronze Ring" tier="1" type="HANDS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
-
+      <draw_coords x="320" y="160" width="64" height="32"/>
       <stats>
         <stat name="pr" value="-2"/>
         <stat name="str" value="1"/>
@@ -334,8 +330,7 @@
 
     <equip name="Esmerald Ring" tier="3" type="HANDS" passive= "EXTRA_MANA">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
-
+      <draw_coords x="384" y="160" width="64" height="32"/>
       <stats>
         <stat name="int" value="2"/>
         <stat name="dext" value="1"/>
@@ -345,8 +340,7 @@
 
     <equip name="Gold Ring" tier="2" type="HANDS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
-
+      <draw_coords x="448" y="160" width="64" height="32"/>
       <stats>
         <stat name="lck" value="1"/>
         <stat name="cnst" value="1"/>
@@ -356,8 +350,7 @@
 
     <equip name="Sapphire Ring" tier="1" type="HANDS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
-
+      <draw_coords x="0" y="192" width="64" height="32"/>
       <stats>
         <stat name="fcs" value="3"/>
       </stats>
@@ -366,8 +359,7 @@
 
     <equip name=" Topaz Ring" tier="3" type="HANDS" passive ="MORE_LIFE_REGENERATION_OUT">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
-
+      <draw_coords x="64" y="192" width="64" height="32"/>
       <stats>
         <stat name="pr" value="1"/>
         <stat name="mr" value="1"/>
@@ -377,8 +369,7 @@
 
     <equip name=" Red Ring" tier="1" type="HANDS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
-
+      <draw_coords x="512" y="160" width="64" height="32"/>
       <stats>
         <stat name="agi" value="1"/>
       </stats>
@@ -628,7 +619,7 @@
     <!--- SHIELDS -->
      <equip name="Bones Shield" tier="1" type="SHIELDS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="192" y="192" width="64" height="32"/>
 
       <stats>
         <stat name="dext" value="-2"/>
@@ -639,7 +630,7 @@
     
      <equip name="Bronze Shield" tier="2" type="SHIELDS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="256" y="192" width="64" height="32"/>
 
       <stats>
         <stat name="lck" value="3"/>
@@ -649,7 +640,7 @@
     
      <equip name="Diamond Shield" tier="3" type="SHIELDS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="320" y="192" width="64" height="32"/>
 
       <stats>
         <stat name="fcs" value="2"/>
@@ -661,7 +652,7 @@
 
  <equip name="Dragon Scales Shield" tier="2" type="SHIELDS" passive ="NO_BURN">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="384" y="192" width="64" height="32"/>
 
       <stats>
         <stat name="dext" value="2"/>
@@ -671,7 +662,7 @@
 
  <equip name="Heavy Shield" tier="1" type="SHIELDS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="448" y="192" width="64" height="32"/>
 
       <stats>
         <stat name="dext" value="2"/>
@@ -683,7 +674,7 @@
 
  <equip name="Jade Shield" tier="2" type="SHIELDS" passive ="MORE_LIFE_REGENERATION_OUT">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="512" y="192" width="64" height="32"/>
 
       <stats>
         <stat name="cnst" value="2"/>
@@ -693,7 +684,7 @@
 
  <equip name="Mana Shield" tier="2" type="SHIELDS" passive ="MORE_MANA_REGENERATION_COMBAT">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="0" y="224" width="64" height="32"/>
 
       <stats>
         <stat name="fcs" value="2"/>
@@ -703,7 +694,7 @@
 
  <equip name="Mirror Shield" tier="3" type="SHIELDS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="64" y="224" width="64" height="32"/>
 
       <stats>
         <stat name="mr" value="2"/>
@@ -713,7 +704,7 @@
 
  <equip name="Normal Shield" tier="1" type="SHIELDS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="128" y="224" width="64" height="32"/>
 
       <stats>
         <stat name="pr" value="2"/>
@@ -724,7 +715,7 @@
 
  <equip name="Onyx Shield" tier="1" type="SHIELDS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="192" y="224" width="64" height="32"/>
 
       <stats>
         <stat name="pr" value="2"/>
@@ -738,7 +729,7 @@
     
     <equip name="Long Sword" tier="2" type="WEAPONS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="192" y="256" width="64" height="32"/>
 
       <stats>
         <stat name="str" value="2"/>
@@ -779,7 +770,7 @@
 
 <equip name="War Axe" tier="1" type="WEAPONS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="256" y="224" width="64" height="32"/>
 
       <stats>
         <stat name="dext" value="2"/>

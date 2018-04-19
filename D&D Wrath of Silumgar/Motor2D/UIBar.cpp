@@ -209,6 +209,7 @@ void UIBar::MakeElementsInvisible() {
 	if (yellow_bar != nullptr) {
 		yellow_bar->non_drawable = true;
 	}
+	
 }
 
 void UIBar::MakeElementsVisible() {

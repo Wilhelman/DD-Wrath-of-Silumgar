@@ -9,7 +9,7 @@
 
 #include "UILabel.h"
 #include "UIImage.h"
-#include "UIButton.h"
+
 #include "UICombatMenu.h"
 #include "UITextBox.h"
 #include "UIDIalogBox.h"
@@ -74,7 +74,7 @@ bool ctGui::PostUpdate()
 
 	for (int i = 0; i < ui_elements.size(); i++) {
 		if (ui_elements.at(i)->type != DIALOGBOX) {
-			if (ui_elements.at(i) != nullptr  && ui_elements.at(i)->non_drawable == false) ui_elements[i]->Draw(atlas);
+			if (ui_elements.at(i) != nullptr ) ui_elements[i]->Draw(atlas);
 		}
 		else {
 			UIDialogBox* aux = (UIDialogBox*)ui_elements.at(i);
@@ -157,15 +157,7 @@ UIElement* ctGui::AddUIImage(int position_x, int position_y, SDL_Rect rect, ctMo
 	return nullptr;
 }
 
-UIElement* ctGui::AddUIButton(int position_x, int position_y, SDL_Rect normal_rect, SDL_Rect focused_rect, SDL_Rect pressed_rect, ctModule* callback, UIElement* parent) {
 
-	UIElement* tmpBtn = new UIButton(position_x, position_y, BUTTON, normal_rect, focused_rect, pressed_rect, callback, parent);
-	ui_elements.push_back(tmpBtn);
-	return tmpBtn;
-
-	LOG("Error: Cant add the UIButton");
-	return nullptr;
-}
 
 UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback, UIElement* parent, const char* path) {
 

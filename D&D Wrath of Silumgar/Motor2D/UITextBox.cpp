@@ -21,7 +21,7 @@ UITextBox::UITextBox(int x, int y, UI_Type type, std::string text, SDL_Color col
 		box_width = width_size;
 
 
-	texture = App->fonts->PrintTextBox(text.c_str(), color, new_font, box_width, size);
+	this->texture = App->fonts->PrintTextBox(text.c_str(), color, new_font, box_width, size);
 
 
 

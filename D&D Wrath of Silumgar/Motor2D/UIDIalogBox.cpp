@@ -28,5 +28,5 @@ void UIDialogBox::Draw(SDL_Texture* sprites)
 	App->render->Blit(sprites, Dialog_Image->screen_position.x, Dialog_Image->screen_position.y, &Dialog_Image->current_rect);
 	App->render->Blit(Dialog_Text->texture, Dialog_Text->GetLocalPosition().x, Dialog_Text->GetLocalPosition().y, &Dialog_Text->current_rect);
 
-
+	
 }

@@ -9,6 +9,10 @@
 #include "ctPerfTimer.h"
 #include "ctFadeToBlack.h"
 
+
+//Solo 1 anote:
+//Esto es ctCombat porque la mayoria de cosas que hay aquí no se hacen aquí.
+//--------------------------------------------------------------------------
 UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
 	this->entity = entity;
@@ -46,7 +50,7 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	if (entity->abilities.size()!=0) {
 		main_labels.push_back(abilities_label);
 	}
-	//main_labels.push_back(items_label);
+
 	arrow->SetParent(attack_label);
 	upper_points_pos.x = x + 8;
 	upper_points_pos.y = y - 20;

@@ -6,26 +6,26 @@
 	
 		<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER"><!--- 1==Objetivo enemigo | 0 Aliado -->
 		
-			<draw_coords x="0" y="2" width="16" height="8"/>
+			<draw_coords x="192" y="2" width="16" height="8"/>
 		
 		</item>
     <item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER">
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="320" y="32" width="64" height="32"/>
     </item>
     <item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER">
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="256" y="32" width="64" height="32"/>
     </item>
     <item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER">
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="384" y="32" width="64" height="32"/>
     </item>
     <item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER">
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="448" y="32" width="64" height="32"/>
     </item>
     <item name="Dragon Essence" objective="1" use="BURN_TARGET">
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="64" y="32" width="64" height="32"/>
     </item>
     <item name="Fenix Tears" objective="0" use="REVIVE_AN_ALLY">
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="128" y="32" width="64" height="32"/>
     </item>
   
 	</usables>
@@ -46,7 +46,7 @@
     <!--- BOOTS -->
 		<equip name="Speed Boots" tier="3" type="BOOT">
 		
-			<draw_coords x="0" y="2" width="16" height="8"/>
+			<draw_coords x="512" y="32" width="64" height="32"/>
 		
 			<stats>
 				<stat name="fcs" value="2"/>
@@ -57,7 +57,7 @@
     
     <equip name="Assasins Boots" tier="3" type="BOOT" passive =" CRITIC">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="512" y="64" width="64" height="32"/>
 
       <stats>
         <stat name="dext" value="2"/>
@@ -67,7 +67,7 @@
 
     <equip name="Boots" tier="1" type="BOOT">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+			<draw_coords x="512" y="32" width="64" height="32"/>
 
       <stats>
         <stat name="pr" value="2"/>
@@ -77,7 +77,7 @@
 
     <equip name="Fire Boots" tier="1" type="BOOT">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="64" y="64" width="64" height="32"/>
 
       <stats>
         <stat name="pr" value="2"/>
@@ -88,7 +88,7 @@
     </equip>
     <equip name="Heavy Boots" tier="2" type="BOOT">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="128" y="64" width="64" height="32"/>
 
       <stats>
         <stat name="pr" value="2"/>
@@ -100,7 +100,7 @@
     
     <equip name="Light Boots" tier="2" type="BOOT" passive ="ATTACK_FIRST">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="192" y="64" width="64" height="32"/>
 
       <stats>
         <stat name="lck" value="2"/>
@@ -110,7 +110,7 @@
     
     <equip name="Old Boots" tier="1" type="BOOT">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="256" y="64" width="64" height="32"/>
 
       <stats>
         <stat name="pr" value="2"/>
@@ -121,7 +121,7 @@
 
     <equip name="Silver Boots" tier="2" type="BOOT">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="320" y="64" width="64" height="32"/>
 
       <stats>
         <stat name="cnst" value="2"/>
@@ -132,7 +132,7 @@
 
     <equip name="Titanic Boots" tier="3" type="BOOT">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="384" y="64" width="64" height="32"/>
 
       <stats>
         <stat name="cnst" value="3"/>
@@ -143,7 +143,7 @@
 
     <equip name="Wise Boots" tier="2" type="BOOT">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="448" y="64" width="64" height="32"/>
 
       <stats>
         <stat name="agi" value="-2"/>
@@ -157,7 +157,7 @@
     <!--- ARMS -->
     <equip name="Captain Gauntlets" tier="1" type="ARMS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="384" y="96" width="64" height="32"/>
 
       <stats>
         <stat name="cnst" value="3"/>
@@ -167,7 +167,7 @@
 
     <equip name="Cloth Gauntlets" tier="1" type="ARMS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="448" y="96" width="64" height="32"/>
 
       <stats>
         <stat name="int" value="1"/>
@@ -178,7 +178,7 @@
 
     <equip name="Dragon Gauntlets" tier="3" type="ARMS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="512" y="96" width="64" height="32"/>
 
       <stats>
         <stat name="mr" value="2"/>
@@ -189,7 +189,7 @@
 
     <equip name="Esmerald Gauntlets" tier="3" type="ARMS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="0" y="128" width="64" height="32"/>
 
       <stats>
         <stat name="int" value="1"/>
@@ -199,7 +199,7 @@
 
     <equip name="Gold Gauntlets" tier="2" type="ARMS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="0" y="96" width="64" height="32"/>
 
       <stats>
         <stat name="mr" value="1"/>
@@ -210,7 +210,7 @@
 
     <equip name="Heavy Gauntlets" tier="3" type="ARMS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="64" y="96" width="64" height="32"/>
 
       <stats>
         <stat name="pr" value="1"/>
@@ -221,7 +221,7 @@
 
     <equip name="Leather Gauntlets" tier="2" type="ARMS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="128" y="96" width="64" height="32"/>
 
       <stats>
         <stat name="cnst" value="1"/>
@@ -232,7 +232,7 @@
 
     <equip name="Ligtweight Gauntlets" tier="2" type="ARMS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="192" y="96" width="64" height="32"/>
 
       <stats>
         <stat name="str" value="-2"/>
@@ -243,7 +243,7 @@
 
     <equip name="Luck Gauntlets" tier="2" type="ARMS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="256" y="96" width="64" height="32"/>
 
       <stats>
         <stat name="mr" value="-2"/>
@@ -254,7 +254,7 @@
 
     <equip name="Silver Gauntlets" tier="2" type="ARMS">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="320" y="96" width="64" height="32"/>
 
       <stats>
         <stat name="str" value="2"/>
@@ -404,7 +404,7 @@
     <!--- ARMOR -->
     <equip name="Archmage Cloak" tier="3" type="ARMOR">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="0" y="320" width="48" height="48"/>
 
       <stats>
         <stat name="mr" value="3"/>
@@ -416,7 +416,7 @@
 
     <equip name="Coat Mail" tier="2" type="ARMOR">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="96" y="320" width="48" height="48"/>
 
       <stats>
         <stat name="mr" value="2"/>
@@ -427,7 +427,7 @@
 
     <equip name="Coat Scales" tier="2" type="ARMOR">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="144" y="320" width="48" height="48"/>
 
       <stats>
         <stat name="pr" value="2"/>
@@ -438,7 +438,7 @@
 
     <equip name="Coat Jade" tier="1" type="ARMOR" passive ="MORE_LIFE_REGENERATION_COMBAT">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="48" y="320" width="48" height="48"/>
 
       <stats>
         <stat name="cnst" value="2"/>
@@ -448,7 +448,7 @@
 
     <equip name="Esmerald Armor" tier="1" type="ARMOR">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="192" y="320" width="48" height="48"/>
 
       <stats>
         <stat name="str" value="2"/>
@@ -459,7 +459,7 @@
 
     <equip name="Gold Armor" tier="3" type="ARMOR">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="240" y="320" width="48" height="48"/>
 
       <stats>
         <stat name="cnst" value="1"/>
@@ -469,7 +469,7 @@
 
     <equip name="Leather Armor" tier="1" type="ARMOR">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="288" y="320" width="48" height="48"/>
 
       <stats>
         <stat name="pr" value="2"/>
@@ -480,7 +480,7 @@
 
     <equip name="Magic Cape" tier="1" type="ARMOR" passive ="MANA_REGENERATION">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="336" y="320" width="48" height="48"/>
 
       <stats>
         <stat name="agi" value="1"/>
@@ -490,7 +490,7 @@
 
     <equip name="Silver Armor" tier="3" type="ARMOR">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="384" y="320" width="48" height="48"/>
 
       <stats>
         <stat name="mr" value="3"/>
@@ -500,9 +500,9 @@
 
     </equip>
 
-    <equip name="Worn Layer" tier="1" type="ARMOR">
+    <equip name="Worn Cape" tier="1" type="ARMOR">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="432" y="320" width="48" height="48"/>
 
       <stats>
         <stat name="agi" value="2"/>
@@ -516,7 +516,7 @@
     
     <equip name="Apprentice Hat" tier="1" type="HELMET">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="64" y="128" width="64" height="32"/>
 
       <stats>
         <stat name="fcs" value="2"/>
@@ -527,7 +527,7 @@
 
     <equip name="Coat" tier="2" type="HELMET">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="128" y="128" width="64" height="32"/>
 
       <stats>
         <stat name="dext" value="2"/>
@@ -538,7 +538,7 @@
 
     <equip name="Diadem" tier="1" type="HELMET">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="192" y="128" width="64" height="32"/>
 
       <stats>
         <stat name="mr" value="2"/>
@@ -548,7 +548,7 @@
 
     <equip name="Gold Helmet" tier="3" type="HELMET">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="256" y="128" width="64" height="32"/>
 
       <stats>
         <stat name="cnst" value="2"/>
@@ -559,7 +559,7 @@
 
     <equip name="Hair Ribbon" tier="2" type="HELMET">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="320" y="128" width="64" height="32"/>
 
       <stats>
         <stat name="int" value="2"/>
@@ -571,7 +571,7 @@
 
     <equip name="Leather Helmet" tier="1" type="HELMET">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="384" y="128" width="64" height="32"/>
 
       <stats>
         <stat name="pr" value="2"/>
@@ -581,7 +581,7 @@
 
     <equip name="Magician Hat" tier="3" type="HELMET">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="448" y="128" width="64" height="32"/>
 
       <stats>
         <stat name="int" value="3"/>
@@ -592,7 +592,7 @@
 
     <equip name="Miter" tier="2" type="HELMET">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="512" y="128" width="64" height="32"/>
 
       <stats>
         <stat name="lck" value="3"/>
@@ -603,7 +603,7 @@
 
     <equip name= "Silver Helmet" tier="2" type="HELMET">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="0" y="160" width="64" height="32"/>
 
       <stats>
         <stat name="mr" value="2"/>
@@ -615,7 +615,7 @@
 
     <equip name="Worm Coat" tier="1" type="HELMET">
 
-      <draw_coords x="0" y="2" width="16" height="8"/>
+      <draw_coords x="64" y="160" width="64" height="32"/>
 
       <stats>
         <stat name="dext" value="2"/>

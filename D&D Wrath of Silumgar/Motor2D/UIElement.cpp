@@ -35,7 +35,7 @@ void UIElement::Draw(SDL_Texture* sprites)
 {
 	if (!non_drawable)
 	{
-		App->render->Blit(sprites, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
+		App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
 		//Podriamos hacer una función debug draw, que se llame desde el postUpdate de ctGui así no interfiere con este
 		//y no hace mil veces el if de comprobación solo lo haría 1 vez
 		if (debug_draw) {

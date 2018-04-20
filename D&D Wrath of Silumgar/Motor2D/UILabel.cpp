@@ -18,7 +18,10 @@ UILabel::UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, 
 	
 }
 
-void UILabel::Update()
+
+void UILabel::Draw(SDL_Texture* tex)
 {
+
+	App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
 
 }

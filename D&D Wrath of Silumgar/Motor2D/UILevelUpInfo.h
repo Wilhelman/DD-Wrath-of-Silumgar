@@ -1,7 +1,7 @@
 #ifndef __UILEVELUPINFO_H__
 #define __UILEVELUPINFO_H__
 
-//#include "j1Fonts.h"
+
 #include "ctGui.h"
 #include "UIElement.h"
 

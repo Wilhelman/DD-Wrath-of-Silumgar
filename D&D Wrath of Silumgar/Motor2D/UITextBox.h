@@ -18,8 +18,8 @@ public: //TODOR
 	SDL_Rect text_rect;
 public:
 	UITextBox(int x, int y, UI_Type type, std::string text, SDL_Color color, int size, uint32 box_width, const char* path = DEFAULT_FONT, UIElement* parent = nullptr);
+
 	void Draw(SDL_Texture* sprites);
-	
 
 };
 

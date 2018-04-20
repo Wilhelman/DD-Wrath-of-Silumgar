@@ -10,9 +10,6 @@
 #include "ctFadeToBlack.h"
 
 
-//Solo 1 anote:
-//Esto es ctCombat porque la mayoria de cosas que hay aquí no se hacen aquí.
-//--------------------------------------------------------------------------
 UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
 	this->entity = entity;
@@ -33,7 +30,6 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 		background = App->gui->AddUIImage(x, y, { 1261, 299, 60, 90 }, callback);
 		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 3, 693, 226, 33 }, callback);
 	}
-	//background = App->gui->AddUIImage(x, y, { 1260, 208, 60, 90 }, callback);
 	attack_label = App->gui->AddUILabel(x + main_label1_pos.x, y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
 	if (entity->abilities.size() != 0) {
 		abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
@@ -782,13 +778,12 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 			App->gui->DeleteUIElement(*current_vector.at(i));
 		}
 
-		//App->audio->PlayFx(combat_menu_select_fx);
+		
 		current_vector.clear();
 
 		selecting_enemy = false;
 
 		//perform tasks!
-		//(*selected_ally)
 		if (attack_label->current_state == STATE_EXECUTED) {
 			App->task_manager->AddTask(new MoveToEntity(entity, (*selected_ally), -20));
 			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->default_attack, (*selected_ally)));

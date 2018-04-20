@@ -9,7 +9,6 @@
 
 UIDialogBox::UIDialogBox(int x, int y, UI_Type type, std::string text, SDL_Color color, int size, uint32 box_width, const char* path, UIElement* parent) : UIElement(x, y, type, parent)
 {
-
 	Dialog_Image = new UIImage(x, y, IMAGE, { 1075,762,448,169 }, nullptr, this); 
 	Dialog_Text = new UITextBox(50, 333, TEXTBOX, text, color, 15, 428, path, Dialog_Image);
 }

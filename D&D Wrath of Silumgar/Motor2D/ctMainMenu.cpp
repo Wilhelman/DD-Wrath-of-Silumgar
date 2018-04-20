@@ -64,8 +64,10 @@ bool ctMainMenu::Start()
 	Mix_VolumeMusic(App->settings->music_volume_value);
 	Mix_Volume(-1, App->settings->fx_volume_value);*/
 	std::string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi finibus arcu sed elit volutpat aliquet.";
-	App->gui->AddUILabel(50,100,text, { 255,255,255,255 },12,this);
-	App->gui->AddUITextBox(50, 120, 12, 200, text, { 255,255,255,255 });
+	//App->gui->AddUILabel(50,100,text, { 255,255,255,255 },12,this);
+
+	App->gui->AddUIDecision(100,10,this); 
+	
 
 	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 00 Fanfare.ogg",1)) {
 		
@@ -87,6 +89,20 @@ bool ctMainMenu::PreUpdate()
 bool ctMainMenu::Update(float dt)
 {
 		
+	/*
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN)
+	{
+		//App->audio->PlayFx(walk_fx);
+		NavigateUp(options);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN)
+	{
+		//App->audio->PlayFx(walk_fx);
+		NavigateDown(options);
+	}
+	*/
+	/*
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(menu_move_fx);
@@ -101,7 +117,7 @@ bool ctMainMenu::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		ExecuteComand(labels);
 	}
-
+	*/
 	return true;
 }
 

@@ -219,19 +219,15 @@ UIElement* ctGui::AddUIDialogBox(int position_x, int position_y, int size, int b
 UIElement* ctGui::AddUIBar(int position_x, int position_y, int max_capacity, UI_Type barType, Entity* entity, ctModule* callback, UIElement* parent) {
 	UIElement* tmp_bar = new UIBar(position_x, position_y, max_capacity, barType, callback, entity, parent);
 	ui_elements.push_back(tmp_bar);
-	return tmp_bar;
 
-	LOG("Error: Cant add the UIBar");
-	return nullptr;
+	return tmp_bar;
 }
 
-UIElement* ctGui::AddUIDecision(int x, int y, int decision_number, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent) {
-	UIElement* tmp_decision = new UIDecision(x, y, decision_number, DECISION, arrow, options, callback, parent);
-	ui_elements.push_back(tmp_decision);
-	return tmp_decision;
+UIElement* ctGui::AddUIDecision(int x, int y, ctModule* callback, UIElement* parent) {
+	UIElement* tmp_bar = new UIDecision(x, y, DECISION, callback,parent);
+	ui_elements.push_back(tmp_bar);
 
-	LOG("Error: Cant add the UIDecision");
-	return nullptr;
+	return tmp_bar;
 }
 
 // class Gui ---------------------------------------------------

@@ -26,8 +26,6 @@ protected:
 
 	ctModule* callback = nullptr;
 
-	iPoint local_position = iPoint(0,0);
-
 	uint pressed_fx = 0u;
 
 	int alpha = 255;
@@ -49,6 +47,8 @@ public:
 	//Y en privado si lo pintamos todo en el mismo blit
 		//Screen_position con local position se puede poner unicamente 1 de las dos variables, es innecesario 2.
 			iPoint screen_position = iPoint(0, 0);
+			iPoint local_position = iPoint(0, 0);
+
 		//-----------------------------------------
 	SDL_Texture* texture = nullptr;
 	SDL_Rect current_rect = { 0,0,0,0 };

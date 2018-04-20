@@ -55,6 +55,7 @@ private:
 	UIElement* about_label = nullptr;
 	UIElement* quit_label = nullptr;
 	UIElement* arrow = nullptr;
+
 	std::vector<UIElement*> labels;
 
 	void NavigateDown(std::vector<UIElement*> &current_vector);

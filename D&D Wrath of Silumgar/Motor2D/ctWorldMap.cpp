@@ -157,7 +157,7 @@ bool ctWorldMap::PreUpdate()
 // Called each loop iteration
 bool ctWorldMap::Update(float dt)
 {
-
+	/*
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		
 		if (cleric_level_up != nullptr)
@@ -277,7 +277,7 @@ bool ctWorldMap::Update(float dt)
 	{
 		App->render->Blit(spritesheet_world_map, final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y, &final_map_elements.at(i)->icon_rect, 1.0f);
 	}
-
+	*/
 	return true;
 }
 
@@ -351,7 +351,7 @@ bool ctWorldMap::Save(pugi::xml_node& save) const
 
 void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 {
-	if (elementTriggered->type == DECISION)
+	/*if (elementTriggered->type == DECISION)
 	{
 		if (ui_state == STATE_EXECUTED)
 		{
@@ -395,7 +395,7 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 			decision->to_destroy = true;
 		}
 	}
-
+*/
 
 }
 

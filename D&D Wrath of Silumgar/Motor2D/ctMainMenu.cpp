@@ -44,7 +44,7 @@ bool ctMainMenu::Start()
 {
 	bool ret = true;
 
-	/*background = App->gui->AddUIImage(0, 0, { 337, 479, 484, 324 }, this);
+	background = App->gui->AddUIImage(0, 0, { 337, 479, 484, 324 }, this);
 	continue_label = App->gui->AddUILabel(35, 10, App->language->GetDictionary().MM_continue_btn.c_str(), { 255,0,0,255 }, 15, this);
 	new_game_label = App->gui->AddUILabel(35, 30, App->language->GetDictionary().MM_new_game_btn.c_str(), { 255,255,255,255 }, 15, this);
 	settings_label = App->gui->AddUILabel(35, 50, App->language->GetDictionary().MM_settings_btn.c_str(), { 255,255,255,255 }, 15, this);
@@ -62,10 +62,8 @@ bool ctMainMenu::Start()
 	labels.push_back(quit_label);
 
 	Mix_VolumeMusic(App->settings->music_volume_value);
-	Mix_Volume(-1, App->settings->fx_volume_value);*/
-	std::string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi finibus arcu sed elit volutpat aliquet.";
-	App->gui->AddUILabel(50,100,text, { 255,255,255,255 },12,this);
-	App->gui->AddUITextBox(50, 120, 12, 200, text, { 255,255,255,255 });
+	Mix_Volume(-1, App->settings->fx_volume_value);
+
 
 	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 00 Fanfare.ogg",1)) {
 		

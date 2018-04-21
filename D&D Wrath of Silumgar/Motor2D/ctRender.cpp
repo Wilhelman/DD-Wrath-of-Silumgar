@@ -210,8 +210,8 @@ bool ctRender::UIBlit(SDL_Texture* texture, int x, int y, const SDL_Rect* sectio
 		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
 	}
 
-	rect.x = (int)((camera.x * speed) + (x  *w_scalade));
-	rect.y = (int)((camera.y * speed) + (y  *h_scalade));
+	rect.x = (int)((camera.x * speed) + (x  * (scale_factor*w_scalade)));
+	rect.y = (int)((camera.y * speed) + (y  * (scale_factor*h_scalade)));
 
 
 	SDL_Point* p = NULL;

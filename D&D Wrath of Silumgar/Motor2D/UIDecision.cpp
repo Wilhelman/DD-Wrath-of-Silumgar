@@ -10,12 +10,12 @@ UIDecision::UIDecision(int x, int y, UI_Type type, ctModule* callback, UIElement
 	background = new UIImage(x, y, IMAGE, { 843,484,264,280 }, nullptr);
 	
 
-	decision_explanation = new UITextBox(30,20, TEXTBOX, "pene", {255,255,255}, 15, 428, Second_Font, background);
+	decision_explanation = new UITextBox(30,20, TEXTBOX, "Decision", {255,255,255}, 15, 428, Second_Font, background);
 
 	iPoint options_space = { 30,(background->GetRect().h - decision_explanation->GetRect().h) / 3 };
 
-	options.push_back(new UITextBox(options_space.x, options_space.y, TEXTBOX, "erecto", { 255,255,255 }, 15, 428, Second_Font, background));
-	options.push_back(new UITextBox(options_space.x, options_space.y*2, TEXTBOX, "flacido", { 255,255,255 }, 15, 428, Second_Font, background));
+	options.push_back(new UITextBox(options_space.x, options_space.y, TEXTBOX, "Option 1", { 255,255,255 }, 15, 428, Second_Font, background));
+	options.push_back(new UITextBox(options_space.x, options_space.y*2, TEXTBOX, "Option 2", { 255,255,255 }, 15, 428, Second_Font, background));
 
 	arrow = new UIImage(-20, 0, IMAGE, { 1333, 272, 10, 14 }, nullptr, options.front());
 
@@ -37,7 +37,6 @@ void UIDecision::Update() {
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		NavigateDown(options);
 	}
-
 
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		NavigateUp(options);

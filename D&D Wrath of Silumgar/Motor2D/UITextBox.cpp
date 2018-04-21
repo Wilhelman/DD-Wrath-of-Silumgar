@@ -45,7 +45,7 @@ void UITextBox::Draw(SDL_Texture* sprites)
 	
 	if (!non_drawable)
 	{
-		App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
+		App->render->UIBlit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
 	}
 
 }

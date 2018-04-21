@@ -66,8 +66,8 @@ bool ctMainMenu::Start()
 	std::string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi finibus arcu sed elit volutpat aliquet.";
 	//App->gui->AddUILabel(50,100,text, { 255,255,255,255 },12,this);
 
-	App->gui->AddUIDecision(200,10,this); 
-	App->gui->AddUITextBox(20, 293, 10, 500, "Press ENTER or A to continue me cago en dios tu apreta eso puto gilipollas", { 255,255,255,255 }, nullptr, Second_Font);
+	UIElement* Decision = App->gui->AddUIDecision(200,10,this); 
+	
 
 	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 00 Fanfare.ogg",1)) {
 		
@@ -89,6 +89,7 @@ bool ctMainMenu::PreUpdate()
 bool ctMainMenu::Update(float dt)
 {
 		
+
 	/*
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 	{
@@ -187,7 +188,7 @@ bool ctMainMenu::Save(pugi::xml_node& save) const
 
 void ctMainMenu::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 {
-
+	int i = 0;
 }
 
 void ctMainMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
@@ -285,3 +286,4 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	}
 
 }
+

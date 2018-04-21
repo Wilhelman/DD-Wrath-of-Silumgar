@@ -252,6 +252,19 @@ pugi::xml_node ctApp::LoadData(pugi::xml_document& config_file) const
 	return ret;
 }
 
+pugi::xml_node ctApp::LoadAbilities(pugi::xml_document& config_file) const
+{
+	pugi::xml_node ret;
+
+	pugi::xml_parse_result result = config_file.load_file("abilities.xml");
+
+	if (result == NULL)
+		LOG("Could not load xml file data.xml. pugi error: %s", result.description());
+	else
+		ret = config_file.child("abilities").child("heroes");
+	return ret;
+}
+
 pugi::xml_node ctApp::LoadItems(pugi::xml_document& config_file) const
 {
 	pugi::xml_node ret;

@@ -74,6 +74,9 @@ public:
 	//Load items
 	pugi::xml_node LoadItems(pugi::xml_document&) const;
 
+	// Load abilities file
+	pugi::xml_node LoadAbilities(pugi::xml_document&) const;
+
 private:
 
 	// Call modules before each loop iteration

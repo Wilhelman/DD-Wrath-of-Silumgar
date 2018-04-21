@@ -86,6 +86,14 @@ void j1Map::LayersSetUp()
 							(*layersToCheck)->layer_type = TIER_3;
 						else if ((*layersToCheck)->name == "tier_4")
 							(*layersToCheck)->layer_type = TIER_4;
+						else if ((*layersToCheck)->name == "tier_4")
+							(*layersToCheck)->layer_type = BRANCH_0;
+						else if ((*layersToCheck)->name == "tier_4")
+							(*layersToCheck)->layer_type = BRANCH_1;
+						else if ((*layersToCheck)->name == "tier_4")
+							(*layersToCheck)->layer_type = BRANCH_2;
+						else if ((*layersToCheck)->name == "tier_4")
+							(*layersToCheck)->layer_type = BRANCH_3;
 						else if ((*layersToCheck)->name == "heroes_position")
 							(*layersToCheck)->layer_type = HEROES_POSITION;
 						else if ((*layersToCheck)->name == "enemies_position")
@@ -123,6 +131,14 @@ void j1Map::setAllLogicForMap()
 							tier_3_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 						else if ((*layersBlit)->layer_type == TIER_4 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
 							tier_4_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == BRANCH_0 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							branch_0_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == BRANCH_1 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							branch_1_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == BRANCH_2 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							branch_2_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == BRANCH_3 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							branch_3_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 						else if ((*layersBlit)->layer_type == HEROES_POSITION && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
 							heroes_position_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 						else if ((*layersBlit)->layer_type == ENEMIES_POSITION && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)

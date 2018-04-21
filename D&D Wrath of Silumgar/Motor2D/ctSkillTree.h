@@ -12,12 +12,10 @@ class ctSkillTree : public ctModule
 {
 	struct Ability {
 		uint tier = 0u;
-		uint mana = 0u;
 		uint branch = 0u;
-		Entity* player;
 		std::string ability_name;
 		SDL_Rect icon_rect;
-		iPoint coords_in_map = { 0,0 };
+
 	};
 
 public:
@@ -50,8 +48,10 @@ public:
 	bool Save(pugi::xml_node&) const;
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
-	
-	/*void DrawAbilities(vector<Ability*> vec);*/
+
+	void DrawAbility(int x, int y, Ability* champion);
+
+	void DrawAbilities(Ability* champion);
 
 private:
 
@@ -65,11 +65,8 @@ private:
 	std::string name_spritesheet_abilities;
 	SDL_Texture* spritesheet_abilities = nullptr;
 
-	//vector<Ability*> warrior_vec;
-	//vector<Ability*> cleric_vec;
-	//vector<Ability*> dwarf_vec;
-	//vector<Ability*> elf_vec;
 
+	Ability* warrior = new Ability();
 	uint current_hero = 1;
 
 };

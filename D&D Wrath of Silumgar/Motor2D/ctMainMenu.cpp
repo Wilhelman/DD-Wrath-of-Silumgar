@@ -66,8 +66,8 @@ bool ctMainMenu::Start()
 	std::string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi finibus arcu sed elit volutpat aliquet.";
 	//App->gui->AddUILabel(50,100,text, { 255,255,255,255 },12,this);
 
-	App->gui->AddUIDecision(100,10,this); 
-	
+	App->gui->AddUIDecision(200,10,this); 
+	App->gui->AddUITextBox(20, 293, 10, 500, "Press ENTER or A to continue me cago en dios tu apreta eso puto gilipollas", { 255,255,255,255 }, nullptr, Second_Font);
 
 	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 00 Fanfare.ogg",1)) {
 		

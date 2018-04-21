@@ -2,7 +2,7 @@
 #include "UIElement.h"
 
 
-UIElement::UIElement(int x, int y, UI_Type type, UIElement* parent) : screen_position(x,y), type(type), parent(parent), current_state(STATE_NORMAL)
+UIElement::UIElement(int x, int y, UI_Type type, UIElement* parent) : local_position(x,y), type(type), parent(parent), current_state(STATE_NORMAL)
 {
 	
 }
@@ -15,11 +15,11 @@ UIElement::~UIElement()
 void UIElement::Update()
 {
 	if (parent == nullptr)
-		local_position = screen_position;
+		screen_position = local_position;
 	else
 	{
-		screen_position.x = parent->screen_position.x - local_position.x;
-		screen_position.y = parent->screen_position.y - local_position.y;
+		screen_position.x = parent->screen_position.x + local_position.x;
+		screen_position.y = parent->screen_position.y + local_position.y;
 	}
 
 	// Esto lo podemos meter en el ctGui??(Y así borramos el include input)

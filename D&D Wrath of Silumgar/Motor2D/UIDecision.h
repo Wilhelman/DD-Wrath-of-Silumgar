@@ -17,6 +17,9 @@ public:
 	UIDecision(int x, int y, UI_Type type, ctModule* callback, UIElement* parent);
 	~UIDecision();
 	void Draw(SDL_Texture* sprites);
+	void NavigateDown(std::vector<UIElement*> &current_vector);
+	void NavigateUp(std::vector<UIElement*> &current_vector);
+	void Update();
 
 
 private:

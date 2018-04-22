@@ -949,9 +949,9 @@
       <animations>
 
         <animation name="idle" speed="1.0" loop="true">
-          <frame x="1160" y="118" width="65" height="74"/>
-          <frame x="1244" y="118" width="66" height="74"/>
-          <frame x="1328" y="118" width="67" height="74"/>
+          <frame x="1624" y="118" width="67" height="74"/>
+          <frame x="1708" y="118" width="67" height="74"/>
+          <frame x="1792" y="118" width="67" height="74"/>
         </animation>
 
         <animation name="run" speed="10.0" loop="true">
@@ -1072,7 +1072,7 @@
         </animation>
 
         <animation name="head" speed="5.0" loop="false">
-          <frame x="1183" y="112" width="26" height="26"/>
+          <frame x="1646" y="112" width="26" height="26"/>
         </animation>
 		
 		    <animation name="dodge" speed="0.08" loop="false">

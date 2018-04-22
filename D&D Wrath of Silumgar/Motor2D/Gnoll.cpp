@@ -22,10 +22,6 @@ Gnoll::Gnoll(int x, int y, EntityType type) : Entity(x, y, type) {
 	node = &node->child("enemies").child("gnoll");
 	texture = App->tex->Load(App->entities->gnoll_spritesheet_name.data());
 
-	attack_fx = App->audio->LoadFx(node->child("sounds").attribute("attack_fx").as_string());
-	death_fx = App->audio->LoadFx(node->child("sounds").attribute("death_fx").as_string());
-	damaged_fx = App->audio->LoadFx(node->child("sounds").attribute("damaged_fx").as_string());
-	run_fx = App->audio->LoadFx(node->child("sounds").attribute("run_fx").as_string());
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
 	{
@@ -94,18 +90,18 @@ void Gnoll::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
 
 void Gnoll::Attack()
 {
-	App->audio->PlayFx(attack_fx, 0);
+	App->audio->PlayFx(App->audio->gnoll_attack_fx, 0);
 
 }
 
 void  Gnoll::Death() {
-	App->audio->PlayFx(death_fx, 0);
+	App->audio->PlayFx(App->audio->gnoll_death_fx, 0);
 }
 void  Gnoll::Run() {
-	App->audio->PlayFx(run_fx, 0);
+	App->audio->PlayFx(App->audio->gnoll_run_fx, 0);
 }
 void  Gnoll::Damaged() {
-	App->audio->PlayFx(damaged_fx, 0);
+	App->audio->PlayFx(App->audio->gnoll_damaged_fx, 0);
 }
 
 void Gnoll::PerformAction()

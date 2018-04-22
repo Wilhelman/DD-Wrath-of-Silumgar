@@ -58,15 +58,9 @@ bool ctSettings::Start()
 	labels.push_back(fx_volume_label);
 	labels.push_back(back_label);
 
-	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 21 What Sleeps in The Rotting Sea (Stage 5-B).ogg", -1)) {
-		//ret = false;
+	if (!App->audio->PlayMusic(App->audio->SettingsBSO.c_str(), 1)) {
 		LOG("Error playing music in ctMainMenu Start");
 	}
-
-	menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuMove.wav");
-	menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuSelect.wav");
-
-
 
 	return ret;
 }
@@ -83,12 +77,12 @@ bool ctSettings::Update(float dt)
 
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		App->audio->PlayFx(menu_move_fx);
+		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateDown(labels);
 	}
 	//Go up
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		App->audio->PlayFx(menu_move_fx);
+		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateUp(labels);
 	}
 	//Execute
@@ -98,12 +92,12 @@ bool ctSettings::Update(float dt)
 	}
 	//TurnUp volume
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		App->audio->PlayFx(menu_move_fx);
+		App->audio->PlayFx(App->audio->mm_movement_fx);
 		TurnUp(labels);
 	}
 	//TurnDownVolume
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		App->audio->PlayFx(menu_move_fx);
+		App->audio->PlayFx(App->audio->mm_movement_fx);
 		TurnDown(labels);
 	}
 
@@ -132,13 +126,7 @@ bool ctSettings::CleanUp()
 {
 	LOG("Freeing main_menu");
 
-	if (!App->audio->UnLoadFx(menu_select_fx))
-		LOG("Error unloading menu_select_fx");
-
-	if(!App->audio->UnLoadFx(menu_move_fx))
-		LOG("Error unloading menu_move_fx");
-
-	App->audio->StopMusic();
+	App->audio->PauseMusic();
 
 	App->gui->DeleteUIElement(*background);
 	background = nullptr;
@@ -247,7 +235,7 @@ void ctSettings::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	}
 	if (back_label->current_state == STATE_EXECUTED) {
 		LOG("back_label pressed");
-		App->audio->PlayFx(menu_select_fx);
+		App->audio->PlayFx(App->audio->mm_select_fx);
 		if(App->fadeToBlack->FadeIsOver())
 			App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 	}

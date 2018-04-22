@@ -64,13 +64,11 @@ bool ctMainMenu::Start()
 	Mix_VolumeMusic(App->settings->music_volume_value);
 	Mix_Volume(-1, App->settings->fx_volume_value);
 
-	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 00 Fanfare.ogg",1)) {
+	if (!App->audio->PlayMusic(App->audio->MainMenuBSO.c_str(),1)) {
 		
 		LOG("Error playing music in ctMainMenu Start");
 	}
 	
-	menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuMove.wav");
-	menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuSelect.wav");
 	return ret;
 }
 
@@ -86,12 +84,12 @@ bool ctMainMenu::Update(float dt)
 		
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		App->audio->PlayFx(menu_move_fx);
+		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateDown(labels);
 	}
 	//Go up
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		App->audio->PlayFx(menu_move_fx);
+		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateUp(labels);
 	}
 	//Execute
@@ -118,13 +116,7 @@ bool ctMainMenu::CleanUp()
 {
 	LOG("Freeing main_menu");
 
-	if(!App->audio->UnLoadFx(menu_move_fx))
-		LOG("Error unloading menu_move_fx");
-	LOG("1");
-	if(!App->audio->UnLoadFx(menu_select_fx))
-		LOG("Error unloading menu_select_fx");
-
-	App->audio->StopMusic();
+	App->audio->PauseMusic();
 
 	App->gui->DeleteUIElement(*arrow);
 	arrow = nullptr;
@@ -226,13 +218,14 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	
 	if (continue_label->current_state == STATE_EXECUTED) {
 		LOG("continue_label pressed");
-		App->audio->PlayFx(menu_select_fx);
+		App->audio->PlayFx(App->audio->mm_select_fx);
 
 
-		if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 02  Dungeons & Dragons.ogg", 1, 0)) {
+		if (!App->audio->PlayMusic(App->audio->MainMenuVoice.c_str(),0.0f)) {
 
 			LOG("Error playing music in ctMainMenu Start");
 		}
+
 		if (App->fadeToBlack->FadeIsOver())
 			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 5.0f);
 
@@ -241,13 +234,13 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	if (new_game_label->current_state == STATE_EXECUTED) {
 		LOG("new_game_label pressed");
 
-		if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 02  Dungeons & Dragons.ogg", 1, 0)) {
+		if (!App->audio->PlayMusic(App->audio->MainMenuVoice.c_str(),0.0f)) {
 
 			LOG("Error playing music in ctMainMenu Start");
 		}
 		if (App->fadeToBlack->FadeIsOver()) {
 			is_new_game = true;
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->tabern_scene, 1.0f);
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->tabern_scene, 5.0f);
 		}
 	}
 	if (settings_label->current_state == STATE_EXECUTED) {

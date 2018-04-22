@@ -126,7 +126,7 @@ bool ctWorldMap::Start()
 	}
 
 
-	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 05 The Journey (Stage 1).ogg", -1)) {
+	if (!App->audio->PlayMusic(App->audio->WorldMapBSO.c_str(), 1)) {
 
 		LOG("Error playing music in ctMainMenu Start");
 	}
@@ -135,7 +135,7 @@ bool ctWorldMap::Start()
 	if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
 	{
 
-		if (!App->audio->PlayMusic("audio/music/D_D-Shadow-Over-Mystara-Song-38-Epiloge-_Stage-10_.ogg", -1)) {
+		if (!App->audio->PlayMusic(App->audio->WinBSO.c_str(), 1)) {
 
 			LOG("Error playing music in ctMainMenu Start");
 		}
@@ -148,7 +148,7 @@ bool ctWorldMap::Start()
 	if (App->combat->condition_victory == false)
 	{
 
-		if (!App->audio->PlayMusic("audio/music/D_D-Shadow-Over-Mystara-Song-39-Our-Divine-Protection-First-Child-Amidst-Death.ogg", -1)) {
+		if (!App->audio->PlayMusic(App->audio->LoseBSO.c_str(), 1)) {
 
 			LOG("Error playing music in ctMainMenu Start");
 		}
@@ -166,15 +166,6 @@ bool ctWorldMap::Start()
 		cleric_level_up = App->gui->AddUILevelUpInfo(xE, yE, CLERIC, this, nullptr);
 	}
 
-
-	
-	
-
-
-	menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuMove.wav");
-	menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/MenuSelect.wav");
-	walk_fx = App->audio->LoadFx("audio/sounds/Others/WorldMapWalk.wav"); //TODO Change fx if you find better
-		
 	return ret;
 }
 
@@ -286,13 +277,13 @@ bool ctWorldMap::Update(float dt)
 	{
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 		{
-			App->audio->PlayFx(walk_fx);
+			App->audio->PlayFx(App->audio->wm_walk_fx);
 			NavigateUp(options);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 		{
-			App->audio->PlayFx(walk_fx);
+			App->audio->PlayFx(App->audio->wm_walk_fx);
 			NavigateDown(options);
 		}
 	}
@@ -326,10 +317,7 @@ bool ctWorldMap::CleanUp()
 {
 	LOG("Freeing ctWorldMap");
 
-	App->audio->StopMusic();
-	App->audio->UnLoadFx(menu_move_fx);
-	App->audio->UnLoadFx(menu_select_fx);
-	App->audio->UnLoadFx(walk_fx);
+	App->audio->PauseMusic();
 
 	App->tex->UnLoad(spritesheet_world_map);
 

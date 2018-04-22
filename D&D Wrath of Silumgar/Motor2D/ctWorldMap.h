@@ -98,11 +98,6 @@ private:
 	UIElement* condition_lose = nullptr;
 
 	UIElement* start_combat_label = nullptr;
-
-
-	uint menu_move_fx = 0;
-	uint menu_select_fx = 0;
-	uint walk_fx = 0;
 	
 };
 

@@ -61,9 +61,6 @@ private:
 	void TurnUp(std::vector<UIElement*> &current_vector);
 	void TurnDown(std::vector<UIElement*> &current_vector);
 	uint NumberToPercentage(uint num, uint max_num);
-
-	uint menu_move_fx = 0;
-	uint menu_select_fx = 0;
 };
 
 

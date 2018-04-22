@@ -53,18 +53,12 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	lower_points_pos.x = x + 8;
 	lower_points_pos.y = y + 47;
 	LOG("UICombatMenu created in x:%i, y:%i", x, y);
-	combat_menu_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/CombatMenuMove.wav");
-	combat_menu_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/CombatMenuSelect.wav");
-	combat_menu_back_fx = App->audio->LoadFx("audio/sounds/UI and Menus/CombatMenuBack.wav");
 
 	selected_enemy = App->combat->enemies.begin();
 	selected_ally = App->combat->heroes.begin();
 }
 
 UICombatMenu::~UICombatMenu() {
-	App->audio->UnLoadFx(combat_menu_move_fx);
-	App->audio->UnLoadFx(combat_menu_select_fx);
-	App->audio->UnLoadFx(combat_menu_back_fx);
 	App->gui->DeleteUIElement(*enemy_select_arrow);
 	enemy_select_arrow = nullptr;
 	App->gui->DeleteUIElement(*arrow);
@@ -127,7 +121,7 @@ void UICombatMenu::Update()
 		}
 		//Execute
 		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
-			App->audio->PlayFx(combat_menu_select_fx);
+			App->audio->PlayFx(App->audio->cm_select_fx);
 			execute_comand_time.Start();
 			if (main_labels.size() != 0) {
 				ExecuteComand(main_labels);
@@ -213,7 +207,7 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 					it_vector++;
 					(*it_vector)->current_state = STATE_FOCUSED;
 					arrow->SetParent((*it_vector));
-					App->audio->PlayFx(combat_menu_move_fx);
+					App->audio->PlayFx(App->audio->cm_move_fx);
 					break;
 				}
 			}
@@ -229,7 +223,7 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 					it_vector++;
 					(*it_vector)->current_state = STATE_FOCUSED;
 					arrow->SetParent((*it_vector));
-					App->audio->PlayFx(combat_menu_move_fx);
+					App->audio->PlayFx(App->audio->cm_move_fx);
 					break;
 				}
 			}
@@ -262,7 +256,7 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 			names_iterator++;
 			current_vector.back()->current_state = STATE_FOCUSED;
 			arrow->SetParent(current_vector.back());
-			App->audio->PlayFx(combat_menu_move_fx);
+			App->audio->PlayFx(App->audio->cm_move_fx);
 		}
 	}
 
@@ -298,7 +292,7 @@ void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 					it_vector--;
 					(*it_vector)->current_state = STATE_FOCUSED;
 					arrow->SetParent((*it_vector));
-					App->audio->PlayFx(combat_menu_move_fx);
+					App->audio->PlayFx(App->audio->cm_move_fx);
 					break;
 				}
 			}
@@ -314,7 +308,7 @@ void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 					it_vector--;
 					(*it_vector)->current_state = STATE_FOCUSED;
 					arrow->SetParent((*it_vector));
-					App->audio->PlayFx(combat_menu_move_fx);
+					App->audio->PlayFx(App->audio->cm_move_fx);
 					break;
 				}
 			}
@@ -347,7 +341,7 @@ void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 			names_iterator--;
 			current_vector.front()->current_state = STATE_FOCUSED;
 			arrow->SetParent(current_vector.front());
-			App->audio->PlayFx(combat_menu_move_fx);
+			App->audio->PlayFx(App->audio->cm_move_fx);
 		}
 	}
 
@@ -559,7 +553,7 @@ void UICombatMenu::GoBack() {
 		abilities.clear();
 		names.clear();
 
-		App->audio->PlayFx(combat_menu_back_fx);
+		App->audio->PlayFx(App->audio->cm_back_fx);
 	}
 	else if (items.size()>0) {
 		for (int i = 0; i < items.size(); i++) {
@@ -568,7 +562,7 @@ void UICombatMenu::GoBack() {
 		items.clear();
 		names.clear();
 
-		App->audio->PlayFx(combat_menu_back_fx);
+		App->audio->PlayFx(App->audio->cm_back_fx);
 	}
 
 	if (main_labels.size() == 0) {
@@ -583,7 +577,7 @@ void UICombatMenu::GoBack() {
 		main_labels.push_back(abilities_label);
 		//main_labels.push_back(items_label);
 
-		App->audio->PlayFx(combat_menu_back_fx);
+		App->audio->PlayFx(App->audio->cm_back_fx);
 	}
 
 	if (upper_points != nullptr) {
@@ -633,7 +627,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 			}
 		}
 		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
-		App->audio->PlayFx(combat_menu_move_fx);
+		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if (selected_enemy != App->combat->enemies.begin()-1) {
@@ -659,7 +653,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 			enemy_select_arrow = nullptr;
 		}
 		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
-		App->audio->PlayFx(combat_menu_move_fx);
+		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
@@ -762,7 +756,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 			}
 		}
 		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
-		App->audio->PlayFx(combat_menu_move_fx);
+		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if (selected_ally != App->combat->heroes.begin()-1) {
@@ -788,7 +782,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 			enemy_select_arrow = nullptr;
 		}
 		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
-		App->audio->PlayFx(combat_menu_move_fx);
+		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {

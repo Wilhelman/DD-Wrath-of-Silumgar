@@ -49,9 +49,8 @@ bool ctTabernScene::Start()
 	Dialog_Box =App->gui->AddUIDialogBox(20, 158, 15, 224, " Usollip, the god of war has been judged and condemned in the great Olympus by the rest of the gods for him having meddled too much in the lives of human beings. In the world of the gods there are few laws, one of these is not to intervene in the world of humans. ", { 255,255,255,255 }, nullptr, Second_Font);
 	Text_continue = App->gui->AddUITextBox(320, 293, 10, 224, "Press ENTER or A to continue", { 255,255,255,255 }, nullptr, Second_Font);
 	
-	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 04 Prologue (Stage 1).ogg", 1)) {
-
-		LOG("Error playing music in ctMainMenu Start");
+	if (!App->audio->PlayMusic(App->audio->CutsceneBSO.c_str(), 1)) {
+		LOG("Error playing music in cutscene Start");
 	}
 
 

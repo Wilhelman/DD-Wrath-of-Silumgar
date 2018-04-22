@@ -20,12 +20,6 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 	node = &node->child("heroes").child("dwarf");
 	texture = App->tex->Load(App->entities->dwarf_spritesheet_name.data());
 
-	attack_fx = App->audio->LoadFx(node->child("sounds").attribute("attack_fx").as_string());
-	death_fx = App->audio->LoadFx(node->child("sounds").attribute("death_fx").as_string());
-	damaged_fx = App->audio->LoadFx(node->child("sounds").attribute("damaged_fx").as_string());
-	run_fx = App->audio->LoadFx(node->child("sounds").attribute("run_fx").as_string());
-	ability_1_fx = App->audio->LoadFx(node->child("sounds").attribute("ability_1_fx").as_string());
-
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
 	{
 		std::string tmp(animations.attribute("name").as_string());
@@ -93,19 +87,19 @@ void Dwarf::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
 void Dwarf::Attack()
 {
 
-	App->audio->PlayFx(attack_fx, 0);
+	App->audio->PlayFx(App->audio->dwarf_attack_fx, 0);
 
 }
 
 void  Dwarf::Death() {
-	App->audio->PlayFx(death_fx, 0);
+	App->audio->PlayFx(App->audio->dwarf_death_fx, 0);
 }
 void  Dwarf::Run() {
-	App->audio->PlayFx(run_fx, 0);
+	App->audio->PlayFx(App->audio->dwarf_run_fx, 0);
 }
 void  Dwarf::Damaged() {
-	App->audio->PlayFx(damaged_fx, 0);
+	App->audio->PlayFx(App->audio->dwarf_damaged_fx, 0);
 }
 void  Dwarf::Ability1() {
-	App->audio->PlayFx(ability_1_fx, 0);
+	App->audio->PlayFx(App->audio->dwarf_double_axe_fx, 0);
 }

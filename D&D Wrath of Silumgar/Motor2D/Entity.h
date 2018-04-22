@@ -144,11 +144,6 @@ public:
 	std::vector<Altered_Stat> altered_stats;
 
 	//Sounds stuff
-	uint attack_fx = 0u;
-	uint death_fx = 0u;
-	uint run_fx = 0u;
-	uint damaged_fx = 0u;
-	uint ability_1_fx = 0u;
 	uint steps_timer = 0u;
 	uint current_timer = 0u;
 

@@ -20,12 +20,6 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 	pugi::xml_node* node = &App->LoadEntities(config_file);
 	node = &node->child("heroes").child("cleric");
 
-	attack_fx = App->audio->LoadFx(node->child("sounds").attribute("attack_fx").as_string());
-	death_fx = App->audio->LoadFx(node->child("sounds").attribute("death_fx").as_string());
-	damaged_fx = App->audio->LoadFx(node->child("sounds").attribute("damaged_fx").as_string());
-	run_fx = App->audio->LoadFx(node->child("sounds").attribute("run_fx").as_string());
-	ability_1_fx = App->audio->LoadFx(node->child("sounds").attribute("ability_1_fx").as_string());
-
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
 	{
 		std::string tmp(animations.attribute("name").as_string());
@@ -99,20 +93,19 @@ void Cleric::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation
 void Cleric::Attack()
 {
 
-	App->audio->PlayFx(attack_fx, 0);
-
+	App->audio->PlayFx(App->audio->cleric_attack_fx, 0);
 
 }
 
 void  Cleric::Death() {
-	App->audio->PlayFx(death_fx, 0);
+	App->audio->PlayFx(App->audio->cleric_death_fx, 0);
 }
 void  Cleric::Run() {
-	App->audio->PlayFx(run_fx, 0);
+	App->audio->PlayFx(App->audio->cleric_run_fx, 0);
 }
 void  Cleric::Damaged() {
-	App->audio->PlayFx(damaged_fx, 0);
+	App->audio->PlayFx(App->audio->cleric_damaged_fx, 0);
 }
 void  Cleric::Ability1() {
-	App->audio->PlayFx(ability_1_fx, 0);
+	App->audio->PlayFx(App->audio->cleric_heal_fx, 0);
 }

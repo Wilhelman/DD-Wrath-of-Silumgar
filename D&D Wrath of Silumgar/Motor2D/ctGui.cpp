@@ -9,7 +9,6 @@
 
 #include "UILabel.h"
 #include "UIImage.h"
-#include "UIButton.h"
 #include "UICombatMenu.h"
 #include "UITextBox.h"
 #include "UIDIalogBox.h"
@@ -157,16 +156,6 @@ UIElement* ctGui::AddUIImage(int position_x, int position_y, SDL_Rect rect, ctMo
 	return nullptr;
 }
 
-UIElement* ctGui::AddUIButton(int position_x, int position_y, SDL_Rect normal_rect, SDL_Rect focused_rect, SDL_Rect pressed_rect, ctModule* callback, UIElement* parent) {
-
-	UIElement* tmpBtn = new UIButton(position_x, position_y, BUTTON, normal_rect, focused_rect, pressed_rect, callback, parent);
-	ui_elements.push_back(tmpBtn);
-	return tmpBtn;
-
-	LOG("Error: Cant add the UIButton");
-	return nullptr;
-}
-
 UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback, UIElement* parent, const char* path) {
 
 	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color, size, callback, path, parent);
@@ -240,13 +229,11 @@ UIElement* ctGui::AddUIBar(int position_x, int position_y, int max_capacity, UI_
 	return nullptr;
 }
 
-UIElement* ctGui::AddUIDecision(int x, int y, int decision_number, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent) {
-	UIElement* tmp_decision = new UIDecision(x, y, decision_number, DECISION, arrow, options, callback, parent);
-	ui_elements.push_back(tmp_decision);
-	return tmp_decision;
+UIElement* ctGui::AddUIDecision(int x, int y, ctModule* callback, UIElement* parent) {
+	UIElement* tmp_bar = new UIDecision(x, y, DECISION, callback, parent);
+	ui_elements.push_back(tmp_bar);
 
-	LOG("Error: Cant add the UIDecision");
-	return nullptr;
+	return tmp_bar;
 }
 
 UIElement* ctGui::GetElementUnderMouse(int x, int y)

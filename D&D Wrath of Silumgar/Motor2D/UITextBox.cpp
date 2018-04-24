@@ -21,7 +21,10 @@ UITextBox::UITextBox(int x, int y, UI_Type type, std::string text, SDL_Color col
 		box_width = width_size;
 
 
-	this->texture = App->fonts->PrintTextBox(text.c_str(), color, new_font, box_width, size);
+	texture = App->fonts->PrintTextBox(text.c_str(), color, new_font, box_width, size);
+
+
+
 
 	current_rect.w = box_width;
 
@@ -31,7 +34,7 @@ UITextBox::UITextBox(int x, int y, UI_Type type, std::string text, SDL_Color col
 	if (lines != (int)lines)
 		lines = (int)lines + 1;
 
-	int lines_jumped = std::count(text.begin(), text.end(), '\n');
+	int lines_jumped = std::count(text.begin(), text.end(), '\n'); //checking if there is any \n to add extra height
 
 	lines += lines_jumped;
 	current_rect.h = height_size * (int)lines;
@@ -40,12 +43,3 @@ UITextBox::UITextBox(int x, int y, UI_Type type, std::string text, SDL_Color col
 }
 
 
-void UITextBox::Draw(SDL_Texture* sprites)
-{
-
-	if (!non_drawable)
-	{
-		App->render->UIBlit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
-	}
-
-}

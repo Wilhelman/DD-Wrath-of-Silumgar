@@ -46,6 +46,7 @@
     <ClCompile Include="Owlbear.cpp" />
     <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="UIBar.cpp" />
+    <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UICombatMenu.cpp" />
     <ClCompile Include="UIDecision.cpp" />
     <ClCompile Include="UIDIalogBox.cpp" />
@@ -99,6 +100,7 @@
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <ClInclude Include="UIBar.h" />
+    <ClInclude Include="UIButton.h" />
     <ClInclude Include="UICombatMenu.h" />
     <ClInclude Include="UIDecision.h" />
     <ClInclude Include="UIDialogBox.h" />

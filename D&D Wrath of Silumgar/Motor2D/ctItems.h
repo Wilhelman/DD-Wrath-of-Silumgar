@@ -11,6 +11,19 @@ using namespace std;
 
 struct SDL_Rect;
 
+struct ItemStats {
+	int constitution = 0;
+	int focus = 0;
+	int strength = 0;
+	int intelligence = 0;
+	int dexterity = 0;
+	int agility = 0;
+	int physical_defense = 0;
+	int magical_defense = 0;
+	int luck = 0;
+	int judgement = 0;
+};
+
 enum UsableEffects {
 	LOW_HEALTH_RECOVER,
 	HIGH_HEALTH_RECOVER,
@@ -52,7 +65,7 @@ struct Item {
 	SDL_Rect draw_coords = { 0,0,0,0 };
 	UsableEffects usable_effects = NO_USABLE_EFFECTS;
 	EquipEffects equip_effects = NO_EQUIP_EFFECTS;
-	Stats statistics;
+	ItemStats statistics;
 };
 
 class ctItems : public ctModule

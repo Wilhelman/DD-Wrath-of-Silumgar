@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "ctRender.h"
 #include "ctAudio.h"
+#include "ctItems.h"
 
 //randomize libs
 #include <stdlib.h>     /* srand, rand */
@@ -249,95 +250,95 @@ void Entity::CalculateAllStats()
 	int tmp_luck = base_stats.luck * StatisticsValues::LUCK;
 	int tmp_judgement = base_stats.judgement * StatisticsValues::JUDGEMENT;
 
-	tmp_constitution += helmet.statistics.constitution;
-	tmp_constitution += chest.statistics.constitution;
-	tmp_constitution += guantlet.statistics.constitution;
-	tmp_constitution += boot.statistics.constitution;
-	tmp_constitution += weapon.statistics.constitution;
-	tmp_constitution += shield.statistics.constitution;
-	tmp_constitution += ring.statistics.constitution;
-	tmp_constitution += accessory.statistics.constitution;
+	tmp_constitution += helmet->statistics.constitution;
+	tmp_constitution += chest->statistics.constitution;
+	tmp_constitution += guantlet->statistics.constitution;
+	tmp_constitution += boot->statistics.constitution;
+	tmp_constitution += weapon->statistics.constitution;
+	tmp_constitution += shield->statistics.constitution;
+	tmp_constitution += ring->statistics.constitution;
+	tmp_constitution += accessory->statistics.constitution;
 
-	tmp_focus += helmet.statistics.focus;
-	tmp_focus += chest.statistics.focus;
-	tmp_focus += guantlet.statistics.focus;
-	tmp_focus += boot.statistics.focus;
-	tmp_focus += weapon.statistics.focus;
-	tmp_focus += shield.statistics.focus;
-	tmp_focus += ring.statistics.focus;
-	tmp_focus += accessory.statistics.focus;
+	tmp_focus += helmet->statistics.focus;
+	tmp_focus += chest->statistics.focus;
+	tmp_focus += guantlet->statistics.focus;
+	tmp_focus += boot->statistics.focus;
+	tmp_focus += weapon->statistics.focus;
+	tmp_focus += shield->statistics.focus;
+	tmp_focus += ring->statistics.focus;
+	tmp_focus += accessory->statistics.focus;
 
-	tmp_strength += helmet.statistics.strength;
-	tmp_strength += chest.statistics.strength;
-	tmp_strength += guantlet.statistics.strength;
-	tmp_strength += boot.statistics.strength;
-	tmp_strength += weapon.statistics.strength;
-	tmp_strength += shield.statistics.strength;
-	tmp_strength += ring.statistics.strength;
-	tmp_strength += accessory.statistics.strength;
+	tmp_strength += helmet->statistics.strength;
+	tmp_strength += chest->statistics.strength;
+	tmp_strength += guantlet->statistics.strength;
+	tmp_strength += boot->statistics.strength;
+	tmp_strength += weapon->statistics.strength;
+	tmp_strength += shield->statistics.strength;
+	tmp_strength += ring->statistics.strength;
+	tmp_strength += accessory->statistics.strength;
 
-	tmp_intelligence += helmet.statistics.intelligence;
-	tmp_intelligence += chest.statistics.intelligence;
-	tmp_intelligence += guantlet.statistics.intelligence;
-	tmp_intelligence += boot.statistics.intelligence;
-	tmp_intelligence += weapon.statistics.intelligence;
-	tmp_intelligence += shield.statistics.intelligence;
-	tmp_intelligence += ring.statistics.intelligence;
-	tmp_intelligence += accessory.statistics.intelligence;
+	tmp_intelligence += helmet->statistics.intelligence;
+	tmp_intelligence += chest->statistics.intelligence;
+	tmp_intelligence += guantlet->statistics.intelligence;
+	tmp_intelligence += boot->statistics.intelligence;
+	tmp_intelligence += weapon->statistics.intelligence;
+	tmp_intelligence += shield->statistics.intelligence;
+	tmp_intelligence += ring->statistics.intelligence;
+	tmp_intelligence += accessory->statistics.intelligence;
 
-	tmp_dexterity += helmet.statistics.dexterity;
-	tmp_dexterity += chest.statistics.dexterity;
-	tmp_dexterity += guantlet.statistics.dexterity;
-	tmp_dexterity += boot.statistics.dexterity;
-	tmp_dexterity += weapon.statistics.dexterity;
-	tmp_dexterity += shield.statistics.dexterity;
-	tmp_dexterity += ring.statistics.dexterity;
-	tmp_dexterity += accessory.statistics.dexterity;
+	tmp_dexterity += helmet->statistics.dexterity;
+	tmp_dexterity += chest->statistics.dexterity;
+	tmp_dexterity += guantlet->statistics.dexterity;
+	tmp_dexterity += boot->statistics.dexterity;
+	tmp_dexterity += weapon->statistics.dexterity;
+	tmp_dexterity += shield->statistics.dexterity;
+	tmp_dexterity += ring->statistics.dexterity;
+	tmp_dexterity += accessory->statistics.dexterity;
 
-	tmp_agility += helmet.statistics.agility;
-	tmp_agility += chest.statistics.agility;
-	tmp_agility += guantlet.statistics.agility;
-	tmp_agility += boot.statistics.agility;
-	tmp_agility += weapon.statistics.agility;
-	tmp_agility += shield.statistics.agility;
-	tmp_agility += ring.statistics.agility;
-	tmp_agility += accessory.statistics.agility;
+	tmp_agility += helmet->statistics.agility;
+	tmp_agility += chest->statistics.agility;
+	tmp_agility += guantlet->statistics.agility;
+	tmp_agility += boot->statistics.agility;
+	tmp_agility += weapon->statistics.agility;
+	tmp_agility += shield->statistics.agility;
+	tmp_agility += ring->statistics.agility;
+	tmp_agility += accessory->statistics.agility;
 
-	tmp_physical_defense += helmet.statistics.physical_defense;
-	tmp_physical_defense += chest.statistics.physical_defense;
-	tmp_physical_defense += guantlet.statistics.physical_defense;
-	tmp_physical_defense += boot.statistics.physical_defense;
-	tmp_physical_defense += weapon.statistics.physical_defense;
-	tmp_physical_defense += shield.statistics.physical_defense;
-	tmp_physical_defense += ring.statistics.physical_defense;
-	tmp_physical_defense += accessory.statistics.physical_defense;
+	tmp_physical_defense += helmet->statistics.physical_defense;
+	tmp_physical_defense += chest->statistics.physical_defense;
+	tmp_physical_defense += guantlet->statistics.physical_defense;
+	tmp_physical_defense += boot->statistics.physical_defense;
+	tmp_physical_defense += weapon->statistics.physical_defense;
+	tmp_physical_defense += shield->statistics.physical_defense;
+	tmp_physical_defense += ring->statistics.physical_defense;
+	tmp_physical_defense += accessory->statistics.physical_defense;
 
-	tmp_magical_defense += helmet.statistics.magical_defense;
-	tmp_magical_defense += chest.statistics.magical_defense;
-	tmp_magical_defense += guantlet.statistics.magical_defense;
-	tmp_magical_defense += boot.statistics.magical_defense;
-	tmp_magical_defense += weapon.statistics.magical_defense;
-	tmp_magical_defense += shield.statistics.magical_defense;
-	tmp_magical_defense += ring.statistics.magical_defense;
-	tmp_magical_defense += accessory.statistics.magical_defense;
+	tmp_magical_defense += helmet->statistics.magical_defense;
+	tmp_magical_defense += chest->statistics.magical_defense;
+	tmp_magical_defense += guantlet->statistics.magical_defense;
+	tmp_magical_defense += boot->statistics.magical_defense;
+	tmp_magical_defense += weapon->statistics.magical_defense;
+	tmp_magical_defense += shield->statistics.magical_defense;
+	tmp_magical_defense += ring->statistics.magical_defense;
+	tmp_magical_defense += accessory->statistics.magical_defense;
 
-	tmp_luck += helmet.statistics.luck;
-	tmp_luck += chest.statistics.luck;
-	tmp_luck += guantlet.statistics.luck;
-	tmp_luck += boot.statistics.luck;
-	tmp_luck += weapon.statistics.luck;
-	tmp_luck += shield.statistics.luck;
-	tmp_luck += ring.statistics.luck;
-	tmp_luck += accessory.statistics.luck;
+	tmp_luck += helmet->statistics.luck;
+	tmp_luck += chest->statistics.luck;
+	tmp_luck += guantlet->statistics.luck;
+	tmp_luck += boot->statistics.luck;
+	tmp_luck += weapon->statistics.luck;
+	tmp_luck += shield->statistics.luck;
+	tmp_luck += ring->statistics.luck;
+	tmp_luck += accessory->statistics.luck;
 
-	tmp_judgement += helmet.statistics.judgement;
-	tmp_judgement += chest.statistics.judgement;
-	tmp_judgement += guantlet.statistics.judgement;
-	tmp_judgement += boot.statistics.judgement;
-	tmp_judgement += weapon.statistics.judgement;
-	tmp_judgement += shield.statistics.judgement;
-	tmp_judgement += ring.statistics.judgement;
-	tmp_judgement += accessory.statistics.judgement;
+	tmp_judgement += helmet->statistics.judgement;
+	tmp_judgement += chest->statistics.judgement;
+	tmp_judgement += guantlet->statistics.judgement;
+	tmp_judgement += boot->statistics.judgement;
+	tmp_judgement += weapon->statistics.judgement;
+	tmp_judgement += shield->statistics.judgement;
+	tmp_judgement += ring->statistics.judgement;
+	tmp_judgement += accessory->statistics.judgement;
 
 	max_health_points = current_health_points = tmp_constitution;
 	max_mana_points = current_mana_points = tmp_focus;

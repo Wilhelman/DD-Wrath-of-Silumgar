@@ -11,6 +11,7 @@
 #include <vector>
 
 struct SDL_Texture;
+struct Item;
 
 struct Stats {
 	int constitution = 0;
@@ -93,8 +94,6 @@ struct Action {
 
 };
 
-
-
 class Entity
 {
 protected:
@@ -144,19 +143,19 @@ public:
 	std::vector<Action> abilities;
 	std::vector<Altered_Stat> altered_stats;
 
-	std::vector<Item> usable_items;
+	std::vector<Item*> usable_items;
 
 	//Armor stuff
-	Item ring;
-	Item accessory;
+	Item* ring = nullptr;
+	Item* accessory = nullptr;
 
-	Item helmet;
-	Item chest;
-	Item guantlet;
-	Item boot;
+	Item* helmet = nullptr;
+	Item* chest = nullptr;
+	Item* guantlet = nullptr;
+	Item* boot = nullptr;
 
-	Item shield;
-	Item weapon;
+	Item* shield = nullptr;
+	Item* weapon = nullptr;
 
 
 	//Sounds stuff

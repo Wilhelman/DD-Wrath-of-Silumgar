@@ -1075,15 +1075,28 @@
           <frame x="1646" y="112" width="26" height="26"/>
         </animation>
 		
-		    <animation name="dodge" speed="0.08" loop="false">
-          <frame x="744" y="346" width="75" height="102"/>
+		<animation name="dodge" speed="0.08" loop="false">
+			  <frame x="744" y="346" width="75" height="102"/>
 		      <frame x="828" y="351" width="75" height="102"/>
 		      <frame x="917" y="364" width="75" height="102"/>
 		      <frame x="1194" y="366" width="75" height="102"/>
 		      <frame x="1275" y="364" width="75" height="102"/>
 		      <frame x="1361" y="351" width="75" height="102"/>
         </animation>
-
+		     
+		<animation name="throw" speed="0.08" loop="false">
+			  <frame x="851" y="1611" width="88" height="86"/>
+			  <frame x="965" y="1611" width="88" height="86"/>	
+			  <frame x="1099" y="1611" width="88" height="86"/>	
+			  <frame x="1238" y="1611" width="88" height="86"/>	
+			  <frame x="965" y="1611" width="88" height="86"/>	
+			  <frame x="1358" y="1611" width="88" height="86"/>	
+			  <frame x="1483" y="1611" width="88" height="86"/>	
+			  <frame x="1614" y="1611" width="88" height="86"/>	
+			  <frame x="1753" y="1611" width="88" height="86"/>	
+			  <frame x="1907" y="1611" width="88" height="86"/>	
+			  
+        </animation>
       </animations>
 	  <sounds attack_fx="audio/sounds/Characters/WarriorAttack.wav" run_fx="audio/sounds/Characters/WarriorRun.wav" damaged_fx="audio/sounds/Characters/WarriorDamaged.wav" death_fx="audio/sounds/Characters/WarriorDeath.wav" ability_1_fx="audio/sounds/Characters/WarriorKick.wav" />
 

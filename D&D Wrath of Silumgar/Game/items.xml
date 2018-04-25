@@ -47,8 +47,8 @@
 			<draw_coords x="512" y="32" width="64" height="32"/>
 		
 			<stats>
-				<stat name="fcs" value="2"/>
-				<stat name="agi" value="3"/>
+				<stat fcs="2"/>
+				<stat agi="3"/>
 			</stats>
 		
 		</equip>
@@ -58,7 +58,7 @@
       <draw_coords x="512" y="64" width="64" height="32"/>
 
       <stats>
-        <stat name="dext" value="2"/>
+        <stat dext="2"/>
       </stats>
 
     </equip>
@@ -263,17 +263,6 @@
     </equip>
 
     <!--- FINAL ARMS -->
-		<equip name="ejemplo" tier="2" type="HELM" passive="EJEMPLO_BLABLA">
-		
-			<draw_coords x="0" y="2" width="16" height="8"/>
-			
-			<stats>
-				<stat name="str" value="0"/>
-				<stat name="int" value="0"/>
-				<stat name="agi" value="2"/>
-			</stats>
-		
-		</equip>
 
     <!--- HANDS -->
     
@@ -377,7 +366,7 @@
 
     <!--- ACCESSORIES -->
     
-    <equip name="Berserker Greaves" tier="3" type="HANDS" passive ="MORE_LIFE_REGENERATION_OUT">
+    <equip name="Berserker Greaves" tier="3" type="ACCESSORIES" passive ="MORE_LIFE_REGENERATION_OUT">
 
       <draw_coords x="0" y="2" width="16" height="8"/>
 

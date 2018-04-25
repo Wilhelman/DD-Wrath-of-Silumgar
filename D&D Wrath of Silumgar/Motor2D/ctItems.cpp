@@ -35,11 +35,11 @@ bool ctItems::Awake(pugi::xml_node& config)
 	pugi::xml_node* node = &App->LoadItems(items_file);
 
 	// ------------------------------------- USABLE ITEMS --------------------------------------- //
-	node = &node->child("usables");
 
-	for (pugi::xml_node usable = node->child("item"); usable && ret; usable = usable.next_sibling("item"))
+	for (pugi::xml_node usable = node->child("usables").child("item"); usable && ret; usable = usable.next_sibling("item"))
 	{
 		Item item;
+		item.type = USABLE;
 		item.name = usable.attribute("name").as_string();
 		item.objective = usable.attribute("objective").as_int();
 
@@ -63,12 +63,81 @@ bool ctItems::Awake(pugi::xml_node& config)
 		usable_items.push_back(item);
 	}
 
+	// ------------------------------------- EQUIPABLE ITEMS --------------------------------------- //
+	for (pugi::xml_node equip = node->child("equips").child("equip"); equip && ret; equip = equip.next_sibling("equip"))
+	{
+		Item item;
+		item.type = EQUIP;
+		item.name = equip.attribute("name").as_string();
+
+		std::string tmp = equip.attribute("type").as_string();
+		if (tmp == "BOOT")
+			item.equip_type = BOOT;
+		else if (tmp == "ARMS")
+			item.equip_type = GUANTLET;
+		else if (tmp == "HANDS")
+			item.equip_type = RING;
+		else if (tmp == "ACCESSORIES")
+			item.equip_type = ACCESORY;
+		else if (tmp == "ARMOR")
+			item.equip_type = CHEST;
+		else if (tmp == "HELMET")
+			item.equip_type = HELM;
+		else if (tmp == "SHIELDS")
+			item.equip_type = SHIELD;
+		else if (tmp == "WEAPONS")
+			item.equip_type = WEAPON;
+
+		item.draw_coords = { equip.child("draw_coords").attribute("x").as_int(),equip.child("draw_coords").attribute("y").as_int(),equip.child("draw_coords").attribute("width").as_int(),equip.child("draw_coords").attribute("height").as_int() };
+		
+		for (pugi::xml_node stat = equip.child("stats").child("stat"); stat && ret; stat = stat.next_sibling("stat"))
+		{
+			
+			item.statistics.strength += stat.attribute("str").as_int(0);
+			
+			item.statistics.intelligence += stat.attribute("int").as_int(0);
+		
+			item.statistics.agility += stat.attribute("agi").as_int(0);
+			
+			item.statistics.constitution += stat.attribute("cnst").as_int(0);
+			
+			item.statistics.focus += stat.attribute("fcs").as_int(0);
+		
+			item.statistics.dexterity += stat.attribute("dext").as_int(0);
+		
+			item.statistics.magical_defense += stat.attribute("mr").as_int(0);
+		
+			item.statistics.physical_defense += stat.attribute("pr").as_int(0);
+		
+			item.statistics.luck += stat.attribute("lck").as_int(0);
+		}
+
+		item.tier = equip.attribute("tier").as_int();
+
+		switch (item.tier)
+		{
+		case 1:
+			tier_1_equips.push_back(item);
+			break;
+		case 2:
+			tier_2_equips.push_back(item);
+			break;
+		case 3:
+			tier_3_equips.push_back(item);
+			break;
+		default:
+			break;
+		}
+		
+		
+	}
+
 	return ret;
 }
 
 // Called before quitting
 bool ctItems::CleanUp()
 {
-
+	//maybe we have to do news...
 	return true;
 }

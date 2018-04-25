@@ -611,9 +611,15 @@
 			  <frame x="1404" y="2470" width="110" height="106"/>
 			  <frame x="1548" y="2470" width="110" height="106"/>
 			  <frame x="1701" y="2470" width="110" height="106"/>
-			  
-			 
-			  
+
+        </animation>
+		<animation name="potion" speed="0.05" loop="false">
+			  <frame x="124" y="2741" width="86" height="112"/>
+			  <frame x="243" y="2741" width="86" height="112"/>
+			  <frame x="397" y="2741" width="86" height="112"/>
+			  <frame x="538" y="2741" width="86" height="112"/>
+
+
         </animation>
       </animations>
 	  <sounds attack_fx="audio/sounds/Characters/ClericAttack.wav" run_fx="audio/sounds/Characters/ClericRun.wav" damaged_fx="audio/sounds/Characters/ClericDamaged.wav" death_fx="audio/sounds/Characters/ClericDeath.wav" ability_1_fx="audio/sounds/Characters/ClericHeal.wav" />

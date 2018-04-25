@@ -6,6 +6,7 @@
 #include "ctEntities.h"
 #include "ctTextures.h"
 #include "SDL/include/SDL.h"
+#include "ctItems.h"
 
 #include <vector>
 
@@ -143,6 +144,21 @@ public:
 	std::vector<Action> abilities;
 	std::vector<Altered_Stat> altered_stats;
 
+	std::vector<Item> usable_items;
+
+	//Armor stuff
+	Item ring;
+	Item accessory;
+
+	Item helmet;
+	Item chest;
+	Item guantlet;
+	Item boot;
+
+	Item shield;
+	Item weapon;
+
+
 	//Sounds stuff
 	uint steps_timer = 0u;
 	uint current_timer = 0u;
@@ -191,6 +207,9 @@ public:
 	bool IsGoingToDoAnythingClever();
 
 	void AddAction(Action new_action);
+
+	private:
+	void CalculateAllStats();
 };
 
 #endif // __ENTITY_H__

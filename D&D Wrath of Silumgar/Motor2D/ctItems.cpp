@@ -33,20 +33,35 @@ bool ctItems::Awake(pugi::xml_node& config)
 
 	pugi::xml_document	items_file;
 	pugi::xml_node* node = &App->LoadItems(items_file);
-	node = &node->child("usables");
 
+	// ------------------------------------- USABLE ITEMS --------------------------------------- //
+	node = &node->child("usables");
 
 	for (pugi::xml_node usable = node->child("item"); usable && ret; usable = usable.next_sibling("item"))
 	{
-		Item*  items = new Item();
-		items->name = usable.attribute("name").as_string();
-		items->objective = usable.attribute("objective").as_int();
-		//items->usable_effects = usable.attribute("use").as_int();
+		Item item;
+		item.name = usable.attribute("name").as_string();
+		item.objective = usable.attribute("objective").as_int();
+
+		std::string tmp = usable.attribute("use").as_string();
+		if (tmp == "LOW_HEALTH_RECOVER")
+			item.usable_effects = LOW_HEALTH_RECOVER;
+		else if (tmp == "HIGH_HEALTH_RECOVER")
+			item.usable_effects = HIGH_HEALTH_RECOVER;
+		else if (tmp == "LOW_MANA_RECOVER")
+			item.usable_effects = LOW_MANA_RECOVER;
+		else if (tmp == "HIGH_MANA_RECOVER")
+			item.usable_effects = HIGH_MANA_RECOVER;
+		else if (tmp == "POISONED_DAGGER")
+			item.usable_effects = POISONED_DAGGER;
+		else if (tmp == "BURN_TARGET")
+			item.usable_effects = BURN_TARGET;
+		else if (tmp == "REVIVE_AN_ALLY")
+			item.usable_effects = REVIVE_AN_ALLY;
+
+		item.draw_coords = { usable.child("draw_coords").attribute("x").as_int(),usable.child("draw_coords").attribute("y").as_int(),usable.child("draw_coords").attribute("width").as_int(),usable.child("draw_coords").attribute("height").as_int() };
+		usable_items.push_back(item);
 	}
-	
-
-
-	
 
 	return ret;
 }

@@ -16,7 +16,9 @@ enum UsableEffects {
 	HIGH_HEALTH_RECOVER,
 	LOW_MANA_RECOVER,
 	HIGH_MANA_RECOVER,
-
+	POISONED_DAGGER,
+	BURN_TARGET,
+	REVIVE_AN_ALLY,
 
 	NO_USABLE_EFFECTS
 };
@@ -74,7 +76,10 @@ public:
 public:
 
 private:
-
+	std::vector<Item> usable_items;
+	std::vector<Item> tier_1_equips;
+	std::vector<Item> tier_2_equips;
+	std::vector<Item> tier_3_equips;
 
 };
 

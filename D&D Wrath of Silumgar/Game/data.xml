@@ -8,7 +8,16 @@
 				<skill name="Heal" description="Heals one ally based on his intelligence" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
 			</skills>
 			<items>
-				<item name="test" etc="etc" />
+				<items>
+					<usables>
+						<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER"><!--- 1==Objetivo enemigo | 0 Aliado -->
+							<draw_coords x="192" y="2" width="16" height="8"/>
+						</item>
+						
+						<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER">
+						  <draw_coords x="448" y="32" width="64" height="32"/>
+						</item>
+					</usables>
 			</items>
 		</heroe>
 		<heroe name="warrior">

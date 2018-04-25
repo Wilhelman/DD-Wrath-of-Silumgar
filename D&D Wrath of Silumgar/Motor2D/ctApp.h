@@ -24,6 +24,7 @@ class ctEntities;
 class ctGui;
 class ctFonts;
 class j1Language;
+class ctItems;
 class ctTaskManager;
 class ctFadeToBlack;
 class ctSkillTree;
@@ -109,6 +110,7 @@ public:
 	ctSettings*         settings = nullptr;
 	ctCombat*			combat = nullptr;
 	ctEntities*			entities = nullptr;
+	ctItems*			items = nullptr;
 	ctGui*				gui = nullptr;
 	j1Language*			language = nullptr;
 	ctFonts*			fonts = nullptr;

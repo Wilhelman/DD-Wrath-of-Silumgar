@@ -17,6 +17,7 @@
 #include "ctSettings.h"
 #include "ctCombat.h"
 #include "ctEntities.h"
+#include "ctItems.h"
 #include "ctGui.h"
 #include "ctFonts.h"
 #include "ctTaskManager.h"
@@ -42,6 +43,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	settings = new ctSettings();
 	language = new j1Language();
 	entities = new ctEntities();
+	items = new ctItems();
 	combat = new ctCombat();
 	gui = new ctGui();
 	fonts = new ctFonts();
@@ -62,6 +64,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(settings);
 	AddModule(combat);
 	AddModule(entities);
+	AddModule(items);
 	AddModule(language);
 	AddModule(gui);
 	AddModule(fonts);
@@ -78,7 +81,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	world_map->active = false;
 	settings->active = false;
 	combat->active = false;
-	//skill_tree->active = false;
+	skill_tree->active = false;
 
 	PERF_PEEK(ptimer);
 }

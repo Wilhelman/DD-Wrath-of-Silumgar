@@ -1283,6 +1283,15 @@
 			  <frame x="1907" y="1611" width="88" height="86"/>	
 			  
         </animation>
+		<animation name="potion" speed="0.05" loop="false">
+			  <frame x="485" y="3213" width="67" height="97"/>
+			  <frame x="401" y="3213" width="67" height="97"/>
+			  <frame x="317" y="3213" width="67" height="97"/>
+			  <frame x="236" y="3213" width="67" height="97"/>
+			  <frame x="156" y="3213" width="67" height="97"/>
+
+
+        </animation>
       </animations>
 	  <sounds attack_fx="audio/sounds/Characters/WarriorAttack.wav" run_fx="audio/sounds/Characters/WarriorRun.wav" damaged_fx="audio/sounds/Characters/WarriorDamaged.wav" death_fx="audio/sounds/Characters/WarriorDeath.wav" ability_1_fx="audio/sounds/Characters/WarriorKick.wav" />
 

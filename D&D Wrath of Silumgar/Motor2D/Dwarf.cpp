@@ -38,6 +38,10 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &high_axe);
 		else if (tmp == "dodge")
 			LoadAnimation(animations, &dodge);
+		else if (tmp == "throw")
+			LoadAnimation(animations, &throw_object);
+		else if (tmp == "potion")
+			LoadAnimation(animations, &use_potion);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

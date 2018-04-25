@@ -677,6 +677,20 @@
           <frame x="1063" y="331" width="99" height="87"/>
           <frame x="944" y="331" width="99" height="87"/>
         </animation>
+        
+         <animation name="throw" speed="0.08" loop="false">
+         <frame x="2240" y="1119" width="88" height="68"/>
+          <frame x="2136" y="1119" width="88" height="68"/>
+          <frame x="2030" y="1119" width="88" height="68"/>
+          <frame x="1919" y="1116" width="88" height="68"/>
+          <frame x="1820" y="1116" width="88" height="68"/>
+        </animation>
+        
+         <animation name="potion" speed="0.08" loop="false">
+         <frame x="1405" y="1829" width="52" height="75"/>
+          <frame x="1277" y="1829" width="52" height="75"/>
+          <frame x="1147" y="1829" width="52" height="75"/>
+        </animation>
 
         <animation name="morale_boost" speed="1.0" loop="true">
           <frame x="549"  y="985" width="59" height="103"/>

@@ -124,6 +124,8 @@ public:
 	ctAnimation high_axe = ctAnimation();
 	ctAnimation heal = ctAnimation();
 	ctAnimation mind_blown = ctAnimation();
+	ctAnimation throw_object = ctAnimation();
+	ctAnimation use_potion = ctAnimation();
 
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);

@@ -826,6 +826,21 @@
           <frame x="2243" y="1663" width="121" height="67"/>
           <frame x="2375" y="1663" width="121" height="67"/>
         </animation>
+        
+        <animation name="throw" speed="0.08" loop="true">
+          <frame x="387" y="2149" width="53" height="70"/>
+          <frame x="305" y="2149" width="53" height="70"/>
+          <frame x="230" y="2149" width="53" height="70"/>
+          <frame x="146" y="2149" width="53" height="70"/>
+          <frame x="49" y="2149" width="53" height="70"/>
+        </animation>
+
+        <animation name="potion" speed="0.08" loop="true">
+          <frame x="2009" y="223" width="51" height="79"/>
+          <frame x="1853" y="223" width="51" height="79"/>
+          <frame x="1713" y="223" width="51" height="79"/>
+          <frame x="1596" y="223" width="51" height="79"/>
+        </animation>
 
         <animation name="mind_blown" speed="0.1" loop="false">
           <frame x="2179" y="119" width="95" height="89"/>

@@ -154,17 +154,7 @@ int Entity::GetCurrentHealthPoints()
 
 	//todo add the debuffs/buffs!
 
-	int tmp_constitution = base_stats.constitution * StatisticsValues::CONSTITUTION;
-
-	tmp_constitution += helmet.statistics.constitution;
-	tmp_constitution += chest.statistics.constitution;
-	tmp_constitution += guantlet.statistics.constitution;
-	tmp_constitution += boot.statistics.constitution;
-	tmp_constitution += weapon.statistics.constitution;
-	tmp_constitution += shield.statistics.constitution;
-	tmp_constitution += ring.statistics.constitution;
-	tmp_constitution += accessory.statistics.constitution;
-
+	//
 	for (int i = 0; i < this->altered_stats.size(); i++)
 	{
 		if (this->altered_stats.at(i).stat_effect_constitution != 0) {
@@ -183,8 +173,6 @@ int Entity::GetCurrentHealthPoints()
 			}
 		}
 	}
-
-	current_health_points = tmp_constitution;
 
 	return current_health_points;
 }
@@ -269,6 +257,7 @@ void Entity::CalculateAllStats()
 	tmp_constitution += shield.statistics.constitution;
 	tmp_constitution += ring.statistics.constitution;
 	tmp_constitution += accessory.statistics.constitution;
+
 	tmp_focus += helmet.statistics.focus;
 	tmp_focus += chest.statistics.focus;
 	tmp_focus += guantlet.statistics.focus;
@@ -277,6 +266,7 @@ void Entity::CalculateAllStats()
 	tmp_focus += shield.statistics.focus;
 	tmp_focus += ring.statistics.focus;
 	tmp_focus += accessory.statistics.focus;
+
 	tmp_strength += helmet.statistics.strength;
 	tmp_strength += chest.statistics.strength;
 	tmp_strength += guantlet.statistics.strength;
@@ -285,6 +275,7 @@ void Entity::CalculateAllStats()
 	tmp_strength += shield.statistics.strength;
 	tmp_strength += ring.statistics.strength;
 	tmp_strength += accessory.statistics.strength;
+
 	tmp_intelligence += helmet.statistics.intelligence;
 	tmp_intelligence += chest.statistics.intelligence;
 	tmp_intelligence += guantlet.statistics.intelligence;
@@ -293,6 +284,7 @@ void Entity::CalculateAllStats()
 	tmp_intelligence += shield.statistics.intelligence;
 	tmp_intelligence += ring.statistics.intelligence;
 	tmp_intelligence += accessory.statistics.intelligence;
+
 	tmp_dexterity += helmet.statistics.dexterity;
 	tmp_dexterity += chest.statistics.dexterity;
 	tmp_dexterity += guantlet.statistics.dexterity;
@@ -301,6 +293,7 @@ void Entity::CalculateAllStats()
 	tmp_dexterity += shield.statistics.dexterity;
 	tmp_dexterity += ring.statistics.dexterity;
 	tmp_dexterity += accessory.statistics.dexterity;
+
 	tmp_agility += helmet.statistics.agility;
 	tmp_agility += chest.statistics.agility;
 	tmp_agility += guantlet.statistics.agility;
@@ -348,12 +341,14 @@ void Entity::CalculateAllStats()
 
 	max_health_points = current_health_points = tmp_constitution;
 	max_mana_points = current_mana_points = tmp_focus;
-	
-	current_agility_points = base_stats.agility * StatisticsValues::AGILITY;
-	current_dexterity_points = base_stats.dexterity * StatisticsValues::DEXTERITY;
-	current_physical_defense_points = base_stats.physical_defense * StatisticsValues::PHYSICAL_DEFENSE;
-	current_magical_defense_points = base_stats.magical_defense * StatisticsValues::MAGICAL_DEFENSE;
-	current_judgement = base_stats.judgement * StatisticsValues::JUDGEMENT;
+	current_strength = tmp_strength;
+	current_intelligence = tmp_intelligence;
+	current_dexterity_points = tmp_dexterity;
+	current_agility_points = tmp_agility;
+	current_physical_defense_points = tmp_physical_defense;
+	current_magical_defense_points = tmp_magical_defense;
+	current_luck = tmp_luck;
+	current_judgement = tmp_judgement;
 }
 
 bool Entity::IsGoingToDoAnythingClever()

@@ -605,7 +605,16 @@
 		      <frame x="512" y="407" width="77" height="98"/>
 		      <frame x="427" y="408" width="79" height="88"/>
         </animation>
-		
+		<animation name="throw" speed="0.08" loop="false">
+			  <frame x="1134" y="2470" width="110" height="106"/>
+			  <frame x="1249" y="2470" width="110" height="106"/>
+			  <frame x="1404" y="2470" width="110" height="106"/>
+			  <frame x="1548" y="2470" width="110" height="106"/>
+			  <frame x="1701" y="2470" width="110" height="106"/>
+			  
+			 
+			  
+        </animation>
       </animations>
 	  <sounds attack_fx="audio/sounds/Characters/ClericAttack.wav" run_fx="audio/sounds/Characters/ClericRun.wav" damaged_fx="audio/sounds/Characters/ClericDamaged.wav" death_fx="audio/sounds/Characters/ClericDeath.wav" ability_1_fx="audio/sounds/Characters/ClericHeal.wav" />
 

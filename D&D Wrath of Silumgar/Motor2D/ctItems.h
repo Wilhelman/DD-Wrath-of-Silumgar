@@ -6,7 +6,6 @@
 #include "SDL/include/SDL.h"
 #include "Entity.h"
 
-
 #include <vector>
 using namespace std;
 

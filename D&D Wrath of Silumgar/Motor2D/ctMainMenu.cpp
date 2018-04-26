@@ -81,7 +81,79 @@ bool ctMainMenu::PreUpdate()
 // Called each loop iteration
 bool ctMainMenu::Update(float dt)
 {
-		
+	//TEST PARTICLES
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)200, (float)200);
+		eWave_1 = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_WAVE_1);
+		eBurst_1 = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURST);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)200, (float)200);
+		eFlame = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_FLAME);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		eFlame = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_FIRE_PURPLE);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		eBubbles = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BUBBLE);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		eWave_2 = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_WAVE_2);
+		eBurst_2 = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURST);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		eSmoke = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_SMOKE);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		eSpark = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_SPARK);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		ePixelSmoke = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_PIXEL_SMOKE);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+	{
+		App->psystem->RemoveAllEmitters();
+	}
+	//----------------------------------
+
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);

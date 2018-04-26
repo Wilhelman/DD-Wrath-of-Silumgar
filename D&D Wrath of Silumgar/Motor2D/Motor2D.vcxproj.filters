@@ -31,6 +31,9 @@
     <Filter Include="Core\Modules\Entities\Enemies">
       <UniqueIdentifier>{b511b126-0ccc-4af4-b998-53db705ed569}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Modules\2D Particle Engine">
+      <UniqueIdentifier>{f0bea231-b303-4c81-b93f-827da676ca8e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ctApp.cpp">
@@ -173,6 +176,18 @@
     </ClCompile>
     <ClCompile Include="ctItems.cpp">
       <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Emitter.cpp">
+      <Filter>Core\Modules\2D Particle Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="j1ParticleSystem.cpp">
+      <Filter>Core\Modules\2D Particle Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Core\Modules\2D Particle Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticlePool.cpp">
+      <Filter>Core\Modules\2D Particle Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +346,18 @@
     </ClInclude>
     <ClInclude Include="ctItems.h">
       <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Emitter.h">
+      <Filter>Core\Modules\2D Particle Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="j1ParticleSystem.h">
+      <Filter>Core\Modules\2D Particle Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Core\Modules\2D Particle Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticlePool.h">
+      <Filter>Core\Modules\2D Particle Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

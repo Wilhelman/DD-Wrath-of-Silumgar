@@ -28,6 +28,7 @@ class ctItems;
 class ctTaskManager;
 class ctFadeToBlack;
 class ctSkillTree;
+class j1ParticleSystem;
 
 class ctApp
 {
@@ -78,6 +79,8 @@ public:
 	// Load abilities file
 	pugi::xml_node LoadAbilities(pugi::xml_document&) const;
 
+	pugi::xml_node LoadEmitters(pugi::xml_document& psystem_file) const;
+
 private:
 
 	// Call modules before each loop iteration
@@ -117,6 +120,7 @@ public:
 	ctTaskManager*		task_manager = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;
 	ctSkillTree*		skill_tree = nullptr;
+	j1ParticleSystem*	 psystem = nullptr;
 
 	bool				cap_state = false;
 

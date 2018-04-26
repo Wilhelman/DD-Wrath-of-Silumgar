@@ -3,7 +3,7 @@
 #include "ctApp.h"
 #include "ctDefs.h"
 #include "ctLog.h"
-
+#include "j1ParticleSystem.h"
 #include "ctWindow.h"
 #include "ctInput.h"
 #include "ctRender.h"
@@ -50,6 +50,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	task_manager = new ctTaskManager();
 	fadeToBlack = new ctFadeToBlack();
 	skill_tree = new ctSkillTree();
+	psystem = new j1ParticleSystem();
 	
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -69,7 +70,9 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(gui);
 	AddModule(fonts);
 	AddModule(task_manager);
+	AddModule(psystem);
 	AddModule(fadeToBlack);
+	
 	//AddModule(skill_tree);
 
 	// render last to swap buffer
@@ -448,4 +451,17 @@ const char* ctApp::GetTitle() const
 const char* ctApp::GetOrganization() const
 {
 	return organization.data();
+}
+
+pugi::xml_node ctApp::LoadEmitters(pugi::xml_document& psystem_file) const
+{
+	pugi::xml_node ret;
+
+	pugi::xml_parse_result result = psystem_file.load_file("psystem_config");
+
+	if (result == NULL)
+		LOG("Could not load xml file config.xml. pugi error: %s", result.description());
+	else
+		ret = psystem_file.child("emitters");
+	return ret;
 }

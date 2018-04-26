@@ -775,7 +775,7 @@ void ctCombat::DrawTurnPriority()
 			rect = { 852, 2150, 26, 26 };
 			break;
 		case WARRIOR:
-			rect = { 1183, 112, 26, 26 };
+			rect = { 1646, 112, 26, 26 };
 			break;
 		case KOBOLD:
 			rect = { 881,71,26,26 };

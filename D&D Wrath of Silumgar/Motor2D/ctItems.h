@@ -70,6 +70,7 @@ struct Item {
 	UsableEffects usable_effects = NO_USABLE_EFFECTS;
 	EquipEffects equip_effects = NO_EQUIP_EFFECTS;
 	ItemStats statistics;
+	int quantity = 0;
 };
 
 class ctItems : public ctModule

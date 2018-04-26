@@ -237,6 +237,15 @@ void Entity::AddAction(Action new_action)
 	abilities.push_back(new_action);
 }
 
+void Entity::AddUsableItem(Item new_item)
+{
+	bool have_to_push_back = true;
+	for (int i = 0; i < usable_items.size(); i++)
+	{
+		//if(usable_items.at(i).)
+	}
+}
+
 void Entity::CalculateAllStats()
 {
 	int tmp_constitution = base_stats.constitution * StatisticsValues::CONSTITUTION;

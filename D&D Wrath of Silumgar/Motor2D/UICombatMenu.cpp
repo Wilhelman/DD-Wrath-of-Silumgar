@@ -766,6 +766,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		}
 		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
 			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(names_iterator).action, (*selected_enemy)));
+			App->task_manager->AddTask(new MoveToInitialPosition(entity));
 		}
 	}
 
@@ -897,7 +898,8 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 			}
 		}
 		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
-			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(names_iterator).action, (*selected_enemy)));
+			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(names_iterator).action, (*selected_ally)));
+			App->task_manager->AddTask(new MoveToInitialPosition(entity));
 		}
 	}
 

@@ -107,6 +107,7 @@ bool ctItems::Awake(pugi::xml_node& config)
 			break;
 		}
 		
+		item.action = tmp_action;
 
 		item.draw_coords = { usable.child("draw_coords").attribute("x").as_int(),usable.child("draw_coords").attribute("y").as_int(),usable.child("draw_coords").attribute("width").as_int(),usable.child("draw_coords").attribute("height").as_int() };
 		usable_items.push_back(item);

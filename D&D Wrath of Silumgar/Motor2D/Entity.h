@@ -6,11 +6,11 @@
 #include "ctEntities.h"
 #include "ctTextures.h"
 #include "SDL/include/SDL.h"
+#include "ctItems.h"
 
 #include <vector>
 
 struct SDL_Texture;
-struct Item;
 
 struct Stats {
 	int constitution = 0;

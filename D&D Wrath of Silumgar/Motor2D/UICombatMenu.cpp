@@ -180,7 +180,7 @@ void UICombatMenu::Update()
 			}
 		}
 		else if (items.size() != 0 && selecting_enemy == true) {
-			if (entity->usable_items.at(names_iterator)->objective == ENEMIES) {
+			if (entity->usable_items.at(names_iterator).objective == ENEMIES) {
 				SelectEnemy(items);
 			}
 			else {
@@ -540,19 +540,19 @@ void UICombatMenu::LoadItems() {
 	names_iterator = 0;
 
 	if (entity->usable_items.size() != 0) {
-		std::vector<Item*>::const_iterator it_vector = entity->usable_items.begin();
+		std::vector<Item>::const_iterator it_vector = entity->usable_items.begin();
 		while (it_vector != entity->usable_items.end()) {
 			//Make a new string for the name that marks the number of this item you currently have
-			if ((*it_vector)->quantity > 1) {
-				char quantity_num[(((sizeof(*it_vector)->quantity) * CHAR_BIT) + 2) / 3 + 2];
-				sprintf_s(quantity_num, "%d", (*it_vector)->quantity);
-				string new_name = (*it_vector)->name + " (x" + quantity_num +")";
+			if ((it_vector)->quantity > 1) {
+				char quantity_num[(((sizeof(it_vector)->quantity) * CHAR_BIT) + 2) / 3 + 2];
+				sprintf_s(quantity_num, "%d", (it_vector)->quantity);
+				string new_name = (it_vector)->name + " (x" + quantity_num +")";
 				names.push_back(new_name);
 			}
 			else{
-				names.push_back((*it_vector)->name);
+				names.push_back((it_vector)->name);
 			}
-			entity_items.push_back(*it_vector);
+			entity_items.push_back((*it_vector));
 			it_vector++;
 		}
 	}

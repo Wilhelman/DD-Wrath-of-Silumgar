@@ -359,5 +359,6 @@
     <ClInclude Include="ParticlePool.h">
       <Filter>Core\Modules\2D Particle Engine</Filter>
     </ClInclude>
+    <ClInclude Include="ctEntitiesInfo.h" />
   </ItemGroup>
 </Project>

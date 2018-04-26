@@ -210,7 +210,7 @@ bool PerformActionToEntity::Execute()
 						}
 						else
 						{
-							posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w/6)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+							posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 							App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_SPARK);
 						}
 						

@@ -27,7 +27,7 @@ enum EmitterType
 	EMITTER_TYPE_WAVE_1,
 	EMITTER_TYPE_WAVE_2,
 	EMITTER_TYPE_BUBBLE,
-	EMITTER_TYPE_SPARK
+	EMITTER_TYPE_SPARK //this is basic hit 
 };
 
 struct EmitterData

@@ -4,7 +4,7 @@
 #include "ctPoint.h"
 #include "SDL/include/SDL.h"
 
-#define MIN_LIFE_TO_INTERPOLATE 15
+#define MIN_LIFE_TO_INTERPOLATE 5
 
 struct SDL_Texture;
 

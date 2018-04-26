@@ -3,7 +3,9 @@
 #include "ctEntities.h"
 #include "ctInput.h"
 #include "ctCombat.h"
-
+#include "Particle.h"
+#include "ParticlePool.h"
+#include "Emitter.h"
 
 //randomize libs
 #include <stdlib.h>     /* srand, rand */
@@ -198,9 +200,14 @@ bool PerformActionToEntity::Execute()
 						else
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
 
-
+						
 						//TODO SITO
-
+						fPoint posP;
+						if(receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
+							posP = { (float)(receiver_entity->position.x - (receiver_entity->animation->GetCurrentFrame().w/4)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						else
+							posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w )), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						App->psystem->AddEmiter(posP,EmitterType::EMITTER_TYPE_SPARK);
 
 						receiver_entity->Damaged();
 					}

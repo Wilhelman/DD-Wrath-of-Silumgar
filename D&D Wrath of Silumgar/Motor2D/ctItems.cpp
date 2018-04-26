@@ -45,20 +45,37 @@ bool ctItems::Awake(pugi::xml_node& config)
 		item.objective = usable.attribute("objective").as_int();
 
 		std::string tmp = usable.attribute("use").as_string();
-		if (tmp == "LOW_HEALTH_RECOVER")
+
+		Action tmp_action;
+
+		if (tmp == "LOW_HEALTH_RECOVER") {
 			item.usable_effects = LOW_HEALTH_RECOVER;
-		else if (tmp == "HIGH_HEALTH_RECOVER")
+			tmp_action.type = LOW_HEALTH_RECOVER_ACTION;
+		}
+		else if (tmp == "HIGH_HEALTH_RECOVER") {
 			item.usable_effects = HIGH_HEALTH_RECOVER;
-		else if (tmp == "LOW_MANA_RECOVER")
+			tmp_action.type = HIGH_HEALTH_RECOVER_ACTION;
+		}
+		else if (tmp == "LOW_MANA_RECOVER") {
 			item.usable_effects = LOW_MANA_RECOVER;
-		else if (tmp == "HIGH_MANA_RECOVER")
+			tmp_action.type = LOW_MANA_RECOVER_ACTION;
+		}
+		else if (tmp == "HIGH_MANA_RECOVER") {
 			item.usable_effects = HIGH_MANA_RECOVER;
-		else if (tmp == "POISONED_DAGGER")
+			tmp_action.type = HIGH_MANA_RECOVER_ACTION;
+		}
+		else if (tmp == "POISONED_DAGGER") {
 			item.usable_effects = POISONED_DAGGER;
-		else if (tmp == "BURN_TARGET")
+			tmp_action.type = POISONED_DAGGER_ACTION;
+		}
+		else if (tmp == "BURN_TARGET") {
 			item.usable_effects = BURN_TARGET;
-		else if (tmp == "REVIVE_AN_ALLY")
+			tmp_action.type = BURN_TARGET_ACTION;
+		}
+		else if (tmp == "REVIVE_AN_ALLY") {
 			item.usable_effects = REVIVE_AN_ALLY;
+			tmp_action.type = REVIVE_AN_ALLY_ACTION;
+		}
 
 		/*
 		
@@ -75,9 +92,21 @@ bool ctItems::Awake(pugi::xml_node& config)
 	int mana_points_effect = 0;
 		*/
 
-		Action tmp_action;
 		tmp_action.name = item.name;
-	//	tmp_action.type = 
+		switch (tmp_action.type)
+		{
+		case LOW_HEALTH_RECOVER_ACTION: {
+			tmp_action.health_points_effect = 30;
+		}
+		break;
+		case POISONED_DAGGER_ACTION: {
+
+		}
+		break;
+		default:
+			break;
+		}
+		
 
 		item.draw_coords = { usable.child("draw_coords").attribute("x").as_int(),usable.child("draw_coords").attribute("y").as_int(),usable.child("draw_coords").attribute("width").as_int(),usable.child("draw_coords").attribute("height").as_int() };
 		usable_items.push_back(item);

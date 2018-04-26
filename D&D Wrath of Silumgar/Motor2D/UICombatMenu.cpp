@@ -545,7 +545,7 @@ void UICombatMenu::LoadItems() {
 			if ((it_vector)->quantity > 1) {
 				char quantity_num[(((sizeof(it_vector)->quantity) * CHAR_BIT) + 2) / 3 + 2];
 				sprintf_s(quantity_num, "%d", (it_vector)->quantity);
-				string new_name = (it_vector)->name + " (x" + quantity_num +")";
+				string new_name = (it_vector)->name + " x" + quantity_num;
 				names.push_back(new_name);
 			}
 			else{
@@ -766,6 +766,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		}
 		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
 			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(names_iterator).action, (*selected_enemy)));
+			App->task_manager->AddTask(new MoveToInitialPosition(entity));
 		}
 	}
 
@@ -897,7 +898,8 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 			}
 		}
 		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
-			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(names_iterator).action, (*selected_enemy)));
+			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(names_iterator).action, (*selected_ally)));
+			App->task_manager->AddTask(new MoveToInitialPosition(entity));
 		}
 	}
 

@@ -419,8 +419,76 @@
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
-          <frame x="1256" y="403" width="151" height="147"/>
-          <frame x="1075" y="405" width="151" height="145"/>
+          <frame x="1759" y="403" width="151" height="147"/>
+          <frame x="1515" y="403" width="151" height="147"/>
+        </animation>
+
+        <animation name="hit" speed="5.0" loop="true">
+          <frame x="112" y="2502" width="156" height="146"/>
+        </animation>
+
+        <animation name="death" speed="5.0" loop="true">
+          <frame x="88" y="2502" width="205" height="152"/>
+          <frame x="309" y="2502" width="205" height="152"/>
+          <frame x="540" y="2502" width="205" height="152"/>
+          <frame x="766" y="2502" width="205" height="152"/>
+          <frame x="1016" y="2502" width="205" height="152"/>
+          <frame x="1281" y="2502" width="205" height="152"/>
+          <frame x="1548" y="2502" width="205" height="152"/>
+          <frame x="1790" y="2502" width="205" height="152"/>
+          <frame x="2007" y="2502" width="205" height="152"/>
+          <frame x="2305" y="2502" width="205" height="152"/>
+        </animation>
+
+        <animation name="unseen_punch" speed="5.0" loop="true">
+          <frame x="159" y="558" width="171" height="149"/>
+          <frame x="416" y="558" width="171" height="149"/>
+          <frame x="677" y="558" width="171" height="149"/>
+          <frame x="953" y="558" width="171" height="149"/>
+          <frame x="1197" y="558" width="171" height="149"/>
+          <frame x="1441" y="558" width="171" height="149"/>
+          <frame x="1701" y="558" width="171" height="149"/>
+          <frame x="1938" y="558" width="171" height="149"/>
+        </animation>
+
+        <animation name="thunder_punch" speed="5.0" loop="true">
+          <frame x="1884" y="1398" width="207" height="152"/>
+          <frame x="1660" y="1398" width="207" height="152"/>
+          <frame x="1383" y="1398" width="207" height="152"/>
+          <frame x="1125" y="1398" width="207" height="152"/>
+          <frame x="856" y="1398" width="207" height="152"/>
+          <frame x="594" y="1398" width="207" height="152"/>
+          <frame x="329" y="1398" width="207" height="152"/>
+        </animation>
+
+        <animation name="void_cannon" speed="5.0" loop="true">
+          <frame x="244" y="1586" width="186" height="151"/>
+          <frame x="553" y="1586" width="186" height="151"/>
+          <frame x="813" y="1586" width="186" height="151"/>
+          <frame x="1062" y="1586" width="186" height="151"/>
+          <frame x="1337" y="1586" width="186" height="151"/>
+          <frame x="1598" y="1586" width="186" height="151"/>
+          <frame x="1875" y="1586" width="186" height="151"/>
+        </animation>
+
+        <animation name="insignificant_mortals" speed="5.0" loop="true">
+          <frame x="70" y="1942" width="184" height="165"/>
+          <frame x="290" y="1942" width="184" height="165"/>
+          <frame x="504" y="1942" width="184" height="165"/>
+          <frame x="737" y="1942" width="184" height="165"/>
+          <frame x="977" y="1942" width="184" height="165"/>
+          <frame x="1241" y="1942" width="184" height="165"/>
+          <frame x="1494" y="1942" width="184" height="165"/>
+          <frame x="1765" y="1942" width="184" height="165"/>
+          <frame x="2057" y="1942" width="184" height="165"/>
+          <frame x="45" y="2111" width="184" height="165"/>
+          <frame x="304" y="2111" width="184" height="165"/>
+          <frame x="520" y="2111" width="184" height="165"/>
+          <frame x="748" y="2111" width="184" height="165"/>
+          <frame x="987" y="2111" width="184" height="165"/>
+          <frame x="1252" y="2111" width="184" height="165"/>
+          <frame x="1510" y="2111" width="184" height="165"/>
+          <frame x="1774" y="2111" width="184" height="165"/>
         </animation>
 
       </animations>
@@ -459,9 +527,49 @@
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
-          <frame x="576" y="520" width="96" height="67"/>
-          <frame x="767" y="509" width="96" height="67"/>
-          <frame x="970" y="514" width="90" height="67"/>
+          <frame x="575" y="520" width="97" height="67"/>
+          <frame x="694" y="520" width="97" height="67"/>
+          <frame x="802" y="520" width="97" height="67"/>
+        </animation>
+
+        <animation name="death" speed="5.0" loop="true">
+          <frame x="189" y="796" width="84" height="62"/>
+          <frame x="304" y="796" width="84" height="62"/>
+          <frame x="189" y="796" width="84" height="62"/>
+          <frame x="304" y="796" width="84" height="62"/>
+        </animation>
+
+        <animation name="dragon_flames" speed="5.0" loop="true">
+          <frame x="19" y="94" width="110" height="94"/>
+          <frame x="157" y="94" width="110" height="94"/>
+          <frame x="296" y="94" width="110" height="94"/>
+          <frame x="432" y="94" width="110" height="94"/>
+          <frame x="573" y="94" width="110" height="94"/>
+          <frame x="703" y="94" width="110" height="94"/>
+          <frame x="831" y="94" width="110" height="94"/>
+          <frame x="952" y="94" width="110" height="94"/>
+        </animation>
+
+        <animation name="lightning_flash" speed="5.0" loop="true">
+          <frame x="19" y="94" width="110" height="94"/>
+          <frame x="157" y="94" width="110" height="94"/>
+          <frame x="296" y="94" width="110" height="94"/>
+          <frame x="432" y="94" width="110" height="94"/>
+          <frame x="573" y="94" width="110" height="94"/>
+          <frame x="703" y="94" width="110" height="94"/>
+          <frame x="831" y="94" width="110" height="94"/>
+          <frame x="952" y="94" width="110" height="94"/>
+        </animation>
+
+        <animation name="abyssal_sphere" speed="5.0" loop="true">
+          <frame x="19" y="94" width="110" height="94"/>
+          <frame x="157" y="94" width="110" height="94"/>
+          <frame x="296" y="94" width="110" height="94"/>
+          <frame x="432" y="94" width="110" height="94"/>
+          <frame x="573" y="94" width="110" height="94"/>
+          <frame x="703" y="94" width="110" height="94"/>
+          <frame x="831" y="94" width="110" height="94"/>
+          <frame x="952" y="94" width="110" height="94"/>
         </animation>
 
       </animations>
@@ -473,6 +581,33 @@
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
+        </animation>
+
+        <animation name="dragon_claw" speed="5.0" loop="true">
+          <frame x="308" y="186" width="126" height="180"/>
+          <frame x="515" y="186" width="126" height="180"/>
+          <frame x="728" y="186" width="126" height="180"/>
+        </animation>
+
+        <animation name="bidimensional_claw" speed="5.0" loop="true">
+          <frame x="319" y="388" width="119" height="75"/>
+          <frame x="494" y="388" width="119" height="75"/>
+          <frame x="666" y="388" width="119" height="75"/>
+          <frame x="869" y="388" width="119" height="75"/>
+        </animation>
+
+        <animation name="sea_of_flames" speed="5.0" loop="true">
+          <frame x="319" y="510" width="314" height="106"/>
+          <frame x="355" y="510" width="314" height="106"/>
+          <frame x="738" y="510" width="314" height="106"/>
+          <frame x="1118" y="510" width="314" height="106"/>
+          <frame x="4" y="686" width="314" height="106"/>
+          <frame x="365" y="686" width="314" height="106"/>
+          <frame x="721" y="686" width="314" height="106"/>
+          <frame x="1087" y="686" width="314" height="106"/>
+          <frame x="0" y="808" width="314" height="106"/>
+          <frame x="360" y="808" width="314" height="106"/>
+          <frame x="716" y="808" width="314" height="106"/>
         </animation>
 
       </animations>

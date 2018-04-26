@@ -133,8 +133,7 @@ bool ctCombat::Start()
 	//todo remove this: lets set usable items:
 
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(0));
-	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(3));
-	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(2));
+	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(0));
 
 	return ret;
 }

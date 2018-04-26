@@ -438,11 +438,11 @@ void UICombatMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		//	App->gui->DeleteUIElement(*main_labels.at(i));
 		//}
 		App->gui->DeleteUIElement(*attack_label);
-		attack_label = nullptr;
+		//attack_label = nullptr;
 		App->gui->DeleteUIElement(*abilities_label);
-		abilities_label = nullptr;
+		//abilities_label = nullptr;
 		App->gui->DeleteUIElement(*items_label);
-		items_label = nullptr;
+		//items_label = nullptr;
 
 		main_labels.clear();
 		//DELETE WHEN ADDING ITEMS OPTION BACK
@@ -481,7 +481,7 @@ void UICombatMenu::LoadAbilities() {
 	//names.push_back("Ability8");
 	//names.push_back("Ability9");
 
-	if (names.size() > 3) {
+	if (names.size() >= 3) {
 		if (entity->GetCurrentManaPoints() >= entity->abilities.at(0).mana_points_effect_to_himself) {
 			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
 		}
@@ -542,7 +542,6 @@ void UICombatMenu::LoadItems() {
 	if (entity->usable_items.size() != 0) {
 		std::vector<Item>::const_iterator it_vector = entity->usable_items.begin();
 		while (it_vector != entity->usable_items.end()) {
-			//Make a new string for the name that marks the number of this item you currently have
 			if ((it_vector)->quantity > 1) {
 				char quantity_num[(((sizeof(it_vector)->quantity) * CHAR_BIT) + 2) / 3 + 2];
 				sprintf_s(quantity_num, "%d", (it_vector)->quantity);
@@ -552,7 +551,7 @@ void UICombatMenu::LoadItems() {
 			else{
 				names.push_back((it_vector)->name);
 			}
-			entity_items.push_back((*it_vector));
+			entity_actions.push_back((*it_vector).action);
 			it_vector++;
 		}
 	}
@@ -566,7 +565,7 @@ void UICombatMenu::LoadItems() {
 	//names.push_back("Item4");
 	//names.push_back("Item5");
 
-	if (names.size() > 3) {
+	if (names.size() >= 3) {
 		items.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
 		items.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background));
 		items.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background));
@@ -766,7 +765,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 			}
 		}
 		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
-			
+			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(names_iterator).action, (*selected_enemy)));
 		}
 	}
 
@@ -896,6 +895,9 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 					}
 				}
 			}
+		}
+		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
+			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(names_iterator).action, (*selected_enemy)));
 		}
 	}
 

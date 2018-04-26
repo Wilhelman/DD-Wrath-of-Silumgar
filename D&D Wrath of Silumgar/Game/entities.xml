@@ -324,11 +324,79 @@
       <statistics constitution ="9" focus="8" strength="8" agility="6" dexterity ="7" intelligence="5" physicalDefense="10" magicalDefense="12" judgement="50"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
-          <frame x="706" y="98" width="69" height="59"/>
-          <frame x="625" y="99" width="58" height="58"/>
+        <animation name="idle" speed="0.05" loop="true">
+          <frame x="325" y="477" width="54" height="64"/>
+          <frame x="406" y="477" width="54" height="64"/>
         </animation>
 
+        <animation name="run" speed="0.05" loop="true">
+          <frame x="706" y="93" width="69" height="64"/>
+		  <frame x="625" y="93" width="69" height="64"/>
+		  <frame x="559" y="93" width="69" height="64"/>
+		  <frame x="484" y="93" width="69" height="64"/>
+		  <frame x="401" y="93" width="69" height="64"/>
+		  <frame x="324" y="93" width="69" height="64"/>
+		  <frame x="252" y="93" width="69" height="64"/>
+		  <frame x="177" y="93" width="69" height="64"/>
+		  
+
+        </animation>
+
+		<animation name="attack" speed="0.05" loop="false">
+          <frame x="624" y="178" width="117" height="73"/>
+		  <frame x="493" y="178" width="117" height="73"/>
+		  <frame x="368" y="178" width="117" height="73"/>
+		  <frame x="251" y="178" width="117" height="73"/>
+		  <frame x="125" y="178" width="117" height="73"/>
+		  <frame x="0" y="178" width="117" height="73"/>
+        </animation>
+		
+		<animation name="hit" speed="0.05" loop="false">
+          <frame x="486" y="483" width="56" height="58"/>
+		  <frame x="562" y="483" width="56" height="58"/>
+        </animation>
+		
+		<animation name="death" speed="0.05" loop="false">
+          <frame x="790" y="635" width="71" height="59"/>
+		  <frame x="699" y="635" width="71" height="59"/>
+		  <frame x="603" y="635" width="71" height="59"/>
+		  <frame x="509" y="635" width="71" height="59"/>
+		  <frame x="418" y="635" width="71" height="59"/>
+		  <frame x="319" y="635" width="71" height="59"/>
+
+        </animation>
+		
+		<animation name="dodge" speed="0.05" loop="false">
+          <frame x="525" y="372" width="94" height="76"/>
+		  <frame x="430" y="372" width="94" height="76"/>
+		  <frame x="525" y="372" width="94" height="76"/>
+		  <frame x="37" y="372" width="94" height="76"/>
+        </animation>
+		
+		<animation name="upper slash" speed="0.05" loop="false">
+          <frame x="429" y="372" width="94" height="76"/>
+		  <frame x="389" y="372" width="94" height="76"/>
+		  <frame x="290" y="372" width="94" height="76"/>
+		  <frame x="195" y="372" width="94" height="76"/>
+		  <frame x="101" y="372" width="94" height="76"/>
+		  <frame x="0" y="372" width="94" height="76"/>
+
+        </animation>
+		
+		<animation name="block" speed="0.05" loop="true">
+          <frame x="641" y="478" width="53" height="63"/>
+		  <frame x="716" y="478" width="53" height="63"/>
+
+        </animation>
+		
+		<animation name="quick stab" speed="0.05" loop="false">
+          <frame x="422" y="478" width="142" height="63"/>
+		  <frame x="277" y="478" width="142" height="63"/>
+		  <frame x="141" y="478" width="142" height="63"/>
+		  <frame x="0" y="478" width="142" height="63"/>
+		
+
+        </animation>
       </animations>
 
     </skeleton>

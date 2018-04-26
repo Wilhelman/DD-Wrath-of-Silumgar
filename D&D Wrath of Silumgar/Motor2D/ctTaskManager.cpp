@@ -198,6 +198,10 @@ bool PerformActionToEntity::Execute()
 						else
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
 
+
+						//TODO SITO
+
+
 						receiver_entity->Damaged();
 					}
 				}
@@ -374,8 +378,11 @@ bool PerformActionToEntity::Execute()
 				std::string tmp_dmg = std::to_string(damage_to_deal);
 
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 0,255,0,255 }, 14, nullptr, nullptr);
+				
+				
+				//TODO SITO
 
-				//receiver_entity->Damaged();
+
 				actioner_entity->Ability1();
 
 			}

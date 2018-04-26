@@ -4,6 +4,7 @@
 #include "ctModule.h"
 #include "ctDefs.h"
 #include "SDL/include/SDL.h"
+#include "ctEntitiesInfo.h"
 
 #include <vector>
 using namespace std;
@@ -71,7 +72,7 @@ struct Item {
 	EquipEffects equip_effects = NO_EQUIP_EFFECTS;
 	ItemStats statistics;
 	int quantity = 0;
-	//Action action;
+	Action action;
 };
 
 class ctItems : public ctModule

@@ -324,45 +324,38 @@ void Entity::CalculateAllStats()
 	tmp_luck += weapon.statistics.luck;
 	tmp_judgement += weapon.statistics.judgement;
 	
+	tmp_constitution += shield.statistics.constitution;
+	tmp_focus += shield.statistics.focus;
+	tmp_strength += shield.statistics.strength;
+	tmp_intelligence += shield.statistics.intelligence;
+	tmp_dexterity += shield.statistics.dexterity;
+	tmp_agility += shield.statistics.agility;
+	tmp_physical_defense += shield.statistics.physical_defense;
+	tmp_magical_defense += shield.statistics.magical_defense;
+	tmp_luck += shield.statistics.luck;
+	tmp_judgement += shield.statistics.judgement;
 
-	if (shield != nullptr) {
-		tmp_constitution += shield->statistics.constitution;
-		tmp_focus += shield->statistics.focus;
-		tmp_strength += shield->statistics.strength;
-		tmp_intelligence += shield->statistics.intelligence;
-		tmp_dexterity += shield->statistics.dexterity;
-		tmp_agility += shield->statistics.agility;
-		tmp_physical_defense += shield->statistics.physical_defense;
-		tmp_magical_defense += shield->statistics.magical_defense;
-		tmp_luck += shield->statistics.luck;
-		tmp_judgement += shield->statistics.judgement;
-	}
+	tmp_constitution += ring.statistics.constitution;
+	tmp_focus += ring.statistics.focus;
+	tmp_strength += ring.statistics.strength;
+	tmp_intelligence += ring.statistics.intelligence;
+	tmp_dexterity += ring.statistics.dexterity;
+	tmp_agility += ring.statistics.agility;
+	tmp_physical_defense += ring.statistics.physical_defense;
+	tmp_magical_defense += ring.statistics.magical_defense;
+	tmp_luck += ring.statistics.luck;
+	tmp_judgement += ring.statistics.judgement;
 
-	if (ring != nullptr) {
-		tmp_constitution += ring->statistics.constitution;
-		tmp_focus += ring->statistics.focus;
-		tmp_strength += ring->statistics.strength;
-		tmp_intelligence += ring->statistics.intelligence;
-		tmp_dexterity += ring->statistics.dexterity;
-		tmp_agility += ring->statistics.agility;
-		tmp_physical_defense += ring->statistics.physical_defense;
-		tmp_magical_defense += ring->statistics.magical_defense;
-		tmp_luck += ring->statistics.luck;
-		tmp_judgement += ring->statistics.judgement;
-	}
-
-	if (accessory != nullptr) {
-		tmp_constitution += accessory->statistics.constitution;
-		tmp_focus += accessory->statistics.focus;
-		tmp_strength += accessory->statistics.strength;
-		tmp_intelligence += accessory->statistics.intelligence;
-		tmp_dexterity += accessory->statistics.dexterity;
-		tmp_agility += accessory->statistics.agility;
-		tmp_physical_defense += accessory->statistics.physical_defense;
-		tmp_magical_defense += accessory->statistics.magical_defense;
-		tmp_luck += accessory->statistics.luck;
-		tmp_judgement += accessory->statistics.judgement;
-	}
+	tmp_constitution += accessory.statistics.constitution;
+	tmp_focus += accessory.statistics.focus;
+	tmp_strength += accessory.statistics.strength;
+	tmp_intelligence += accessory.statistics.intelligence;
+	tmp_dexterity += accessory.statistics.dexterity;
+	tmp_agility += accessory.statistics.agility;
+	tmp_physical_defense += accessory.statistics.physical_defense;
+	tmp_magical_defense += accessory.statistics.magical_defense;
+	tmp_luck += accessory.statistics.luck;
+	tmp_judgement += accessory.statistics.judgement;
 
 	max_health_points = current_health_points = tmp_constitution;
 	max_mana_points = current_mana_points = tmp_focus;

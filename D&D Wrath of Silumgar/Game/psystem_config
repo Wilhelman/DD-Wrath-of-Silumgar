@@ -140,24 +140,7 @@
       </emitter>
       
       <emitter type ="bubbles">
-        <angleRange min ="50" max ="110"/>
-        <rotSpeed value ="5" randMin ="-1" randMax ="1"/>
-        <startSpeed value ="200" randMin ="0" randMax ="1"/>
-        <endSpeed value ="200" randMin ="0" randMax ="1"/>
-        <startSize value ="60" randMin ="0" randMax ="1"/>
-        <endSize value =" 0" randMin ="1" randMax ="1"/>
-        <emitNumber value ="1"/>
-        <emitVariance value ="3" randMin ="0" randMax ="1"/>
-        <maxParticleLife value ="150" randMin ="0" randMax ="1"/>
-        <textureRect x="0" y="128" w="32" h="32"/>
-        <startColor r ="47" g="141" b="255" a ="255"/>
-        <endColor r ="57" g="255" b="20" a ="0"/>
-        <blendMode mode ="add"/>
-        <lifetime value ="-1"/>
-      </emitter>
-
-      <emitter type ="spark">
-        <angleRange min ="0" max ="120"/>
+        <angleRange min ="180" max ="135"/>
         <rotSpeed value ="200" randMin ="-1" randMax ="1"/>
         <startSpeed value ="300" randMin ="0" randMax ="1"/>
         <endSpeed value ="300" randMin ="0" randMax ="1"/>
@@ -172,8 +155,24 @@
         <blendMode mode ="add"/>
         <lifetime value ="5"/>
       </emitter>
-     
-      
+
+      <emitter type ="spark">
+        <angleRange min ="0" max ="45"/>
+        <rotSpeed value ="200" randMin ="-1" randMax ="1"/>
+        <startSpeed value ="300" randMin ="0" randMax ="1"/>
+        <endSpeed value ="300" randMin ="0" randMax ="1"/>
+        <startSize value ="10" randMin ="0" randMax ="2"/>
+        <endSize value =" 0" randMin ="1" randMax ="1"/>
+        <emitNumber value ="5"/>
+        <emitVariance value ="1" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="15" randMin ="0" randMax ="1"/>
+        <textureRect x="0" y="160" w="64" h="64"/>
+        <startColor r ="255" g="100" b="0" a="255"/>
+        <endColor r ="255" g="0" b="0" a="0"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="5"/>
+      </emitter>
+
       
     </particleAtlas>
 </emitters>

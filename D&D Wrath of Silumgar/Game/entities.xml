@@ -983,7 +983,7 @@
           <frame x="2375" y="1663" width="121" height="67"/>
         </animation>
         
-        <animation name="throw" speed="0.08" loop="true">
+        <animation name="throw" speed="0.08" loop="false">
           <frame x="387" y="2149" width="53" height="70"/>
           <frame x="305" y="2149" width="53" height="70"/>
           <frame x="230" y="2149" width="53" height="70"/>

@@ -237,9 +237,10 @@ void Entity::AddAction(Action new_action)
 	abilities.push_back(new_action);
 }
 
-void Entity::AddUsableItem(Item &new_item)
+void Entity::AddUsableItem(Item new_item)
 {
 	bool have_to_push_back = true;
+
 	for (int i = 0; i < usable_items.size(); i++)
 	{
 		if (usable_items.at(i)->usable_effects == new_item.usable_effects) {
@@ -249,9 +250,19 @@ void Entity::AddUsableItem(Item &new_item)
 		}
 	}
 
-	if(have_to_push_back)
-		usable_items.push_back(&new_item);
+	if (have_to_push_back) {
 
+		Item* very_new_item = new Item();
+
+		very_new_item->draw_coords = new_item.draw_coords;
+		very_new_item->name = new_item.name;
+		very_new_item->objective = new_item.objective;
+		very_new_item->quantity = 1;
+		very_new_item->usable_effects = new_item.usable_effects;
+
+		usable_items.push_back(very_new_item);
+		App->items->items_to_delete.push_back(very_new_item);
+	}
 }
 
 void Entity::CalculateAllStats()

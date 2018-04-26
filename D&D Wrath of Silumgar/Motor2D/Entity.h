@@ -209,7 +209,7 @@ public:
 
 	void AddAction(Action new_action);
 
-	void AddUsableItem(Item &new_item);
+	void AddUsableItem(Item new_item);
 
 	private:
 	void CalculateAllStats();

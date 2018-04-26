@@ -126,6 +126,16 @@ bool ctCombat::Start()
 
 		LOG("Error playing music in ctMainMenu Start");
 	}
+
+
+	//todo remove this: lets set usable items:
+
+
+
+	App->entities->GetElf()->AddUsableItem(*App->items->usable_items.at(0));
+	App->entities->GetElf()->AddUsableItem(*App->items->usable_items.at(0));
+	App->entities->GetElf()->AddUsableItem(*App->items->usable_items.at(1));
+
 	return ret;
 }
 

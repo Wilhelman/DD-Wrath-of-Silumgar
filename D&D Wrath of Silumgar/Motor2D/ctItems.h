@@ -92,12 +92,16 @@ public:
 	bool Save(pugi::xml_node&) const;
 
 public:
+	std::vector<Item*> items_to_delete;
 
-private:
 	std::vector<Item*> usable_items;
 	std::vector<Item*> tier_1_equips;
 	std::vector<Item*> tier_2_equips;
 	std::vector<Item*> tier_3_equips;
+
+private:
+
+	
 
 };
 

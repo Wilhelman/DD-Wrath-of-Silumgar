@@ -102,7 +102,7 @@ bool ctItems::Awake(pugi::xml_node& config)
 		}
 		break;
 		case POISONED_DAGGER_ACTION: {
-			tmp_action.health_points_effect = -999999;
+			tmp_action.health_points_effect = -9999;
 			description = "ONE SHOT ONE ENEMY BC OF REASONS!";
 		}
 		break;

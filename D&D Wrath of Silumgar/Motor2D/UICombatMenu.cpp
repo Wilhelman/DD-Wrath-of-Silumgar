@@ -948,7 +948,11 @@ void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 			App->gui->DeleteUIElement(*explanation_label);
 		}
 		if (entity->abilities.size() != 0) {
-			string description = entity->abilities.at(names_iterator).description;
+			int iterator = 0;
+			while (items.at(iterator)->current_state != STATE_FOCUSED) {
+				iterator++;
+			}
+			string description = entity->abilities.at(iterator).description;
 			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, description, { 255,255,255,255 }, nullptr, Second_Font);
 			explanation_label->SetParent(explanation_background);
 		}
@@ -962,9 +966,13 @@ void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 			App->gui->DeleteUIElement(*explanation_label);
 		}
 		if (entity->usable_items.size() != 0) {
-			/*string description = entity->usable_items.at(names_iterator).description;
+			int iterator = 0;
+			while (items.at(iterator)->current_state != STATE_FOCUSED) {
+				iterator++;
+			}
+			string description = entity->usable_items.at(iterator).action.description;
 			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, description, { 255,255,255,255 }, nullptr, Second_Font);
-			explanation_label->SetParent(explanation_background);*/
+			explanation_label->SetParent(explanation_background);
 		}
 		else {
 			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, "You have non abilities in this moment", { 255,255,255,255 }, nullptr, Second_Font);

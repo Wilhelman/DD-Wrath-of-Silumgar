@@ -93,21 +93,27 @@ bool ctItems::Awake(pugi::xml_node& config)
 		*/
 
 		tmp_action.name = item.name;
+		std::string description;
 		switch (tmp_action.type)
 		{
 		case LOW_HEALTH_RECOVER_ACTION: {
 			tmp_action.health_points_effect = 30;
+			description = "Heals one ally mimimi mimi mi";
 		}
 		break;
 		case POISONED_DAGGER_ACTION: {
-
+			tmp_action.health_points_effect = -10000;
+			description = "ONE SHOT ONE ENEMY BC OF REASONS!";
 		}
 		break;
 		default:
 			break;
 		}
+
+		item.action.description = description;
 		
 		item.action = tmp_action;
+		item.quantity = 1;
 
 		item.draw_coords = { usable.child("draw_coords").attribute("x").as_int(),usable.child("draw_coords").attribute("y").as_int(),usable.child("draw_coords").attribute("width").as_int(),usable.child("draw_coords").attribute("height").as_int() };
 		usable_items.push_back(item);

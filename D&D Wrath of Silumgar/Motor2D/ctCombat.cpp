@@ -25,6 +25,7 @@
 
 #include "UICombatMenu.h"
 #include "UIBar.h"
+#include "ctItems.h"
 
 //randomize libs
 #include <stdlib.h>     /* srand, rand */
@@ -130,11 +131,9 @@ bool ctCombat::Start()
 
 	//todo remove this: lets set usable items:
 
-
-
 	App->entities->GetElf()->AddUsableItem(*App->items->usable_items.at(0));
-	App->entities->GetElf()->AddUsableItem(*App->items->usable_items.at(0));
-	App->entities->GetElf()->AddUsableItem(*App->items->usable_items.at(1));
+	App->entities->GetElf()->AddUsableItem(*App->items->usable_items.at(3));
+	App->entities->GetElf()->AddUsableItem(*App->items->usable_items.at(2));
 
 	return ret;
 }

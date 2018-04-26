@@ -2,6 +2,7 @@
 #include "ctLog.h"
 #include "ctItems.h"
 #include "ctApp.h"
+#include "Entity.h"
 
 
 ctItems::ctItems() : ctModule()
@@ -38,83 +39,85 @@ bool ctItems::Awake(pugi::xml_node& config)
 
 	for (pugi::xml_node usable = node->child("usables").child("item"); usable && ret; usable = usable.next_sibling("item"))
 	{
-		Item* item = new Item();
-		item->type = USABLE;
-		item->name = usable.attribute("name").as_string();
-		item->objective = usable.attribute("objective").as_int();
+		Item item;
+		item.type = USABLE;
+		item.name = usable.attribute("name").as_string();
+		item.objective = usable.attribute("objective").as_int();
 
 		std::string tmp = usable.attribute("use").as_string();
 		if (tmp == "LOW_HEALTH_RECOVER")
-			item->usable_effects = LOW_HEALTH_RECOVER;
+			item.usable_effects = LOW_HEALTH_RECOVER;
 		else if (tmp == "HIGH_HEALTH_RECOVER")
-			item->usable_effects = HIGH_HEALTH_RECOVER;
+			item.usable_effects = HIGH_HEALTH_RECOVER;
 		else if (tmp == "LOW_MANA_RECOVER")
-			item->usable_effects = LOW_MANA_RECOVER;
+			item.usable_effects = LOW_MANA_RECOVER;
 		else if (tmp == "HIGH_MANA_RECOVER")
-			item->usable_effects = HIGH_MANA_RECOVER;
+			item.usable_effects = HIGH_MANA_RECOVER;
 		else if (tmp == "POISONED_DAGGER")
-			item->usable_effects = POISONED_DAGGER;
+			item.usable_effects = POISONED_DAGGER;
 		else if (tmp == "BURN_TARGET")
-			item->usable_effects = BURN_TARGET;
+			item.usable_effects = BURN_TARGET;
 		else if (tmp == "REVIVE_AN_ALLY")
-			item->usable_effects = REVIVE_AN_ALLY;
+			item.usable_effects = REVIVE_AN_ALLY;
 
-		item->draw_coords = { usable.child("draw_coords").attribute("x").as_int(),usable.child("draw_coords").attribute("y").as_int(),usable.child("draw_coords").attribute("width").as_int(),usable.child("draw_coords").attribute("height").as_int() };
+		
+
+		item.draw_coords = { usable.child("draw_coords").attribute("x").as_int(),usable.child("draw_coords").attribute("y").as_int(),usable.child("draw_coords").attribute("width").as_int(),usable.child("draw_coords").attribute("height").as_int() };
 		usable_items.push_back(item);
 	}
 
 	// ------------------------------------- EQUIPABLE ITEMS --------------------------------------- //
 	for (pugi::xml_node equip = node->child("equips").child("equip"); equip && ret; equip = equip.next_sibling("equip"))
 	{
-		Item* item = new Item();
-		item->type = EQUIP;
-		item->name = equip.attribute("name").as_string();
+		Item item;
+		item.type = EQUIP;
+		item.name = equip.attribute("name").as_string();
 
 		std::string tmp = equip.attribute("type").as_string();
 		if (tmp == "BOOT")
-			item->equip_type = BOOT;
+			item.equip_type = BOOT;
 		else if (tmp == "ARMS")
-			item->equip_type = GUANTLET;
+			item.equip_type = GUANTLET;
 		else if (tmp == "HANDS")
-			item->equip_type = RING;
+			item.equip_type = RING;
 		else if (tmp == "ACCESSORIES")
-			item->equip_type = ACCESORY;
+			item.equip_type = ACCESORY;
 		else if (tmp == "ARMOR")
-			item->equip_type = CHEST;
+			item.equip_type = CHEST;
 		else if (tmp == "HELMET")
-			item->equip_type = HELM;
+			item.equip_type = HELM;
 		else if (tmp == "SHIELDS")
-			item->equip_type = SHIELD;
+			item.equip_type = SHIELD;
 		else if (tmp == "WEAPONS")
-			item->equip_type = WEAPON;
+			item.equip_type = WEAPON;
 
-		item->draw_coords = { equip.child("draw_coords").attribute("x").as_int(),equip.child("draw_coords").attribute("y").as_int(),equip.child("draw_coords").attribute("width").as_int(),equip.child("draw_coords").attribute("height").as_int() };
+		item.draw_coords = { equip.child("draw_coords").attribute("x").as_int(),equip.child("draw_coords").attribute("y").as_int(),equip.child("draw_coords").attribute("width").as_int(),equip.child("draw_coords").attribute("height").as_int() };
 		
 		for (pugi::xml_node stat = equip.child("stats").child("stat"); stat && ret; stat = stat.next_sibling("stat"))
 		{
 			
-			item->statistics.strength += stat.attribute("str").as_int(0);
+			item.statistics.strength += stat.attribute("str").as_int(0);
 			
-			item->statistics.intelligence += stat.attribute("int").as_int(0);
+			item.statistics.intelligence += stat.attribute("int").as_int(0);
 		
-			item->statistics.agility += stat.attribute("agi").as_int(0);
+			item.statistics.agility += stat.attribute("agi").as_int(0);
 			
-			item->statistics.constitution += stat.attribute("cnst").as_int(0);
+			item.statistics.constitution += stat.attribute("cnst").as_int(0);
 			
-			item->statistics.focus += stat.attribute("fcs").as_int(0);
+			item.statistics.focus += stat.attribute("fcs").as_int(0);
 		
-			item->statistics.dexterity += stat.attribute("dext").as_int(0);
+			item.statistics.dexterity += stat.attribute("dext").as_int(0);
 		
-			item->statistics.magical_defense += stat.attribute("mr").as_int(0);
+			item.statistics.magical_defense += stat.attribute("mr").as_int(0);
 		
-			item->statistics.physical_defense += stat.attribute("pr").as_int(0);
+			item.statistics.physical_defense += stat.attribute("pr").as_int(0);
 		
-			item->statistics.luck += stat.attribute("lck").as_int(0);
+			item.statistics.luck += stat.attribute("lck").as_int(0);
 		}
 
-		item->tier = equip.attribute("tier").as_int();
+		item.tier = equip.attribute("tier").as_int();
 
-		switch (item->tier)
+		switch (item.tier)
 		{
 		case 1:
 			tier_1_equips.push_back(item);

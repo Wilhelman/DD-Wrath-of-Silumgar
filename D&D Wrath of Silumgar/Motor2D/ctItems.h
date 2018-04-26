@@ -6,8 +6,10 @@
 #include "SDL/include/SDL.h"
 #include "Entity.h"
 
+
 #include <vector>
 using namespace std;
+
 
 struct SDL_Rect;
 
@@ -71,6 +73,7 @@ struct Item {
 	EquipEffects equip_effects = NO_EQUIP_EFFECTS;
 	ItemStats statistics;
 	int quantity = 0;
+	Action action;
 };
 
 class ctItems : public ctModule
@@ -92,12 +95,11 @@ public:
 	bool Save(pugi::xml_node&) const;
 
 public:
-	std::vector<Item*> items_to_delete;
 
-	std::vector<Item*> usable_items;
-	std::vector<Item*> tier_1_equips;
-	std::vector<Item*> tier_2_equips;
-	std::vector<Item*> tier_3_equips;
+	std::vector<Item> usable_items;
+	std::vector<Item> tier_1_equips;
+	std::vector<Item> tier_2_equips;
+	std::vector<Item> tier_3_equips;
 
 private:
 

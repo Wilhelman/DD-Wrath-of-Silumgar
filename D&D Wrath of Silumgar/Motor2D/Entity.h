@@ -6,7 +6,6 @@
 #include "ctEntities.h"
 #include "ctTextures.h"
 #include "SDL/include/SDL.h"
-#include "ctItems.h"
 
 #include <vector>
 
@@ -145,19 +144,18 @@ public:
 	std::vector<Action> abilities;
 	std::vector<Altered_Stat> altered_stats;
 
-	std::vector<Item*> usable_items;
-
+	std::vector<Item> usable_items;
 	//Armor stuff
-	Item* ring = nullptr;
-	Item* accessory = nullptr;
+	Item ring;
+	Item accessory;
 
-	Item* helmet = nullptr;
-	Item* chest = nullptr;
-	Item* guantlet = nullptr;
-	Item* boot = nullptr;
+	Item helmet;
+	Item chest;
+	Item guantlet;
+	Item boot;
 
-	Item* shield = nullptr;
-	Item* weapon = nullptr;
+	Item shield;
+	Item weapon;
 
 
 	//Sounds stuff

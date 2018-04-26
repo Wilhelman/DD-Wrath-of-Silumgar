@@ -243,26 +243,16 @@ void Entity::AddUsableItem(Item new_item)
 
 	for (int i = 0; i < usable_items.size(); i++)
 	{
-		if (usable_items.at(i)->usable_effects == new_item.usable_effects) {
-			usable_items.at(i)->quantity++;
+		if (usable_items.at(i).usable_effects == new_item.usable_effects) {
+			usable_items.at(i).quantity++;
 			have_to_push_back = false;
 			break;
 		}
 	}
 
-	if (have_to_push_back) {
-
-		Item* very_new_item = new Item();
-
-		very_new_item->draw_coords = new_item.draw_coords;
-		very_new_item->name = new_item.name;
-		very_new_item->objective = new_item.objective;
-		very_new_item->quantity = 1;
-		very_new_item->usable_effects = new_item.usable_effects;
-
-		usable_items.push_back(very_new_item);
-		App->items->items_to_delete.push_back(very_new_item);
-	}
+	if (have_to_push_back)
+		usable_items.push_back(new_item);
+	
 }
 
 void Entity::CalculateAllStats()
@@ -278,31 +268,29 @@ void Entity::CalculateAllStats()
 	int tmp_luck = base_stats.luck * StatisticsValues::LUCK;
 	int tmp_judgement = base_stats.judgement * StatisticsValues::JUDGEMENT;
 
-	if (helmet != nullptr) {
-		tmp_constitution += helmet->statistics.constitution;
-		tmp_focus += helmet->statistics.focus;
-		tmp_strength += helmet->statistics.strength;
-		tmp_intelligence += helmet->statistics.intelligence;
-		tmp_dexterity += helmet->statistics.dexterity;
-		tmp_agility += helmet->statistics.agility;
-		tmp_physical_defense += helmet->statistics.physical_defense;
-		tmp_magical_defense += helmet->statistics.magical_defense;
-		tmp_luck += helmet->statistics.luck;
-		tmp_judgement += helmet->statistics.judgement;
-	}
+	tmp_constitution += helmet.statistics.constitution;
+	tmp_focus += helmet.statistics.focus;
+	tmp_strength += helmet.statistics.strength;
+	tmp_intelligence += helmet.statistics.intelligence;
+	tmp_dexterity += helmet.statistics.dexterity;
+	tmp_agility += helmet.statistics.agility;
+	tmp_physical_defense += helmet.statistics.physical_defense;
+	tmp_magical_defense += helmet.statistics.magical_defense;
+	tmp_luck += helmet.statistics.luck;
+	tmp_judgement += helmet.statistics.judgement;
 	
-	if (chest != nullptr) {
-		tmp_constitution += chest->statistics.constitution;
-		tmp_focus += chest->statistics.focus;
-		tmp_strength += chest->statistics.strength;
-		tmp_intelligence += chest->statistics.intelligence;
-		tmp_dexterity += chest->statistics.dexterity;
-		tmp_agility += chest->statistics.agility;
-		tmp_physical_defense += chest->statistics.physical_defense;
-		tmp_magical_defense += chest->statistics.magical_defense;
-		tmp_luck += chest->statistics.luck;
-		tmp_judgement += chest->statistics.judgement;
-	}
+	
+	tmp_constitution += chest.statistics.constitution;
+	tmp_focus += chest.statistics.focus;
+	tmp_strength += chest.statistics.strength;
+	tmp_intelligence += chest.statistics.intelligence;
+	tmp_dexterity += chest.statistics.dexterity;
+	tmp_agility += chest.statistics.agility;
+	tmp_physical_defense += chest.statistics.physical_defense;
+	tmp_magical_defense += chest.statistics.magical_defense;
+	tmp_luck += chest.statistics.luck;
+	tmp_judgement += chest.statistics.judgement;
+	
 	
 	if (guantlet != nullptr) {
 		tmp_constitution += guantlet->statistics.constitution;

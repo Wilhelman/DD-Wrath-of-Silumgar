@@ -542,10 +542,10 @@ void UICombatMenu::LoadItems() {
 	if (entity->usable_items.size() != 0) {
 		std::vector<Item>::const_iterator it_vector = entity->usable_items.begin();
 		while (it_vector != entity->usable_items.end()) {
-			if ((it_vector)->quantity > 1) {
+			if ((it_vector)->quantity >= 1) {
 				char quantity_num[(((sizeof(it_vector)->quantity) * CHAR_BIT) + 2) / 3 + 2];
-				sprintf_s(quantity_num, "%d", (it_vector)->quantity);
-				string new_name = (it_vector)->name + " (x" + quantity_num +")";
+				sprintf_s(quantity_num, "%d", (it_vector)->quantity+1);
+				string new_name = (it_vector)->name + " x" + quantity_num;
 				names.push_back(new_name);
 			}
 			else{

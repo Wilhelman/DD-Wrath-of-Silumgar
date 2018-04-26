@@ -8,6 +8,7 @@
 #include "ctTaskManager.h"
 #include "ctPerfTimer.h"
 #include "ctFadeToBlack.h"
+#include "ctItems.h"
 
 UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
@@ -37,7 +38,12 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	else {
 		abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,0,0,255 }, font_size, nullptr, background);
 	}
-	items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
+	if (entity->usable_items.size() != 0) {
+		items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,255,255,255 }, font_size, nullptr, background);
+	}
+	else {
+		items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
+	}
 	attack_label->current_state = STATE_FOCUSED;
 	explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, ATTACKEXPLANATION, {255,255,255,255}, nullptr, Second_Font);
 	explanation_label->SetParent(explanation_background);
@@ -46,7 +52,9 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	if (entity->abilities.size()!=0) {
 		main_labels.push_back(abilities_label);
 	}
-	//main_labels.push_back(items_label);
+	if (entity->usable_items.size() != 0) {
+		main_labels.push_back(items_label);
+	}
 	arrow->SetParent(attack_label);
 	upper_points_pos.x = x + 8;
 	upper_points_pos.y = y - 20;
@@ -169,6 +177,14 @@ void UICombatMenu::Update()
 			}
 			else {
 				SelectAlly(abilities);
+			}
+		}
+		else if (items.size() != 0 && selecting_enemy == true) {
+			if (entity->usable_items.at(names_iterator)->objective == ENEMIES) {
+				SelectEnemy(items);
+			}
+			else {
+				SelectAlly(items);
 			}
 		}
 
@@ -400,31 +416,38 @@ void UICombatMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	}
 
 	if (current_vector == items) {
-		App->gui->DeleteUIElement(*arrow);
-		arrow = nullptr;
-		App->gui->DeleteUIElement(*background);
-		background = nullptr;
-		App->gui->DeleteUIElement(*upper_points);
-		upper_points = nullptr;
-		App->gui->DeleteUIElement(*lower_points);
-		lower_points = nullptr;
-		for (int i = 0; i < items.size(); i++) {
-			App->gui->DeleteUIElement(*items.at(i));
-		}
+		selecting_enemy = true;
+		//App->gui->DeleteUIElement(*arrow);
+		//arrow = nullptr;
+		//App->gui->DeleteUIElement(*background);
+		//background = nullptr;
+		//App->gui->DeleteUIElement(*upper_points);
+		//upper_points = nullptr;
+		//App->gui->DeleteUIElement(*lower_points);
+		//lower_points = nullptr;
+		//for (int i = 0; i < items.size(); i++) {
+		//	App->gui->DeleteUIElement(*items.at(i));
+		//}
 
-		items.clear();
+		//items.clear();
 		//Use Item
 	}
 
 	if (abilities.size()>0 || items.size()>0) {
-		for (int i = 0; i < main_labels.size(); i++) {
-			App->gui->DeleteUIElement(*main_labels.at(i));
-		}
+		//for (int i = 0; i < main_labels.size(); i++) {
+		//	App->gui->DeleteUIElement(*main_labels.at(i));
+		//}
+		App->gui->DeleteUIElement(*attack_label);
+		attack_label = nullptr;
+		App->gui->DeleteUIElement(*abilities_label);
+		abilities_label = nullptr;
+		App->gui->DeleteUIElement(*items_label);
+		items_label = nullptr;
 
 		main_labels.clear();
 		//DELETE WHEN ADDING ITEMS OPTION BACK
-		App->gui->DeleteUIElement(*items_label);
-		items_label = nullptr;
+		/*App->gui->DeleteUIElement(*items_label);
+		items_label = nullptr;*/
 	}
 
 	executed_command = true;
@@ -515,11 +538,33 @@ void UICombatMenu::LoadAbilities() {
 void UICombatMenu::LoadItems() {
 	iPoint backgroundPos = background->GetScreenPosition();
 	names_iterator = 0;
-	names.push_back("Item1");
-	names.push_back("Item2");
-	names.push_back("Item3");
-	names.push_back("Item4");
-	names.push_back("Item5");
+
+	if (entity->usable_items.size() != 0) {
+		std::vector<Item*>::const_iterator it_vector = entity->usable_items.begin();
+		while (it_vector != entity->usable_items.end()) {
+			//Make a new string for the name that marks the number of this item you currently have
+			if ((*it_vector)->quantity > 1) {
+				char quantity_num[(((sizeof(*it_vector)->quantity) * CHAR_BIT) + 2) / 3 + 2];
+				sprintf_s(quantity_num, "%d", (*it_vector)->quantity);
+				string new_name = (*it_vector)->name + " (x" + quantity_num +")";
+				names.push_back(new_name);
+			}
+			else{
+				names.push_back((*it_vector)->name);
+			}
+			entity_items.push_back(*it_vector);
+			it_vector++;
+		}
+	}
+	else {
+		names.push_back("0 Items");
+	}
+
+	//names.push_back("Item1");
+	//names.push_back("Item2");
+	//names.push_back("Item3");
+	//names.push_back("Item4");
+	//names.push_back("Item5");
 
 	if (names.size() > 3) {
 		items.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
@@ -569,13 +614,27 @@ void UICombatMenu::GoBack() {
 		iPoint backgroundPos = background->GetScreenPosition();
 
 		attack_label = App->gui->AddUILabel(backgroundPos.x + main_label1_pos.x, backgroundPos.y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
-		abilities_label = App->gui->AddUILabel(backgroundPos.x + main_label2_pos.x, backgroundPos.y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
-		items_label = App->gui->AddUILabel(backgroundPos.x + main_label3_pos.x, backgroundPos.y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
+		if (entity->abilities.size() != 0) {
+			abilities_label = App->gui->AddUILabel(backgroundPos.x + main_label2_pos.x, backgroundPos.y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
+		}
+		else {
+			abilities_label = App->gui->AddUILabel(backgroundPos.x + main_label2_pos.x, backgroundPos.y + main_label2_pos.y, "Abilities", { 255,0,0,255 }, font_size, nullptr, background);
+		}
+		if (entity->usable_items.size() != 0) {
+			items_label = App->gui->AddUILabel(backgroundPos.x + main_label3_pos.x, backgroundPos.y + main_label3_pos.y, "Items", { 255,255,255,255 }, font_size, nullptr, background);
+		}
+		else {
+			items_label = App->gui->AddUILabel(backgroundPos.x + main_label3_pos.x, backgroundPos.y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
+		}
 		attack_label->current_state = STATE_FOCUSED;
 		arrow->SetParent(attack_label);
 		main_labels.push_back(attack_label);
-		main_labels.push_back(abilities_label);
-		//main_labels.push_back(items_label);
+		if (entity->abilities.size() != 0) {
+			main_labels.push_back(abilities_label);
+		}
+		if (entity->usable_items.size() != 0) {
+			main_labels.push_back(items_label);
+		}
 
 		App->audio->PlayFx(App->audio->cm_back_fx);
 	}
@@ -705,6 +764,9 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 					}
 				}
 			}
+		}
+		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
+			
 		}
 	}
 
@@ -877,7 +939,7 @@ void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 			it_vector++;
 		}
 	}
-	else{
+	else if(current_vector == abilities){
 		if (explanation_label != nullptr) {
 			App->gui->DeleteUIElement(*explanation_label);
 		}
@@ -885,6 +947,20 @@ void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 			string description = entity->abilities.at(names_iterator).description;
 			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, description, { 255,255,255,255 }, nullptr, Second_Font);
 			explanation_label->SetParent(explanation_background);
+		}
+		else {
+			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, "You have non abilities in this moment", { 255,255,255,255 }, nullptr, Second_Font);
+			explanation_label->SetParent(explanation_background);
+		}
+	}
+	else if (current_vector == items) {
+		if (explanation_label != nullptr) {
+			App->gui->DeleteUIElement(*explanation_label);
+		}
+		if (entity->usable_items.size() != 0) {
+			/*string description = entity->usable_items.at(names_iterator).description;
+			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, description, { 255,255,255,255 }, nullptr, Second_Font);
+			explanation_label->SetParent(explanation_background);*/
 		}
 		else {
 			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, "You have non abilities in this moment", { 255,255,255,255 }, nullptr, Second_Font);

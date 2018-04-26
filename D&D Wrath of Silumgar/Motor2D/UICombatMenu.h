@@ -11,6 +11,7 @@
 
 struct Entity;
 struct Action;
+struct Item;
 struct 	ctPerfTimer;
 
 class UICombatMenu : public UIElement
@@ -35,6 +36,7 @@ public:
 	std::vector<UIElement*> items;
 	std::vector<std::string> names;
 	std::vector<Action> entity_actions;
+	std::vector<Item*> entity_items;
 	int names_iterator = 0;
 
 	iPoint label1_pos{ 10,20 };

@@ -237,13 +237,21 @@ void Entity::AddAction(Action new_action)
 	abilities.push_back(new_action);
 }
 
-void Entity::AddUsableItem(Item new_item)
+void Entity::AddUsableItem(Item &new_item)
 {
 	bool have_to_push_back = true;
 	for (int i = 0; i < usable_items.size(); i++)
 	{
-		//if(usable_items.at(i).)
+		if (usable_items.at(i)->usable_effects == new_item.usable_effects) {
+			usable_items.at(i)->quantity++;
+			have_to_push_back = false;
+			break;
+		}
 	}
+
+	if(have_to_push_back)
+		usable_items.push_back(&new_item);
+
 }
 
 void Entity::CalculateAllStats()

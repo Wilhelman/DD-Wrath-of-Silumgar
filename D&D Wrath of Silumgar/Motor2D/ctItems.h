@@ -94,10 +94,10 @@ public:
 public:
 
 private:
-	std::vector<Item> usable_items;
-	std::vector<Item> tier_1_equips;
-	std::vector<Item> tier_2_equips;
-	std::vector<Item> tier_3_equips;
+	std::vector<Item*> usable_items;
+	std::vector<Item*> tier_1_equips;
+	std::vector<Item*> tier_2_equips;
+	std::vector<Item*> tier_3_equips;
 
 };
 

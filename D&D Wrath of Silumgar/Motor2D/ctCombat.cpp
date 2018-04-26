@@ -134,6 +134,7 @@ bool ctCombat::Start()
 
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(0));
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(0));
+	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(4));
 
 	return ret;
 }

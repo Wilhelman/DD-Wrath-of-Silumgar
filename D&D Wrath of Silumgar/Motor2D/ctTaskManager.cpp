@@ -474,6 +474,7 @@ bool PerformActionToEntity::Execute()
 						actioner_entity->usable_items.at(i).quantity--;
 						if (actioner_entity->usable_items.at(i).quantity == 0)
 							actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin() + i);
+						break;
 					}
 				}
 

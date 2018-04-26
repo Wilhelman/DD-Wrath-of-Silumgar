@@ -351,6 +351,7 @@ bool PerformActionToEntity::Execute()
 			}
 		}
 		break;
+
 		case HEAL: {
 			
 			if (!HaveTeamObjective())
@@ -387,7 +388,8 @@ bool PerformActionToEntity::Execute()
 
 			}
 		}
-					   break;
+		break;
+
 		case MINDBLOWN: {
 
 			if (!HaveObjective())
@@ -452,7 +454,7 @@ bool PerformActionToEntity::Execute()
 
 			}
 		}
-					   break;
+		break;
 
 		case LOW_HEALTH_RECOVER_ACTION: {
 
@@ -471,7 +473,7 @@ bool PerformActionToEntity::Execute()
 					if (actioner_entity->usable_items.at(i).action.type == action_to_perform.type) {
 						actioner_entity->usable_items.at(i).quantity--;
 						if (actioner_entity->usable_items.at(i).quantity == 0)
-							actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin + i);
+							actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin() + i);
 					}
 				}
 
@@ -497,7 +499,8 @@ bool PerformActionToEntity::Execute()
 
 			}
 		}
-				   break;
+		break;
+
 		default:
 			break;
 		}

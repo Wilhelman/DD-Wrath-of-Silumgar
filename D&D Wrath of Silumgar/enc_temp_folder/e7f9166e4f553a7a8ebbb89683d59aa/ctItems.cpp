@@ -110,7 +110,7 @@ bool ctItems::Awake(pugi::xml_node& config)
 			break;
 		}
 
-		tmp_action.description = description;
+		item.action.description = description;
 		
 		item.action = tmp_action;
 		item.quantity = 1;

@@ -291,45 +291,39 @@ void Entity::CalculateAllStats()
 	tmp_luck += chest.statistics.luck;
 	tmp_judgement += chest.statistics.judgement;
 	
-	
-	if (guantlet != nullptr) {
-		tmp_constitution += guantlet->statistics.constitution;
-		tmp_focus += guantlet->statistics.focus;
-		tmp_strength += guantlet->statistics.strength;
-		tmp_intelligence += guantlet->statistics.intelligence;
-		tmp_dexterity += guantlet->statistics.dexterity;
-		tmp_agility += guantlet->statistics.agility;
-		tmp_physical_defense += guantlet->statistics.physical_defense;
-		tmp_magical_defense += guantlet->statistics.magical_defense;
-		tmp_luck += guantlet->statistics.luck;
-		tmp_judgement += guantlet->statistics.judgement;
-	}
+	tmp_constitution += guantlet.statistics.constitution;
+	tmp_focus += guantlet.statistics.focus;
+	tmp_strength += guantlet.statistics.strength;
+	tmp_intelligence += guantlet.statistics.intelligence;
+	tmp_dexterity += guantlet.statistics.dexterity;
+	tmp_agility += guantlet.statistics.agility;
+	tmp_physical_defense += guantlet.statistics.physical_defense;
+	tmp_magical_defense += guantlet.statistics.magical_defense;
+	tmp_luck += guantlet.statistics.luck;
+	tmp_judgement += guantlet.statistics.judgement;
 
-	if (boot != nullptr) {
-		tmp_constitution += boot->statistics.constitution;
-		tmp_focus += boot->statistics.focus;
-		tmp_strength += boot->statistics.strength;
-		tmp_intelligence += boot->statistics.intelligence;
-		tmp_dexterity += boot->statistics.dexterity;
-		tmp_agility += boot->statistics.agility;
-		tmp_physical_defense += boot->statistics.physical_defense;
-		tmp_magical_defense += boot->statistics.magical_defense;
-		tmp_luck += boot->statistics.luck;
-		tmp_judgement += boot->statistics.judgement;
-	}
+	tmp_constitution += boot.statistics.constitution;
+	tmp_focus += boot.statistics.focus;
+	tmp_strength += boot.statistics.strength;
+	tmp_intelligence += boot.statistics.intelligence;
+	tmp_dexterity += boot.statistics.dexterity;
+	tmp_agility += boot.statistics.agility;
+	tmp_physical_defense += boot.statistics.physical_defense;
+	tmp_magical_defense += boot.statistics.magical_defense;
+	tmp_luck += boot.statistics.luck;
+	tmp_judgement += boot.statistics.judgement;
 	
-	if (weapon != nullptr) {
-		tmp_constitution += weapon->statistics.constitution;
-		tmp_focus += weapon->statistics.focus;
-		tmp_strength += weapon->statistics.strength;
-		tmp_intelligence += weapon->statistics.intelligence;
-		tmp_dexterity += weapon->statistics.dexterity;
-		tmp_agility += weapon->statistics.agility;
-		tmp_physical_defense += weapon->statistics.physical_defense;
-		tmp_magical_defense += weapon->statistics.magical_defense;
-		tmp_luck += weapon->statistics.luck;
-		tmp_judgement += weapon->statistics.judgement;
-	}
+	tmp_constitution += weapon.statistics.constitution;
+	tmp_focus += weapon.statistics.focus;
+	tmp_strength += weapon.statistics.strength;
+	tmp_intelligence += weapon.statistics.intelligence;
+	tmp_dexterity += weapon.statistics.dexterity;
+	tmp_agility += weapon.statistics.agility;
+	tmp_physical_defense += weapon.statistics.physical_defense;
+	tmp_magical_defense += weapon.statistics.magical_defense;
+	tmp_luck += weapon.statistics.luck;
+	tmp_judgement += weapon.statistics.judgement;
+	
 
 	if (shield != nullptr) {
 		tmp_constitution += shield->statistics.constitution;

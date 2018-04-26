@@ -580,8 +580,15 @@
       <statistics constitution ="30" focus="999" strength="10"  agility="20"  dexterity ="20" intelligence="40" physicalDefense="18" magicalDefense="20" judgement="70"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
+        <animation name="front_head" speed="5.0" loop="true">
+          <frame x="16" y="11" width="252" height="157"/>
         </animation>
+        
+        <animation name="front_head" speed="5.0" loop="true">
+          <frame x="724" y="10" width="159" height="146"/>
+        <frame x="888" y="10" width="159" height="146"/>
+        <frame x="1067" y="10" width="159" height="146"/>
+        </animation>        
 
         <animation name="dragon_claw" speed="5.0" loop="true">
           <frame x="308" y="186" width="126" height="180"/>

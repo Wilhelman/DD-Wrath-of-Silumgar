@@ -38,20 +38,20 @@
       </emitter>
 
       <emitter type ="flame">
-        <angleRange min ="80" max ="110"/>
+        <angleRange min ="0" max ="360"/>
         <rotSpeed value ="0" randMin = "-1" randMax ="1"/>
-        <startSpeed value ="200" randMin = "0" randMax ="1"/>
-        <endSpeed value ="200" randMin = "0" randMax ="1"/>
+        <startSpeed value ="100" randMin = "0" randMax ="1"/>
+        <endSpeed value ="300" randMin = "0" randMax ="1"/>
         <startSize value ="0" randMin ="0" randMax ="1"/>
-        <endSize value =" 120" randMin ="1" randMax ="1"/>
-        <emitNumber value ="3"/>
+        <endSize value =" 60" randMin ="1" randMax ="1"/>
+        <emitNumber value ="1"/>
         <emitVariance value ="2" randMin ="0" randMax ="1"/>
-        <maxParticleLife value ="100"  randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="19"  randMin ="0" randMax ="1"/>
         <textureRect x="0" y="0" w="128" h="128"/>
-        <startColor r ="255" g="100" b="0" a="255"/>
+        <startColor r ="0" g="255" b="0" a="255"/>
         <endColor r ="210" g="210" b="210" a ="0"/>
         <blendMode mode ="add"/>
-        <lifetime value ="-1"/>
+        <lifetime value ="7"/>
       </emitter>
 
       <emitter type ="smoke">

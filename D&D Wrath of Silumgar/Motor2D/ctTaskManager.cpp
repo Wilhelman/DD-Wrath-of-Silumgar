@@ -395,8 +395,8 @@ bool PerformActionToEntity::Execute()
 				
 				
 				//TODO SITO
-
-
+				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_FLAME);
 				actioner_entity->Ability1();
 
 			}

@@ -21,7 +21,7 @@
 			</items>
 		</heroe>
 		<heroe name="warrior">
-			<values health_points="80" mana_points="28" />
+			<values health_points="104" mana_points="52" />
 			<skills>
 				<skill name="Kick" description="Physical attack that has a chance (80%) to stun the enemy" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
 			</skills>
@@ -30,7 +30,7 @@
 			</items>
 		</heroe>
 		<heroe name="dwarf">
-			<values health_points="77" mana_points="22" />
+			<values health_points="91" mana_points="52" />
 			<skills>
 				<skill name="H. Axe" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
 			</skills>
@@ -39,13 +39,12 @@
 			</items>
 		</heroe>
 		<heroe name="elf">
-			<values health_points="65" mana_points="33" />
+			<values health_points="65" mana_points="91" />
 			<skills>
 				<skill name="Mindblown" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />
-				</items>
 			</items>
 		</heroe>
 	</heroes>

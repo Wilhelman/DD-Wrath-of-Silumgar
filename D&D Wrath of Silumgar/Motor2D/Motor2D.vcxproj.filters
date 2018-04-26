@@ -332,5 +332,8 @@
     <ClInclude Include="ctItems.h">
       <Filter>Core\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ctEntitiesInfo.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

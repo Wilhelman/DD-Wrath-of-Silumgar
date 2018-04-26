@@ -60,7 +60,24 @@ bool ctItems::Awake(pugi::xml_node& config)
 		else if (tmp == "REVIVE_AN_ALLY")
 			item.usable_effects = REVIVE_AN_ALLY;
 
+		/*
 		
+		std::string name;
+	std::string description;
+	ActionType type = ACTION_NOT_DEFINED;
+	ActionObjectiveType objective = OBJECTIVE_NOT_DEFINED;
+
+	uint mana_cost = 0u;
+
+	int health_points_effect_to_himself = 0;
+	int mana_points_effect_to_himself = 0;
+	int health_points_effect = 0;
+	int mana_points_effect = 0;
+		*/
+
+		Action tmp_action;
+		tmp_action.name = item.name;
+		tmp_action.type = 
 
 		item.draw_coords = { usable.child("draw_coords").attribute("x").as_int(),usable.child("draw_coords").attribute("y").as_int(),usable.child("draw_coords").attribute("width").as_int(),usable.child("draw_coords").attribute("height").as_int() };
 		usable_items.push_back(item);

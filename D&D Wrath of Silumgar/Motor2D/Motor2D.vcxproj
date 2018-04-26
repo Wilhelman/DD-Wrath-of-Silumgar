@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cleric.h" />
+    <ClInclude Include="ctEntitiesInfo.h" />
     <ClInclude Include="ctItems.h" />
     <ClInclude Include="ctSkillTree.h" />
     <ClInclude Include="ctAnimation.h" />

@@ -55,6 +55,7 @@ bool ctCombat::Awake(pugi::xml_node& config)
 	return ret;
 }
 
+
 // Called before the first frame
 bool ctCombat::Start()
 {

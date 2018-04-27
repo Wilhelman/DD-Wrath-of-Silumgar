@@ -37,6 +37,8 @@ public:
 	std::vector<std::string> names;
 	std::vector<Action> entity_actions;
 	int names_iterator = 0;
+	int current_ability = 0;
+	int current_item = 0;
 
 	iPoint label1_pos{ 10,20 };
 	iPoint label2_pos{ 10,40 };

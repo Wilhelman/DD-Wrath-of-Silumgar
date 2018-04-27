@@ -196,20 +196,22 @@ bool ctRender::BlitParticle(SDL_Texture* texture, int x, int y, const SDL_Rect* 
 {
 	bool ret = true;
 	uint scale = App->win->GetScale();
+	float w_scalade = App->win->GetWScalade();
+	float h_scalade = App->win->GetHScalade();
 
 	SDL_Rect rect;
-	rect.x = (int)(camera.x * speed) + x * scale;
-	rect.y = (int)(camera.y * speed) + y * scale;
+	rect.x = (int)((camera.x * speed) + (x  * (scale_factor*w_scalade)));
+	rect.y = (int)((camera.y * speed) + (y  * (scale_factor*h_scalade)));
 
 	if (rectSize != NULL)
 	{
-		rect.w = rectSize->w;
-		rect.h = rectSize->h;
+		rect.w = rectSize->w*(scale_factor*w_scalade);
+		rect.h = rectSize->h*(scale_factor*h_scalade);
 	}
 	else if (section != NULL)
 	{
-		rect.w = section->w;
-		rect.h = section->h;
+		rect.w = section->w*(scale_factor*w_scalade);
+		rect.h = section->h*(scale_factor*h_scalade);
 	}
 	else
 		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
@@ -217,8 +219,8 @@ bool ctRender::BlitParticle(SDL_Texture* texture, int x, int y, const SDL_Rect* 
 	int px = rect.w / 2;
 	int py = rect.h / 2;
 
-	rect.w *= scale;
-	rect.h *= scale;
+	//rect.w *= scale;
+	//rect.h *= scale;
 
 	SDL_Point* p = NULL;
 	SDL_Point pivot;

@@ -204,7 +204,7 @@ bool PerformActionToEntity::Execute()
 							fPoint posP;
 							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
 							{
-								posP = { (float)(receiver_entity->position.x - (receiver_entity->animation->GetCurrentFrame().w / 6)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BUBBLE);
 							}
 							else
@@ -219,7 +219,7 @@ bool PerformActionToEntity::Execute()
 							fPoint posP;
 							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
 							{
-								posP = { (float)(receiver_entity->position.x - (receiver_entity->animation->GetCurrentFrame().w / 6)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BUBBLE);
 							}
 							else

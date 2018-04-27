@@ -185,6 +185,9 @@ bool PerformActionToEntity::Execute()
 						int damage_to_deal =  action_to_perform.health_points_effect;
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
+						//todo remove this:
+						if (actioner_entity->type == WARRIOR)
+							actioner_dexterity = 100;
 						random_thousand_faces_die = (rand() % 100) + 1;
 						if (random_thousand_faces_die <= actioner_dexterity) {
 							damage_to_deal = damage_to_deal * CRITICAL_VALUE;

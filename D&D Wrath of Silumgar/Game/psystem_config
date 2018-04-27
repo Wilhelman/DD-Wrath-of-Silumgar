@@ -51,7 +51,7 @@
         <startColor r ="0" g="255" b="0" a="255"/>
         <endColor r ="210" g="210" b="210" a ="0"/>
         <blendMode mode ="add"/>
-        <lifetime value ="7"/>
+        <lifetime value ="22"/>
       </emitter>
 
       <emitter type ="smoke">
@@ -123,20 +123,20 @@
       </emitter>
       
       <emitter type ="wave_2">
-        <angleRange min ="50" max ="130"/>
-        <rotSpeed value ="0" randMin ="-1" randMax ="1"/>
-        <startSpeed value ="0" randMin ="0" randMax ="1"/>
-        <endSpeed value ="0" randMin ="0" randMax ="1"/>
-        <startSize value ="0" randMin ="0" randMax ="1"/>
-        <endSize value =" 2600" randMin ="1" randMax ="1"/>
-        <emitNumber value ="1"/>
-        <emitVariance value ="0" randMin ="0" randMax ="1"/>
-        <maxParticleLife value ="150" randMin ="0" randMax ="1"/>
-        <textureRect x="384" y="256" w="256" h="256"/>
-        <startColor r ="255" g="100" b="0" a ="200"/>
-        <endColor r ="255" g="100" b="0" a ="0"/>
+        <angleRange min ="0" max ="45"/>
+        <rotSpeed value ="200" randMin ="-1" randMax ="1"/>
+        <startSpeed value ="400" randMin ="0" randMax ="1"/>
+        <endSpeed value ="300" randMin ="0" randMax ="1"/>
+        <startSize value ="12" randMin ="0" randMax ="2"/>
+        <endSize value =" 0" randMin ="1" randMax ="1"/>
+        <emitNumber value ="8"/>
+        <emitVariance value ="1" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="15" randMin ="0" randMax ="1"/>
+        <textureRect x="0" y="160" w="64" h="64"/>
+        <startColor r ="225" g="0" b="225" a="255"/>
+        <endColor r ="255" g="0" b="255" a="0"/>
         <blendMode mode ="add"/>
-        <lifetime value ="10"/>
+        <lifetime value ="28"/>
       </emitter>
       
       <emitter type ="bubbles">
@@ -153,7 +153,7 @@
         <startColor r ="255" g="100" b="0" a="255"/>
         <endColor r ="255" g="0" b="0" a="0"/>
         <blendMode mode ="add"/>
-        <lifetime value ="7"/>
+        <lifetime value ="14"/>
       </emitter>
 
       <emitter type ="spark">
@@ -170,7 +170,7 @@
         <startColor r ="255" g="100" b="0" a="255"/>
         <endColor r ="255" g="0" b="0" a="0"/>
         <blendMode mode ="add"/>
-        <lifetime value ="7"/>
+        <lifetime value ="14"/>
       </emitter>
 
       

@@ -195,24 +195,38 @@ bool PerformActionToEntity::Execute()
 						receiver_entity->animation = &receiver_entity->hit;
 						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
 						std::string tmp_dmg = std::to_string(damage_to_deal);
-						if(!critical)
+						if (!critical) {
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-						else
+							//TODO SITO
+							fPoint posP;
+							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
+							{
+								posP = { (float)(receiver_entity->position.x - (receiver_entity->animation->GetCurrentFrame().w / 6)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BUBBLE);
+							}
+							else
+							{
+								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_SPARK);
+							}
+						}
+						else {
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
-
+							//TODO SITO
+							fPoint posP;
+							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
+							{
+								posP = { (float)(receiver_entity->position.x - (receiver_entity->animation->GetCurrentFrame().w / 6)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BUBBLE);
+							}
+							else
+							{
+								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_WAVE_2);
+							}
+						}
 						
-						//TODO SITO
-						fPoint posP;
-						if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-						{
-							posP = { (float)(receiver_entity->position.x - (receiver_entity->animation->GetCurrentFrame().w / 6)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-							App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BUBBLE);
-						}
-						else
-						{
-							posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-							App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_SPARK);
-						}
+						
 						
 
 						receiver_entity->Damaged();
@@ -507,7 +521,8 @@ bool PerformActionToEntity::Execute()
 
 
 				//TODO SITO
-
+				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_FLAME);
 
 				//actioner_entity->Ability1();
 

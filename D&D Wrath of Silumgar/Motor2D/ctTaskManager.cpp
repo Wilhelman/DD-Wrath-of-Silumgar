@@ -413,7 +413,7 @@ bool PerformActionToEntity::Execute()
 				
 				//TODO SITO
 				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HEALTH);
+				
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HEALTH_AREA);
 				
 				actioner_entity->Ability1();
@@ -527,7 +527,7 @@ bool PerformActionToEntity::Execute()
 
 				//TODO SITO
 				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HEALTH);
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_LOWER_HEALTH);
 				
 
 				//actioner_entity->Ability1();

@@ -112,10 +112,18 @@ bool ctMainMenu::Update(float dt)
 		int mx, my;
 		App->input->GetMousePosition(mx, my);
 		fPoint pos((float)mx, (float)my);
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH);
+		//App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_LOWER_HEALTH);
 	}
 
+	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		//App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);
+	}
 	
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)

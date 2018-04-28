@@ -242,7 +242,7 @@ bool ctRender::BlitParticle(SDL_Texture* texture, int x, int y, const SDL_Rect* 
 	if (SDL_SetTextureColorMod(texture, color.r, color.g, color.b) != 0)
 		LOG("Cannot set texture color mode. SDL_SetTextureColorMod error: %s", SDL_GetError());
 
-	if (SDL_SetTextureAlphaMod(texture, color.a) != 0)
+	if (SDL_SetTextureAlphaMod(texture, 255) != 0)
 		LOG("Cannot set texture alpha mode. SDL_SetTextureAlphaMod error: %s", SDL_GetError());
 
 	if (SDL_SetTextureBlendMode(texture, blendMode) != 0)

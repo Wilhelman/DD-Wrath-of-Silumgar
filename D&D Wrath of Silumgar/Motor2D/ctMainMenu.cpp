@@ -86,9 +86,8 @@ bool ctMainMenu::Update(float dt)
 	{
 		int mx, my;
 		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)200, (float)200);
-		eWave_1 = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_WAVE_1);
-		eBurst_1 = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURST);
+		fPoint pos((float)mx, (float)my);
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BUBBLE);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)

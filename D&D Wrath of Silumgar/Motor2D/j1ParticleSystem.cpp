@@ -48,7 +48,20 @@ bool j1ParticleSystem::Awake(pugi::xml_node& config)
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_LOWER_HEALTH);
 		else if (emitterType == "health_area")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEALTH_AREA);
-	
+		else if (emitterType == "poison")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_POISON);
+		else if (emitterType == "health_potion")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEALTH_POTION);
+		else if (emitterType == "mana_potion")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_MANA_POTION);
+		else if (emitterType == "mindblown")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_MINDBLOWN);
+		else if (emitterType == "kick")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_KICK);
+		else if (emitterType == "high_axe")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIGH_AXE);
+		else if (emitterType == "burning")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BURNING);
 	}
 	return ret;
 }

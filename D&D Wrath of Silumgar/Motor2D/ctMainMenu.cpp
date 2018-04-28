@@ -87,7 +87,7 @@ bool ctMainMenu::Update(float dt)
 		int mx, my;
 		App->input->GetMousePosition(mx, my);
 		fPoint pos((float)mx, (float)my);
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HIT_HEROES); //hit heroes
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_POISON); 
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
@@ -95,7 +95,7 @@ bool ctMainMenu::Update(float dt)
 		int mx, my;
 		App->input->GetMousePosition(mx, my);
 		fPoint pos((float)mx, (float)my);
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HIT_ENEMY); //hit enemy
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_POTION); 
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
@@ -103,8 +103,8 @@ bool ctMainMenu::Update(float dt)
 		int mx, my;
 		App->input->GetMousePosition(mx, my);
 		fPoint pos((float)mx, (float)my);
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY); //critical
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_MANA_POTION); 
+		
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
@@ -113,7 +113,7 @@ bool ctMainMenu::Update(float dt)
 		App->input->GetMousePosition(mx, my);
 		fPoint pos((float)mx, (float)my);
 		//App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_LOWER_HEALTH);
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_MINDBLOWN);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
@@ -122,9 +122,26 @@ bool ctMainMenu::Update(float dt)
 		App->input->GetMousePosition(mx, my);
 		fPoint pos((float)mx, (float)my);
 		//App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_KICK);
 	}
 	
+	if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		//App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HIGH_AXE);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		//App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURNING);
+	}
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{

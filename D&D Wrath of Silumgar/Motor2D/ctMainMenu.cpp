@@ -87,15 +87,15 @@ bool ctMainMenu::Update(float dt)
 		int mx, my;
 		App->input->GetMousePosition(mx, my);
 		fPoint pos((float)mx, (float)my);
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BUBBLE);
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HIT_HEROES); //hit heroes
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 	{
 		int mx, my;
 		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)200, (float)200);
-		eFlame = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_FLAME);
+		fPoint pos((float)mx, (float)my);
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HIT_ENEMY); //hit enemy
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
@@ -103,7 +103,8 @@ bool ctMainMenu::Update(float dt)
 		int mx, my;
 		App->input->GetMousePosition(mx, my);
 		fPoint pos((float)mx, (float)my);
-		eFlame = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_FIRE_PURPLE);
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY); //critical
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
@@ -111,41 +112,11 @@ bool ctMainMenu::Update(float dt)
 		int mx, my;
 		App->input->GetMousePosition(mx, my);
 		fPoint pos((float)mx, (float)my);
-		eBubbles = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BUBBLE);
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
+		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		eWave_2 = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_WAVE_2);
-		eBurst_2 = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURST);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		eSmoke = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_SMOKE);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		eSpark = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_SPARK);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		ePixelSmoke = App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_PIXEL_SMOKE);
-	}
+	
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{

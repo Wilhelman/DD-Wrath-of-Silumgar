@@ -36,26 +36,19 @@ bool j1ParticleSystem::Awake(pugi::xml_node& config)
 
 		std::string emitterType = emitters.attribute("type").as_string();
 
-		if (emitterType == "fire")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_FIRE);
-		if (emitterType == "fire_purple")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_FIRE_PURPLE);
-		if (emitterType == "flame")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_FLAME);
-		else if (emitterType == "smoke")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_SMOKE);
-		else if (emitterType == "pixel_smoke")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_PIXEL_SMOKE);
-		else if (emitterType == "burst")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BURST);
-		else if (emitterType == "wave_1")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_WAVE_1);
-		else if (emitterType == "wave_2")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_WAVE_2);
-		else if (emitterType == "bubbles")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BUBBLE);
-		else if (emitterType == "spark")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_SPARK);
+		if (emitterType == "hit_heroes")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_HEROES);
+		if (emitterType == "hit_critical_heroes")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
+		if (emitterType == "hit_enemy")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_ENEMY);
+		else if (emitterType == "hit_critical_enemy")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
+		else if (emitterType == "health")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
+		else if (emitterType == "health_area")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEALTH_AREA);
+	
 	}
 	return ret;
 }

@@ -205,12 +205,12 @@ bool PerformActionToEntity::Execute()
 							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
 							{
 								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BUBBLE);
+								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
 							}
 							else
 							{
 								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_SPARK);
+								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_ENEMY);
 							}
 						}
 						else {
@@ -220,12 +220,12 @@ bool PerformActionToEntity::Execute()
 							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
 							{
 								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BUBBLE);
+								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
 							}
 							else
 							{
 								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_WAVE_2);
+								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
 							}
 						}
 						
@@ -413,8 +413,9 @@ bool PerformActionToEntity::Execute()
 				
 				//TODO SITO
 				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_WAVE_1);
-				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_FLAME);
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HEALTH);
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HEALTH_AREA);
+				
 				actioner_entity->Ability1();
 
 			}
@@ -526,8 +527,8 @@ bool PerformActionToEntity::Execute()
 
 				//TODO SITO
 				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_WAVE_1);
-				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_FLAME);
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HEALTH);
+				
 
 				//actioner_entity->Ability1();
 

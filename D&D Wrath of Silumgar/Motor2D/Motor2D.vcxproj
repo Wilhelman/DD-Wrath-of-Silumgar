@@ -59,6 +59,7 @@
     <ClCompile Include="UIImage.cpp" />
     <ClCompile Include="UILabel.cpp" />
     <ClCompile Include="UILevelUpInfo.cpp" />
+    <ClCompile Include="UIPauseMenu.cpp" />
     <ClCompile Include="UITextBox.cpp" />
     <ClCompile Include="UIVerticalSliceInfo.cpp" />
     <ClCompile Include="Warrior.cpp" />
@@ -118,6 +119,7 @@
     <ClInclude Include="UIImage.h" />
     <ClInclude Include="UILabel.h" />
     <ClInclude Include="UILevelUpInfo.h" />
+    <ClInclude Include="UIPauseMenu.h" />
     <ClInclude Include="UITextBox.h" />
     <ClInclude Include="UIVerticalSliceInfo.h" />
     <ClInclude Include="Warrior.h" />

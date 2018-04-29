@@ -189,6 +189,9 @@
     <ClCompile Include="ParticlePool.cpp">
       <Filter>Core\Modules\2D Particle Engine</Filter>
     </ClCompile>
+    <ClCompile Include="UIPauseMenu.cpp">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -360,5 +363,8 @@
       <Filter>Core\Modules\2D Particle Engine</Filter>
     </ClInclude>
     <ClInclude Include="ctEntitiesInfo.h" />
+    <ClInclude Include="UIPauseMenu.h">
+      <Filter>Core\Modules\GUI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

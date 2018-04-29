@@ -68,6 +68,8 @@ bool ctMainMenu::Start()
 		
 		LOG("Error playing music in ctMainMenu Start");
 	}
+
+	//App->gui->AddUIPauseMenu(0,0,this,nullptr);
 	
 	return ret;
 }

@@ -28,6 +28,7 @@ enum UI_Type
 	FLOATING_VALUE,
 	LEVELUPINFO,
 	VERTICALSLICEINFO,
+	PAUSEMENU,
 
 	UI_NOT_DEF
 };
@@ -76,6 +77,7 @@ public:
 	UIElement* AddUIFloatingValue(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback = nullptr, UIElement* parent = nullptr, const char* path = DEFAULT_FONT);
 	UIElement* AddUILevelUpInfo(int position_x, int position_y, EntityType hero, ctModule* callback = nullptr, UIElement* parent = nullptr);
 	UIElement* AddUIVerticalSliceInfo(int position_x, int position_y, bool overcome , ctModule* callback = nullptr, UIElement* parent = nullptr);
+	UIElement* AddUIPauseMenu(int position_x, int position_y, ctModule* callback = nullptr, UIElement* parent = nullptr);
 	UIElement* GetElementUnderMouse(int x, int y);
 
 private:
@@ -84,7 +86,9 @@ private:
 	std::vector<UIElement*> ui_elements;
 
 	SDL_Texture* atlas;
+	SDL_Texture* pause_menu_image;
 	std::string atlas_file_name;
+	std::string pause_menu_image_file_name;
 };
 
 #endif // __j1GUI_H__

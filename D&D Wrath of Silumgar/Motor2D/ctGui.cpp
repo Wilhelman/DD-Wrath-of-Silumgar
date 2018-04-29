@@ -18,6 +18,7 @@
 #include "UIFloatingValue.h"
 #include "UILevelUpInfo.h"
 #include "UIVerticalSliceInfo.h"
+#include "UIPauseMenu.h"
 
 
 #include "UIElement.h"
@@ -38,6 +39,7 @@ bool ctGui::Awake(pugi::xml_node& conf)
 	bool ret = true;
 
 	atlas_file_name = conf.child("atlas").attribute("file").as_string();
+	pause_menu_image_file_name = conf.child("pause_menu").attribute("file").as_string();
 
 	return ret;
 }
@@ -48,8 +50,13 @@ bool ctGui::Start()
 	bool ret = true;
 
 	atlas = App->tex->Load(atlas_file_name.c_str());
+	pause_menu_image = App->tex->Load(pause_menu_image_file_name.c_str());
 
 	if (atlas == NULL) {
+		LOG("Error loading UI spritesheet!!");
+		ret = false;
+	}
+	if (pause_menu_image == NULL) {
 		LOG("Error loading UI spritesheet!!");
 		ret = false;
 	}
@@ -73,12 +80,16 @@ bool ctGui::PostUpdate()
 {
 
 	for (int i = 0; i < ui_elements.size(); i++) {
-		if (ui_elements.at(i)->type != DIALOGBOX) {
+		if (ui_elements.at(i)->type != DIALOGBOX && ui_elements.at(i)->type != PAUSEMENU) {
 			if (ui_elements.at(i) != nullptr  && ui_elements.at(i)->non_drawable == false) ui_elements[i]->Draw(atlas);
 		}
-		else {
+		else if(ui_elements.at(i)->type == DIALOGBOX){
 			UIDialogBox* aux = (UIDialogBox*)ui_elements.at(i);
 			aux->Draw(atlas);
+		}
+		else if (ui_elements.at(i)->type == PAUSEMENU) {
+			UIPauseMenu* aux = (UIPauseMenu*)ui_elements.at(i);
+			aux->Draw(pause_menu_image);
 		}
 
 	}
@@ -244,6 +255,15 @@ UIElement* ctGui::AddUIDecision(int x, int y, int decision_number, UIElement* &a
 	UIElement* tmp_decision = new UIDecision(x, y, decision_number, DECISION, arrow, options, callback, parent);
 	ui_elements.push_back(tmp_decision);
 	return tmp_decision;
+
+	LOG("Error: Cant add the UIDecision");
+	return nullptr;
+}
+
+UIElement* ctGui::AddUIPauseMenu(int position_x, int position_y, ctModule* callback, UIElement* parent) {
+	UIElement* tmp_pause_menu = new UIPauseMenu(position_x, position_x, PAUSEMENU, callback, parent);
+	ui_elements.push_back(tmp_pause_menu);
+	return tmp_pause_menu;
 
 	LOG("Error: Cant add the UIDecision");
 	return nullptr;

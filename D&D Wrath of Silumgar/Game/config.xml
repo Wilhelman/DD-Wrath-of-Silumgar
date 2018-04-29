@@ -12,6 +12,7 @@
 	</font>
 	<gui>
 		<atlas file="textures/GUI/ui_atlas.png" />
+		<pause_menu file="textures/GUI/PauseMenu.png" />
 		<button>
 			<fx pressed="audio/fx/pressed_btn.wav" released="audio/fx/released_btn.wav" hover="audio/fx/hover_btn.wav" />
 		</button>

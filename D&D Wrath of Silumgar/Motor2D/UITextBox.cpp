@@ -5,14 +5,13 @@
 #include "ctGui.h"
 #include "ctFonts.h"
 
-UITextBox::UITextBox(int x, int y, UI_Type type, std::string text, SDL_Color color, int size, uint32 box_width, const char* path, UIElement* parent) : UIElement(x, y, type, parent)
+UITextBox::UITextBox(int x, int y, UI_Type type, std::string text, SDL_Color color, int size, uint32 box_width, const char* path, UIElement* parent, ctModule* callback) : UIElement(x, y, type, parent)
 {
+
+	this->callback = callback;
+
 	float lines = 0;
-
-
 	this->text = text;
-	this->text_color = color;
-	App->fonts->size = size;
 	_TTF_Font* new_font = App->fonts->Load(path, size);
 
 	int width_size = 0, height_size = 0;

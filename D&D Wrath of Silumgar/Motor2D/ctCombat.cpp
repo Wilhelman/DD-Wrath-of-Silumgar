@@ -78,10 +78,10 @@ bool ctCombat::Start()
 	warrior_background = App->gui->AddUIImage(242, -1, { 242,31,242,32 }, this, nullptr);
 	elf_background = App->gui->AddUIImage(-1, 293, { 0,32,242,32 }, this, nullptr);
 	dwarf_background = App->gui->AddUIImage(242, 293, { 242,0,242,32 }, this, nullptr);
-	cleric_name = App->gui->AddUILabel(200, 3, "Cleric", { 255,255,255,255 }, 15, this);
-	warrior_name = App->gui->AddUILabel(438, 3, "Warrior", { 255,255,255,255 }, 15, this);
-	elf_name = App->gui->AddUILabel(210, 296, "Elf", { 255,255,255,255 }, 15, this);
-	dwarf_name = App->gui->AddUILabel(443, 296, "Dwarf", { 255,255,255,255 }, 15, this);
+	cleric_name = App->gui->AddUITextBox(200, 3, 15, 500, "Cleric", { 255,255,255,255 }, nullptr, DEFAULT_FONT, this);
+	warrior_name = App->gui->AddUITextBox(438, 3, 15, 500, "Warrior", { 255,255,255,255 }, nullptr, DEFAULT_FONT, this);
+	elf_name = App->gui->AddUITextBox(210, 296, 15, 500, "Elf", { 255,255,255,255 }, nullptr, DEFAULT_FONT, this);
+	dwarf_name = App->gui->AddUITextBox(443, 296, 15, 500, "Dwarf", { 255,255,255,255 }, nullptr, DEFAULT_FONT, this);
 	
 	SpawnEntities();
 
@@ -821,7 +821,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			}
 			else {
 				if (combat_menu->background == nullptr) {
-					ready_cleric = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
+					ready_cleric = App->gui->AddUITextBox(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 20, 15, 500, "Ready", { 255,255,255,255 }, nullptr, DEFAULT_FONT, this);
 					combat_menu->~UICombatMenu();
 					App->gui->DeleteUIElement(*combat_menu);
 					combat_menu = nullptr;
@@ -837,7 +837,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			}
 			else {
 				if (combat_menu->background == nullptr) {
-					ready_dwarf = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
+					ready_dwarf = App->gui->AddUITextBox(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 20, 15, 500, "Ready", { 255,255,255,255 }, nullptr, DEFAULT_FONT, this);
 					combat_menu->~UICombatMenu();
 					App->gui->DeleteUIElement(*combat_menu);
 					combat_menu = nullptr;
@@ -853,7 +853,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			}
 			else {
 				if (combat_menu->background == nullptr) {
-					ready_elf = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
+					ready_elf = App->gui->AddUITextBox(entity_to_perform_action->position.x, entity_to_perform_action->position.y- entity_to_perform_action->animation->GetCurrentFrame().h-20, 15, 500, "Ready", { 255,255,255,255 }, nullptr, DEFAULT_FONT, this);
 					combat_menu->~UICombatMenu();
 					App->gui->DeleteUIElement(*combat_menu);
 					combat_menu = nullptr;
@@ -869,7 +869,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			}
 			else {
 				if (combat_menu->background == nullptr) {
-					ready_warrior = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y- entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
+					ready_warrior = App->gui->AddUITextBox(entity_to_perform_action->position.x, entity_to_perform_action->position.y- entity_to_perform_action->animation->GetCurrentFrame().h-20, 15, 500, "Ready", { 255,255,255,255 }, nullptr, DEFAULT_FONT, this);
 					combat_menu->~UICombatMenu();
 					App->gui->DeleteUIElement(*combat_menu);
 					combat_menu = nullptr;

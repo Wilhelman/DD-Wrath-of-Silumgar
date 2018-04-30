@@ -81,16 +81,10 @@
     <ClCompile Include="ctGui.cpp">
       <Filter>Core\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="UIButton.cpp">
-      <Filter>Core\Modules\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="UIElement.cpp">
       <Filter>Core\Modules\GUI</Filter>
     </ClCompile>
     <ClCompile Include="UIImage.cpp">
-      <Filter>Core\Modules\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="UILabel.cpp">
       <Filter>Core\Modules\GUI</Filter>
     </ClCompile>
     <ClCompile Include="ctFonts.cpp">
@@ -254,16 +248,10 @@
     <ClInclude Include="ctGui.h">
       <Filter>Core\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="UIButton.h">
-      <Filter>Core\Modules\GUI</Filter>
-    </ClInclude>
     <ClInclude Include="UIElement.h">
       <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
     <ClInclude Include="UIImage.h">
-      <Filter>Core\Modules\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="UILabel.h">
       <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
     <ClInclude Include="ctFonts.h">

@@ -19,6 +19,15 @@ UIFloatingValue::UIFloatingValue(int x, int y, UI_Type type, std::string text, S
 	App->fonts->CalcSize(this->text.c_str(), width, height, newFont);
 	current_rect.w = width;
 	current_rect.h = height;
+
+	if (parent == nullptr)
+		screen_position = local_position;
+	else
+	{
+		screen_position.x = parent->screen_position.x + local_position.x;
+		screen_position.y = parent->screen_position.y + local_position.y;
+	}
+
 }
 
 void UIFloatingValue::Update()
@@ -29,4 +38,13 @@ void UIFloatingValue::Update()
 	if (alpha <= 0)
 		alpha = 0;
 		
+}
+
+void UIFloatingValue::Draw(SDL_Texture* sprites)
+{
+	if (!non_drawable)
+	{
+		App->render->UIBlit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
+	}
+
 }

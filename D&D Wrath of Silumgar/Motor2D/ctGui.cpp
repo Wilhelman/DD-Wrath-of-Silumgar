@@ -6,10 +6,7 @@
 //#include "ctFonts.h"
 #include "ctInput.h"
 #include "ctGui.h"
-
-#include "UILabel.h"
 #include "UIImage.h"
-#include "UIButton.h"
 #include "UICombatMenu.h"
 #include "UITextBox.h"
 #include "UIDIalogBox.h"
@@ -168,25 +165,6 @@ UIElement* ctGui::AddUIImage(int position_x, int position_y, SDL_Rect rect, ctMo
 	return nullptr;
 }
 
-UIElement* ctGui::AddUIButton(int position_x, int position_y, SDL_Rect normal_rect, SDL_Rect focused_rect, SDL_Rect pressed_rect, ctModule* callback, UIElement* parent) {
-
-	UIElement* tmpBtn = new UIButton(position_x, position_y, BUTTON, normal_rect, focused_rect, pressed_rect, callback, parent);
-	ui_elements.push_back(tmpBtn);
-	return tmpBtn;
-
-	LOG("Error: Cant add the UIButton");
-	return nullptr;
-}
-
-UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback, UIElement* parent, const char* path) {
-
-	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color, size, callback, path, parent);
-	ui_elements.push_back(tmp_lbl);
-	return tmp_lbl;
-
-	LOG("Error: Cant add the UILabel");
-	return nullptr;
-}
 
 UIElement* ctGui::AddUIFloatingValue(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback, UIElement* parent, const char* path) {
 
@@ -224,10 +202,10 @@ UIElement* ctGui::AddUIVerticalSliceInfo(int position_x, int position_y, bool ov
 	return nullptr;
 }
 
-UIElement* ctGui::AddUITextBox(int position_x, int position_y, int size, int box_width, std::string text, SDL_Color color, UIElement* parent, const char* path) {
+UIElement* ctGui::AddUITextBox(int position_x, int position_y, int size, int box_width, std::string text, SDL_Color color, UIElement* parent, const char* path, ctModule* callback) {
 	UIElement* tmp_lbl = nullptr;
 
-	tmp_lbl = new UITextBox(position_x, position_y, TEXTBOX, text, color, size, box_width, path, parent);
+	tmp_lbl = new UITextBox(position_x, position_y, TEXTBOX, text, color, size, box_width, path, parent,callback);
 	ui_elements.push_back(tmp_lbl);
 
 	return tmp_lbl;
@@ -258,6 +236,7 @@ UIElement* ctGui::AddUIDecision(int x, int y, int decision_number, UIElement* &a
 
 	LOG("Error: Cant add the UIDecision");
 	return nullptr;
+	return tmp_decision;
 }
 
 UIElement* ctGui::AddUIPauseMenu(int position_x, int position_y, ctModule* callback, UIElement* parent) {

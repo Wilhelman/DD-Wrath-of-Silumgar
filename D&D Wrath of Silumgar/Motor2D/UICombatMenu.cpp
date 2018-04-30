@@ -540,12 +540,7 @@ void UICombatMenu::GoBack() {
 	}
 
 	if (main_labels.size() == 0) {
-		iPoint backgroundPos = background->GetScreenPosition();
-
-
-		items.push_back(App->gui->AddUITextBox(label1_pos.x, label1_pos.y, font_size, 500, names.at(0), { 255,255,255,255 }, background));
-		items.push_back(App->gui->AddUITextBox(label2_pos.x, label2_pos.y, font_size, 500, names.at(1), { 255,255,255,255 }, background));
-		items.push_back(App->gui->AddUITextBox(label3_pos.x, label3_pos.y, font_size, 500, names.at(2), { 255,255,255,255 }, background));
+		
 
 		attack_label = App->gui->AddUITextBox(main_label1_pos.x, main_label1_pos.y, font_size, 500, "Attack", { 255,255,255,255 }, background);
 		abilities_label = App->gui->AddUITextBox(main_label2_pos.x, main_label2_pos.y, font_size, 500, "Abilities", { 255,255,255,255 }, background);

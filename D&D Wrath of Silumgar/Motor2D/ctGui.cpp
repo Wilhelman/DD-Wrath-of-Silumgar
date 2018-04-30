@@ -232,10 +232,7 @@ UIElement* ctGui::AddUIBar(int position_x, int position_y, int max_capacity, UI_
 UIElement* ctGui::AddUIDecision(int x, int y, int decision_number, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent) {
 	UIElement* tmp_decision = new UIDecision(x, y, decision_number, DECISION, arrow, options, callback, parent);
 	ui_elements.push_back(tmp_decision);
-	return tmp_decision;
 
-	LOG("Error: Cant add the UIDecision");
-	return nullptr;
 	return tmp_decision;
 }
 

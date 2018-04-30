@@ -464,7 +464,58 @@
 					<frame x="0" y="0" w="0" h="0"/> NO IDLE-->
         </animation>
 
-      </animations>
+		<animation name="attack" speed="0.05" loop="false">
+		   <frame x="322" y="822" width="184" height="77"/>
+		   <frame x="175" y="822" width="184" height="77"/>
+		   <frame x="3" y="822" width="184" height="77"/>
+		   <frame x="470" y="822" width="184" height="77"/>
+		   <frame x="665" y="822" width="184" height="77"/>
+		</animation>
+		
+		<animation name="run" speed="0.05" loop="true">
+		   <frame x="3" y="14" width="65" height="83"/>
+		   <frame x="75" y="14" width="65" height="83"/>
+		   <frame x="154" y="14" width="65" height="83"/>
+		   <frame x="230" y="14" width="65" height="83"/>
+		   <frame x="301" y="14" width="65" height="83"/>
+		   <frame x="373" y="14" width="65" height="83"/>
+		   <frame x="454" y="14" width="65" height="83"/>
+		   <frame x="539" y="14" width="65" height="83"/>
+		   <frame x="618" y="14" width="65" height="83"/>
+		   
+		</animation>
+		
+		<animation name="explosive_ink" speed="0.05" loop="false">
+		   <frame x="0" y="507" width="98 " height="97"/>
+		   <frame x="107" y="507" width="98 " height="97"/>
+		   <frame x="203" y="507" width="98 " height="97"/>
+		   <frame x="307" y="507" width="98 " height="97"/>
+		   <frame x="412" y="507" width="98 " height="97"/>
+		   <frame x="522" y="507" width="98 " height="97"/>
+		</animation>
+		
+		<animation name="gastric_gases" speed="0.05" loop="false">
+		   <frame x="390" y="710" width="59 " height="91"/>
+		   <frame x="466" y="710" width="59 " height="91"/>
+		   <frame x="548" y="710" width="59 " height="91"/>
+		   <frame x="466" y="710" width="59 " height="91"/>
+		   <frame x="548" y="710" width="59 " height="91"/>
+		   
+		</animation>
+		
+		<animation name="hit" speed="0.05" loop="false">
+		   <frame x="638" y="223" width="73 " height="65"/>
+		   <frame x="634" y="223" width="73 " height="65"/>
+		   
+		</animation>
+		
+		<animation name="death" speed="0.05" loop="false">
+		   <frame x="69" y="306" width="98 " height="65"/>
+		   <frame x="207" y="223" width="98 " height="65"/>
+		   <frame x="335" y="223" width="98 " height="65"/>
+		</animation>
+		
+	  </animations>
 
     </triton>
 

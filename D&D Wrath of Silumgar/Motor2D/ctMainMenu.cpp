@@ -90,7 +90,6 @@ bool ctMainMenu::Update(float dt)
 		App->input->GetMousePosition(mx, my);
 		fPoint pos((float)mx, (float)my);
 		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_POISON);
-		App->entities->SpawnEntity(100, 100, HEAVY_GOBLIN);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)

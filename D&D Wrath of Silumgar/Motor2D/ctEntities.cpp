@@ -18,6 +18,7 @@
 #include "Owlbear.h"
 #include "Gnoll.h"
 #include "GnollArcher.h"
+#include "Goblin.h"
 
 #include "MiniHeroes.h"
 
@@ -49,6 +50,7 @@ bool ctEntities::Awake(pugi::xml_node& config)
 	gnoll_spritesheet_name = config.child("gnollA").attribute("spritesheetName").as_string();
 	gnollArcher_spritesheet_name = config.child("bowGnoll").attribute("spritesheetName").as_string();
 	owlbear_spritesheet_name = config.child("owlbear").attribute("spritesheetName").as_string();
+	goblin_spritesheet_name = config.child("goblins").attribute("spritesheetName").as_string();
 
 	miniheroes_spritesheet_name = config.child("miniheroes").attribute("spritesheetName").as_string();
 	return ret;
@@ -187,6 +189,13 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 		ret = true;
 		break;
 	}
+	case EntityType::GOBLIN: {
+		Goblin* goblin = new Goblin(x, y, GOBLIN);
+		entities.push_back(goblin);
+		App->combat->turn_priority_entity.push_back(goblin);
+		ret = true;
+		break;
+	}
 	case EntityType::MINIHEROES: {
 		MiniHeroes* miniheroes = new MiniHeroes(x, y, MINIHEROES);
 		entities.push_back(miniheroes);
@@ -310,6 +319,20 @@ Owlbear* ctEntities::GetOwlbear() const {
 		{
 			if (entities[i]->type == OWLBEAR)
 				return (Owlbear*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+Goblin* ctEntities::GetGoblin() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == GOBLIN)
+				return (Goblin*)entities[i];
 		}
 	}
 

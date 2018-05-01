@@ -398,6 +398,7 @@ void ctCombat::UpdateHPBarOfEntity(Entity * entity_to_update_bar, int quantity)
 		break;
 	case KOBOLD:
 	case GNOLL:
+	case GOBLIN:
 	case GNOLL_ARCHER:
 	case OWLBEAR:
 	{
@@ -431,6 +432,7 @@ void ctCombat::UpdateManaBarOfEntity(Entity * entity_to_update_bar, int quantity
 		break;
 	case KOBOLD:
 	case GNOLL:
+	case GOBLIN:
 	case GNOLL_ARCHER:
 	case OWLBEAR:
 	case MINIHEROES:
@@ -553,6 +555,8 @@ void ctCombat::SpawnEntities()
 		case GNOLL:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, GNOLL);
 			break;
+		case GOBLIN:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, GOBLIN);
 		default:
 			break;
 		}
@@ -880,6 +884,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 			break;
 		case KOBOLD: 
 		case GNOLL:
+		case GOBLIN:
 		case GNOLL_ARCHER:
 		case OWLBEAR:
 		{

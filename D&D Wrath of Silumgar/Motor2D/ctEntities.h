@@ -19,6 +19,7 @@ class Kobold;
 class Gnoll;
 class gnollArcher;
 class Owlbear;
+class Goblin;
 
 class MiniHeroes;
 
@@ -35,6 +36,7 @@ enum EntityType
 	GNOLL,
 	GNOLL_ARCHER,
 	OWLBEAR,
+	GOBLIN,
 
 	MINIHEROES,
 
@@ -87,6 +89,7 @@ public:
 	Gnoll* GetGnoll()const;
 	gnollArcher* GetGnoll_Archer()const;
 	Owlbear* GetOwlbear()const;
+	Goblin* GetGoblin()const;
 
 	MiniHeroes* GetMiniheroes()const;
 
@@ -117,6 +120,8 @@ public:
 	std::string gnollArcher_spritesheet_name;
 	//Owlbear_sources
 	std::string owlbear_spritesheet_name;
+	//Goblin_sources
+	std::string goblin_spritesheet_name;
 	//Miniheroes source
 	std::string miniheroes_spritesheet_name;
 

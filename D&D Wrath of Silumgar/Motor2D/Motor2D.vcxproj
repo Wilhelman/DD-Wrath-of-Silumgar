@@ -40,6 +40,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Gnoll.cpp" />
     <ClCompile Include="GnollArcher.cpp" />
+    <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="j1Language.cpp" />
     <ClCompile Include="j1Map.cpp" />
     <ClCompile Include="j1ParticleSystem.cpp" />
@@ -98,6 +99,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Gnoll.h" />
     <ClInclude Include="GnollArcher.h" />
+    <ClInclude Include="Goblin.h" />
     <ClInclude Include="j1Language.h" />
     <ClInclude Include="j1Map.h" />
     <ClInclude Include="j1ParticleSystem.h" />

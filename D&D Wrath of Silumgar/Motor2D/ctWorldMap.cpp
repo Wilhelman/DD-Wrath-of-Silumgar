@@ -69,6 +69,8 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 				tmp_map_element->entities.push_back(EntityType::KOBOLD);
 			else if (tmp == "GNOLL")
 				tmp_map_element->entities.push_back(EntityType::GNOLL);
+			else if (tmp == "GOBLIN")
+				tmp_map_element->entities.push_back(EntityType::GOBLIN);
 		}
 
 		all_map_elements.push_back(tmp_map_element);

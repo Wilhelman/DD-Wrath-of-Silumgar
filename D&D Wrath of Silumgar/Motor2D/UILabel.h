@@ -16,6 +16,7 @@ public:
 	UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, int size = DEFAULT_FONT_SIZE, ctModule* callback = nullptr, const char* path = DEFAULT_FONT, UIElement* parent = nullptr);
 
 	void Update();
+	void Draw(SDL_Texture* sprites);
 };
 
 #endif //__UILABEL_H__

@@ -2,6 +2,7 @@
 #include "UILabel.h"
 #include "ctLog.h"
 #include "ctGui.h"
+#include "ctRender.h"
 //#include "ctFonts.h"
 
 UILabel::UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, int size, ctModule* callback, const char* path, UIElement* parent) : UIElement(x, y, type, parent)
@@ -22,5 +23,16 @@ UILabel::UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, 
 
 void UILabel::Update()
 {
+
+}
+
+
+void UILabel::Draw(SDL_Texture* sprites)
+{
+
+	if (!non_drawable)
+	{
+		App->render->UIBlit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
+	}
 
 }

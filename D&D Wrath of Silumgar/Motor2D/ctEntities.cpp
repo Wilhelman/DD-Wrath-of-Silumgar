@@ -20,6 +20,7 @@
 #include "GnollArcher.h"
 #include "Goblin.h"
 #include "GoblinHeavy.h"
+#include "GoblinAlchemist.h"
 
 #include "MiniHeroes.h"
 
@@ -205,6 +206,13 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 		ret = true;
 		break;
 	}
+	case EntityType::ALCHEMIST_GOBLIN: {
+		Goblin_Alchemist* goblinAlchemist = new Goblin_Alchemist(x, y, ALCHEMIST_GOBLIN);
+		entities.push_back(goblinAlchemist);
+		App->combat->turn_priority_entity.push_back(goblinAlchemist);
+		ret = true;
+		break;
+	}
 	case EntityType::MINIHEROES: {
 		MiniHeroes* miniheroes = new MiniHeroes(x, y, MINIHEROES);
 		entities.push_back(miniheroes);
@@ -356,6 +364,20 @@ Goblin_Heavy* ctEntities::GetHeavyGoblin() const {
 		{
 			if (entities[i]->type == HEAVY_GOBLIN)
 				return (Goblin_Heavy*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+Goblin_Alchemist* ctEntities::GetAlchemistGoblin() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == ALCHEMIST_GOBLIN)
+				return (Goblin_Alchemist*)entities[i];
 		}
 	}
 

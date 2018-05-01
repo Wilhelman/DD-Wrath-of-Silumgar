@@ -21,6 +21,7 @@ class gnollArcher;
 class Owlbear;
 class Goblin;
 class Goblin_Heavy;
+class Goblin_Alchemist;
 
 class MiniHeroes;
 
@@ -39,6 +40,7 @@ enum EntityType
 	OWLBEAR,
 	GOBLIN,
 	HEAVY_GOBLIN,
+	ALCHEMIST_GOBLIN,
 
 	MINIHEROES,
 
@@ -93,6 +95,7 @@ public:
 	Owlbear* GetOwlbear()const;
 	Goblin* GetGoblin()const;
 	Goblin_Heavy* GetHeavyGoblin()const;
+	Goblin_Alchemist* GetAlchemistGoblin()const;
 
 
 	MiniHeroes* GetMiniheroes()const;

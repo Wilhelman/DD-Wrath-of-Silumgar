@@ -166,9 +166,9 @@
       <statistics constitution ="5" focus="5" strength="4" agility="6" dexterity ="4" intelligence="4"  physicalDefense="2" magicalDefense="1" judgement="25"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
-          <frame x="1021" y="120" w="68" h="46"/>
-					<frame x="1025" y="187" w="68" h="46"/>
+        <animation name="idle" speed="0.5" loop="true">
+          <frame x="1021" y="120" width="68" height="46"/>
+					<frame x="1025" y="187" width="68" height="46"/>
         </animation>
 
         <animation name="run" speed="5.0" loop="true">
@@ -182,14 +182,14 @@
           <frame x="354"  y="117" width="69" height="49"/>
         </animation>
 
-        <animation name="slash" speed="5.0" loop="true">
+        <animation name="slash" speed="0.05" loop="true">
           <frame x="471" y="238" width="109" height="83"/>
           <frame x="347" y="238" width="109" height="83"/>
           <frame x="216" y="238" width="109" height="83"/>
           <frame x="57" y="238" width="109" height="83"/>
         </animation>
 
-        <animation name="cooking_oil" speed="5.0" loop="true">
+        <animation name="cooking_oil" speed="0.05" loop="true">
           <frame x="978" y="326" width="80" height="55"/>
           <frame x="860" y="326" width="80" height="55"/>
           <frame x="755" y="326" width="80" height="55"/>
@@ -203,7 +203,7 @@
           <frame x="908"  y="450" width="44" height="47"/>
         </animation>
 
-        <animation name="death" speed="5.0" loop="true">
+        <animation name="death" speed="0.05" loop="true">
           <frame x="1001"  y="447" width="78" height="53"/>
           <frame x="891"  y="447" width="78" height="53"/>
           <frame x="775"  y="447" width="78" height="53"/>

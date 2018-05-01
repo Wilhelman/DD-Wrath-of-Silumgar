@@ -561,6 +561,9 @@ void ctCombat::SpawnEntities()
 		case HEAVY_GOBLIN:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, HEAVY_GOBLIN);
 			break;
+		case ALCHEMIST_GOBLIN:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, ALCHEMIST_GOBLIN);
+			break;
 		default:
 			break;
 		}
@@ -788,6 +791,15 @@ void ctCombat::DrawTurnPriority()
 			break;
 		case KOBOLD:
 			rect = { 881,71,26,26 };
+			break;
+		case GOBLIN:
+			rect = { 1039,610,26,26 };
+			break;
+		case HEAVY_GOBLIN:
+			rect = { 1039,1040,26,26 };
+			break;
+		case ALCHEMIST_GOBLIN:
+			rect = { 1039,121,26,26 };
 			break;
 		case GNOLL:
 			rect = { 821,8,26,26 };

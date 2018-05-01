@@ -10,18 +10,17 @@
 #include "ctCombat.h"
 #include "ctTaskManager.h"
 
-#include "GoblinHeavy.h"
+#include "GoblinAlchemist.h"
 
 
-Goblin_Heavy::Goblin_Heavy(int x, int y, EntityType type) : Entity(x, y, type) {
+Goblin_Alchemist::Goblin_Alchemist(int x, int y, EntityType type) : Entity(x, y, type) {
 
 	bool ret = true;
 
 	pugi::xml_document	config_file;
 	pugi::xml_node* node = &App->LoadEntities(config_file);
-	node = &node->child("enemies").child("heavyGoblin");
+	node = &node->child("enemies").child("alchemistGoblin");
 	texture = App->tex->Load(App->entities->goblins_spritesheet_name.data());
-
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
 	{
@@ -31,14 +30,18 @@ Goblin_Heavy::Goblin_Heavy(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &idle);
 		else if (tmp == "run")
 			LoadAnimation(animations, &run_forward);
-		else if (tmp == "axe_attack")
+		else if (tmp == "slash")
 			LoadAnimation(animations, &attack);
+		else if (tmp == "cooking_oil")
+			LoadAnimation(animations, &throw_object);
 		else if (tmp == "hit")
 			LoadAnimation(animations, &hit);
 		else if (tmp == "death")
 			LoadAnimation(animations, &death);
 		else if (tmp == "stun")
 			LoadAnimation(animations, &stun);
+		else if (tmp == "dodge")
+			LoadAnimation(animations, &dodge);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;
@@ -48,7 +51,7 @@ Goblin_Heavy::Goblin_Heavy(int x, int y, EntityType type) : Entity(x, y, type) {
 
 
 // Called each loop iteration
-void Goblin_Heavy::Update(float dt)
+void Goblin_Alchemist::Update(float dt)
 {
 
 	if (dt > 0)
@@ -61,13 +64,13 @@ void Goblin_Heavy::Update(float dt)
 
 }
 
-void Goblin_Heavy::SetPlayerAnimationsSpeed(float dt)
+void Goblin_Alchemist::SetPlayerAnimationsSpeed(float dt)
 {
 	idle.speed = idle_vel * dt;
 	run_forward.speed = run_forward_vel * dt;
 }
 
-void Goblin_Heavy::SetEntitiesSpeed(float dt)
+void Goblin_Alchemist::SetEntitiesSpeed(float dt)
 {
 	idle_vel = idle.speed;
 	run_forward_vel = run_forward.speed;
@@ -75,7 +78,7 @@ void Goblin_Heavy::SetEntitiesSpeed(float dt)
 	key_entities_speed = true;
 }
 
-void Goblin_Heavy::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
+void Goblin_Alchemist::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
 {
 	bool ret = true;
 
@@ -86,26 +89,25 @@ void Goblin_Heavy::LoadAnimation(pugi::xml_node animation_node, ctAnimation* ani
 	animation->loop = animation_node.attribute("loop").as_bool();
 }
 
-void Goblin_Heavy::Attack()
+void Goblin_Alchemist::Attack()
 {
-	App->audio->PlayFx(App->audio->gnoll_attack_fx, 0);
+	App->audio->PlayFx(App->audio->kobold_attack_fx, 0);
 
 }
 
-void  Goblin_Heavy::Death() {
-	App->audio->PlayFx(App->audio->gnoll_death_fx, 0);
+void  Goblin_Alchemist::Death() {
+	App->audio->PlayFx(App->audio->kobold_death_fx, 0);
 }
-void  Goblin_Heavy::Run() {
-	App->audio->PlayFx(App->audio->gnoll_run_fx, 0);
+void  Goblin_Alchemist::Run() {
+	App->audio->PlayFx(App->audio->kobold_run_fx, 0);
 }
-void  Goblin_Heavy::Damaged() {
-	App->audio->PlayFx(App->audio->gnoll_damaged_fx, 0);
+void  Goblin_Alchemist::Damaged() {
+	App->audio->PlayFx(App->audio->kobold_damaged_fx, 0);
 }
 
-void Goblin_Heavy::PerformAction()
+void Goblin_Alchemist::PerformAction()
 {
 	Entity* entity_objective = nullptr;
-
 	if (IsGoingToDoAnythingClever()) {
 		//in this case the kobold will search the weakest heroe since we dont have abilities
 		entity_objective = App->combat->GetTheWeakestHeroe();

@@ -37,6 +37,7 @@ public:
 	ctAnimation death = ctAnimation();
 	ctAnimation stun = ctAnimation();
 	ctAnimation dodge = ctAnimation();
+	
 
 	//custom animations
 	ctAnimation kick = ctAnimation();

@@ -51,7 +51,7 @@
 			</map_element>
 			<map_element>
 				<tier type="1" />
-				<entity name="GOBLIN" />
+				<entity name="HEAVYGOBLIN" />
 				<entity name="KOBOLD" />
 				<entity name="KOBOLD" />
 				<scene name="tavern.tmx" />

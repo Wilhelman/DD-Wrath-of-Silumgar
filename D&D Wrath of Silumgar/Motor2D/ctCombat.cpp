@@ -557,6 +557,8 @@ void ctCombat::SpawnEntities()
 			break;
 		case GOBLIN:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, GOBLIN);
+		case HEAVY_GOBLIN:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, HEAVY_GOBLIN);
 		default:
 			break;
 		}

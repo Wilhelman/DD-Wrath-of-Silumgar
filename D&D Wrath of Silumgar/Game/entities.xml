@@ -120,7 +120,7 @@
           <frame x="805"  y="548" width="70" height="48"/>
         </animation>
 
-        <animation name="run" speed="1.0" loop="true">
+        <animation name="run" speed="0.5" loop="true">
           <frame x="1026"  y="604" width="65" height="51"/>
           <frame x="937"  y="604" width="65" height="51"/>
           <frame x="846"  y="604" width="65" height="51"/>
@@ -226,12 +226,12 @@
       <statistics constitution ="6" focus="5" strength="5" agility="4" dexterity ="4" intelligence="3" physicalDefense="4" magicalDefense="2" judgement="30"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
-          <frame x="1027" y="1039" w="64" h="48"/>
-					<frame x="1031" y="1106" w="64" h="48"/>
+        <animation name="idle" speed="0.05" loop="true">
+          <frame x="1027" y="1039" width="64" height="48"/>
+					<frame x="1031" y="1106" width="64" height="48"/>
         </animation>
 
-        <animation name="run" speed="5.0" loop="true">
+        <animation name="run" speed="0.05" loop="true">
           <frame x="1028"  y="604" width="65" height="51"/>
           <frame x="935"  y="604" width="65" height="51"/>
           <frame x="838"  y="604" width="65" height="51"/>
@@ -242,24 +242,24 @@
           <frame x="346"  y="604" width="65" height="51"/>
         </animation>
 
-        <animation name="axe_attack" speed="5.0" loop="true">
+        <animation name="axe_attack" speed="0.05" loop="true">
           <frame x="452" y="1161" width="103" height="83"/>
           <frame x="341" y="1161" width="103" height="83"/>
           <frame x="220" y="1161" width="103" height="83"/>
           <frame x="73" y="1161" width="103" height="83"/>
         </animation>
 
-        <animation name="scoff" speed="5.0" loop="true">
+        <animation name="scoff" speed="0.05" loop="true">
           <frame x="882" y="983" width="70" height="45"/>
           <frame x="789" y="983" width="70" height="45"/>
         </animation>
 
-        <animation name="hit" speed="5.0" loop="true">
+        <animation name="hit" speed="0.05" loop="true">
           <frame x="983"  y="1313" width="47" height="46"/>
           <frame x="895"  y="1313" width="47" height="46"/>
         </animation>
 
-        <animation name="death" speed="5.0" loop="true">
+        <animation name="death" speed="0.05" loop="true">
           <frame x="972"  y="1309" width="70" height="53"/>
           <frame x="884"  y="1309" width="70" height="53"/>
           <frame x="761"  y="1309" width="70" height="53"/>

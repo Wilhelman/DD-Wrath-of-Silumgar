@@ -195,6 +195,9 @@
     <ClCompile Include="Goblin.cpp">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="GoblinHeavy.cpp">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -370,6 +373,9 @@
       <Filter>Core\Modules\GUI</Filter>
     </ClInclude>
     <ClInclude Include="Goblin.h">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="GoblinHeavy.h">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

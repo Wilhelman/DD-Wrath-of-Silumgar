@@ -19,6 +19,7 @@
 #include "Gnoll.h"
 #include "GnollArcher.h"
 #include "Goblin.h"
+#include "GoblinHeavy.h"
 
 #include "MiniHeroes.h"
 
@@ -50,7 +51,8 @@ bool ctEntities::Awake(pugi::xml_node& config)
 	gnoll_spritesheet_name = config.child("gnollA").attribute("spritesheetName").as_string();
 	gnollArcher_spritesheet_name = config.child("bowGnoll").attribute("spritesheetName").as_string();
 	owlbear_spritesheet_name = config.child("owlbear").attribute("spritesheetName").as_string();
-	goblin_spritesheet_name = config.child("goblins").attribute("spritesheetName").as_string();
+	goblins_spritesheet_name = config.child("goblins").attribute("spritesheetName").as_string();
+	goblin_heavy_spritesheet_name = config.child("goblins").attribute("spritesheetName").as_string();
 
 	miniheroes_spritesheet_name = config.child("miniheroes").attribute("spritesheetName").as_string();
 	return ret;
@@ -196,6 +198,13 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 		ret = true;
 		break;
 	}
+	case EntityType::HEAVY_GOBLIN: {
+		Goblin_Heavy* goblinHeavy = new Goblin_Heavy(x, y, HEAVY_GOBLIN);
+		entities.push_back(goblinHeavy);
+		App->combat->turn_priority_entity.push_back(goblinHeavy);
+		ret = true;
+		break;
+	}
 	case EntityType::MINIHEROES: {
 		MiniHeroes* miniheroes = new MiniHeroes(x, y, MINIHEROES);
 		entities.push_back(miniheroes);
@@ -333,6 +342,20 @@ Goblin* ctEntities::GetGoblin() const {
 		{
 			if (entities[i]->type == GOBLIN)
 				return (Goblin*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+Goblin_Heavy* ctEntities::GetHeavyGoblin() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == HEAVY_GOBLIN)
+				return (Goblin_Heavy*)entities[i];
 		}
 	}
 

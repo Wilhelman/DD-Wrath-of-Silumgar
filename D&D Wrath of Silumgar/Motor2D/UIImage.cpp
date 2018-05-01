@@ -8,11 +8,13 @@ UIImage::UIImage(int x, int y, UI_Type type, SDL_Rect rect, ctModule* callback, 
 {
 	this->callback = callback;
 
+	img_normal = rect;
 	current_rect = rect;
 
+	//LOG("UIImage created in x:%i, y:%i", x, y);
 }
 
-void UIImage::UpdateImageWithCoords(SDL_Rect rect)
+void UIImage::UpdateImageWithCoords(SDL_Rect rect) 
 {
 	current_rect = rect;
 }

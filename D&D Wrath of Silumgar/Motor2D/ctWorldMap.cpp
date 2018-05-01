@@ -210,7 +210,7 @@ bool ctWorldMap::Update(float dt)
 			App->gui->DeleteUIElement(*elf_level_up);
 			elf_level_up = nullptr;
 			
-				decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this,nullptr);
+				decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this);
 				(*options.rbegin())->current_state = STATE_FOCUSED;
 				arrow->SetParent(*options.rbegin());
 			
@@ -218,7 +218,8 @@ bool ctWorldMap::Update(float dt)
 		
 		else if (decision != nullptr)
 		{
-			decision->current_state = STATE_EXECUTED;
+			App->gui->DeleteUIElement(*decision);
+			decision = nullptr;
 		}
 		
 	}
@@ -368,8 +369,10 @@ bool ctWorldMap::Save(pugi::xml_node& save) const
 
 void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 {
-	if (elementTriggered->type == DECISION && ui_state == STATE_EXECUTED)
+	if (elementTriggered->type == DECISION)
 	{
+		if (ui_state == STATE_EXECUTED)
+		{
 			if (decision->options[0]->current_state == STATE_FOCUSED)
 			{
 
@@ -407,8 +410,8 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 
 			App->task_manager->PerformAllTheTasks();
 
-			App->gui->DeleteUIElement(*decision);
-			decision = nullptr;
+			decision->to_destroy = true;
+		}
 	}
 
 

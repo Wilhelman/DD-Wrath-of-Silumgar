@@ -1,11 +1,10 @@
 #include "ctApp.h"
-#include "UIFloatingValue.h"
+#include "UILabel.h"
 #include "ctLog.h"
 #include "ctGui.h"
-#include "ctTextures.h"
+//#include "ctFonts.h"
 
-
-UIFloatingValue::UIFloatingValue(int x, int y, UI_Type type, std::string text, SDL_Color color, int size, ctModule* callback, const char* path, UIElement* parent) : UIElement(x, y, type, parent)
+UILabel::UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, int size, ctModule* callback, const char* path, UIElement* parent) : UIElement(x, y, type, parent)
 {
 	this->callback = callback;
 	this->text = text;
@@ -21,12 +20,7 @@ UIFloatingValue::UIFloatingValue(int x, int y, UI_Type type, std::string text, S
 	current_rect.h = height;
 }
 
-void UIFloatingValue::Update()
+void UILabel::Update()
 {
-	this->screen_position.y--;
 
-	alpha -= 3;
-	if (alpha <= 0)
-		alpha = 0;
-		
 }

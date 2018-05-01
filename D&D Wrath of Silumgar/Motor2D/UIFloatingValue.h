@@ -11,7 +11,6 @@ public:
 	std::string text;
 
 	void Update();
-	void Draw(SDL_Texture* sprites);
 
 public:
 	UIFloatingValue(int x, int y, UI_Type type, std::string text, SDL_Color color, int size = DEFAULT_FONT_SIZE, ctModule* callback = nullptr, const char* path = DEFAULT_FONT, UIElement* parent = nullptr);

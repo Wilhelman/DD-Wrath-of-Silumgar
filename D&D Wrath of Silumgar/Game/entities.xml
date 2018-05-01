@@ -118,11 +118,9 @@
           <frame x="967"  y="550" width="70" height="48"/>
           <frame x="880"  y="549" width="70" height="48"/>
           <frame x="805"  y="548" width="70" height="48"/>
-          
-         
         </animation>
 
-        <animation name="run" speed="5.0" loop="true">
+        <animation name="run" speed="1.0" loop="true">
           <frame x="1026"  y="604" width="65" height="51"/>
           <frame x="937"  y="604" width="65" height="51"/>
           <frame x="846"  y="604" width="65" height="51"/>
@@ -133,19 +131,19 @@
           <frame x="388"  y="604" width="65" height="51"/>
         </animation>
 
-        <animation name="axe_attack" speed="0.01" loop="true">
+        <animation name="axe_attack" speed="1.0" loop="true">
           <frame x="464"  y="729" width="103" height="83"/>
           <frame x="341"  y="729" width="103" height="83"/>
           <frame x="211"  y="729" width="103" height="83"/>
           <frame x="41"  y="729" width="103" height="83"/>
         </animation>
 
-        <animation name="hit" speed="0.5" loop="true">
+        <animation name="hit" speed="1.0" loop="true">
           <frame x="994"  y="883" width="47" height="44"/>
           <frame x="908"  y="883" width="47" height="44"/>
         </animation>
 
-        <animation name="death" speed="0.05" loop="true">
+        <animation name="death" speed="1.0" loop="false">
           <frame x="984"  y="877" width="67" height="53"/>
           <frame x="898"  y="877" width="67" height="53"/>
           <frame x="792"  y="877" width="67" height="53"/>
@@ -298,7 +296,7 @@
           <frame x="5" y="268" width="176" height="123"/>
         </animation>
 
-        <animation name="run" speed="0.2" loop="false">
+        <animation name="run" speed="5.0" loop="false">
           <frame x="927" y="188" width="96" height="70"/>
           <frame x="826" y="188" width="96" height="70"/>
           <frame x="728" y="188" width="96" height="70"/>

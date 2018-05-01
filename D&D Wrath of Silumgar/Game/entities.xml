@@ -231,15 +231,15 @@
 					<frame x="1031" y="1106" width="64" height="48"/>
         </animation>
 
-        <animation name="run" speed="0.05" loop="true">
-          <frame x="1028"  y="604" width="65" height="51"/>
-          <frame x="935"  y="604" width="65" height="51"/>
-          <frame x="838"  y="604" width="65" height="51"/>
-          <frame x="741"  y="604" width="65" height="51"/>
-          <frame x="647"  y="604" width="65" height="51"/>
-          <frame x="548"  y="604" width="65" height="51"/>
-          <frame x="452"  y="604" width="65" height="51"/>
-          <frame x="346"  y="604" width="65" height="51"/>
+        <animation name="run" speed="5.0" loop="true">
+          <frame x="1028"  y="1039" width="65" height="48"/>
+          <frame x="935"  y="1039" width="65" height="48"/>
+          <frame x="838"  y="1039" width="65" height="48"/>
+          <frame x="741"  y="1039" width="65" height="48"/>
+          <frame x="647"  y="1039" width="65" height="48"/>
+          <frame x="548"  y="1039" width="65" height="48"/>
+          <frame x="452"  y="1039" width="65" height="48"/>
+          <frame x="346"  y="1039" width="65" height="48"/>
         </animation>
 
         <animation name="axe_attack" speed="0.05" loop="true">
@@ -247,11 +247,6 @@
           <frame x="341" y="1161" width="103" height="83"/>
           <frame x="220" y="1161" width="103" height="83"/>
           <frame x="73" y="1161" width="103" height="83"/>
-        </animation>
-
-        <animation name="scoff" speed="0.05" loop="true">
-          <frame x="882" y="983" width="70" height="45"/>
-          <frame x="789" y="983" width="70" height="45"/>
         </animation>
 
         <animation name="hit" speed="0.05" loop="true">
@@ -268,6 +263,11 @@
           <frame x="420"  y="1309" width="70" height="53"/>
           <frame x="295"  y="1309" width="70" height="53"/>
           <frame x="170"  y="1309" width="70" height="53"/>
+        </animation>
+        
+         <animation name="scoff" speed="0.05" loop="true">
+          <frame x="882" y="983" width="70" height="45"/>
+          <frame x="789" y="983" width="70" height="45"/>
         </animation>
 
         <animation name="head" speed="5.0" loop="true">

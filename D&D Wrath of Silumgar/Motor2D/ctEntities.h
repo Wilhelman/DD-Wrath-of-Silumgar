@@ -22,6 +22,9 @@ class Owlbear;
 class Goblin;
 class Goblin_Heavy;
 class Goblin_Alchemist;
+class Hellhound;
+class Triton;
+class Skeleton;
 
 class MiniHeroes;
 
@@ -41,6 +44,9 @@ enum EntityType
 	GOBLIN,
 	HEAVY_GOBLIN,
 	ALCHEMIST_GOBLIN,
+	HELLHOUND,
+	TRITON,
+	SKELETON,
 
 	MINIHEROES,
 
@@ -96,7 +102,9 @@ public:
 	Goblin* GetGoblin()const;
 	Goblin_Heavy* GetHeavyGoblin()const;
 	Goblin_Alchemist* GetAlchemistGoblin()const;
-
+	Triton* GetTriton()const;
+	Hellhound* GetHellhound()const;
+	Skeleton* GetSkeleton()const;
 
 	MiniHeroes* GetMiniheroes()const;
 
@@ -131,6 +139,13 @@ public:
 	std::string goblins_spritesheet_name;
 	//Goblin_sources
 	std::string goblin_heavy_spritesheet_name;
+	//Triton sources
+	std::string triton_spritesheet_name;
+	//Skeleton sources
+	std::string skeleton_spritesheet_name;
+	//Hellhound sources
+	std::string hellhound_spritesheet_name;
+
 	//Miniheroes source
 	std::string miniheroes_spritesheet_name;
 

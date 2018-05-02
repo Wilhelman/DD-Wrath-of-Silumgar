@@ -1,11 +1,11 @@
-#ifndef __Owlbear_H__
-#define __Owlbear_H__
+#ifndef __Skeleton_H__
+#define __Skeleton_H__
 
 #include "ctAnimation.h"
 #include "ctPoint.h"
 #include "Entity.h"
 
-class Owlbear : public Entity
+class Skeleton : public Entity
 {
 
 public:
@@ -28,7 +28,7 @@ private:
 
 public:
 
-	Owlbear(int x, int y, EntityType type);
+	Skeleton(int x, int y, EntityType type);
 
 	void Update(float dt);
 	void Attack();

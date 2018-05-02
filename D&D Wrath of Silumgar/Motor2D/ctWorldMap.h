@@ -19,6 +19,8 @@ struct WorldMapElement {
 	std::string scene_name;
 	SDL_Rect icon_rect;
 	iPoint coords_in_map = { 0,0 };
+	std::string decision;
+	std::string option;
 };
 
 class ctWorldMap : public ctModule
@@ -60,6 +62,8 @@ public:
 	std::vector<WorldMapElement*> final_map_elements;
 
 	void GenerateNewRandomlyMap();
+
+	WorldMapElement* SetDecision();
 
 private:
 

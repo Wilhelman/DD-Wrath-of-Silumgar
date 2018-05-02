@@ -66,8 +66,8 @@ bool ctWorldMap::Awake(pugi::xml_node& co)
 		tmp_map_element->tier = map_element.child("tier").attribute("type").as_uint();
 		tmp_map_element->scene_name = map_element.child("scene").attribute("name").as_string();
 		tmp_map_element->icon_rect = { map_element.child("icon_coords").attribute("x").as_int(), map_element.child("icon_coords").attribute("y").as_int(), map_element.child("icon_coords").attribute("width").as_int(), map_element.child("icon_coords").attribute("height").as_int() };
-		/*tmp_map_element->decision = map_element.child("decision").attribute("name").as_string();
-		tmp_map_element->option = map_element.child("option").attribute("name").as_string();*/
+		tmp_map_element->decision = map_element.child("decision").attribute("name").as_string();
+		tmp_map_element->option = map_element.child("option").attribute("name").as_string();
 
 		//FOR for each entity in xml and pushback it to the vector
 		for (pugi::xml_node entity = map_element.child("entity"); entity && ret; entity = entity.next_sibling("entity"))
@@ -230,7 +230,7 @@ bool ctWorldMap::Update(float dt)
 				decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this);
 				(*options.rbegin())->current_state = STATE_FOCUSED;
 				arrow->SetParent(*options.rbegin());
-			
+				SetDecision();
 		}
 		
 		else if (decision != nullptr)
@@ -564,4 +564,24 @@ void ctWorldMap::NavigateUp(std::vector<UIElement*> &current_vector) {
 		}
 		it_vector++;
 	}
+}
+
+WorldMapElement* ctWorldMap::SetDecision()
+{
+	WorldMapElement* tmp = nullptr;
+
+	for (std::vector<WorldMapElement*>::iterator it = final_map_elements.begin(); it != final_map_elements.end(); it++)
+	{
+		if ((*it)->coords_in_map.x +6 < avatar->position.x || (*it)->coords_in_map.x  >= avatar->position.x)
+		{
+			if ((*it)->coords_in_map.y + 36 < avatar->position.x || (*it)->coords_in_map.y >= avatar->position.x)
+			{
+				tmp = (*it);
+			}
+		}
+
+	}
+	
+	return tmp;
+
 }

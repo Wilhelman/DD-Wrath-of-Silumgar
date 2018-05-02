@@ -10,17 +10,17 @@
 #include "ctCombat.h"
 #include "ctTaskManager.h"
 
-#include "Owlbear.h"
+#include "DarkWarrior.h"
 
 
-Owlbear::Owlbear(int x, int y, EntityType type) : Entity(x, y, type) {
+DarkWarrior::DarkWarrior(int x, int y, EntityType type) : Entity(x, y, type) {
 
 	bool ret = true;
 
 	pugi::xml_document	config_file;
 	pugi::xml_node* node = &App->LoadEntities(config_file);
-	node = &node->child("enemies").child("heavyGoblin");
-	texture = App->tex->Load(App->entities->goblins_spritesheet_name.data());
+	node = &node->child("enemies").child("darkWarrior");
+	texture = App->tex->Load(App->entities->dark_warrior_spritesheet_name.data());
 
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
@@ -39,6 +39,8 @@ Owlbear::Owlbear(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &death);
 		else if (tmp == "stun")
 			LoadAnimation(animations, &stun);
+		else if (tmp == "dodge")
+			LoadAnimation(animations, &dodge);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;
@@ -48,7 +50,7 @@ Owlbear::Owlbear(int x, int y, EntityType type) : Entity(x, y, type) {
 
 
 // Called each loop iteration
-void Owlbear::Update(float dt)
+void DarkWarrior::Update(float dt)
 {
 
 	if (dt > 0)
@@ -61,13 +63,13 @@ void Owlbear::Update(float dt)
 
 }
 
-void Owlbear::SetPlayerAnimationsSpeed(float dt)
+void DarkWarrior::SetPlayerAnimationsSpeed(float dt)
 {
 	idle.speed = idle_vel * dt;
 	run_forward.speed = run_forward_vel * dt;
 }
 
-void Owlbear::SetEntitiesSpeed(float dt)
+void DarkWarrior::SetEntitiesSpeed(float dt)
 {
 	idle_vel = idle.speed;
 	run_forward_vel = run_forward.speed;
@@ -75,7 +77,7 @@ void Owlbear::SetEntitiesSpeed(float dt)
 	key_entities_speed = true;
 }
 
-void Owlbear::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
+void DarkWarrior::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
 {
 	bool ret = true;
 
@@ -86,23 +88,23 @@ void Owlbear::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animatio
 	animation->loop = animation_node.attribute("loop").as_bool();
 }
 
-void Owlbear::Attack()
+void DarkWarrior::Attack()
 {
 	App->audio->PlayFx(App->audio->gnoll_attack_fx, 0);
 
 }
 
-void  Owlbear::Death() {
+void  DarkWarrior::Death() {
 	App->audio->PlayFx(App->audio->gnoll_death_fx, 0);
 }
-void  Owlbear::Run() {
+void  DarkWarrior::Run() {
 	App->audio->PlayFx(App->audio->gnoll_run_fx, 0);
 }
-void  Owlbear::Damaged() {
+void  DarkWarrior::Damaged() {
 	App->audio->PlayFx(App->audio->gnoll_damaged_fx, 0);
 }
 
-void Owlbear::PerformAction()
+void DarkWarrior::PerformAction()
 {
 	Entity* entity_objective = nullptr;
 

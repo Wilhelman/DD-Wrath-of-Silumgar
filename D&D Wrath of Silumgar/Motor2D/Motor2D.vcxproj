@@ -34,6 +34,7 @@
     <ClCompile Include="ctTimer.cpp" />
     <ClCompile Include="ctWindow.cpp" />
     <ClCompile Include="ctWorldMap.cpp" />
+    <ClCompile Include="DarkWarrior.cpp" />
     <ClCompile Include="Dwarf.cpp" />
     <ClCompile Include="Elf.cpp" />
     <ClCompile Include="Emitter.cpp" />
@@ -43,6 +44,7 @@
     <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="GoblinAlchemist.cpp" />
     <ClCompile Include="GoblinHeavy.cpp" />
+    <ClCompile Include="Hellhound.cpp" />
     <ClCompile Include="j1Language.cpp" />
     <ClCompile Include="j1Map.cpp" />
     <ClCompile Include="j1ParticleSystem.cpp" />
@@ -52,6 +54,8 @@
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticlePool.cpp" />
     <ClCompile Include="pugixml.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
+    <ClCompile Include="Triton.cpp" />
     <ClCompile Include="UIBar.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UICombatMenu.cpp" />
@@ -95,6 +99,7 @@
     <ClInclude Include="ctTimer.h" />
     <ClInclude Include="ctWindow.h" />
     <ClInclude Include="ctWorldMap.h" />
+    <ClInclude Include="DarkWarrior.h" />
     <ClInclude Include="Dwarf.h" />
     <ClInclude Include="Elf.h" />
     <ClInclude Include="Emitter.h" />
@@ -104,6 +109,7 @@
     <ClInclude Include="Goblin.h" />
     <ClInclude Include="GoblinAlchemist.h" />
     <ClInclude Include="GoblinHeavy.h" />
+    <ClInclude Include="Hellhound.h" />
     <ClInclude Include="j1Language.h" />
     <ClInclude Include="j1Map.h" />
     <ClInclude Include="j1ParticleSystem.h" />
@@ -115,6 +121,8 @@
     <ClInclude Include="ParticlePool.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
+    <ClInclude Include="Skeleton.h" />
+    <ClInclude Include="Triton.h" />
     <ClInclude Include="UIBar.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UICombatMenu.h" />

@@ -21,6 +21,10 @@
 #include "Goblin.h"
 #include "GoblinHeavy.h"
 #include "GoblinAlchemist.h"
+#include "Triton.h"
+#include "Hellhound.h"
+#include "Skeleton.h"
+#include "DarkWarrior.h"
 
 #include "MiniHeroes.h"
 
@@ -54,6 +58,10 @@ bool ctEntities::Awake(pugi::xml_node& config)
 	owlbear_spritesheet_name = config.child("owlbear").attribute("spritesheetName").as_string();
 	goblins_spritesheet_name = config.child("goblins").attribute("spritesheetName").as_string();
 	goblin_heavy_spritesheet_name = config.child("goblins").attribute("spritesheetName").as_string();
+	triton_spritesheet_name = config.child("triton").attribute("spritesheetName").as_string();
+	skeleton_spritesheet_name = config.child("skeleton").attribute("spritesheetName").as_string();
+	hellhound_spritesheet_name = config.child("hellhound").attribute("spritesheetName").as_string();
+	dark_warrior_spritesheet_name = config.child("darkWarrior").attribute("spritesheetName").as_string();
 
 	miniheroes_spritesheet_name = config.child("miniheroes").attribute("spritesheetName").as_string();
 	return ret;
@@ -213,10 +221,37 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 		ret = true;
 		break;
 	}
+	case EntityType::HELLHOUND: {
+		Hellhound* hellhound = new Hellhound(x, y, HELLHOUND);
+		entities.push_back(hellhound);
+		App->combat->turn_priority_entity.push_back(hellhound);
+		ret = true;
+		break;
+	}
+	case EntityType::SKELETON: {
+		Skeleton* skeleton = new Skeleton(x, y, SKELETON);
+		entities.push_back(skeleton);
+		App->combat->turn_priority_entity.push_back(skeleton);
+		ret = true;
+		break;
+	}
+	case EntityType::TRITON: {
+		Triton* triton = new Triton(x, y, TRITON);
+		entities.push_back(triton);
+		App->combat->turn_priority_entity.push_back(triton);
+		ret = true;
+		break;
+	}
+	case EntityType::DARK_WARRIOR: {
+		DarkWarrior* darky = new DarkWarrior(x, y, DARK_WARRIOR);
+		entities.push_back(darky);
+		App->combat->turn_priority_entity.push_back(darky);
+		ret = true;
+		break;
+	}
 	case EntityType::MINIHEROES: {
 		MiniHeroes* miniheroes = new MiniHeroes(x, y, MINIHEROES);
 		entities.push_back(miniheroes);
-		
 		ret = true;
 		break;
 	}
@@ -378,6 +413,51 @@ Goblin_Alchemist* ctEntities::GetAlchemistGoblin() const {
 		{
 			if (entities[i]->type == ALCHEMIST_GOBLIN)
 				return (Goblin_Alchemist*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+
+Triton* ctEntities::GetTriton() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == TRITON)
+				return (Triton*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+
+Skeleton* ctEntities::GetSkeleton() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == SKELETON)
+				return (Skeleton*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+
+Hellhound* ctEntities::GetHellhound() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == HELLHOUND)
+				return (Hellhound*)entities[i];
 		}
 	}
 

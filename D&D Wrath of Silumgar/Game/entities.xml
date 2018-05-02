@@ -621,16 +621,16 @@
       <statistics constitution ="40" focus="15" strength="20" agility="14" dexterity ="15" intelligence="33" physicalDefense="14" magicalDefense="14" judgement="40"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
+        <animation name="idle" speed="2.0" loop="true">
           <frame x="1759" y="403" width="151" height="147"/>
           <frame x="1515" y="403" width="151" height="147"/>
         </animation>
 
-        <animation name="hit" speed="5.0" loop="true">
+        <animation name="hit" speed="0.01" loop="false">
           <frame x="112" y="2502" width="156" height="146"/>
         </animation>
 
-        <animation name="death" speed="5.0" loop="true">
+        <animation name="death" speed="0.5" loop="true">
           <frame x="88" y="2502" width="205" height="152"/>
           <frame x="309" y="2502" width="205" height="152"/>
           <frame x="540" y="2502" width="205" height="152"/>

@@ -201,6 +201,18 @@
     <ClCompile Include="GoblinAlchemist.cpp">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Hellhound.cpp">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Triton.cpp">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="DarkWarrior.cpp">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -382,6 +394,18 @@
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="GoblinAlchemist.h">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Hellhound.h">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Triton.h">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="DarkWarrior.h">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

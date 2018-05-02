@@ -401,6 +401,9 @@ void ctCombat::UpdateHPBarOfEntity(Entity * entity_to_update_bar, int quantity)
 	case GOBLIN:
 	case GNOLL_ARCHER:
 	case OWLBEAR:
+	case TRITON:
+	case HELLHOUND:
+	case SKELETON:
 	{
 		UIBar* tmp_bar = this->GetUIBarFromEntity(entity_to_update_bar);
 		tmp_bar->LowerBar(quantity);
@@ -435,6 +438,9 @@ void ctCombat::UpdateManaBarOfEntity(Entity * entity_to_update_bar, int quantity
 	case GOBLIN:
 	case GNOLL_ARCHER:
 	case OWLBEAR:
+	case TRITON:
+	case HELLHOUND:
+	case SKELETON:
 	case MINIHEROES:
 	case NO_TYPE:
 		break;
@@ -563,6 +569,18 @@ void ctCombat::SpawnEntities()
 			break;
 		case ALCHEMIST_GOBLIN:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, ALCHEMIST_GOBLIN);
+			break;
+		case SKELETON:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, SKELETON);
+			break;
+		case HELLHOUND:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, HELLHOUND);
+			break;
+		case TRITON:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, TRITON);
+			break;
+		case DARK_WARRIOR:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, DARK_WARRIOR);
 			break;
 		default:
 			break;
@@ -810,6 +828,15 @@ void ctCombat::DrawTurnPriority()
 		case OWLBEAR:
 			rect = { 1147, 19, 26, 26 };
 			break;
+		case TRITON:
+			rect = { 70, 11, 26, 26 };
+			break;
+		case SKELETON:
+			rect = { 264, 86, 26, 26 };
+			break;
+		case HELLHOUND:
+			rect = { 858, 22, 26, 26 };
+			break;
 		case MINIHEROES:
 			break;
 		case NO_TYPE:
@@ -903,6 +930,10 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		case GOBLIN:
 		case GNOLL_ARCHER:
 		case OWLBEAR:
+		case HELLHOUND:
+		case TRITON:
+		case SKELETON:
+		case DARK_WARRIOR:
 		{
 			bool can_perform_action = true;
 			//todo do an action like IsStunned()

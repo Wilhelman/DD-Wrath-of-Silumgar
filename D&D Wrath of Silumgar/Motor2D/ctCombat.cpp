@@ -579,6 +579,9 @@ void ctCombat::SpawnEntities()
 		case TRITON:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, TRITON);
 			break;
+		case DARK_WARRIOR:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, DARK_WARRIOR);
+			break;
 		default:
 			break;
 		}
@@ -930,6 +933,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		case HELLHOUND:
 		case TRITON:
 		case SKELETON:
+		case DARK_WARRIOR:
 		{
 			bool can_perform_action = true;
 			//todo do an action like IsStunned()

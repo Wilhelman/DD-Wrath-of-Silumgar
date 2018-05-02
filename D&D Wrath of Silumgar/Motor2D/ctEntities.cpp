@@ -24,6 +24,7 @@
 #include "Triton.h"
 #include "Hellhound.h"
 #include "Skeleton.h"
+#include "DarkWarrior.h"
 
 #include "MiniHeroes.h"
 
@@ -60,6 +61,7 @@ bool ctEntities::Awake(pugi::xml_node& config)
 	triton_spritesheet_name = config.child("triton").attribute("spritesheetName").as_string();
 	skeleton_spritesheet_name = config.child("skeleton").attribute("spritesheetName").as_string();
 	hellhound_spritesheet_name = config.child("hellhound").attribute("spritesheetName").as_string();
+	dark_warrior_spritesheet_name = config.child("darkWarrior").attribute("spritesheetName").as_string();
 
 	miniheroes_spritesheet_name = config.child("miniheroes").attribute("spritesheetName").as_string();
 	return ret;
@@ -240,10 +242,16 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 		ret = true;
 		break;
 	}
+	case EntityType::DARK_WARRIOR: {
+		DarkWarrior* darky = new DarkWarrior(x, y, DARK_WARRIOR);
+		entities.push_back(darky);
+		App->combat->turn_priority_entity.push_back(darky);
+		ret = true;
+		break;
+	}
 	case EntityType::MINIHEROES: {
 		MiniHeroes* miniheroes = new MiniHeroes(x, y, MINIHEROES);
 		entities.push_back(miniheroes);
-		
 		ret = true;
 		break;
 	}

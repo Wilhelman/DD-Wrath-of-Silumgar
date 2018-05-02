@@ -210,6 +210,9 @@
     <ClCompile Include="Skeleton.cpp">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="DarkWarrior.cpp">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -400,6 +403,9 @@
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Skeleton.h">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="DarkWarrior.h">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

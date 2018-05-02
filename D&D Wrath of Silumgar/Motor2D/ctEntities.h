@@ -47,6 +47,7 @@ enum EntityType
 	HELLHOUND,
 	TRITON,
 	SKELETON,
+	DARK_WARRIOR,
 
 	MINIHEROES,
 
@@ -145,6 +146,8 @@ public:
 	std::string skeleton_spritesheet_name;
 	//Hellhound sources
 	std::string hellhound_spritesheet_name;
+	//DarkWarrior sources
+	std::string dark_warrior_spritesheet_name;
 
 	//Miniheroes source
 	std::string miniheroes_spritesheet_name;

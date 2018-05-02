@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+  <config>
+  <world_map>
+    <spritesheet name="textures/WorldMap/map_spritesheet.png" />
+    <world_map_tmx name="world_map.tmx" />
+
+    <world_map_elements>
+      
+        <map_element>
+          <tier type="1" />
+          <entity name="KOBOLD" />
+          <scene name="tavern.tmx" />
+          <icon_coords x="0" y="480" width="32" height="32" /> 
+          <decision name ="mimi"/>
+          <option name = "mimimi"/>
+        </map_element>
+      
+      <map_element>
+        <tier type="2" />
+        <entity name="GNOLL" />
+        <scene name="forest.tmx" />
+        <icon_coords x="224" y="480" width="32" height="32" />
+        <decision name ="mimi"/>
+        <option name = "mimimi"/>
+      </map_element>
+      
+      <map_element>
+        <tier type="2" />
+        <entity name="GNOLL" />
+        <entity name="GNOLL" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="64" y="512" width="32" height="32" />
+        <decision name ="mimi"/>
+        <option name = "mimimi"/>
+      </map_element>
+
+      <map_element>
+        <tier type="2" />
+        <entity name="KOBOLD" />
+        <entity name="GNOLL" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="128" y="512" width="32" height="32" />
+        <decision name ="mimi"/>
+        <option name = "mimimi"/>
+      </map_element>
+
+      <map_element>
+        <tier type="2" />
+        <entity name="KOBOLD" />
+        <entity name="KOBOLD" />
+        <entity name="GNOLL" />
+        <icon_coords x="32" y="512" width="32" height="32" />
+        <decision name ="mimi"/>
+        <option name = "mimimi"/>
+      </map_element>
+
+      <map_element>
+        <tier type="3" />
+        <entity name="GNOLL" />
+        <scene name="forest.tmx" />
+        <icon_coords x="160" y="480" width="32" height="32" />
+        <decision name ="mimi"/>
+        <option name = "mimimi"/>
+      </map_element>
+
+      <map_element>
+        <tier type="3" />
+        <entity name="GNOLL" />
+        <entity name="GNOLL" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="192" y="480" width="32" height="32" />
+        <decision name ="mimi"/>
+        <option name = "mimimi"/>
+      </map_element>
+
+      <map_element>
+        <tier type="3" />
+        <entity name="KOBOLD" />
+        <entity name="GNOLL" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="256" y="480" width="32" height="32" />
+        <decision name ="mimi"/>
+        <option name = "mimimi"/>
+      </map_element>
+
+      <map_element>
+        <tier type="3" />
+        <entity name="KOBOLD" />
+        <entity name="KOBOLD" />
+        <entity name="GNOLL" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="288" y="480" width="32" height="32" />
+        <decision name ="mimi"/>
+        <option name = "mimimi"/>
+      </map_element>
+
+      <map_element>
+        <tier type="3" />
+        <entity name="GNOLL" />
+        <scene name="forest.tmx" />
+        <icon_coords x="0" y="512" width="32" height="32" />
+        <decision name ="mimi"/>
+        <option name = "mimimi"/>
+      </map_element>
+
+      <map_element>
+        <tier type="3" />
+        <entity name="GNOLL" />
+        <entity name="GNOLL" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="96" y="512" width="32" height="32" />
+        <decision name ="mimi"/>
+        <option name = "mimimi"/>
+      </map_element>
+     <!-- <icon_coords x="32" y="480" width="32" height="32" /> Cave interior 
+      <icon_coords x="64" y="480" width="32" height="32" />     River
+      <icon_coords x="96" y="480" width="32" height="32" />     Exit Cave 
+      <icon_coords x="128" y="480" width="32" height="32" />    Sand 
+      <icon_coords x="160" y="480" width="32" height="32" />    Rocks 
+      <icon_coords x="192" y="480" width="32" height="32" />    Flying boat 
+      <icon_coords x="224" y="480" width="32" height="32" />    Forest 
+      <icon_coords x="224" y="480" width="32" height="32" />    Lake bridge 
+      <icon_coords x="256" y="480" width="32" height="32" />    Ravine 
+      <icon_coords x="288" y="480" width="32" height="32" />    Deep cave 
+      <icon_coords x="0" y="512" width="32" height="32" />      Exit Cave 2 
+      <icon_coords x="32" y="512" width="32" height="32" />     Green Entrance 
+      <icon_coords x="64" y="512" width="32" height="32" />     Cave Fire 
+      <icon_coords x="96" y="512" width="32" height="32" />     Deep Forest 
+      <icon_coords x="128" y="512" width="32" height="32" />    Train -->
+    </world_map_elements>
+    
+    
+    
+  </world_map>
+    
+  </config>

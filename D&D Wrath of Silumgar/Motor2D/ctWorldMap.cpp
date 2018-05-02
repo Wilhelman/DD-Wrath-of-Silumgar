@@ -41,13 +41,19 @@ ctWorldMap::~ctWorldMap()
 
 // Called before render is available
 
-bool ctWorldMap::Awake(pugi::xml_node& config)
+bool ctWorldMap::Awake(pugi::xml_node& co)
 {
 	LOG("Loading World Map");
 	bool ret = true;
 
 	/* initialize random seed: */
 	srand(time(NULL));
+
+	//------------------
+	pugi::xml_document doc;
+	pugi::xml_parse_result result = doc.load_file("world_map.xml");
+	pugi::xml_node config = doc.child("config").child("world_map");
+	//-----------------
 
 	world_map_tmx = config.child("world_map_tmx").attribute("name").as_string();
 	name_spritesheet_world_map = config.child("spritesheet").attribute("name").as_string();
@@ -59,7 +65,9 @@ bool ctWorldMap::Awake(pugi::xml_node& config)
 
 		tmp_map_element->tier = map_element.child("tier").attribute("type").as_uint();
 		tmp_map_element->scene_name = map_element.child("scene").attribute("name").as_string();
-		tmp_map_element->icon_rect = { map_element.child("icon_coords").attribute("x").as_int(), map_element.child("icon_coords").attribute("y").as_int(), map_element.child("icon_coords").attribute("width").as_int(), map_element.child("icon_coords").attribute("height").as_int() } ;
+		tmp_map_element->icon_rect = { map_element.child("icon_coords").attribute("x").as_int(), map_element.child("icon_coords").attribute("y").as_int(), map_element.child("icon_coords").attribute("width").as_int(), map_element.child("icon_coords").attribute("height").as_int() };
+		/*tmp_map_element->decision = map_element.child("decision").attribute("name").as_string();
+		tmp_map_element->option = map_element.child("option").attribute("name").as_string();*/
 
 		//FOR for each entity in xml and pushback it to the vector
 		for (pugi::xml_node entity = map_element.child("entity"); entity && ret; entity = entity.next_sibling("entity"))
@@ -480,7 +488,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 			random_number = rand() % tier_2_vec.size();
 		last_random = random_number;
 
-		tier_2_vec.at(i)->coords_in_map = App->map->tier_2_coords.at(i);
+		tier_2_vec.at(random_number)->coords_in_map = App->map->tier_2_coords.at(i);
 
 		final_map_elements.push_back(tier_2_vec.at(random_number));
 	}

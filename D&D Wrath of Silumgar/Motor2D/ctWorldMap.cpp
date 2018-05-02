@@ -585,3 +585,25 @@ WorldMapElement* ctWorldMap::SetDecision()
 	return tmp;
 
 }
+
+std::string ctWorldMap::SetOptions()
+{
+	/*std::string tmp[] = { };
+
+	switch (App->map->actual_tier)
+	{
+	case TIER_MAP_1:
+		tmp.=final_map_elements[1]->option.c_str();
+		break;
+	case TIER_MAP_2:
+		App->map->actual_tier = TierList::TIER_MAP_3;
+		break;
+	case TIER_MAP_3:
+		break;
+	}
+
+	*/
+
+
+	//return tmp;
+}

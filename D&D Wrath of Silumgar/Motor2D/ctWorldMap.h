@@ -64,6 +64,7 @@ public:
 	void GenerateNewRandomlyMap();
 
 	WorldMapElement* SetDecision();
+	std::string SetOptions();
 
 private:
 

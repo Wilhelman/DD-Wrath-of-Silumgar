@@ -586,9 +586,9 @@ WorldMapElement* ctWorldMap::SetDecision()
 
 }
 
-std::string ctWorldMap::SetOptions()
+/*std::string ctWorldMap::SetOptions()
 {
-	/*std::string tmp[] = { };
+	std::string tmp[] = { };
 
 	switch (App->map->actual_tier)
 	{
@@ -602,8 +602,8 @@ std::string ctWorldMap::SetOptions()
 		break;
 	}
 
-	*/
+	
 
 
 	//return tmp;
-}
+}*/

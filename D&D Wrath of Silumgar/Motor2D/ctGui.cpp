@@ -178,9 +178,9 @@ UIElement* ctGui::AddUIButton(int position_x, int position_y, SDL_Rect normal_re
 	return nullptr;
 }
 
-UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback, UIElement* parent, const char* path) {
+UIElement* ctGui::AddUILabel(int position_x, int position_y, std::string text, SDL_Color color, int size, ctModule* callback, UIElement* parent, const char* path,bool UIblit) {
 
-	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color, size, callback, path, parent);
+	UIElement* tmp_lbl = new UILabel(position_x, position_y, LABEL, text, color, size, callback, path, parent,UIblit);
 	ui_elements.push_back(tmp_lbl);
 	return tmp_lbl;
 

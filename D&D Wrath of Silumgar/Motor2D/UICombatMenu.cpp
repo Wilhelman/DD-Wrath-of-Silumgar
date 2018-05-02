@@ -510,46 +510,46 @@ void UICombatMenu::LoadAbilities() {
 
 	if (names.size() >= 3) {
 		if (entity->GetCurrentManaPoints() >= entity->abilities.at(0).mana_points_effect_to_himself) {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background,DEFAULT_FONT,true));
 		}
 		else {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,0,0,255 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,0,0,255 }, font_size, nullptr, background,DEFAULT_FONT, true));
 		}
 		if (entity->GetCurrentManaPoints() >= entity->abilities.at(1).mana_points_effect_to_himself) {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background,DEFAULT_FONT, true));
 		}
 		else {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,0,0,0 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,0,0,0 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		if (entity->GetCurrentManaPoints() >= entity->abilities.at(2).mana_points_effect_to_himself) {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		else {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		names_iterator = 2;
 	}
 	else if (names.size() == 2) {
 		if (entity->GetCurrentManaPoints() >= entity->abilities.at(0).mana_points_effect_to_himself) {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		else {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,0,0,255 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,0,0,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		if (entity->GetCurrentManaPoints() >= entity->abilities.at(1).mana_points_effect_to_himself) {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		else {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,0,0,0 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,0,0,0 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		names_iterator = 1;
 	}
 	else if (names.size() == 1) {
 		if (entity->GetCurrentManaPoints() >= entity->abilities.at(0).mana_points_effect_to_himself) {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		else {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,0,0,255 }, font_size, nullptr, background));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,0,0,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		names_iterator = 0;
 	}
@@ -593,18 +593,18 @@ void UICombatMenu::LoadItems() {
 	//names.push_back("Item5");
 
 	if (names.size() >= 3) {
-		items.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
-		items.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background));
-		items.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background));
+		items.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background,DEFAULT_FONT,true));
+		items.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
+		items.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		names_iterator = 2;
 	}
 	else if (names.size() == 2) {
-		items.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
-		items.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background));
+		items.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
+		items.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		names_iterator = 1;
 	}
 	else if (names.size() == 1) {
-		items.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background));
+		items.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(0), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		names_iterator = 0;
 	}
 

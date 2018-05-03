@@ -39,7 +39,7 @@
 			</items>
 		</heroe>
 		<heroe name="elf">
-			<values health_points="65" mana_points="91" />
+			<values health_points="0" mana_points="91" />
 			<skills>
 				<skill name="Mindblown" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
 			</skills>

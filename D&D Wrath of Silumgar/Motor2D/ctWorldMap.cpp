@@ -112,7 +112,7 @@ bool ctWorldMap::Start()
 		ret = false;
 	}
 
-	App->entities->SpawnEntity(40,170, MINIHEROES);
+	App->entities->SpawnEntity(avatar_position.x,avatar_position.y, MINIHEROES);
 
 	//Displaying map
 	App->map->sceneName = world_map_tmx.c_str();
@@ -195,7 +195,7 @@ bool ctWorldMap::PreUpdate()
 bool ctWorldMap::Update(float dt)
 {
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN&& App->fadeToBlack->FadeIsOver()) {
 		
 		if (cleric_level_up != nullptr)
 		{

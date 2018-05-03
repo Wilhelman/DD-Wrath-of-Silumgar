@@ -103,7 +103,7 @@ private:
 	UIElement* condition_lose = nullptr;
 
 	UIElement* start_combat_label = nullptr;
-	
+	iPoint avatar_position = { 40,170 };
 };
 
 

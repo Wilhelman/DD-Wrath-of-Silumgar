@@ -78,8 +78,7 @@ bool ctItems::Awake(pugi::xml_node& config)
 		}
 
 		/*
-		
-		std::string name;
+	std::string name;
 	std::string description;
 	ActionType type = ACTION_NOT_DEFINED;
 	ActionObjectiveType objective = OBJECTIVE_NOT_DEFINED;
@@ -90,6 +89,11 @@ bool ctItems::Awake(pugi::xml_node& config)
 	int mana_points_effect_to_himself = 0;
 	int health_points_effect = 0;
 	int mana_points_effect = 0;
+
+	uint stun_chance = 0u;
+	uint bleeding_chance = 0u;
+	uint position_chance = 0u;
+	uint burn_chance = 0u;
 		*/
 
 		tmp_action.name = item.name;
@@ -106,6 +110,7 @@ bool ctItems::Awake(pugi::xml_node& config)
 			description = "ONE SHOT ONE ENEMY BC OF REASONS!";
 		}
 		break;
+
 		default:
 			break;
 		}

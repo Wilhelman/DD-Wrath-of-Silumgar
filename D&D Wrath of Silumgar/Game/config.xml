@@ -28,35 +28,6 @@
 	<audio fx="25" music="50">
 		<lvlMusic name="textures/source_spritesheet.png" />
 	</audio>
-	<world_map>
-		<spritesheet name="textures/WorldMap/map_spritesheet.png" />
-		<world_map_tmx name="world_map.tmx" />
-		<world_map_elements>
-			<map_element>
-				<tier type="2" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<entity name="KOBOLD" />
-				<entity name="GNOLL" />
-				<scene name="forest.tmx" />
-				<icon_coords x="224" y="480" width="32" height="32" />
-			</map_element>
-			<map_element>
-				<tier type="2" />
-				<entity name="GNOLL" />
-				<entity name="KOBOLD" />
-				<entity name="GNOLL" />
-				<scene name="cave_03.tmx" />
-				<icon_coords x="64" y="512" width="32" height="32" />
-			</map_element>
-			<map_element>
-				<tier type="1" />
-				<entity name="DARK_WARRIOR" />
-				<scene name="tavern.tmx" />
-				<icon_coords x="0" y="480" width="32" height="32" />
-			</map_element>
-		</world_map_elements>
-	</world_map>
 	<entities>
 		<base_statistics_values constitution="13" focus="17" strength="3" agility="2" dexterity="2" intelligence="3" physicalDefense="2" magicalDefense="2" luck="1" judgement="1" />
 		<cleric spritesheetName="textures/Characters/Cleric_sheet.png" />

@@ -8,7 +8,7 @@
       
         <map_element>
           <tier type="1" />
-          <entity name="KOBOLD" />
+          <entity name="DARK_WARRIOR" />
           <scene name="tavern.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="mimi"/>

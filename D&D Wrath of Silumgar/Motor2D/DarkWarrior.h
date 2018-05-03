@@ -15,10 +15,10 @@ public:
 
 private:
 
-	//player state
-
 	//animations velocity
 	uint idle_vel = 0u, run_forward_vel = 0u;
+
+	Action void_cannon_action;
 
 private:
 

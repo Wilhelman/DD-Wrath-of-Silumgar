@@ -125,7 +125,6 @@ bool ctWorldMap::Start()
 		GenerateNewRandomlyMap();
 
 	// MORE TIER
-	App->map->actual_tier ;
 
 	switch (App->map->actual_tier)
 	{

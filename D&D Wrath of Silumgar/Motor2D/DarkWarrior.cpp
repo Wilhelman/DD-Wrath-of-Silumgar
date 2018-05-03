@@ -41,9 +41,18 @@ DarkWarrior::DarkWarrior(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &stun);
 		else if (tmp == "dodge")
 			LoadAnimation(animations, &dodge);
+		else if (tmp == "void_cannon")
+			LoadAnimation(animations, &void_cannon);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;
+
+	//prepare the actions:
+
+	void_cannon_action.name = "Void Cannon";
+	void_cannon_action.health_points_effect = -100;
+	void_cannon_action.objective = HEROES;
+	void_cannon_action.type = VOID_CANNON;
 
 }
 
@@ -108,16 +117,23 @@ void DarkWarrior::PerformAction()
 {
 	Entity* entity_objective = nullptr;
 
-	if (IsGoingToDoAnythingClever()) {
-		//in this case the kobold will search the weakest heroe since we dont have abilities
+	if (IsGoingToDoAnythingClever()) {//hacer algo cheto
 		entity_objective = App->combat->GetTheWeakestHeroe();
+
+
+		//App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+
+		App->task_manager->AddTask(new PerformActionToEntity(this, void_cannon_action, entity_objective));
+		App->task_manager->AddTask(new MoveToInitialPosition(this));
+
 	}
-	else {
-		//in this case, the kobold will attack one random heroe
+	else {//hacer algo mal
 		entity_objective = App->combat->GetRandomHeroe();
+
+		App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+		App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
+		App->task_manager->AddTask(new MoveToInitialPosition(this));
 	}
 
-	App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
-	App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
-	App->task_manager->AddTask(new MoveToInitialPosition(this));
+	
 }

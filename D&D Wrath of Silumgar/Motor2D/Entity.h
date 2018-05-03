@@ -47,6 +47,9 @@ public:
 	ctAnimation throw_object = ctAnimation();
 	ctAnimation use_potion = ctAnimation();
 
+	//dark_warrior
+	ctAnimation void_cannon = ctAnimation();
+
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);
 	iPoint initial_position = iPoint(0, 0);

@@ -664,7 +664,7 @@
           <frame x="329" y="1398" width="207" height="152"/>
         </animation>
 
-        <animation name="void_cannon" speed="5.0" loop="true">
+        <animation name="void_cannon" speed="0.05" loop="false">
           <frame x="244" y="1586" width="186" height="151"/>
           <frame x="553" y="1586" width="186" height="151"/>
           <frame x="813" y="1586" width="186" height="151"/>

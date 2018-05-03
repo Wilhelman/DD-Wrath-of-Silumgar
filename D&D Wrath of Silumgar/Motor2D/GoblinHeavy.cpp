@@ -88,18 +88,18 @@ void Goblin_Heavy::LoadAnimation(pugi::xml_node animation_node, ctAnimation* ani
 
 void Goblin_Heavy::Attack()
 {
-	App->audio->PlayFx(App->audio->gnoll_attack_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_attack_fx, 0);
 
 }
 
 void  Goblin_Heavy::Death() {
-	App->audio->PlayFx(App->audio->gnoll_death_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_death_fx, 0);
 }
 void  Goblin_Heavy::Run() {
-	App->audio->PlayFx(App->audio->gnoll_run_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_run_fx, 0);
 }
 void  Goblin_Heavy::Damaged() {
-	App->audio->PlayFx(App->audio->gnoll_damaged_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_damaged_fx, 0);
 }
 
 void Goblin_Heavy::PerformAction()

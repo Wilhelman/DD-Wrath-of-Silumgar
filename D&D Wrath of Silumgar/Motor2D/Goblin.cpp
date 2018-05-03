@@ -89,18 +89,18 @@ void Goblin::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation
 
 void Goblin::Attack()
 {
-	App->audio->PlayFx(App->audio->kobold_attack_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_attack_fx, 0);
 
 }
 
 void  Goblin::Death() {
-	App->audio->PlayFx(App->audio->kobold_death_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_death_fx, 0);
 }
 void  Goblin::Run() {
-	App->audio->PlayFx(App->audio->kobold_run_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_run_fx, 0);
 }
 void  Goblin::Damaged() {
-	App->audio->PlayFx(App->audio->kobold_damaged_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_damaged_fx, 0);
 }
 
 void Goblin::PerformAction()

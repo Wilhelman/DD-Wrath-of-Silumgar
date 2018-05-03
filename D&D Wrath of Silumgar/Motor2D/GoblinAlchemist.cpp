@@ -91,18 +91,18 @@ void Goblin_Alchemist::LoadAnimation(pugi::xml_node animation_node, ctAnimation*
 
 void Goblin_Alchemist::Attack()
 {
-	App->audio->PlayFx(App->audio->kobold_attack_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_attack_fx, 0);
 
 }
 
 void  Goblin_Alchemist::Death() {
-	App->audio->PlayFx(App->audio->kobold_death_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_death_fx, 0);
 }
 void  Goblin_Alchemist::Run() {
-	App->audio->PlayFx(App->audio->kobold_run_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_run_fx, 0);
 }
 void  Goblin_Alchemist::Damaged() {
-	App->audio->PlayFx(App->audio->kobold_damaged_fx, 0);
+	App->audio->PlayFx(App->audio->goblin_damaged_fx, 0);
 }
 
 void Goblin_Alchemist::PerformAction()

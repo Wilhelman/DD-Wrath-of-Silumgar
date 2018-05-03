@@ -61,6 +61,7 @@ void ctAudio::InitAudio()
 	cm_move_fx = App->audio->LoadFx("audio/sounds/UI and Menus/CombatMenuMove.wav");
 	cm_select_fx = App->audio->LoadFx("audio/sounds/UI and Menus/CombatMenuSelect.wav");
 	cm_back_fx = App->audio->LoadFx("audio/sounds/UI and Menus/CombatMenuBack.wav");
+	//enemies
 	kobold_attack_fx = LoadFx("audio/sounds/Enemies/KoboldAttack.wav");
 	kobold_run_fx = LoadFx("audio/sounds/Enemies/KoboldRun.wav");
 	kobold_damaged_fx = LoadFx("audio/sounds/Enemies/KoboldDamaged.wav");
@@ -69,6 +70,28 @@ void ctAudio::InitAudio()
 	gnoll_run_fx = LoadFx("audio/sounds/Enemies/GnollRun.wav");
 	gnoll_damaged_fx = LoadFx("audio/sounds/Enemies/GnollDamaged.wav");
 	gnoll_death_fx = LoadFx("audio/sounds/Enemies/GnollDeath.wav");
+	gnoll_archer_attack_fx = LoadFx("audio/sounds/Enemies/GnollArcherAttack.wav");
+	goblin_attack_fx = LoadFx("audio/sounds/Enemies/GoblinAttack.wav");
+	goblin_death_fx = LoadFx("audio/sounds/Enemies/GoblinDeath.wav");
+	goblin_damaged_fx = LoadFx("audio/sounds/Enemies/GoblinDamaged.wav");
+	goblin_run_fx = kobold_run_fx;
+	triton_attack_fx = LoadFx("audio/sounds/Enemies/TritonAttack.wav");
+	triton_death_fx = LoadFx("audio/sounds/Enemies/TritonDeath.wav");
+	triton_damaged_fx = LoadFx("audio/sounds/Enemies/TritonDamaged.wav");
+	triton_run_fx = gnoll_run_fx;
+	hellhound_attack_fx = LoadFx("audio/sounds/Enemies/HellhoundAttack.wav");
+	hellhound_death_fx = LoadFx("audio/sounds/Enemies/HellhoundDeath.wav");
+	hellhound_damaged_fx = LoadFx("audio/sounds/Enemies/HellhoundDamaged.wav");
+	hellhound_run_fx = gnoll_run_fx;
+	owlbear_attack_fx = LoadFx("audio/sounds/Enemies/OwlbearAttack.wav");
+	owlbear_death_fx = LoadFx("audio/sounds/Enemies/OwlbearDeath.wav");
+	owlbear_damaged_fx = LoadFx("audio/sounds/Enemies/OwlbearDamaged.wav");
+	owlbear_run_fx = gnoll_run_fx;
+	skeleton_attack_fx = LoadFx("audio/sounds/Enemies/SkeletonAttack.wav");
+	skeleton_death_fx = LoadFx("audio/sounds/Enemies/SkeletonDeath.wav");
+	skeleton_damaged_fx = LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
+	skeleton_run_fx = kobold_run_fx;
+	//heroes
 	cleric_attack_fx = LoadFx("audio/sounds/Characters/ClericAttack.wav");
 	cleric_run_fx = LoadFx("audio/sounds/Characters/ClericRun.wav");
 	cleric_damaged_fx = LoadFx("audio/sounds/Characters/ClericDamaged.wav");

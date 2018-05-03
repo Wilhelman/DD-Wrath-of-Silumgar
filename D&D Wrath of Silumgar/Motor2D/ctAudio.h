@@ -68,29 +68,62 @@ public:
 	uint cm_move_fx = 0u;
 	uint cm_select_fx = 0u;
 	uint cm_back_fx = 0u;
+	//fx enemies
 	uint kobold_attack_fx = 0u;
 	uint kobold_run_fx = 0u;
 	uint kobold_damaged_fx = 0u;
 	uint kobold_death_fx = 0u;
+
 	uint gnoll_attack_fx = 0u;
 	uint gnoll_run_fx = 0u;
 	uint gnoll_damaged_fx = 0u;
 	uint gnoll_death_fx = 0u;
+	uint gnoll_archer_attack_fx = 0u;
+
+	uint goblin_run_fx = 0u;
+	uint goblin_attack_fx = 0u;
+	uint goblin_damaged_fx = 0u;
+	uint goblin_death_fx = 0u;
+
+	uint triton_run_fx = 0u;
+	uint triton_attack_fx = 0u;
+	uint triton_damaged_fx = 0u;
+	uint triton_death_fx = 0u;
+
+	uint hellhound_run_fx = 0u;
+	uint hellhound_attack_fx = 0u;
+	uint hellhound_damaged_fx = 0u;
+	uint hellhound_death_fx = 0u;
+
+	uint owlbear_run_fx = 0u;
+	uint owlbear_attack_fx = 0u;
+	uint owlbear_damaged_fx = 0u;
+	uint owlbear_death_fx = 0u;
+
+	uint skeleton_run_fx = 0u;
+	uint skeleton_attack_fx = 0u;
+	uint skeleton_damaged_fx = 0u;
+	uint skeleton_death_fx = 0u;
+
+	//fx heroes
 	uint cleric_attack_fx = 0u;
 	uint cleric_run_fx = 0u;
 	uint cleric_damaged_fx = 0u;
 	uint cleric_death_fx = 0u;
 	uint cleric_heal_fx = 0u;
+
 	uint dwarf_attack_fx = 0u;
 	uint dwarf_run_fx = 0u;
 	uint dwarf_damaged_fx = 0u;
 	uint dwarf_death_fx = 0u;
 	uint dwarf_double_axe_fx = 0u;
+
 	uint elf_attack_fx = 0u;
 	uint elf_run_fx = 0u;
 	uint elf_damaged_fx = 0u;
 	uint elf_death_fx = 0u;
 	uint elf_mindblown_fx = 0u;
+
 	uint warrior_attack_fx = 0u;
 	uint warrior_run_fx = 0u;
 	uint warrior_damaged_fx = 0u;

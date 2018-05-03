@@ -18,6 +18,11 @@ UILabel::UILabel(int x, int y, UI_Type type, std::string text, SDL_Color color, 
 
 	int width = 0, height = 0;
 	App->fonts->CalcSize(this->text.c_str(), width, height, newFont);
+	
+	App->fonts->Unload(newFont);
+
+	newFont = nullptr;
+
 	current_rect.w = width;
 	current_rect.h = height;
 }

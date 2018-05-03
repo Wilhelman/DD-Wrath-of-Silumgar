@@ -10,7 +10,6 @@
 class UITextBox : public UIElement
 {
 private:
-	_TTF_Font* normal_font = App->fonts->default;
 	std::string text;
 	SDL_Color text_color = { 255,255,255,255 };
 	int size = 0;

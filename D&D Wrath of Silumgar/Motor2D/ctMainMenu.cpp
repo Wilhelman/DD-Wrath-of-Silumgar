@@ -84,6 +84,19 @@ bool ctMainMenu::PreUpdate()
 bool ctMainMenu::Update(float dt)
 {
 	//TEST PARTICLES
+	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
+	{
+		if (pauseMenu == nullptr) {
+			//pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);
+			//pauseMenu = App->gui->AddUILabel(100, 100, "Abilities", { 255,255,255,255 }, 15, nullptr, background);
+			pauseMenu = App->gui->AddUITextBox(100, 100, 10, 100, "dghfgh", {255,255,255,255},nullptr);
+		}
+		else {
+			App->gui->DeleteUIElement(*pauseMenu);
+			pauseMenu = nullptr;
+		}
+	}
+
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
 		int mx, my;

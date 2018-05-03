@@ -16,6 +16,8 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 {
 	this->callback = callback;
 
+	//App->entities->SpawnEntity(100, 100, CLERIC);
+
 	background = new UIImage(x, y, IMAGE, { 0,0,484,324 }, nullptr, this);
 	LoadClerictStats();
 	LoadWarriorStats();
@@ -26,21 +28,29 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 
 UIPauseMenu::~UIPauseMenu() {
 
-	App->gui->DeleteUIElement(*background);
+	background->~UIElement();
 	background = nullptr;
 
 	for (int i = 0; i < cleric_statistics.size(); i++) {
-		App->gui->DeleteUIElement(*cleric_statistics.at(i));
+	//	App->gui->DeleteUIElement(*cleric_statistics.at(i));
+		cleric_statistics.at(i)->~UIElement();
 	}
+	cleric_statistics.clear();
 	for (int i = 0; i < warrior_statistics.size(); i++) {
-		App->gui->DeleteUIElement(*warrior_statistics.at(i));
+		//App->gui->DeleteUIElement(*warrior_statistics.at(i));
+		warrior_statistics.at(i)->~UIElement();
 	}
+	warrior_statistics.clear();
 	for (int i = 0; i < dwarf_statistics.size(); i++) {
-		App->gui->DeleteUIElement(*dwarf_statistics.at(i));
+		//App->gui->DeleteUIElement(*dwarf_statistics.at(i));
+		dwarf_statistics.at(i)->~UIElement();
 	}
+	dwarf_statistics.clear();
 	for (int i = 0; i < elf_statistics.size(); i++) {
-		App->gui->DeleteUIElement(*elf_statistics.at(i));
+		//App->gui->DeleteUIElement(*elf_statistics.at(i));
+		elf_statistics.at(i)->~UIElement();
 	}
+	elf_statistics.clear();
 
 }
 

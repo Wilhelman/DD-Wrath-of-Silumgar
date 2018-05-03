@@ -4,6 +4,8 @@
 #include "ctModule.h"
 #include "SDL\include\SDL_pixels.h"
 
+
+
 #define DEFAULT_FONT "Fonts/8bitlim.ttf"
 #define Second_Font "Fonts/FritzQuadrata Regular.ttf"
 
@@ -29,6 +31,8 @@ public:
 
 	// Load Font
 	_TTF_Font* const Load(const char* path, int size = 12);
+
+	void Unload(_TTF_Font*);
 
 	// Create a surface from text
 	SDL_Texture* Print(const char* text, SDL_Color color = { 255, 255, 255, 255 }, _TTF_Font* font = NULL);

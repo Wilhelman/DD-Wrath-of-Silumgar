@@ -3,10 +3,10 @@
 #include "ctApp.h"
 #include "ctTextures.h"
 #include "ctFonts.h"
-
 #include "SDL\include\SDL.h"
 #include "SDL_TTF\include\SDL_ttf.h"
 #pragma comment( lib, "SDL_ttf/libx86/SDL2_ttf.lib" )
+
 
 ctFonts::ctFonts() : ctModule()
 {
@@ -66,8 +66,9 @@ TTF_Font* const ctFonts::Load(const char* path, int size)
 	else
 	{
 		LOG("Successfully loaded font %s size %d", path, size);
-		fonts.push_front(font);
+	//	fonts.push_front(font);
 	}
+
 
 	return font;
 }
@@ -127,5 +128,12 @@ SDL_Texture* ctFonts::PrintTextBox(const char* text, SDL_Color color, _TTF_Font*
 
 	return ret;
 
+
+}
+
+
+void ctFonts::Unload(_TTF_Font* font)
+{
+	TTF_CloseFont(font);
 
 }

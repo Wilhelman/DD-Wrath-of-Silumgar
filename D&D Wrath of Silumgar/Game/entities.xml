@@ -672,7 +672,7 @@
           <frame x="1938" y="558" width="171" height="149"/>
         </animation>
 
-        <animation name="thunder_punch" speed="5.0" loop="true">
+        <animation name="thunder_punch" speed="0.1" loop="false">
           <frame x="1884" y="1398" width="207" height="152"/>
           <frame x="1660" y="1398" width="207" height="152"/>
           <frame x="1383" y="1398" width="207" height="152"/>
@@ -682,7 +682,7 @@
           <frame x="329" y="1398" width="207" height="152"/>
         </animation>
 
-        <animation name="void_cannon" speed="0.05" loop="false">
+        <animation name="void_cannon" speed="0.08" loop="false">
           <frame x="244" y="1586" width="186" height="151"/>
           <frame x="553" y="1586" width="186" height="151"/>
           <frame x="813" y="1586" width="186" height="151"/>
@@ -692,7 +692,7 @@
           <frame x="1875" y="1586" width="186" height="151"/>
         </animation>
 
-        <animation name="insignificant_mortals" speed="5.0" loop="true">
+        <animation name="insignificant_mortals" speed="0.1" loop="false">
           <frame x="70" y="1942" width="184" height="165"/>
           <frame x="290" y="1942" width="184" height="165"/>
           <frame x="504" y="1942" width="184" height="165"/>

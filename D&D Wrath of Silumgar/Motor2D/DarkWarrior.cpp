@@ -44,9 +44,9 @@ DarkWarrior::DarkWarrior(int x, int y, EntityType type) : Entity(x, y, type) {
 		else if (tmp == "void_cannon")
 			LoadAnimation(animations, &void_cannon);
 		else if (tmp == "thunder_punch")
-			LoadAnimation(animations, &void_cannon);
+			LoadAnimation(animations, &thunder_punch);
 		else if (tmp == "insignificant_mortals")
-			LoadAnimation(animations, &void_cannon);
+			LoadAnimation(animations, &insignificant_mortals);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;
@@ -153,6 +153,6 @@ void DarkWarrior::PerformAction()
 	*/
 
 	
-	App->task_manager->AddTask(new PerformActionToEntity(this, this->insignificant_mortals_action, App->combat->GetRandomHeroe()));
-	
+	App->task_manager->AddTask(new PerformActionToEntity(this, this->void_cannon_action, App->combat->GetRandomHeroe()));
+
 }

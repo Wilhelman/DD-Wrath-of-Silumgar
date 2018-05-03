@@ -254,6 +254,7 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->void_cannon.Reset();
+				actioner_entity->animation = &actioner_entity->idle;
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 

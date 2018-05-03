@@ -83,6 +83,14 @@ bool ctWorldMap::Awake(pugi::xml_node& co)
 				tmp_map_element->entities.push_back(EntityType::HEAVY_GOBLIN);
 			else if (tmp == "ALCHEMISTGOBLIN")
 				tmp_map_element->entities.push_back(EntityType::ALCHEMIST_GOBLIN);
+			else if (tmp == "OWLBEAR")
+				tmp_map_element->entities.push_back(EntityType::OWLBEAR);
+			else if (tmp == "TRITON")
+				tmp_map_element->entities.push_back(EntityType::TRITON);
+			else if (tmp == "HELLHOUND")
+				tmp_map_element->entities.push_back(EntityType::HELLHOUND);
+			else if (tmp == "SKELETON")
+				tmp_map_element->entities.push_back(EntityType::SKELETON);
 			else if (tmp == "DARK_WARRIOR")
 				tmp_map_element->entities.push_back(EntityType::DARK_WARRIOR);
 

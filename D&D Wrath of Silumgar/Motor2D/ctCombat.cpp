@@ -588,6 +588,9 @@ void ctCombat::SpawnEntities()
 		case TRITON:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, TRITON);
 			break;
+		case OWLBEAR:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, OWLBEAR);
+			break;
 		case DARK_WARRIOR:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, DARK_WARRIOR);
 			break;

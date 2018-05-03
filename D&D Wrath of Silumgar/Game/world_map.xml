@@ -12,7 +12,7 @@
           <entity name="HEAVYGOBLIN" />
           <entity name="ALCHEMISTGOBLIN" />
           <entity name="KOBOLD" />
-          <scene name="cave_05.tmx" />
+          <scene name="cave_06.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="mimi"/>
           <option name = "mimimi"/>

@@ -393,8 +393,6 @@
         <animation name="head" speed="5.0" loop="false">
           <frame x="993" y="25" width="26" height="26"/>
         </animation>
-
-		
 		
       </animations>
 
@@ -469,6 +467,10 @@
 		      <frame x="277" y="478" width="142" height="63"/>
 		      <frame x="141" y="478" width="142" height="63"/>
 		      <frame x="0" y="478" width="142" height="63"/>
+        </animation>
+
+        <animation name="head" speed="5.0" loop="false">
+          <frame x="813" y="627" width="26" height="26"/>
         </animation>
         
       </animations>
@@ -598,6 +600,10 @@
 		       <frame x="207" y="223" width="98 " height="65"/>
 		       <frame x="335" y="223" width="98 " height="65"/>
 		    </animation>
+
+        <animation name="head" speed="5.0" loop="false">
+          <frame x="397" y="715" width="26" height="26"/>
+        </animation>
 		
 	  </animations>
 
@@ -694,6 +700,10 @@
           <frame x="1774" y="2111" width="184" height="165"/>
         </animation>
 
+        <animation name="head" speed="5.0" loop="false">
+          <frame x="89" y="251" width="26" height="26"/>
+        </animation>
+
       </animations>
 
     </darkWarrior>
@@ -773,6 +783,10 @@
           <frame x="703" y="94" width="110" height="94"/>
           <frame x="831" y="94" width="110" height="94"/>
           <frame x="952" y="94" width="110" height="94"/>
+        </animation>
+
+        <animation name="head" speed="5.0" loop="false">
+          <frame x="597" y="517" width="26" height="26"/>
         </animation>
 
       </animations>

@@ -1003,7 +1003,12 @@
         </animation>
 
         <animation name="menu_animation" speed="1.0" loop="true">
-          <frame x="300" y="2368" width="44" height="76"/>
+          <frame x="95" y="2368" width="46" height="79"/>
+          <frame x="162" y="2368" width="46" height="79"/>
+          <frame x="230" y="2370" width="46" height="79"/>
+          <frame x="299" y="2368" width="46" height="79"/>
+          <frame x="368" y="2368" width="46" height="79"/>
+          <frame x="436" y="2370" width="46" height="79"/>
         </animation>
         
       </animations>
@@ -1179,7 +1184,12 @@
         </animation>
 
         <animation name="menu_animation" speed="1.0" loop="true">
-          <frame x="670" y="1741" width="59" height="67"/>
+          <frame x="357" y="1741" width="62" height="67"/>
+          <frame x="436" y="1741" width="62" height="67"/>
+          <frame x="513" y="1741" width="62" height="67"/>
+          <frame x="593" y="1741" width="62" height="67"/>
+          <frame x="668" y="1741" width="62" height="67"/>
+          <frame x="745" y="1741" width="62" height="67"/>
         </animation>
 		
       </animations>
@@ -1372,7 +1382,12 @@
         </animation>
 
         <animation name="menu_animation" speed="1.0" loop="true">
-          <frame x="1664" y="2011" width="34" height="67"/>
+          <frame x="1664" y="2011" width="34" height="69"/>
+          <frame x="1708" y="2011" width="34" height="69"/>
+          <frame x="1748" y="2011" width="34" height="69"/>
+          <frame x="1792" y="2011" width="34" height="69"/>
+          <frame x="1836" y="2011" width="34" height="69"/>
+          <frame x="1877" y="2011" width="34" height="69"/>
         </animation>
 		
       </animations>
@@ -1543,7 +1558,11 @@
         </animation>
 
         <animation name="menu_animation" speed="1.0" loop="true">
-          <frame x="30" y="2531" width="53" height="82"/>
+          <frame x="1928" y="2643" width="56" height="82"/>
+          <frame x="1993" y="2643" width="56" height="82"/>
+          <frame x="2059" y="2643" width="56" height="82"/>
+          <frame x="2125" y="2643" width="56" height="82"/>
+          <frame x="2193" y="2643" width="56" height="82"/>
         </animation>
         
       </animations>

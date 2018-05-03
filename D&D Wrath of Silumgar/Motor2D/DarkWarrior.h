@@ -24,6 +24,7 @@ private:
 
 private:
 
+	bool boosted = false;
 	void SetPlayerAnimationsSpeed(float dt);
 	void SetEntitiesSpeed(float dt);
 	void LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation);

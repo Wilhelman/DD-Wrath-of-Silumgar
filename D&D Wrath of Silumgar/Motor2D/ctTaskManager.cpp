@@ -166,6 +166,7 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->attack.Reset();
 
+
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
@@ -285,9 +286,9 @@ bool PerformActionToEntity::Execute()
 						//TODO SITO
 						fPoint posP;
 						posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
 
-			
+						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_MINDBLOWN);
+						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
 
 						receiver_entity->Damaged();
 					}
@@ -1930,6 +1931,7 @@ bool PerformActionToEntity::Execute()
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				actioner_entity->thunder_punch.Reset();
+				actioner_entity->animation = &actioner_entity->idle;
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -1969,7 +1971,7 @@ bool PerformActionToEntity::Execute()
 
 						Altered_Stat stun;
 						stun.stun = true;
-						stun.turn_left = 2;
+						stun.turn_left = 1;
 
 						receiver_entity->AddAlteredStat(stun);
 					}
@@ -3831,8 +3833,10 @@ bool PerformActionToEntity::Execute()
 			break;
 		}
 	}
-	else
+	else {
 		ret = true;
+	}
+		
 
 	return ret;
 }

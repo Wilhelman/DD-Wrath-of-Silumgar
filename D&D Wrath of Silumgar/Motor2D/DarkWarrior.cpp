@@ -54,13 +54,13 @@ DarkWarrior::DarkWarrior(int x, int y, EntityType type) : Entity(x, y, type) {
 	//prepare the actions:
 
 	void_cannon_action.name = "Void Cannon";
-	void_cannon_action.health_points_effect = -100;
+	void_cannon_action.health_points_effect = -50;
 	void_cannon_action.mana_points_effect_to_himself = 70;
 	void_cannon_action.objective = HEROES;
 	void_cannon_action.type = VOID_CANNON;
 
 	thunder_punch_action.name = "Thunder Punch";
-	thunder_punch_action.health_points_effect = -100;
+	thunder_punch_action.health_points_effect = -25;
 	thunder_punch_action.mana_points_effect_to_himself = 45;
 	thunder_punch_action.objective = HEROES;
 	thunder_punch_action.type = THUNDER_PUNCH;
@@ -130,17 +130,36 @@ void  DarkWarrior::Damaged() {
 
 void DarkWarrior::PerformAction()
 {
-	/*Entity* entity_objective = nullptr;
+	Entity* entity_objective = nullptr;
 
 	if (IsGoingToDoAnythingClever()) {//hacer algo cheto
-		entity_objective = App->combat->GetTheWeakestHeroe();
+		if (!boosted) {
+			
+			App->task_manager->AddTask(new PerformActionToEntity(this, insignificant_mortals_action, App->combat->GetRandomHeroe()));
+			boosted = true;
+		
+		}
 
+		else {
+			entity_objective = App->combat->GetTheWeakestHeroe();
 
-		//App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+			if (GetCurrentManaPoints() >= 70) {
+				App->task_manager->AddTask(new PerformActionToEntity(this, void_cannon_action, entity_objective));
+			}
 
-		App->task_manager->AddTask(new PerformActionToEntity(this, void_cannon_action, entity_objective));
-		App->task_manager->AddTask(new MoveToInitialPosition(this));
+			else if (GetCurrentManaPoints() > 70 && GetCurrentManaPoints() >= 45) {
 
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+				App->task_manager->AddTask(new PerformActionToEntity(this, thunder_punch_action, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
+			}
+
+			else {
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+				App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
+			}
+		}
 	}
 	else {//hacer algo mal
 		entity_objective = App->combat->GetRandomHeroe();
@@ -150,9 +169,5 @@ void DarkWarrior::PerformAction()
 		App->task_manager->AddTask(new MoveToInitialPosition(this));
 	}
 	
-	*/
-
-	
-	App->task_manager->AddTask(new PerformActionToEntity(this, this->void_cannon_action, App->combat->GetRandomHeroe()));
 
 }

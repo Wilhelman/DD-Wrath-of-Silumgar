@@ -11,7 +11,8 @@
           <entity name="GOBLIN" />
           <entity name="HEAVYGOBLIN" />
           <entity name="ALCHEMISTGOBLIN" />
-          <scene name="tavern.tmx" />
+          <entity name="KOBOLD" />
+          <scene name="cave_05.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="mimi"/>
           <option name = "mimimi"/>

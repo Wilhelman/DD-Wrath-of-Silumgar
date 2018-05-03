@@ -120,7 +120,7 @@
           <frame x="805"  y="548" width="70" height="48"/>
         </animation>
 
-        <animation name="run" speed="5.0" loop="true">
+        <animation name="run" speed="7.0" loop="true">
           <frame x="1026"  y="604" width="65" height="51"/>
           <frame x="937"  y="604" width="65" height="51"/>
           <frame x="846"  y="604" width="65" height="51"/>

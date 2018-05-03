@@ -602,7 +602,7 @@ bool PerformActionToEntity::Execute()
 		}
 		break;
 
-		case HIGH_HEALTH_RECOVER_ACTION: { //todo revisar esto
+		case HIGH_HEALTH_RECOVER_ACTION: { 
 
 			if (!HaveTeamObjective())
 				return true;
@@ -641,6 +641,92 @@ bool PerformActionToEntity::Execute()
 
 				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_LOWER_HEALTH);
+
+			}
+		}
+		break;
+
+		case LOW_MANA_RECOVER_ACTION: {
+
+			if (!HaveTeamObjective())
+				return true;
+
+			actioner_entity->animation = &actioner_entity->throw_object;
+
+			ret = actioner_entity->animation->Finished();
+
+			if (ret == true) {
+
+				//todo reducir la quantity
+				for (int i = 0; i < actioner_entity->usable_items.size(); i++)
+				{
+					if (actioner_entity->usable_items.at(i).action.type == action_to_perform.type) {
+						actioner_entity->usable_items.at(i).quantity--;
+						if (actioner_entity->usable_items.at(i).quantity == 0)
+							actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin() + i);
+						break;
+					}
+				}
+
+				actioner_entity->throw_object.Reset();
+
+				bool critical = false;
+
+				int damage_to_deal = action_to_perform.mana_points_effect;
+				damage_to_deal = damage_to_deal;
+				receiver_entity->SetCurrentManaPoints(receiver_entity->GetCurrentManaPoints()+damage_to_deal);
+				//receiver_entity->animation = &receiver_entity->hit;
+				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+				std::string tmp_dmg = std::to_string(damage_to_deal);
+
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 0,0,255,255 }, 14, nullptr, nullptr);
+
+
+				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_MANA_POTION);
+
+			}
+		}
+		break;
+
+		case HIGH_MANA_RECOVER_ACTION: {
+
+			if (!HaveTeamObjective())
+				return true;
+
+			actioner_entity->animation = &actioner_entity->throw_object;
+
+			ret = actioner_entity->animation->Finished();
+
+			if (ret == true) {
+
+				//todo reducir la quantity
+				for (int i = 0; i < actioner_entity->usable_items.size(); i++)
+				{
+					if (actioner_entity->usable_items.at(i).action.type == action_to_perform.type) {
+						actioner_entity->usable_items.at(i).quantity--;
+						if (actioner_entity->usable_items.at(i).quantity == 0)
+							actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin() + i);
+						break;
+					}
+				}
+
+				actioner_entity->throw_object.Reset();
+
+				bool critical = false;
+
+				int damage_to_deal = action_to_perform.mana_points_effect;
+				damage_to_deal = damage_to_deal;
+				receiver_entity->SetCurrentManaPoints(receiver_entity->GetCurrentManaPoints() + damage_to_deal);
+				//receiver_entity->animation = &receiver_entity->hit;
+				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+				std::string tmp_dmg = std::to_string(damage_to_deal);
+
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 0,0,255,255 }, 14, nullptr, nullptr);
+
+
+				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_MANA_POTION);
 
 			}
 		}
@@ -692,6 +778,97 @@ bool PerformActionToEntity::Execute()
 			}
 		}
 		break;
+
+		case BURN_TARGET_ACTION:
+		{
+
+			if (!HaveObjective())
+				return true;
+
+			actioner_entity->animation = &actioner_entity->throw_object;
+
+			ret = actioner_entity->animation->Finished();
+
+			if (ret == true) {
+
+				//todo reducir la quantity
+				for (int i = 0; i < actioner_entity->usable_items.size(); i++)
+				{
+					if (actioner_entity->usable_items.at(i).action.type == action_to_perform.type) {
+						actioner_entity->usable_items.at(i).quantity--;
+						if (actioner_entity->usable_items.at(i).quantity == 0)
+							actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin() + i);
+						break;
+					}
+				}
+
+				actioner_entity->throw_object.Reset();
+
+				bool critical = false;
+
+				int damage_to_deal = action_to_perform.health_points_effect;
+
+				damage_to_deal = damage_to_deal;
+				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
+				//receiver_entity->animation = &receiver_entity->hit;
+				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+				std::string tmp_dmg = std::to_string(damage_to_deal);
+
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 16, nullptr, nullptr);
+
+
+				//TODO SITO
+				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_POISON);
+
+				//actioner_entity->Ability1();
+
+			}
+		}
+		break;
+		case REVIVE_AN_ALLY_ACTION:
+		{
+
+			//if (!HaveTeamObjective())
+				//return true;
+
+			actioner_entity->animation = &actioner_entity->throw_object;
+
+			ret = actioner_entity->animation->Finished();
+
+			if (ret == true) {
+
+				//todo reducir la quantity
+				for (int i = 0; i < actioner_entity->usable_items.size(); i++)
+				{
+					if (actioner_entity->usable_items.at(i).action.type == action_to_perform.type) {
+						actioner_entity->usable_items.at(i).quantity--;
+						if (actioner_entity->usable_items.at(i).quantity == 0)
+							actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin() + i);
+						break;
+					}
+				}
+
+				actioner_entity->throw_object.Reset();
+
+				bool critical = false;
+
+				int damage_to_deal = action_to_perform.mana_points_effect;
+				damage_to_deal = damage_to_deal;
+				receiver_entity->SetCurrentManaPoints(receiver_entity->GetCurrentManaPoints() + damage_to_deal);
+				//receiver_entity->animation = &receiver_entity->hit;
+				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+				std::string tmp_dmg = std::to_string(damage_to_deal);
+
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 0,255,0,255 }, 14, nullptr, nullptr);
+
+
+				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_LOWER_HEALTH);
+			}
+		}
+		break;
+
 
 		default:
 			break;

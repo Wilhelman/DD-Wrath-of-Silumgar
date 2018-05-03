@@ -19,8 +19,8 @@ Skeleton::Skeleton(int x, int y, EntityType type) : Entity(x, y, type) {
 
 	pugi::xml_document	config_file;
 	pugi::xml_node* node = &App->LoadEntities(config_file);
-	node = &node->child("enemies").child("heavyGoblin");
-	texture = App->tex->Load(App->entities->goblins_spritesheet_name.data());
+	node = &node->child("enemies").child("skeleton");
+	texture = App->tex->Load(App->entities->skeleton_spritesheet_name.data());
 
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
@@ -39,6 +39,8 @@ Skeleton::Skeleton(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &death);
 		else if (tmp == "stun")
 			LoadAnimation(animations, &stun);
+		else if (tmp == "default_attack")
+			LoadAnimation(animations, &attack);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

@@ -19,6 +19,7 @@
 #include "UILevelUpInfo.h"
 #include "UIVerticalSliceInfo.h"
 #include "UIPauseMenu.h"
+#include "ctWorldMap.h"
 
 
 #include "UIElement.h"
@@ -251,8 +252,8 @@ UIElement* ctGui::AddUIBar(int position_x, int position_y, int max_capacity, UI_
 	return nullptr;
 }
 
-UIElement* ctGui::AddUIDecision(int x, int y, int decision_number, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent) {
-	UIElement* tmp_decision = new UIDecision(x, y, decision_number, DECISION, arrow, options, callback, parent);
+UIElement* ctGui::AddUIDecision(int position_x, int position_y, UI_Type type, UIElement* &arrow, std::string decision, WorldMapElement &option_1, WorldMapElement &option_2, ctModule* callback, UIElement* parent) {
+	UIElement* tmp_decision = new UIDecision(position_x, position_y, DECISION, arrow, decision, option_1,option_2, callback, parent);
 	ui_elements.push_back(tmp_decision);
 	return tmp_decision;
 

@@ -128,18 +128,23 @@ bool ctWorldMap::Start()
 
 	switch (App->map->actual_tier)
 	{
-	case TIER_MAP_0:
+	case TIER_MAP_1: {
 		App->map->actual_tier = TierList::TIER_MAP_1;
-		break;
-	case TIER_MAP_1:
-		App->map->actual_tier = TierList::TIER_MAP_2;
-		break;
-	case TIER_MAP_2:
-		App->map->actual_tier = TierList::TIER_MAP_3;
-		break;
-	case TIER_MAP_3:
+		current_map_element = final_map_elements.at(0);
 		break;
 	}
+	case TIER_MAP_2:
+		App->map->actual_tier = TierList::TIER_MAP_2;
+		break;
+	case TIER_MAP_3:
+		App->map->actual_tier = TierList::TIER_MAP_3;
+		break;
+	default:
+		break;
+	}
+
+	if (App->map->actual_tier != TIER_MAP_1)
+		spawn_decision = true;
 
 
 	if (!App->audio->PlayMusic(App->audio->WorldMapBSO.c_str(), 1)) {
@@ -148,40 +153,22 @@ bool ctWorldMap::Start()
 	}
 
 
-	if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
-	{
-
-		if (!App->audio->PlayMusic(App->audio->WinBSO.c_str(), 1)) {
-
-			LOG("Error playing music in ctMainMenu Start");
+	if (spawn_decision) {
+		switch (App->map->actual_tier)
+		{
+		case TIER_MAP_2:
+			decision = (UIDecision*)App->gui->AddUIDecision(50, 0, DECISION, arrow, current_map_element->decision, *final_map_elements.at(1), *final_map_elements.at(2), this);
+			break;
+		case TIER_MAP_3:
+			App->map->actual_tier = TierList::TIER_MAP_3;
+			break;
+		default:
+			break;
 		}
-
-		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
-		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-		condition_win = App->gui->AddUIVerticalSliceInfo(xE, yE, App->combat->condition_victory, this, nullptr);
+		
+		decision->option_1->current_state = STATE_FOCUSED;
+		arrow->SetParent(decision->option_1);
 	}
-
-	if (App->combat->condition_victory == false)
-	{
-
-		if (!App->audio->PlayMusic(App->audio->LoseBSO.c_str(), 1)) {
-
-			LOG("Error playing music in ctMainMenu Start");
-		}
-
-		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
-		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-		condition_lose = App->gui->AddUIVerticalSliceInfo(xE, yE,App->combat->condition_victory, this, nullptr);
-	}
-	//Decision call example
-
-	if (App->map->actual_tier == TierList::TIER_MAP_2 && App->combat->condition_victory == true)
-	{
-		int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
-		int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-		cleric_level_up = App->gui->AddUILevelUpInfo(xE, yE, CLERIC, this, nullptr);
-	}
-
 	return ret;
 }
 
@@ -194,103 +181,27 @@ bool ctWorldMap::PreUpdate()
 // Called each loop iteration
 bool ctWorldMap::Update(float dt)
 {
-
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN&& App->fadeToBlack->FadeIsOver()) {
-		
-		if (cleric_level_up != nullptr)
-		{
-			App->gui->DeleteUIElement(*cleric_level_up);
-			int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
-			int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-			cleric_level_up = nullptr;
-			dwarf_level_up = App->gui->AddUILevelUpInfo(xE, yE, DWARF, this, nullptr);
-		}
-		else if (cleric_level_up == nullptr && dwarf_level_up != nullptr)
-		{
-			App->gui->DeleteUIElement(*dwarf_level_up);
-			dwarf_level_up = nullptr;
-			int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
-			int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-			warrior_level_up = App->gui->AddUILevelUpInfo(xE, yE, WARRIOR, this, nullptr);
-		}
-		else if (dwarf_level_up == nullptr && warrior_level_up != nullptr)
-		{
-			App->gui->DeleteUIElement(*warrior_level_up);
-			warrior_level_up = nullptr;
-			int xE = App->win->screen_surface->w / App->win->GetHScalade() / 14;
-			int yE = App->win->screen_surface->h / App->win->GetHScalade() / 10;
-			elf_level_up = App->gui->AddUILevelUpInfo(xE, yE, ELF, this, nullptr);
-		}
-		else if (warrior_level_up == nullptr && elf_level_up != nullptr)
-		{
-			App->gui->DeleteUIElement(*elf_level_up);
-			elf_level_up = nullptr;
-			
-				decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this);
-				(*options.rbegin())->current_state = STATE_FOCUSED;
-				arrow->SetParent(*options.rbegin());
-				SetDecision();
-		}
-		
-		else if (decision != nullptr)
-		{
-			App->gui->DeleteUIElement(*decision);
-			decision = nullptr;
-		}
-		
-	}
 	
-	if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN)&& App->fadeToBlack->FadeIsOver() && App->map->actual_tier == TIER_MAP_1) {
+	if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() && decision == nullptr) {
 
-		WorldMapElement* tmp_map_element = final_map_elements.at(0);
-
-		App->combat->SetSceneName(tmp_map_element->scene_name);
-		App->combat->entities_to_spawn = tmp_map_element->entities;
+		App->combat->SetSceneName(current_map_element->scene_name);
+		App->combat->entities_to_spawn = current_map_element->entities;
 
 		if (App->fadeToBlack->FadeIsOver())
 			App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
 
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-
-		if (App->combat->condition_victory == true && App->map->actual_tier == TierList::TIER_MAP_3)
-		{
-			if (App->fadeToBlack->FadeIsOver()) {
-				condition_win->to_destroy = true;
-				App->main_menu->is_new_game = false;
-				App->map->actual_tier = TierList::TIER_MAP_0;
+	/*	IF HAVE TO QUIT THE GAME
+		App->main_menu->is_new_game = false;
 				if (App->fadeToBlack->FadeIsOver())
 					App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
-			}
-			
-		}
-		else if (App->combat->condition_victory == false)
-		{
-			if (App->fadeToBlack->FadeIsOver()) {
-				condition_lose->to_destroy = true;
-				App->combat->condition_victory = true;
-				App->main_menu->is_new_game = false;
-				App->map->actual_tier = TierList::TIER_MAP_0;
-				if (App->fadeToBlack->FadeIsOver())
-					App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
-			}
-		}
+	*/
 
-	}
-
-	//if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
-	//{
-	//	App->render->scale_factor += 0.1;
-	//}
-	//if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
-	//{
-	//	App->render->scale_factor -= 0.1;
-	//}
-
-	// FIRTS DECISIÖN TIER 1 to 2
-	if (App->map->actual_tier == TierList::TIER_MAP_2)
+	// DECISION
+	if (decision != nullptr)
 	{
+
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 		{
 			App->audio->PlayFx(App->audio->wm_walk_fx);
@@ -302,6 +213,7 @@ bool ctWorldMap::Update(float dt)
 			App->audio->PlayFx(App->audio->wm_walk_fx);
 			NavigateDown(options);
 		}
+
 	}
 
 
@@ -389,44 +301,29 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 	{
 		if (ui_state == STATE_EXECUTED)
 		{
-			if (decision->options[0]->current_state == STATE_FOCUSED)
+			WorldMapElement* tmp_map_element = nullptr;
+
+			if (decision->option_1->current_state == STATE_FOCUSED)
 			{
-
-				for (int i = 0; i < final_map_elements.size(); i++)
-				{
-					WorldMapElement* tmp_map_element = final_map_elements.at(i);
-					if (tmp_map_element->scene_name == "cave_03.tmx") {
-						App->combat->SetSceneName(tmp_map_element->scene_name);
-						App->combat->entities_to_spawn = tmp_map_element->entities;
-
-						if(App->fadeToBlack->FadeIsOver())
-							App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
-						App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(i)->coords_in_map.x + 5, final_map_elements.at(i)->coords_in_map.y + 30)));
-						break;
-					}
-				}
-
+				tmp_map_element = decision->choice_02;
 			}
 			else
 			{
-
-				for (int i = 0; i < final_map_elements.size(); i++)
-				{
-					WorldMapElement* tmp_map_element = final_map_elements.at(i);
-					if (tmp_map_element->scene_name == "forest.tmx") {
-						App->combat->SetSceneName(tmp_map_element->scene_name);
-						App->combat->entities_to_spawn = tmp_map_element->entities;
-						if (App->fadeToBlack->FadeIsOver())
-							App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
-						App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y + 35)));
-						break;
-					}
-				}
+				tmp_map_element = decision->choice_01;
 			}
+
+			App->combat->SetSceneName(tmp_map_element->scene_name);
+			App->combat->entities_to_spawn = tmp_map_element->entities;
+
+			if (App->fadeToBlack->FadeIsOver())
+				App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
+
+			App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(tmp_map_element->coords_in_map.x + 5, tmp_map_element->coords_in_map.y + 30)));
+			avatar_position = iPoint(tmp_map_element->coords_in_map.x + 5, tmp_map_element->coords_in_map.y + 30);
 
 			App->task_manager->PerformAllTheTasks();
 
-			decision->to_destroy = true;
+			App->gui->DeleteUIElement(*decision);
 		}
 	}
 

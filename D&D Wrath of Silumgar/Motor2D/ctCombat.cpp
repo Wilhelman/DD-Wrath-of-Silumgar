@@ -355,7 +355,8 @@ bool ctCombat::CleanUp()
 	warrior_name = nullptr;
 
 	App->task_manager->CleanUp();
-
+	if (App->map->actual_tier == TIER_MAP_1)
+		App->map->actual_tier = TIER_MAP_2;
 	
 	return true;
 }

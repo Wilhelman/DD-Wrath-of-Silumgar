@@ -8,39 +8,27 @@
 #include "ctWindow.h"
 #include "ctTextures.h"
 
-struct Option {
-	uint option_number;
-	iPoint position;
-};
+struct WorldMapElement;
 
 class UIDecision : public UIElement
 {
 public:
 
+	UIElement* text_border = nullptr;
+	UIElement* text_decision = nullptr;
+	UIElement* arrow = nullptr;
 
-	//UIElement* image_decision;
-	UIElement* text_border;
-	UIElement* text_decision;
-	UIElement* arrow;
-	/*UIElement* ui_options[2];*/
-	UIElement* first_option;
-	//std::vector<Option> options;
-	std::vector<UIElement*> options;
-	int number_of_options = 2;
+	UIElement* option_1 = nullptr;
+	UIElement* option_2 = nullptr;
+
+	WorldMapElement* choice_01 = nullptr;
+	WorldMapElement* choice_02 = nullptr;
 
 public:
-	UIDecision(int x, int y, int decision_number, UI_Type type, UIElement* &arrow, std::vector<UIElement*> &options, ctModule* callback, UIElement* parent = nullptr);
-	UIElement* aux_element;
-	std::vector<UIElement*> GetOptionsUIElements() {
-		return options;
-	}
+	UIDecision(int x, int y, UI_Type type, UIElement* &arrow, std::string decision, WorldMapElement &option_1, WorldMapElement &option_2, ctModule* callback, UIElement* parent = nullptr);
+	UIElement* aux_element = nullptr;
 
 	~UIDecision();
-	//Decision call example
-
-	//decision = (UIDecision*)App->gui->AddUIDecision(50, 0, 1, arrow, options, this); 
-	//(*options.rbegin())->current_state = STATE_FOCUSED;
-	//arrow->SetParent(*options.rbegin());
 };
 
-#endif //Questions to Ricardo
+#endif

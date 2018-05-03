@@ -65,6 +65,9 @@ public:
 
 	WorldMapElement* SetDecision();
 	std::string SetOptions();
+	
+public:
+	std::vector<UIElement*> options;
 
 private:
 
@@ -80,7 +83,7 @@ private:
 
 	std::vector<WorldMapElement*> all_map_elements;
 
-	
+	WorldMapElement* current_map_element;
 
 	std::string world_map_tmx;
 
@@ -92,7 +95,6 @@ private:
 	//Decision
 	UIDecision* decision = nullptr; 
 	UIElement* arrow = nullptr;
-	std::vector<UIElement*> options;
 
 	UIElement* warrior_level_up = nullptr;
 	UIElement* elf_level_up = nullptr;
@@ -104,6 +106,8 @@ private:
 
 	UIElement* start_combat_label = nullptr;
 	iPoint avatar_position = { 40,170 };
+
+	bool spawn_decision = false;
 };
 
 

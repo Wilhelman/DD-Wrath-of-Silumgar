@@ -868,7 +868,7 @@
           <frame x="84"  y="2255" width="97" height="81"/>
         </animation>
 
-        <animation name="default_attack" speed="0.2" loop="false">
+        <animation name="mace_hit" speed="0.2" loop="false">
           <frame x="47"  y="12" width="126" height="96"/>
           <frame x="188" y="12" width="126" height="96"/>
           <frame x="358" y="12" width="126" height="96"/>
@@ -902,6 +902,17 @@
           <frame x="120" y="2741" width="90" height="112"/>
         </animation>
 
+        <animation name="light_strike" speed="0.2" loop="false">
+          <frame x="47"  y="12" width="126" height="96"/>
+          <frame x="188" y="12" width="126" height="96"/>
+          <frame x="358" y="12" width="126" height="96"/>
+          <frame x="510" y="12" width="126" height="96"/>
+          <frame x="682" y="12" width="126" height="96"/>
+          <frame x="841" y="12" width="126" height="96"/>
+          <frame x="998" y="12" width="126" height="96"/>
+          <frame x="1405" y="12" width="126" height="96"/>
+        </animation>
+
         <animation name="mace_throw" speed="0.05" loop="false">
           <frame x="2001" y="1639" width="132" height="89"/>
           <frame x="1845" y="1639" width="132" height="89"/>
@@ -916,6 +927,17 @@
           <frame x="397" y="2741" width="90" height="112"/>
           <frame x="239" y="2741" width="90" height="112"/>
           <frame x="120" y="2741" width="90" height="112"/>
+        </animation>
+
+        <animation name="light_strike+" speed="0.2" loop="false">
+          <frame x="47"  y="12" width="126" height="96"/>
+          <frame x="188" y="12" width="126" height="96"/>
+          <frame x="358" y="12" width="126" height="96"/>
+          <frame x="510" y="12" width="126" height="96"/>
+          <frame x="682" y="12" width="126" height="96"/>
+          <frame x="841" y="12" width="126" height="96"/>
+          <frame x="998" y="12" width="126" height="96"/>
+          <frame x="1405" y="12" width="126" height="96"/>
         </animation>
 
         <animation name="mace_throw+" speed="0.05" loop="false">
@@ -1123,7 +1145,7 @@
           <frame x="1818" y="1119" width="91" height="68"/>
         </animation>
 
-        <animation name="meteor" speed="0.2" loop="false">
+        <animation name="meteor" speed="1.0" loop="false">
           <frame x="1976" y="1828" width="93" height="76"/>
           <frame x="1817" y="1828" width="93" height="76"/>
           <frame x="1673" y="1828" width="93" height="76"/>
@@ -1137,7 +1159,7 @@
           <frame x="598" y="1828" width="93" height="76"/>
         </animation>
 
-        <animation name="counter" speed="1.0" loop="true">
+        <animation name="counter" speed="1.0" loop="false">
           <frame x="2202"  y="1608" width="71" height="56"/>
           <frame x="2118" y="1608" width="71" height="56"/>
           <frame x="2012" y="1608" width="71" height="56"/>

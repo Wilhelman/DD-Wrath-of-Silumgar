@@ -399,6 +399,8 @@ void ctCombat::UpdateHPBarOfEntity(Entity * entity_to_update_bar, int quantity)
 	case KOBOLD:
 	case GNOLL:
 	case GOBLIN:
+	case HEAVY_GOBLIN:
+	case ALCHEMIST_GOBLIN:
 	case GNOLL_ARCHER:
 	case OWLBEAR:
 	case TRITON:
@@ -436,6 +438,8 @@ void ctCombat::UpdateManaBarOfEntity(Entity * entity_to_update_bar, int quantity
 	case KOBOLD:
 	case GNOLL:
 	case GOBLIN:
+	case HEAVY_GOBLIN:
+	case ALCHEMIST_GOBLIN:
 	case GNOLL_ARCHER:
 	case OWLBEAR:
 	case TRITON:
@@ -928,6 +932,8 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		case KOBOLD: 
 		case GNOLL:
 		case GOBLIN:
+		case HEAVY_GOBLIN:
+		case ALCHEMIST_GOBLIN:
 		case GNOLL_ARCHER:
 		case OWLBEAR:
 		case HELLHOUND:

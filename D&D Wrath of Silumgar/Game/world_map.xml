@@ -8,7 +8,9 @@
       
         <map_element>
           <tier type="1" />
-          <entity name="DARK_WARRIOR" />
+          <entity name="GOBLIN" />
+          <entity name="HEAVYGOBLIN" />
+          <entity name="ALCHEMISTGOBLIN" />
           <scene name="tavern.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="mimi"/>

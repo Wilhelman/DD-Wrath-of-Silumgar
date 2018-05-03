@@ -15,7 +15,6 @@ struct SDL_Texture;
 
 enum TierList
 {
-	TIER_MAP_0,
 	TIER_MAP_1,
 	TIER_MAP_2,
 	TIER_MAP_3,
@@ -203,7 +202,7 @@ public:
 	std::vector<iPoint> heroes_position_coords;
 	std::vector<iPoint> enemies_position_coords;
 
-	TierList actual_tier = TIER_MAP_0;
+	TierList actual_tier = TIER_MAP_1;
 private:
 
 	pugi::xml_document	map_file;

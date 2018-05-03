@@ -88,6 +88,8 @@ public:
 
 	//dark_warrior
 	ctAnimation void_cannon = ctAnimation();
+	ctAnimation thunder_punch = ctAnimation();
+	ctAnimation insignificant_mortals = ctAnimation();
 
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);

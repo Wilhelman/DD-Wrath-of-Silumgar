@@ -43,6 +43,10 @@ DarkWarrior::DarkWarrior(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &dodge);
 		else if (tmp == "void_cannon")
 			LoadAnimation(animations, &void_cannon);
+		else if (tmp == "thunder_punch")
+			LoadAnimation(animations, &void_cannon);
+		else if (tmp == "insignificant_mortals")
+			LoadAnimation(animations, &void_cannon);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;
@@ -51,9 +55,20 @@ DarkWarrior::DarkWarrior(int x, int y, EntityType type) : Entity(x, y, type) {
 
 	void_cannon_action.name = "Void Cannon";
 	void_cannon_action.health_points_effect = -100;
+	void_cannon_action.mana_points_effect_to_himself = 70;
 	void_cannon_action.objective = HEROES;
 	void_cannon_action.type = VOID_CANNON;
 
+	thunder_punch_action.name = "Thunder Punch";
+	thunder_punch_action.health_points_effect = -100;
+	thunder_punch_action.mana_points_effect_to_himself = 45;
+	thunder_punch_action.objective = HEROES;
+	thunder_punch_action.type = THUNDER_PUNCH;
+
+	insignificant_mortals_action.name = "Insignificant Mortals";
+	insignificant_mortals_action.mana_points_effect_to_himself = 45;
+	insignificant_mortals_action.objective = ENEMIES;
+	insignificant_mortals_action.type = INSIGNIFICANT_MORTALS;
 }
 
 
@@ -115,7 +130,7 @@ void  DarkWarrior::Damaged() {
 
 void DarkWarrior::PerformAction()
 {
-	Entity* entity_objective = nullptr;
+	/*Entity* entity_objective = nullptr;
 
 	if (IsGoingToDoAnythingClever()) {//hacer algo cheto
 		entity_objective = App->combat->GetTheWeakestHeroe();
@@ -134,6 +149,10 @@ void DarkWarrior::PerformAction()
 		App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
 		App->task_manager->AddTask(new MoveToInitialPosition(this));
 	}
+	
+	*/
 
+	
+	App->task_manager->AddTask(new PerformActionToEntity(this, this->insignificant_mortals_action, App->combat->GetRandomHeroe()));
 	
 }

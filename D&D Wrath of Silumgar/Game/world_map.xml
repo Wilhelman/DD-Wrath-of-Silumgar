@@ -8,10 +8,7 @@
       
         <map_element>
           <tier type="1" />
-          <entity name="GOBLIN" />
-          <entity name="HEAVYGOBLIN" />
-          <entity name="ALCHEMISTGOBLIN" />
-          <entity name="KOBOLD" />
+          <entity name="DARK_WARRIOR" />
           <scene name="cave_06.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="soy primera decision"/>

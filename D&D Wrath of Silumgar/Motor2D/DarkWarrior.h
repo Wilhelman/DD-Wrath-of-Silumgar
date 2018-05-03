@@ -19,6 +19,8 @@ private:
 	uint idle_vel = 0u, run_forward_vel = 0u;
 
 	Action void_cannon_action;
+	Action thunder_punch_action;
+	Action insignificant_mortals_action;
 
 private:
 

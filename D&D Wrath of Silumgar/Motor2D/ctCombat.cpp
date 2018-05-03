@@ -641,14 +641,91 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 	std::string tmp = skill_node.attribute("name").as_string();
 	new_action.name = tmp;
 
-	if (tmp == "Kick")
-		new_action.type = KICK;
-	else if (tmp == "H. Axe")
-		new_action.type = HIGH_AXE;
-	else if (tmp == "Heal")
-		new_action.type = HEAL;
-	else if (tmp == "Mindblown")
-		new_action.type = MINDBLOWN;
+	
+	if (entity->type == WARRIOR)
+	{
+		if (tmp == "Kick")
+			new_action.type = KICK;
+		else if (tmp == "Guard")
+			new_action.type = GUARD;
+		else if (tmp == "Heavy Slash")
+			new_action.type = HEAVY_SLASH;
+		else if (tmp == "Kick Plus")
+			new_action.type = KICK_PLUS;
+		else if (tmp == "Guard Plus")
+			new_action.type = GUARD_PLUS;
+		else if (tmp == "Heavy Slash Plus")
+			new_action.type = HEAVY_SLASH_PLUS;
+		else if (tmp == "Charge")
+			new_action.type = CHARGE;
+		else if (tmp == "Taunt")
+			new_action.type = TAUNT;
+		else if (tmp == "Whirlwind")
+			new_action.type = WHIRLWIND;
+	}
+	else if (entity->type == DWARF)
+	{
+		if (tmp == "H. Axe")
+			new_action.type = HIGH_AXE;
+		else if (tmp == "Morale Boost")
+			new_action.type = MORALE_BOOST;
+		else if (tmp == "Dwarfs Wrath")
+			new_action.type = DWARFS_WRATH;
+		else if (tmp == "High Axe Plus")
+			new_action.type = HIGH_AXE_PLUS;
+		else if (tmp == "Morale Boost Plus")
+			new_action.type = MORALE_BOOST_PLUS;
+		else if (tmp == "Dwarfs Wrath Plus")
+			new_action.type = DWARFS_WRATH_PLUS;
+		else if (tmp == "Raging Mock")
+			new_action.type = RAGING_MOCK;
+		else if (tmp == "Meteor")
+			new_action.type = METEOR;
+		else if (tmp == "Counter")
+			new_action.type = COUNTER;
+	}
+	else if (entity->type == CLERIC)
+	{
+		if (tmp == "Heal")
+			new_action.type = HEAL;
+		else if (tmp == "Light Strike")
+			new_action.type = LIGHT_STRIKE;
+		else if (tmp == "Mace Throw")
+			new_action.type = MACE_THROW;
+		else if (tmp == "Heal Plus")
+			new_action.type = HEAL_PLUS;
+		else if (tmp == "Light Strike Plus")
+			new_action.type = LIGHT_STRIKE_PLUS;
+		else if (tmp == "Mace Throw Plus")
+			new_action.type = MACE_THROW_PLUS;
+		else if (tmp == "Blessing")
+			new_action.type = BLESSING;
+		else if (tmp == "Harden Skin")
+			new_action.type = HARDEN_SKIN;
+		else if (tmp == "Clarity")
+			new_action.type = CLARITY;
+	}
+	else if (entity->type == ELF)
+	{
+		if (tmp == "Blizzard")
+			new_action.type = BLIZZARD;
+		else if (tmp == "Seed Of Life")
+			new_action.type = SEED_OF_LIFE;
+		else if (tmp == "Fireball")
+			new_action.type = FIREBALL;
+		else if (tmp == "Lightning Boolt")
+			new_action.type = LIGHTNING_BOLT;
+		else if (tmp == "Seed Of Life Plus")
+			new_action.type = SEED_OF_LIFE_PLUS;
+		else if (tmp == "Fireball Plus")
+			new_action.type = FIREBALL_PLUS;
+		else if (tmp == "Lightning Boolt Plus")
+			new_action.type = LIGHTNING_BOLT_PLUS;
+		else if (tmp == "Revive")
+			new_action.type = REVIVE;
+		else if (tmp == "Fire Djinn")
+			new_action.type = FIRE_DJINN;
+	}
 
 	if (skill_node.attribute("objective").as_int()) 
 		new_action.objective = ENEMIES;

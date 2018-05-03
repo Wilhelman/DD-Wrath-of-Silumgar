@@ -38,6 +38,20 @@ Warrior::Warrior(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &kick);
 		else if (tmp == "dodge")
 			LoadAnimation(animations, &dodge);
+		else if (tmp == "heavy_slash")
+			LoadAnimation(animations, &heavy_slash);
+		else if (tmp == "guard")
+			LoadAnimation(animations, &guard);
+		else if (tmp == "kick+")
+			LoadAnimation(animations, &kick_plus);
+		else if (tmp == "guard+")
+			LoadAnimation(animations, &guard_plus);
+		else if (tmp == "heavy_slash+")
+			LoadAnimation(animations, &heavy_slash_plus);
+		else if (tmp == "charge")
+			LoadAnimation(animations, &charge);
+		else if (tmp == "taunt")
+			LoadAnimation(animations, &taunt);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

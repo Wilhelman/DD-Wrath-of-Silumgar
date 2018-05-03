@@ -36,12 +36,29 @@ Elf::Elf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &death);
 		else if (tmp == "dodge")
 			LoadAnimation(animations, &dodge);
-		else if (tmp == "mind_blown")
-			LoadAnimation(animations, &mind_blown);
+		else if (tmp == "blizzard")
+			LoadAnimation(animations, &blizzard);
 		else if (tmp == "throw")
 			LoadAnimation(animations, &throw_object);
 		else if (tmp == "potion")
 			LoadAnimation(animations, &use_potion);
+		else if (tmp == "seed_of_life")
+			LoadAnimation(animations, &seed_of_life);
+		else if (tmp == "fireball")
+			LoadAnimation(animations, &fireball);
+		else if (tmp == "lightning_bolt")
+			LoadAnimation(animations, &lightning_bolt);
+		else if (tmp == "seed_of_life+")
+			LoadAnimation(animations, &seed_of_life_plus);
+		else if (tmp == "fireball+")
+			LoadAnimation(animations, &fireball_plus);
+		else if (tmp == "lightning_bolt+")
+			LoadAnimation(animations, &lightning_bol_plus);
+		else if (tmp == "revive")
+			LoadAnimation(animations, &revive);
+		else if (tmp == "fire_djinn")
+			LoadAnimation(animations, &fire_djinn);
+	
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

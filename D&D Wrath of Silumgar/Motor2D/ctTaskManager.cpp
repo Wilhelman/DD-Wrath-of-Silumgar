@@ -485,12 +485,12 @@ bool PerformActionToEntity::Execute()
 		}
 		break;
 
-		case MINDBLOWN: {
+		case BLIZZARD: {
 
 			if (!HaveObjective())
 				return true;
 
-			actioner_entity->animation = &actioner_entity->mind_blown;
+			actioner_entity->animation = &actioner_entity->blizzard;
 
 
 
@@ -501,7 +501,7 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
-				actioner_entity->mind_blown.Reset();
+				actioner_entity->blizzard.Reset();
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 

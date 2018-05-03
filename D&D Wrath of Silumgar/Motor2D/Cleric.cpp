@@ -38,6 +38,20 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &heal);
 		else if (tmp == "dodge")
 			LoadAnimation(animations, &dodge);
+		else if (tmp == "mace_throw")
+			LoadAnimation(animations, &mace_throw);
+		else if (tmp == "heal+")
+			LoadAnimation(animations, &heal_plus);
+		else if (tmp == "mace_throw+")
+			LoadAnimation(animations, &mace_throw_plus);
+		else if (tmp == "blessing")
+			LoadAnimation(animations, &blessing);
+		else if (tmp == "harden_skin")
+			LoadAnimation(animations, &harder_skin);
+		else if (tmp == "clarity")
+			LoadAnimation(animations, &clarity);
+
+
 	}
 	LoadProperties(node->child("statistics"));
 

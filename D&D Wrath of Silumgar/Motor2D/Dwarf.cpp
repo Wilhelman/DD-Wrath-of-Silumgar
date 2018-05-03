@@ -34,7 +34,7 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &hit);
 		else if (tmp == "death")
 			LoadAnimation(animations, &death);
-		else if (tmp == "high_axe")
+		else if (tmp == "double_edged_axe")
 			LoadAnimation(animations, &high_axe);
 		else if (tmp == "dodge")
 			LoadAnimation(animations, &dodge);
@@ -42,6 +42,22 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &throw_object);
 		else if (tmp == "potion")
 			LoadAnimation(animations, &use_potion);
+		else if (tmp == "morale_boost")
+			LoadAnimation(animations, &morale_boost);
+		else if (tmp == "dwarf_wrath")
+			LoadAnimation(animations, &dwarfs_wrath);
+		else if (tmp == "morale_boost+")
+			LoadAnimation(animations, &morale_boost_plus);
+		else if (tmp == "double_edged_axe+")
+			LoadAnimation(animations, &high_axe_plus);
+		else if (tmp == "dwarfs_wrath+")
+			LoadAnimation(animations, &dwarfs_wrath_plus);
+		else if (tmp == "raging_mock")
+			LoadAnimation(animations, &raging_mock);
+		else if (tmp == "meteor")
+			LoadAnimation(animations, &meteor);
+		else if (tmp == "counter")
+			LoadAnimation(animations, &counter);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

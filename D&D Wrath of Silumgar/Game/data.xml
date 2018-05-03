@@ -6,6 +6,14 @@
 			<values health_points="78" mana_points="65" />
 			<skills>
 				<skill name="Heal" description="Heals one ally based on his intelligence" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
+        <skill name="Light Strike" description="Light Strike" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
+        <skill name="Mace Throw" description="Mace Throw" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
+        <skill name="Heal Plus" description="Heal Plus" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
+        <skill name="Light Strike Plus" description="Light Strike Plus" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
+        <skill name="Mace Throw Plus" description="Mace Throw Plus" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
+        <skill name="Blessing" description="Blessing" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
+        <skill name="Harden Skin" description="Harden Skin" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
+        <skill name="Clarity" description="Clarity" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
 			</skills>
 			<items>
 				<items>
@@ -24,6 +32,14 @@
 			<values health_points="104" mana_points="52" />
 			<skills>
 				<skill name="Kick" description="Physical attack that has a chance (80%) to stun the enemy" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
+        <skill name="Guard" description="Guard" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
+        <skill name="Heavy Slash" description="Heavy Slash" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
+        <skill name="Kick Plus" description="Kick Plus" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
+        <skill name="Guard Plus" description="Guard Plus" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
+        <skill name="Heavy Slash Plus" description="Heavy Slash Plus" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
+        <skill name="Charge" description="Charge" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
+        <skill name="Taunt" description="Taunt" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
+        <skill name="Whirlwind" description="Whirlwind" mana_points_effect_to_himself="28" health_points_effect="-16" stun_chance="80" objective="1" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />
@@ -33,6 +49,14 @@
 			<values health_points="91" mana_points="52" />
 			<skills>
 				<skill name="H. Axe" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
+        <skill name="Morale Boost" description="Morale Boost" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
+        <skill name="Dwarfs Wrath" description="Dwarfs Wrath" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
+        <skill name="High Axe Plus" description="High Axe Plus" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
+        <skill name="Morale Boost Plus" description="Morale Boost Plus" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
+        <skill name="Dwarfs Wrath Plus" description="Dwarfs Wrath Plus" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
+        <skill name="Raging Mock" description="Raging Mock" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
+        <skill name="Meteor" description="Meteor" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
+        <skill name="Counter" description="Counter" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />
@@ -41,7 +65,15 @@
 		<heroe name="elf">
 			<values health_points="0" mana_points="91" />
 			<skills>
-				<skill name="Mindblown" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
+				<skill name="Blizzard" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
+        <skill name="Seed Of Life" description="Seed Of Life" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
+        <skill name="Fireball" description="Fireball" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
+        <skill name="Lightning Boolt" description="Lightning Boolt" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
+        <skill name="Seed Of Life Plus" description="Seed Of Life Plus" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
+        <skill name="Fireball Plus" description="Fireball Plus" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
+        <skill name="Lightning Boolt Plus" description="Lightning Boolt Plus" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
+        <skill name="Revive" description="Revive" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
+        <skill name="Fire Djinn" description="Fire Djinn" mana_points_effect_to_himself="45" health_points_effect="-40" objective="1" />
 			</skills>
 			<items>
 				<item name="test" etc="etc" />

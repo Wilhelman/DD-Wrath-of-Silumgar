@@ -40,10 +40,49 @@ public:
 	
 
 	//custom animations
+		//FIGHTER
 	ctAnimation kick = ctAnimation();
+	ctAnimation guard = ctAnimation();
+	ctAnimation heavy_slash = ctAnimation();
+	ctAnimation kick_plus = ctAnimation();
+	ctAnimation guard_plus= ctAnimation();
+	ctAnimation heavy_slash_plus = ctAnimation();
+	ctAnimation charge = ctAnimation();
+	ctAnimation taunt = ctAnimation();
+	ctAnimation whirlwind = ctAnimation();
+
+		//DWARF
 	ctAnimation high_axe = ctAnimation();
+	ctAnimation morale_boost = ctAnimation();
+	ctAnimation dwarfs_wrath = ctAnimation();
+	ctAnimation high_axe_plus = ctAnimation();
+	ctAnimation morale_boost_plus = ctAnimation();
+	ctAnimation dwarfs_wrath_plus = ctAnimation();
+	ctAnimation raging_mock = ctAnimation();
+	ctAnimation meteor = ctAnimation();
+	ctAnimation counter = ctAnimation();
+		//CLERIC
 	ctAnimation heal = ctAnimation();
-	ctAnimation mind_blown = ctAnimation();
+	ctAnimation light_strike = ctAnimation();
+	ctAnimation mace_throw = ctAnimation();
+	ctAnimation heal_plus = ctAnimation();
+	ctAnimation light_strike_plus = ctAnimation();
+	ctAnimation mace_throw_plus = ctAnimation();
+	ctAnimation blessing = ctAnimation();
+	ctAnimation harder_skin = ctAnimation();
+	ctAnimation clarity = ctAnimation();
+		//ELF
+	ctAnimation blizzard = ctAnimation();
+	ctAnimation seed_of_life = ctAnimation();
+	ctAnimation fireball = ctAnimation();
+	ctAnimation lightning_bolt = ctAnimation();
+	ctAnimation seed_of_life_plus = ctAnimation();
+	ctAnimation fireball_plus = ctAnimation();
+	ctAnimation lightning_bol_plus = ctAnimation();
+	ctAnimation revive = ctAnimation();
+	ctAnimation fire_djinn = ctAnimation();
+
+		//OBJECT
 	ctAnimation throw_object = ctAnimation();
 	ctAnimation use_potion = ctAnimation();
 

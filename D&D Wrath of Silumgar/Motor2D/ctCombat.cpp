@@ -736,6 +736,14 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 	new_action.mana_points_effect_to_himself = skill_node.attribute("mana_points_effect_to_himself").as_int();
 	new_action.health_points_effect = skill_node.attribute("health_points_effect").as_int();
 	new_action.stun_chance = skill_node.attribute("stun_chance").as_int();
+	new_action.burn_chance = skill_node.attribute("burn_chance").as_int();
+	new_action.magical_defense_variation = skill_node.attribute("magical_defense_variation").as_int();
+	new_action.physical_defense_variation = skill_node.attribute("physical_defense_variation").as_int();
+	new_action.intelligence_variation = skill_node.attribute("intelligence_variation").as_int();
+	new_action.strength_variation = skill_node.attribute("strength_variation").as_int();
+	new_action.bleeding_chance = skill_node.attribute("bleeding_chance").as_int();
+	new_action.judgement_variation = skill_node.attribute("judgement_variation").as_int();
+	new_action.dexterity_variation = skill_node.attribute("dexterity_variation").as_int();
 	entity->AddAction(new_action);
 }
 

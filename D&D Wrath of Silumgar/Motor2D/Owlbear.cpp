@@ -90,18 +90,18 @@ void Owlbear::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animatio
 
 void Owlbear::Attack()
 {
-	App->audio->PlayFx(App->audio->gnoll_attack_fx, 0);
+	App->audio->PlayFx(App->audio->owlbear_attack_fx, 0);
 
 }
 
 void  Owlbear::Death() {
-	App->audio->PlayFx(App->audio->gnoll_death_fx, 0);
+	App->audio->PlayFx(App->audio->owlbear_death_fx, 0);
 }
 void  Owlbear::Run() {
-	App->audio->PlayFx(App->audio->gnoll_run_fx, 0);
+	App->audio->PlayFx(App->audio->owlbear_run_fx, 0);
 }
 void  Owlbear::Damaged() {
-	App->audio->PlayFx(App->audio->gnoll_damaged_fx, 0);
+	App->audio->PlayFx(App->audio->owlbear_damaged_fx, 0);
 }
 
 void Owlbear::PerformAction()

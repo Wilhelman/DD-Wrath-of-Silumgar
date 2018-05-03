@@ -90,18 +90,18 @@ void Hellhound::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animat
 
 void Hellhound::Attack()
 {
-	App->audio->PlayFx(App->audio->gnoll_attack_fx, 0);
+	App->audio->PlayFx(App->audio->hellhound_attack_fx, 0);
 
 }
 
 void  Hellhound::Death() {
-	App->audio->PlayFx(App->audio->gnoll_death_fx, 0);
+	App->audio->PlayFx(App->audio->hellhound_death_fx, 0);
 }
 void  Hellhound::Run() {
-	App->audio->PlayFx(App->audio->gnoll_run_fx, 0);
+	App->audio->PlayFx(App->audio->hellhound_run_fx, 0);
 }
 void  Hellhound::Damaged() {
-	App->audio->PlayFx(App->audio->gnoll_damaged_fx, 0);
+	App->audio->PlayFx(App->audio->hellhound_damaged_fx, 0);
 }
 
 void Hellhound::PerformAction()

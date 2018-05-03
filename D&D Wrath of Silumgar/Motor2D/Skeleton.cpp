@@ -90,18 +90,18 @@ void Skeleton::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animati
 
 void Skeleton::Attack()
 {
-	App->audio->PlayFx(App->audio->gnoll_attack_fx, 0);
+	App->audio->PlayFx(App->audio->skeleton_attack_fx, 0);
 
 }
 
 void  Skeleton::Death() {
-	App->audio->PlayFx(App->audio->gnoll_death_fx, 0);
+	App->audio->PlayFx(App->audio->skeleton_death_fx, 0);
 }
 void  Skeleton::Run() {
-	App->audio->PlayFx(App->audio->gnoll_run_fx, 0);
+	App->audio->PlayFx(App->audio->skeleton_run_fx, 0);
 }
 void  Skeleton::Damaged() {
-	App->audio->PlayFx(App->audio->gnoll_damaged_fx, 0);
+	App->audio->PlayFx(App->audio->skeleton_damaged_fx, 0);
 }
 
 void Skeleton::PerformAction()

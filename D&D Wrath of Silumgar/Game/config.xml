@@ -40,7 +40,7 @@
 		<displacerBeast spritesheetName="textures/Enemies/DisplacerBeast_sheet.png" />
 		<gnollA spritesheetName="textures/Enemies/GnollA_sheet.png" />
 		<goblins spritesheetName="textures/Enemies/Goblins_sheet.png" />
-		<hellbound spritesheetName="textures/Enemies/Hellhound_sheet.png" />
+		<hellhound spritesheetName="textures/Enemies/Hellhound_sheet.png" />
 		<kobold spritesheetName="textures/Enemies/Kobold_sheet.png" />
 		<lich1st spritesheetName="textures/Enemies/Lich1st_sheet.png" />
 		<owlbear spritesheetName="textures/Enemies/Owlbear_sheet.png" />

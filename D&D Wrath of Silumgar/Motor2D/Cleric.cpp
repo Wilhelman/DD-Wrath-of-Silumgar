@@ -28,7 +28,7 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &idle);
 		else if (tmp == "run")
 			LoadAnimation(animations, &run_forward);
-		else if (tmp == "default_attack")
+		else if (tmp == "mace_hit")
 			LoadAnimation(animations, &attack);
 		else if (tmp == "hit")
 			LoadAnimation(animations, &hit);

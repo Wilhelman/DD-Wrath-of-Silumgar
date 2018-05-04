@@ -22,7 +22,6 @@ private:
 
 	std::vector<UIElement*> abilities;
 
-
 public:
 	UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent = nullptr);
 	~UIPauseMenu();

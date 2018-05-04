@@ -200,6 +200,9 @@ bool ctMainMenu::CleanUp()
 
 	App->audio->PauseMusic();
 
+	App->gui->DeleteUIElement(*pauseMenu);
+	pauseMenu = nullptr;
+
 	App->gui->DeleteUIElement(*arrow);
 	arrow = nullptr;
 	App->gui->DeleteUIElement(*background);

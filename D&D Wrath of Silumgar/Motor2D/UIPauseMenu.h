@@ -20,6 +20,8 @@ private:
 	std::vector<UIElement*> main_labels;
 	UIElement* arrow = nullptr;
 
+	std::vector<UIElement*> abilities;
+
 
 public:
 	UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent = nullptr);
@@ -32,6 +34,7 @@ public:
 	void LoadElfStats();
 	void NavigateDown(std::vector<UIElement*> &current_vector);
 	void NavigateUp(std::vector<UIElement*> &current_vector);
+	void ExecuteComand(std::vector<UIElement*> &current_vector);
 };
 
 #endif //__UIPAUSEMENU_H__

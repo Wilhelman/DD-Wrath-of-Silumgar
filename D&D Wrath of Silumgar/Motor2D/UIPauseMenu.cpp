@@ -9,6 +9,8 @@
 #include "UITextBox.h"
 #include "ctRender.h"
 #include "ctEntities.h"
+#include "ctFadeToBlack.h"
+#include "ctMainMenu.h"
 
 #include "Cleric.h"
 #include "Dwarf.h"
@@ -50,6 +52,11 @@ UIPauseMenu::~UIPauseMenu() {
 
 	background->~UIElement();
 	background = nullptr;
+
+	for (int i = 0; i < abilities.size(); i++) {
+		abilities.at(i)->~UIElement();
+	}
+	abilities.clear();
 
 	for (int i = 0; i < cleric_statistics.size(); i++) {
 	//	App->gui->DeleteUIElement(*cleric_statistics.at(i));
@@ -99,12 +106,31 @@ void UIPauseMenu::Update() {
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
-		NavigateDown(main_labels);
+		if (main_labels.size() > 0) {
+			NavigateDown(main_labels);
+		}
+		else if (abilities.size() > 0) {
+			NavigateDown(abilities);
+		}
 	}
 	//Go up
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
-		NavigateUp(main_labels);
+		if (main_labels.size() > 0) {
+			NavigateUp(main_labels);
+		}
+		else if (abilities.size() > 0) {
+			NavigateUp(abilities);
+		}
+	}
+	//ExecuteCommand
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		if (main_labels.size() > 0) {
+			ExecuteComand(main_labels);
+		}
+		else if (abilities.size() > 0) {
+			ExecuteComand(abilities);
+		};
 	}
 }
 
@@ -127,6 +153,10 @@ void UIPauseMenu::Draw(SDL_Texture* sprites)
 
 	for (int i = 0; i < main_labels.size(); i++) {
 		App->render->Blit(main_labels.at(i)->texture, main_labels.at(i)->GetLocalPosition().x, main_labels.at(i)->GetLocalPosition().y, &main_labels.at(i)->current_rect);
+	}
+
+	for (int i = 0; i < abilities.size(); i++) {
+		App->render->UIBlit(abilities.at(i)->texture, abilities.at(i)->GetLocalPosition().x, abilities.at(i)->GetLocalPosition().y, &abilities.at(i)->current_rect);
 	}
 
 	App->render->Blit(App->gui->atlas, arrow->screen_position.x, arrow->screen_position.y, &arrow->current_rect);
@@ -412,4 +442,32 @@ void UIPauseMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 		}
 		it_vector++;
 	}
+}
+
+void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
+	for (int i = 0; i < current_vector.size(); i++) {
+		if (current_vector.at(i)->current_state == STATE_FOCUSED) {
+			current_vector.at(i)->current_state = STATE_EXECUTED;
+		}
+	}
+
+	if (current_vector == main_labels) {
+		if (continue_label->current_state == STATE_EXECUTED) {
+			App->gui->DeleteUIElement(*this);
+			App->main_menu->pauseMenu = nullptr;
+		}
+		else if (inventory_label->current_state == STATE_EXECUTED) {
+
+		}
+		else if (abilities_label->current_state == STATE_EXECUTED) {
+
+		}
+		else if (settings_label->current_state == STATE_EXECUTED) {
+
+		}
+		else if (quit_label->current_state == STATE_EXECUTED) {
+			App->fadeToBlack->FadeToBlackBetweenModules(callback, App->main_menu, 1.0f);
+		}
+	}
+
 }

@@ -43,6 +43,7 @@ public:
 
 public:
 	bool is_new_game = false;
+	UIElement* pauseMenu = nullptr;
 
 private:
 	bool quit_pressed = false;
@@ -73,8 +74,6 @@ private:
 	Emitter* ePixelSmoke = nullptr;
 	SDL_Rect rect = { 0, 0, 400, 400 };
 	SDL_Texture* torchTex = nullptr;
-
-	UIElement* pauseMenu = nullptr;
 };
 
 

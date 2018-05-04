@@ -58,10 +58,12 @@ Elf::Elf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &revive);
 		else if (tmp == "fire_djinn")
 			LoadAnimation(animations, &fire_djinn);
+		else if (tmp == "menu_animation")
+			LoadAnimation(animations, &animation_pause);
 	
 	}
 	LoadProperties(node->child("statistics"));
-	animation = &idle;
+	animation = &animation_pause;
 
 }
 

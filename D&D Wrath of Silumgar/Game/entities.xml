@@ -1014,7 +1014,7 @@
 			    <frame x="538" y="2741" width="86" height="112"/>
         </animation>
 
-        <animation name="menu_animation" speed="1.0" loop="true">
+        <animation name="menu_animation" speed="0.05" loop="true">
           <frame x="95" y="2368" width="46" height="79"/>
           <frame x="162" y="2368" width="46" height="79"/>
           <frame x="230" y="2370" width="46" height="79"/>
@@ -1195,7 +1195,7 @@
 		      <frame x="512" y="120" width="50" height="72"/>
         </animation>
 
-        <animation name="menu_animation" speed="1.0" loop="true">
+        <animation name="menu_animation" speed="0.05" loop="true">
           <frame x="357" y="1741" width="62" height="67"/>
           <frame x="436" y="1741" width="62" height="67"/>
           <frame x="513" y="1741" width="62" height="67"/>
@@ -1393,7 +1393,7 @@
 		      <frame x="475" y="1025" width="46" height="144"/>
         </animation>
 
-        <animation name="menu_animation" speed="1.0" loop="true">
+        <animation name="menu_animation" speed="0.05" loop="true">
           <frame x="1664" y="2011" width="34" height="69"/>
           <frame x="1708" y="2011" width="34" height="69"/>
           <frame x="1748" y="2011" width="34" height="69"/>
@@ -1569,7 +1569,7 @@
 			    <frame x="156" y="3213" width="67" height="97"/>
         </animation>
 
-        <animation name="menu_animation" speed="1.0" loop="true">
+        <animation name="menu_animation" speed="0.05" loop="true">
           <frame x="1928" y="2643" width="56" height="82"/>
           <frame x="1993" y="2643" width="56" height="82"/>
           <frame x="2059" y="2643" width="56" height="82"/>

@@ -39,6 +39,7 @@ public:
 	ctAnimation death = ctAnimation();
 	ctAnimation stun = ctAnimation();
 	ctAnimation dodge = ctAnimation();
+	ctAnimation animation_pause = ctAnimation();
 	
 
 	//custom animations

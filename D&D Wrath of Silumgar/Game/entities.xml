@@ -1573,8 +1573,9 @@
           <frame x="2193" y="2643" width="56" height="82"/>
           <frame x="2125" y="2643" width="56" height="82"/>
           <frame x="2059" y="2643" width="56" height="82"/>
+          <frame x="1928" y="2643" width="56" height="82"/>
           <frame x="1993" y="2643" width="56" height="82"/>
-          <frame x="1928" y="2643" width="56" height="82"/>   
+          <frame x="2275" y="2643" width="56" height="82"/>
         </animation>
         
       </animations>

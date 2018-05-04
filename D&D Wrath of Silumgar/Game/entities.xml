@@ -661,7 +661,7 @@
           <frame x="2305" y="2502" width="205" height="152"/>
         </animation>
 
-        <animation name="unseen_punch" speed="5.0" loop="true">
+        <animation name="default_attack" speed="5.0" loop="true">
           <frame x="159" y="558" width="171" height="149"/>
           <frame x="416" y="558" width="171" height="149"/>
           <frame x="677" y="558" width="171" height="149"/>

@@ -13,6 +13,7 @@ UITextBox::UITextBox(int x, int y, UI_Type type, std::string text, SDL_Color col
 	this->text = text;
 	this->text_color = color;
 	_TTF_Font* new_font = App->fonts->Load(path, size);
+
 	
 	int width_size = 0, height_size = 0;
 	App->fonts->CalcSize(text.c_str(), width_size, height_size, new_font);
@@ -21,7 +22,7 @@ UITextBox::UITextBox(int x, int y, UI_Type type, std::string text, SDL_Color col
 		box_width = width_size;
 
 
-	this->texture = App->fonts->PrintTextBox(text.c_str(), color, new_font, box_width, size);
+	texture = App->fonts->PrintTextBox(text.c_str(), color, new_font, box_width, size);
 	App->fonts->Unload(new_font);
 	new_font = nullptr;
 

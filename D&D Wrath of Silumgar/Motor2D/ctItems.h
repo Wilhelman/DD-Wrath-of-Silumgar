@@ -73,6 +73,7 @@ struct Item {
 	ItemStats statistics;
 	int quantity = 1;
 	Action action;
+	EntityType equipped_by;
 };
 
 class ctItems : public ctModule

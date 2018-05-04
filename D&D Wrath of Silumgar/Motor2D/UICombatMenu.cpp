@@ -91,6 +91,13 @@ UICombatMenu::~UICombatMenu() {
 	App->gui->DeleteUIElement(*items_label);
 	items_label = nullptr;
 
+	for (int i = 0; i < abilities.size(); i++) {
+		App->gui->DeleteUIElement(*abilities.at(i));
+	}
+	for (int i = 0; i < items.size(); i++) {
+		App->gui->DeleteUIElement(*items.at(i));
+	}
+
 	main_labels.clear();
 	abilities.clear();
 	items.clear();
@@ -783,7 +790,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->default_attack, (*selected_enemy)));
 			App->task_manager->AddTask(new MoveToInitialPosition(entity));
 		}
-		else if(abilities_label->current_state == STATE_EXECUTED && entity->abilities.size() != 0){
+		else if(current_vector == abilities && entity->abilities.size() != 0){
 			if (entity->GetCurrentManaPoints() >= entity->abilities.at(current_ability).mana_points_effect_to_himself) {
 				if (entity->abilities.at(current_ability).name == "Mindblown") {
 					App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(current_ability), (*selected_enemy)));

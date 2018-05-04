@@ -31,15 +31,20 @@
 		<heroe name="warrior">
 			<values health_points="104" mana_points="52" />
 			<skills>
+			
+			
 				<skill name="Kick" description="Physical attack that has a chance (80%) to stun the enemy" mana_points_effect_to_himself="1" health_points_effect="-16" stun_chance="80" objective="1" />
 				<skill name="Guard" description="Guard" mana_points_effect_to_himself="1" health_points_effect="16" physical_defense_variation="5" magical_defense_variation="5" objective="1" />
 				<skill name="Heavy Slash" description="Heavy Slash" mana_points_effect_to_himself="1" health_points_effect="-16" bleeding_chance="50" objective="1" />
+				
 				<skill name="Kick Plus" description="Kick Plus" mana_points_effect_to_himself="1" health_points_effect="-16" stun_chance="80" physical_defense_variation="-5" objective="1" />
 				<skill name="Guard Plus" description="Guard Plus" mana_points_effect_to_himself="1" health_points_effect="16" physical_defense_variation="8" magical_defense_variation="8" objective="1" />
 				<skill name="Heavy Slash Plus" description="Heavy Slash Plus" mana_points_effect_to_himself="1" health_points_effect="-16" bleeding_chance="50" physical_defense_variation="-8" objective="1" />
 				<skill name="Charge" description="Charge" mana_points_effect_to_himself="1" health_points_effect="-16" judgement_variation="-5" objective="1" />
 				<skill name="Taunt" description="Taunt" mana_points_effect_to_himself="1" health_points_effect="16" objective="1" />
 				<skill name="Whirlwind" description="Whirlwind" mana_points_effect_to_himself="1" health_points_effect="80" objective="1" />
+				<!--
+			-->
 			</skills>
 			<items>
 				<item name="test" etc="etc" />
@@ -63,7 +68,7 @@
 			</items>
 		</heroe>
 		<heroe name="elf">
-			<values health_points="37" mana_points="91" />
+			<values health_points="65" mana_points="91" />
 			<skills>
 				<skill name="Blizzard" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="1" health_points_effect="-40" objective="1" />
 				<skill name="Seed Of Life" description="Seed Of Life" mana_points_effect_to_himself="1" health_points_effect="-40" objective="1" />

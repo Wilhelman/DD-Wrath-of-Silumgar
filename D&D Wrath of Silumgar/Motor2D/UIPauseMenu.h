@@ -2,6 +2,15 @@
 #define __UIPAUSEMENU_H__
 
 #include "UIElement.h"
+#include "ctItems.h"
+
+enum EquipType;
+
+enum PauseMenuState
+{
+	Pause_Menu,
+	Inventory_Menu
+};
 
 class UIPauseMenu : public UIElement
 {
@@ -18,6 +27,7 @@ private:
 	UIElement* settings_label = nullptr;
 	UIElement* quit_label = nullptr;
 	std::vector<UIElement*> main_labels;
+	std::vector<Item*> inventory_items;
 	UIElement* arrow = nullptr;
 
 	SDL_Rect cleric_helmet_rect = {0,137,25,24};
@@ -69,6 +79,10 @@ public:
 	void NavigateDown(std::vector<UIElement*> &current_vector);
 	void NavigateUp(std::vector<UIElement*> &current_vector);
 	void ExecuteComand(std::vector<UIElement*> &current_vector);
+
+	void SetUpInventory();
+	void LoadEquipableObjects();
+	EquipType equip_type;
 };
 
 #endif //__UIPAUSEMENU_H__

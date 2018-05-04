@@ -164,7 +164,7 @@ bool ctMainMenu::Update(float dt)
 	}
 	//----------------------------------
 
-	//Go down
+/*	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateDown(labels);
@@ -178,7 +178,7 @@ bool ctMainMenu::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		ExecuteComand(labels);
 	}
-
+	*/
 	return true;
 }
 

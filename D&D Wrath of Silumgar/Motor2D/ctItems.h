@@ -49,15 +49,15 @@ enum ItemType {
 };
 
 enum EquipType {
+	HELM,
+	CHEST,
 	BOOT,
 	GUANTLET,
-	CHEST,
-	HELM,
-	RING,
-	ACCESORY,
 	SHIELD,
 	WEAPON,
-
+	RING,
+	ACCESORY,
+	
 	NO_EQUIP_TYPE
 };
 

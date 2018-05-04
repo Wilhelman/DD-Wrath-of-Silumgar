@@ -27,7 +27,12 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 	App->entities->SpawnEntity(30, 275, WARRIOR);
 	App->entities->SpawnEntity(250, 125, DWARF);
 	App->entities->SpawnEntity(250, 275, ELF);
+	//-------------------------------
+	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
+	//-------------------------------
+
 	App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
+	Entity* e = App->entities->GetCleric();
 	App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->menu_animation;
 	App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->menu_animation;
 	App->entities->GetElf()->animation = &App->entities->GetElf()->menu_animation;
@@ -455,7 +460,7 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 			App->main_menu->pauseMenu = nullptr;
 		}
 		else if (inventory_label->current_state == STATE_EXECUTED) {
-
+				SetUpInventory();
 		}
 		else if (abilities_label->current_state == STATE_EXECUTED) {
 
@@ -467,5 +472,93 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 			App->fadeToBlack->FadeToBlackBetweenModules(callback, App->main_menu, 1.0f);
 		}
 	}
+
+}
+
+void UIPauseMenu::SetUpInventory()
+{
+	main_labels.clear();
+
+
+
+
+
+
+}
+
+void UIPauseMenu::LoadEquipableObjects()
+{
+	Entity* current_entity = nullptr;
+	uint entities_added = 0;
+	
+
+	while (entities_added < 4);
+	{
+		switch (entities_added)
+		{
+		case 0:
+			current_entity = App->entities->GetCleric();
+			break;
+		case 1:
+			current_entity = App->entities->GetDwarf();
+			break;
+		case 2:
+			current_entity = App->entities->GetWarrior();
+			break;
+		case 3:
+			current_entity = App->entities->GetElf();
+			break;
+		}
+
+
+		for (uint equipable_items = 0; equipable_items < 8; equipable_items++)
+		{
+			switch (equip_type)
+			{
+			case HELM:
+				if (current_entity->helmet.type != NO_ITEM_TYPE)
+					inventory_items.push_back(&current_entity->helmet);
+				break;
+			case CHEST:
+				if (current_entity->chest.type != NO_ITEM_TYPE)
+					inventory_items.push_back(&current_entity->chest);
+				break;
+			case BOOT:
+				if (current_entity->boot.type != NO_ITEM_TYPE)
+					inventory_items.push_back(&current_entity->boot);
+				break;
+			case GUANTLET:
+				if (current_entity->guantlet.type != NO_ITEM_TYPE)
+					inventory_items.push_back(&current_entity->guantlet);
+				break;
+			case SHIELD:
+				if (current_entity->shield.type != NO_ITEM_TYPE)
+					inventory_items.push_back(&current_entity->shield);
+				break;
+			case WEAPON:
+				if (current_entity->weapon.type != NO_ITEM_TYPE)
+					inventory_items.push_back(&current_entity->weapon);
+				break;
+			case RING:
+				if (current_entity->ring.type != NO_ITEM_TYPE)
+					inventory_items.push_back(&current_entity->ring);
+				break;
+			case ACCESORY:
+				if (current_entity->accessory.type != NO_ITEM_TYPE)
+					inventory_items.push_back(&current_entity->accessory);
+				break;
+			}
+		}
+
+
+
+
+
+
+
+	}
+
+
+
 
 }

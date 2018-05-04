@@ -219,6 +219,16 @@ int Entity::GetCurrentManaPoints()
 	return current_mana_points;
 }
 
+int Entity::GetCurrentStrengthPoints()
+{
+	return current_strength;
+}
+
+int Entity::GetCurrentIntelligencePoints()
+{
+	return current_intelligence;
+}
+
 int Entity::GetCurrentAgilityPoints()
 {
 	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
@@ -240,6 +250,11 @@ int Entity::GetCurrentPhysicalDefensePoints()
 int Entity::GetCurrentMagicalDefensePoints()
 {
 	return current_magical_defense_points;
+}
+
+int Entity::GetCurrentLuckPoints()
+{
+	return current_luck;
 }
 
 int Entity::GetCurrentJudgement()

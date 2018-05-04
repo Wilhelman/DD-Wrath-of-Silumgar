@@ -71,9 +71,6 @@ void Entity::Draw()
 		dodge.Reset();
 	}
 
-	if (this->type == GNOLL)
-		LOG("LIFE: %i", this->current_health_points);
-
 	if (this->GetCurrentHealthPoints() <= 0 && !dead && this->type!=MINIHEROES) {
 		this->animation = &death;
 		dead = true;
@@ -303,6 +300,42 @@ void Entity::AddUsableItem(Item new_item)
 	if (have_to_push_back)
 		usable_items.push_back(new_item);
 	
+}
+
+void Entity::AddEquipItem(Item new_item)
+{
+	switch (new_item.equip_type)
+	{
+	case HELM:
+		this->helmet = new_item;
+		break;
+	case CHEST:
+		this->chest = new_item;
+		break;
+	case GUANTLET:
+		this->guantlet = new_item;
+		break;
+	case BOOT:
+		this->boot = new_item;
+		break;
+	case RING:
+		this->ring = new_item;
+		break;
+	case ACCESORY:
+		this->accessory = new_item;
+		break;
+	case WEAPON:
+		this->weapon= new_item;
+		break;
+	case SHIELD:
+		this->shield = new_item;
+		break;
+	case NO_EQUIP_TYPE:
+	default:
+		LOG("this should not happen");
+		break;
+	}
+	CalculateAllStats();
 }
 
 void Entity::CalculateAllStats()

@@ -136,11 +136,22 @@ bool ctCombat::Start()
 	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(1));
 	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(2));
 	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(3));
+
+	/*---------------------------------------------------------- LE PETIT TESTING ZONE -------------------------------------------------------------*/
+
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(4));
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(5));
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(6));
 
-	//App->items->tier_2_equips
+	for (int i = 0; i < App->items->tier_2_equips.size(); i++)
+	{
+		if (App->items->tier_2_equips.at(i).equip_type == CHEST) {
+			App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(i));
+			break;
+		}
+	}
+
+	/*---------------------------------------------------------- END LE PETIT TESTING ZONE -------------------------------------------------------------*/
 
 	return ret;
 }

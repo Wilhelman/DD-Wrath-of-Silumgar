@@ -39,6 +39,7 @@ public:
 	ctAnimation death = ctAnimation();
 	ctAnimation stun = ctAnimation();
 	ctAnimation dodge = ctAnimation();
+	ctAnimation menu_animation = ctAnimation();
 	
 
 	//custom animations
@@ -161,10 +162,13 @@ public:
 
 	int GetCurrentHealthPoints();
 	int GetCurrentManaPoints();
+	int GetCurrentStrengthPoints();
+	int GetCurrentIntelligencePoints();
 	int GetCurrentAgilityPoints();
 	int GetCurrentDexterityPoints();
 	int GetCurrentPhysicalDefensePoints();
 	int GetCurrentMagicalDefensePoints();
+	int GetCurrentLuckPoints();
 
 	int GetCurrentJudgement();
 

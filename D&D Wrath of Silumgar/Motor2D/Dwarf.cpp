@@ -58,6 +58,8 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &meteor);
 		else if (tmp == "counter")
 			LoadAnimation(animations, &counter);
+		else if (tmp == "menu_animation")
+			LoadAnimation(animations, &menu_animation);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

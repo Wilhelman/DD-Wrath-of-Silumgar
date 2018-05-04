@@ -22,6 +22,8 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 {
 	this->callback = callback;
 
+	equip_texture=App->tex->Load("textures/ObjectsAseprite.png");
+
 	background = new UIImage(x, y, IMAGE, { 0,0,484,324 }, nullptr, this);
 	App->entities->SpawnEntity(30, 125, CLERIC);
 	App->entities->SpawnEntity(30, 275, WARRIOR);
@@ -29,6 +31,22 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 	App->entities->SpawnEntity(250, 275, ELF);
 	//-------------------------------
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
+	/*App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(1));
+	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(2));
+	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(4));
+	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(6));
+
+	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(3));
+	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(1));
+	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(2));
+	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(4));
+	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(6));
+
+	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(3));
+	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(1));
+	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(2));
+	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(4));
+	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(6));*/
 	//-------------------------------
 
 	App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
@@ -55,14 +73,14 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 	arrow->SetParent(continue_label);
 	arrow->Update();
 
-
+	LoadEquipableObjects();
 }
 
 UIPauseMenu::~UIPauseMenu() {
 
 	background->~UIElement();
 	background = nullptr;
-
+	App->tex->UnLoad(equip_texture);
 	for (int i = 0; i < cleric_statistics.size(); i++) {
 	//	App->gui->DeleteUIElement(*cleric_statistics.at(i));
 		cleric_statistics.at(i)->~UIElement();
@@ -154,16 +172,176 @@ void UIPauseMenu::Draw(SDL_Texture* sprites)
 }
 
 void UIPauseMenu::DrawItems() {
-	Entity* cleric = App->entities->GetCleric();
+
 	//App->render->UIBlit(textura , cleric_helmet_rect.x, cleric_helmet_rect.y, &cleric->helmet.draw_coords);
 
-	Entity* warrior = App->entities->GetWarrior();
+
+	for (std::vector<Item*>::iterator it = inventory_items.begin(); it != inventory_items.end(); it++)
+	{
+		switch ((*it)->equip_type)
+		{
+		case HELM:
+				
+			switch ((*it)->equipped_by)
+			{
+			case CLERIC:
+				App->render->UIBlit(equip_texture, 0, 137,&(*it)->draw_coords);
+				break;
+			case DWARF:
+				App->render->UIBlit(equip_texture, 205, 137, &(*it)->draw_coords);
+				break;
+			case WARRIOR:
+				App->render->UIBlit(equip_texture, 0, 163, &(*it)->draw_coords);
+				break;
+			case ELF:
+				App->render->UIBlit(equip_texture, 205, 163, &(*it)->draw_coords);
+				break;
+			}
 
 
-	Entity* dwarf = App->entities->GetDwarf();
+			break;
+		case CHEST:
+
+			switch ((*it)->equipped_by)
+			{
+			case CLERIC:
+				App->render->UIBlit(equip_texture, 26,137, &(*it)->draw_coords);
+				break;
+			case DWARF:
+				App->render->UIBlit(equip_texture, 231, 137, &(*it)->draw_coords);
+				break;
+			case WARRIOR:
+				App->render->UIBlit(equip_texture, 26, 163, &(*it)->draw_coords);
+				break;
+			case ELF:
+				App->render->UIBlit(equip_texture, 231, 163, &(*it)->draw_coords);
+				break;
+			}
+
+			
+			break;
+		case BOOT:
+
+			switch ((*it)->equipped_by)
+			{
+			case CLERIC:
+				App->render->UIBlit(equip_texture, 53, 137, &(*it)->draw_coords);
+				break;
+			case DWARF:
+				App->render->UIBlit(equip_texture, 257, 137, &(*it)->draw_coords);
+				break;
+			case WARRIOR:
+				App->render->UIBlit(equip_texture, 53, 163, &(*it)->draw_coords);
+				break;
+			case ELF:
+				App->render->UIBlit(equip_texture, 257, 163, &(*it)->draw_coords);
+				break;
+			}
+
+			break;
+		case GUANTLET:
+
+			switch ((*it)->equipped_by)
+			{
+			case CLERIC:
+				App->render->UIBlit(equip_texture, 78, 137, &(*it)->draw_coords);
+				break;
+			case DWARF:
+				App->render->UIBlit(equip_texture, 283, 137, &(*it)->draw_coords);
+				break;
+			case WARRIOR:
+				App->render->UIBlit(equip_texture, 78, 163, &(*it)->draw_coords);
+				break;
+			case ELF:
+				App->render->UIBlit(equip_texture, 283, 163, &(*it)->draw_coords);
+				break;
+			}
+
+			break;
+		case SHIELD:
+
+			switch ((*it)->equipped_by)
+			{
+			case CLERIC:
+				App->render->UIBlit(equip_texture, 103, 137, &(*it)->draw_coords);
+				break;
+			case DWARF:
+				App->render->UIBlit(equip_texture, 308, 137, &(*it)->draw_coords);
+				break;
+			case WARRIOR:
+				App->render->UIBlit(equip_texture, 103, 163, &(*it)->draw_coords);
+				break;
+			case ELF:
+				App->render->UIBlit(equip_texture, 308, 163, &(*it)->draw_coords);
+				break;
+			}
+
+			
+			break;
+		case WEAPON:
+
+			switch ((*it)->equipped_by)
+			{
+			case CLERIC:
+				App->render->UIBlit(equip_texture, 128, 137, &(*it)->draw_coords);
+				break;
+			case DWARF:
+				App->render->UIBlit(equip_texture, 333, 137, &(*it)->draw_coords);
+				break;
+			case WARRIOR:
+				App->render->UIBlit(equip_texture, 128, 163, &(*it)->draw_coords);
+				break;
+			case ELF:
+				App->render->UIBlit(equip_texture, 333, 163, &(*it)->draw_coords);
+				break;
+			}
+
+			
+			break;
+		case RING:
+
+			switch ((*it)->equipped_by)
+			{
+			case CLERIC:
+				App->render->UIBlit(equip_texture, 155, 137, &(*it)->draw_coords);
+				break;
+			case DWARF:
+				App->render->UIBlit(equip_texture, 360, 137, &(*it)->draw_coords);
+				break;
+			case WARRIOR:
+				App->render->UIBlit(equip_texture, 155, 163, &(*it)->draw_coords);
+				break;
+			case ELF:
+				App->render->UIBlit(equip_texture, 360, 163, &(*it)->draw_coords);
+				break;
+			}
+
+			
+			break;
+		case ACCESORY:
+
+			switch ((*it)->equipped_by)
+			{
+			case CLERIC:
+				App->render->UIBlit(equip_texture, 180, 137, &(*it)->draw_coords);
+				break;
+			case DWARF:
+				App->render->UIBlit(equip_texture, 385, 137, &(*it)->draw_coords);
+				break;
+			case WARRIOR:
+				App->render->UIBlit(equip_texture, 180, 163, &(*it)->draw_coords);
+				break;
+			case ELF:
+				App->render->UIBlit(equip_texture, 385, 163, &(*it)->draw_coords);
+				break;
+			}
+
+			
+			break;
+		}
+	}
 
 
-	Entity* elf = App->entities->GetElf();
 
 }
 
@@ -479,9 +657,10 @@ void UIPauseMenu::SetUpInventory()
 {
 	main_labels.clear();
 
-
-
-
+	if (inventory_items.size() != 0)
+	{
+		fake_arrow = 0;
+	}
 
 
 }
@@ -489,10 +668,10 @@ void UIPauseMenu::SetUpInventory()
 void UIPauseMenu::LoadEquipableObjects()
 {
 	Entity* current_entity = nullptr;
-	uint entities_added = 0;
+	int entities_added = 0;
 	
 
-	while (entities_added < 4);
+	while (entities_added != 4)
 	{
 		switch (entities_added)
 		{
@@ -513,7 +692,7 @@ void UIPauseMenu::LoadEquipableObjects()
 
 		for (uint equipable_items = 0; equipable_items < 8; equipable_items++)
 		{
-			switch (equip_type)
+			switch (equipable_items)
 			{
 			case HELM:
 				if (current_entity->helmet.type != NO_ITEM_TYPE)
@@ -548,15 +727,23 @@ void UIPauseMenu::LoadEquipableObjects()
 					inventory_items.push_back(&current_entity->accessory);
 				break;
 			}
+			
 		}
 
 
-
+		entities_added++;
 
 
 
 
 	}
+
+}
+
+iPoint UIPauseMenu::SetPositionFakeArrow()
+{
+
+
 
 
 

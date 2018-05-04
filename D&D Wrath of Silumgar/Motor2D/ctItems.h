@@ -5,12 +5,13 @@
 #include "ctDefs.h"
 #include "SDL/include/SDL.h"
 #include "ctEntitiesInfo.h"
-
+#include "ctEntities.h"
 #include <vector>
 using namespace std;
 
 
 struct SDL_Rect;
+enum EntityType;
 
 struct ItemStats {
 	int constitution = 0;
@@ -73,7 +74,7 @@ struct Item {
 	ItemStats statistics;
 	int quantity = 1;
 	Action action;
-	EntityType equipped_by;
+	EntityType equipped_by = NO_TYPE;
 };
 
 class ctItems : public ctModule

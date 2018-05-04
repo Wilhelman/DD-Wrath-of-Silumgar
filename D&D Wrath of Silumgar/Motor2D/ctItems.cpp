@@ -127,9 +127,9 @@ bool ctItems::Awake(pugi::xml_node& config)
 			break;
 		}
 		case BURN_TARGET_ACTION: {
-			tmp_action.burn_chance = 200;
+			tmp_action.burn_chance = 100;
 			//to test
-			tmp_action.health_points_effect = -9999;
+			tmp_action.health_points_effect = 0;
 			description = "Ashka like fire!";
 			break;
 		}

@@ -11,6 +11,8 @@
 
 #include <vector>
 
+#define BURN_DAMAGE -25
+
 struct SDL_Texture;
 
 class Entity
@@ -155,6 +157,7 @@ public:
 	void AddAlteredStat(Altered_Stat new_altered_stat);
 
 	bool IsStunned()const;
+	bool IsBurning()const;
 
 	int GetCurrentHealthPoints();
 	int GetCurrentManaPoints();

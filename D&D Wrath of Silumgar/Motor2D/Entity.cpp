@@ -3,6 +3,9 @@
 #include "ctRender.h"
 #include "ctAudio.h"
 #include "ctItems.h"
+#include "j1ParticleSystem.h"
+#include "ctCombat.h"
+#include "ctLog.h"
 
 //randomize libs
 #include <stdlib.h>     /* srand, rand */
@@ -68,7 +71,10 @@ void Entity::Draw()
 		dodge.Reset();
 	}
 
-	if (this->GetCurrentHealthPoints() == 0 && !dead && this->type!=MINIHEROES) {
+	if (this->type == GNOLL)
+		LOG("LIFE: %i", this->current_health_points);
+
+	if (this->GetCurrentHealthPoints() <= 0 && !dead && this->type!=MINIHEROES) {
 		this->animation = &death;
 		dead = true;
 	}
@@ -123,6 +129,24 @@ void Entity::NewTurn()
 
 	for (int i = 0; i < altered_stats.size(); i++)
 	{
+		if (altered_stats.at(i).burn && !dead) {
+			App->combat->UpdateHPBarOfEntity(this, BURN_DAMAGE);
+
+			this->SetCurrentHealthPoints(this->GetCurrentHealthPoints() + BURN_DAMAGE);
+			this->animation = &this->hit;
+
+			std::string tmp_string = std::to_string(BURN_DAMAGE);
+			std::string turn_ = "Turns Left ";
+			std::string turns_left = std::to_string(altered_stats.at(i).turn_left - 1);
+			std::string tmp_string2 = turn_ + turns_left;
+			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2), this->position.y - this->animation->GetCurrentFrame().h - 10, tmp_string, { 255,80,80,255 }, 14, nullptr, nullptr);
+			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2 - 24), this->position.y - this->animation->GetCurrentFrame().h +6, tmp_string2, { 255,80,80,255 }, 14, nullptr, nullptr);
+
+
+			fPoint  posP = { (float)(this->position.x + (this->animation->GetCurrentFrame().w / 2)), (float)(this->position.y - this->animation->GetCurrentFrame().h / 2) };
+			App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BURNING);
+		}
+
 		altered_stats.at(i).turn_left--;
 		if (altered_stats.at(i).turn_left == 0) {
 			if (altered_stats.at(i).stun)
@@ -143,6 +167,17 @@ bool Entity::IsStunned() const
 	for (int i = 0; i < this->altered_stats.size(); i++)
 	{
 		if (this->altered_stats.at(i).stun) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Entity::IsBurning() const
+{
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).burn) {
 			return true;
 		}
 	}

@@ -211,18 +211,18 @@
     <emitter type ="burning">
         <angleRange min ="60" max ="120"/>
         <rotSpeed value ="2" randMin ="-1" randMax ="1"/>
-        <startSpeed value ="100" randMin ="0" randMax ="1"/>
-        <endSpeed value ="600" randMin ="0" randMax ="1"/>
-        <startSize value ="0" randMin ="0" randMax ="1"/>
-        <endSize value = "20" randMin ="0" randMax ="0"/>
-        <emitNumber value ="4"/>
+        <startSpeed value ="500" randMin ="0" randMax ="1"/>
+        <endSpeed value ="100" randMin ="0" randMax ="1"/>
+        <startSize value ="20" randMin ="0" randMax ="1"/>
+        <endSize value = "0" randMin ="0" randMax ="0"/>
+        <emitNumber value ="2"/>
         <emitVariance value ="1" randMin ="0" randMax ="1"/>
-        <maxParticleLife value ="16" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="30" randMin ="0" randMax ="1"/>
         <textureRect x="128" y="0" w="256" h="256"/>
         <startColor r ="255" g="0" b="0" a="255"/>
         <endColor r ="255" g="139" b="0" a="255"/>
         <blendMode mode ="add"/>
-        <lifetime value ="12"/>
+        <lifetime value ="30"/>
       </emitter>
 
     </particleAtlas>

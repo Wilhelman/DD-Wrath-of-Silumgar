@@ -3749,7 +3749,7 @@ bool PerformActionToEntity::Execute()
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-
+				actioner_entity->throw_object.Reset();
 				//todo reducir la quantity
 				for (int i = 0; i < actioner_entity->usable_items.size(); i++)
 				{
@@ -3761,26 +3761,33 @@ bool PerformActionToEntity::Execute()
 					}
 				}
 
-				actioner_entity->throw_object.Reset();
+				if (!receiver_entity->IsBurning()) {
+					bool critical = false;
 
-				bool critical = false;
+					int damage_to_deal = action_to_perform.health_points_effect;
 
-				int damage_to_deal = action_to_perform.health_points_effect;
+					damage_to_deal = damage_to_deal;
+					receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
+					receiver_entity->animation = &receiver_entity->hit;
+					App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+					std::string tmp_dmg = "BURNING";
 
-				damage_to_deal = damage_to_deal;
-				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-				//receiver_entity->animation = &receiver_entity->hit;
-				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
-				std::string tmp_dmg = std::to_string(damage_to_deal);
-
-				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 16, nullptr, nullptr);
+					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,80,80,255 }, 16, nullptr, nullptr);
 
 
-				//TODO SITO
-				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_POISON);
+					fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+					App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BURNING);
+					//actioner_entity->Ability1();
 
-				//actioner_entity->Ability1();
+					Altered_Stat burn;
+					burn.burn = true;
+					burn.turn_left = 3;
+
+					receiver_entity->AddAlteredStat(burn);
+				}
+				else {//ACTIONER MISSES!
+					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
+				}
 
 			}
 		}

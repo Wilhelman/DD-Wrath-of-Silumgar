@@ -175,6 +175,12 @@ bool ctCombat::Update(float dt)
 
 		int current_entities = 0;
 		if (App->task_manager->TaskQueue.size() == 0 && App->task_manager->aux_task == nullptr) {
+
+			for (int i = 0; i < App->entities->entities.size(); i++)
+			{
+				App->entities->entities.at(i)->NewTurn();
+			}
+
 			for (std::vector<Entity *>::iterator it_heroe = heroes.begin(); it_heroe != heroes.end(); ++it_heroe) {
 				if ((*it_heroe)->GetCurrentHealthPoints()>0)
 					turn_priority_entity.push_back(*it_heroe);
@@ -200,11 +206,7 @@ bool ctCombat::Update(float dt)
 					if (App->fadeToBlack->FadeIsOver())
 						App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 				}
-
-				for (int i = 0; i < App->entities->entities.size(); i++)
-				{
-					App->entities->entities.at(i)->NewTurn();
-				}
+				
 
 				if(!(App->entities->GetCleric()->GetCurrentManaPoints() >= cleric_mana_bar->max_capacity))
 					cleric_mana_bar->LowerBar(8);

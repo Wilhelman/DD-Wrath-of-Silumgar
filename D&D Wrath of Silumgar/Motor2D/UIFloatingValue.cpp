@@ -25,7 +25,7 @@ void UIFloatingValue::Update()
 {
 	this->screen_position.y--;
 
-	alpha -= 3;
+	alpha -= 2;
 	if (alpha <= 0)
 		alpha = 0;
 		

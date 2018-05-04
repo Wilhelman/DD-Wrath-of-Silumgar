@@ -86,10 +86,13 @@ private:
 
 	std::vector<UIElement*> ui_elements;
 
-	SDL_Texture* atlas;
-	SDL_Texture* pause_menu_image;
+	//SDL_Texture* atlas;
+	//SDL_Texture* pause_menu_image;
 	std::string atlas_file_name;
 	std::string pause_menu_image_file_name;
+public:
+	SDL_Texture* atlas;
+	SDL_Texture* pause_menu_image;
 };
 
 #endif // __j1GUI_H__

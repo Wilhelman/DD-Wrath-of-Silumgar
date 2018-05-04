@@ -1,8 +1,11 @@
 #include "ctApp.h"
 #include "UIPauseMenu.h"
+#include "ctInput.h"
+#include "ctAudio.h"
 #include "ctLog.h"
 #include "ctGui.h"
 #include "UIImage.h"
+#include "UILabel.h"
 #include "UITextBox.h"
 #include "ctRender.h"
 #include "ctEntities.h"
@@ -16,13 +19,30 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 {
 	this->callback = callback;
 
-	//App->entities->SpawnEntity(100, 100, CLERIC);
-
 	background = new UIImage(x, y, IMAGE, { 0,0,484,324 }, nullptr, this);
+	App->entities->SpawnEntity(100, 100, CLERIC);
+	App->entities->SpawnEntity(100, 100, WARRIOR);
+	App->entities->SpawnEntity(100, 100, DWARF);
+	App->entities->SpawnEntity(100, 100, ELF);
 	LoadClerictStats();
 	LoadWarriorStats();
 	LoadDwarfStats();
 	LoadElfStats();
+	continue_label = new UILabel(420, 10, LABEL, "Continue", {255,255,255,255}, 15);
+	main_labels.push_back(continue_label);
+	continue_label->current_state = STATE_FOCUSED;
+	inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,255,255,255 }, 15);
+	main_labels.push_back(inventory_label);
+	abilities_label = new UILabel(420, 70, LABEL, "Abilities", { 255,255,255,255 }, 15);
+	main_labels.push_back(abilities_label);
+	settings_label = new UILabel(420, 100, LABEL, "Settings", { 255,255,255,255 }, 15);
+	main_labels.push_back(settings_label);
+	quit_label = new UILabel(420, 130, LABEL, "Quit", { 255,255,255,255 }, 15);
+	main_labels.push_back(quit_label);
+	arrow = new UIImage(-10, 0, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
+	arrow->SetParent(continue_label);
+	arrow->Update();
+
 
 }
 
@@ -52,6 +72,40 @@ UIPauseMenu::~UIPauseMenu() {
 	}
 	elf_statistics.clear();
 
+	arrow->~UIElement();
+	arrow = nullptr;
+
+	continue_label->~UIElement();
+	continue_label = nullptr;
+	inventory_label->~UIElement();
+	inventory_label = nullptr;
+	abilities_label->~UIElement();
+	abilities_label = nullptr;
+	settings_label->~UIElement();
+	settings_label = nullptr;
+	quit_label->~UIElement();
+	quit_label = nullptr;
+	main_labels.clear();
+
+	for (int i = 0; i < App->entities->entities.size(); i++)
+	{
+		App->entities->entities.at(i)->to_destroy = true;
+	}
+
+}
+
+void UIPauseMenu::Update() {
+	arrow->Update();
+	//Go down
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		App->audio->PlayFx(App->audio->mm_movement_fx);
+		NavigateDown(main_labels);
+	}
+	//Go up
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		App->audio->PlayFx(App->audio->mm_movement_fx);
+		NavigateUp(main_labels);
+	}
 }
 
 void UIPauseMenu::Draw(SDL_Texture* sprites)
@@ -70,7 +124,14 @@ void UIPauseMenu::Draw(SDL_Texture* sprites)
 	for (int i = 0; i < elf_statistics.size(); i++) {
 		App->render->Blit(elf_statistics.at(i)->texture, elf_statistics.at(i)->GetLocalPosition().x, elf_statistics.at(i)->GetLocalPosition().y, &elf_statistics.at(i)->current_rect);
 	}
+
+	for (int i = 0; i < main_labels.size(); i++) {
+		App->render->Blit(main_labels.at(i)->texture, main_labels.at(i)->GetLocalPosition().x, main_labels.at(i)->GetLocalPosition().y, &main_labels.at(i)->current_rect);
+	}
+
+	App->render->Blit(App->gui->atlas, arrow->screen_position.x, arrow->screen_position.y, &arrow->current_rect);
 	//App->render->Blit(Dialog_Text->texture, Dialog_Text->GetLocalPosition().x, Dialog_Text->GetLocalPosition().y, &Dialog_Text->current_rect);
+	
 }
 
 void UIPauseMenu::LoadClerictStats() {
@@ -305,4 +366,50 @@ void UIPauseMenu::LoadElfStats() {
 	//string entity_lck = lck + luck;
 	string entity_lck = "Lck   10";
 	elf_statistics.push_back(new UITextBox(340, 275, TEXTBOX, entity_lck, { 255,255,255,255 }, 10, 428));
+}
+
+void UIPauseMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
+	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();
+	while (it_vector != current_vector.end()) {
+		if ((*it_vector)->current_state == STATE_FOCUSED) {
+			if ((*it_vector) != current_vector.back()) {
+				(*it_vector)->current_state = STATE_NORMAL;
+				it_vector++;
+				(*it_vector)->current_state = STATE_FOCUSED;
+				arrow->SetParent((*it_vector));
+				break;
+			}
+			else
+			{
+				(*it_vector)->current_state = STATE_NORMAL;
+				it_vector = current_vector.begin();
+				(*it_vector)->current_state = STATE_FOCUSED;
+				arrow->SetParent((*it_vector));
+			}
+		}
+		it_vector++;
+	}
+}
+
+void UIPauseMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
+	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();
+	while (it_vector != current_vector.end()) {
+		if ((*it_vector)->current_state == STATE_FOCUSED) {
+			if ((*it_vector) != current_vector.front()) {
+				(*it_vector)->current_state = STATE_NORMAL;
+				it_vector--;
+				(*it_vector)->current_state = STATE_FOCUSED;
+				arrow->SetParent((*it_vector));
+				break;
+			}
+			else
+			{
+				(*it_vector)->current_state = STATE_NORMAL;
+				it_vector = current_vector.end() - 1;
+				(*it_vector)->current_state = STATE_FOCUSED;
+				arrow->SetParent((*it_vector));
+			}
+		}
+		it_vector++;
+	}
 }

@@ -162,10 +162,13 @@ public:
 
 	int GetCurrentHealthPoints();
 	int GetCurrentManaPoints();
+	int GetCurrentStrengthPoints();
+	int GetCurrentIntelligencePoints();
 	int GetCurrentAgilityPoints();
 	int GetCurrentDexterityPoints();
 	int GetCurrentPhysicalDefensePoints();
 	int GetCurrentMagicalDefensePoints();
+	int GetCurrentLuckPoints();
 
 	int GetCurrentJudgement();
 

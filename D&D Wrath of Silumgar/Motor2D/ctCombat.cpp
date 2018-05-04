@@ -140,6 +140,8 @@ bool ctCombat::Start()
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(5));
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(6));
 
+	//App->items->tier_2_equips
+
 	return ret;
 }
 

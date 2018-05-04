@@ -296,7 +296,7 @@
           <frame x="5" y="268" width="176" height="123"/>
         </animation>
 
-        <animation name="run" speed="5.0" loop="false">
+        <animation name="run" speed="5.0" loop="true">
           <frame x="927" y="188" width="96" height="70"/>
           <frame x="826" y="188" width="96" height="70"/>
           <frame x="728" y="188" width="96" height="70"/>

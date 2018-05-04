@@ -63,7 +63,7 @@ Elf::Elf(int x, int y, EntityType type) : Entity(x, y, type) {
 	
 	}
 	LoadProperties(node->child("statistics"));
-	animation = &animation_pause;
+	animation = &idle;
 
 }
 

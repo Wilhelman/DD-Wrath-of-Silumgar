@@ -59,7 +59,7 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 
 	//LoadActions()
 
-	animation = &animation_pause;
+	animation = &idle;
 
 }
 

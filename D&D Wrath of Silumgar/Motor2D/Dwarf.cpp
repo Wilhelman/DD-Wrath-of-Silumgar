@@ -62,7 +62,7 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &animation_pause);
 	}
 	LoadProperties(node->child("statistics"));
-	animation = &animation_pause;
+	animation = &idle;
 
 }
 

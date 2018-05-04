@@ -20,13 +20,48 @@ private:
 	std::vector<UIElement*> main_labels;
 	UIElement* arrow = nullptr;
 
-	std::vector<UIElement*> abilities;
+	SDL_Rect cleric_helmet_rect = {0,137,25,24};
+	SDL_Rect cleric_chest_rect = { 26,137,26,24 };
+	SDL_Rect cleric_boots_rect = { 53,137,24,24 };
+	SDL_Rect cleric_arms_rect = { 78,137,24,24 };
+	SDL_Rect cleric_shield_rect = { 103,137,24,24 };
+	SDL_Rect cleric_weapon_rect = { 128,137,26,24 };
+	SDL_Rect cleric_hands_rect = { 155,137,24,24 };
+	SDL_Rect cleric_accessories_rect = { 180,137,24,24 };
+
+	SDL_Rect warrior_helmet_rect = { 0,163,25,24 };
+	SDL_Rect warrior_chest_rect = { 26,163,26,24 };
+	SDL_Rect warrior_boots_rect = { 53,163,24,24 };
+	SDL_Rect warrior_arms_rect = { 78,163,24,24 };
+	SDL_Rect warrior_shield_rect = { 103,163,24,24 };
+	SDL_Rect warrior_weapon_rect = { 128,163,26,24 };
+	SDL_Rect warrior_hands_rect = { 155,163,24,24 };
+	SDL_Rect warrior_accessories_rect = { 180,163,24,24 };
+
+	SDL_Rect dwarf_helmet_rect = { 205,137,25,24 };
+	SDL_Rect dwarf_chest_rect = { 231,137,26,24 };
+	SDL_Rect dwarf_boots_rect = { 257,137,24,24 };
+	SDL_Rect dwarf_arms_rect = { 283,137,24,24 };
+	SDL_Rect dwarf_shield_rect = { 308,137,24,24 };
+	SDL_Rect dwarf_weapon_rect = { 333,137,26,24 };
+	SDL_Rect dwarf_hands_rect = { 360,137,24,24 };
+	SDL_Rect dwarf_accessories_rect = { 385,137,24,24 };
+
+	SDL_Rect elf_helmet_rect = { 205,163,25,24 };
+	SDL_Rect elf_chest_rect = { 231,163,26,24 };
+	SDL_Rect elf_boots_rect = { 257,163,24,24 };
+	SDL_Rect elf_arms_rect = { 283,163,24,24 };
+	SDL_Rect elf_shield_rect = { 308,163,24,24 };
+	SDL_Rect elf_weapon_rect = { 333,163,26,24 };
+	SDL_Rect elf_hands_rect = { 360,163,24,24 };
+	SDL_Rect elf_accessories_rect = { 385,163,24,24 };
 
 public:
 	UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent = nullptr);
 	~UIPauseMenu();
 	void Update();
 	void Draw(SDL_Texture* sprites);
+	void DrawItems();
 	void LoadClerictStats();
 	void LoadWarriorStats();
 	void LoadDwarfStats();

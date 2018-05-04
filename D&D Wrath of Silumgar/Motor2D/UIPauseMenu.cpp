@@ -58,11 +58,6 @@ UIPauseMenu::~UIPauseMenu() {
 	background->~UIElement();
 	background = nullptr;
 
-	for (int i = 0; i < abilities.size(); i++) {
-		abilities.at(i)->~UIElement();
-	}
-	abilities.clear();
-
 	for (int i = 0; i < cleric_statistics.size(); i++) {
 	//	App->gui->DeleteUIElement(*cleric_statistics.at(i));
 		cleric_statistics.at(i)->~UIElement();
@@ -111,31 +106,16 @@ void UIPauseMenu::Update() {
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
-		if (main_labels.size() > 0) {
-			NavigateDown(main_labels);
-		}
-		else if (abilities.size() > 0) {
-			NavigateDown(abilities);
-		}
+		NavigateDown(main_labels);
 	}
 	//Go up
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
-		if (main_labels.size() > 0) {
-			NavigateUp(main_labels);
-		}
-		else if (abilities.size() > 0) {
-			NavigateUp(abilities);
-		}
+		NavigateUp(main_labels);
 	}
 	//ExecuteCommand
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		if (main_labels.size() > 0) {
-			ExecuteComand(main_labels);
-		}
-		else if (abilities.size() > 0) {
-			ExecuteComand(abilities);
-		};
+		ExecuteComand(main_labels);
 	}
 }
 
@@ -159,17 +139,27 @@ void UIPauseMenu::Draw(SDL_Texture* sprites)
 	for (int i = 0; i < main_labels.size(); i++) {
 		App->render->Blit(main_labels.at(i)->texture, main_labels.at(i)->GetLocalPosition().x, main_labels.at(i)->GetLocalPosition().y, &main_labels.at(i)->current_rect);
 	}
-
-	for (int i = 0; i < abilities.size(); i++) {
-		App->render->UIBlit(abilities.at(i)->texture, abilities.at(i)->GetLocalPosition().x, abilities.at(i)->GetLocalPosition().y, &abilities.at(i)->current_rect);
-	}
 	App->entities->GetCleric()->Draw();
 	App->entities->GetWarrior()->Draw();
 	App->entities->GetDwarf()->Draw();
 	App->entities->GetElf()->Draw();
 	App->render->Blit(App->gui->atlas, arrow->screen_position.x, arrow->screen_position.y, &arrow->current_rect);
-	//App->render->Blit(Dialog_Text->texture, Dialog_Text->GetLocalPosition().x, Dialog_Text->GetLocalPosition().y, &Dialog_Text->current_rect);
 	
+	DrawItems();
+}
+
+void UIPauseMenu::DrawItems() {
+	Entity* cleric = App->entities->GetCleric();
+	//App->render->UIBlit(textura , cleric_helmet_rect.x, cleric_helmet_rect.y, &cleric->helmet.draw_coords);
+
+	Entity* warrior = App->entities->GetWarrior();
+
+
+	Entity* dwarf = App->entities->GetDwarf();
+
+
+	Entity* elf = App->entities->GetElf();
+
 }
 
 void UIPauseMenu::LoadClerictStats() {

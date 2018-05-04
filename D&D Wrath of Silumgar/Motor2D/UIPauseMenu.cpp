@@ -125,21 +125,27 @@ UIPauseMenu::~UIPauseMenu() {
 }
 
 void UIPauseMenu::Update() {
-	arrow->Update();
-	//Go down
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		App->audio->PlayFx(App->audio->mm_movement_fx);
-		NavigateDown(main_labels);
+	if (arrow != nullptr)
+	{
+		arrow->Update();
+		//Go down
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			App->audio->PlayFx(App->audio->mm_movement_fx);
+
+			NavigateDown(main_labels);
+		}
+		//Go up
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			App->audio->PlayFx(App->audio->mm_movement_fx);
+			NavigateUp(main_labels);
+		}
+		//ExecuteCommand
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			ExecuteComand(main_labels);
+		}
 	}
-	//Go up
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		App->audio->PlayFx(App->audio->mm_movement_fx);
-		NavigateUp(main_labels);
-	}
-	//ExecuteCommand
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		ExecuteComand(main_labels);
-	}
+
+
 }
 
 void UIPauseMenu::Draw(SDL_Texture* sprites)
@@ -166,15 +172,17 @@ void UIPauseMenu::Draw(SDL_Texture* sprites)
 	App->entities->GetWarrior()->Draw();
 	App->entities->GetDwarf()->Draw();
 	App->entities->GetElf()->Draw();
-	App->render->Blit(App->gui->atlas, arrow->screen_position.x, arrow->screen_position.y, &arrow->current_rect);
-	
+	if (arrow != nullptr)
+	{
+		App->render->Blit(App->gui->atlas, arrow->screen_position.x, arrow->screen_position.y, &arrow->current_rect);
+	}
 	DrawItems();
 }
 
 void UIPauseMenu::DrawItems() {
 
 	//App->render->UIBlit(textura , cleric_helmet_rect.x, cleric_helmet_rect.y, &cleric->helmet.draw_coords);
-
+	App->render->DrawQuad({ position_fake_arrow.x,position_fake_arrow.y,26,24 }, 255, 0, 0, 150, true);
 
 	for (std::vector<Item*>::iterator it = inventory_items.begin(); it != inventory_items.end(); it++)
 	{
@@ -341,7 +349,7 @@ void UIPauseMenu::DrawItems() {
 		}
 	}
 
-
+	
 
 }
 
@@ -656,10 +664,14 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 void UIPauseMenu::SetUpInventory()
 {
 	main_labels.clear();
+	arrow->~UIElement();
+	arrow = nullptr;
+
+	fake_arrow = 0;
 
 	if (inventory_items.size() != 0)
 	{
-		fake_arrow = 0;
+		position_fake_arrow=SetPositionFakeArrow();
 	}
 
 
@@ -730,11 +742,7 @@ void UIPauseMenu::LoadEquipableObjects()
 			
 		}
 
-
 		entities_added++;
-
-
-
 
 	}
 
@@ -742,10 +750,131 @@ void UIPauseMenu::LoadEquipableObjects()
 
 iPoint UIPauseMenu::SetPositionFakeArrow()
 {
+	iPoint ret;
+	
+	inventory_items.at(fake_arrow)->equipped_by;
 
+	switch (inventory_items.at(fake_arrow)->equipped_by)
+	{
+		case CLERIC:
+			switch (inventory_items.at(fake_arrow)->equip_type)
+			{
+			case HELM:
+				ret = { 0,137 };
+				break;
+			case CHEST:
+				ret = { 26,137 };
+				break;
+			case BOOT:
+				ret = { 53,137 };
+				break;
+			case GUANTLET:
+				ret = { 78,137 };
+				break;
+			case SHIELD:
+				ret = { 103,137 };
+				break;
+			case WEAPON:
+				ret = { 128,137 };
+				break;
+			case RING:
+				ret = { 155,137 };
+				break;
+			case ACCESORY:
+				ret = { 180,137 };
+				break;
+			}
+			break;
+		case DWARF:
+			switch (inventory_items.at(fake_arrow)->equip_type)
+			{
+			case HELM:
+				ret = { 205,137 };
+				break;
+			case CHEST:
+				ret = { 231,137 };
+				break;
+			case BOOT:
+				ret = { 257,137 };
+				break;
+			case GUANTLET:
+				ret = { 283,137 };
+				break;
+			case SHIELD:
+				ret = { 308,137 };
+				break;
+			case WEAPON:
+				ret = { 333,137 };
+				break;
+			case RING:
+				ret = { 360,137 };
+				break;
+			case ACCESORY:
+				ret = { 385,137 };
+				break;
+			}
+			break;
+		case WARRIOR:
+			switch (inventory_items.at(fake_arrow)->equip_type)
+			{
+			case HELM:
+				ret = { 0,163 };
+				break;
+			case CHEST:
+				ret = { 26,163 };
+				break;
+			case BOOT:
+				ret = { 53,163 };
+				break;
+			case GUANTLET:
+				ret = { 78,163 };
+				break;
+			case SHIELD:
+				ret = { 103,163 };
+				break;
+			case WEAPON:
+				ret = { 128,163 };
+				break;
+			case RING:
+				ret = { 155,163 };
+				break;
+			case ACCESORY:
+				ret = { 180,163 };
+				break;
+			}
+			break;
+		case ELF:
+			switch (inventory_items.at(fake_arrow)->equip_type)
+			{
+			case HELM:
+				ret = { 205,163 };
+				break;
+			case CHEST:
+				ret = { 231,163 };
+				break;
+			case BOOT:
+				ret = { 257,163 };
+				break;
+			case GUANTLET:
+				ret = { 283,163 };
+				break;
+			case SHIELD:
+				ret = { 308,163 };
+				break;
+			case WEAPON:
+				ret = { 333,163 };
+				break;
+			case RING:
+				ret = { 360,163 };
+				break;
+			case ACCESORY:
+				ret = { 385,163 };
+				break;
+			}
+			break;
+	}
 
-
-
+	return ret;
 
 
 }

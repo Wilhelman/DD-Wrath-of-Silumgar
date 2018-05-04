@@ -71,7 +71,7 @@ private:
 
 	//test
 	uint fake_arrow=0;
-
+	iPoint position_fake_arrow={-100,-100};
 public:
 	UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent = nullptr);
 	~UIPauseMenu();

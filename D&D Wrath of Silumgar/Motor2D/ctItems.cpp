@@ -96,6 +96,8 @@ bool ctItems::Awake(pugi::xml_node& config)
 	uint burn_chance = 0u;
 		*/
 
+		item.equipped_by = EntityType::NO_TYPE;
+
 		tmp_action.name = item.name;
 		std::string description;
 		switch (tmp_action.type)

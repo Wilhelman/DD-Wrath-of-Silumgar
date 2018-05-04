@@ -304,6 +304,7 @@ void Entity::AddUsableItem(Item new_item)
 
 void Entity::AddEquipItem(Item new_item)
 {
+	new_item.equipped_by = this->type;
 	switch (new_item.equip_type)
 	{
 	case HELM:

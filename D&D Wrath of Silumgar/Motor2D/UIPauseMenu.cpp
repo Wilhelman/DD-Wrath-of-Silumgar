@@ -22,7 +22,7 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 {
 	this->callback = callback;
 
-	equip_texture=App->tex->Load("textures/ObjectsAseprite.png");
+	equip_texture=App->tex->Load("textures/ObjectsWithBG.png");
 
 	background = new UIImage(x, y, IMAGE, { 0,0,484,324 }, nullptr, this);
 	App->entities->SpawnEntity(30, 125, CLERIC);
@@ -31,7 +31,7 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 	App->entities->SpawnEntity(250, 275, ELF);
 	//-------------------------------
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
-	/*App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(1));
+	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(1));
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(2));
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(4));
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(6));
@@ -46,7 +46,7 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(1));
 	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(2));
 	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(4));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(6));*/
+	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(6));
 	//-------------------------------
 
 	App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
@@ -144,7 +144,26 @@ void UIPauseMenu::Update() {
 			ExecuteComand(main_labels);
 		}
 	}
+	else
+	{
+		
 
+		if (App->input->GetKey(SDL_SCANCODE_LEFT)== KEY_DOWN || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			App->audio->PlayFx(App->audio->mm_movement_fx);
+
+			ChangePositionFakeArrow(SDL_SCANCODE_LEFT);
+		}
+	
+		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			App->audio->PlayFx(App->audio->mm_movement_fx);
+			ChangePositionFakeArrow(SDL_SCANCODE_RIGHT);
+		}
+		//ExecuteCommand
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			ExecuteComand(main_labels);
+		}
+
+	}
 
 }
 
@@ -182,7 +201,7 @@ void UIPauseMenu::Draw(SDL_Texture* sprites)
 void UIPauseMenu::DrawItems() {
 
 	//App->render->UIBlit(textura , cleric_helmet_rect.x, cleric_helmet_rect.y, &cleric->helmet.draw_coords);
-	App->render->DrawQuad({ position_fake_arrow.x,position_fake_arrow.y,26,24 }, 255, 0, 0, 150, true);
+	App->render->DrawQuad({ position_fake_arrow.x,position_fake_arrow.y,26,24 }, 255, 0, 0, 255);
 
 	for (std::vector<Item*>::iterator it = inventory_items.begin(); it != inventory_items.end(); it++)
 	{
@@ -672,6 +691,7 @@ void UIPauseMenu::SetUpInventory()
 	if (inventory_items.size() != 0)
 	{
 		position_fake_arrow=SetPositionFakeArrow();
+		
 	}
 
 
@@ -875,6 +895,35 @@ iPoint UIPauseMenu::SetPositionFakeArrow()
 	}
 
 	return ret;
+
+
+}
+
+void UIPauseMenu::ChangePositionFakeArrow(const SDL_Scancode code)
+{
+	if (inventory_items.size() != 0)
+	{
+
+		switch (code)
+		{
+		case SDL_SCANCODE_RIGHT:
+			if (fake_arrow + 1 >= inventory_items.size())
+				fake_arrow = 0;
+			else
+				fake_arrow++;
+				
+			break;
+		case SDL_SCANCODE_LEFT:
+			if ((fake_arrow - 1) < 0)
+				fake_arrow = inventory_items.size()-1;
+			else
+				fake_arrow--;
+			break;
+		}
+
+		position_fake_arrow=SetPositionFakeArrow();
+
+	}
 
 
 }

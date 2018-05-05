@@ -70,7 +70,7 @@ private:
 	SDL_Rect elf_accessories_rect = { 385,163,24,24 };
 
 	//test
-	uint fake_arrow=0;
+	int fake_arrow=0;
 	iPoint position_fake_arrow={-100,-100};
 public:
 	UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent = nullptr);
@@ -88,7 +88,9 @@ public:
 
 	void SetUpInventory();
 	void LoadEquipableObjects();
+	void ChangePositionFakeArrow(const SDL_Scancode code );
 	iPoint SetPositionFakeArrow();
+
 	EquipType equip_type;
 };
 

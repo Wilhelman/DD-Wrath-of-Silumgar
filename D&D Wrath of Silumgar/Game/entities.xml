@@ -166,7 +166,7 @@
       <statistics constitution ="5" focus="5" strength="4" agility="6" dexterity ="4" intelligence="4"  physicalDefense="2" magicalDefense="1" judgement="25"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
+        <animation name="idle" speed="1.5" loop="true">
           <frame x="1021" y="120" width="68" height="46"/>
 					<frame x="1025" y="187" width="68" height="46"/>
         </animation>
@@ -182,7 +182,7 @@
           <frame x="354"  y="117" width="69" height="49"/>
         </animation>
 
-        <animation name="slash" speed="0.05" loop="false">
+        <animation name="slash" speed="0.15" loop="false">
           <frame x="471" y="238" width="109" height="83"/>
           <frame x="347" y="238" width="109" height="83"/>
           <frame x="216" y="238" width="109" height="83"/>
@@ -226,7 +226,7 @@
       <statistics constitution ="6" focus="5" strength="5" agility="4" dexterity ="4" intelligence="3" physicalDefense="4" magicalDefense="2" judgement="30"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
+        <animation name="idle" speed="1.5" loop="true">
           <frame x="1027" y="1039" width="64" height="48"/>
 					<frame x="1031" y="1106" width="64" height="48"/>
         </animation>
@@ -242,7 +242,7 @@
           <frame x="346"  y="1039" width="65" height="48"/>
         </animation>
 
-        <animation name="axe_attack" speed="0.05" loop="false">
+        <animation name="axe_attack" speed="0.2" loop="false">
           <frame x="452" y="1161" width="103" height="83"/>
           <frame x="341" y="1161" width="103" height="83"/>
           <frame x="220" y="1161" width="103" height="83"/>
@@ -549,11 +549,12 @@
       <statistics constitution ="8" focus="14" strength="5" agility="10" dexterity ="9" intelligence="10" physicalDefense="8" magicalDefense="12" judgement="60"/>
       <animations>
 
- 		<animation name="idle" speed="1.0" loop="true">
+ 		<animation name="idle" speed="1.5" loop="true">
 		   <frame x="384" y="709" width="59" height="92"/>
+       <frame x="741" y="513" width="59" height="92"/>
 		   <frame x="662" y="515" width="59" height="92"/>
-		   <frame x="741" y="513" width="59" height="92"/>
-		   <frame x="662" y="515" width="59" height="92"/>
+		  
+		   <!--<frame x="662" y="515" width="59" height="92"/>-->
 		       
 		</animation>
 			
@@ -603,11 +604,10 @@
 		</animation>
 			
 		<animation name="dodge" speed="0.05" loop="false">
-		   <frame x="92" y="206" width="80" height="76"/>
-		   <frame x="179" y="206" width="80" height="76"/>
-		   <frame x="295" y="206" width="80" height="76"/>
-		   <frame x="179" y="206" width="80" height="76"/>
-		   <frame x="92" y="206" width="80" height="76"/>
+       <frame x="184" y="223" width="80" height="76"/>
+       <frame x="295" y="206" width="80" height="76"/>
+	
+		 
 
 		   
 		</animation>

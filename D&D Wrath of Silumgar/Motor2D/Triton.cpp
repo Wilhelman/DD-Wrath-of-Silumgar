@@ -41,6 +41,8 @@ Triton::Triton(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &stun);
 		else if (tmp == "default_attack")
 			LoadAnimation(animations, &attack);
+		else if (tmp == "dodge")
+			LoadAnimation(animations, &dodge);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

@@ -3342,9 +3342,6 @@ bool PerformActionToEntity::Execute()
 
 		case REVIVE: {
 
-			if (!HaveTeamObjective())
-				return true;
-
 			actioner_entity->animation = &actioner_entity->revive;
 
 			ret = actioner_entity->animation->Finished();
@@ -3362,7 +3359,7 @@ bool PerformActionToEntity::Execute()
 				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
 				std::string tmp_dmg = std::to_string(damage_to_deal);
 						
-				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 8,160,8,255 }, 14, nullptr, nullptr);
 				
 				fPoint posP;
 

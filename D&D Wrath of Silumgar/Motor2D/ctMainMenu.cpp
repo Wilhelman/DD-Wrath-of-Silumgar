@@ -88,8 +88,6 @@ bool ctMainMenu::Update(float dt)
 	{
 		if (pauseMenu == nullptr) {
 			pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);
-			//pauseMenu = App->gui->AddUILabel(100, 100, "Abilities", { 255,255,255,255 }, 15, nullptr, background);
-			//pauseMenu = App->gui->AddUITextBox(100, 100, 10, 100, "dghfgh", {255,255,255,255},nullptr);
 		}
 		else {
 			App->gui->DeleteUIElement(*pauseMenu);
@@ -164,7 +162,7 @@ bool ctMainMenu::Update(float dt)
 	}
 	//----------------------------------
 
-/*	//Go down
+	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateDown(labels);
@@ -178,7 +176,7 @@ bool ctMainMenu::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		ExecuteComand(labels);
 	}
-	*/
+	
 	return true;
 }
 

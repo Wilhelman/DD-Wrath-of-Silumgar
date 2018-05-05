@@ -23,7 +23,7 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 	this->callback = callback;
 
 	equip_texture=App->tex->Load("textures/ObjectsWithBG.png");
-
+	//*************************************************************************
 	background = new UIImage(x, y, IMAGE, { 0,0,484,324 }, nullptr, this);
 	App->entities->SpawnEntity(30, 125, CLERIC);
 	App->entities->SpawnEntity(30, 275, WARRIOR);
@@ -58,20 +58,8 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 	LoadWarriorStats();
 	LoadDwarfStats();
 	LoadElfStats();
-	continue_label = new UILabel(420, 10, LABEL, "Continue", {255,255,255,255}, 15);
-	main_labels.push_back(continue_label);
-	continue_label->current_state = STATE_FOCUSED;
-	inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,255,255,255 }, 15);
-	main_labels.push_back(inventory_label);
-	abilities_label = new UILabel(420, 70, LABEL, "Abilities", { 255,255,255,255 }, 15);
-	main_labels.push_back(abilities_label);
-	settings_label = new UILabel(420, 100, LABEL, "Settings", { 255,255,255,255 }, 15);
-	main_labels.push_back(settings_label);
-	quit_label = new UILabel(420, 130, LABEL, "Quit", { 255,255,255,255 }, 15);
-	main_labels.push_back(quit_label);
-	arrow = new UIImage(-10, 0, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
-	arrow->SetParent(continue_label);
-	arrow->Update();
+
+	SetUpPauseMenu();
 
 	LoadEquipableObjects();
 }
@@ -170,9 +158,8 @@ void UIPauseMenu::Update() {
 				ChangePositionFakeArrow(SDL_SCANCODE_RIGHT);
 				SetInformationLabels();
 			}
-			//ExecuteCommand
-			if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-				ExecuteComand(main_labels);
+			if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+				SetUpPauseMenu();
 			}
 
 		}
@@ -527,6 +514,43 @@ void UIPauseMenu::LoadElfStats() {
 	entity_stat = "Luck " + std::to_string((current_entity->base_stats.luck));
 	elf_statistics.push_back(new UITextBox(340, 275, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 }
+
+
+void UIPauseMenu::SetUpPauseMenu()
+{
+	position_fake_arrow = { -100,-100 };
+
+
+	if (information_inventory_items.size() != 0)
+	{
+		for (std::vector<UIElement*>::iterator it = information_inventory_items.begin(); it != information_inventory_items.end(); it++)
+		{
+			(*it)->~UIElement();
+		}
+
+		information_inventory_items.clear();
+	}
+
+
+
+	continue_label = new UILabel(420, 10, LABEL, "Continue", { 255,255,255,255 }, 15);
+	main_labels.push_back(continue_label);
+	continue_label->current_state = STATE_FOCUSED;
+	inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,255,255,255 }, 15);
+	main_labels.push_back(inventory_label);
+	abilities_label = new UILabel(420, 70, LABEL, "Abilities", { 255,255,255,255 }, 15);
+	main_labels.push_back(abilities_label);
+	settings_label = new UILabel(420, 100, LABEL, "Settings", { 255,255,255,255 }, 15);
+	main_labels.push_back(settings_label);
+	quit_label = new UILabel(420, 130, LABEL, "Quit", { 255,255,255,255 }, 15);
+	main_labels.push_back(quit_label);
+	arrow = new UIImage(-10, 0, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
+	arrow->SetParent(continue_label);
+	arrow->Update();
+
+
+}
+
 
 void UIPauseMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();

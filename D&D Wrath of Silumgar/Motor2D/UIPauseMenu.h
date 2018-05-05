@@ -88,6 +88,7 @@ public:
 	void ExecuteComand(std::vector<UIElement*> &current_vector);
 
 	void SetUpInventory();
+	void SetUpPauseMenu();
 	void LoadEquipableObjects();
 	void ChangePositionFakeArrow(const SDL_Scancode code );
 	void SetInformationLabels();

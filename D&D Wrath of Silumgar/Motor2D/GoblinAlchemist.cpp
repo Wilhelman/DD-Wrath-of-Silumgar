@@ -30,7 +30,7 @@ Goblin_Alchemist::Goblin_Alchemist(int x, int y, EntityType type) : Entity(x, y,
 			LoadAnimation(animations, &idle);
 		else if (tmp == "run")
 			LoadAnimation(animations, &run_forward);
-		else if (tmp == "slash")
+		else if (tmp == "default_attack")
 			LoadAnimation(animations, &attack);
 		else if (tmp == "cooking_oil")
 			LoadAnimation(animations, &throw_object);

@@ -24,7 +24,7 @@
           <frame x="595" y="131" width="55" height="38"/>
         </animation>
 
-        <animation name="slash" speed="0.2" loop="false">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="956" y="371" width="79" height="69"/>
           <frame x="873" y="371" width="79" height="69"/>
           <frame x="788" y="371" width="79" height="69"/>
@@ -113,14 +113,14 @@
       <statistics constitution ="5" focus="3" strength="4" agility="6" dexterity ="4" intelligence="2" physicalDefense="1" magicalDefense="0" judgement="10"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
-          <frame x="1022"  y="503" width="70" height="48"/>
-          <frame x="967"  y="550" width="70" height="48"/>
-          <frame x="880"  y="549" width="70" height="48"/>
-          <frame x="805"  y="548" width="70" height="48"/>
+        <animation name="idle" speed="1.5" loop="true">
+          <frame x="1028"  y="607" width="61" height="48"/>
+          <frame x="1029"  y="674" width="61" height="48"/>
+         
+         
         </animation>
 
-        <animation name="run" speed="7.0" loop="true">
+        <animation name="run" speed="5.0" loop="true">
           <frame x="1026"  y="604" width="65" height="51"/>
           <frame x="937"  y="604" width="65" height="51"/>
           <frame x="846"  y="604" width="65" height="51"/>
@@ -131,14 +131,14 @@
           <frame x="388"  y="604" width="65" height="51"/>
         </animation>
 
-        <animation name="axe_attack" speed="0.5" loop="false">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="464"  y="729" width="103" height="83"/>
           <frame x="341"  y="729" width="103" height="83"/>
           <frame x="211"  y="729" width="103" height="83"/>
           <frame x="41"  y="729" width="103" height="83"/>
         </animation>
 
-        <animation name="hit" speed="1.0" loop="false">
+        <animation name="hit" speed="0.05" loop="false">
           <frame x="994"  y="883" width="47" height="44"/>
           <frame x="908"  y="883" width="47" height="44"/>
         </animation>
@@ -182,7 +182,7 @@
           <frame x="354"  y="117" width="69" height="49"/>
         </animation>
 
-        <animation name="slash" speed="0.15" loop="false">
+        <animation name="default_attack" speed="0.15" loop="false">
           <frame x="471" y="238" width="109" height="83"/>
           <frame x="347" y="238" width="109" height="83"/>
           <frame x="216" y="238" width="109" height="83"/>
@@ -203,7 +203,7 @@
           <frame x="908"  y="450" width="44" height="47"/>
         </animation>
 
-        <animation name="death" speed="0.05" loop="false">
+        <animation name="death" speed="0.5" loop="false">
           <frame x="1001"  y="447" width="78" height="53"/>
           <frame x="891"  y="447" width="78" height="53"/>
           <frame x="775"  y="447" width="78" height="53"/>
@@ -242,7 +242,7 @@
           <frame x="346"  y="1039" width="65" height="48"/>
         </animation>
 
-        <animation name="axe_attack" speed="0.2" loop="false">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="452" y="1161" width="103" height="83"/>
           <frame x="341" y="1161" width="103" height="83"/>
           <frame x="220" y="1161" width="103" height="83"/>
@@ -254,7 +254,7 @@
           <frame x="895"  y="1313" width="47" height="46"/>
         </animation>
 
-        <animation name="death" speed="0.05" loop="false">
+        <animation name="death" speed="0.5" loop="false">
           <frame x="972"  y="1309" width="70" height="53"/>
           <frame x="884"  y="1309" width="70" height="53"/>
           <frame x="761"  y="1309" width="70" height="53"/>
@@ -288,7 +288,7 @@
           <frame x="670" y="9" width="110" height="78"/>
         </animation>
 
-        <animation name="axe_attack" speed="0.2" loop="false">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="712" y="263" width="176" height="123"/>
           <frame x="533" y="263" width="176" height="123"/>
           <frame x="375" y="262" width="176" height="123"/>
@@ -361,7 +361,7 @@
           <frame x="786" y="13" width="77" height="85"/>
         </animation>
 
-        <animation name="run_forward" speed="5.0" loop="true">
+        <animation name="run_forward" speed="0.2" loop="true">
           <frame x="951" y="120" width="77" height="83"/>
           <frame x="813" y="120" width="77" height="83"/>
           <frame x="707" y="120" width="77" height="83"/>
@@ -372,18 +372,18 @@
           <frame x="69"  y="120" width="77" height="83"/>
         </animation>
 
-        <animation name="attack" speed="5.0" loop="true">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="970" y="230" width="106" height="82"/>
           <frame x="852" y="230" width="106" height="82"/>
           <frame x="727" y="230" width="106" height="82"/>
         </animation>
 
-        <animation name="hit" speed="5.0" loop="false">
+        <animation name="hit" speed="0.05" loop="false">
           <frame x="606" y="9" width="75" height="90"/>
           <frame x="690" y="9" width="75" height="90"/>
         </animation>
 
-        <animation name="death" speed="5.0" loop="false">
+        <animation name="death" speed="0.05" loop="false">
           <frame x="936" y="333" width="125" height="102"/>
           <frame x="786" y="333" width="125" height="102"/>
           <frame x="609" y="333" width="125" height="102"/>
@@ -418,7 +418,7 @@
 		  <frame x="177" y="93" width="69" height="64"/>
         </animation>
 
-		<animation name="default_attack" speed="0.09" loop="false">
+		<animation name="default_attack" speed="0.2" loop="false">
           <frame x="624" y="178" width="117" height="73"/>
 		  <frame x="493" y="178" width="117" height="73"/>
 		  <frame x="368" y="178" width="117" height="73"/>
@@ -558,7 +558,7 @@
 		       
 		</animation>
 			
-		<animation name="default_attack" speed="0.09" loop="false">
+		<animation name="default_attack" speed="0.2" loop="false">
 		   <frame x="322" y="822" width="184" height="77"/>
 		   <frame x="175" y="822" width="184" height="77"/>
 		   <frame x="3" y="822" width="184" height="77"/>

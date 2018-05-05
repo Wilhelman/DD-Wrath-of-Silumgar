@@ -31,7 +31,7 @@ Skeleton::Skeleton(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &idle);
 		else if (tmp == "run")
 			LoadAnimation(animations, &run_forward);
-		else if (tmp == "axe_attack")
+		else if (tmp == "default_attack")
 			LoadAnimation(animations, &attack);
 		else if (tmp == "hit")
 			LoadAnimation(animations, &hit);

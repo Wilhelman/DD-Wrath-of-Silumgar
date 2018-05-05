@@ -235,9 +235,6 @@ bool ctWorldMap::Update(float dt)
 
 	}
 
-
-
-
 	// Draw everything --------------------------------------
 	App->map->Draw();
 

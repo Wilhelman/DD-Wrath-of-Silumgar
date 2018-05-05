@@ -124,8 +124,54 @@ void Entity::NewTurn()
 	if (current_health_points > 0)
 		this->SetCurrentManaPoints(current_mana_points + 8);
 
+	int altered_info_y = this->position.y - this->animation->GetCurrentFrame().h;
+
 	for (int i = 0; i < altered_stats.size(); i++)
 	{
+		/*if (altered_stats.at(i).poison && !dead) { FOR BLEED
+			App->combat->UpdateHPBarOfEntity(this, POISON_DAMAGE * altered_stats.at(i).turn_left);
+
+			this->SetCurrentHealthPoints(this->GetCurrentHealthPoints() + (POISON_DAMAGE * altered_stats.at(i).turn_left));
+			this->animation = &this->hit;
+
+			int total_dmg = (POISON_DAMAGE * altered_stats.at(i).turn_left);
+
+			std::string tmp_string = std::to_string(total_dmg);
+			std::string turn_ = "Turns Left ";
+			std::string turns_left = std::to_string(altered_stats.at(i).turn_left - 1);
+			std::string tmp_string2 = turn_ + turns_left;
+			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2), altered_info_y - 10, tmp_string, { 127,0,85,255 }, 14, nullptr, nullptr);
+			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2 - 24), altered_info_y + 6, tmp_string2, { 127,0,85,255 }, 14, nullptr, nullptr);
+
+
+			fPoint  posP = { (float)(this->position.x + (this->animation->GetCurrentFrame().w / 2)), (float)(this->position.y - this->animation->GetCurrentFrame().h / 2) };
+			App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_POISON);
+			altered_info_y += 28;
+		}*/
+
+		if (altered_stats.at(i).poison && !dead) {
+			App->combat->UpdateHPBarOfEntity(this, POISON_DAMAGE * altered_stats.at(i).turn_left);
+
+			this->SetCurrentHealthPoints(this->GetCurrentHealthPoints() + (POISON_DAMAGE * altered_stats.at(i).turn_left));
+			this->animation = &this->hit;
+
+			int total_dmg = (POISON_DAMAGE * altered_stats.at(i).turn_left);
+
+			std::string tmp_string = std::to_string(total_dmg);
+			std::string turn_ = "Turns Left ";
+			std::string turns_left = std::to_string(altered_stats.at(i).turn_left - 1);
+			std::string tmp_string2 = turn_ + turns_left;
+			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2), altered_info_y - 10, tmp_string, { 127,0,85,255 }, 14, nullptr, nullptr);
+			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2 - 24), altered_info_y + 6, tmp_string2, { 127,0,85,255 }, 14, nullptr, nullptr);
+
+
+			fPoint  posP = { (float)(this->position.x + (this->animation->GetCurrentFrame().w / 2)), (float)(this->position.y - this->animation->GetCurrentFrame().h / 2) };
+			App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_POISON);
+			altered_info_y += 28;
+		}
+
+		
+
 		if (altered_stats.at(i).burn && !dead) {
 			App->combat->UpdateHPBarOfEntity(this, BURN_DAMAGE);
 
@@ -136,8 +182,8 @@ void Entity::NewTurn()
 			std::string turn_ = "Turns Left ";
 			std::string turns_left = std::to_string(altered_stats.at(i).turn_left - 1);
 			std::string tmp_string2 = turn_ + turns_left;
-			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2), this->position.y - this->animation->GetCurrentFrame().h - 10, tmp_string, { 255,80,80,255 }, 14, nullptr, nullptr);
-			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2 - 24), this->position.y - this->animation->GetCurrentFrame().h +6, tmp_string2, { 255,80,80,255 }, 14, nullptr, nullptr);
+			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2), altered_info_y - 10, tmp_string, { 255,80,80,255 }, 14, nullptr, nullptr);
+			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2 - 24), altered_info_y +6, tmp_string2, { 255,80,80,255 }, 14, nullptr, nullptr);
 
 
 			fPoint  posP = { (float)(this->position.x + (this->animation->GetCurrentFrame().w / 2)), (float)(this->position.y - this->animation->GetCurrentFrame().h / 2) };
@@ -175,6 +221,28 @@ bool Entity::IsBurning() const
 	for (int i = 0; i < this->altered_stats.size(); i++)
 	{
 		if (this->altered_stats.at(i).burn) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Entity::IsPoisoned() const
+{
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).poison) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Entity::IsBleeding() const
+{
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).bleeding) {
 			return true;
 		}
 	}

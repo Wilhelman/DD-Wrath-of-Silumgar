@@ -12,6 +12,7 @@
 #include <vector>
 
 #define BURN_DAMAGE -25
+#define POISON_DAMAGE -10
 
 struct SDL_Texture;
 
@@ -159,6 +160,8 @@ public:
 
 	bool IsStunned()const;
 	bool IsBurning()const;
+	bool IsPoisoned()const;
+	bool IsBleeding()const;
 
 	int GetCurrentHealthPoints();
 	int GetCurrentManaPoints();

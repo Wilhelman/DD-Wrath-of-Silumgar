@@ -109,8 +109,8 @@ bool ctItems::Awake(pugi::xml_node& config)
 		}
 		
 		case POISONED_DAGGER_ACTION: {
-			tmp_action.health_points_effect = -9999;
-			description = "ONE SHOT ONE ENEMY BC OF REASONS!";
+			tmp_action.position_chance = 100;
+			description = "Throws a poisoned dagger";
 			break;
 		}
 		case HIGH_HEALTH_RECOVER_ACTION: {

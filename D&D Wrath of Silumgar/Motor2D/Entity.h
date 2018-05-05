@@ -12,7 +12,8 @@
 #include <vector>
 
 #define BURN_DAMAGE -25
-#define POISON_DAMAGE -10
+#define POISON_DAMAGE -45
+#define BLEEDING_DAMAGE -10
 
 struct SDL_Texture;
 

@@ -22,7 +22,7 @@ struct Stats {
 };
 
 struct Altered_Stat {
-	uint turn_left = 0u;
+	int turn_left = 0;
 
 	bool stun = false;
 	bool bleeding = false;

@@ -128,34 +128,34 @@ void Entity::NewTurn()
 
 	for (int i = 0; i < altered_stats.size(); i++)
 	{
-		/*if (altered_stats.at(i).poison && !dead) { FOR BLEED
-			App->combat->UpdateHPBarOfEntity(this, POISON_DAMAGE * altered_stats.at(i).turn_left);
+		if (altered_stats.at(i).bleeding && !dead) {
+			App->combat->UpdateHPBarOfEntity(this, BLEEDING_DAMAGE * altered_stats.at(i).turn_left);
 
-			this->SetCurrentHealthPoints(this->GetCurrentHealthPoints() + (POISON_DAMAGE * altered_stats.at(i).turn_left));
+			int total_dmg = (BLEEDING_DAMAGE * altered_stats.at(i).turn_left);
+
+			this->SetCurrentHealthPoints(this->GetCurrentHealthPoints() + total_dmg);
 			this->animation = &this->hit;
-
-			int total_dmg = (POISON_DAMAGE * altered_stats.at(i).turn_left);
 
 			std::string tmp_string = std::to_string(total_dmg);
 			std::string turn_ = "Turns Left ";
 			std::string turns_left = std::to_string(altered_stats.at(i).turn_left - 1);
 			std::string tmp_string2 = turn_ + turns_left;
-			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2), altered_info_y - 10, tmp_string, { 127,0,85,255 }, 14, nullptr, nullptr);
-			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2 - 24), altered_info_y + 6, tmp_string2, { 127,0,85,255 }, 14, nullptr, nullptr);
+			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2), altered_info_y - 10, tmp_string, { 127,0,8,255 }, 14, nullptr, nullptr);
+			App->gui->AddUIFloatingValue(this->position.x + (this->animation->GetCurrentFrame().w / 2 - 24), altered_info_y + 6, tmp_string2, { 127,0,8,255 }, 14, nullptr, nullptr);
 
 
 			fPoint  posP = { (float)(this->position.x + (this->animation->GetCurrentFrame().w / 2)), (float)(this->position.y - this->animation->GetCurrentFrame().h / 2) };
-			App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_POISON);
+			App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BLEEDING);
 			altered_info_y += 28;
-		}*/
+		}
 
 		if (altered_stats.at(i).poison && !dead) {
-			App->combat->UpdateHPBarOfEntity(this, POISON_DAMAGE * altered_stats.at(i).turn_left);
+			App->combat->UpdateHPBarOfEntity(this, POISON_DAMAGE / altered_stats.at(i).turn_left);
 
-			this->SetCurrentHealthPoints(this->GetCurrentHealthPoints() + (POISON_DAMAGE * altered_stats.at(i).turn_left));
+			int total_dmg = (POISON_DAMAGE / altered_stats.at(i).turn_left);
+
+			this->SetCurrentHealthPoints(this->GetCurrentHealthPoints() + total_dmg);
 			this->animation = &this->hit;
-
-			int total_dmg = (POISON_DAMAGE * altered_stats.at(i).turn_left);
 
 			std::string tmp_string = std::to_string(total_dmg);
 			std::string turn_ = "Turns Left ";

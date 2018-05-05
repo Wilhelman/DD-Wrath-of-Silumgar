@@ -118,7 +118,24 @@
         <maxParticleLife value ="40" randMin ="0" randMax ="1"/>
         <textureRect x="32" y="128" w="30" h="27"/>
         <startColor r ="51" g="0" b="102" a="255"/>
-        <endColor r ="51" g="0" b="102" a="0"/>
+        <endColor r ="51" g="0" b="102" a="255"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="23"/>
+      </emitter>
+	  
+	  <emitter type ="bleeding">
+        <angleRange min ="120" max ="60"/>
+        <rotSpeed value ="200" randMin ="-1" randMax ="1"/>
+        <startSpeed value ="200" randMin ="0" randMax ="1"/>
+        <endSpeed value ="220" randMin ="0" randMax ="1"/>
+        <startSize value ="15" randMin ="0" randMax ="2"/>
+        <endSize value =" 0" randMin ="1" randMax ="1"/>
+        <emitNumber value ="2"/>
+        <emitVariance value ="6" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="40" randMin ="0" randMax ="1"/>
+        <textureRect x="32" y="128" w="30" h="27"/>
+        <startColor r ="127" g="0" b="8" a="255"/>
+        <endColor r ="200" g="0" b="16" a="255"/>
         <blendMode mode ="add"/>
         <lifetime value ="23"/>
       </emitter>

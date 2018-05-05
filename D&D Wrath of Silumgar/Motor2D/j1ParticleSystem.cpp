@@ -50,6 +50,8 @@ bool j1ParticleSystem::Awake(pugi::xml_node& config)
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEALTH_AREA);
 		else if (emitterType == "poison")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_POISON);
+		else if (emitterType == "bleeding")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BLEEDING);
 		else if (emitterType == "health_potion")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEALTH_POTION);
 		else if (emitterType == "mana_potion")

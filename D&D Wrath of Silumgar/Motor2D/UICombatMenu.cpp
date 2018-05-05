@@ -182,16 +182,52 @@ void UICombatMenu::Update()
 			if (entity->abilities.at(current_ability).objective == ENEMIES) {
 				SelectEnemy(abilities);
 			}
-			else {
+			else if (entity->usable_items.at(current_item).objective == HEROES) {
 				SelectAlly(abilities);
+			}
+			else {
+				std::vector<Entity*>::const_iterator heroe = App->combat->heroes.begin();
+				while ((*heroe)->GetCurrentHealthPoints() <= 0 && heroe != App->combat->heroes.end()) {
+					heroe++;
+					dead_heroes++;
+				}
+				if (dead_heroes > 0) {
+					SelectDeadAlly(abilities);
+				}
+				else {
+					selecting_enemy = false;
+					for (int i = 0; i < items.size(); i++) {
+						if (items.at(i)->current_state == STATE_EXECUTED) {
+							items.at(i)->current_state = STATE_FOCUSED;
+						}
+					}
+				}
 			}
 		}
 		else if (items.size() != 0 && selecting_enemy == true) {
 			if (entity->usable_items.at(current_item).objective == ENEMIES) {
 				SelectEnemy(items);
 			}
-			else {
+			else if(entity->usable_items.at(current_item).objective == HEROES){
 				SelectAlly(items);
+			}
+			else {
+				std::vector<Entity*>::const_iterator heroe = App->combat->heroes.begin();
+				while ((*heroe)->GetCurrentHealthPoints() <= 0 && heroe != App->combat->heroes.end()) {
+					heroe++;
+					dead_heroes++;
+				}
+				if (dead_heroes > 0) {
+					SelectDeadAlly(items);
+				}
+				else {
+					selecting_enemy = false;
+					for (int i = 0; i < items.size(); i++) {
+						if (items.at(i)->current_state == STATE_EXECUTED) {
+							items.at(i)->current_state = STATE_FOCUSED;
+						}
+					}
+				}
 			}
 		}
 
@@ -934,6 +970,138 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 					App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(current_ability), (*selected_ally)));
 					App->task_manager->AddTask(new MoveToInitialPosition(entity));
 				}
+			}
+			else {
+				selected_ally = App->combat->heroes.begin();
+				App->gui->DeleteUIElement(*enemy_select_arrow);
+				enemy_select_arrow = nullptr;
+				selecting_enemy = false;
+				for (int i = 0; i < current_vector.size(); i++) {
+					if (current_vector.at(i)->current_state == STATE_EXECUTED) {
+						current_vector.at(i)->current_state = STATE_FOCUSED;
+					}
+				}
+			}
+		}
+		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
+			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(current_item).action, (*selected_ally)));
+			App->task_manager->AddTask(new MoveToInitialPosition(entity));
+		}
+	}
+
+
+	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		selected_ally = App->combat->heroes.begin();
+		App->gui->DeleteUIElement(*enemy_select_arrow);
+		enemy_select_arrow = nullptr;
+		selecting_enemy = false;
+		for (int i = 0; i < current_vector.size(); i++) {
+			if (current_vector.at(i)->current_state == STATE_EXECUTED) {
+				current_vector.at(i)->current_state = STATE_FOCUSED;
+			}
+		}
+	}
+
+}
+
+void UICombatMenu::SelectDeadAlly(std::vector<UIElement*> &current_vector) {
+	if (enemy_select_arrow == nullptr) {
+		while ((*selected_ally)->GetCurrentHealthPoints() > 0) {
+			if (selected_ally != App->combat->heroes.end()) {
+				selected_ally++;
+			}
+			else {
+				selected_ally = App->combat->heroes.begin();
+			}
+		}
+		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		if (selected_ally != App->combat->heroes.end()) {
+			selected_ally++;
+		}
+		if (selected_ally == App->combat->heroes.end()) {
+			selected_ally = App->combat->heroes.begin();
+		}
+		if (enemy_select_arrow != nullptr) {
+			App->gui->DeleteUIElement(*enemy_select_arrow);
+			enemy_select_arrow = nullptr;
+		}
+		while ((*selected_ally)->GetCurrentHealthPoints() > 0) {
+			if (selected_ally != App->combat->heroes.end()) {
+				selected_ally++;
+			}
+			else {
+				selected_ally = App->combat->heroes.begin();
+			}
+		}
+		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		App->audio->PlayFx(App->audio->cm_move_fx);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		if (selected_ally != App->combat->heroes.begin() - 1) {
+			selected_ally--;
+		}
+		if (selected_ally == App->combat->heroes.begin() - 1) {
+			while (selected_ally != App->combat->heroes.end() - 1) {
+				selected_ally++;
+			}
+		}
+		while ((*selected_ally)->GetCurrentHealthPoints() > 0) {
+			if (selected_ally != App->combat->heroes.begin()) {
+				selected_ally--;
+			}
+			else {
+				while (selected_ally != App->combat->heroes.end() - 1) {
+					selected_ally++;
+				}
+			}
+		}
+		if (enemy_select_arrow != nullptr) {
+			App->gui->DeleteUIElement(*enemy_select_arrow);
+			enemy_select_arrow = nullptr;
+		}
+		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		App->audio->PlayFx(App->audio->cm_move_fx);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
+		App->gui->DeleteUIElement(*arrow);
+		arrow = nullptr;
+		App->gui->DeleteUIElement(*background);
+		background = nullptr;
+		App->gui->DeleteUIElement(*upper_points);
+		upper_points = nullptr;
+		App->gui->DeleteUIElement(*lower_points);
+		lower_points = nullptr;
+
+		for (int i = 0; i < current_vector.size(); i++) {
+			App->gui->DeleteUIElement(*current_vector.at(i));
+		}
+
+		//App->audio->PlayFx(combat_menu_select_fx);
+		current_vector.clear();
+
+		selecting_enemy = false;
+
+		//perform tasks!
+		//(*selected_ally)
+		if (attack_label->current_state == STATE_EXECUTED) {
+			App->task_manager->AddTask(new MoveToEntity(entity, (*selected_ally), -20));
+			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->default_attack, (*selected_ally)));
+			App->task_manager->AddTask(new MoveToInitialPosition(entity));
+		}
+		else if (current_vector == abilities && entity->abilities.size() != 0) {
+			if (entity->GetCurrentManaPoints() >= entity->abilities.at(current_ability).mana_points_effect_to_himself) {
+				//if (entity->abilities.at(current_ability).name == "Heal") {
+					App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(current_ability), (*selected_ally)));
+					App->task_manager->AddTask(new MoveToInitialPosition(entity));
+				//}
+				//else {
+				//	App->task_manager->AddTask(new MoveToEntity(entity, (*selected_ally), -20));
+				//	App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(current_ability), (*selected_ally)));
+				//	App->task_manager->AddTask(new MoveToInitialPosition(entity));
+				//}
 			}
 			else {
 				selected_ally = App->combat->heroes.begin();

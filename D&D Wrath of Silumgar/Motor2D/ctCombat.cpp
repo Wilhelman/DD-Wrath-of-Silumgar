@@ -142,6 +142,15 @@ bool ctCombat::Start()
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(4));
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(5));
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(6));
+	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(4));
+	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(5));
+	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(6));
+	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(4));
+	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(5));
+	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(6));
+	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(4));
+	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(5));
+	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(6));
 
 	for (int i = 0; i < App->items->tier_2_equips.size(); i++)
 	{

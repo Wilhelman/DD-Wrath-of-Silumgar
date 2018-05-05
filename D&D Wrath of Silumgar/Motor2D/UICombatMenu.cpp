@@ -1028,7 +1028,7 @@ void UICombatMenu::SelectDeadAlly(std::vector<UIElement*> &current_vector) {
 			enemy_select_arrow = nullptr;
 		}
 		while ((*selected_ally)->GetCurrentHealthPoints() > 0) {
-			if (selected_ally != App->combat->heroes.end()) {
+			if (selected_ally != App->combat->heroes.end()-1) {
 				selected_ally++;
 			}
 			else {

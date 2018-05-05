@@ -122,6 +122,15 @@ UIPauseMenu::~UIPauseMenu() {
 		App->entities->entities.at(i)->to_destroy = true;
 	}
 
+	if (information_inventory_items.size() != 0)
+	{
+		for (std::vector<UIElement*>::iterator it = information_inventory_items.begin(); it != information_inventory_items.end(); it++)
+		{
+			(*it)->~UIElement();
+		}
+
+		information_inventory_items.clear();
+	}
 }
 
 void UIPauseMenu::Update() {

@@ -18,6 +18,7 @@
 #include "Elf.h"
 #include "Warrior.h"
 #include "ctCombat.h"
+#include "ctWorldMap.h"
 
 UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
@@ -631,6 +632,8 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		if (continue_label->current_state == STATE_EXECUTED) {
 			App->gui->DeleteUIElement(*this);
 			App->main_menu->pauseMenu = nullptr;
+			App->combat->pauseMenu = nullptr;
+			App->world_map->pauseMenu = nullptr;
 		}
 		else if (inventory_label->current_state == STATE_EXECUTED) {
 				SetUpInventory();

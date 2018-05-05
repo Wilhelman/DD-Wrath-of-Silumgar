@@ -68,6 +68,7 @@ public:
 	
 public:
 	std::vector<UIElement*> options;
+	UIElement* pauseMenu = nullptr;
 
 private:
 
@@ -81,7 +82,7 @@ private:
 
 private:
 
-	UIElement* pauseMenu = nullptr;
+	
 
 	std::vector<WorldMapElement*> all_map_elements;
 

@@ -74,6 +74,8 @@ public:
 	Entity* GetRandomHeroe();
 
 	void SelectWithPreviousHeroe();
+
+	UIElement* pauseMenu = nullptr;
 	
 private:
 	
@@ -106,7 +108,7 @@ private:
 	
 private:
 
-	UIElement* pauseMenu = nullptr;
+	
 
 	string scene_name;
 	bool making_decision = false;

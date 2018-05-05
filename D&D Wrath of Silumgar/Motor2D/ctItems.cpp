@@ -48,6 +48,22 @@ bool ctItems::Awake(pugi::xml_node& config)
 
 		Action tmp_action;
 
+		switch (item.objective)
+		{
+		case 0:
+			tmp_action.objective = HEROES;
+			break;
+		case 1:
+			tmp_action.objective = ENEMIES;
+			break;
+		case 2:
+			tmp_action.objective = DEAD_HEROES;
+			break;
+		default:
+			break;
+		}
+		
+
 		if (tmp == "LOW_HEALTH_RECOVER") {
 			item.usable_effects = LOW_HEALTH_RECOVER;
 			tmp_action.type = LOW_HEALTH_RECOVER_ACTION;

@@ -22,7 +22,7 @@
 		<item name="Dragon Essence" objective="1" use="BURN_TARGET">
 		  <draw_coords x="64" y="32" width="64" height="32"/>
 		</item>
-		<item name="Fenix Tears" objective="0" use="REVIVE_AN_ALLY">
+		<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY">
 		  <draw_coords x="128" y="32" width="64" height="32"/>
 		</item>
   

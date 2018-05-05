@@ -81,6 +81,8 @@ private:
 
 private:
 
+	UIElement* pauseMenu = nullptr;
+
 	std::vector<WorldMapElement*> all_map_elements;
 
 	WorldMapElement* current_map_element;

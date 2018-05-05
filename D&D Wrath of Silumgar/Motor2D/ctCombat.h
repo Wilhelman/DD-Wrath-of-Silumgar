@@ -106,6 +106,8 @@ private:
 	
 private:
 
+	UIElement* pauseMenu = nullptr;
+
 	string scene_name;
 	bool making_decision = false;
 

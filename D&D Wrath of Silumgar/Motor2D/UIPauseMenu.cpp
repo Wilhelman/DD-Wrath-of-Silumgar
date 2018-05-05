@@ -17,6 +17,7 @@
 #include "Dwarf.h"
 #include "Elf.h"
 #include "Warrior.h"
+#include "ctCombat.h"
 
 UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
@@ -25,10 +26,18 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 	equip_texture=App->tex->Load("textures/ObjectsWithBG.png");
 	//*************************************************************************
 	background = new UIImage(x, y, IMAGE, { 0,0,484,324 }, nullptr, this);
-	App->entities->SpawnEntity(30, 125, CLERIC);
-	App->entities->SpawnEntity(30, 275, WARRIOR);
-	App->entities->SpawnEntity(250, 125, DWARF);
-	App->entities->SpawnEntity(250, 275, ELF);
+	if (App->entities->GetMiniheroes() != nullptr) {
+		App->entities->SpawnEntity(30, 125, CLERIC);
+		App->entities->SpawnEntity(30, 275, WARRIOR);
+		App->entities->SpawnEntity(250, 125, DWARF);
+		App->entities->SpawnEntity(250, 275, ELF);
+	}
+	else {
+		App->entities->GetCleric()->position = { 30,125 };
+		App->entities->GetWarrior()->position = { 30,275 };
+		App->entities->GetDwarf()->position = { 250,125 };
+		App->entities->GetElf()->position = { 250,275 };
+	}
 	//-------------------------------
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(1));
@@ -65,6 +74,24 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 }
 
 UIPauseMenu::~UIPauseMenu() {
+
+	if (App->entities->GetMiniheroes() != nullptr) {
+		for (int i = 0; i < App->entities->entities.size(); i++)
+		{
+			if(App->entities->entities.at(i) != (Entity*)App->entities->GetMiniheroes())
+				App->entities->entities.at(i)->to_destroy = true;
+		}
+
+		App->combat->turn_priority_entity.clear();
+		App->combat->draw_turn_priority_entity.clear();
+		App->combat->entities_to_spawn.clear();
+	}
+	else {
+		App->entities->GetCleric()->position = App->entities->GetCleric()->initial_position;
+		App->entities->GetWarrior()->position = App->entities->GetCleric()->initial_position;
+		App->entities->GetDwarf()->position = App->entities->GetCleric()->initial_position;
+		App->entities->GetElf()->position = App->entities->GetCleric()->initial_position;
+	}
 
 	background->~UIElement();
 	background = nullptr;
@@ -104,11 +131,6 @@ UIPauseMenu::~UIPauseMenu() {
 	quit_label->~UIElement();
 	quit_label = nullptr;
 	main_labels.clear();
-
-	for (int i = 0; i < App->entities->entities.size(); i++)
-	{
-		App->entities->entities.at(i)->to_destroy = true;
-	}
 
 	if (information_inventory_items.size() != 0)
 	{

@@ -189,8 +189,19 @@ bool ctWorldMap::PreUpdate()
 // Called each loop iteration
 bool ctWorldMap::Update(float dt)
 {
+
+	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)
+	{
+		if (pauseMenu == nullptr) {
+			pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);
+		}
+		else {
+			App->gui->DeleteUIElement(*pauseMenu);
+			pauseMenu = nullptr;
+		}
+	}
 	
-	if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() && decision == nullptr) {
+	/*if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() && decision == nullptr) {
 
 		App->combat->SetSceneName(current_map_element->scene_name);
 		App->combat->entities_to_spawn = current_map_element->entities;
@@ -198,7 +209,7 @@ bool ctWorldMap::Update(float dt)
 		if (App->fadeToBlack->FadeIsOver())
 			App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
 
-	}
+	}*/
 
 	/*	IF HAVE TO QUIT THE GAME
 		App->main_menu->is_new_game = false;

@@ -83,7 +83,6 @@ bool ctMainMenu::PreUpdate()
 // Called each loop iteration
 bool ctMainMenu::Update(float dt)
 {
-	//TEST PARTICLES
 	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
 	{
 		if (pauseMenu == nullptr) {

@@ -166,6 +166,17 @@ bool ctCombat::PreUpdate()
 bool ctCombat::Update(float dt)
 {
 
+	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)
+	{
+		if (pauseMenu == nullptr) {
+			pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);
+		}
+		else {
+			App->gui->DeleteUIElement(*pauseMenu);
+			pauseMenu = nullptr;
+		}
+	}
+
 	if (turn_priority_entity.size() == 0) {
 		if (ready_cleric != nullptr) {
 			App->gui->DeleteUIElement(*ready_cleric);

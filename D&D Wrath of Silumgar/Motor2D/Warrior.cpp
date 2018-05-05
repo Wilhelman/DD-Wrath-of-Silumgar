@@ -54,6 +54,8 @@ Warrior::Warrior(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &taunt);
 		else if (tmp == "menu_animation")
 			LoadAnimation(animations, &menu_animation);
+		else if (tmp == "stun")
+			LoadAnimation(animations, &stun);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

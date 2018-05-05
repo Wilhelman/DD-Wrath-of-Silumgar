@@ -996,68 +996,83 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		switch (entity_to_perform_action->type)
 		{
 		case CLERIC:
-			if (!making_decision) {
-				combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
-				making_decision = true;
-			}
-			else {
-				if (combat_menu->background == nullptr) {
-					ready_cleric = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
-					combat_menu->~UICombatMenu();
-					App->gui->DeleteUIElement(*combat_menu);
-					combat_menu = nullptr;
-					established_action = true;
-					making_decision = false;
+			if (!entity_to_perform_action->IsStunned()) {
+				if (!making_decision) {
+					combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+					making_decision = true;
 				}
-			}
+				else {
+					if (combat_menu->background == nullptr) {
+						ready_cleric = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 20, "Ready", { 255,255,255,255 }, 15, this);
+						combat_menu->~UICombatMenu();
+						App->gui->DeleteUIElement(*combat_menu);
+						combat_menu = nullptr;
+						established_action = true;
+						making_decision = false;
+					}
+				}
+			}else
+				established_action = true;
 			break;
 		case DWARF:
-			if (!making_decision) {
-				combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
-				making_decision = true;
-			}
-			else {
-				if (combat_menu->background == nullptr) {
-					ready_dwarf = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
-					combat_menu->~UICombatMenu();
-					App->gui->DeleteUIElement(*combat_menu);
-					combat_menu = nullptr;
-					established_action = true;
-					making_decision = false;
+			if (!entity_to_perform_action->IsStunned()) {
+				if (!making_decision) {
+					combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+					making_decision = true;
+				}
+				else {
+					if (combat_menu->background == nullptr) {
+						ready_dwarf = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
+						combat_menu->~UICombatMenu();
+						App->gui->DeleteUIElement(*combat_menu);
+						combat_menu = nullptr;
+						established_action = true;
+						making_decision = false;
+					}
 				}
 			}
+			else
+				established_action = true;
 			break;
 		case ELF:
-			if (!making_decision) {
-				combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
-				making_decision = true;
-			}
-			else {
-				if (combat_menu->background == nullptr) {
-					ready_elf = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
-					combat_menu->~UICombatMenu();
-					App->gui->DeleteUIElement(*combat_menu);
-					combat_menu = nullptr;
-					established_action = true;
-					making_decision = false;
+			if (!entity_to_perform_action->IsStunned()) {
+				if (!making_decision) {
+					combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+					making_decision = true;
+				}
+				else {
+					if (combat_menu->background == nullptr) {
+						ready_elf = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
+						combat_menu->~UICombatMenu();
+						App->gui->DeleteUIElement(*combat_menu);
+						combat_menu = nullptr;
+						established_action = true;
+						making_decision = false;
+					}
 				}
 			}
+			else
+				established_action = true;
 			break;
 		case WARRIOR:
-			if (!making_decision) {
-				combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
-				making_decision = true;
-			}
-			else {
-				if (combat_menu->background == nullptr) {
-					ready_warrior = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y- entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
-					combat_menu->~UICombatMenu();
-					App->gui->DeleteUIElement(*combat_menu);
-					combat_menu = nullptr;
-					established_action = true;
-					making_decision = false;
+			if (!entity_to_perform_action->IsStunned()) {
+				if (!making_decision) {
+					combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
+					making_decision = true;
+				}
+				else {
+					if (combat_menu->background == nullptr) {
+						ready_warrior = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y- entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 15, this);
+						combat_menu->~UICombatMenu();
+						App->gui->DeleteUIElement(*combat_menu);
+						combat_menu = nullptr;
+						established_action = true;
+						making_decision = false;
+					}
 				}
 			}
+			else
+				established_action = true;
 			break;
 		case KOBOLD: 
 		case GNOLL:

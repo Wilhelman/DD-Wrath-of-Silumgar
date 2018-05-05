@@ -52,6 +52,8 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &clarity);
 		else if (tmp == "menu_animation")
 			LoadAnimation(animations, &menu_animation);
+		else if (tmp == "stun")
+			LoadAnimation(animations, &stun);
 
 	}
 	LoadProperties(node->child("statistics"));

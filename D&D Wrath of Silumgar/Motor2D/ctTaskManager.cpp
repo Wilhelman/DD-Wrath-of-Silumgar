@@ -228,8 +228,6 @@ bool PerformActionToEntity::Execute()
 							}
 						}
 						
-						
-						
 
 						receiver_entity->Damaged();
 					}

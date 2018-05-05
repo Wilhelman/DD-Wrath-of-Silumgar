@@ -89,7 +89,7 @@ bool ctCombat::Start()
 		//load from data.xml the current health, mana, items that have the heroes
 		LoadDataFromXML();
 	}
-//	LoadDataFromXML();
+	LoadDataFromXML();
 
 	SetDataToUI();
 
@@ -101,7 +101,6 @@ bool ctCombat::Start()
 				enemies.push_back(*it);
 		}
 		else {
-			if ((*it)->GetCurrentHealthPoints()>0)
 				heroes.push_back(*it);
 		}
 	}

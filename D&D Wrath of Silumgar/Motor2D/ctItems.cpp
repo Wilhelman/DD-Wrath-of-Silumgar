@@ -120,18 +120,18 @@ bool ctItems::Awake(pugi::xml_node& config)
 		{
 		case LOW_HEALTH_RECOVER_ACTION: {
 			tmp_action.health_points_effect = 30;
-			description = "Heals one ally mimimi mimi mi";
+			description = "Heals 30 hp to an ally";
 			break;
 		}
 		
 		case POISONED_DAGGER_ACTION: {
 			tmp_action.position_chance = 100;
-			description = "Throws a poisoned dagger";
+			description = "Poison one enemy";
 			break;
 		}
 		case HIGH_HEALTH_RECOVER_ACTION: {
 			tmp_action.health_points_effect = 60;
-			description = "Health++!";
+			description = "Heals 60 hp to an ally";
 			break;
 		}
 		case LOW_MANA_RECOVER_ACTION: {
@@ -148,12 +148,12 @@ bool ctItems::Awake(pugi::xml_node& config)
 			tmp_action.burn_chance = 100;
 			//to test
 			tmp_action.health_points_effect = 0;
-			description = "Ashka like fire!";
+			description = "Burn one enemy";
 			break;
 		}
 		case REVIVE_AN_ALLY_ACTION: {
 			tmp_action.health_points_effect = 100;
-			description = "Zilean Ultimate!";
+			description = "Revive an ally";
 			break;
 		}
 		

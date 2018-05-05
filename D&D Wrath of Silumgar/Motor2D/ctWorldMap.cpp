@@ -201,7 +201,7 @@ bool ctWorldMap::Update(float dt)
 		}
 	}
 	
-	if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() && decision == nullptr) {
+	if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() && decision == nullptr && App->task_manager->aux_task == nullptr) {
 
 		App->combat->SetSceneName(current_map_element->scene_name);
 		App->combat->entities_to_spawn = current_map_element->entities;
@@ -317,29 +317,26 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 	{
 		if (ui_state == STATE_EXECUTED)
 		{
-			WorldMapElement* tmp_map_element = nullptr;
 
 			if (decision->option_1->current_state == STATE_FOCUSED)
 			{
-				tmp_map_element = decision->choice_02;
+				current_map_element = decision->choice_02;
 			}
 			else
 			{
-				tmp_map_element = decision->choice_01;
+				current_map_element = decision->choice_01;
 			}
 
-			App->combat->SetSceneName(tmp_map_element->scene_name);
-			App->combat->entities_to_spawn = tmp_map_element->entities;
+			//if (App->fadeToBlack->FadeIsOver())
+				//App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
 
-			if (App->fadeToBlack->FadeIsOver())
-				App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 3.0f);
-
-			App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(tmp_map_element->coords_in_map.x + 5, tmp_map_element->coords_in_map.y + 30)));
-			avatar_position = iPoint(tmp_map_element->coords_in_map.x + 5, tmp_map_element->coords_in_map.y + 30);
+			App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(current_map_element->coords_in_map.x + 5, current_map_element->coords_in_map.y + 30)));
+			avatar_position = iPoint(current_map_element->coords_in_map.x + 5, current_map_element->coords_in_map.y + 30);
 
 			App->task_manager->PerformAllTheTasks();
 
 			App->gui->DeleteUIElement(*decision);
+			decision = nullptr;
 		}
 	}
 

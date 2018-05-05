@@ -521,7 +521,7 @@ bool PerformActionToEntity::Execute()
 						}
 						else {
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
-							//TODO SITO
+							
 							fPoint posP;
 							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
 							{
@@ -535,8 +535,16 @@ bool PerformActionToEntity::Execute()
 							}
 						}
 
+						if (!receiver_entity->IsBleeding()) {
+							Altered_Stat bleed;
+							bleed.bleeding = true;
+							bleed.turn_left = 3;
 
+							receiver_entity->AddAlteredStat(bleed);
+							std::string bleed_string = "BLEEDING";
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, bleed_string, { 127,0,8,255 }, 16, nullptr, nullptr);
 
+						}
 
 						receiver_entity->Damaged();
 					}

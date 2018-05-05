@@ -89,7 +89,7 @@ bool ctCombat::Start()
 		//load from data.xml the current health, mana, items that have the heroes
 		LoadDataFromXML();
 	}
-	LoadDataFromXML();
+	//LoadDataFromXML();
 
 	SetDataToUI();
 
@@ -772,6 +772,8 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 		new_action.objective = HEROES;
 	else if (skill_node.attribute("objective").as_int() == 2)
 		new_action.objective = DEAD_HEROES;
+
+	new_action.have_to_move = skill_node.attribute("have_to_move").as_int();
 
 	new_action.description = skill_node.attribute("description").as_string();
 	new_action.mana_points_effect_to_himself = skill_node.attribute("mana_points_effect_to_himself").as_int();

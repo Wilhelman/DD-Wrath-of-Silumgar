@@ -137,6 +137,7 @@ struct Action {
 	uint luck_variation = 0u;
 	uint judgement_variation = 0u;
 
+	bool have_to_move = false;
 };
 
 

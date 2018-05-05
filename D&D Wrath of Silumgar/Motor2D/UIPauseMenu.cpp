@@ -146,23 +146,28 @@ void UIPauseMenu::Update() {
 	}
 	else
 	{
+		if (inventory_items.size() != 0)
+		{
+			
+
+			if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+				App->audio->PlayFx(App->audio->mm_movement_fx);
+				ChangePositionFakeArrow(SDL_SCANCODE_LEFT);
+				SetInformationLabels();
+			}
+
+			if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+				App->audio->PlayFx(App->audio->mm_movement_fx);
+				ChangePositionFakeArrow(SDL_SCANCODE_RIGHT);
+				SetInformationLabels();
+			}
+			//ExecuteCommand
+			if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+				ExecuteComand(main_labels);
+			}
+
+		}
 		
-
-		if (App->input->GetKey(SDL_SCANCODE_LEFT)== KEY_DOWN || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			App->audio->PlayFx(App->audio->mm_movement_fx);
-
-			ChangePositionFakeArrow(SDL_SCANCODE_LEFT);
-		}
-	
-		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			App->audio->PlayFx(App->audio->mm_movement_fx);
-			ChangePositionFakeArrow(SDL_SCANCODE_RIGHT);
-		}
-		//ExecuteCommand
-		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			ExecuteComand(main_labels);
-		}
-
 	}
 
 }
@@ -368,242 +373,150 @@ void UIPauseMenu::DrawItems() {
 		}
 	}
 
+	for (std::vector<UIElement*>::iterator it = information_inventory_items.begin(); it != information_inventory_items.end(); it++)
+	{
+		App->render->UIBlit((*it)->texture, (*it)->screen_position.x, (*it)->screen_position.y, &(*it)->current_rect);
+	}
 	
 
 }
 
 void UIPauseMenu::LoadClerictStats() {
 	Entity* current_entity = App->entities->GetCleric();
-	//char constitution[(((sizeof current_entity->GetCurrentHealthPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(constitution, "%d", current_entity->GetCurrentHealthPoints());
-	//string con = "Con    ";
-	//string entity_con = con + constitution;
-	string entity_con = "Con    10";
-	cleric_statistics.push_back(new UITextBox(135, 38, TEXTBOX, entity_con, { 255,255,255,255 }, 10, 428));
-	//char focus[(((sizeof current_entity->GetCurrentManaPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(focus, "%d", current_entity->GetCurrentManaPoints());
-	//string foc = "Foc    ";
-	//string entity_foc = foc + focus;
-	string entity_foc = "Foc    10";
-	cleric_statistics.push_back(new UITextBox(135, 48, TEXTBOX, entity_foc, { 255,255,255,255 }, 10, 428));
-	//char strength[(((sizeof current_entity->GetCurrentStrength()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(strength, "%d", current_entity->GetCurrentStrength());
-	//string str = "Str    ";
-	//string entity_str = str + strength;
-	string entity_str = "Str    10";
-	cleric_statistics.push_back(new UITextBox(135, 58, TEXTBOX, entity_str, { 255,255,255,255 }, 10, 428));
-	//char agility[(((sizeof current_entity->GetCurrentAgilityPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(agility, "%d", current_entity->GetCurrentAgilityPoints());
-	//string agl = "Agl    ";
-	//string entity_agl = agl + agility;
-	string entity_agl = "Agl    10";
-	cleric_statistics.push_back(new UITextBox(135, 68, TEXTBOX, entity_agl, { 255,255,255,255 }, 10, 428));
-	//char dexterity[(((sizeof current_entity->GetCurrentDexterityPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(dexterity, "%d", current_entity->GetCurrentDexterityPoints());
-	//string dex = "Dex    ";
-	//string entity_dex = dex + dexterity;
-	string entity_dex = "Dex    10";
-	cleric_statistics.push_back(new UITextBox(135, 78, TEXTBOX, entity_dex, { 255,255,255,255 }, 10, 428));
-	//char intelligence[(((sizeof current_entity->GetCurrentIntelligencePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(intelligence, "%d", current_entity->GetCurrentIntelligencePoints());
-	//string int = "Int    ";
-	//string entity_int = int + intelligence;
-	string entity_int = "Int    10";
-	cleric_statistics.push_back(new UITextBox(135, 88, TEXTBOX, entity_int, { 255,255,255,255 }, 10, 428));
-	//char magical_def[(((sizeof current_entity->GetCurrentMagicalDefensePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(magical_def, "%d", current_entity->GetCurrentMagicalDefensePoints());
-	//string mdef = "M.Def  ";
-	//string entity_mdef = mdef + magical_def;
-	string entity_mdef = "M.Def  10";
-	cleric_statistics.push_back(new UITextBox(135, 98, TEXTBOX, entity_mdef, { 255,255,255,255 }, 10, 428));
-	//char physical_def[(((sizeof current_entity->GetCurrentPhysicalDefensePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(physical_def, "%d", current_entity->GetCurrentPhysicalDefensePoints());
-	//string pdef = "P.Def  ";
-	//string entity_pdef = pdef + physical_def;
-	string entity_pdef = "P.Def  10";
-	cleric_statistics.push_back(new UITextBox(135, 108, TEXTBOX, entity_pdef, { 255,255,255,255 }, 10, 428));
-	//char luck[(((sizeof current_entity->GetCurrentPhysicalLuckPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(luck, "%d", current_entity->GetCurrentPhysicalLuckPoints());
-	//string lck = "Lck   ";
-	//string entity_lck = lck + luck;
-	string entity_lck = "Lck   10";
-	cleric_statistics.push_back(new UITextBox(135, 118, TEXTBOX, entity_lck, { 255,255,255,255 }, 10, 428));
+	
+	std::string entity_stat =  "Con  " + std::to_string((current_entity->base_stats.constitution * 13));
+	cleric_statistics.push_back(new UITextBox(135, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "Foc  " + std::to_string((current_entity->base_stats.focus * 17));
+	cleric_statistics.push_back(new UITextBox(135, 48, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "Str  " + std::to_string((current_entity->base_stats.strength * 3));
+	cleric_statistics.push_back(new UITextBox(135, 58, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "Agi   " + std::to_string((current_entity->base_stats.intelligence * 2));
+	cleric_statistics.push_back(new UITextBox(135, 68, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "Dex  " + std::to_string((50 + current_entity->base_stats.dexterity * 2));
+	cleric_statistics.push_back(new UITextBox(135, 78, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "Int   " + std::to_string((current_entity->base_stats.intelligence * 3));
+	cleric_statistics.push_back(new UITextBox(135, 88, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "M.Def " + std::to_string((current_entity->base_stats.magical_defense * 2));
+	cleric_statistics.push_back(new UITextBox(135, 98, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "P.Def " + std::to_string((current_entity->base_stats.physical_defense * 2));
+	cleric_statistics.push_back(new UITextBox(135, 108, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "Luck " + std::to_string((current_entity->base_stats.luck ));
+	cleric_statistics.push_back(new UITextBox(135, 118, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
 }
 
 void UIPauseMenu::LoadWarriorStats() {
 	Entity* current_entity = App->entities->GetWarrior();
-	//char constitution[(((sizeof current_entity->GetCurrentHealthPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(constitution, "%d", current_entity->GetCurrentHealthPoints());
-	//string con = "Con    ";
-	//string entity_con = con + constitution;
-	string entity_con = "Con    10";
-	warrior_statistics.push_back(new UITextBox(135, 195, TEXTBOX, entity_con, { 255,255,255,255 }, 10, 428));
-	//char focus[(((sizeof current_entity->GetCurrentManaPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(focus, "%d", current_entity->GetCurrentManaPoints());
-	//string foc = "Foc    ";
-	//string entity_foc = foc + focus;
-	string entity_foc = "Foc    10";
-	warrior_statistics.push_back(new UITextBox(135, 205, TEXTBOX, entity_foc, { 255,255,255,255 }, 10, 428));
-	//char strength[(((sizeof current_entity->GetCurrentStrength()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(strength, "%d", current_entity->GetCurrentStrength());
-	//string str = "Str    ";
-	//string entity_str = str + strength;
-	string entity_str = "Str    10";
-	warrior_statistics.push_back(new UITextBox(135, 215, TEXTBOX, entity_str, { 255,255,255,255 }, 10, 428));
-	//char agility[(((sizeof current_entity->GetCurrentAgilityPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(agility, "%d", current_entity->GetCurrentAgilityPoints());
-	//string agl = "Agl    ";
-	//string entity_agl = agl + agility;
-	string entity_agl = "Agl    10";
-	warrior_statistics.push_back(new UITextBox(135, 225, TEXTBOX, entity_agl, { 255,255,255,255 }, 10, 428));
-	//char dexterity[(((sizeof current_entity->GetCurrentDexterityPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(dexterity, "%d", current_entity->GetCurrentDexterityPoints());
-	//string dex = "Dex    ";
-	//string entity_dex = dex + dexterity;
-	string entity_dex = "Dex    10";
-	warrior_statistics.push_back(new UITextBox(135, 235, TEXTBOX, entity_dex, { 255,255,255,255 }, 10, 428));
-	//char intelligence[(((sizeof current_entity->GetCurrentIntelligencePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(intelligence, "%d", current_entity->GetCurrentIntelligencePoints());
-	//string int = "Int    ";
-	//string entity_int = int + intelligence;
-	string entity_int = "Int    10";
-	warrior_statistics.push_back(new UITextBox(135, 245, TEXTBOX, entity_int, { 255,255,255,255 }, 10, 428));
-	//char magical_def[(((sizeof current_entity->GetCurrentMagicalDefensePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(magical_def, "%d", current_entity->GetCurrentMagicalDefensePoints());
-	//string mdef = "M.Def  ";
-	//string entity_mdef = mdef + magical_def;
-	string entity_mdef = "M.Def  10";
-	warrior_statistics.push_back(new UITextBox(135, 255, TEXTBOX, entity_mdef, { 255,255,255,255 }, 10, 428));
-	//char physical_def[(((sizeof current_entity->GetCurrentPhysicalDefensePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(physical_def, "%d", current_entity->GetCurrentPhysicalDefensePoints());
-	//string pdef = "P.Def  ";
-	//string entity_pdef = pdef + physical_def;
-	string entity_pdef = "P.Def  10";
-	warrior_statistics.push_back(new UITextBox(135, 265, TEXTBOX, entity_pdef, { 255,255,255,255 }, 10, 428));
-	//char luck[(((sizeof current_entity->GetCurrentPhysicalLuckPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(luck, "%d", current_entity->GetCurrentPhysicalLuckPoints());
-	//string lck = "Lck   ";
-	//string entity_lck = lck + luck;
-	string entity_lck = "Lck   10";
-	warrior_statistics.push_back(new UITextBox(135, 275, TEXTBOX, entity_lck, { 255,255,255,255 }, 10, 428));
+
+	std::string entity_stat = "Con  " + std::to_string((current_entity->base_stats.constitution * 13));
+	warrior_statistics.push_back(new UITextBox(135, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Foc  " + std::to_string((current_entity->base_stats.focus * 17));
+	warrior_statistics.push_back(new UITextBox(135, 205, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Str  " + std::to_string((current_entity->base_stats.strength * 3));
+	warrior_statistics.push_back(new UITextBox(135, 215, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Agi   " + std::to_string((current_entity->base_stats.intelligence * 2));
+	warrior_statistics.push_back(new UITextBox(135, 225, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Dex  " + std::to_string((50 + current_entity->base_stats.dexterity * 2));
+	warrior_statistics.push_back(new UITextBox(135, 235, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Int   " + std::to_string((current_entity->base_stats.intelligence * 3));
+	warrior_statistics.push_back(new UITextBox(135, 245, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "M.Def " + std::to_string((current_entity->base_stats.magical_defense * 2));
+	warrior_statistics.push_back(new UITextBox(135, 255, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "P.Def " + std::to_string((current_entity->base_stats.physical_defense * 2));
+	warrior_statistics.push_back(new UITextBox(135, 265, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Luck " + std::to_string((current_entity->base_stats.luck));
+	warrior_statistics.push_back(new UITextBox(135, 275, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 }
 
 
 void UIPauseMenu::LoadDwarfStats() {
 	Entity* current_entity = App->entities->GetDwarf();
-	//char constitution[(((sizeof current_entity->GetCurrentHealthPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(constitution, "%d", current_entity->GetCurrentHealthPoints());
-	//string con = "Con    ";
-	//string entity_con = con + constitution;
-	string entity_con = "Con    10";
-	dwarf_statistics.push_back(new UITextBox(340, 38, TEXTBOX, entity_con, { 255,255,255,255 }, 10, 428));
-	//char focus[(((sizeof current_entity->GetCurrentManaPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(focus, "%d", current_entity->GetCurrentManaPoints());
-	//string foc = "Foc    ";
-	//string entity_foc = foc + focus;
-	string entity_foc = "Foc    10";
-	dwarf_statistics.push_back(new UITextBox(340, 48, TEXTBOX, entity_foc, { 255,255,255,255 }, 10, 428));
-	//char strength[(((sizeof current_entity->GetCurrentStrength()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(strength, "%d", current_entity->GetCurrentStrength());
-	//string str = "Str    ";
-	//string entity_str = str + strength;
-	string entity_str = "Str    10";
-	dwarf_statistics.push_back(new UITextBox(340, 58, TEXTBOX, entity_str, { 255,255,255,255 }, 10, 428));
-	//char agility[(((sizeof current_entity->GetCurrentAgilityPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(agility, "%d", current_entity->GetCurrentAgilityPoints());
-	//string agl = "Agl    ";
-	//string entity_agl = agl + agility;
-	string entity_agl = "Agl    10";
-	dwarf_statistics.push_back(new UITextBox(340, 68, TEXTBOX, entity_agl, { 255,255,255,255 }, 10, 428));
-	//char dexterity[(((sizeof current_entity->GetCurrentDexterityPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(dexterity, "%d", current_entity->GetCurrentDexterityPoints());
-	//string dex = "Dex    ";
-	//string entity_dex = dex + dexterity;
-	string entity_dex = "Dex    10";
-	dwarf_statistics.push_back(new UITextBox(340, 78, TEXTBOX, entity_dex, { 255,255,255,255 }, 10, 428));
-	//char intelligence[(((sizeof current_entity->GetCurrentIntelligencePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(intelligence, "%d", current_entity->GetCurrentIntelligencePoints());
-	//string int = "Int    ";
-	//string entity_int = int + intelligence;
-	string entity_int = "Int    10";
-	dwarf_statistics.push_back(new UITextBox(340, 88, TEXTBOX, entity_int, { 255,255,255,255 }, 10, 428));
-	//char magical_def[(((sizeof current_entity->GetCurrentMagicalDefensePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(magical_def, "%d", current_entity->GetCurrentMagicalDefensePoints());
-	//string mdef = "M.Def  ";
-	//string entity_mdef = mdef + magical_def;
-	string entity_mdef = "M.Def  10";
-	dwarf_statistics.push_back(new UITextBox(340, 98, TEXTBOX, entity_mdef, { 255,255,255,255 }, 10, 428));
-	//char physical_def[(((sizeof current_entity->GetCurrentPhysicalDefensePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(physical_def, "%d", current_entity->GetCurrentPhysicalDefensePoints());
-	//string pdef = "P.Def  ";
-	//string entity_pdef = pdef + physical_def;
-	string entity_pdef = "P.Def  10";
-	dwarf_statistics.push_back(new UITextBox(340, 108, TEXTBOX, entity_pdef, { 255,255,255,255 }, 10, 428));
-	//char luck[(((sizeof current_entity->GetCurrentPhysicalLuckPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(luck, "%d", current_entity->GetCurrentPhysicalLuckPoints());
-	//string lck = "Lck   ";
-	//string entity_lck = lck + luck;
-	string entity_lck = "Lck   10";
-	dwarf_statistics.push_back(new UITextBox(340, 118, TEXTBOX, entity_lck, { 255,255,255,255 }, 10, 428));
+
+	std::string entity_stat = "Con  " + std::to_string((current_entity->base_stats.constitution * 13));
+	dwarf_statistics.push_back(new UITextBox(340, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "Foc  " + std::to_string((current_entity->base_stats.focus * 17));
+	dwarf_statistics.push_back(new UITextBox(340, 48, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "Str  " + std::to_string((current_entity->base_stats.strength * 3));
+	dwarf_statistics.push_back(new UITextBox(340, 58, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+
+	entity_stat = "Agi   " + std::to_string((current_entity->base_stats.intelligence * 2));
+	dwarf_statistics.push_back(new UITextBox(340, 68, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Dex  " + std::to_string((50 + current_entity->base_stats.dexterity * 2));
+	dwarf_statistics.push_back(new UITextBox(340, 78, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Int   " + std::to_string((current_entity->base_stats.intelligence * 3));
+	dwarf_statistics.push_back(new UITextBox(340, 88, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "M.Def " + std::to_string((current_entity->base_stats.magical_defense * 2));
+	dwarf_statistics.push_back(new UITextBox(340, 98, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "P.Def " + std::to_string((current_entity->base_stats.physical_defense * 2));
+	dwarf_statistics.push_back(new UITextBox(340, 108, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Luck " + std::to_string((current_entity->base_stats.luck));
+	dwarf_statistics.push_back(new UITextBox(340, 118, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 }
 
 
 void UIPauseMenu::LoadElfStats() {
 	Entity* current_entity = App->entities->GetElf();
-	//char constitution[(((sizeof current_entity->GetCurrentHealthPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(constitution, "%d", current_entity->GetCurrentHealthPoints());
-	//string con = "Con    ";
-	//string entity_con = con + constitution;
-	string entity_con = "Con    10";
-	elf_statistics.push_back(new UITextBox(340, 195, TEXTBOX, entity_con, { 255,255,255,255 }, 10, 428));
-	//char focus[(((sizeof current_entity->GetCurrentManaPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(focus, "%d", current_entity->GetCurrentManaPoints());
-	//string foc = "Foc    ";
-	//string entity_foc = foc + focus;
-	string entity_foc = "Foc    10";
-	elf_statistics.push_back(new UITextBox(340, 205, TEXTBOX, entity_foc, { 255,255,255,255 }, 10, 428));
-	//char strength[(((sizeof current_entity->GetCurrentStrength()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(strength, "%d", current_entity->GetCurrentStrength());
-	//string str = "Str    ";
-	//string entity_str = str + strength;
-	string entity_str = "Str    10";
-	elf_statistics.push_back(new UITextBox(340, 215, TEXTBOX, entity_str, { 255,255,255,255 }, 10, 428));
-	//char agility[(((sizeof current_entity->GetCurrentAgilityPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(agility, "%d", current_entity->GetCurrentAgilityPoints());
-	//string agl = "Agl    ";
-	//string entity_agl = agl + agility;
-	string entity_agl = "Agl    10";
-	elf_statistics.push_back(new UITextBox(340, 225, TEXTBOX, entity_agl, { 255,255,255,255 }, 10, 428));
-	//char dexterity[(((sizeof current_entity->GetCurrentDexterityPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(dexterity, "%d", current_entity->GetCurrentDexterityPoints());
-	//string dex = "Dex    ";
-	//string entity_dex = dex + dexterity;
-	string entity_dex = "Dex    10";
-	elf_statistics.push_back(new UITextBox(340, 235, TEXTBOX, entity_dex, { 255,255,255,255 }, 10, 428));
-	//char intelligence[(((sizeof current_entity->GetCurrentIntelligencePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(intelligence, "%d", current_entity->GetCurrentIntelligencePoints());
-	//string int = "Int    ";
-	//string entity_int = int + intelligence;
-	string entity_int = "Int    10";
-	elf_statistics.push_back(new UITextBox(340, 245, TEXTBOX, entity_int, { 255,255,255,255 }, 10, 428));
-	//char magical_def[(((sizeof current_entity->GetCurrentMagicalDefensePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(magical_def, "%d", current_entity->GetCurrentMagicalDefensePoints());
-	//string mdef = "M.Def  ";
-	//string entity_mdef = mdef + magical_def;
-	string entity_mdef = "M.Def  10";
-	elf_statistics.push_back(new UITextBox(340, 255, TEXTBOX, entity_mdef, { 255,255,255,255 }, 10, 428));
-	//char physical_def[(((sizeof current_entity->GetCurrentPhysicalDefensePoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(physical_def, "%d", current_entity->GetCurrentPhysicalDefensePoints());
-	//string pdef = "P.Def  ";
-	//string entity_pdef = pdef + physical_def;
-	string entity_pdef = "P.Def  10";
-	elf_statistics.push_back(new UITextBox(340, 265, TEXTBOX, entity_pdef, { 255,255,255,255 }, 10, 428));
-	//char luck[(((sizeof current_entity->GetCurrentPhysicalLuckPoints()) * CHAR_BIT) + 2) / 3 + 2];
-	//sprintf_s(luck, "%d", current_entity->GetCurrentPhysicalLuckPoints());
-	//string lck = "Lck   ";
-	//string entity_lck = lck + luck;
-	string entity_lck = "Lck   10";
-	elf_statistics.push_back(new UITextBox(340, 275, TEXTBOX, entity_lck, { 255,255,255,255 }, 10, 428));
+ 
+	std::string entity_stat = "Con  " + std::to_string((current_entity->base_stats.constitution * 13));
+	elf_statistics.push_back(new UITextBox(340, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Foc  " + std::to_string((current_entity->base_stats.focus * 17));
+	elf_statistics.push_back(new UITextBox(340, 205, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Str  " + std::to_string((current_entity->base_stats.strength * 3));
+	elf_statistics.push_back(new UITextBox(340, 215, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Agi   " + std::to_string((current_entity->base_stats.intelligence * 2));
+	elf_statistics.push_back(new UITextBox(340, 225, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Dex  " + std::to_string((50 + current_entity->base_stats.dexterity * 2));
+	elf_statistics.push_back(new UITextBox(340, 235, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Int   " + std::to_string((current_entity->base_stats.intelligence * 3));
+	elf_statistics.push_back(new UITextBox(340, 245, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "M.Def " + std::to_string((current_entity->base_stats.magical_defense * 2));
+	elf_statistics.push_back(new UITextBox(340, 255, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "P.Def " + std::to_string((current_entity->base_stats.physical_defense * 2));
+	elf_statistics.push_back(new UITextBox(340, 265, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	entity_stat = "Luck " + std::to_string((current_entity->base_stats.luck));
+	elf_statistics.push_back(new UITextBox(340, 275, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 }
 
 void UIPauseMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
@@ -666,6 +579,7 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		}
 		else if (inventory_label->current_state == STATE_EXECUTED) {
 				SetUpInventory();
+				SetInformationLabels();
 		}
 		else if (abilities_label->current_state == STATE_EXECUTED) {
 
@@ -925,5 +839,79 @@ void UIPauseMenu::ChangePositionFakeArrow(const SDL_Scancode code)
 
 	}
 
+
+}
+
+void UIPauseMenu::SetInformationLabels()
+{
+	if (information_inventory_items.size() != 0)
+	{
+		for (std::vector<UIElement*>::iterator it = information_inventory_items.begin(); it != information_inventory_items.end(); it++)
+		{
+			(*it)->~UIElement();
+		}
+
+		information_inventory_items.clear();
+	}
+
+	
+	information_inventory_items.push_back(new UITextBox(420, 50, TEXTBOX, inventory_items.at(fake_arrow)->name.c_str(), { 255,255,255 },20,100));
+	uint parent_invetory_items = 22;
+
+	if (inventory_items.at(fake_arrow)->statistics.constitution != 0)
+	{
+		std::string text = "Con " + std::to_string(inventory_items.at(fake_arrow)->statistics.constitution);
+		information_inventory_items.push_back(new UITextBox(420, 60+parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+		parent_invetory_items+= 20;
+	}
+	if (inventory_items.at(fake_arrow)->statistics.focus != 0)
+	{
+		std::string text = "Foc " + std::to_string(inventory_items.at(fake_arrow)->statistics.focus);
+		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+		parent_invetory_items += 20;
+	}
+	if (inventory_items.at(fake_arrow)->statistics.strength != 0)
+	{
+		std::string text = "Str " + std::to_string(inventory_items.at(fake_arrow)->statistics.strength);
+		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+		parent_invetory_items += 20;
+	}
+	if (inventory_items.at(fake_arrow)->statistics.intelligence != 0)
+	{
+		std::string text = "Int " + std::to_string(inventory_items.at(fake_arrow)->statistics.intelligence);
+		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+		parent_invetory_items += 20;
+	}
+	if (inventory_items.at(fake_arrow)->statistics.dexterity != 0)
+	{
+		std::string text = "Dex " + std::to_string(inventory_items.at(fake_arrow)->statistics.dexterity);
+		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+		parent_invetory_items += 20;
+	}
+	if (inventory_items.at(fake_arrow)->statistics.agility != 0)
+	{
+		std::string text = "Agi " + std::to_string(inventory_items.at(fake_arrow)->statistics.agility);
+		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+		parent_invetory_items += 20;
+	}
+	if (inventory_items.at(fake_arrow)->statistics.magical_defense != 0)
+	{
+		std::string text = "M.Def " + std::to_string(inventory_items.at(fake_arrow)->statistics.magical_defense);
+		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+		parent_invetory_items += 20;
+	}
+	if (inventory_items.at(fake_arrow)->statistics.physical_defense != 0)
+	{
+		std::string text = "P.Def " + std::to_string(inventory_items.at(fake_arrow)->statistics.physical_defense);
+		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+		parent_invetory_items += 20;
+	}
+	if (inventory_items.at(fake_arrow)->statistics.luck != 0)
+	{
+		std::string text = "Lck " + std::to_string(inventory_items.at(fake_arrow)->statistics.luck);
+		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+		parent_invetory_items += 20;
+	}
+	
 
 }

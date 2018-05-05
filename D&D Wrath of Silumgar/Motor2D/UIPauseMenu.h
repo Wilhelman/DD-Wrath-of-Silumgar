@@ -31,6 +31,7 @@ private:
 	UIElement* quit_label = nullptr;
 	std::vector<UIElement*> main_labels;
 	std::vector<Item*> inventory_items;
+	std::vector<UIElement*> information_inventory_items;
 	UIElement* arrow = nullptr;
 
 	SDL_Rect cleric_helmet_rect = {0,137,25,24};
@@ -89,6 +90,7 @@ public:
 	void SetUpInventory();
 	void LoadEquipableObjects();
 	void ChangePositionFakeArrow(const SDL_Scancode code );
+	void SetInformationLabels();
 	iPoint SetPositionFakeArrow();
 
 	EquipType equip_type;

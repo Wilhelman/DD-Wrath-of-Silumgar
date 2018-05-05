@@ -1135,7 +1135,18 @@
           <frame x="1919" y="1116" width="88" height="68"/>
           <frame x="1820" y="1116" width="88" height="68"/>
         </animation>
-        
+
+        <animation name="rock" speed="0.05" loop="false">
+          <frame x="2829" y="1949" width="73" height="69"/>
+          <frame x="2707" y="1949" width="73" height="69"/>
+          <frame x="2606" y="1950" width="73" height="69"/>
+          <frame x="2508" y="1951" width="73" height="69"/>
+          <frame x="2850" y="2074" width="73" height="69"/>
+          <frame x="2733" y="2074" width="73" height="69"/>
+          <frame x="2630" y="2074" width="73" height="69"/>
+          <frame x="2493" y="2074" width="73" height="69"/>
+          <frame x="2371" y="2074" width="73" height="69"/>
+        </animation>
          <!--<animation name="potion" speed="0.08" loop="false">
          <frame x="1405" y="1829" width="52" height="75"/>
           <frame x="1277" y="1829" width="52" height="75"/>
@@ -1314,6 +1325,17 @@
           <frame x="49" y="2149" width="53" height="70"/>
         </animation>
 
+        <animation name="rock" speed="0.05" loop="false">
+        <frame x="707" y="1658" width="53" height="70"/>
+          <frame x="642" y="1658" width="53" height="70"/>
+          <frame x="572" y="1658" width="53" height="70"/>
+          <frame x="509" y="1658" width="53" height="70"/>
+          <frame x="428" y="1658" width="53" height="70"/>
+          <!--<frame x="362" y="1658" width="53" height="70"/>-->
+          <!--<frame x="300" y="1658" width="53" height="70"/>-->
+          <!--<frame x="232" y="1658" width="53" height="70"/>-->
+          <frame x="158" y="1658" width="53" height="70"/>
+        </animation>
         <!--<animation name="potion" speed="0.08" loop="true">
           <frame x="2009" y="223" width="51" height="79"/>
           <frame x="1853" y="223" width="51" height="79"/>
@@ -1521,6 +1543,20 @@
           <frame x="739" y="3376" width="124" height="102"/>
           <frame x="923" y="3376" width="124" height="102"/>
           <frame x="1106" y="3376" width="124" height="102"/>
+        </animation>
+        
+        <animation name="rock" speed="0.05" loop="false">
+          <frame x="984" y="2966" width="81" height="74"/>
+          <frame x="899" y="2966" width="81" height="74"/>
+          <frame x="816" y="2966" width="81" height="74"/>
+          <frame x="732" y="2966" width="81" height="74"/>
+          <frame x="648" y="2966" width="81" height="74"/>
+          <frame x="564" y="2966" width="81" height="74"/>
+          <frame x="480" y="2966" width="81" height="74"/>
+          <frame x="396" y="2966" width="81" height="74"/>
+          <frame x="296" y="2966" width="81" height="74"/>
+          <frame x="212" y="2966" width="81" height="74"/>
+          <frame x="128" y="2966" width="81" height="74"/>
         </animation>
 
         <animation name="guard" speed="0.1" loop="false">

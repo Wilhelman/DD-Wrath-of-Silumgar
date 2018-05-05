@@ -40,6 +40,7 @@ public:
 	ctAnimation hit = ctAnimation();
 	ctAnimation death = ctAnimation();
 	ctAnimation stun = ctAnimation();
+	ctAnimation rock = ctAnimation();
 	ctAnimation dodge = ctAnimation();
 	ctAnimation menu_animation = ctAnimation();
 	

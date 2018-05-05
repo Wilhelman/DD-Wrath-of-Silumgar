@@ -1065,6 +1065,12 @@
           <frame x="95" y="2368" width="46" height="79"/>
         </animation>
         
+        <animation name="stun" speed="0.05" loop="true">
+          <frame x="2161" y="462" width="60" height="17"/>
+          <frame x="2229" y="462" width="60" height="17"/>
+          <frame x="2296" y="462" width="60" height="17"/>
+        </animation>
+        
       </animations>
 	  <sounds attack_fx="audio/sounds/Characters/ClericAttack.wav" run_fx="audio/sounds/Characters/ClericRun.wav" damaged_fx="audio/sounds/Characters/ClericDamaged.wav" death_fx="audio/sounds/Characters/ClericDeath.wav" ability_1_fx="audio/sounds/Characters/ClericHeal.wav" />
 
@@ -1244,6 +1250,12 @@
           <frame x="513" y="1741" width="62" height="67"/>
           <frame x="436" y="1741" width="62" height="67"/>
           <frame x="357" y="1741" width="62" height="67"/>  
+        </animation>
+        
+        <animation name="stun" speed="0.05" loop="true">
+          <frame x="2160" y="606" width="60" height="17"/>
+          <frame x="2228" y="606" width="60" height="17"/>
+          <frame x="2295" y="606" width="60" height="17"/>
         </animation>
 		
       </animations>
@@ -1443,6 +1455,12 @@
           <frame x="1708" y="2011" width="34" height="69"/>
           <frame x="1664" y="2011" width="34" height="69"/>
         </animation>
+        
+        <animation name="stun" speed="0.05" loop="true">
+          <frame x="2121" y="860" width="60" height="17"/>
+          <frame x="2189" y="860" width="60" height="17"/>
+          <frame x="2256" y="860" width="60" height="17"/>
+        </animation>
 		
       </animations>
 	  <sounds attack_fx="audio/sounds/Characters/ElfAttack.wav" run_fx="audio/sounds/Characters/ElfRun.wav" damaged_fx="audio/sounds/Characters/ElfDamaged.wav" death_fx="audio/sounds/Characters/ElfDeath.wav" ability_1_fx="audio/sounds/Characters/ElfFireBall.wav" />
@@ -1618,6 +1636,12 @@
           <frame x="1928" y="2643" width="56" height="82"/>
           <frame x="1993" y="2643" width="56" height="82"/>
           <frame x="2275" y="2643" width="56" height="82"/>
+        </animation>
+        
+        <animation name="stun" speed="0.05" loop="true">
+          <frame x="2138" y="424" width="60" height="17"/>
+          <frame x="2206" y="424" width="60" height="17"/>
+          <frame x="2273" y="424" width="60" height="17"/>
         </animation>
         
       </animations>

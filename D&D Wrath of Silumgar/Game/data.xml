@@ -3,7 +3,7 @@
 	<world_map current_location="here_the_coords_maybe" />
 	<heroes>
 		<heroe name="cleric">
-			<values health_points="0" mana_points="65" />
+			<values health_points="78" mana_points="65" />
 			<skills>
 				<skill name="Heal" description="Heals one ally based on his intelligence" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" />
 				<skill name="Light Strike" description="Light Strike" mana_points_effect_to_himself="40" health_points_effect="-28" objective="1" />
@@ -63,7 +63,7 @@
 			</items>
 		</heroe>
 		<heroe name="elf">
-			<values health_points="67" mana_points="91" />
+			<values health_points="39" mana_points="91" />
 			<skills>
 				<skill name="Blizzard" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="1" health_points_effect="-40" objective="1" />
 				<skill name="Seed Of Life" description="Seed Of Life" mana_points_effect_to_himself="1" health_points_effect="-40" objective="1" />

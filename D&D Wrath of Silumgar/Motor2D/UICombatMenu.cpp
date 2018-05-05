@@ -175,6 +175,7 @@ void UICombatMenu::Update()
 		}
 
 		//Select Enemy to attack
+		dead_heroes = 0;
 		if (main_labels.size() != 0 && selecting_enemy == true) {
 			SelectEnemy(main_labels);
 		}
@@ -187,9 +188,11 @@ void UICombatMenu::Update()
 			}
 			else {
 				std::vector<Entity*>::const_iterator heroe = App->combat->heroes.begin();
-				while ((*heroe)->GetCurrentHealthPoints() <= 0 && heroe != App->combat->heroes.end()) {
+				while (heroe != App->combat->heroes.end()) {
+					if ((*heroe)->GetCurrentHealthPoints() <= 0) {
+						dead_heroes++;
+					}
 					heroe++;
-					dead_heroes++;
 				}
 				if (dead_heroes > 0) {
 					SelectDeadAlly(abilities);
@@ -213,9 +216,11 @@ void UICombatMenu::Update()
 			}
 			else {
 				std::vector<Entity*>::const_iterator heroe = App->combat->heroes.begin();
-				while ((*heroe)->GetCurrentHealthPoints() <= 0 && heroe != App->combat->heroes.end()) {
+				while (heroe != App->combat->heroes.end()) {
+					if ((*heroe)->GetCurrentHealthPoints() <= 0) {
+						dead_heroes++;
+					}
 					heroe++;
-					dead_heroes++;
 				}
 				if (dead_heroes > 0) {
 					SelectDeadAlly(items);

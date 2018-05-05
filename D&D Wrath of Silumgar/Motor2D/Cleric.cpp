@@ -34,6 +34,8 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &hit);
 		else if (tmp == "death")
 			LoadAnimation(animations, &death);
+		else if (tmp == "throw")
+			LoadAnimation(animations, &throw_object);
 		else if (tmp == "heal")
 			LoadAnimation(animations, &heal);
 		else if (tmp == "dodge")

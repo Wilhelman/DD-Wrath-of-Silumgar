@@ -40,8 +40,6 @@ Elf::Elf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &blizzard);
 		else if (tmp == "throw")
 			LoadAnimation(animations, &throw_object);
-		else if (tmp == "potion")
-			LoadAnimation(animations, &use_potion);
 		else if (tmp == "seed_of_life")
 			LoadAnimation(animations, &seed_of_life);
 		else if (tmp == "fireball")

@@ -32,6 +32,8 @@ Warrior::Warrior(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &attack);
 		else if (tmp == "hit")
 			LoadAnimation(animations, &hit);
+		else if (tmp == "throw")
+			LoadAnimation(animations, &throw_object);
 		else if (tmp == "death")
 			LoadAnimation(animations, &death);
 		else if (tmp == "kick")

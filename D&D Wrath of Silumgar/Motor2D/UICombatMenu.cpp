@@ -183,7 +183,7 @@ void UICombatMenu::Update()
 			if (entity->abilities.at(current_ability).objective == ENEMIES) {
 				SelectEnemy(abilities);
 			}
-			else if (entity->usable_items.at(current_item).objective == HEROES) {
+			else if (entity->abilities.at(current_ability).objective == HEROES) {
 				SelectAlly(abilities);
 			}
 			else {
@@ -200,8 +200,8 @@ void UICombatMenu::Update()
 				else {
 					selecting_enemy = false;
 					for (int i = 0; i < items.size(); i++) {
-						if (items.at(i)->current_state == STATE_EXECUTED) {
-							items.at(i)->current_state = STATE_FOCUSED;
+						if (abilities.at(i)->current_state == STATE_EXECUTED) {
+							abilities.at(i)->current_state = STATE_FOCUSED;
 						}
 					}
 				}
@@ -815,13 +815,6 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		App->gui->DeleteUIElement(*lower_points);
 		lower_points = nullptr;
 
-		for (int i = 0; i < current_vector.size(); i++) {
-			App->gui->DeleteUIElement(*current_vector.at(i));
-		}
-
-		//App->audio->PlayFx(combat_menu_select_fx);
-		current_vector.clear();
-
 		selecting_enemy = false;
 
 		//perform tasks!
@@ -855,10 +848,16 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 				}
 			}
 		}
-		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
+		else if (current_vector == items && entity->usable_items.size() != 0) {
 			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(current_item).action, (*selected_enemy)));
 			App->task_manager->AddTask(new MoveToInitialPosition(entity));
 		}
+		for (int i = 0; i < current_vector.size(); i++) {
+			App->gui->DeleteUIElement(*current_vector.at(i));
+		}
+
+		//App->audio->PlayFx(combat_menu_select_fx);
+		current_vector.clear();
 	}
 
 
@@ -948,13 +947,6 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 		App->gui->DeleteUIElement(*lower_points);
 		lower_points = nullptr;
 
-		for (int i = 0; i < current_vector.size(); i++) {
-			App->gui->DeleteUIElement(*current_vector.at(i));
-		}
-
-		//App->audio->PlayFx(combat_menu_select_fx);
-		current_vector.clear();
-
 		selecting_enemy = false;
 
 		//perform tasks!
@@ -988,10 +980,16 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 				}
 			}
 		}
-		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
+		else if (current_vector == items && entity->usable_items.size() != 0) {
 			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(current_item).action, (*selected_ally)));
 			App->task_manager->AddTask(new MoveToInitialPosition(entity));
 		}
+		for (int i = 0; i < current_vector.size(); i++) {
+			App->gui->DeleteUIElement(*current_vector.at(i));
+		}
+
+		//App->audio->PlayFx(combat_menu_select_fx);
+		current_vector.clear();
 	}
 
 
@@ -1080,15 +1078,6 @@ void UICombatMenu::SelectDeadAlly(std::vector<UIElement*> &current_vector) {
 		App->gui->DeleteUIElement(*lower_points);
 		lower_points = nullptr;
 
-		for (int i = 0; i < current_vector.size(); i++) {
-			App->gui->DeleteUIElement(*current_vector.at(i));
-		}
-
-		//App->audio->PlayFx(combat_menu_select_fx);
-		current_vector.clear();
-
-		selecting_enemy = false;
-
 		//perform tasks!
 		//(*selected_ally)
 		if (attack_label->current_state == STATE_EXECUTED) {
@@ -1120,10 +1109,18 @@ void UICombatMenu::SelectDeadAlly(std::vector<UIElement*> &current_vector) {
 				}
 			}
 		}
-		else if (items_label->current_state == STATE_EXECUTED && entity->usable_items.size() != 0) {
+		else if (current_vector == items && entity->usable_items.size() != 0) {
 			App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(current_item).action, (*selected_ally)));
 			App->task_manager->AddTask(new MoveToInitialPosition(entity));
 		}
+		for (int i = 0; i < current_vector.size(); i++) {
+			App->gui->DeleteUIElement(*current_vector.at(i));
+		}
+
+		//App->audio->PlayFx(combat_menu_select_fx);
+		current_vector.clear();
+
+		selecting_enemy = false;
 	}
 
 

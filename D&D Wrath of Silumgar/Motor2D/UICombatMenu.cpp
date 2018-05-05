@@ -826,7 +826,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		}
 		else if(current_vector == abilities && entity->abilities.size() != 0){
 			if (entity->GetCurrentManaPoints() >= entity->abilities.at(current_ability).mana_points_effect_to_himself) {
-				if (entity->abilities.at(current_ability).name == "Mindblown") {
+				if (entity->abilities.at(current_ability).have_to_move == false) {
 					App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(current_ability), (*selected_enemy)));
 					App->task_manager->AddTask(new MoveToInitialPosition(entity));
 				}
@@ -958,7 +958,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 		}
 		else if (current_vector == abilities && entity->abilities.size() != 0) {
 			if (entity->GetCurrentManaPoints() >= entity->abilities.at(current_ability).mana_points_effect_to_himself) {
-				if (entity->abilities.at(current_ability).name == "Heal") {
+				if (entity->abilities.at(current_ability).have_to_move == false) {
 					App->task_manager->AddTask(new PerformActionToEntity(entity, entity->abilities.at(current_ability), (*selected_ally)));
 					App->task_manager->AddTask(new MoveToInitialPosition(entity));
 				}

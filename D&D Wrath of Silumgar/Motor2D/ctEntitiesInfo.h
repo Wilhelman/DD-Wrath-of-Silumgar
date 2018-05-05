@@ -103,6 +103,7 @@ enum ActionType {
 enum ActionObjectiveType {
 	HEROES,
 	ENEMIES,
+	DEAD_HEROES,
 	OBJECTIVE_NOT_DEFINED
 };
 

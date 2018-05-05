@@ -72,7 +72,7 @@
 				<skill name="Seed Of Life Plus" description="Seed Of Life Plus" mana_points_effect_to_himself="1" health_points_effect="-80" objective="1" />
 				<skill name="Fireball Plus" description="Fireball Plus" mana_points_effect_to_himself="1" health_points_effect="-40" burn_chance="50" objective="1" />
 				<skill name="Lightning Boolt Plus" description="Lightning Boolt Plus" mana_points_effect_to_himself="1" health_points_effect="-40" stun_chance="70" objective="1" />
-				<skill name="Revive" description="Revive" mana_points_effect_to_himself="1" health_points_effect="60" objective="0" />
+				<skill name="Revive" description="Revive" mana_points_effect_to_himself="1" health_points_effect="60" objective="2" />
 				<skill name="Fire Djinn" description="Fire Djinn" mana_points_effect_to_himself="1" health_points_effect="-40" burn_chance="100" objective="1" />
 			</skills>
 			<items>

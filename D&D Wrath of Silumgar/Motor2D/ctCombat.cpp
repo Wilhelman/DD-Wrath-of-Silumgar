@@ -757,10 +757,12 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 			new_action.type = FIRE_DJINN;
 	}
 
-	if (skill_node.attribute("objective").as_int()) 
+	if (skill_node.attribute("objective").as_int() == 1) 
 		new_action.objective = ENEMIES;
-	else 
+	else if(skill_node.attribute("objective").as_int() == 0)
 		new_action.objective = HEROES;
+	else if (skill_node.attribute("objective").as_int() == 2)
+		new_action.objective = DEAD_HEROES;
 
 	new_action.description = skill_node.attribute("description").as_string();
 	new_action.mana_points_effect_to_himself = skill_node.attribute("mana_points_effect_to_himself").as_int();

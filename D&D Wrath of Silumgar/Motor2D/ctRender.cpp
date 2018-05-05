@@ -350,6 +350,8 @@ bool ctRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a
 {
 	bool ret = true;
 	uint scale = App->win->GetScale();
+	float w_scalade = App->win->GetWScalade();
+	float h_scalade = App->win->GetHScalade();
 
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
@@ -357,10 +359,10 @@ bool ctRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a
 	SDL_Rect rec(rect);
 	if (use_camera)
 	{
-		rec.x = (int)(camera.x + rect.x * scale);
-		rec.y = (int)(camera.y + rect.y * scale);
-		rec.w *= scale;
-		rec.h *= scale;
+		rec.x = (int)(camera.x + rect.x * scale*w_scalade);
+		rec.y = (int)(camera.y + rect.y * scale*h_scalade);
+		rec.w *= (scale*w_scalade);
+		rec.h *= (scale *h_scalade);
 	}
 
 	int result = (filled) ? SDL_RenderFillRect(renderer, &rec) : SDL_RenderDrawRect(renderer, &rec);

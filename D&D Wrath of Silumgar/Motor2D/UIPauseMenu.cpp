@@ -12,7 +12,7 @@
 #include "ctFadeToBlack.h"
 #include "ctMainMenu.h"
 #include "ctAnimation.h"
-
+#include "ctWindow.h"
 #include "Cleric.h"
 #include "Dwarf.h"
 #include "Elf.h"
@@ -214,8 +214,8 @@ void UIPauseMenu::Draw(SDL_Texture* sprites)
 
 void UIPauseMenu::DrawItems() {
 
-	//App->render->UIBlit(textura , cleric_helmet_rect.x, cleric_helmet_rect.y, &cleric->helmet.draw_coords);
-	App->render->DrawQuad({ position_fake_arrow.x,position_fake_arrow.y,26,24 }, 255, 0, 0, 255);
+	
+	App->render->DrawQuad({ position_fake_arrow.x+ App->render->camera.x,position_fake_arrow.y + App->render->camera.y,26,24 }, 255, 0, 0, 255);
 
 	for (std::vector<Item*>::iterator it = inventory_items.begin(); it != inventory_items.end(); it++)
 	{
@@ -844,7 +844,7 @@ void UIPauseMenu::ChangePositionFakeArrow(const SDL_Scancode code)
 			break;
 		}
 
-		position_fake_arrow=SetPositionFakeArrow();
+		position_fake_arrow = { App->render->camera.x + SetPositionFakeArrow().x ,App->render->camera.y + SetPositionFakeArrow().y };
 
 	}
 
@@ -922,5 +922,5 @@ void UIPauseMenu::SetInformationLabels()
 		parent_invetory_items += 20;
 	}
 	
-
+	information_inventory_items.push_back(new UITextBox(420, 300, TEXTBOX, "Press SPACE\n to return", { 255,255,255 }, 17, 200));
 }

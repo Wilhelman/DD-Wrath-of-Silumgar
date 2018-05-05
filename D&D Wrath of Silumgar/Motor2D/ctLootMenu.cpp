@@ -19,179 +19,43 @@
 #include "Warrior.h"
 #include "ctCombat.h"
 #include "ctWorldMap.h"
+#include "ctLootMenu.h"
 
-UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
+LootMenu::LootMenu() 
 {
-	this->callback = callback;
-
-	equip_texture=App->tex->Load("textures/ObjectsWithBG.png");
-	//*************************************************************************
-	background = new UIImage(x, y, IMAGE, { 0,0,484,324 }, nullptr, this);
-	if (App->entities->GetMiniheroes() != nullptr) {
-		App->entities->SpawnEntity(30, 125, CLERIC);
-		App->entities->SpawnEntity(30, 275, WARRIOR);
-		App->entities->SpawnEntity(250, 125, DWARF);
-		App->entities->SpawnEntity(250, 275, ELF);
-	}
-	else {
-		App->entities->GetCleric()->position = { 30,125 };
-		App->entities->GetWarrior()->position = { 30,275 };
-		App->entities->GetDwarf()->position = { 250,125 };
-		App->entities->GetElf()->position = { 250,275 };
-	}
-	//------------------------------- TO DELETEEEEEEEEE
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(1));
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(2));
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(4));
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(6));
-
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(3));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(1));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(2));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(4));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(6));
-
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(3));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(1));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(2));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(4));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(6));
-	//-------------------------------
-
-	App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
-	Entity* e = App->entities->GetCleric();
-	App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->menu_animation;
-	App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->menu_animation;
-	App->entities->GetElf()->animation = &App->entities->GetElf()->menu_animation;
-	LoadClerictStats();
-	LoadWarriorStats();
-	LoadDwarfStats();
-	LoadElfStats();
-
-	SetUpPauseMenu();
-
-	LoadEquipableObjects();
-}
-
-UIPauseMenu::~UIPauseMenu() {
-
-	if (App->entities->GetMiniheroes() != nullptr) {
-		for (int i = 0; i < App->entities->entities.size(); i++)
-		{
-			if(App->entities->entities.at(i) != (Entity*)App->entities->GetMiniheroes())
-				App->entities->entities.at(i)->to_destroy = true;
-		}
-
-		App->combat->turn_priority_entity.clear();
-		App->combat->draw_turn_priority_entity.clear();
-		App->combat->entities_to_spawn.clear();
-	}
-	else {
-		App->entities->GetCleric()->position = App->entities->GetCleric()->initial_position;
-		App->entities->GetWarrior()->position = App->entities->GetCleric()->initial_position;
-		App->entities->GetDwarf()->position = App->entities->GetCleric()->initial_position;
-		App->entities->GetElf()->position = App->entities->GetCleric()->initial_position;
-	}
-
-	background->~UIElement();
-	background = nullptr;
-	App->tex->UnLoad(equip_texture);
-	for (int i = 0; i < cleric_statistics.size(); i++) {
-	//	App->gui->DeleteUIElement(*cleric_statistics.at(i));
-		cleric_statistics.at(i)->~UIElement();
-	}
-	cleric_statistics.clear();
-	for (int i = 0; i < warrior_statistics.size(); i++) {
-		//App->gui->DeleteUIElement(*warrior_statistics.at(i));
-		warrior_statistics.at(i)->~UIElement();
-	}
-	warrior_statistics.clear();
-	for (int i = 0; i < dwarf_statistics.size(); i++) {
-		//App->gui->DeleteUIElement(*dwarf_statistics.at(i));
-		dwarf_statistics.at(i)->~UIElement();
-	}
-	dwarf_statistics.clear();
-	for (int i = 0; i < elf_statistics.size(); i++) {
-		//App->gui->DeleteUIElement(*elf_statistics.at(i));
-		elf_statistics.at(i)->~UIElement();
-	}
-	elf_statistics.clear();
-
-	arrow->~UIElement();
-	arrow = nullptr;
-
-	continue_label->~UIElement();
-	continue_label = nullptr;
-	inventory_label->~UIElement();
-	inventory_label = nullptr;
-	abilities_label->~UIElement();
-	abilities_label = nullptr;
-	settings_label->~UIElement();
-	settings_label = nullptr;
-	quit_label->~UIElement();
-	quit_label = nullptr;
-	main_labels.clear();
-
-	if (information_inventory_items.size() != 0)
-	{
-		for (std::vector<UIElement*>::iterator it = information_inventory_items.begin(); it != information_inventory_items.end(); it++)
-		{
-			(*it)->~UIElement();
-		}
-
-		information_inventory_items.clear();
-	}
-}
-
-void UIPauseMenu::Update() {
-	if (arrow != nullptr)
-	{
-		arrow->Update();
-		//Go down
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			App->audio->PlayFx(App->audio->mm_movement_fx);
-
-			NavigateDown(main_labels);
-		}
-		//Go up
-		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			App->audio->PlayFx(App->audio->mm_movement_fx);
-			NavigateUp(main_labels);
-		}
-		//ExecuteCommand
-		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			ExecuteComand(main_labels);
-		}
-	}
-	else
-	{
-		if (inventory_items.size() != 0)
-		{
-			
-
-			if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-				App->audio->PlayFx(App->audio->mm_movement_fx);
-				ChangePositionFakeArrow(SDL_SCANCODE_LEFT);
-				SetInformationLabels();
-			}
-
-			if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-				App->audio->PlayFx(App->audio->mm_movement_fx);
-				ChangePositionFakeArrow(SDL_SCANCODE_RIGHT);
-				SetInformationLabels();
-			}
-			if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-				SetUpPauseMenu();
-			}
-
-		}
-		
-	}
 
 }
 
-void UIPauseMenu::Draw(SDL_Texture* sprites)
+LootMenu::~LootMenu() {
+
+	
+}
+
+bool LootMenu::Start()
+{
+
+
+
+
+	return true;
+}
+
+bool LootMenu::Update(float dt) 
+{
+
+	return true;
+}
+
+
+bool LootMenu::CleanUp()
+{
+
+
+
+	return true;
+}
+
+void LootMenu::Draw(SDL_Texture* sprites)
 {
 	App->render->Blit(sprites, background->screen_position.x, background->screen_position.y, &background->current_rect);
 
@@ -222,21 +86,19 @@ void UIPauseMenu::Draw(SDL_Texture* sprites)
 	DrawItems();
 }
 
-void UIPauseMenu::DrawItems() {
+void LootMenu::DrawItems() {
 
-	
-	App->render->DrawQuad({ position_fake_arrow.x+ App->render->camera.x,position_fake_arrow.y + App->render->camera.y,26,24 }, 255, 0, 0, 255);
 
 	for (std::vector<Item*>::iterator it = inventory_items.begin(); it != inventory_items.end(); it++)
 	{
 		switch ((*it)->equip_type)
 		{
 		case HELM:
-				
+
 			switch ((*it)->equipped_by)
 			{
 			case CLERIC:
-				App->render->UIBlit(equip_texture, 0, 137,&(*it)->draw_coords);
+				App->render->UIBlit(equip_texture, 0, 137, &(*it)->draw_coords);
 				break;
 			case DWARF:
 				App->render->UIBlit(equip_texture, 205, 137, &(*it)->draw_coords);
@@ -256,7 +118,7 @@ void UIPauseMenu::DrawItems() {
 			switch ((*it)->equipped_by)
 			{
 			case CLERIC:
-				App->render->UIBlit(equip_texture, 26,137, &(*it)->draw_coords);
+				App->render->UIBlit(equip_texture, 26, 137, &(*it)->draw_coords);
 				break;
 			case DWARF:
 				App->render->UIBlit(equip_texture, 231, 137, &(*it)->draw_coords);
@@ -269,7 +131,7 @@ void UIPauseMenu::DrawItems() {
 				break;
 			}
 
-			
+
 			break;
 		case BOOT:
 
@@ -327,7 +189,7 @@ void UIPauseMenu::DrawItems() {
 				break;
 			}
 
-			
+
 			break;
 		case WEAPON:
 
@@ -347,7 +209,7 @@ void UIPauseMenu::DrawItems() {
 				break;
 			}
 
-			
+
 			break;
 		case RING:
 
@@ -367,7 +229,7 @@ void UIPauseMenu::DrawItems() {
 				break;
 			}
 
-			
+
 			break;
 		case ACCESORY:
 
@@ -387,7 +249,7 @@ void UIPauseMenu::DrawItems() {
 				break;
 			}
 
-			
+
 			break;
 		}
 	}
@@ -396,14 +258,14 @@ void UIPauseMenu::DrawItems() {
 	{
 		App->render->UIBlit((*it)->texture, (*it)->screen_position.x, (*it)->screen_position.y, &(*it)->current_rect);
 	}
-	
+
 
 }
 
-void UIPauseMenu::LoadClerictStats() {
+void LootMenu::LoadClerictStats() {
 	Entity* current_entity = App->entities->GetCleric();
-	
-	std::string entity_stat =  "Con  " + std::to_string((current_entity->base_stats.constitution * 13));
+
+	std::string entity_stat = "Con  " + std::to_string((current_entity->base_stats.constitution * 13));
 	cleric_statistics.push_back(new UITextBox(135, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
@@ -435,12 +297,12 @@ void UIPauseMenu::LoadClerictStats() {
 	cleric_statistics.push_back(new UITextBox(135, 108, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Luck " + std::to_string((current_entity->base_stats.luck ));
+	entity_stat = "Luck " + std::to_string((current_entity->base_stats.luck));
 	cleric_statistics.push_back(new UITextBox(135, 118, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 }
 
-void UIPauseMenu::LoadWarriorStats() {
+void LootMenu::LoadWarriorStats() {
 	Entity* current_entity = App->entities->GetWarrior();
 
 	std::string entity_stat = "Con  " + std::to_string((current_entity->base_stats.constitution * 13));
@@ -472,7 +334,7 @@ void UIPauseMenu::LoadWarriorStats() {
 }
 
 
-void UIPauseMenu::LoadDwarfStats() {
+void LootMenu::LoadDwarfStats() {
 	Entity* current_entity = App->entities->GetDwarf();
 
 	std::string entity_stat = "Con  " + std::to_string((current_entity->base_stats.constitution * 13));
@@ -507,9 +369,9 @@ void UIPauseMenu::LoadDwarfStats() {
 }
 
 
-void UIPauseMenu::LoadElfStats() {
+void LootMenu::LoadElfStats() {
 	Entity* current_entity = App->entities->GetElf();
- 
+
 	std::string entity_stat = "Con  " + std::to_string((current_entity->base_stats.constitution * 13));
 	elf_statistics.push_back(new UITextBox(340, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
@@ -539,43 +401,7 @@ void UIPauseMenu::LoadElfStats() {
 }
 
 
-void UIPauseMenu::SetUpPauseMenu()
-{
-	position_fake_arrow = { -100,-100 };
-
-
-	if (information_inventory_items.size() != 0)
-	{
-		for (std::vector<UIElement*>::iterator it = information_inventory_items.begin(); it != information_inventory_items.end(); it++)
-		{
-			(*it)->~UIElement();
-		}
-
-		information_inventory_items.clear();
-	}
-
-
-
-	continue_label = new UILabel(420, 10, LABEL, "Continue", { 255,255,255,255 }, 15);
-	main_labels.push_back(continue_label);
-	continue_label->current_state = STATE_FOCUSED;
-	inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,255,255,255 }, 15);
-	main_labels.push_back(inventory_label);
-	abilities_label = new UILabel(420, 70, LABEL, "Abilities", { 255,255,255,255 }, 15);
-	main_labels.push_back(abilities_label);
-	settings_label = new UILabel(420, 100, LABEL, "Settings", { 255,255,255,255 }, 15);
-	main_labels.push_back(settings_label);
-	quit_label = new UILabel(420, 130, LABEL, "Quit", { 255,255,255,255 }, 15);
-	main_labels.push_back(quit_label);
-	arrow = new UIImage(-10, 0, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
-	arrow->SetParent(continue_label);
-	arrow->Update();
-
-
-}
-
-
-void UIPauseMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
+void LootMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();
 	while (it_vector != current_vector.end()) {
 		if ((*it_vector)->current_state == STATE_FOCUSED) {
@@ -598,7 +424,7 @@ void UIPauseMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 	}
 }
 
-void UIPauseMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
+void LootMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();
 	while (it_vector != current_vector.end()) {
 		if ((*it_vector)->current_state == STATE_FOCUSED) {
@@ -621,59 +447,28 @@ void UIPauseMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 	}
 }
 
-void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
+void LootMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	for (int i = 0; i < current_vector.size(); i++) {
 		if (current_vector.at(i)->current_state == STATE_FOCUSED) {
 			current_vector.at(i)->current_state = STATE_EXECUTED;
 		}
 	}
 
-	if (current_vector == main_labels) {
-		if (continue_label->current_state == STATE_EXECUTED) {
-			App->gui->DeleteUIElement(*this);
-			App->main_menu->pauseMenu = nullptr;
-			App->combat->pauseMenu = nullptr;
-			App->world_map->pauseMenu = nullptr;
-		}
-		else if (inventory_label->current_state == STATE_EXECUTED) {
-				SetUpInventory();
-				SetInformationLabels();
-		}
-		else if (abilities_label->current_state == STATE_EXECUTED) {
-
-		}
-		else if (settings_label->current_state == STATE_EXECUTED) {
-
-		}
-		else if (quit_label->current_state == STATE_EXECUTED) {
-			App->fadeToBlack->FadeToBlackBetweenModules(callback, App->main_menu, 1.0f);
-		}
-	}
 
 }
 
-void UIPauseMenu::SetUpInventory()
+void LootMenu::SetUpInventory()
 {
-	main_labels.clear();
-	arrow->~UIElement();
-	arrow = nullptr;
 
-	fake_arrow = 0;
-
-	if (inventory_items.size() != 0)
-	{
-		position_fake_arrow=SetPositionFakeArrow();
-		
-	}
 
 
 }
 
-void UIPauseMenu::LoadEquipableObjects()
+void LootMenu::LoadEquipableObjects()
 {
 	Entity* current_entity = nullptr;
 	int entities_added = 0;
-	
+
 
 	while (entities_added != 4)
 	{
@@ -731,7 +526,7 @@ void UIPauseMenu::LoadEquipableObjects()
 					inventory_items.push_back(&current_entity->accessory);
 				break;
 			}
-			
+
 		}
 
 		entities_added++;
@@ -740,167 +535,9 @@ void UIPauseMenu::LoadEquipableObjects()
 
 }
 
-iPoint UIPauseMenu::SetPositionFakeArrow()
-{
-	iPoint ret;
-	
-	inventory_items.at(fake_arrow)->equipped_by;
-
-	switch (inventory_items.at(fake_arrow)->equipped_by)
-	{
-		case CLERIC:
-			switch (inventory_items.at(fake_arrow)->equip_type)
-			{
-			case HELM:
-				ret = { 0,137 };
-				break;
-			case CHEST:
-				ret = { 26,137 };
-				break;
-			case BOOT:
-				ret = { 53,137 };
-				break;
-			case GUANTLET:
-				ret = { 78,137 };
-				break;
-			case SHIELD:
-				ret = { 103,137 };
-				break;
-			case WEAPON:
-				ret = { 128,137 };
-				break;
-			case RING:
-				ret = { 155,137 };
-				break;
-			case ACCESORY:
-				ret = { 180,137 };
-				break;
-			}
-			break;
-		case DWARF:
-			switch (inventory_items.at(fake_arrow)->equip_type)
-			{
-			case HELM:
-				ret = { 205,137 };
-				break;
-			case CHEST:
-				ret = { 231,137 };
-				break;
-			case BOOT:
-				ret = { 257,137 };
-				break;
-			case GUANTLET:
-				ret = { 283,137 };
-				break;
-			case SHIELD:
-				ret = { 308,137 };
-				break;
-			case WEAPON:
-				ret = { 333,137 };
-				break;
-			case RING:
-				ret = { 360,137 };
-				break;
-			case ACCESORY:
-				ret = { 385,137 };
-				break;
-			}
-			break;
-		case WARRIOR:
-			switch (inventory_items.at(fake_arrow)->equip_type)
-			{
-			case HELM:
-				ret = { 0,163 };
-				break;
-			case CHEST:
-				ret = { 26,163 };
-				break;
-			case BOOT:
-				ret = { 53,163 };
-				break;
-			case GUANTLET:
-				ret = { 78,163 };
-				break;
-			case SHIELD:
-				ret = { 103,163 };
-				break;
-			case WEAPON:
-				ret = { 128,163 };
-				break;
-			case RING:
-				ret = { 155,163 };
-				break;
-			case ACCESORY:
-				ret = { 180,163 };
-				break;
-			}
-			break;
-		case ELF:
-			switch (inventory_items.at(fake_arrow)->equip_type)
-			{
-			case HELM:
-				ret = { 205,163 };
-				break;
-			case CHEST:
-				ret = { 231,163 };
-				break;
-			case BOOT:
-				ret = { 257,163 };
-				break;
-			case GUANTLET:
-				ret = { 283,163 };
-				break;
-			case SHIELD:
-				ret = { 308,163 };
-				break;
-			case WEAPON:
-				ret = { 333,163 };
-				break;
-			case RING:
-				ret = { 360,163 };
-				break;
-			case ACCESORY:
-				ret = { 385,163 };
-				break;
-			}
-			break;
-	}
-
-	return ret;
 
 
-}
-
-void UIPauseMenu::ChangePositionFakeArrow(const SDL_Scancode code)
-{
-	if (inventory_items.size() != 0)
-	{
-
-		switch (code)
-		{
-		case SDL_SCANCODE_RIGHT:
-			if (fake_arrow + 1 >= inventory_items.size())
-				fake_arrow = 0;
-			else
-				fake_arrow++;
-				
-			break;
-		case SDL_SCANCODE_LEFT:
-			if ((fake_arrow - 1) < 0)
-				fake_arrow = inventory_items.size()-1;
-			else
-				fake_arrow--;
-			break;
-		}
-
-		position_fake_arrow = { App->render->camera.x + SetPositionFakeArrow().x ,App->render->camera.y + SetPositionFakeArrow().y };
-
-	}
-
-
-}
-
-void UIPauseMenu::SetInformationLabels()
+void LootMenu::SetInformationLabels()
 {
 	if (information_inventory_items.size() != 0)
 	{
@@ -912,64 +549,6 @@ void UIPauseMenu::SetInformationLabels()
 		information_inventory_items.clear();
 	}
 
-	
-	information_inventory_items.push_back(new UITextBox(420, 50, TEXTBOX, inventory_items.at(fake_arrow)->name.c_str(), { 255,255,255 },20,100));
-	uint parent_invetory_items = 22;
 
-	if (inventory_items.at(fake_arrow)->statistics.constitution != 0)
-	{
-		std::string text = "Con " + std::to_string(inventory_items.at(fake_arrow)->statistics.constitution);
-		information_inventory_items.push_back(new UITextBox(420, 60+parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items+= 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.focus != 0)
-	{
-		std::string text = "Foc " + std::to_string(inventory_items.at(fake_arrow)->statistics.focus);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.strength != 0)
-	{
-		std::string text = "Str " + std::to_string(inventory_items.at(fake_arrow)->statistics.strength);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.intelligence != 0)
-	{
-		std::string text = "Int " + std::to_string(inventory_items.at(fake_arrow)->statistics.intelligence);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.dexterity != 0)
-	{
-		std::string text = "Dex " + std::to_string(inventory_items.at(fake_arrow)->statistics.dexterity);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.agility != 0)
-	{
-		std::string text = "Agi " + std::to_string(inventory_items.at(fake_arrow)->statistics.agility);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.magical_defense != 0)
-	{
-		std::string text = "M.Def " + std::to_string(inventory_items.at(fake_arrow)->statistics.magical_defense);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.physical_defense != 0)
-	{
-		std::string text = "P.Def " + std::to_string(inventory_items.at(fake_arrow)->statistics.physical_defense);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.luck != 0)
-	{
-		std::string text = "Lck " + std::to_string(inventory_items.at(fake_arrow)->statistics.luck);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
 	
-	information_inventory_items.push_back(new UITextBox(420, 300, TEXTBOX, "Press SPACE\n to return", { 255,255,255 }, 17, 200));
 }

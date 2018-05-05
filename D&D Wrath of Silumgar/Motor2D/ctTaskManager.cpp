@@ -3760,7 +3760,7 @@ bool PerformActionToEntity::Execute()
 
 				bool critical = false;
 
-				int damage_to_deal = action_to_perform.mana_points_effect;
+				int damage_to_deal = action_to_perform.health_points_effect;
 				damage_to_deal = damage_to_deal;
 				receiver_entity->SetCurrentManaPoints(receiver_entity->GetCurrentManaPoints() + damage_to_deal);
 				//receiver_entity->animation = &receiver_entity->hit;

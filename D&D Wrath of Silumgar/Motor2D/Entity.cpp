@@ -76,6 +76,10 @@ void Entity::Draw()
 		dead = true;
 	}
 
+	if (dead && this->GetCurrentHealthPoints() > 0) {
+		this->animation = &idle;
+		dead = false;
+	}
 
 	if (this->animation == &run_forward) {
 		if (steps_timer == 0) {

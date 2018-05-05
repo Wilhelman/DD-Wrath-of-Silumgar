@@ -3339,6 +3339,8 @@ bool PerformActionToEntity::Execute()
 		break;
 
 		case REVIVE: {
+			if (!HaveDeadTeamObjective())
+				return true;
 
 			actioner_entity->animation = &actioner_entity->revive;
 
@@ -3736,8 +3738,8 @@ bool PerformActionToEntity::Execute()
 		case REVIVE_AN_ALLY_ACTION:
 		{
 
-			//if (!HaveTeamObjective())
-				//return true;
+			if (!HaveDeadTeamObjective())
+				return true;
 
 			actioner_entity->animation = &actioner_entity->throw_object;
 
@@ -3829,6 +3831,23 @@ bool PerformActionToEntity::HaveTeamObjective()
 				break;
 		}
 		if (receiver_entity->GetCurrentHealthPoints() == 0)
+			return false;
+
+	}
+	return true;
+}
+
+bool PerformActionToEntity::HaveDeadTeamObjective()
+{
+	if (receiver_entity->GetCurrentHealthPoints() != 0) {
+
+		for (int i = 0; i < App->combat->heroes.size(); i++)
+		{
+			receiver_entity = App->combat->heroes.at(i);
+			if (receiver_entity->GetCurrentHealthPoints() == 0)
+				break;
+		}
+		if (receiver_entity->GetCurrentHealthPoints() != 0)
 			return false;
 
 	}

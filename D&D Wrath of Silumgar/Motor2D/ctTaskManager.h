@@ -132,6 +132,7 @@ public:
 	bool Execute();
 	bool HaveObjective();
 	bool HaveTeamObjective();
+	bool HaveDeadTeamObjective();
 
 private:
 	Entity* actioner_entity = nullptr;

@@ -123,6 +123,21 @@ void  Warrior::Run() {
 void  Warrior::Damaged() {
 	App->audio->PlayFx(App->audio->warrior_damaged_fx, 0);
 }
-void  Warrior::Ability1() {
+void  Warrior::Ability1T1() {
 	App->audio->PlayFx(App->audio->warrior_kick_fx, 0);
+}
+void  Warrior::Ability2T1() {
+	App->audio->PlayFx(App->audio->warrior_guard_fx, 0);
+}
+void  Warrior::Ability3T1() {
+	App->audio->PlayFx(App->audio->warrior_heavy_slash_fx, 0);
+}
+void  Warrior::Ability1T2() {
+	App->audio->PlayFx(App->audio->warrior_charge_fx, 0);
+}
+void  Warrior::Ability2T2() {
+	App->audio->PlayFx(App->audio->warrior_taunt_fx, 0);
+}
+void  Warrior::Ability3T2() {
+	App->audio->PlayFx(App->audio->warrior_whirlwind_fx, 0);
 }

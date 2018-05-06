@@ -125,6 +125,21 @@ void  Cleric::Run() {
 void  Cleric::Damaged() {
 	App->audio->PlayFx(App->audio->cleric_damaged_fx, 0);
 }
-void  Cleric::Ability1() {
+void  Cleric::Ability1T1() {
 	App->audio->PlayFx(App->audio->cleric_heal_fx, 0);
+}
+void  Cleric::Ability2T1() {
+	App->audio->PlayFx(App->audio->cleric_light_strike_fx, 0);
+}
+void  Cleric::Ability3T1() {
+	App->audio->PlayFx(App->audio->cleric_mace_throw_fx, 0);
+}
+void  Cleric::Ability1T2() {
+	App->audio->PlayFx(App->audio->cleric_blessing_fx, 0);
+}
+void  Cleric::Ability2T2() {
+	App->audio->PlayFx(App->audio->cleric_harden_skin_fx, 0);
+}
+void  Cleric::Ability3T2() {
+	App->audio->PlayFx(App->audio->cleric_clarity_fx, 0);
 }

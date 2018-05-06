@@ -38,7 +38,12 @@ public:
 	void Death();
 	void Run();
 	void Damaged();
-	void Ability1();
+	void Ability1T1();
+	void Ability2T1();
+	void Ability3T1();
+	void Ability1T2();
+	void Ability2T2();
+	void Ability3T2();
 };
 
 #endif

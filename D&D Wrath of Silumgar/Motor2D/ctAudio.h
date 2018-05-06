@@ -105,30 +105,59 @@ public:
 	uint skeleton_damaged_fx = 0u;
 	uint skeleton_death_fx = 0u;
 
+	uint dark_warrior_run_fx = 0u;
+	uint dark_warrior_attack_fx = 0u;
+	uint dark_warrior_damaged_fx = 0u;
+	uint dark_warrior_death_fx = 0u;
+	uint dark_warrior_thunder_punch_fx = 0u;
+	uint dark_warrior_insignificant_mortals_fx = 0u;
+	uint dark_warrior_void_cannon_fx = 0u;
+
 	//fx heroes
 	uint cleric_attack_fx = 0u;
 	uint cleric_run_fx = 0u;
 	uint cleric_damaged_fx = 0u;
 	uint cleric_death_fx = 0u;
 	uint cleric_heal_fx = 0u;
+	uint cleric_light_strike_fx = 0u;
+	uint cleric_mace_throw_fx = 0u;
+	uint cleric_blessing_fx = 0u;
+	uint cleric_harden_skin_fx = 0u;
+	uint cleric_clarity_fx = 0u;
 
 	uint dwarf_attack_fx = 0u;
 	uint dwarf_run_fx = 0u;
 	uint dwarf_damaged_fx = 0u;
 	uint dwarf_death_fx = 0u;
 	uint dwarf_double_axe_fx = 0u;
+	uint dwarf_morale_boost_fx = 0u;
+	uint dwarf_dwarfs_wrath_fx = 0u;
+	uint dwarf_raging_mock_fx = 0u;
+	uint dwarf_meteor_fx = 0u;
+	uint dwarf_counter_fx = 0u;
 
 	uint elf_attack_fx = 0u;
 	uint elf_run_fx = 0u;
 	uint elf_damaged_fx = 0u;
 	uint elf_death_fx = 0u;
 	uint elf_mindblown_fx = 0u;
+	uint elf_fireball_fx = 0u;
+	uint elf_seeds_of_life_fx = 0u;
+	uint elf_lightning_bolt_fx = 0u;
+	uint elf_revive_fx = 0u;
+	uint elf_blizzard_fx = 0u;
+	uint elf_fire_djiin_fx = 0u;
 
 	uint warrior_attack_fx = 0u;
 	uint warrior_run_fx = 0u;
 	uint warrior_damaged_fx = 0u;
 	uint warrior_death_fx = 0u;
 	uint warrior_kick_fx = 0u;
+	uint warrior_guard_fx = 0u;
+	uint warrior_heavy_slash_fx = 0u;
+	uint warrior_charge_fx = 0u;
+	uint warrior_taunt_fx = 0u;
+	uint warrior_whirlwind_fx = 0u;
 
 	//music sounds
 	std::string MainMenuBSO;

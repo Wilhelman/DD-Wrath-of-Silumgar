@@ -122,6 +122,21 @@ void  Dwarf::Run() {
 void  Dwarf::Damaged() {
 	App->audio->PlayFx(App->audio->dwarf_damaged_fx, 0);
 }
-void  Dwarf::Ability1() {
+void  Dwarf::Ability1T1() {
+	App->audio->PlayFx(App->audio->dwarf_morale_boost_fx, 0);
+}
+void  Dwarf::Ability2T1() {
 	App->audio->PlayFx(App->audio->dwarf_double_axe_fx, 0);
+}
+void  Dwarf::Ability3T1() {
+	App->audio->PlayFx(App->audio->dwarf_dwarfs_wrath_fx, 0);
+}
+void  Dwarf::Ability1T2() {
+	App->audio->PlayFx(App->audio->dwarf_raging_mock_fx, 0);
+}
+void  Dwarf::Ability2T2() {
+	App->audio->PlayFx(App->audio->dwarf_meteor_fx, 0);
+}
+void  Dwarf::Ability3T2() {
+	//App->audio->PlayFx(App->audio->dwarf_counter_fx, 0);
 }

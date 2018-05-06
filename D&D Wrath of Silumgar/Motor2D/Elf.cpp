@@ -125,6 +125,21 @@ void  Elf::Run() {
 void  Elf::Damaged() {
 	App->audio->PlayFx(App->audio->elf_damaged_fx, 0);
 }
-void  Elf::Ability1() {
-	App->audio->PlayFx(App->audio->elf_mindblown_fx, 0);
+void  Elf::Ability1T1() {
+	App->audio->PlayFx(App->audio->elf_seeds_of_life_fx, 0);
+}
+void  Elf::Ability2T1() {
+	App->audio->PlayFx(App->audio->elf_fireball_fx, 0);
+}
+void  Elf::Ability3T1() {
+	App->audio->PlayFx(App->audio->elf_lightning_bolt_fx, 0);
+}
+void  Elf::Ability1T2() {
+	App->audio->PlayFx(App->audio->elf_revive_fx, 0);
+}
+void  Elf::Ability2T2() {
+	App->audio->PlayFx(App->audio->elf_blizzard_fx, 0);
+}
+void  Elf::Ability3T2() {
+	App->audio->PlayFx(App->audio->elf_fire_djiin_fx, 0);
 }

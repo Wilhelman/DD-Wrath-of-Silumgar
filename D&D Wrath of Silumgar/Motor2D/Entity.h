@@ -150,7 +150,13 @@ public:
 	virtual void Run() {};
 	virtual void Death() {};
 	virtual void Damaged() {};
-	virtual void Ability1() {};
+	virtual void Ability1T1() {};
+	virtual void Ability1T2() {};
+	virtual void Ability2T1() {};
+	virtual void Ability2T2() {};
+	virtual void Ability3T1() {};
+	virtual void Ability3T2() {};
+
 
 	//Combat stuff
 

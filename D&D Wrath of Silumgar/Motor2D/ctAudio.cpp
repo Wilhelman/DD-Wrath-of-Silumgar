@@ -91,27 +91,56 @@ void ctAudio::InitAudio()
 	skeleton_death_fx = LoadFx("audio/sounds/Enemies/SkeletonDeath.wav");
 	skeleton_damaged_fx = LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
 	skeleton_run_fx = kobold_run_fx;
+	//dark_warrior_attack_fx = LoadFx("audio/sounds/Enemies/DarkWarriorAttack.wav");
+	dark_warrior_death_fx = LoadFx("audio/sounds/Enemies/DarkWarriorDeath.wav");
+	dark_warrior_damaged_fx = LoadFx("audio/sounds/Enemies/DarkWarriorDamaged.wav");
+	dark_warrior_run_fx = gnoll_run_fx;
+	//dark_warrior_insignificant_mortals_fx= LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
+	//dark_warrior_thunder_punch_fx= LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
+	//dark_warrior_void_cannon_fx= LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
+
 	//heroes
 	cleric_attack_fx = LoadFx("audio/sounds/Characters/ClericAttack.wav");
 	cleric_run_fx = LoadFx("audio/sounds/Characters/ClericRun.wav");
 	cleric_damaged_fx = LoadFx("audio/sounds/Characters/ClericDamaged.wav");
 	cleric_death_fx = LoadFx("audio/sounds/Characters/ClericDeath.wav");
 	cleric_heal_fx = LoadFx("audio/sounds/Characters/ClericHeal.wav");
+	cleric_light_strike_fx = LoadFx("audio/sounds/Characters/ClericLightStrike.wav");
+	cleric_mace_throw_fx = LoadFx("audio/sounds/Characters/ClericMaceThrow.wav");
+	cleric_blessing_fx = LoadFx("audio/sounds/Characters/ClericBlessing.wav");
+	cleric_harden_skin_fx = LoadFx("audio/sounds/Characters/ClericHardenSkin.wav");
+	cleric_clarity_fx = LoadFx("audio/sounds/Characters/ClericClarity.wav");
 	dwarf_attack_fx = LoadFx("audio/sounds/Characters/DwarfAttack.wav");
 	dwarf_run_fx = LoadFx("audio/sounds/Characters/DwarfRun.wav");
 	dwarf_damaged_fx = LoadFx("audio/sounds/Characters/DwarfDamaged.wav");
 	dwarf_death_fx = LoadFx("audio/sounds/Characters/DwarfDeath.wav");
 	dwarf_double_axe_fx = LoadFx("audio/sounds/Characters/DwarfDoubleAxe.wav");
+	dwarf_morale_boost_fx = LoadFx("audio/sounds/Characters/DwarfMoraleBoost.wav");
+	dwarf_dwarfs_wrath_fx = LoadFx("audio/sounds/Characters/DwarfDwarfsWrath.wav");
+	dwarf_raging_mock_fx = LoadFx("audio/sounds/Characters/DwarfRagingMock.wav");
+	dwarf_meteor_fx = LoadFx("audio/sounds/Characters/DwarfMeteor.wav");
+	//dwarf_counter_fx = LoadFx("audio/sounds/Characters/DwarfCounter.wav");
 	elf_attack_fx = LoadFx("audio/sounds/Characters/ElfAttack.wav");
 	elf_run_fx = LoadFx("audio/sounds/Characters/ElfRun.wav");
 	elf_damaged_fx = LoadFx("audio/sounds/Characters/ElfDamaged.wav");
 	elf_death_fx = LoadFx("audio/sounds/Characters/ElfDeath.wav");
 	elf_mindblown_fx = LoadFx("audio/sounds/Characters/ElfFireBall.wav");
+	elf_fireball_fx = LoadFx("audio/sounds/Characters/ElfFireBall.wav");
+	elf_seeds_of_life_fx = LoadFx("audio/sounds/Characters/ElfSeedsOfLife.wav");
+	elf_lightning_bolt_fx = LoadFx("audio/sounds/Characters/ElfLightningBolt.wav");
+	elf_revive_fx = LoadFx("audio/sounds/Characters/ElfRevive.wav");
+	elf_blizzard_fx = LoadFx("audio/sounds/Characters/ElfBlizzard.wav");
+	//elf_fire_djiin_fx = LoadFx("audio/sounds/Characters/ElfFireDjiin.wav");
 	warrior_attack_fx = LoadFx("audio/sounds/Characters/WarriorAttack.wav");
 	warrior_run_fx = LoadFx("audio/sounds/Characters/WarriorRun.wav");
 	warrior_damaged_fx = LoadFx("audio/sounds/Characters/WarriorDamaged.wav");
 	warrior_death_fx = LoadFx("audio/sounds/Characters/WarriorDeath.wav");
 	warrior_kick_fx = LoadFx("audio/sounds/Characters/WarriorKick.wav");
+	warrior_guard_fx = LoadFx("audio/sounds/Characters/WarriorGuard.wav");
+	warrior_heavy_slash_fx = LoadFx("audio/sounds/Characters/WarriorHeavySlash.wav");
+	warrior_charge_fx = LoadFx("audio/sounds/Characters/WarriorCharge.wav");
+	warrior_taunt_fx = LoadFx("audio/sounds/Characters/WarriorTaunt.wav");
+	warrior_whirlwind_fx = LoadFx("audio/sounds/Characters/WarriorWhirlwind.wav");
 
 	//---------------------------------------Load Music----------------------------
 	

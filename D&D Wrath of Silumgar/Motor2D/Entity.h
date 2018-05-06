@@ -23,12 +23,11 @@ protected:
 	
 	bool key_entities_speed = false;
 
+	bool dead = false;
+public:
 	int current_health_points, current_mana_points, current_strength, current_intelligence, current_luck, current_agility_points, current_dexterity_points, current_physical_defense_points, current_magical_defense_points, current_judgement = 0;
 
 	int max_health_points, max_mana_points = 0;
-
-	bool dead = false;
-
 public:
 	ctAnimation* animation = nullptr;
 	ctAnimation* stun_animation = nullptr;
@@ -181,6 +180,9 @@ public:
 	int GetCurrentMagicalDefensePoints();
 	int GetCurrentLuckPoints();
 
+
+	
+
 	int GetCurrentJudgement();
 
 	void SetCurrentHealthPoints(int new_health_points);
@@ -193,7 +195,7 @@ public:
 	void AddUsableItem(Item new_item);
 	void AddEquipItem(Item new_item);
 
-	private:
+	
 	void CalculateAllStats();
 };
 

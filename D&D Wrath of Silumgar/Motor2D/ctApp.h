@@ -29,6 +29,7 @@ class ctTaskManager;
 class ctFadeToBlack;
 class ctSkillTree;
 class j1ParticleSystem;
+class LootMenu;
 
 class ctApp
 {
@@ -120,7 +121,8 @@ public:
 	ctTaskManager*		task_manager = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;
 	ctSkillTree*		skill_tree = nullptr;
-	j1ParticleSystem*	 psystem = nullptr;
+	j1ParticleSystem*	psystem = nullptr;
+	LootMenu*			loot_menu = nullptr;
 
 	bool				cap_state = false;
 

@@ -24,6 +24,7 @@
 #include "ctFadeToBlack.h"
 #include "ctSkillTree.h"
 #include "j1Language.h"
+#include "ctLootMenu.h"
 
 
 // Constructor
@@ -51,6 +52,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	fadeToBlack = new ctFadeToBlack();
 	skill_tree = new ctSkillTree();
 	psystem = new j1ParticleSystem();
+	loot_menu = new LootMenu();
 	
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -64,6 +66,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(world_map);
 	AddModule(settings);
 	AddModule(combat);
+	AddModule(loot_menu);
 	AddModule(entities);
 	AddModule(items);
 	AddModule(language);
@@ -81,6 +84,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	//disable modules here
 	tabern_scene->active = false;
 	main_menu->active = true;
+	loot_menu->active = false;
 	world_map->active = false;
 	settings->active = false;
 	combat->active = false;

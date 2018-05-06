@@ -12,25 +12,34 @@ enum EntityType;
 class LootMenu:public ctModule 
 {
 private:
-
-	SDL_Texture * equip_texture;
+	SDL_Texture * background_texture = nullptr;
+	SDL_Texture* equip_texture = nullptr;
 
 	UIElement* background = nullptr;
 	std::vector<UIElement*> cleric_statistics;
 	std::vector<UIElement*> warrior_statistics;
 	std::vector<UIElement*> dwarf_statistics;
 	std::vector<UIElement*> elf_statistics;
-	UIElement* cleric_label = nullptr;
-	UIElement* dwarf_label = nullptr;
-	UIElement* warrior_label = nullptr;
-	UIElement* elf_label = nullptr;
+
+	std::vector<UIElement*> information_dropped_items;
 	
+	UIElement* to_cleric_label = nullptr;
+	UIElement* to_dwarf_label = nullptr;
+	UIElement* to_warrior_label = nullptr;
+	UIElement* to_elf_label = nullptr;
+	UIElement* for_no_one_label = nullptr;
+
+	UIElement* arrow = nullptr;
 
 	std::vector<UIElement*> main_labels;
+
 	std::vector<Item*> inventory_items;
 
 	std::vector<UIElement*> information_inventory_items;
-	UIElement* arrow = nullptr;
+	
+
+	std::vector<Item*> dropped_items;
+	std::vector<UIElement*> preview_stats_items;
 
 public:
 	LootMenu();
@@ -46,12 +55,12 @@ public:
 	bool Update(float dt);
 
 	// Called before all Updates
-	//bool PostUpdate();
+	bool PostUpdate();
 
 	// Called before quitting
 	bool CleanUp();
 	
-	void Draw(SDL_Texture* sprites);
+	void Draw();
 	void DrawItems();
 	void LoadClerictStats();
 	void LoadWarriorStats();
@@ -61,11 +70,14 @@ public:
 	void NavigateUp(std::vector<UIElement*> &current_vector);
 	void ExecuteComand(std::vector<UIElement*> &current_vector);
 
-	void SetUpInventory();
+	void SetInformationDroppedItem();
 
 	void LoadEquipableObjects();
 
 	void SetInformationLabels();
+
+	void SetComparation();
+
 
 
 	EquipType equip_type;

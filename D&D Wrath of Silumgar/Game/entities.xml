@@ -661,6 +661,67 @@
           <frame x="30" y="400" width="110" height="52"/>
         </animation>
 
+        <animation name="run" speed="2.0" loop="true">
+          <frame x="855" y="80" width="111" height="52"/>
+          <frame x="726" y="80" width="111" height="52"/>
+          <frame x="585" y="80" width="111" height="52"/>
+          <frame x="437" y="80" width="111" height="52"/>
+          <frame x="296" y="80" width="111" height="52"/>
+          <frame x="157" y="80" width="111" height="52"/>
+          <frame x="25" y="80" width="111" height="52"/>
+        </animation>
+
+        <animation name="default_attack" speed="2.0" loop="true">
+          <frame x="834" y="226" width="134" height="49"/>
+          <frame x="664" y="226" width="134" height="49"/>
+          <frame x="485" y="226" width="134" height="49"/>
+          <frame x="324" y="226" width="134" height="49"/>
+          <frame x="174" y="226" width="134" height="49"/>
+          <frame x="18" y="226" width="134" height="49"/>
+        </animation>
+
+        <animation name="flare" speed="2.0" loop="true">
+          <frame x="800" y="290" width="126" height="79"/>
+          <frame x="610" y="290" width="126" height="79"/>
+          <frame x="541" y="290" width="126" height="79"/>
+          <frame x="239" y="290" width="126" height="79"/>
+          <frame x="52" y="290" width="126" height="79"/>
+          <frame x="801" y="380" width="126" height="79"/>
+          <frame x="605" y="380" width="126" height="79"/>
+          <frame x="525" y="380" width="126" height="79"/>
+        </animation>
+
+        <animation name="dodge" speed="2.0" loop="true">
+          <frame x="851" y="552" width="107" height="85"/>
+          <frame x="732" y="552" width="107" height="85"/>
+          <frame x="611" y="552" width="107" height="85"/>
+          <frame x="473" y="552" width="107" height="85"/>
+          <frame x="330" y="552" width="107" height="85"/>
+          <frame x="179" y="552" width="107" height="85"/>
+          <frame x="25" y="552" width="107" height="85"/>
+        </animation>
+
+        <animation name="hit" speed="2.0" loop="true">
+          <frame x="860" y="672" width="99" height="67"/>
+          <frame x="741" y="672" width="99" height="67"/>
+        </animation>
+
+        <animation name="death" speed="2.0" loop="true">
+          <frame x="971" y="647" width="128" height="92"/>
+          <frame x="725" y="647" width="128" height="92"/>
+          <frame x="593" y="647" width="128" height="92"/>
+          <frame x="466" y="647" width="128" height="92"/>
+          <frame x="313" y="647" width="128" height="92"/>
+          <frame x="158" y="647" width="128" height="92"/>
+          <frame x="6" y="647" width="128" height="92"/>
+        </animation>
+
+        <animation name="stun" speed="0.05" loop="true">
+          <frame x="104" y="861" width="60" height="17"/>
+          <frame x="172" y="861" width="60" height="17"/>
+          <frame x="239" y="861" width="60" height="17"/>
+        </animation>
+
       </animations>
 
     </hellhound>
@@ -672,6 +733,17 @@
         <animation name="idle" speed="2.0" loop="true">
           <frame x="1759" y="403" width="151" height="147"/>
           <frame x="1515" y="403" width="151" height="147"/>
+        </animation>
+
+        <animation name="run" speed="2.0" loop="true">
+          <frame x="106" y="397" width="151" height="154"/>
+          <frame x="335" y="397" width="151" height="154"/>
+          <frame x="558" y="397" width="151" height="154"/>
+          <frame x="793" y="397" width="151" height="154"/>
+          <frame x="1027" y="397" width="151" height="154"/>
+          <frame x="1263" y="397" width="151" height="154"/>
+          <frame x="1515" y="397" width="151" height="154"/>
+          <frame x="1759" y="397" width="151" height="154"/>
         </animation>
 
         <animation name="hit" speed="0.01" loop="false">

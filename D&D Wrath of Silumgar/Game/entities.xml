@@ -661,7 +661,7 @@
           <frame x="30" y="400" width="110" height="52"/>
         </animation>
 
-        <animation name="run" speed="2.0" loop="true">
+        <animation name="run" speed="5.0" loop="true">
           <frame x="855" y="80" width="111" height="52"/>
           <frame x="726" y="80" width="111" height="52"/>
           <frame x="585" y="80" width="111" height="52"/>
@@ -671,7 +671,7 @@
           <frame x="25" y="80" width="111" height="52"/>
         </animation>
 
-        <animation name="default_attack" speed="2.0" loop="true">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="834" y="226" width="134" height="49"/>
           <frame x="664" y="226" width="134" height="49"/>
           <frame x="485" y="226" width="134" height="49"/>
@@ -691,7 +691,7 @@
           <frame x="525" y="380" width="126" height="79"/>
         </animation>
 
-        <animation name="dodge" speed="2.0" loop="true">
+        <animation name="dodge" speed="0.05" loop="false">
           <frame x="851" y="552" width="107" height="85"/>
           <frame x="732" y="552" width="107" height="85"/>
           <frame x="611" y="552" width="107" height="85"/>
@@ -701,12 +701,12 @@
           <frame x="25" y="552" width="107" height="85"/>
         </animation>
 
-        <animation name="hit" speed="2.0" loop="true">
+        <animation name="hit" speed="0.05" loop="false">
           <frame x="860" y="672" width="99" height="67"/>
           <frame x="741" y="672" width="99" height="67"/>
         </animation>
 
-        <animation name="death" speed="2.0" loop="true">
+        <animation name="death" speed="2.0" loop="false">
           <frame x="971" y="647" width="128" height="92"/>
           <frame x="725" y="647" width="128" height="92"/>
           <frame x="593" y="647" width="128" height="92"/>

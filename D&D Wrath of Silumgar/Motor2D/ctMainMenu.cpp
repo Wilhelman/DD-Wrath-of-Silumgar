@@ -83,16 +83,7 @@ bool ctMainMenu::PreUpdate()
 // Called each loop iteration
 bool ctMainMenu::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
-	{
-		if (pauseMenu == nullptr) {
-			pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);
-		}
-		else {
-			App->gui->DeleteUIElement(*pauseMenu);
-			pauseMenu = nullptr;
-		}
-	}
+	
 
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{

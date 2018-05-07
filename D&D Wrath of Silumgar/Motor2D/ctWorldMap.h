@@ -81,7 +81,7 @@ private:
 
 
 private:
-
+	bool pause_menu_is_open = false;
 	
 
 	std::vector<WorldMapElement*> all_map_elements;

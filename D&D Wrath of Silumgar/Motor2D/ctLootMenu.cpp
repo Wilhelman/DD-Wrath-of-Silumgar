@@ -239,11 +239,20 @@ bool LootMenu::CleanUp()
 		information_inventory_items.clear();
 	}
 
-	to_cleric_label->~UIElement();
-	to_dwarf_label->~UIElement();
-	to_warrior_label->~UIElement();
-	to_elf_label->~UIElement();
-	for_no_one_label->~UIElement();
+	if(to_cleric_label != nullptr)
+		to_cleric_label->~UIElement();
+
+	if (to_dwarf_label != nullptr)
+		to_dwarf_label->~UIElement();
+
+	if (to_warrior_label != nullptr)
+		to_warrior_label->~UIElement();
+
+	if (to_elf_label != nullptr)
+		to_elf_label->~UIElement();
+
+	if (for_no_one_label != nullptr)
+		for_no_one_label->~UIElement();
 
 	if (main_labels.size() != 0)
 	{
@@ -254,9 +263,11 @@ bool LootMenu::CleanUp()
 		main_labels.clear();
 	}
 
-	arrow->~UIElement();
-	arrow = nullptr;
-
+	if (arrow != nullptr)
+	{
+		arrow->~UIElement();
+		arrow = nullptr;
+	}
 	return true;
 }
 

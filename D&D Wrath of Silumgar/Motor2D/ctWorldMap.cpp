@@ -194,54 +194,61 @@ bool ctWorldMap::Update(float dt)
 	{
 		if (pauseMenu == nullptr) {
 			pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);
+			pause_menu_is_open = true;
 		}
 		else {
 			App->gui->DeleteUIElement(*pauseMenu);
 			pauseMenu = nullptr;
+			pause_menu_is_open = false;
+		}
+	}
+
+	if (!pauseMenu)
+	{
+		if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() && decision == nullptr && App->task_manager->aux_task == nullptr) {
+
+			App->combat->SetSceneName(current_map_element->scene_name);
+			App->combat->entities_to_spawn = current_map_element->entities;
+
+			if (App->fadeToBlack->FadeIsOver())
+				App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
+
+		}
+
+		/*	IF HAVE TO QUIT THE GAME
+			App->main_menu->is_new_game = false;
+					if (App->fadeToBlack->FadeIsOver())
+						App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+		*/
+
+		// DECISION
+		if (decision != nullptr)
+		{
+
+			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN)
+			{
+				App->audio->PlayFx(App->audio->wm_walk_fx);
+				NavigateUp(options);
+			}
+
+			if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN)
+			{
+				App->audio->PlayFx(App->audio->wm_walk_fx);
+				NavigateDown(options);
+			}
+
+		}
+
+		// Draw everything --------------------------------------
+		App->map->Draw();
+
+		for (int i = 0; i < final_map_elements.size(); i++)
+		{
+			App->render->Blit(spritesheet_world_map, final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y, &final_map_elements.at(i)->icon_rect, 1.0f);
 		}
 	}
 	
-	if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() && decision == nullptr && App->task_manager->aux_task == nullptr) {
-
-		App->combat->SetSceneName(current_map_element->scene_name);
-		App->combat->entities_to_spawn = current_map_element->entities;
-
-		if (App->fadeToBlack->FadeIsOver())
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
-
-	}
-
-	/*	IF HAVE TO QUIT THE GAME
-		App->main_menu->is_new_game = false;
-				if (App->fadeToBlack->FadeIsOver())
-					App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
-	*/
-
-	// DECISION
-	if (decision != nullptr)
-	{
-
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN)
-		{
-			App->audio->PlayFx(App->audio->wm_walk_fx);
-			NavigateUp(options);
-		}
-
-		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN)
-		{
-			App->audio->PlayFx(App->audio->wm_walk_fx);
-			NavigateDown(options);
-		}
-
-	}
-
-	// Draw everything --------------------------------------
-	App->map->Draw();
-
-	for (int i = 0; i < final_map_elements.size(); i++)
-	{
-		App->render->Blit(spritesheet_world_map, final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y, &final_map_elements.at(i)->icon_rect, 1.0f);
-	}
+	
 
 	return true;
 }

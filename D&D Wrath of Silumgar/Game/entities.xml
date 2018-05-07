@@ -1225,7 +1225,7 @@
           <frame x="1147" y="1829" width="52" height="75"/>
         </animation>-->
 
-        <animation name="morale_boost" speed="1.0" loop="true">
+        <animation name="morale_boost" speed="0.05" loop="false">
           <frame x="549"  y="985" width="59" height="103"/>
           <frame x="468" y="985" width="59" height="103"/>
           <frame x="400" y="985" width="59" height="103"/>
@@ -1249,13 +1249,13 @@
           <frame x="606" y="1001" width="134" height="87"/>
         </animation>
 
-        <animation name="dwarfs_wrath" speed="1.0" loop="true">
+        <animation name="dwarfs_wrath" speed="0.05" loop="false">
           <frame x="549"  y="985" width="59" height="103"/>
           <frame x="468" y="985" width="59" height="103"/>
           <frame x="400" y="985" width="59" height="103"/>
         </animation>
 
-        <animation name="morale_boost+" speed="1.0" loop="true">
+        <animation name="morale_boost+" speed="0.05" loop="true">
           <frame x="549"  y="985" width="59" height="103"/>
           <frame x="468" y="985" width="59" height="103"/>
           <frame x="400" y="985" width="59" height="103"/>
@@ -1279,13 +1279,13 @@
           <frame x="606" y="1001" width="134" height="87"/>
         </animation>
 
-        <animation name="dwarfs_wrath+" speed="1.0" loop="true">
+        <animation name="dwarfs_wrath+" speed="0.05" loop="false">
           <frame x="549"  y="985" width="59" height="103"/>
           <frame x="468" y="985" width="59" height="103"/>
           <frame x="400" y="985" width="59" height="103"/>
         </animation>
 
-        <animation name="raging_mock" speed="1.0" loop="true">
+        <animation name="raging_mock" speed="0.1" loop="false">
           <frame x="2234"  y="1119" width="91" height="68"/>
           <frame x="2131"  y="1119" width="91" height="68"/>
           <frame x="2028" y="1119" width="91" height="68"/>
@@ -1293,7 +1293,7 @@
           <frame x="1818" y="1119" width="91" height="68"/>
         </animation>
 
-        <animation name="meteor" speed="1.0" loop="false">
+        <animation name="meteor" speed="0.1" loop="false">
           <frame x="1976" y="1828" width="93" height="76"/>
           <frame x="1817" y="1828" width="93" height="76"/>
           <frame x="1673" y="1828" width="93" height="76"/>
@@ -1307,7 +1307,7 @@
           <frame x="598" y="1828" width="93" height="76"/>
         </animation>
 
-        <animation name="counter" speed="1.0" loop="false">
+        <animation name="counter" speed="0.1" loop="false">
           <frame x="2202"  y="1608" width="71" height="56"/>
           <frame x="2118" y="1608" width="71" height="56"/>
           <frame x="2012" y="1608" width="71" height="56"/>
@@ -1427,7 +1427,7 @@
           <frame x="1192" y="119" width="95" height="89"/>
         </animation>
 
-        <animation name="seeds_of_life" speed="0.1" loop="false">
+        <animation name="seed_of_life" speed="0.1" loop="false">
           <frame x="2179" y="119" width="95" height="89"/>
           <frame x="2054" y="119" width="95" height="89"/>
           <frame x="1929" y="119" width="95" height="89"/>
@@ -1463,7 +1463,7 @@
           <frame x="1192" y="119" width="95" height="89"/>
         </animation>
 
-        <animation name="seeds_of_life+" speed="0.1" loop="false">
+        <animation name="seed_of_life+" speed="0.1" loop="false">
           <frame x="2125" y="223" width="93" height="79"/>
           <frame x="1996" y="223" width="93" height="79"/>
           <frame x="1840" y="223" width="93" height="79"/>
@@ -1652,7 +1652,7 @@
         </animation>
 
         <animation name="kick+" speed="0.1" loop="false">
-          <frame x="79" y="3376" width="124" height="102"/>
+           <frame x="79" y="3376" width="124" height="102"/>
           <frame x="245" y="3376" width="124" height="102"/>
           <frame x="418" y="3376" width="124" height="102"/>
           <frame x="563" y="3376" width="124" height="102"/>

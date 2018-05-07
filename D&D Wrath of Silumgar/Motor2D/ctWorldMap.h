@@ -69,7 +69,7 @@ public:
 public:
 	std::vector<UIElement*> options;
 	UIElement* pauseMenu = nullptr;
-
+	bool pause_menu_is_open = false;
 private:
 
 	//used to load easily a rect from XML
@@ -81,7 +81,7 @@ private:
 
 
 private:
-	bool pause_menu_is_open = false;
+	
 	
 
 	std::vector<WorldMapElement*> all_map_elements;

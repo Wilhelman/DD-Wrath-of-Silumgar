@@ -203,7 +203,8 @@ bool ctWorldMap::Update(float dt)
 		}
 	}
 
-	if (!pauseMenu)
+
+	if (!pause_menu_is_open)
 	{
 		if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() && decision == nullptr && App->task_manager->aux_task == nullptr) {
 
@@ -214,6 +215,8 @@ bool ctWorldMap::Update(float dt)
 				App->fadeToBlack->FadeToBlackBetweenModules(this, App->combat, 1.0f);
 
 		}
+		
+
 
 		/*	IF HAVE TO QUIT THE GAME
 			App->main_menu->is_new_game = false;
@@ -238,7 +241,7 @@ bool ctWorldMap::Update(float dt)
 			}
 
 		}
-
+	}
 		// Draw everything --------------------------------------
 		App->map->Draw();
 
@@ -246,7 +249,7 @@ bool ctWorldMap::Update(float dt)
 		{
 			App->render->Blit(spritesheet_world_map, final_map_elements.at(i)->coords_in_map.x, final_map_elements.at(i)->coords_in_map.y, &final_map_elements.at(i)->icon_rect, 1.0f);
 		}
-	}
+	
 	
 	
 

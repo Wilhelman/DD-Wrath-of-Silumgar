@@ -641,6 +641,14 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 			App->main_menu->pauseMenu = nullptr;
 			App->combat->pauseMenu = nullptr;
 			App->world_map->pauseMenu = nullptr;
+			
+			
+
+			if (App->world_map->active == true)
+			{
+				App->world_map->pause_menu_is_open = false;
+				App->input->PreUpdate();
+			}
 		}
 		else if (inventory_label->current_state == STATE_EXECUTED) {
 				SetUpInventory();

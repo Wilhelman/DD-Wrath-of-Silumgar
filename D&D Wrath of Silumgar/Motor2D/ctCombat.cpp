@@ -186,6 +186,12 @@ bool ctCombat::Update(float dt)
 			else {
 				App->gui->DeleteUIElement(*pauseMenu);
 				pauseMenu = nullptr;
+
+				App->combat->pause_menu_is_open = false;
+				App->entities->GetCleric()->animation = &App->entities->GetCleric()->idle;
+				App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->idle;
+				App->entities->GetElf()->animation = &App->entities->GetElf()->idle;
+				App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->idle;
 			}
 		}
 		if (pause_menu_is_open == false)

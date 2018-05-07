@@ -81,9 +81,11 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	// render last to swap buffer
 	AddModule(render);
 
+	//the start one
+	main_menu->active = true;
+
 	//disable modules here
 	tabern_scene->active = false;
-	main_menu->active = true;
 	loot_menu->active = false;
 	world_map->active = false;
 	settings->active = false;

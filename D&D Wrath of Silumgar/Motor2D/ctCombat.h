@@ -74,7 +74,7 @@ public:
 	Entity* GetRandomHeroe();
 
 	void SelectWithPreviousHeroe();
-
+	bool pause_menu_is_open = false;
 	UIElement* pauseMenu = nullptr;
 	
 private:

@@ -649,6 +649,28 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 				App->world_map->pause_menu_is_open = false;
 				App->input->PreUpdate();
 			}
+			else if (App->combat->active == true)
+			{
+				App->input->PreUpdate();
+				Entity* curr = App->entities->GetCleric();
+				curr->position = curr->initial_position;
+
+				curr = App->entities->GetDwarf();
+				curr->position = curr->initial_position;
+
+				curr = App->entities->GetWarrior();
+				curr->position =curr->initial_position;
+
+				curr = App->entities->GetElf();
+				curr->position = curr->initial_position;
+
+				App->combat->pause_menu_is_open = false;
+				App->entities->GetCleric()->animation = &App->entities->GetCleric()->idle;
+				App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->idle;
+				App->entities->GetElf()->animation = &App->entities->GetElf()->idle;
+				App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->idle;
+			}
+
 		}
 		else if (inventory_label->current_state == STATE_EXECUTED) {
 				SetUpInventory();

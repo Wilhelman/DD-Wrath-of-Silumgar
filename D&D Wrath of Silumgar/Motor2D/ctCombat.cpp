@@ -174,126 +174,162 @@ bool ctCombat::PreUpdate()
 // Called each loop iteration
 bool ctCombat::Update(float dt)
 {
-
-	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)
+	
+	if (making_decision == true)
 	{
-		if (pauseMenu == nullptr) {
-			pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);
+		if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)
+		{
+			if (pauseMenu == nullptr) {
+				pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);
+				pause_menu_is_open = true;
+			}
+			else {
+				App->gui->DeleteUIElement(*pauseMenu);
+				pauseMenu = nullptr;
+			}
 		}
-		else {
-			App->gui->DeleteUIElement(*pauseMenu);
-			pauseMenu = nullptr;
+		if (pause_menu_is_open == false)
+		{
+			if (App->entities->GetDwarf()->position != App->entities->GetDwarf()->initial_position)
+			{
+				App->entities->GetDwarf()->position = App->entities->GetDwarf()->initial_position;
+				App->entities->GetElf()->position = App->entities->GetElf()->initial_position;
+				App->entities->GetWarrior()->position = App->entities->GetWarrior()->initial_position;
+				App->entities->GetCleric()->position = App->entities->GetCleric()->initial_position;
+			}
 		}
+
+		//if (pauseMenu == nullptr && pause_menu_is_open == true)
+		/*{
+			//THAT NEED A EYE
+			if (App->entities->GetCleric()->position == App->entities->GetCleric()->initial_position)
+			{
+				if (App->entities->GetWarrior()->position == App->entities->GetWarrior()->initial_position)
+				{
+					if (App->entities->GetElf()->position == App->entities->GetElf()->initial_position)
+					{
+						if (App->entities->GetDwarf()->position == App->entities->GetDwarf()->initial_position)
+						{
+							pause_menu_is_open = false;
+
+						}
+					}
+				}
+			}
+		}*/
 	}
 
-	if (turn_priority_entity.size() == 0) {
-		if (ready_cleric != nullptr) {
-			App->gui->DeleteUIElement(*ready_cleric);
-			ready_cleric = nullptr;
-		}
-		if (ready_warrior != nullptr) {
-			App->gui->DeleteUIElement(*ready_warrior);
-			ready_warrior = nullptr;
-		}
-		if (ready_dwarf != nullptr) {
-			App->gui->DeleteUIElement(*ready_dwarf);
-			ready_dwarf = nullptr;
-		}
-		if (ready_elf != nullptr) {
-			App->gui->DeleteUIElement(*ready_elf);
-			ready_elf = nullptr;
-		}
-		App->task_manager->OrderTasksByEntities(draw_turn_priority_entity);
-		App->task_manager->PerformAllTheTasks();
-
-		int current_entities = 0;
-		if (App->task_manager->TaskQueue.size() == 0 && App->task_manager->aux_task == nullptr) {
-
-			for (int i = 0; i < App->entities->entities.size(); i++)
-			{
-				App->entities->entities.at(i)->NewTurn();
+	if (pauseMenu == nullptr || pause_menu_is_open == false)
+	{
+		if (turn_priority_entity.size() == 0) {
+			if (ready_cleric != nullptr) {
+				App->gui->DeleteUIElement(*ready_cleric);
+				ready_cleric = nullptr;
 			}
-
-			for (std::vector<Entity *>::iterator it_heroe = heroes.begin(); it_heroe != heroes.end(); ++it_heroe) {
-				if ((*it_heroe)->GetCurrentHealthPoints()>0)
-					turn_priority_entity.push_back(*it_heroe);
+			if (ready_warrior != nullptr) {
+				App->gui->DeleteUIElement(*ready_warrior);
+				ready_warrior = nullptr;
 			}
-
-			if (turn_priority_entity.size() == 0) { //all heroes are dead!
-				LOG("All heroes are dead!");
-				condition_victory = false;
-				if (App->fadeToBlack->FadeIsOver())
-					App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+			if (ready_dwarf != nullptr) {
+				App->gui->DeleteUIElement(*ready_dwarf);
+				ready_dwarf = nullptr;
 			}
-			else 
-				current_entities = turn_priority_entity.size();
+			if (ready_elf != nullptr) {
+				App->gui->DeleteUIElement(*ready_elf);
+				ready_elf = nullptr;
+			}
+			App->task_manager->OrderTasksByEntities(draw_turn_priority_entity);
+			App->task_manager->PerformAllTheTasks();
 
-			if (App->fadeToBlack->FadeIsOver()) {
-				for (std::vector<Entity *>::iterator it_enemy = enemies.begin(); it_enemy != enemies.end(); ++it_enemy) {
-					if ((*it_enemy)->GetCurrentHealthPoints()>0)
-						turn_priority_entity.push_back(*it_enemy);
+			int current_entities = 0;
+			if (App->task_manager->TaskQueue.size() == 0 && App->task_manager->aux_task == nullptr) {
+
+				for (int i = 0; i < App->entities->entities.size(); i++)
+				{
+					App->entities->entities.at(i)->NewTurn();
 				}
 
-				if (turn_priority_entity.size() == current_entities) { //all enemies are dead!
-					LOG("All enemies are dead!");
+				for (std::vector<Entity *>::iterator it_heroe = heroes.begin(); it_heroe != heroes.end(); ++it_heroe) {
+					if ((*it_heroe)->GetCurrentHealthPoints() > 0)
+						turn_priority_entity.push_back(*it_heroe);
+				}
+
+				if (turn_priority_entity.size() == 0) { //all heroes are dead!
+					LOG("All heroes are dead!");
+					condition_victory = false;
 					if (App->fadeToBlack->FadeIsOver())
 						App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 				}
-				
+				else
+					current_entities = turn_priority_entity.size();
 
-				if(!(App->entities->GetCleric()->GetCurrentManaPoints() >= cleric_mana_bar->max_capacity))
-					cleric_mana_bar->LowerBar(8);
+				if (App->fadeToBlack->FadeIsOver()) {
+					for (std::vector<Entity *>::iterator it_enemy = enemies.begin(); it_enemy != enemies.end(); ++it_enemy) {
+						if ((*it_enemy)->GetCurrentHealthPoints() > 0)
+							turn_priority_entity.push_back(*it_enemy);
+					}
 
-				if (!(App->entities->GetElf()->GetCurrentManaPoints() >= elf_mana_bar->max_capacity))
-					elf_mana_bar->LowerBar(8);
+					if (turn_priority_entity.size() == current_entities) { //all enemies are dead!
+						LOG("All enemies are dead!");
+						if (App->fadeToBlack->FadeIsOver())
+							App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+					}
 
-				if (!(App->entities->GetWarrior()->GetCurrentManaPoints() >= warrior_mana_bar->max_capacity))
-					warrior_mana_bar->LowerBar(8);
 
-				if (!(App->entities->GetDwarf()->GetCurrentManaPoints() >= dwarf_mana_bar->max_capacity))
-					dwarf_mana_bar->LowerBar(8);
+					if (!(App->entities->GetCleric()->GetCurrentManaPoints() >= cleric_mana_bar->max_capacity))
+						cleric_mana_bar->LowerBar(8);
 
-				OrderTurnPriority();
-				
+					if (!(App->entities->GetElf()->GetCurrentManaPoints() >= elf_mana_bar->max_capacity))
+						elf_mana_bar->LowerBar(8);
+
+					if (!(App->entities->GetWarrior()->GetCurrentManaPoints() >= warrior_mana_bar->max_capacity))
+						warrior_mana_bar->LowerBar(8);
+
+					if (!(App->entities->GetDwarf()->GetCurrentManaPoints() >= dwarf_mana_bar->max_capacity))
+						dwarf_mana_bar->LowerBar(8);
+
+					OrderTurnPriority();
+
+				}
+
 			}
-
 		}
-	}
-	else {
-		Entity* entity_to_perform_action = turn_priority_entity.front();
-		
-		if (PerformActionWithEntity(entity_to_perform_action)) {//Return true if the action was established.
-			
-			turn_priority_entity.erase(turn_priority_entity.cbegin());
-			turn_priority_entity.shrink_to_fit();
+		else {
+			Entity* entity_to_perform_action = turn_priority_entity.front();
 
+			if (PerformActionWithEntity(entity_to_perform_action)) {//Return true if the action was established.
+
+				turn_priority_entity.erase(turn_priority_entity.cbegin());
+				turn_priority_entity.shrink_to_fit();
+
+			}
 		}
+
+		//todo remove
+		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+
+		// ZOOM
+
+		//if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
+		//{
+		//	App->render->scale_factor += 0.1;
+		//}
+		//if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+		//{
+		//	App->render->scale_factor -= 0.1;
+		//}
+		//if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+		//{
+		//	App->render->camera.x+=10;
+		//}
+		//if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
+		//{
+		//	App->render->camera.x -= 10;
+		//}
+
+		// Draw everything --------------------------------------
 	}
-	
-	//todo remove
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
-
-	// ZOOM
-
-	//if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
-	//{
-	//	App->render->scale_factor += 0.1;
-	//}
-	//if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
-	//{
-	//	App->render->scale_factor -= 0.1;
-	//}
-	//if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
-	//{
-	//	App->render->camera.x+=10;
-	//}
-	//if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
-	//{
-	//	App->render->camera.x -= 10;
-	//}
-	
-	// Draw everything --------------------------------------
 	App->map->Draw();
 	DrawTurnPriority();
 

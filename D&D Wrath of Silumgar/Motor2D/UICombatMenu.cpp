@@ -135,7 +135,7 @@ void UICombatMenu::Update()
 			}
 		}
 		//Execute
-		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
+		if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false)&& App->combat->pause_menu_is_open == false) {
 			App->audio->PlayFx(App->audio->cm_select_fx);
 			execute_comand_time.Start();
 			if (main_labels.size() != 0) {

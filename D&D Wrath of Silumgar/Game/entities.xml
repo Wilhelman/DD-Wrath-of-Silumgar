@@ -994,7 +994,7 @@
           <frame x="84"  y="2255" width="97" height="81"/>
         </animation>
 
-        <animation name="mace_hit" speed="0.2" loop="false">
+        <animation name="default_attack" speed="0.2" loop="false">
           <frame x="47"  y="12" width="126" height="96"/>
           <frame x="188" y="12" width="126" height="96"/>
           <frame x="358" y="12" width="126" height="96"/>
@@ -1701,6 +1701,24 @@
           <frame x="1407" y="223" width="110" height="97"/>
           <frame x="1578" y="223" width="110" height="97"/>
           <frame x="1760" y="223" width="110" height="97"/>
+        </animation>
+        
+        <animation name="whirlwind" speed="0.5" loop="false">
+          <frame x="39" y="3681" width="195" height="114"/>
+          <frame x="302" y="3681" width="195" height="114"/>
+          <frame x="635" y="3681" width="195" height="114"/>
+          <frame x="910" y="3681" width="195" height="114"/>
+          <frame x="1204" y="3681" width="195" height="114"/>
+          <frame x="1551" y="3681" width="195" height="114"/>
+          <frame x="1895" y="3681" width="195" height="114"/>
+          <frame x="2238" y="3681" width="195" height="114"/>
+          <frame x="18" y="3946" width="195" height="114"/>
+          <frame x="296" y="3946" width="195" height="114"/>
+          <frame x="634" y="3946" width="195" height="114"/>
+          <frame x="909" y="3946" width="195" height="114"/>
+          <frame x="1192" y="3946" width="195" height="114"/>
+          <frame x="1501" y="3946" width="195" height="114"/>
+          <frame x="1814" y="3946" width="195" height="114"/>
         </animation>
 
         <animation name="head" speed="5.0" loop="false">

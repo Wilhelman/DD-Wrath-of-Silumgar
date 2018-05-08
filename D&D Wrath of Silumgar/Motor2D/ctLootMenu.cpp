@@ -41,10 +41,15 @@ bool LootMenu::Start()
 	background = new UIImage(0, 0, IMAGE, { 0,0,484,324 }, nullptr);
 
 	//DELETE LATE
-	App->entities->SpawnEntity(30, 125, CLERIC);
+	/*App->entities->SpawnEntity(30, 125, CLERIC);
 	App->entities->SpawnEntity(30, 275, WARRIOR);
 	App->entities->SpawnEntity(250, 125, DWARF);
-	App->entities->SpawnEntity(250, 275, ELF);
+	App->entities->SpawnEntity(250, 275, ELF);*/
+
+	App->entities->GetCleric()->position = { 30,125 };
+	App->entities->GetWarrior()->position = { 30,275 };
+	App->entities->GetDwarf()->position = { 250,125 };
+	App->entities->GetElf()->position = { 250,275 };
 
 	App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
 	App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->menu_animation;
@@ -115,11 +120,16 @@ bool LootMenu::Start()
 
 	SetComparation();
 
+
 	return true;
 }
 
 bool LootMenu::Update(float dt) 
 {
+
+
+
+
 	if (dropped_items.size() != 0)
 	{
 		arrow->Update();
@@ -141,6 +151,10 @@ bool LootMenu::Update(float dt)
 		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 			ExecuteComand(main_labels);
 		}
+	}
+	else
+	{
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0);
 	}
 	return true;
 }

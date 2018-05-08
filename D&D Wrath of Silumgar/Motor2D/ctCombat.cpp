@@ -8,7 +8,7 @@
 #include "ctWindow.h"
 #include "ctEntities.h"
 #include "ctTaskManager.h"
-
+#include "ctLootMenu.h"
 #include "ctCombat.h"
 #include "ctWorldMap.h"
 #include "j1Map.h"
@@ -278,7 +278,7 @@ bool ctCombat::Update(float dt)
 					if (turn_priority_entity.size() == current_entities) { //all enemies are dead!
 						LOG("All enemies are dead!");
 						if (App->fadeToBlack->FadeIsOver())
-							App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+							App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu, 1.0f);
 					}
 
 
@@ -369,7 +369,8 @@ bool ctCombat::CleanUp()
 
 	for (int i = 0; i < App->entities->entities.size(); i++)
 	{
-		App->entities->entities.at(i)->to_destroy = true;
+		if(App->entities->entities.at(i)->type != DWARF && App->entities->entities.at(i)->type != ELF && App->entities->entities.at(i)->type != WARRIOR && App->entities->entities.at(i)->type != CLERIC)
+			App->entities->entities.at(i)->to_destroy = true;
 	}
 
 	enemies.clear();

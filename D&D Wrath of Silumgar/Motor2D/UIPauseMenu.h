@@ -26,8 +26,6 @@ private:
 	std::vector<UIElement*> elf_statistics;
 	UIElement* continue_label = nullptr;
 	UIElement* inventory_label = nullptr;
-	UIElement* abilities_label = nullptr;
-	UIElement* settings_label = nullptr;
 	UIElement* quit_label = nullptr;
 	std::vector<UIElement*> main_labels;
 	std::vector<Item*> inventory_items;

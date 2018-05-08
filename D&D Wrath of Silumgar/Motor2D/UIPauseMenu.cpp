@@ -125,10 +125,6 @@ UIPauseMenu::~UIPauseMenu() {
 	continue_label = nullptr;
 	inventory_label->~UIElement();
 	inventory_label = nullptr;
-	abilities_label->~UIElement();
-	abilities_label = nullptr;
-	settings_label->~UIElement();
-	settings_label = nullptr;
 	quit_label->~UIElement();
 	quit_label = nullptr;
 	main_labels.clear();
@@ -569,11 +565,7 @@ void UIPauseMenu::SetUpPauseMenu()
 	continue_label->current_state = STATE_FOCUSED;
 	inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,255,255,255 }, 15);
 	main_labels.push_back(inventory_label);
-	abilities_label = new UILabel(420, 70, LABEL, "Abilities", { 255,255,255,255 }, 15);
-	main_labels.push_back(abilities_label);
-	settings_label = new UILabel(420, 100, LABEL, "Settings", { 255,255,255,255 }, 15);
-	main_labels.push_back(settings_label);
-	quit_label = new UILabel(420, 130, LABEL, "Quit", { 255,255,255,255 }, 15);
+	quit_label = new UILabel(420, 70, LABEL, "Quit", { 255,255,255,255 }, 15);
 	main_labels.push_back(quit_label);
 	arrow = new UIImage(-10, 0, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
 	arrow->SetParent(continue_label);
@@ -675,12 +667,6 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		else if (inventory_label->current_state == STATE_EXECUTED) {
 				SetUpInventory();
 				SetInformationLabels();
-		}
-		else if (abilities_label->current_state == STATE_EXECUTED) {
-
-		}
-		else if (settings_label->current_state == STATE_EXECUTED) {
-
 		}
 		else if (quit_label->current_state == STATE_EXECUTED) {
 			App->fadeToBlack->FadeToBlackBetweenModules(callback, App->main_menu, 1.0f);

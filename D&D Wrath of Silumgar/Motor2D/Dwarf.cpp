@@ -42,7 +42,7 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &throw_object);
 		else if (tmp == "morale_boost")
 			LoadAnimation(animations, &morale_boost);
-		else if (tmp == "dwarf_wrath")
+		else if (tmp == "dwarfs_wrath")
 			LoadAnimation(animations, &dwarfs_wrath);
 		else if (tmp == "morale_boost+")
 			LoadAnimation(animations, &morale_boost_plus);

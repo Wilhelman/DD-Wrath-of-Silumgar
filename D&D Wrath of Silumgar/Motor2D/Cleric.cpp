@@ -52,6 +52,10 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &harder_skin);
 		else if (tmp == "clarity")
 			LoadAnimation(animations, &clarity);
+		else if (tmp == "light_strike")
+			LoadAnimation(animations, &light_strike);
+		else if (tmp == "light_strike+")
+			LoadAnimation(animations, &light_strike_plus);
 		else if (tmp == "menu_animation")
 			LoadAnimation(animations, &menu_animation);
 		else if (tmp == "stun")

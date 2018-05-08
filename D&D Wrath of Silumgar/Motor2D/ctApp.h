@@ -30,6 +30,7 @@ class ctFadeToBlack;
 class ctSkillTree;
 class j1ParticleSystem;
 class LootMenu;
+class ctFinalScene;
 
 class ctApp
 {
@@ -123,6 +124,7 @@ public:
 	ctSkillTree*		skill_tree = nullptr;
 	j1ParticleSystem*	psystem = nullptr;
 	LootMenu*			loot_menu = nullptr;
+	ctFinalScene*		final_scene = nullptr;
 
 	bool				cap_state = false;
 

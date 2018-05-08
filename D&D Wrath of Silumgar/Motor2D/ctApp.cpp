@@ -25,7 +25,7 @@
 #include "ctSkillTree.h"
 #include "j1Language.h"
 #include "ctLootMenu.h"
-
+#include "ctFinalScene.h"
 
 // Constructor
 ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
@@ -40,6 +40,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	map = new j1Map();
 	main_menu = new ctMainMenu();
 	tabern_scene = new ctTabernScene();
+	final_scene = new ctFinalScene();
 	world_map = new ctWorldMap();
 	settings = new ctSettings();
 	language = new j1Language();
@@ -63,6 +64,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(main_menu);
 	AddModule(tabern_scene);
+	AddModule(final_scene);
 	AddModule(world_map);
 	AddModule(settings);
 	AddModule(combat);
@@ -85,6 +87,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	main_menu->active = true;
 
 	//disable modules here
+	final_scene->active = false;
 	tabern_scene->active = false;
 	loot_menu->active = false;
 	world_map->active = false;

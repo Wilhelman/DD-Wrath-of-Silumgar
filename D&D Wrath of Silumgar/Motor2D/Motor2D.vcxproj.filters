@@ -216,6 +216,9 @@
     <ClCompile Include="ctLootMenu.cpp">
       <Filter>Core\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="ctFinalScene.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -412,6 +415,9 @@
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="ctLootMenu.h">
+      <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ctFinalScene.h">
       <Filter>Core\Scenes</Filter>
     </ClInclude>
   </ItemGroup>

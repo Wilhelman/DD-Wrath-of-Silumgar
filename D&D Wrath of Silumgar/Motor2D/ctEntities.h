@@ -26,6 +26,7 @@ class Hellhound;
 class Triton;
 class Skeleton;
 
+
 class MiniHeroes;
 
 struct SDL_Texture;
@@ -48,6 +49,7 @@ enum EntityType
 	TRITON,
 	SKELETON,
 	DARK_WARRIOR,
+	TROLL_LEADERS,
 
 	MINIHEROES,
 
@@ -148,6 +150,8 @@ public:
 	std::string hellhound_spritesheet_name;
 	//DarkWarrior sources
 	std::string dark_warrior_spritesheet_name;
+	//TrollLeaders sources
+	std::string trollLeader_spritesheet_name;
 
 	//Miniheroes source
 	std::string miniheroes_spritesheet_name;

@@ -672,6 +672,9 @@ void ctCombat::SpawnEntities()
 		case DARK_WARRIOR:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, DARK_WARRIOR);
 			break;
+		case TROLL_LEADERS:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, TROLL_LEADERS);
+			break;
 		default:
 			break;
 		}
@@ -1016,6 +1019,9 @@ void ctCombat::DrawTurnPriority()
 		case HELLHOUND:
 			rect = { 858, 22, 26, 26 };
 			break;
+		case TROLL_LEADERS:
+			rect = { 30, 726, 26, 26 };
+			break;
 		case MINIHEROES:
 			break;
 		case NO_TYPE:
@@ -1134,6 +1140,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		case TRITON:
 		case SKELETON:
 		case DARK_WARRIOR:
+		case TROLL_LEADERS:
 		{
 			bool can_perform_action = true;
 			//todo do an action like IsStunned()

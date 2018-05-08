@@ -96,6 +96,10 @@ public:
 	ctAnimation thunder_punch = ctAnimation();
 	ctAnimation insignificant_mortals = ctAnimation();
 
+	//troll_leaders
+	ctAnimation attack_1 = ctAnimation();
+	ctAnimation attack_2 = ctAnimation();
+
 	Stats base_stats;
 	iPoint position = iPoint(0, 0);
 	iPoint initial_position = iPoint(0, 0);

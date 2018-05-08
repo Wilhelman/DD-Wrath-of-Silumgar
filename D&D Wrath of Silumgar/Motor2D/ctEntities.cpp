@@ -25,6 +25,7 @@
 #include "Hellhound.h"
 #include "Skeleton.h"
 #include "DarkWarrior.h"
+#include "trollLeaders.h"
 
 #include "MiniHeroes.h"
 
@@ -62,6 +63,7 @@ bool ctEntities::Awake(pugi::xml_node& config)
 	skeleton_spritesheet_name = config.child("skeleton").attribute("spritesheetName").as_string();
 	hellhound_spritesheet_name = config.child("hellhound").attribute("spritesheetName").as_string();
 	dark_warrior_spritesheet_name = config.child("darkWarrior").attribute("spritesheetName").as_string();
+	trollLeader_spritesheet_name = config.child("trollLeader").attribute("spritesheetName").as_string();
 
 	miniheroes_spritesheet_name = config.child("miniheroes").attribute("spritesheetName").as_string();
 	return ret;
@@ -246,6 +248,14 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 		DarkWarrior* darky = new DarkWarrior(x, y, DARK_WARRIOR);
 		entities.push_back(darky);
 		App->combat->turn_priority_entity.push_back(darky);
+		ret = true;
+		break;
+	}
+
+	case EntityType::TROLL_LEADERS: {
+		TrollLeaders* TrollLead = new TrollLeaders(x, y, TROLL_LEADERS);
+		entities.push_back(TrollLead);
+		App->combat->turn_priority_entity.push_back(TrollLead);
 		ret = true;
 		break;
 	}

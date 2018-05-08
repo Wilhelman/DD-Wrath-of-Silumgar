@@ -58,6 +58,7 @@
     <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="Triton.cpp" />
+    <ClCompile Include="trollLeaders.cpp" />
     <ClCompile Include="UIBar.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UICombatMenu.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="pugixml.hpp" />
     <ClInclude Include="Skeleton.h" />
     <ClInclude Include="Triton.h" />
+    <ClInclude Include="trollLeaders.h" />
     <ClInclude Include="UIBar.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UICombatMenu.h" />

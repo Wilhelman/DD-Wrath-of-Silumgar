@@ -219,6 +219,9 @@
     <ClCompile Include="ctFinalScene.cpp">
       <Filter>Core\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="trollLeaders.cpp">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -419,6 +422,9 @@
     </ClInclude>
     <ClInclude Include="ctFinalScene.h">
       <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="trollLeaders.h">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

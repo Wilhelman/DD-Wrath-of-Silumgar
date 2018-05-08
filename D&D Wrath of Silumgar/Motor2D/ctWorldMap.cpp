@@ -93,6 +93,8 @@ bool ctWorldMap::Awake(pugi::xml_node& co)
 				tmp_map_element->entities.push_back(EntityType::SKELETON);
 			else if (tmp == "DARK_WARRIOR")
 				tmp_map_element->entities.push_back(EntityType::DARK_WARRIOR);
+			else if (tmp == "TROLL_LEADERS")
+				tmp_map_element->entities.push_back(EntityType::TROLL_LEADERS);
 
 		}
 

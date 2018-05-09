@@ -703,6 +703,9 @@ void ctCombat::LoadDataFromXML()
 			App->entities->GetCleric()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetCleric());
+
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+				LoadItem(item, App->entities->GetCleric());
 		}
 		else if (tmp == "warrior") {
 			App->entities->GetWarrior()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
@@ -718,12 +721,18 @@ void ctCombat::LoadDataFromXML()
 			App->entities->GetDwarf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetDwarf());
+
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+				LoadItem(item, App->entities->GetDwarf());
 		}
 		else if (tmp == "elf") {
 			App->entities->GetElf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 			App->entities->GetElf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetElf());
+
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+				LoadItem(item, App->entities->GetElf());
 		}
 
 	}
@@ -854,6 +863,30 @@ void ctCombat::LoadItem(pugi::xml_node item, Entity * entity)
 		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
 			entity->AddUsableItem(App->items->usable_items.at(0));
 	}
+	else if (tmp == "Mega Life Potion") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Mana Potion") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Mega Mana Potion") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Poisoned Dagger") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Dragon Essence") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Fenix Tail") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
 }
 
 void ctCombat::SaveDataToXML()
@@ -869,18 +902,61 @@ void ctCombat::SaveDataToXML()
 		if (tmp == "cleric") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetCleric()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetCleric()->GetCurrentManaPoints());
+			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			{
+				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+
+				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+					std::string tmp2 = item.attribute("name").as_string();
+					if (tmp2 == tmp)
+						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+				}
+			}
 		}
 		else if (tmp == "warrior") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetWarrior()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetWarrior()->GetCurrentManaPoints());
+
+			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			{
+				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+
+					for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+						std::string tmp2 = item.attribute("name").as_string();
+						if (tmp2 == tmp)
+							item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+					}
+			}
+
+			
 		}
 		else if (tmp == "dwarf") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetDwarf()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetDwarf()->GetCurrentManaPoints());
+			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			{
+				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+
+				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+					std::string tmp2 = item.attribute("name").as_string();
+					if (tmp2 == tmp)
+						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+				}
+			}
 		}
 		else if (tmp == "elf") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetElf()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetElf()->GetCurrentManaPoints());
+			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			{
+				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+
+				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+					std::string tmp2 = item.attribute("name").as_string();
+					if (tmp2 == tmp)
+						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+				}
+			}
 		}
 
 	}

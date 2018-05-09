@@ -100,22 +100,38 @@ bool ctCombat::Start()
 	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(5));
 	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(6));
 
-	for (int i = 0; i < App->items->tier_2_equips.size(); i++)
-	{
-		if (App->items->tier_2_equips.at(i).equip_type == CHEST) {
-			App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(i));
-			break;
-		}
-	}
 
 	/*---------------------------------------------------------- END LE PETIT TESTING ZONE -------------------------------------------------------------*/
+	for (int i = 0; i < App->items->elf_equip.size(); i++)
+	{
+		App->entities->GetElf()->AddEquipItem(App->items->elf_equip.at(i));
+	}
+	App->items->elf_equip.clear();
+
+	for (int i = 0; i < App->items->warrior_equip.size(); i++)
+	{
+		App->entities->GetWarrior()->AddEquipItem(App->items->warrior_equip.at(i));
+	}
+	App->items->warrior_equip.clear();
+
+	for (int i = 0; i < App->items->cleric_equip.size(); i++)
+	{
+		App->entities->GetCleric()->AddEquipItem(App->items->cleric_equip.at(i));
+	}
+	App->items->cleric_equip.clear();
+
+	for (int i = 0; i < App->items->dwarf_equip.size(); i++)
+	{
+		App->entities->GetDwarf()->AddEquipItem(App->items->dwarf_equip.at(i));
+	}
+	App->items->dwarf_equip.clear();
 
 
 	if (!App->main_menu->is_new_game) {
 		//load from data.xml the current health, mana, items that have the heroes
 		LoadDataFromXML();
 	}
-	LoadDataFromXML();
+	//LoadDataFromXML();
 
 	SetDataToUI();
 
@@ -912,6 +928,14 @@ void ctCombat::SaveDataToXML()
 						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
 				}
 			}
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->helmet);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->chest);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->guantlet);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->boot);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->ring);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->accessory);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->shield);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->weapon);
 		}
 		else if (tmp == "warrior") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetWarrior()->GetCurrentHealthPoints());
@@ -927,7 +951,14 @@ void ctCombat::SaveDataToXML()
 							item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
 					}
 			}
-
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->helmet);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->chest);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->guantlet);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->boot);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->ring);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->accessory);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->shield);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->weapon);
 			
 		}
 		else if (tmp == "dwarf") {
@@ -943,6 +974,14 @@ void ctCombat::SaveDataToXML()
 						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
 				}
 			}
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->helmet);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->chest);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->guantlet);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->boot);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->ring);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->accessory);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->shield);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->weapon);
 		}
 		else if (tmp == "elf") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetElf()->GetCurrentHealthPoints());
@@ -957,6 +996,14 @@ void ctCombat::SaveDataToXML()
 						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
 				}
 			}
+			App->items->elf_equip.push_back(App->entities->GetElf()->helmet);
+			App->items->elf_equip.push_back(App->entities->GetElf()->chest);
+			App->items->elf_equip.push_back(App->entities->GetElf()->guantlet);
+			App->items->elf_equip.push_back(App->entities->GetElf()->boot);
+			App->items->elf_equip.push_back(App->entities->GetElf()->ring);
+			App->items->elf_equip.push_back(App->entities->GetElf()->accessory);
+			App->items->elf_equip.push_back(App->entities->GetElf()->shield);
+			App->items->elf_equip.push_back(App->entities->GetElf()->weapon);
 		}
 
 	}

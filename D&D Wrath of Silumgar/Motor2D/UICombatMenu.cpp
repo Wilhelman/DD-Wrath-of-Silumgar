@@ -108,7 +108,7 @@ UICombatMenu::~UICombatMenu() {
 
 void UICombatMenu::Update()
 {
-	if (App->fadeToBlack->FadeIsOver() == true) {
+	if (App->fadeToBlack->FadeIsOver() == true && App->combat->pause_menu_is_open == false) {
 		//Go down
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 

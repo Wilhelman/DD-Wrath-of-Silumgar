@@ -96,9 +96,9 @@ bool ctCombat::Start()
 	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(4));
 	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(5));
 	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(6));
-	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(4));
-	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(5));
-	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(6));
+	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(4));
+	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(5));
+	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(6));
 
 	for (int i = 0; i < App->items->tier_2_equips.size(); i++)
 	{
@@ -115,7 +115,7 @@ bool ctCombat::Start()
 		//load from data.xml the current health, mana, items that have the heroes
 		LoadDataFromXML();
 	}
-	//LoadDataFromXML();
+	LoadDataFromXML();
 
 	SetDataToUI();
 
@@ -154,14 +154,6 @@ bool ctCombat::Start()
 
 		LOG("Error playing music in ctMainMenu Start");
 	}
-
-
-	//todo remove this: lets set usable items:
-
-	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(0));
-	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(1));
-	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(2));
-	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(3));
 
 	
 	return ret;
@@ -717,6 +709,9 @@ void ctCombat::LoadDataFromXML()
 			App->entities->GetWarrior()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetWarrior());
+
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+				LoadItem(item, App->entities->GetWarrior());
 		}
 		else if (tmp == "dwarf") {
 			App->entities->GetDwarf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
@@ -849,6 +844,16 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 	new_action.judgement_variation = skill_node.attribute("judgement_variation").as_int();
 	new_action.dexterity_variation = skill_node.attribute("dexterity_variation").as_int();
 	entity->AddAction(new_action);
+}
+
+void ctCombat::LoadItem(pugi::xml_node item, Entity * entity)
+{
+	std::string tmp = item.attribute("name").as_string();
+
+	if (tmp == "Life Potion") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
 }
 
 void ctCombat::SaveDataToXML()

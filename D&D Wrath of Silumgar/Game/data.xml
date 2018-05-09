@@ -16,16 +16,20 @@
 				<skill name="Clarity" description="Clarity" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" have_to_move="0" owned="0" />
 			</skills>
 			<items>
-				<items>
-					<usables>
-						<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER">
-							<draw_coords x="192" y="2" width="16" height="8" />
-						</item>
-						<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER">
-							<draw_coords x="448" y="32" width="64" height="32" />
-						</item>
-					</usables>
-				</items>
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0">
+				</item>
+				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0">
+				</item>
+				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0">
+				</item>
+				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0">
+				</item>
+				<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER" quantity="0">
+				</item>
+				<item name="Dragon Essence" objective="1" use="BURN_TARGET" quantity="0">
+				</item>
+				<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY" quantity="0">
+				</item>
 			</items>
 		</heroe>
 		<heroe name="warrior">
@@ -42,7 +46,20 @@
 				<skill name="Whirlwind" description="Whirlwind" mana_points_effect_to_himself="1" health_points_effect="80" objective="1" have_to_move="1" owned="0" />
 			</skills>
 			<items>
-				<item name="test" etc="etc" />
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="2">
+				</item>
+				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0">
+				</item>
+				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0">
+				</item>
+				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0">
+				</item>
+				<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER" quantity="0">
+				</item>
+				<item name="Dragon Essence" objective="1" use="BURN_TARGET" quantity="0">
+				</item>
+				<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY" quantity="0">
+				</item>
 			</items>
 		</heroe>
 		<heroe name="dwarf">

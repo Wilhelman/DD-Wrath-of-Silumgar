@@ -120,14 +120,23 @@ bool LootMenu::Start()
 
 	SetComparation();
 
-
+	App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
+	App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->menu_animation;
+	App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->menu_animation;
+	App->entities->GetElf()->animation = &App->entities->GetElf()->menu_animation;
 	return true;
 }
 
 bool LootMenu::Update(float dt) 
 {
-
-
+	if(App->entities->GetCleric()->animation != &App->entities->GetCleric()->menu_animation)
+		App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
+	if (App->entities->GetWarrior()->animation != &App->entities->GetWarrior()->menu_animation)
+		App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->menu_animation;
+	if (App->entities->GetDwarf()->animation != &App->entities->GetDwarf()->menu_animation)
+		App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->menu_animation;
+	if (App->entities->GetElf()->animation != &App->entities->GetElf()->menu_animation)
+		App->entities->GetElf()->animation = &App->entities->GetElf()->menu_animation;
 
 
 	if (dropped_items.size() != 0)

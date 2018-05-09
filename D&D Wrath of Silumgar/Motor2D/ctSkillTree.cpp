@@ -11,11 +11,17 @@
 #include "ctGui.h"
 #include "UIElement.h"
 #include "ctPerfTimer.h"
+#include "ctEntities.h"
 
 #include "ctSkillTree.h"
 #include "ctCombat.h"
 
 #include "ctFadeToBlack.h"
+
+#include "Cleric.h"
+#include "Warrior.h"
+#include "Dwarf.h"
+#include "Elf.h"
 
 
 ctSkillTree::ctSkillTree() : ctModule()
@@ -53,6 +59,11 @@ bool ctSkillTree::Start()
 	//	LOG("Fail to load spritesheet in SkillTree!");
 	//	ret = false;
 	//}
+
+	App->entities->SpawnEntity(-100,-100,CLERIC);
+	App->entities->SpawnEntity(-100, -100, WARRIOR);
+	App->entities->SpawnEntity(-100, -100, DWARF);
+	App->entities->SpawnEntity(-100, -100, ELF);
 
 	if (spritesheet_abilities == NULL) {
 		LOG("Fail to load spritesheet_abilities in SkillTree!");
@@ -119,6 +130,10 @@ bool ctSkillTree::Start()
 	marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x-2;
 	marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y-2;
 	ChangeTitle();
+	LookForActiveAbilities(cleric_abilities);
+	LookForActiveAbilities(warrior_abilities);
+	LookForActiveAbilities(dwarf_abilities);
+	LookForActiveAbilities(elf_abilities);
 
 	return ret;
 }
@@ -587,6 +602,34 @@ void ctSkillTree::SelectAbility() {
 		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
 			if (select_menu_A->current_state == STATE_FOCUSED) {
 				(*selected_ability)->active = 1;
+				if (current_hero == 1) {
+					for (int i = 0; i < App->entities->GetCleric()->abilities.size(); i++) {
+						if (App->entities->GetCleric()->abilities.at(i).name == (*selected_ability)->ability_name) {
+							App->entities->GetCleric()->abilities.at(i).owned = true;
+						}
+					}
+				}
+				else if (current_hero == 2) {
+					for (int i = 0; i < App->entities->GetWarrior()->abilities.size(); i++) {
+						if (App->entities->GetWarrior()->abilities.at(i).name == (*selected_ability)->ability_name) {
+							App->entities->GetWarrior()->abilities.at(i).owned = true;
+						}
+					}
+				}
+				else if (current_hero == 3) {
+					for (int i = 0; i < App->entities->GetDwarf()->abilities.size(); i++) {
+						if (App->entities->GetDwarf()->abilities.at(i).name == (*selected_ability)->ability_name) {
+							App->entities->GetDwarf()->abilities.at(i).owned = true;
+						}
+					}
+				}
+				else if (current_hero == 4) {
+					for (int i = 0; i < App->entities->GetElf()->abilities.size(); i++) {
+						if (App->entities->GetElf()->abilities.at(i).name == (*selected_ability)->ability_name) {
+							App->entities->GetElf()->abilities.at(i).owned = true;
+						}
+					}
+				}
 			}
 			App->gui->DeleteUIElement(*select_menu_bg);
 			select_menu_bg = nullptr;
@@ -617,5 +660,60 @@ void ctSkillTree::SelectAbility() {
 	}
 	else {
 		selecting_ability = false;
+	}
+}
+
+void ctSkillTree::LookForActiveAbilities(std::vector<Ability*> &abilities) {
+	std::vector<Ability*>::const_iterator ability = abilities.begin();
+	while (ability != abilities.end()) {
+		if (abilities == cleric_abilities) {
+			for (int i = 0; i < App->entities->GetCleric()->abilities.size(); i++) {
+				if (App->entities->GetCleric()->abilities.at(i).name == (*ability)->ability_name) {
+					if (App->entities->GetCleric()->abilities.at(i).owned == true) {
+						(*ability)->active = 1;
+					}
+					else {
+						(*ability)->active = 0;
+					}
+				}
+			}
+		}
+		else if (abilities == warrior_abilities) {
+			for (int i = 0; i < App->entities->GetWarrior()->abilities.size(); i++) {
+				if (App->entities->GetWarrior()->abilities.at(i).name == (*ability)->ability_name) {
+					if (App->entities->GetWarrior()->abilities.at(i).owned == true) {
+						(*ability)->active = 1;
+					}
+					else {
+						(*ability)->active = 0;
+					}
+				}
+			}
+		}
+		else if (abilities == dwarf_abilities) {
+			for (int i = 0; i < App->entities->GetDwarf()->abilities.size(); i++) {
+				if (App->entities->GetDwarf()->abilities.at(i).name == (*ability)->ability_name) {
+					if (App->entities->GetDwarf()->abilities.at(i).owned == true) {
+						(*ability)->active = 1;
+					}
+					else {
+						(*ability)->active = 0;
+					}
+				}
+			}
+		}
+		else if (abilities == elf_abilities) {
+			for (int i = 0; i < App->entities->GetElf()->abilities.size(); i++) {
+				if (App->entities->GetElf()->abilities.at(i).name == (*ability)->ability_name) {
+					if (App->entities->GetElf()->abilities.at(i).owned == true) {
+						(*ability)->active = 1;
+					}
+					else {
+						(*ability)->active = 0;
+					}
+				}
+			}
+		}
+		ability++;
 	}
 }

@@ -61,6 +61,7 @@ public:
 
 	void PrintAbilityDescription();
 	void ChangeDescriptionBG();
+	void LookForActiveAbilities(std::vector<Ability*> &abilities);
 
 	void SelectAbility();
 

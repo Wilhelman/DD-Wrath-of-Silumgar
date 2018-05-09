@@ -350,39 +350,211 @@ int Entity::GetCurrentStrengthPoints()
 
 int Entity::GetCurrentIntelligencePoints()
 {
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).stat_effect_intelligence != 0) {
+			switch (this->altered_stats.at(i).stat_effect_intelligence)
+			{
+			case 0:
+				return current_intelligence;
+				break;
+			case 1:
+				return (int)((0.25 * current_intelligence) + current_intelligence);
+				break;
+			case 2:
+				return (int)((0.50 * current_intelligence) + current_intelligence);
+				break;
+			case -1:
+				return (int)((0.25 * current_intelligence) - current_intelligence);
+				break;
+			case -2:
+				return (int)((0.50 * current_intelligence) - current_intelligence);
+				break;
+			default:
+				break;
+			}
+		}
+	}
 	return current_intelligence;
 }
 
 int Entity::GetCurrentAgilityPoints()
 {
-	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).stat_effect_agility != 0) {
+			switch (this->altered_stats.at(i).stat_effect_agility)
+			{
+			case 0:
+				return current_agility_points;
+				break;
+			case 1:
+				return (int)((0.25 * current_agility_points) + current_agility_points);
+				break;
+			case 2:
+				return (int)((0.50 * current_agility_points) + current_agility_points);
+				break;
+			case -1:
+				return (int)((0.25 * current_agility_points) - current_agility_points);
+				break;
+			case -2:
+				return (int)((0.50 * current_agility_points) - current_agility_points);
+				break;
+			default:
+				break;
+			}
+		}
+	}
 	return current_agility_points;
 }
 
 int Entity::GetCurrentDexterityPoints()
 {
-	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).stat_effect_agility != 0) {
+			switch (this->altered_stats.at(i).stat_effect_dexterity)
+			{
+			case 0:
+				return current_dexterity_points;
+				break;
+			case 1:
+				return (int)((0.25 * current_dexterity_points) + current_dexterity_points);
+				break;
+			case 2:
+				return (int)((0.50 * current_dexterity_points) + current_dexterity_points);
+				break;
+			case -1:
+				return (int)((0.25 * current_dexterity_points) - current_dexterity_points);
+				break;
+			case -2:
+				return (int)((0.50 * current_dexterity_points) - current_dexterity_points);
+				break;
+			default:
+				break;
+			}
+		}
+	}
 	return current_dexterity_points;
 }
 
 int Entity::GetCurrentPhysicalDefensePoints()
 {
-	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).stat_effect_physical_defense != 0) {
+			switch (this->altered_stats.at(i).stat_effect_physical_defense)
+			{
+			case 0:
+				return current_physical_defense_points;
+				break;
+			case 1:
+				return (int)((0.25 * current_physical_defense_points) + current_physical_defense_points);
+				break;
+			case 2:
+				return (int)((0.50 * current_physical_defense_points) + current_physical_defense_points);
+				break;
+			case -1:
+				return (int)((0.25 * current_physical_defense_points) - current_physical_defense_points);
+				break;
+			case -2:
+				return (int)((0.50 * current_physical_defense_points) - current_physical_defense_points);
+				break;
+			default:
+				break;
+			}
+		}
+	}
 	return current_physical_defense_points;
 }
 
 int Entity::GetCurrentMagicalDefensePoints()
 {
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).stat_effect_magical_defense != 0) {
+			switch (this->altered_stats.at(i).stat_effect_magical_defense)
+			{
+			case 0:
+				return current_magical_defense_points;
+				break;
+			case 1:
+				return (int)((0.25 * current_magical_defense_points) + current_magical_defense_points);
+				break;
+			case 2:
+				return (int)((0.50 * current_magical_defense_points) + current_magical_defense_points);
+				break;
+			case -1:
+				return (int)((0.25 * current_magical_defense_points) - current_magical_defense_points);
+				break;
+			case -2:
+				return (int)((0.50 * current_magical_defense_points) - current_magical_defense_points);
+				break;
+			default:
+				break;
+			}
+		}
+	}
 	return current_magical_defense_points;
 }
 
 int Entity::GetCurrentLuckPoints()
 {
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).stat_effect_luck != 0) {
+			switch (this->altered_stats.at(i).stat_effect_luck)
+			{
+			case 0:
+				return current_luck;
+				break;
+			case 1:
+				return (int)((0.25 * current_luck) + current_luck);
+				break;
+			case 2:
+				return (int)((0.50 * current_luck) + current_luck);
+				break;
+			case -1:
+				return (int)((0.25 * current_luck) - current_luck);
+				break;
+			case -2:
+				return (int)((0.50 * current_luck) - current_luck);
+				break;
+			default:
+				break;
+			}
+		}
+	}
 	return current_luck;
 }
 
 int Entity::GetCurrentJudgement()
 {
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).stat_effect_judgement != 0) {
+			switch (this->altered_stats.at(i).stat_effect_judgement)
+			{
+			case 0:
+				return current_judgement;
+				break;
+			case 1:
+				return (int)((0.25 * current_judgement) + current_judgement);
+				break;
+			case 2:
+				return (int)((0.50 * current_judgement) + current_judgement);
+				break;
+			case -1:
+				return (int)((0.25 * current_judgement) - current_judgement);
+				break;
+			case -2:
+				return (int)((0.50 * current_judgement) - current_judgement);
+				break;
+			default:
+				break;
+			}
+		}
+	}
 	return current_judgement;
 }
 

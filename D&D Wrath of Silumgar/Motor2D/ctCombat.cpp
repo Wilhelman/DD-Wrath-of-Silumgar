@@ -115,7 +115,7 @@ bool ctCombat::Start()
 		//load from data.xml the current health, mana, items that have the heroes
 		LoadDataFromXML();
 	}
-	LoadDataFromXML();
+	//LoadDataFromXML();
 
 	SetDataToUI();
 

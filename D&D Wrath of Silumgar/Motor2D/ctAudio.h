@@ -178,6 +178,7 @@ private:
 	_Mix_Music*			music;
 	std::vector <Mix_Chunk*> fx;
 
+public:
 	bool device_connected = false;
 
 };

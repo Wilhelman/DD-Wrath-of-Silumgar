@@ -61,8 +61,10 @@ bool ctMainMenu::Start()
 	//labels.push_back(about_label);
 	labels.push_back(quit_label);
 
-	Mix_VolumeMusic(App->settings->music_volume_value);
-	Mix_Volume(-1, App->settings->fx_volume_value);
+	if (App->audio->device_connected) {
+		Mix_VolumeMusic(App->settings->music_volume_value);
+		Mix_Volume(-1, App->settings->fx_volume_value);
+	}
 
 	if (!App->audio->PlayMusic(App->audio->MainMenuBSO.c_str(),1)) {
 		

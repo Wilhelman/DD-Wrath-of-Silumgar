@@ -392,7 +392,7 @@
 
     </equip>
 
-    <equip name="Coat Mail" tier="2" type="ARMOR">
+    <equip name="Coat Mail" tier="1" type="ARMOR">
 
       <draw_coords x="96" y="320" width="48" height="48"/>
 
@@ -408,7 +408,7 @@
       <draw_coords x="144" y="320" width="48" height="48"/>
 
       <stats>
-        <stat pr="2"/>
+        <stat pr="40"/>
         <stat cnst="2"/>
       </stats>
 

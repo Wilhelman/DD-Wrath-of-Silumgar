@@ -96,19 +96,35 @@ bool ctCombat::Start()
 	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(4));
 	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(5));
 	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(6));
-	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(4));
-	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(5));
-	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(6));
+	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(4));
+	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(5));
+	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(6));
 
-	for (int i = 0; i < App->items->tier_2_equips.size(); i++)
-	{
-		if (App->items->tier_2_equips.at(i).equip_type == CHEST) {
-			App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(i));
-			break;
-		}
-	}
 
 	/*---------------------------------------------------------- END LE PETIT TESTING ZONE -------------------------------------------------------------*/
+	for (int i = 0; i < App->items->elf_equip.size(); i++)
+	{
+		App->entities->GetElf()->AddEquipItem(App->items->elf_equip.at(i));
+	}
+	App->items->elf_equip.clear();
+
+	for (int i = 0; i < App->items->warrior_equip.size(); i++)
+	{
+		App->entities->GetWarrior()->AddEquipItem(App->items->warrior_equip.at(i));
+	}
+	App->items->warrior_equip.clear();
+
+	for (int i = 0; i < App->items->cleric_equip.size(); i++)
+	{
+		App->entities->GetCleric()->AddEquipItem(App->items->cleric_equip.at(i));
+	}
+	App->items->cleric_equip.clear();
+
+	for (int i = 0; i < App->items->dwarf_equip.size(); i++)
+	{
+		App->entities->GetDwarf()->AddEquipItem(App->items->dwarf_equip.at(i));
+	}
+	App->items->dwarf_equip.clear();
 
 
 	if (!App->main_menu->is_new_game) {
@@ -154,14 +170,6 @@ bool ctCombat::Start()
 
 		LOG("Error playing music in ctMainMenu Start");
 	}
-
-
-	//todo remove this: lets set usable items:
-
-	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(0));
-	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(1));
-	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(2));
-	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(3));
 
 	
 	return ret;
@@ -711,24 +719,36 @@ void ctCombat::LoadDataFromXML()
 			App->entities->GetCleric()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetCleric());
+
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+				LoadItem(item, App->entities->GetCleric());
 		}
 		else if (tmp == "warrior") {
 			App->entities->GetWarrior()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 			App->entities->GetWarrior()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetWarrior());
+
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+				LoadItem(item, App->entities->GetWarrior());
 		}
 		else if (tmp == "dwarf") {
 			App->entities->GetDwarf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 			App->entities->GetDwarf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetDwarf());
+
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+				LoadItem(item, App->entities->GetDwarf());
 		}
 		else if (tmp == "elf") {
 			App->entities->GetElf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 			App->entities->GetElf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetElf());
+
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+				LoadItem(item, App->entities->GetElf());
 		}
 
 	}
@@ -851,6 +871,40 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 	entity->AddAction(new_action);
 }
 
+void ctCombat::LoadItem(pugi::xml_node item, Entity * entity)
+{
+	std::string tmp = item.attribute("name").as_string();
+
+	if (tmp == "Life Potion") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Mega Life Potion") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Mana Potion") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Mega Mana Potion") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Poisoned Dagger") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Dragon Essence") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+	else if (tmp == "Fenix Tail") {
+		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
+			entity->AddUsableItem(App->items->usable_items.at(0));
+	}
+}
+
 void ctCombat::SaveDataToXML()
 {
 	pugi::xml_document	data_file;
@@ -864,18 +918,92 @@ void ctCombat::SaveDataToXML()
 		if (tmp == "cleric") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetCleric()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetCleric()->GetCurrentManaPoints());
+			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			{
+				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+
+				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+					std::string tmp2 = item.attribute("name").as_string();
+					if (tmp2 == tmp)
+						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+				}
+			}
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->helmet);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->chest);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->guantlet);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->boot);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->ring);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->accessory);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->shield);
+			App->items->cleric_equip.push_back(App->entities->GetCleric()->weapon);
 		}
 		else if (tmp == "warrior") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetWarrior()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetWarrior()->GetCurrentManaPoints());
+
+			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			{
+				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+
+					for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+						std::string tmp2 = item.attribute("name").as_string();
+						if (tmp2 == tmp)
+							item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+					}
+			}
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->helmet);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->chest);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->guantlet);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->boot);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->ring);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->accessory);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->shield);
+			App->items->warrior_equip.push_back(App->entities->GetWarrior()->weapon);
+			
 		}
 		else if (tmp == "dwarf") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetDwarf()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetDwarf()->GetCurrentManaPoints());
+			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			{
+				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+
+				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+					std::string tmp2 = item.attribute("name").as_string();
+					if (tmp2 == tmp)
+						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+				}
+			}
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->helmet);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->chest);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->guantlet);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->boot);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->ring);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->accessory);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->shield);
+			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->weapon);
 		}
 		else if (tmp == "elf") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetElf()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetElf()->GetCurrentManaPoints());
+			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			{
+				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+
+				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+					std::string tmp2 = item.attribute("name").as_string();
+					if (tmp2 == tmp)
+						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+				}
+			}
+			App->items->elf_equip.push_back(App->entities->GetElf()->helmet);
+			App->items->elf_equip.push_back(App->entities->GetElf()->chest);
+			App->items->elf_equip.push_back(App->entities->GetElf()->guantlet);
+			App->items->elf_equip.push_back(App->entities->GetElf()->boot);
+			App->items->elf_equip.push_back(App->entities->GetElf()->ring);
+			App->items->elf_equip.push_back(App->entities->GetElf()->accessory);
+			App->items->elf_equip.push_back(App->entities->GetElf()->shield);
+			App->items->elf_equip.push_back(App->entities->GetElf()->weapon);
 		}
 
 	}

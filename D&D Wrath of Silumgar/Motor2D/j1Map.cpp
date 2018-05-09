@@ -94,13 +94,13 @@ void j1Map::LayersSetUp()
 							(*layersToCheck)->layer_type = TIER_7;
 						else if ((*layersToCheck)->name == "tier_8")
 							(*layersToCheck)->layer_type = TIER_8;
-						else if ((*layersToCheck)->name == "tier_4")
+						else if ((*layersToCheck)->name == "branch_0")
 							(*layersToCheck)->layer_type = BRANCH_0;
-						else if ((*layersToCheck)->name == "tier_4")
+						else if ((*layersToCheck)->name == "branch_1")
 							(*layersToCheck)->layer_type = BRANCH_1;
-						else if ((*layersToCheck)->name == "tier_4")
+						else if ((*layersToCheck)->name == "branch_2")
 							(*layersToCheck)->layer_type = BRANCH_2;
-						else if ((*layersToCheck)->name == "tier_4")
+						else if ((*layersToCheck)->name == "branch_3")
 							(*layersToCheck)->layer_type = BRANCH_3;
 						else if ((*layersToCheck)->name == "heroes_position")
 							(*layersToCheck)->layer_type = HEROES_POSITION;

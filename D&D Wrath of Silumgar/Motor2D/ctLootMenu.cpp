@@ -204,7 +204,7 @@ bool LootMenu::Update(float dt)
 	if (dropped_usable_items.size() == 0 && dropped_items.size() == 0)
 	{
 		if(App->map->actual_tier== TierList::TIER_MAP_2 || App->map->actual_tier == TierList::TIER_MAP_4 || App->map->actual_tier == TierList::TIER_MAP_6 || App->map->actual_tier == TierList::TIER_MAP_8)
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0);//skill_tree
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->skill_tree, 1.0);//skill_tree
 		else
 			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0);
 	}

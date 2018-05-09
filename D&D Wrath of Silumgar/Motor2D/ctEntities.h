@@ -59,7 +59,7 @@ enum EntityType
 //todo read this from xml.
 enum StatisticsValues
 {
-	CONSTITUTION = 13,
+	CONSTITUTION = 26,
 	FOCUS = 13,
 	STRENGTH = 3,
 	INTELLIGENCE = 3,

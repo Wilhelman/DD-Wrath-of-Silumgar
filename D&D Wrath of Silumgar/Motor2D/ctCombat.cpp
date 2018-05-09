@@ -85,11 +85,37 @@ bool ctCombat::Start()
 	
 	SpawnEntities();
 
+	/*---------------------------------------------------------- LE PETIT TESTING ZONE -------------------------------------------------------------*/
+
+	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(4));
+	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(5));
+	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(6));
+	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(4));
+	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(5));
+	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(6));
+	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(4));
+	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(5));
+	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(6));
+	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(4));
+	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(5));
+	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(6));
+
+	for (int i = 0; i < App->items->tier_2_equips.size(); i++)
+	{
+		if (App->items->tier_2_equips.at(i).equip_type == CHEST) {
+			App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(i));
+			break;
+		}
+	}
+
+	/*---------------------------------------------------------- END LE PETIT TESTING ZONE -------------------------------------------------------------*/
+
+
 	if (!App->main_menu->is_new_game) {
 		//load from data.xml the current health, mana, items that have the heroes
 		LoadDataFromXML();
 	}
-	//LoadDataFromXML();
+	LoadDataFromXML();
 
 	SetDataToUI();
 
@@ -121,7 +147,7 @@ bool ctCombat::Start()
 	for (int i = 0; i < enemies.size(); i++) {
 		int pos_x = enemies.at(i)->position.x + (enemies.at(i)->animation->GetCurrentFrame().w / 2) - 25;
 		int pos_y = enemies.at(i)->position.y - enemies.at(i)->animation->GetCurrentFrame().h - 5;
-		UIBar* bar = (UIBar*)App->gui->AddUIBar(pos_x, pos_y, enemies.at(i)->base_stats.constitution * 13, ENEMYLIFEBAR, enemies.at(i), this, nullptr);
+		UIBar* bar = (UIBar*)App->gui->AddUIBar(pos_x, pos_y, enemies.at(i)->GetCurrentHealthPoints(), ENEMYLIFEBAR, enemies.at(i), this, nullptr);
 		enemies_bars.push_back(bar);
 	}
 	if (!App->audio->PlayMusic(App->audio->CombatBSO.c_str(), 1)) {
@@ -137,31 +163,7 @@ bool ctCombat::Start()
 	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(2));
 	//App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(3));
 
-	/*---------------------------------------------------------- LE PETIT TESTING ZONE -------------------------------------------------------------*/
-
-	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(4));
-	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(5));
-	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(6));
-	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(4));
-	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(5));
-	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(6));
-	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(4));
-	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(5));
-	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(6));
-	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(4));
-	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(5));
-	App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(6));
-
-	for (int i = 0; i < App->items->tier_2_equips.size(); i++)
-	{
-		if (App->items->tier_2_equips.at(i).equip_type == CHEST) {
-			App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(i));
-			break;
-		}
-	}
-
-	/*---------------------------------------------------------- END LE PETIT TESTING ZONE -------------------------------------------------------------*/
-
+	
 	return ret;
 }
 
@@ -313,7 +315,7 @@ bool ctCombat::Update(float dt)
 
 		//todo remove
 		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu, 1.0f);
 
 		// ZOOM
 
@@ -876,22 +878,20 @@ void ctCombat::SetDataToUI()
 	//test = (UIBar*)App->gui->AddUIBar(100,100,cleric->base_stats.base_constitution*13,LIFEBAR);
 
 	Entity* cleric = App->entities->GetCleric();
-	//cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, 0, cleric->base_stats.base_constitution * 13, LIFEBAR);
-	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, -1, cleric->base_stats.constitution * StatisticsValues::CONSTITUTION, LIFEBAR, cleric);
-	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->base_stats.focus * StatisticsValues::FOCUS, MANABAR, cleric);
+	cleric_HP_bar = (UIBar*)App->gui->AddUIBar(34, -1, cleric->max_health_points, LIFEBAR, cleric);
+	cleric_mana_bar = (UIBar*)App->gui->AddUIBar(34, 10, cleric->max_mana_points, MANABAR, cleric);
 
 	Entity* warrior = App->entities->GetWarrior();
-	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->base_stats.constitution * StatisticsValues::CONSTITUTION, LIFEBAR, warrior);
-	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(277, 10, warrior->base_stats.focus * StatisticsValues::FOCUS, MANABAR, warrior);
+	warrior_HP_bar = (UIBar*)App->gui->AddUIBar(277, -1, warrior->max_health_points, LIFEBAR, warrior);
+	warrior_mana_bar = (UIBar*)App->gui->AddUIBar(277, 10, warrior->max_mana_points, MANABAR, warrior);
 
 	Entity* elf = App->entities->GetElf();
-	int to_do = elf->base_stats.focus * StatisticsValues::FOCUS;
-	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->base_stats.constitution * StatisticsValues::CONSTITUTION, LIFEBAR, elf);
-	elf_mana_bar = (UIBar*)App->gui->AddUIBar(34, 304, to_do, MANABAR, elf);
+	elf_HP_bar = (UIBar*)App->gui->AddUIBar(34, 293, elf->max_health_points, LIFEBAR, elf);
+	elf_mana_bar = (UIBar*)App->gui->AddUIBar(34, 304, elf->max_mana_points, MANABAR, elf);
 
 	Entity* dwarf = App->entities->GetDwarf();
-	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->base_stats.constitution * StatisticsValues::CONSTITUTION, LIFEBAR, dwarf);
-	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->base_stats.focus * StatisticsValues::FOCUS, MANABAR, dwarf);
+	dwarf_HP_bar = (UIBar*)App->gui->AddUIBar(277, 293, dwarf->max_health_points, LIFEBAR, dwarf);
+	dwarf_mana_bar = (UIBar*)App->gui->AddUIBar(277, 304, dwarf->max_mana_points, MANABAR, dwarf);
 
 	//update bar
 	cleric_HP_bar->LowerBar((cleric_HP_bar->max_capacity - cleric->GetCurrentHealthPoints()) * -1);

@@ -194,7 +194,8 @@ int UIBar::CalculateBarWidth(int quantity) {
 	int new_quantity = (current_quantity + quantity);
 	current_quantity = new_quantity;
 
-	new_width = (new_quantity * max_width) / max_capacity;
+	if(max_capacity != 0)
+		new_width = (new_quantity * max_width) / max_capacity;
 
 	return new_width;
 }

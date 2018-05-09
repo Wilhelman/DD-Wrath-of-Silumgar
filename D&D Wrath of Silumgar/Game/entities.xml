@@ -294,7 +294,7 @@
     </heavyGoblin>
 
     <gnoll>
-      <statistics constitution ="9" focus="6" strength="10" agility="6"  dexterity ="6" intelligence="3" physicalDefense="7" magicalDefense="1" judgement="60"/>
+      <statistics constitution ="9" focus="6" strength="6" agility="6"  dexterity ="6" intelligence="3" physicalDefense="5" magicalDefense="1" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">

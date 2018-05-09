@@ -109,15 +109,17 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 	base_stats.luck = properties.attribute("luck").as_uint();
 	base_stats.judgement = properties.attribute("judgement").as_uint();
 
-	/* ADDING BASIC ACTION FOR ALL THE ENTITIES THIS SHOULD BE CHANGED */
-	default_attack.name = "Attack";
-	default_attack.type = DEFAULT_ATTACK;
-	default_attack.objective = ENEMIES;
-	default_attack.health_points_effect = -(int)base_stats.strength * StatisticsValues::STRENGTH;
+	
 
 	//todo calculate current_stats
 
 	CalculateAllStats(); //PreCombat!
+
+						 /* ADDING BASIC ACTION FOR ALL THE ENTITIES THIS SHOULD BE CHANGED */
+	default_attack.name = "Attack";
+	default_attack.type = DEFAULT_ATTACK;
+	default_attack.objective = ENEMIES;
+	default_attack.health_points_effect = -3;
 	
 
 	return ret;
@@ -255,23 +257,26 @@ bool Entity::IsBleeding() const
 
 int Entity::GetCurrentHealthPoints()
 {
-	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
 
-	//todo add the debuffs/buffs!
-
-	//
 	for (int i = 0; i < this->altered_stats.size(); i++)
 	{
 		if (this->altered_stats.at(i).stat_effect_constitution != 0) {
 			switch (this->altered_stats.at(i).stat_effect_constitution)
 			{
+			case 0:
+				return current_health_points;
+				break;
 			case 1:
+				return (int)((0.25 * current_health_points) + current_health_points);
 				break;
 			case 2:
+				return (int)((0.50 * current_health_points) + current_health_points);
 				break;
 			case -1:
+				return (int)((0.25 * current_health_points) - current_health_points);
 				break;
 			case -2:
+				return (int)((0.50 * current_health_points) - current_health_points);
 				break;
 			default:
 				break;
@@ -284,12 +289,62 @@ int Entity::GetCurrentHealthPoints()
 
 int Entity::GetCurrentManaPoints()
 {
-	//todo calculate from items buffs or debuffs. For now only read the stat and the multiper
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).stat_effect_focus != 0) {
+			switch (this->altered_stats.at(i).stat_effect_focus)
+			{
+			case 0:
+				return current_mana_points;
+				break;
+			case 1:
+				return (int)((0.25 * current_mana_points) + current_mana_points);
+				break;
+			case 2:
+				return (int)((0.50 * current_mana_points) + current_mana_points);
+				break;
+			case -1:
+				return (int)((0.25 * current_mana_points) - current_mana_points);
+				break;
+			case -2:
+				return (int)((0.50 * current_mana_points) - current_mana_points);
+				break;
+			default:
+				break;
+			}
+		}
+	}
 	return current_mana_points;
 }
 
 int Entity::GetCurrentStrengthPoints()
 {
+	for (int i = 0; i < this->altered_stats.size(); i++)
+	{
+		if (this->altered_stats.at(i).stat_effect_strength != 0) {
+			switch (this->altered_stats.at(i).stat_effect_strength)
+			{
+			case 0:
+				return current_strength;
+				break;
+			case 1:
+				return (int)((0.25 * current_strength) + current_strength);
+				break;
+			case 2:
+				return (int)((0.50 * current_strength) + current_strength);
+				break;
+			case -1:
+				return (int)((0.25 * current_strength) - current_strength);
+				break;
+			case -2:
+				return (int)((0.50 * current_strength) - current_strength);
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
 	return current_strength;
 }
 
@@ -335,8 +390,9 @@ void Entity::SetCurrentHealthPoints(int new_health_points)
 {
 	if (new_health_points >= max_health_points)
 		current_health_points = max_health_points;
-	else if (new_health_points <= 0)
+	else if (new_health_points <= 0) {
 		current_health_points = 0;
+	}
 	else
 		current_health_points = new_health_points;
 }

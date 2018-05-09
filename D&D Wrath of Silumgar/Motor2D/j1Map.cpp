@@ -86,6 +86,14 @@ void j1Map::LayersSetUp()
 							(*layersToCheck)->layer_type = TIER_3;
 						else if ((*layersToCheck)->name == "tier_4")
 							(*layersToCheck)->layer_type = TIER_4;
+						else if ((*layersToCheck)->name == "tier_5")
+							(*layersToCheck)->layer_type = TIER_5;
+						else if ((*layersToCheck)->name == "tier_6")
+							(*layersToCheck)->layer_type = TIER_6;
+						else if ((*layersToCheck)->name == "tier_7")
+							(*layersToCheck)->layer_type = TIER_7;
+						else if ((*layersToCheck)->name == "tier_8")
+							(*layersToCheck)->layer_type = TIER_8;
 						else if ((*layersToCheck)->name == "tier_4")
 							(*layersToCheck)->layer_type = BRANCH_0;
 						else if ((*layersToCheck)->name == "tier_4")
@@ -131,6 +139,14 @@ void j1Map::setAllLogicForMap()
 							tier_3_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 						else if ((*layersBlit)->layer_type == TIER_4 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
 							tier_4_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == TIER_5 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							tier_5_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == TIER_6 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							tier_6_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == TIER_7 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							tier_7_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
+						else if ((*layersBlit)->layer_type == TIER_8 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
+							tier_8_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 						else if ((*layersBlit)->layer_type == BRANCH_0 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)
 							branch_0_coords.push_back(iPoint(MapToWorld(i, j).x, MapToWorld(i, j).y));
 						else if ((*layersBlit)->layer_type == BRANCH_1 && (*tilesetsBlit)->tileset_type == RED_GREEN_TILESET)

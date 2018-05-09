@@ -69,6 +69,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(settings);
 	AddModule(combat);
 	AddModule(loot_menu);
+	AddModule(skill_tree);
 	AddModule(entities);
 	AddModule(items);
 	AddModule(language);
@@ -78,7 +79,6 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(psystem);
 	AddModule(fadeToBlack);
 	
-	//AddModule(skill_tree);
 
 	// render last to swap buffer
 	AddModule(render);

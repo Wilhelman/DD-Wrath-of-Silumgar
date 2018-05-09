@@ -170,7 +170,28 @@ bool ctWorldMap::Start()
 			decision = (UIDecision*)App->gui->AddUIDecision(50, 0, DECISION, arrow, current_map_element->decision, *final_map_elements.at(1), *final_map_elements.at(2), this);
 			break;
 		case TIER_MAP_3:
-			App->map->actual_tier = TierList::TIER_MAP_3;
+			if(avatar_position.y > 190)
+				decision = (UIDecision*)App->gui->AddUIDecision(50, 0, DECISION, arrow, current_map_element->decision, *final_map_elements.at(4), *final_map_elements.at(5), this);
+			else
+				decision = (UIDecision*)App->gui->AddUIDecision(50, 0, DECISION, arrow, current_map_element->decision, *final_map_elements.at(3), *final_map_elements.at(4), this);
+			break;
+		case TIER_MAP_4:
+			decision = (UIDecision*)App->gui->AddUIDecision(50, 0, DECISION, arrow, current_map_element->decision, *final_map_elements.at(6), *final_map_elements.at(7), this);
+			break;
+		case TIER_MAP_5:
+			decision = (UIDecision*)App->gui->AddUIDecision(50, 0, DECISION, arrow, current_map_element->decision, *final_map_elements.at(8), *final_map_elements.at(8), this);
+			break;
+		case TIER_MAP_6:
+			decision = (UIDecision*)App->gui->AddUIDecision(50, 0, DECISION, arrow, current_map_element->decision, *final_map_elements.at(9), *final_map_elements.at(10), this);
+			break;
+		case TIER_MAP_7:
+			if (avatar_position.y > 190)
+				decision = (UIDecision*)App->gui->AddUIDecision(50, 0, DECISION, arrow, current_map_element->decision, *final_map_elements.at(12), *final_map_elements.at(13), this);
+			else
+				decision = (UIDecision*)App->gui->AddUIDecision(50, 0, DECISION, arrow, current_map_element->decision, *final_map_elements.at(11), *final_map_elements.at(12), this);
+			break;
+		case TIER_MAP_8:
+			decision = (UIDecision*)App->gui->AddUIDecision(50, 0, DECISION, arrow, current_map_element->decision, *final_map_elements.at(14), *final_map_elements.at(14), this);
 			break;
 		default:
 			break;
@@ -371,6 +392,11 @@ void ctWorldMap::GenerateNewRandomlyMap()
 	vector<WorldMapElement*> tier_1_vec;
 	vector<WorldMapElement*> tier_2_vec;
 	vector<WorldMapElement*> tier_3_vec;
+	vector<WorldMapElement*> tier_4_vec;
+	vector<WorldMapElement*> tier_5_vec;
+	vector<WorldMapElement*> tier_6_vec;
+	vector<WorldMapElement*> tier_7_vec;
+	vector<WorldMapElement*> tier_8_vec;
 
 	for (int k = 0; k < this->all_map_elements.size(); k++) {
 		switch (this->all_map_elements.at(k)->tier)
@@ -383,6 +409,21 @@ void ctWorldMap::GenerateNewRandomlyMap()
 			break;
 		case 3:
 			tier_3_vec.push_back(this->all_map_elements.at(k));
+			break;
+		case 4:
+			tier_4_vec.push_back(this->all_map_elements.at(k));
+			break;
+		case 5:
+			tier_5_vec.push_back(this->all_map_elements.at(k));
+			break;
+		case 6:
+			tier_6_vec.push_back(this->all_map_elements.at(k));
+			break;
+		case 7:
+			tier_7_vec.push_back(this->all_map_elements.at(k));
+			break;
+		case 8:
+			tier_8_vec.push_back(this->all_map_elements.at(k));
 			break;
 		default:
 			break;
@@ -434,6 +475,111 @@ void ctWorldMap::GenerateNewRandomlyMap()
 			tier_3_vec.at(last_random)->coords_in_map = App->map->tier_3_coords.at(i);
 
 			final_map_elements.push_back(tier_3_vec.at(last_random));
+		}
+	}
+
+	//TIER 4 randomize
+	if (tier_4_vec.size() > 0) {
+		random_number = -1;
+		last_random = -1;
+		for (int i = 0; i < App->map->tier_4_coords.size(); i++) {
+			/* generate secret number: */
+			while (random_number == last_random) {
+
+				random_number = rand() % tier_4_vec.size();
+				while (tier_4_vec.at(random_number)->coords_in_map.y != 0 && tier_4_vec.at(random_number)->coords_in_map.x != 0)
+					random_number = rand() % tier_4_vec.size();
+
+			}
+			last_random = random_number;
+
+			tier_4_vec.at(last_random)->coords_in_map = App->map->tier_4_coords.at(i);
+
+			final_map_elements.push_back(tier_4_vec.at(last_random));
+		}
+	}
+
+	//TIER 5 randomize
+	if (tier_5_vec.size() > 0) {
+		random_number = -1;
+		last_random = -1;
+		for (int i = 0; i < App->map->tier_5_coords.size(); i++) {
+			/* generate secret number: */
+			while (random_number == last_random) {
+
+				random_number = rand() % tier_5_vec.size();
+				while (tier_5_vec.at(random_number)->coords_in_map.y != 0 && tier_5_vec.at(random_number)->coords_in_map.x != 0)
+					random_number = rand() % tier_5_vec.size();
+
+			}
+			last_random = random_number;
+
+			tier_5_vec.at(last_random)->coords_in_map = App->map->tier_5_coords.at(i);
+
+			final_map_elements.push_back(tier_5_vec.at(last_random));
+		}
+	}
+
+	//TIER 6 randomize
+	if (tier_6_vec.size() > 0) {
+		random_number = -1;
+		last_random = -1;
+		for (int i = 0; i < App->map->tier_6_coords.size(); i++) {
+			/* generate secret number: */
+			while (random_number == last_random) {
+
+				random_number = rand() % tier_6_vec.size();
+				while (tier_6_vec.at(random_number)->coords_in_map.y != 0 && tier_6_vec.at(random_number)->coords_in_map.x != 0)
+					random_number = rand() % tier_6_vec.size();
+
+			}
+			last_random = random_number;
+
+			tier_6_vec.at(last_random)->coords_in_map = App->map->tier_6_coords.at(i);
+
+			final_map_elements.push_back(tier_6_vec.at(last_random));
+		}
+	}
+
+	//TIER 7 randomize
+	if (tier_7_vec.size() > 0) {
+		random_number = -1;
+		last_random = -1;
+		for (int i = 0; i < App->map->tier_7_coords.size(); i++) {
+			/* generate secret number: */
+			while (random_number == last_random) {
+
+				random_number = rand() % tier_7_vec.size();
+				while (tier_7_vec.at(random_number)->coords_in_map.y != 0 && tier_7_vec.at(random_number)->coords_in_map.x != 0)
+					random_number = rand() % tier_7_vec.size();
+
+			}
+			last_random = random_number;
+
+			tier_7_vec.at(last_random)->coords_in_map = App->map->tier_7_coords.at(i);
+
+			final_map_elements.push_back(tier_7_vec.at(last_random));
+		}
+	}
+
+	//TIER 7 randomize
+	if (tier_8_vec.size() > 0) {
+		random_number = -1;
+		last_random = -1;
+		for (int i = 0; i < App->map->tier_8_coords.size(); i++) {
+			/* generate secret number: */
+			while (random_number == last_random) {
+
+				random_number = rand() % tier_8_vec.size();
+				while (tier_8_vec.at(random_number)->coords_in_map.y != 0 && tier_8_vec.at(random_number)->coords_in_map.x != 0)
+					random_number = rand() % tier_8_vec.size();
+
+			}
+			last_random = random_number;
+
+			tier_8_vec.at(last_random)->coords_in_map = App->map->tier_8_coords.at(i);
+
+			final_map_elements.push_back(tier_8_vec.at(last_random));
 		}
 	}
 

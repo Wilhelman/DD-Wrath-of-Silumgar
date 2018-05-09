@@ -437,6 +437,18 @@ bool ctCombat::CleanUp()
 	App->task_manager->CleanUp();
 	if (App->map->actual_tier == TIER_MAP_1)
 		App->map->actual_tier = TIER_MAP_2;
+	else if (App->map->actual_tier == TIER_MAP_2)
+		App->map->actual_tier = TIER_MAP_3;
+	else if (App->map->actual_tier == TIER_MAP_3)
+		App->map->actual_tier = TIER_MAP_4;
+	else if (App->map->actual_tier == TIER_MAP_4)
+		App->map->actual_tier = TIER_MAP_5;
+	else if (App->map->actual_tier == TIER_MAP_5)
+		App->map->actual_tier = TIER_MAP_6;
+	else if (App->map->actual_tier == TIER_MAP_6)
+		App->map->actual_tier = TIER_MAP_7;
+	else if (App->map->actual_tier == TIER_MAP_7)
+		App->map->actual_tier = TIER_MAP_8;
 	
 	return true;
 }
@@ -728,6 +740,7 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 	std::string tmp = skill_node.attribute("name").as_string();
 	new_action.name = tmp;
 
+	new_action.owned = skill_node.attribute("owned").as_int();
 	
 	if (entity->type == WARRIOR)
 	{

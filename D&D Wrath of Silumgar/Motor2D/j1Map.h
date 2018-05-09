@@ -18,6 +18,12 @@ enum TierList
 	TIER_MAP_1,
 	TIER_MAP_2,
 	TIER_MAP_3,
+	TIER_MAP_4,
+	TIER_MAP_5,
+	TIER_MAP_6,
+	TIER_MAP_7,
+	TIER_MAP_8,
+	NO_TIER_MAP,
 };
 
 
@@ -30,6 +36,10 @@ enum LayerTypes
 	TIER_2,
 	TIER_3,
 	TIER_4,
+	TIER_5,
+	TIER_6,
+	TIER_7,
+	TIER_8,
 	BRANCH_0,
 	BRANCH_1,
 	BRANCH_2,
@@ -193,6 +203,10 @@ public:
 	std::vector<iPoint> tier_2_coords;
 	std::vector<iPoint> tier_3_coords;
 	std::vector<iPoint> tier_4_coords;
+	std::vector<iPoint> tier_5_coords;
+	std::vector<iPoint> tier_6_coords;
+	std::vector<iPoint> tier_7_coords;
+	std::vector<iPoint> tier_8_coords;
 
 	std::vector<iPoint> branch_0_coords;
 	std::vector<iPoint> branch_1_coords;

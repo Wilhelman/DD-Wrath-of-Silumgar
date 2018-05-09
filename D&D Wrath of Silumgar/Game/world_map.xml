@@ -58,11 +58,11 @@
 
       <map_element>
         <tier type="3" />
-        <entity name="GNOLL" />
+        <entity name="TRITON" />
         <scene name="forest.tmx" />
         <icon_coords x="160" y="480" width="32" height="32" />
-        <decision name ="mimi"/>
-        <option name = "mimimi"/>
+        <decision name ="1 triton"/>
+        <option name = "1 triton"/>
       </map_element>
 
       <map_element>
@@ -71,8 +71,8 @@
         <entity name="GNOLL" />
         <scene name="cave_03.tmx" />
         <icon_coords x="192" y="480" width="32" height="32" />
-        <decision name ="mimi"/>
-        <option name = "mimimi"/>
+        <decision name ="2 gnoll"/>
+        <option name = "2 gnoll"/>
       </map_element>
 
       <map_element>
@@ -81,8 +81,8 @@
         <entity name="GNOLL" />
         <scene name="cave_03.tmx" />
         <icon_coords x="256" y="480" width="32" height="32" />
-        <decision name ="mimi"/>
-        <option name = "mimimi"/>
+        <decision name ="1 kobold 1 gnoll"/>
+        <option name = "1 kobol 1 gnoll"/>
       </map_element>
 
       <map_element>
@@ -92,8 +92,8 @@
         <entity name="GNOLL" />
         <scene name="cave_03.tmx" />
         <icon_coords x="288" y="480" width="32" height="32" />
-        <decision name ="mimi"/>
-        <option name = "mimimi"/>
+        <decision name ="2 kobold 1 gnoll"/>
+        <option name = "2 kobold 1 gnoll"/>
       </map_element>
 
       <map_element>
@@ -101,8 +101,8 @@
         <entity name="GNOLL" />
         <scene name="forest.tmx" />
         <icon_coords x="0" y="512" width="32" height="32" />
-        <decision name ="mimi"/>
-        <option name = "mimimi"/>
+        <decision name ="1 gnoll"/>
+        <option name = "1 gnoll"/>
       </map_element>
 
       <map_element>
@@ -111,8 +111,94 @@
         <entity name="GNOLL" />
         <scene name="cave_03.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
+        <decision name ="2 gnoll"/>
+        <option name = "2 gnoll"/>
+      </map_element>
+	  
+	   <map_element>
+        <tier type="4" />
+        <entity name="GNOLL" />
+        <scene name="forest.tmx" />
+        <icon_coords x="224" y="480" width="32" height="32" />
+        <decision name ="decision 1 gnoll"/>
+        <option name = "pues te spawneo 1 gnoll"/>
+      </map_element>
+      
+      <map_element>
+        <tier type="4" />
+        <entity name="GNOLL" />
+        <entity name="GNOLL" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="64" y="512" width="32" height="32" />
+        <decision name ="decision 2 gnoll"/>
+        <option name = "pues te spawneo 2 gnoll"/>
+      </map_element>
+	  
+	  <map_element>
+        <tier type="5" />
+        <entity name="DARK_WARRIOR" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="64" y="512" width="32" height="32" />
+        <decision name ="dark warrior"/>
+        <option name = "dark warrior"/>
+      </map_element>
+	  
+	  <map_element>
+        <tier type="6" />
+        <entity name="TRITON" />
+        <scene name="forest.tmx" />
+        <icon_coords x="224" y="480" width="32" height="32" />
+        <decision name ="1 TRITON"/>
+        <option name = "1 TRITON"/>
+      </map_element>
+      
+      <map_element>
+        <tier type="6" />
+        <entity name="TRITON" />
+        <entity name="TRITON" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="64" y="512" width="32" height="32" />
+        <decision name ="2 TRITON"/>
+        <option name = "2 TRITON"/>
+      </map_element>
+	  
+	  <map_element>
+        <tier type="7" />
+        <entity name="KOBOLD" />
+        <scene name="forest.tmx" />
+        <icon_coords x="224" y="480" width="32" height="32" />
+        <decision name ="1 KOBOLD"/>
+        <option name = "1 KOBOLD"/>
+      </map_element>
+      
+      <map_element>
+        <tier type="7" />
+        <entity name="KOBOLD" />
+        <entity name="KOBOLD" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="64" y="512" width="32" height="32" />
+        <decision name ="2 KOBOLD"/>
+        <option name = "2 KOBOLD"/>
+      </map_element>
+	  
+	  <map_element>
+        <tier type="7" />
+        <entity name="KOBOLD" />
+        <entity name="KOBOLD" />
+		<entity name="KOBOLD" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="64" y="512" width="32" height="32" />
+        <decision name ="3 KOBOLD"/>
+        <option name = "3 KOBOLD"/>
+      </map_element>
+	  
+	  <map_element>
+        <tier type="8" />
+        <entity name="DARK_WARRIOR" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="64" y="512" width="32" height="32" />
         <decision name ="mimi"/>
-        <option name = "mimimi"/>
+        <option name = "ahora dark warrior pero deberia ser final boss"/>
       </map_element>
      <!-- <icon_coords x="32" y="480" width="32" height="32" /> Cave interior 
       <icon_coords x="64" y="480" width="32" height="32" />     River

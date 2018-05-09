@@ -138,6 +138,8 @@ struct Action {
 	uint judgement_variation = 0u;
 
 	bool have_to_move = false;
+
+	bool owned = false;
 };
 
 

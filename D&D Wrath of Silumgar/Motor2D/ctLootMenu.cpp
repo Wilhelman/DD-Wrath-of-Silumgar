@@ -20,6 +20,8 @@
 #include "ctCombat.h"
 #include "ctWorldMap.h"
 #include "ctLootMenu.h"
+#include "j1Map.h"
+#include "ctSkillTree.h"
 
 LootMenu::LootMenu() 
 {
@@ -137,7 +139,7 @@ bool LootMenu::Update(float dt)
 		App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->menu_animation;
 	if (App->entities->GetElf()->animation != &App->entities->GetElf()->menu_animation)
 		App->entities->GetElf()->animation = &App->entities->GetElf()->menu_animation;
-
+ 
 
 	if (dropped_items.size() != 0)
 	{
@@ -163,7 +165,10 @@ bool LootMenu::Update(float dt)
 	}
 	else
 	{
-		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0);
+		if(App->map->actual_tier== TierList::TIER_MAP_2 || App->map->actual_tier == TierList::TIER_MAP_4 || App->map->actual_tier == TierList::TIER_MAP_6 || App->map->actual_tier == TierList::TIER_MAP_8)
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0);//skill_tree
+		else
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0);
 	}
 	return true;
 }

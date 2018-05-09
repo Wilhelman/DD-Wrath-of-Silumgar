@@ -102,6 +102,14 @@ public:
 	std::vector<Item> tier_2_equips;
 	std::vector<Item> tier_3_equips;
 
+
+	//TODO SAVE IT IN THE XML SORRY FOR THIS:
+
+	std::vector<Item> warrior_equip;
+	std::vector<Item> elf_equip;
+	std::vector<Item> cleric_equip;
+	std::vector<Item> dwarf_equip;
+
 private:
 
 	

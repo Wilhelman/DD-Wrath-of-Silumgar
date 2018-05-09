@@ -3,7 +3,7 @@
 	<world_map current_location="here_the_coords_maybe" />
 	<heroes>
 		<heroe name="cleric">
-			<values health_points="156" mana_points="65" />
+			<values health_points="111" mana_points="65" />
 			<skills>
 				<skill name="Heal" description="Heals one ally based on his intelligence" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" have_to_move="0" owned="0" />
 				<skill name="Light Strike" description="Light Strike" mana_points_effect_to_himself="40" health_points_effect="-28" objective="1" have_to_move="1" owned="0" />
@@ -16,24 +16,17 @@
 				<skill name="Clarity" description="Clarity" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" have_to_move="0" owned="0" />
 			</skills>
 			<items>
-				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0">
-				</item>
-				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0">
-				</item>
-				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0">
-				</item>
-				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0">
-				</item>
-				<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER" quantity="0">
-				</item>
-				<item name="Dragon Essence" objective="1" use="BURN_TARGET" quantity="0">
-				</item>
-				<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY" quantity="0">
-				</item>
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
+				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
+				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
+				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0" />
+				<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER" quantity="0" />
+				<item name="Dragon Essence" objective="1" use="BURN_TARGET" quantity="0" />
+				<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY" quantity="0" />
 			</items>
 		</heroe>
 		<heroe name="warrior">
-			<values health_points="208" mana_points="52" />
+			<values health_points="162" mana_points="52" />
 			<skills>
 				<skill name="Kick" description="Physical attack that has a chance (80%) to stun the enemy" mana_points_effect_to_himself="1" health_points_effect="-16" stun_chance="80" objective="1" have_to_move="1" owned="0" />
 				<skill name="Guard" description="Guard" mana_points_effect_to_himself="1" health_points_effect="16" physical_defense_variation="5" magical_defense_variation="5" objective="1" have_to_move="1" owned="0" />
@@ -46,24 +39,17 @@
 				<skill name="Whirlwind" description="Whirlwind" mana_points_effect_to_himself="1" health_points_effect="80" objective="1" have_to_move="1" owned="0" />
 			</skills>
 			<items>
-				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="2">
-				</item>
-				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0">
-				</item>
-				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0">
-				</item>
-				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0">
-				</item>
-				<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER" quantity="0">
-				</item>
-				<item name="Dragon Essence" objective="1" use="BURN_TARGET" quantity="0">
-				</item>
-				<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY" quantity="0">
-				</item>
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="1" />
+				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
+				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
+				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0" />
+				<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER" quantity="0" />
+				<item name="Dragon Essence" objective="1" use="BURN_TARGET" quantity="0" />
+				<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY" quantity="0" />
 			</items>
 		</heroe>
 		<heroe name="dwarf">
-			<values health_points="182" mana_points="52" />
+			<values health_points="132" mana_points="52" />
 			<skills>
 				<skill name="H. Axe" description="Physical attack that deals extra damage to stunned enemies" mana_points_effect_to_himself="31" health_points_effect="-23" objective="1" have_to_move="1" owned="1" />
 				<skill name="Morale Boost" description="Morale Boost" mana_points_effect_to_himself="1" strength_variation="3" intelligence_variation="3" objective="0" have_to_move="0" owned="1" />
@@ -80,7 +66,7 @@
 			</items>
 		</heroe>
 		<heroe name="elf">
-			<values health_points="132" mana_points="91" />
+			<values health_points="0" mana_points="91" />
 			<skills>
 				<skill name="Blizzard" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="1" health_points_effect="-40" objective="1" have_to_move="0" owned="0" />
 				<skill name="Seed Of Life" description="Seed Of Life" mana_points_effect_to_himself="1" health_points_effect="-40" objective="1" have_to_move="0" owned="0" />

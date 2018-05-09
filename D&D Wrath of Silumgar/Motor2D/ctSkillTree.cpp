@@ -275,25 +275,25 @@ void ctSkillTree::DrawAbilities(std::vector<Ability*> &abilities)
 	std::vector<Ability*>::const_iterator ability = abilities.begin();
 	while (ability != abilities.end()) {
 		if ((*ability)->branch == 0) {
-			App->render->UIBlit(spritesheet_abilities, App->map->branch_0_coords.at((*ability)->tier - 1).x, App->map->branch_0_coords.at((*ability)->tier - 1).y, &(*ability)->icon_rect);
+			App->render->Blit(spritesheet_abilities, App->map->branch_0_coords.at((*ability)->tier - 1).x, App->map->branch_0_coords.at((*ability)->tier - 1).y, &(*ability)->icon_rect);
 			if ((*ability)->active == 0) {
 				App->render->DrawQuad({ App->map->branch_0_coords.at((*ability)->tier - 1).x, App->map->branch_0_coords.at((*ability)->tier - 1).y ,40,40}, 0, 0, 0, 100, true, true);
 			}
 		}
 		else if ((*ability)->branch == 1) {
-			App->render->UIBlit(spritesheet_abilities, App->map->branch_1_coords.at((*ability)->tier - 2).x, App->map->branch_1_coords.at((*ability)->tier - 2).y, &(*ability)->icon_rect);
+			App->render->Blit(spritesheet_abilities, App->map->branch_1_coords.at((*ability)->tier - 2).x, App->map->branch_1_coords.at((*ability)->tier - 2).y, &(*ability)->icon_rect);
 			if ((*ability)->active == 0) {
 				App->render->DrawQuad({ App->map->branch_1_coords.at((*ability)->tier - 2).x, App->map->branch_1_coords.at((*ability)->tier - 2).y ,40,40 }, 0, 0, 0, 100, true, true);
 			}
 		}
 		else if ((*ability)->branch == 2) {
-			App->render->UIBlit(spritesheet_abilities, App->map->branch_2_coords.at((*ability)->tier - 2).x, App->map->branch_2_coords.at((*ability)->tier - 2).y, &(*ability)->icon_rect);
+			App->render->Blit(spritesheet_abilities, App->map->branch_2_coords.at((*ability)->tier - 2).x, App->map->branch_2_coords.at((*ability)->tier - 2).y, &(*ability)->icon_rect);
 			if ((*ability)->active == 0) {
 				App->render->DrawQuad({ App->map->branch_2_coords.at((*ability)->tier - 2).x, App->map->branch_2_coords.at((*ability)->tier - 2).y ,40,40 }, 0, 0, 0, 100, true, true);
 			}
 		}
 		else if ((*ability)->branch == 3) {
-			App->render->UIBlit(spritesheet_abilities, App->map->branch_3_coords.at((*ability)->tier - 2).x, App->map->branch_3_coords.at((*ability)->tier - 2).y, &(*ability)->icon_rect);
+			App->render->Blit(spritesheet_abilities, App->map->branch_3_coords.at((*ability)->tier - 2).x, App->map->branch_3_coords.at((*ability)->tier - 2).y, &(*ability)->icon_rect);
 			if ((*ability)->active == 0) {
 				App->render->DrawQuad({ App->map->branch_3_coords.at((*ability)->tier - 2).x, App->map->branch_3_coords.at((*ability)->tier - 2).y ,40,40 }, 0, 0, 0, 100, true, true);
 			}
@@ -530,7 +530,7 @@ void ctSkillTree::PrintAbilityDescription(){
 	if (description != nullptr) {
 		App->gui->DeleteUIElement(*description);
 	}
-	description = App->gui->AddUITextBox(131, 293, 8, 222, (*selected_ability)->description, {0,0,0,255});
+	description = App->gui->AddUITextBox(131, 293, 15, 400, (*selected_ability)->description, {0,0,0,255});
 }
 
 void ctSkillTree::ChangeTitle() {
@@ -538,16 +538,16 @@ void ctSkillTree::ChangeTitle() {
 		App->gui->DeleteUIElement(*title);
 	}
 	if (current_hero == 1) {
-		title = App->gui->AddUITextBox(210, title_pos.y, 25, 200, "CLERIC", { 0,0,0,255 });
+		title = App->gui->AddUITextBox(210, title_pos.y, 50, 200, "CLERIC", { 0,0,0,255 });
 	}
 	else if (current_hero == 2) {
-		title = App->gui->AddUITextBox(200, title_pos.y, 25, 200, "WARRIOR", { 0,0,0,255 });
+		title = App->gui->AddUITextBox(200, title_pos.y, 50, 200, "WARRIOR", { 0,0,0,255 });
 	}
 	else if (current_hero == 3) {
-		title = App->gui->AddUITextBox(210, title_pos.y, 25, 200, "DWARF", { 0,0,0,255 });
+		title = App->gui->AddUITextBox(210, title_pos.y, 50, 200, "DWARF", { 0,0,0,255 });
 	}
 	else if (current_hero == 4) {
-		title = App->gui->AddUITextBox(220, title_pos.y, 25, 200, "ELF", { 0,0,0,255 });
+		title = App->gui->AddUITextBox(220, title_pos.y, 50, 200, "ELF", { 0,0,0,255 });
 	}
 }
 

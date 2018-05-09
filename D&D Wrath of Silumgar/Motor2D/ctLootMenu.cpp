@@ -93,6 +93,11 @@ bool LootMenu::Start()
 	dropped_items.push_back(&App->items->tier_3_equips.at(3));
 	dropped_items.push_back(&App->items->tier_3_equips.at(2));
 	dropped_items.push_back(&App->items->tier_3_equips.at(1));
+
+	dropped_usable_items.push_back(&App->items->usable_items.at(1));
+	dropped_usable_items.push_back(&App->items->usable_items.at(2));
+	dropped_usable_items.push_back(&App->items->usable_items.at(2));
+	dropped_usable_items.push_back(&App->items->usable_items.at(3));
 	//-------------------------------
 
 	to_cleric_label = new UITextBox(430, 200, TEXTBOX, "To Cleric", { 255,255,255,255 }, 17,100);
@@ -131,6 +136,8 @@ bool LootMenu::Start()
 
 bool LootMenu::Update(float dt) 
 {
+	arrow->Update();
+
 	if(App->entities->GetCleric()->animation != &App->entities->GetCleric()->menu_animation)
 		App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
 	if (App->entities->GetWarrior()->animation != &App->entities->GetWarrior()->menu_animation)
@@ -141,29 +148,60 @@ bool LootMenu::Update(float dt)
 		App->entities->GetElf()->animation = &App->entities->GetElf()->menu_animation;
  
 
-	if (dropped_items.size() != 0)
-	{
-		arrow->Update();
-
-		//Go down
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			App->audio->PlayFx(App->audio->mm_movement_fx);
-
-			NavigateDown(main_labels);
+	//Go down
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		App->audio->PlayFx(App->audio->mm_movement_fx);
+		NavigateDown(main_labels);
+		if (dropped_items.size() != 0)
+		{
 			SetComparation();
-		}
-		//Go up
-		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			App->audio->PlayFx(App->audio->mm_movement_fx);
-			NavigateUp(main_labels);
-			SetComparation();
-		}
-		//ExecuteCommand
-		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			ExecuteComand(main_labels);
 		}
 	}
-	else
+	//Go up
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		App->audio->PlayFx(App->audio->mm_movement_fx);
+		NavigateUp(main_labels);
+
+		if (dropped_items.size() != 0)
+		{
+			SetComparation();
+		}
+	}
+
+	//ExecuteCommand
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		ExecuteComand(main_labels);
+	}
+
+	
+
+	
+	if (dropped_items.size() == 0 && dropped_usable_items.size() != 0)
+	{
+		if (information_dropped_items.size() != 0)
+		{
+			for (std::vector<UIElement*>::iterator it = information_dropped_items.begin(); it != information_dropped_items.end(); it++)
+			{
+				(*it)->~UIElement();
+			}
+			information_dropped_items.clear();
+		}
+
+		if (preview_stats_items.size() != 0)
+		{
+			for (std::vector<UIElement*>::iterator it = preview_stats_items.begin(); it != preview_stats_items.end(); it++)
+			{
+				(*it)->~UIElement();
+			}
+
+			preview_stats_items.clear();
+		}
+
+		SetInformationUsableItems();
+	
+	}
+
+	if (dropped_usable_items.size() == 0 && dropped_items.size() == 0)
 	{
 		if(App->map->actual_tier== TierList::TIER_MAP_2 || App->map->actual_tier == TierList::TIER_MAP_4 || App->map->actual_tier == TierList::TIER_MAP_6 || App->map->actual_tier == TierList::TIER_MAP_8)
 			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0);//skill_tree
@@ -265,6 +303,16 @@ bool LootMenu::CleanUp()
 		}
 
 		information_inventory_items.clear();
+	}
+
+	if (information_usable_items.size() != 0)
+	{
+		for (std::vector<UIElement*>::iterator it = information_usable_items.begin(); it != information_usable_items.end(); it++)
+		{
+			(*it)->~UIElement();
+		}
+
+		information_usable_items.clear();
 	}
 
 	if(to_cleric_label != nullptr)
@@ -520,6 +568,16 @@ void LootMenu::DrawItems() {
 			App->render->UIBlit(equip_texture, it->screen_position.x, it->screen_position.y, &it->current_rect);
 	}
 
+	for (int i = 0; i < information_usable_items.size(); i++)
+	{
+		UIElement* it = information_usable_items[i];
+
+		if (it->type == TEXTBOX)
+			information_usable_items[i]->Draw(information_usable_items[i]->texture);
+		else
+			App->render->UIBlit(equip_texture, it->screen_position.x, it->screen_position.y, &it->current_rect);
+	}
+
 }
 
 void LootMenu::LoadClerictStats() {
@@ -760,110 +818,235 @@ void LootMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		}
 	}
 
-	if (current_vector[0]->current_state == STATE_EXECUTED)
+	if (dropped_items.size() != 0)
 	{
-		App->entities->GetCleric()->AddEquipItem(*dropped_items[0]);
-	}
-	else if (current_vector[1]->current_state == STATE_EXECUTED)
-	{
-		App->entities->GetDwarf()->AddEquipItem(*dropped_items[0]);
-	}
-	else if (current_vector[2]->current_state == STATE_EXECUTED)
-	{
-		App->entities->GetWarrior()->AddEquipItem(*dropped_items[0]);
-	}
-	else if (current_vector[3]->current_state == STATE_EXECUTED)
-	{
-		App->entities->GetElf()->AddEquipItem(*dropped_items[0]);
-	}
-
-	dropped_items.erase(dropped_items.begin());
-
-	for (int i = 0; i < current_vector.size(); i++) {
-		if (current_vector.at(i)->current_state == STATE_EXECUTED) {
-			current_vector.at(i)->current_state = STATE_FOCUSED;
+		if (current_vector[0]->current_state == STATE_EXECUTED)
+		{
+			App->entities->GetCleric()->AddEquipItem(*dropped_items[0]);
 		}
+		else if (current_vector[1]->current_state == STATE_EXECUTED)
+		{
+			App->entities->GetDwarf()->AddEquipItem(*dropped_items[0]);
+		}
+		else if (current_vector[2]->current_state == STATE_EXECUTED)
+		{
+			App->entities->GetWarrior()->AddEquipItem(*dropped_items[0]);
+		}
+		else if (current_vector[3]->current_state == STATE_EXECUTED)
+		{
+			App->entities->GetElf()->AddEquipItem(*dropped_items[0]);
+		}
+
+		dropped_items.erase(dropped_items.begin());
+
+		for (int i = 0; i < current_vector.size(); i++) {
+			if (current_vector.at(i)->current_state == STATE_EXECUTED) {
+				current_vector.at(i)->current_state = STATE_FOCUSED;
+			}
+		}
+		
+		LoadEquipableObjects();
+
+		SetInformationDroppedItem();
+
+		LoadClerictStats();
+		LoadWarriorStats();
+		LoadDwarfStats();
+		LoadElfStats();
+
+		SetComparation();
+		
+	}
+	else if(dropped_usable_items.size() != 0)
+	{
+		
+
+		if (current_vector[0]->current_state == STATE_EXECUTED)
+		{
+			App->entities->GetCleric()->AddUsableItem(*dropped_usable_items[0]);
+		}
+		else if (current_vector[1]->current_state == STATE_EXECUTED)
+		{
+			App->entities->GetDwarf()->AddUsableItem(*dropped_usable_items[0]);
+		}
+		else if (current_vector[2]->current_state == STATE_EXECUTED)
+		{
+			App->entities->GetWarrior()->AddUsableItem(*dropped_usable_items[0]);
+		}
+		else if (current_vector[3]->current_state == STATE_EXECUTED)
+		{
+			App->entities->GetElf()->AddUsableItem(*dropped_usable_items[0]);
+		}
+
+		for (int i = 0; i < current_vector.size(); i++) {
+			if (current_vector.at(i)->current_state == STATE_EXECUTED) {
+				current_vector.at(i)->current_state = STATE_FOCUSED;
+			}
+		}
+
+		dropped_usable_items.erase(dropped_usable_items.begin());
 	}
 
+}
 
-	LoadEquipableObjects();
+void LootMenu::SetInformationUsableItems()
+{
+	if (dropped_usable_items.size() != 0)
+	{
+		if (information_usable_items.size() != 0)
+		{
+			for (std::vector<UIElement*>::iterator it = information_usable_items.begin(); it != information_usable_items.end(); it++)
+			{
+				(*it)->~UIElement();
+			}
+			information_usable_items.clear();
+		}
 
-	SetInformationDroppedItem();
+		information_usable_items.push_back(new UITextBox(420, 20, TEXTBOX, dropped_usable_items[0]->name, { 255,255,255 }, 17, 100));
+		information_usable_items.push_back(new UIImage(420, 50, IMAGE, dropped_usable_items[0]->draw_coords, nullptr));
+		information_usable_items.push_back(new UITextBox(420, 70, TEXTBOX, dropped_usable_items[0]->action.description, { 255,255,255 }, 17, 100, Second_Font));
 
-	LoadClerictStats();
-	LoadWarriorStats();
-	LoadDwarfStats();
-	LoadElfStats();
+		if (main_labels.size() != 0)
+		{
 
-	SetComparation();
+			Entity* current_entity = nullptr;
 
+			if (main_labels[0]->current_state == STATE_FOCUSED)
+			{
+				current_entity = App->entities->GetCleric();
+			}
+			else if (main_labels[1]->current_state == STATE_FOCUSED)
+			{
+				current_entity = App->entities->GetDwarf();
+			}
+			else if (main_labels[2]->current_state == STATE_FOCUSED)
+			{
+				current_entity = App->entities->GetWarrior();
+			}
+			else if (main_labels[3]->current_state == STATE_FOCUSED)
+			{
+				current_entity = App->entities->GetElf();
+			}
 
+			if (current_entity != nullptr)
+			{
+				bool have_to_push_back = true;
+
+				for (int i = 0; i < current_entity->usable_items.size(); i++)
+				{
+					if (current_entity->usable_items.at(i).usable_effects == dropped_usable_items[0]->usable_effects) {
+						
+						switch (current_entity->type)
+						{
+						case CLERIC:
+							information_usable_items.push_back(new UITextBox(472, 200, TEXTBOX,std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100));
+							break;
+						case DWARF:
+							information_usable_items.push_back(new UITextBox(472, 20, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity ), { 0,255,0 }, 17, 100));
+							break;
+						case WARRIOR:
+							information_usable_items.push_back(new UITextBox(472, 200, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100));
+							break;
+						case ELF:
+							information_usable_items.push_back(new UITextBox(472, 200, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100));
+							break;
+						}
+
+						have_to_push_back = false;
+						break;
+					}
+				}
+				if (have_to_push_back)
+				{
+					switch (current_entity->type)
+					{
+					case CLERIC:
+						information_usable_items.push_back(new UITextBox(472, 200, TEXTBOX, "0", { 255,0,0 }, 17, 100));
+						break;
+					case DWARF:
+						information_usable_items.push_back(new UITextBox(472, 220, TEXTBOX, "0", { 255,0,0 }, 17, 100));
+						break;
+					case WARRIOR:
+						information_usable_items.push_back(new UITextBox(472, 240, TEXTBOX, "0", { 255,0,0 }, 17, 100));
+						break;
+					case ELF:
+						information_usable_items.push_back(new UITextBox(472, 260, TEXTBOX, "0", { 255,0,0 }, 17, 100));
+						break;
+					}
+				}
+
+			}
+		}
+
+	}
 }
 
 void LootMenu::SetInformationDroppedItem()
 {
-	if (information_dropped_items.size() != 0)
+	if (dropped_items.size())
 	{
-		for (std::vector<UIElement*>::iterator it = information_dropped_items.begin(); it != information_dropped_items.end(); it++)
+		if (information_dropped_items.size() != 0)
 		{
-			(*it)->~UIElement();
+			for (std::vector<UIElement*>::iterator it = information_dropped_items.begin(); it != information_dropped_items.end(); it++)
+			{
+				(*it)->~UIElement();
+			}
+			information_dropped_items.clear();
+
 		}
-		information_dropped_items.clear();
-	}
 
+		information_dropped_items.push_back(new UITextBox(420, 20, TEXTBOX, dropped_items[0]->name, { 255,255,255 }, 17, 100));
+		information_dropped_items.push_back(new UIImage(420, 50, IMAGE, dropped_items[0]->draw_coords, nullptr));
 
-	information_dropped_items.push_back(new UITextBox(420, 20, TEXTBOX, dropped_items[0]->name, {255,255,255},17,100));
-	information_dropped_items.push_back(new UIImage(420, 50, IMAGE, dropped_items[0]->draw_coords, nullptr));
+		uint parent_dropped_position = 20;
 
-	uint parent_dropped_position = 20;
+		if (dropped_items[0]->statistics.constitution != 0)
+		{
 
-	if (dropped_items[0]->statistics.constitution != 0)
-	{
-		
-		information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Con  "+std::to_string(dropped_items[0]->statistics.constitution), { 255,255,255 }, 17, 200));
-		parent_dropped_position += 20;
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Con  " + std::to_string(dropped_items[0]->statistics.constitution), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 20;
+		}
+		if (dropped_items[0]->statistics.focus != 0)
+		{
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Foc  " + std::to_string(dropped_items[0]->statistics.focus), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 20;
+		}
+		if (dropped_items[0]->statistics.strength != 0)
+		{
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Str  " + std::to_string(dropped_items[0]->statistics.strength), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 20;
+		}
+		if (dropped_items[0]->statistics.intelligence != 0)
+		{
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Agi  " + std::to_string(dropped_items[0]->statistics.intelligence), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 20;
+		}
+		if (dropped_items[0]->statistics.dexterity != 0)
+		{
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Dex  " + std::to_string(dropped_items[0]->statistics.dexterity), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 20;
+		}
+		if (dropped_items[0]->statistics.agility != 0)
+		{
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Int  " + std::to_string(dropped_items[0]->statistics.agility), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 20;
+		}
+		if (dropped_items[0]->statistics.magical_defense != 0)
+		{
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "M.Def " + std::to_string(dropped_items[0]->statistics.magical_defense), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 20;
+		}
+		if (dropped_items[0]->statistics.physical_defense != 0)
+		{
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "P.Def " + std::to_string(dropped_items[0]->statistics.physical_defense), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 20;
+		}
+		if (dropped_items[0]->statistics.luck != 0)
+		{
+			information_dropped_items.push_back(new UITextBox(420, 40 + parent_dropped_position, TEXTBOX, "Luck " + std::to_string(dropped_items[0]->statistics.luck), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 20;
+		}
 	}
-	if (dropped_items[0]->statistics.focus != 0)
-	{
-		information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX,"Foc  "+ std::to_string(dropped_items[0]->statistics.focus), { 255,255,255 }, 17, 200));
-		parent_dropped_position += 20;
-	}
-	if (dropped_items[0]->statistics.strength != 0)
-	{
-		information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX,"Str  "+ std::to_string(dropped_items[0]->statistics.strength), { 255,255,255 }, 17, 200));
-		parent_dropped_position += 20;
-	}
-	if (dropped_items[0]->statistics.intelligence != 0)
-	{
-		information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX,"Agi  "+ std::to_string(dropped_items[0]->statistics.intelligence), { 255,255,255 }, 17, 200));
-		parent_dropped_position += 20;
-	}
-	if (dropped_items[0]->statistics.dexterity != 0)
-	{
-		information_dropped_items.push_back(new UITextBox(420,60 + parent_dropped_position, TEXTBOX,"Dex  "+ std::to_string(dropped_items[0]->statistics.dexterity), { 255,255,255 }, 17, 200));
-		parent_dropped_position += 20;
-	}
-	if (dropped_items[0]->statistics.agility != 0)
-	{
-		information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX,"Int  "+ std::to_string(dropped_items[0]->statistics.agility), { 255,255,255 }, 17, 200));
-		parent_dropped_position += 20;
-	}
-	if (dropped_items[0]->statistics.magical_defense != 0)
-	{
-		information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "M.Def "+ std::to_string(dropped_items[0]->statistics.magical_defense), { 255,255,255 }, 17, 200));
-		parent_dropped_position += 20;
-	}
-	if (dropped_items[0]->statistics.physical_defense != 0)
-	{
-		information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX,"P.Def " +std::to_string(dropped_items[0]->statistics.physical_defense), { 255,255,255 }, 17, 200));
-		parent_dropped_position += 20;
-	}
-	if (dropped_items[0]->statistics.luck != 0)
-	{
-		information_dropped_items.push_back(new UITextBox(420, 40 + parent_dropped_position, TEXTBOX,"Luck " + std::to_string(dropped_items[0]->statistics.luck), { 255,255,255 }, 17, 200));
-		parent_dropped_position += 20;
-	}
-
 	
 }
 
@@ -947,7 +1130,7 @@ void LootMenu::LoadEquipableObjects()
 
 
 
-void LootMenu::SetInformationLabels()
+/*void LootMenu::SetInformationLabels()
 {
 	if (information_inventory_items.size() != 0)
 	{
@@ -959,10 +1142,12 @@ void LootMenu::SetInformationLabels()
 		information_inventory_items.clear();
 	}
 
-}
+}*/
 
 void LootMenu::SetComparation()
 {
+	if(dropped_items.size() != 0)
+	{
 	if (preview_stats_items.size() != 0)
 	{
 		for (std::vector<UIElement*>::iterator it = preview_stats_items.begin(); it != preview_stats_items.end(); it++)
@@ -5680,6 +5865,7 @@ void LootMenu::SetComparation()
 			break;
 		}
 		break;
+	}
 	}
 	}
 	}

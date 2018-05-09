@@ -36,9 +36,10 @@ private:
 	std::vector<Item*> inventory_items;
 
 	std::vector<UIElement*> information_inventory_items;
-	
+	std::vector<UIElement*> information_usable_items;
 
 	std::vector<Item*> dropped_items;
+	std::vector<Item*> dropped_usable_items;
 	std::vector<UIElement*> preview_stats_items;
 
 public:
@@ -78,7 +79,8 @@ public:
 
 	void SetComparation();
 
-
+	
+	void SetInformationUsableItems();
 
 	EquipType equip_type;
 };

@@ -1029,7 +1029,7 @@ void LootMenu::SetInformationDroppedItem()
 		}
 		if (dropped_items[0]->statistics.intelligence != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Agi  " + std::to_string(dropped_items[0]->statistics.intelligence), { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Int  " + std::to_string(dropped_items[0]->statistics.intelligence), { 255,255,255 }, 17, 200));
 			parent_dropped_position += 20;
 		}
 		if (dropped_items[0]->statistics.dexterity != 0)
@@ -1039,7 +1039,7 @@ void LootMenu::SetInformationDroppedItem()
 		}
 		if (dropped_items[0]->statistics.agility != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Int  " + std::to_string(dropped_items[0]->statistics.agility), { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Agi  " + std::to_string(dropped_items[0]->statistics.agility), { 255,255,255 }, 17, 200));
 			parent_dropped_position += 20;
 		}
 		if (dropped_items[0]->statistics.magical_defense != 0)
@@ -1207,39 +1207,108 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x +40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), {0,255,0},17,200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x +40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color,17,200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x +40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x +40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x +40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x +40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x +40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x +40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x +40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x +40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x +40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x +40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x +40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x +40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x +40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x +40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x +40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x +40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 
 			}
@@ -1355,39 +1424,107 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x +40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x +40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x +40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x +40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x +40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x +40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x +40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x +40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x +40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x +40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x +40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x +40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x +40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x +40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x +40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x +40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x +40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x +40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -1498,39 +1635,109 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x +40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x +40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x +40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x +40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x +40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x +40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x +40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x +40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x +40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x +40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x +40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x +40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x +40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x +40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x +40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x +40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x +40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x +40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -1642,39 +1849,110 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x +40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x +40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x +40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x +40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x +40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x +40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x +40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x +40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x +40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x +40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x +40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x +40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x +40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x +40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x +40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x +40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x +40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x +40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -1791,39 +2069,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 
 			}
@@ -1940,39 +2290,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -2083,39 +2505,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -2227,39 +2721,110 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -2376,39 +2941,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 
 			}
@@ -2525,39 +3162,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -2668,39 +3377,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -2812,39 +3593,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -2961,39 +3814,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 
 			}
@@ -3110,39 +4035,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color , 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck),color, 17, 200));
 				}
 			}
 			else
@@ -3253,39 +4250,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color , 17, 200));
 				}
 			}
 			else
@@ -3397,39 +4466,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -3546,39 +4687,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 
 			}
@@ -3694,39 +4907,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -3837,39 +5122,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -3981,39 +5338,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color ,17, 200));
 				}
 			}
 			else
@@ -4130,39 +5559,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 
 			}
@@ -4278,39 +5779,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -4421,39 +5994,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -4565,39 +6210,110 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -4714,39 +6430,110 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 
 			}
@@ -4863,39 +6650,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -5006,39 +6865,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -5150,39 +7081,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -5299,39 +7302,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[0]->screen_position.x + 40, cleric_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[1]->screen_position.x + 40, cleric_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[2]->screen_position.x + 40, cleric_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[4]->screen_position.x + 40, cleric_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[6]->screen_position.x + 40, cleric_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[7]->screen_position.x + 40, cleric_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(cleric_statistics[8]->screen_position.x + 40, cleric_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 
 			}
@@ -5447,39 +7522,110 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[0]->screen_position.x + 40, dwarf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[1]->screen_position.x + 40, dwarf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[2]->screen_position.x + 40, dwarf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[5]->screen_position.x + 40, dwarf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[4]->screen_position.x + 40, dwarf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[3]->screen_position.x + 40, dwarf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[6]->screen_position.x + 40, dwarf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[7]->screen_position.x + 40, dwarf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(dwarf_statistics[8]->screen_position.x + 40, dwarf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -5591,39 +7737,109 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[0]->screen_position.x + 40, warrior_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[1]->screen_position.x + 40, warrior_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[2]->screen_position.x + 40, warrior_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[5]->screen_position.x + 40, warrior_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[4]->screen_position.x + 40, warrior_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[3]->screen_position.x + 40, warrior_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[6]->screen_position.x + 40, warrior_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[7]->screen_position.x + 40, warrior_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+					preview_stats_items.push_back(new UITextBox(warrior_statistics[8]->screen_position.x + 40, warrior_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else
@@ -5735,39 +7951,111 @@ void LootMenu::SetComparation()
 			{
 				if (dropped_items[0]->statistics.constitution != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[0]->screen_position.x + 40, elf_statistics[0]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.constitution), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.focus != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[1]->screen_position.x + 40, elf_statistics[1]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.focus), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.strength != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[2]->screen_position.x + 40, elf_statistics[2]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.strength), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.intelligence != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[5]->screen_position.x + 40, elf_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.dexterity != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[4]->screen_position.x + 40, elf_statistics[4]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.dexterity), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.agility != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[3]->screen_position.x + 40, elf_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility),color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.magical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[6]->screen_position.x + 40, elf_statistics[6]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.magical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.physical_defense != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[7]->screen_position.x + 40, elf_statistics[7]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.physical_defense), color, 17, 200));
 				}
 				if (dropped_items[0]->statistics.luck != 0)
 				{
-					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), { 0,255,0 }, 17, 200));
+					total_value = dropped_items[0]->statistics.luck - current_entity->helmet.statistics.luck;
+					SDL_Color color = { 255,255,255 };
+
+					if (total_value < 0)
+						color = { 255,0,0 };
+					else if (total_value > 0)
+						color = { 0,255,0 };
+
+					preview_stats_items.push_back(new UITextBox(elf_statistics[8]->screen_position.x + 40, elf_statistics[8]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.luck), color, 17, 200));
 				}
 			}
 			else

@@ -61,12 +61,12 @@ bool ctSkillTree::Start()
 	//	ret = false;
 	//}
 
-	App->entities->SpawnEntity(-100,-100,CLERIC);
-	App->entities->SpawnEntity(-100, -100, WARRIOR);
-	App->entities->SpawnEntity(-100, -100, DWARF);
-	App->entities->SpawnEntity(-100, -100, ELF);
+	//App->entities->SpawnEntity(-100,-100,CLERIC);
+	//App->entities->SpawnEntity(-100, -100, WARRIOR);
+	//App->entities->SpawnEntity(-100, -100, DWARF);
+	//App->entities->SpawnEntity(-100, -100, ELF);
 
-	App->combat->LoadDataFromXML();
+	//App->combat->LoadDataFromXML();
 
 	if (spritesheet_abilities == NULL) {
 		LOG("Fail to load spritesheet_abilities in SkillTree!");
@@ -151,6 +151,20 @@ bool ctSkillTree::PreUpdate()
 bool ctSkillTree::Update(float dt)
 {
 	// Draw everything --------------------------------------
+
+	if (App->entities->entities.size() == 0) {
+		App->entities->SpawnEntity(-100,-100,CLERIC);
+		App->entities->SpawnEntity(-100, -100, WARRIOR);
+		App->entities->SpawnEntity(-100, -100, DWARF);
+		App->entities->SpawnEntity(-100, -100, ELF);
+
+		App->combat->LoadDataFromXML();
+		LookForActiveAbilities(cleric_abilities);
+		LookForActiveAbilities(warrior_abilities);
+		LookForActiveAbilities(dwarf_abilities);
+		LookForActiveAbilities(elf_abilities);
+	}
+
 	App->map->Draw();
 	App->render->DrawQuad(marker_pos, 255, 0, 0, 255, true, true);
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
@@ -243,8 +257,7 @@ bool ctSkillTree::CleanUp()
 {
 	LOG("Freeing ctSkillTree");
 
-	if (App->entities->entities.size()>0)
-		SavedataToXML();
+	SavedataToXML();
 
 	App->map->CleanUp();
 	warrior_abilities.clear();
@@ -619,9 +632,9 @@ void ctSkillTree::SelectAbility() {
 			if (select_menu_bg == nullptr) {
 				select_menu_bg = App->gui->AddUIImage(0, 0, { 1141,484,340,178 }, this);
 				string new_mesage = "Are you sure you want to unlock " + (*selected_ability)->ability_name;
-				select_menu_text = App->gui->AddUITextBox(20, 20, 10, 336, new_mesage, { 255,255,255,255 });
-				select_menu_A = App->gui->AddUITextBox(20, 60, 10, 336, "Yes", { 255,255,255,255 });
-				select_menu_B = App->gui->AddUITextBox(20, 100, 10, 336, "No", { 255,255,255,255 });
+				select_menu_text = App->gui->AddUITextBox(20, 20, 20, 500, new_mesage, { 255,255,255,255 });
+				select_menu_A = App->gui->AddUITextBox(20, 60, 20, 336, "Yes", { 255,255,255,255 });
+				select_menu_B = App->gui->AddUITextBox(20, 100, 20, 336, "No", { 255,255,255,255 });
 				arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this, select_menu_bg);
 				arrow->SetParent(select_menu_A);
 				select_menu_A->current_state = STATE_FOCUSED;
@@ -636,6 +649,7 @@ void ctSkillTree::SelectAbility() {
 					
 					(*selected_ability)->active = 1;
 					if (current_hero == 1) {
+						LOG("AbilitiesSize = %i", App->entities->GetCleric()->abilities.size());
 						for (int i = 0; i < App->entities->GetCleric()->abilities.size(); i++) {
 							if (App->entities->GetCleric()->abilities.at(i).name == (*selected_ability)->ability_name) {
 								App->entities->GetCleric()->abilities.at(i).owned = true;
@@ -790,7 +804,12 @@ void ctSkillTree::SavedataToXML() {
 				for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
 					std::string tmp2 = skill.attribute("name").as_string();
 					if (tmp2 == tmp)
-						skill.attribute("owned").set_value(App->entities->GetCleric()->abilities.at(i).owned);
+						if (App->entities->GetCleric()->abilities.at(i).owned == true) {
+							skill.attribute("owned").set_value(1);
+						}
+						else {
+							skill.attribute("owned").set_value(0);
+						}
 				}
 			}
 		}
@@ -802,7 +821,12 @@ void ctSkillTree::SavedataToXML() {
 				for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
 					std::string tmp2 = skill.attribute("name").as_string();
 					if (tmp2 == tmp)
-						skill.attribute("owned").set_value(App->entities->GetWarrior()->abilities.at(i).owned);
+						if (App->entities->GetWarrior()->abilities.at(i).owned == true) {
+							skill.attribute("owned").set_value(1);
+						}
+						else {
+							skill.attribute("owned").set_value(0);
+						}
 				}
 			}
 
@@ -815,7 +839,12 @@ void ctSkillTree::SavedataToXML() {
 				for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
 					std::string tmp2 = skill.attribute("name").as_string();
 					if (tmp2 == tmp)
-						skill.attribute("owned").set_value(App->entities->GetDwarf()->abilities.at(i).owned);
+						if (App->entities->GetDwarf()->abilities.at(i).owned == true) {
+							skill.attribute("owned").set_value(1);
+						}
+						else {
+							skill.attribute("owned").set_value(0);
+						}
 				}
 			}
 		}
@@ -827,7 +856,12 @@ void ctSkillTree::SavedataToXML() {
 				for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
 					std::string tmp2 = skill.attribute("name").as_string();
 					if (tmp2 == tmp)
-						skill.attribute("owned").set_value(App->entities->GetElf()->abilities.at(i).owned);
+						if (App->entities->GetElf()->abilities.at(i).owned == true) {
+							skill.attribute("owned").set_value(1);
+						}
+						else {
+							skill.attribute("owned").set_value(0);
+						}
 				}
 			}
 		}

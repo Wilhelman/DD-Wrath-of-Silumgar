@@ -130,6 +130,16 @@ void  TrollLeaders::Damaged() {
 	App->audio->PlayFx(App->audio->troll_leaders_damaged_fx, 0);
 }
 
+void TrollLeaders::Ability1T1() {
+	App->audio->PlayFx(App->audio->troll_leaders_block_fx, 0);
+}
+void TrollLeaders::Ability2T1() {
+	App->audio->PlayFx(App->audio->troll_leaders_infested_claw_fx, 0);
+}
+void TrollLeaders::Ability3T1() {
+	App->audio->PlayFx(App->audio->troll_leaders_brotherly_rage_fx, 0);
+}
+
 void TrollLeaders::PerformAction()
 {
 	Entity* entity_objective = nullptr;

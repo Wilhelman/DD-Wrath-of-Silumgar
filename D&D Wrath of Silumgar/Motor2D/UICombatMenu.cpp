@@ -32,7 +32,13 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	}
 	//background = App->gui->AddUIImage(x, y, { 1260, 208, 60, 90 }, callback);
 	attack_label = App->gui->AddUILabel(x + main_label1_pos.x, y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
-	if (entity->abilities.size() != 0) {
+	int owned_abilities = 0;
+	for (int i = 0; i < entity->abilities.size(); i++) {
+		if (entity->abilities.at(i).owned == true) {
+			owned_abilities++;
+		}
+	}
+	if (owned_abilities > 0) {
 		abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
 	}
 	else {
@@ -553,8 +559,10 @@ void UICombatMenu::LoadAbilities() {
 	if (entity->abilities.size() != 0) {
 		std::vector<Action>::const_iterator it_vector = entity->abilities.begin();
 		while (it_vector != entity->abilities.end()) {
-			names.push_back((*it_vector).name);
-			entity_actions.push_back(*it_vector);
+			if ((*it_vector).owned == true) {
+				names.push_back((*it_vector).name);
+				entity_actions.push_back(*it_vector);
+			}
 			it_vector++;
 		}
 	}
@@ -704,7 +712,13 @@ void UICombatMenu::GoBack() {
 		iPoint backgroundPos = background->GetScreenPosition();
 
 		attack_label = App->gui->AddUILabel(backgroundPos.x + main_label1_pos.x, backgroundPos.y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
-		if (entity->abilities.size() != 0) {
+		int owned_abilities = 0;
+		for (int i = 0; i < entity->abilities.size(); i++) {
+			if (entity->abilities.at(i).owned == true) {
+				owned_abilities++;
+			}
+		}
+		if (owned_abilities > 0) {
 			abilities_label = App->gui->AddUILabel(backgroundPos.x + main_label2_pos.x, backgroundPos.y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
 		}
 		else {

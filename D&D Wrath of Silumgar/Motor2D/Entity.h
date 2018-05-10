@@ -87,11 +87,15 @@ public:
 	ctAnimation revive = ctAnimation();
 	ctAnimation fire_djinn = ctAnimation();
 
-		//OBJECT
+	//OBJECT
 	ctAnimation throw_object = ctAnimation();
 	ctAnimation use_potion = ctAnimation();
 
-	//dark_warrior
+	//Lich 2nd
+	ctAnimation bidimensional_claw = ctAnimation();
+	ctAnimation sea_of_flames = ctAnimation();
+
+	//Dark Warrior
 	ctAnimation void_cannon = ctAnimation();
 	ctAnimation thunder_punch = ctAnimation();
 	ctAnimation insignificant_mortals = ctAnimation();

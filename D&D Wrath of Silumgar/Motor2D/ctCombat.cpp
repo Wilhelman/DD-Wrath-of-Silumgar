@@ -509,6 +509,8 @@ void ctCombat::UpdateHPBarOfEntity(Entity * entity_to_update_bar, int quantity)
 	case DARK_WARRIOR:
 	case DISPLACER_BEAST:
 	case TROLL_LEADERS:
+	case LICH_1:
+	case LICH_2:
 	case SKELETON:
 	{
 		UIBar* tmp_bar = this->GetUIBarFromEntity(entity_to_update_bar);
@@ -695,6 +697,9 @@ void ctCombat::SpawnEntities()
 			break;
 		case TROLL_LEADERS:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, TROLL_LEADERS);
+			break;
+		case LICH_2:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, LICH_2);
 			break;
 		case DISPLACER_BEAST:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, DISPLACER_BEAST);
@@ -1292,6 +1297,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		case SKELETON:
 		case DARK_WARRIOR:
 		case TROLL_LEADERS:
+		case LICH_2:
 		case DISPLACER_BEAST:
 		{
 			bool can_perform_action = true;

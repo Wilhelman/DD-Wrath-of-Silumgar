@@ -19,9 +19,8 @@ Lich2::Lich2(int x, int y, EntityType type) : Entity(x, y, type) {
 
 	pugi::xml_document	config_file;
 	pugi::xml_node* node = &App->LoadEntities(config_file);
-	node = &node->child("enemies").child("darkWarrior");
-	texture = App->tex->Load(App->entities->dark_warrior_spritesheet_name.data());
-
+	node = &node->child("enemies").child("lich2nd");
+	texture = App->tex->Load(App->entities->lich2_spritesheet_name.data());
 
 	for (pugi::xml_node animations = node->child("animations").child("animation"); animations && ret; animations = animations.next_sibling("animation"))
 	{
@@ -31,8 +30,6 @@ Lich2::Lich2(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &idle);
 		else if (tmp == "run")
 			LoadAnimation(animations, &run_forward);
-		else if (tmp == "axe_attack")
-			LoadAnimation(animations, &attack);
 		else if (tmp == "hit")
 			LoadAnimation(animations, &hit);
 		else if (tmp == "death")
@@ -41,34 +38,26 @@ Lich2::Lich2(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &stun);
 		else if (tmp == "dodge")
 			LoadAnimation(animations, &dodge);
-		else if (tmp == "void_cannon")
-			LoadAnimation(animations, &void_cannon);
-		else if (tmp == "thunder_punch")
-			LoadAnimation(animations, &thunder_punch);
-		else if (tmp == "insignificant_mortals")
-			LoadAnimation(animations, &insignificant_mortals);
+		else if (tmp == "bidimensional_claw")
+			LoadAnimation(animations, &bidimensional_claw);
+		else if (tmp == "sea_of_flames")
+			LoadAnimation(animations, &sea_of_flames);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;
 
 	//prepare the actions:
 
-	void_cannon_action.name = "Void Cannon";
-	void_cannon_action.health_points_effect = -50;
-	void_cannon_action.mana_points_effect_to_himself = 70;
-	void_cannon_action.objective = HEROES;
-	void_cannon_action.type = VOID_CANNON;
+	bidimensional_claw_action.name = "Bidimensional Claw";
+	bidimensional_claw_action.mana_points_effect_to_himself = 45;
+	bidimensional_claw_action.objective = HEROES;
+	bidimensional_claw_action.type = BIDIMENSIONAL_CLAW;
 
-	thunder_punch_action.name = "Thunder Punch";
-	thunder_punch_action.health_points_effect = -25;
-	thunder_punch_action.mana_points_effect_to_himself = 45;
-	thunder_punch_action.objective = HEROES;
-	thunder_punch_action.type = THUNDER_PUNCH;
+	sea_of_flames_action.name = "Sea of Flames";
+	sea_of_flames_action.mana_points_effect_to_himself = 70;
+	sea_of_flames_action.objective = HEROES;
+	sea_of_flames_action.type = SEA_OF_FLAMES;
 
-	insignificant_mortals_action.name = "Insignificant Mortals";
-	insignificant_mortals_action.mana_points_effect_to_himself = 45;
-	insignificant_mortals_action.objective = ENEMIES;
-	insignificant_mortals_action.type = INSIGNIFICANT_MORTALS;
 }
 
 
@@ -119,13 +108,13 @@ void Lich2::Attack()
 }
 
 void  Lich2::Death() {
-	App->audio->PlayFx(App->audio->dark_warrior_death_fx, 0);
+	//App->audio->PlayFx(App->audio->dark_warrior_death_fx, 0);
 }
 void  Lich2::Run() {
-	App->audio->PlayFx(App->audio->dark_warrior_run_fx, 0);
+	//App->audio->PlayFx(App->audio->dark_warrior_run_fx, 0);
 }
 void  Lich2::Damaged() {
-	App->audio->PlayFx(App->audio->dark_warrior_damaged_fx, 0);
+	//App->audio->PlayFx(App->audio->dark_warrior_damaged_fx, 0);
 }
 void Lich2::Ability1T1() {
 	//App->audio->PlayFx(App->audio->dark_warrior_thunder_punch_fx, 0);
@@ -143,24 +132,17 @@ void Lich2::PerformAction()
 	Entity* entity_objective = nullptr;
 
 	if (IsGoingToDoAnythingClever()) {//hacer algo cheto
-		if (!boosted) {
 
-			App->task_manager->AddTask(new PerformActionToEntity(this, insignificant_mortals_action, App->combat->GetRandomHeroe()));
-			boosted = true;
-
-		}
-
-		else {
+		
 			entity_objective = App->combat->GetTheWeakestHeroe();
 
 			if (GetCurrentManaPoints() >= 70) {
-				App->task_manager->AddTask(new PerformActionToEntity(this, void_cannon_action, entity_objective));
+				App->task_manager->AddTask(new PerformActionToEntity(this, sea_of_flames_action, entity_objective));
 			}
-
 			else if (GetCurrentManaPoints() > 70 && GetCurrentManaPoints() >= 45) {
 
 				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
-				App->task_manager->AddTask(new PerformActionToEntity(this, thunder_punch_action, entity_objective));
+				App->task_manager->AddTask(new PerformActionToEntity(this, bidimensional_claw_action, entity_objective));
 				App->task_manager->AddTask(new MoveToInitialPosition(this));
 			}
 
@@ -170,7 +152,6 @@ void Lich2::PerformAction()
 				App->task_manager->AddTask(new MoveToInitialPosition(this));
 			}
 		}
-	}
 	else {//hacer algo mal
 		entity_objective = App->combat->GetRandomHeroe();
 
@@ -179,7 +160,7 @@ void Lich2::PerformAction()
 		App->task_manager->AddTask(new MoveToInitialPosition(this));
 	}
 
-
+	
 }
 
 

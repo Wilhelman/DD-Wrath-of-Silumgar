@@ -1063,44 +1063,78 @@
       <statistics constitution ="30" focus="999" strength="10"  agility="20"  dexterity ="20" intelligence="40" physicalDefense="18" magicalDefense="20" judgement="70"/>
       <animations>
 
-        <animation name="front_head" speed="5.0" loop="true">
-          <frame x="16" y="11" width="252" height="157"/>
-        </animation>
-        
-        <animation name="front_head" speed="5.0" loop="true">
-          <frame x="724" y="10" width="159" height="146"/>
-        <frame x="888" y="10" width="159" height="146"/>
-        <frame x="1067" y="10" width="159" height="146"/>
-        </animation>        
-
-        <animation name="dragon_claw" speed="5.0" loop="true">
-          <frame x="308" y="186" width="126" height="180"/>
-          <frame x="515" y="186" width="126" height="180"/>
-          <frame x="728" y="186" width="126" height="180"/>
+        <animation name="idle" speed="5.0" loop="true">
+          <frame x="1286" y="6" width="131" height="62"/>
+          <frame x="1147" y="6" width="131" height="62"/>
+          <frame x="1009" y="6" width="131" height="62"/>
+          <frame x="869"  y="6" width="131" height="62"/>
+          <frame x="719"  y="6" width="131" height="62"/>
         </animation>
 
-        <animation name="bidimensional_claw" speed="5.0" loop="true">
-          <frame x="319" y="388" width="119" height="75"/>
-          <frame x="494" y="388" width="119" height="75"/>
-          <frame x="666" y="388" width="119" height="75"/>
-          <frame x="869" y="388" width="119" height="75"/>
+        <animation name="run" speed="5.0" loop="true">
+          <frame x="1297" y="168" width="132" height="67"/>
+          <frame x="1163" y="168" width="132" height="67"/>
+          <frame x="1016" y="168" width="132" height="67"/>
+          <frame x="875"  y="168" width="132" height="67"/>
+          <frame x="731"  y="168" width="132" height="67"/>
+          <frame x="593"  y="168" width="132" height="67"/>
+          <frame x="450"  y="168" width="132" height="67"/>
+          <frame x="296"  y="168" width="132" height="67"/>
+          <frame x="147"  y="168" width="132" height="67"/>
+          <frame x="2"    y="168" width="132" height="67"/>
         </animation>
 
-        <animation name="sea_of_flames" speed="5.0" loop="true">
-          <frame x="319" y="510" width="314" height="106"/>
-          <frame x="355" y="510" width="314" height="106"/>
-          <frame x="738" y="510" width="314" height="106"/>
-          <frame x="1118" y="510" width="314" height="106"/>
-          <frame x="4" y="686" width="314" height="106"/>
-          <frame x="365" y="686" width="314" height="106"/>
-          <frame x="721" y="686" width="314" height="106"/>
-          <frame x="1087" y="686" width="314" height="106"/>
-          <frame x="0" y="808" width="314" height="106"/>
-          <frame x="360" y="808" width="314" height="106"/>
-          <frame x="716" y="808" width="314" height="106"/>
+        <animation name="bidimensional_claw" speed="0.05" loop="false">
+          <frame x="1257" y="280" width="160" height="58"/>
+          <frame x="1067" y="280" width="160" height="58"/>
+          <frame x="838"  y="280" width="160" height="58"/>
+          <frame x="614"  y="280" width="160" height="58"/>
+          <frame x="403"  y="280" width="160" height="58"/>
+          <frame x="167"  y="280" width="160" height="58"/>
+        </animation>
+
+        <animation name="default_attack" speed="0.05" loop="false">
+          <frame x="1257" y="280" width="160" height="58"/>
+          <frame x="1067" y="280" width="160" height="58"/>
+          <frame x="838"  y="280" width="160" height="58"/>
+          <frame x="614"  y="280" width="160" height="58"/>
+          <frame x="403"  y="280" width="160" height="58"/>
+          <frame x="167"  y="280" width="160" height="58"/>
+        </animation>
+
+        <animation name="sea_of_flames" speed="0.05" loop="false">
+          <frame x="1259" y="357" width="154" height="110"/>
+          <frame x="1057" y="357" width="154" height="110"/>
+          <frame x="889" y="357" width="154" height="110"/>
+          <frame x="709" y="357" width="154" height="110"/>
+          <frame x="510" y="357" width="154" height="110"/>
+          <frame x="335" y="357" width="154" height="110"/>
+          <frame x="106" y="357" width="154" height="110"/>
+        </animation>
+
+        <animation name="hit" speed="0.05" loop="false">
+          <frame x="1305" y="591" width="114" height="51"/>
+        </animation>
+
+        <animation name="death" speed="0.05" loop="false">
+          <frame x="1102" y="563" width="150" height="79"/>
+          <frame x="936" y="563" width="150" height="79"/>
+          <frame x="759" y="563" width="150" height="79"/>
+          <frame x="566" y="563" width="150" height="79"/>
+        </animation>
+
+        <animation name="head" speed="5.0" loop="false">
+          <frame x="1147" y="19" width="26" height="26"/>
+        </animation>
+
+        <animation name="stun" speed="0.05" loop="true">
+          <frame x="821" y="523" width="60" height="17"/>
+          <frame x="889" y="523" width="60" height="17"/>
+          <frame x="956" y="523" width="60" height="17"/>
         </animation>
 
       </animations>
+
 
     </lich2nd>
 

@@ -18,9 +18,8 @@ private:
 	//animations velocity
 	uint idle_vel = 0u, run_forward_vel = 0u;
 
-	Action void_cannon_action;
-	Action thunder_punch_action;
-	Action insignificant_mortals_action;
+	Action bidimensional_claw_action;
+	Action sea_of_flames_action;
 
 private:
 

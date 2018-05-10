@@ -27,6 +27,7 @@
 #include "DarkWarrior.h"
 #include "trollLeaders.h"
 #include "DisplacerBeast.h"
+#include "Lich2.h"
 #include "MiniHeroes.h"
 
 
@@ -65,6 +66,7 @@ bool ctEntities::Awake(pugi::xml_node& config)
 	dark_warrior_spritesheet_name = config.child("darkWarrior").attribute("spritesheetName").as_string();
 	trollLeader_spritesheet_name = config.child("trollLeader").attribute("spritesheetName").as_string();
 	displacerBeast_spritesheet_name = config.child("displacerBeast").attribute("spritesheetName").as_string();
+	lich2_spritesheet_name = config.child("lich2").attribute("spritesheetName").as_string();
 	miniheroes_spritesheet_name = config.child("miniheroes").attribute("spritesheetName").as_string();
 	return ret;
 }
@@ -263,6 +265,14 @@ bool ctEntities:: SpawnEntity(int x, int y, EntityType type)
 		DisplacerBeast* beast = new DisplacerBeast(x, y, DISPLACER_BEAST);
 		entities.push_back(beast);
 		App->combat->turn_priority_entity.push_back(beast);
+		ret = true;
+		break;
+	}
+
+	case EntityType::LICH_2: {
+		Lich2* lich2 = new Lich2(x, y, LICH_2);
+		entities.push_back(lich2);
+		App->combat->turn_priority_entity.push_back(lich2);
 		ret = true;
 		break;
 	}

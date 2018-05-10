@@ -97,6 +97,8 @@ bool ctWorldMap::Awake(pugi::xml_node& co)
 				tmp_map_element->entities.push_back(EntityType::TROLL_LEADERS);
 			else if (tmp == "DISPLACER_BEAST")
 				tmp_map_element->entities.push_back(EntityType::DISPLACER_BEAST);
+			else if (tmp == "LICH")
+				tmp_map_element->entities.push_back(EntityType::LICH_2);
 		}
 
 		all_map_elements.push_back(tmp_map_element);

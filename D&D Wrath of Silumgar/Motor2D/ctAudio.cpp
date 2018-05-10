@@ -103,11 +103,35 @@ void ctAudio::InitAudio()
 	troll_leaders_run_fx = gnoll_run_fx;
 	troll_leaders_damaged_fx = LoadFx("audio/sounds/Enemies/TrollLeadersDamaged.wav");
 	troll_leaders_death_fx = LoadFx("audio/sounds/Enemies/TrollLeadersDeath.wav");
+	troll_leaders_block_fx = LoadFx("audio/sounds/Enemies/TrollLeadersBlock.wav");
+	troll_leaders_infested_claw_fx = LoadFx("audio/sounds/Enemies/TrollLeadersInfestedClaw.wav");
+	troll_leaders_brotherly_rage_fx = LoadFx("audio/sounds/Enemies/TrollLeadersBrotherlyRage.wav");
+
 
 	displacer_beast_attack_fx = LoadFx("audio/sounds/Enemies/DisplacerBeastAttack.wav");
 	displacer_beast_run_fx = kobold_run_fx;
 	displacer_beast_damaged_fx = LoadFx("audio/sounds/Enemies/DisplacerBeastDamaged.wav");
 	displacer_beast_death_fx = LoadFx("audio/sounds/Enemies/DisplacerBeastDeath.wav");
+	displacer_beast_infernal_fire_fx = LoadFx("audio/sounds/Enemies/DisplacerBeastInfernalFire.wav");
+	displacer_beast_shadow_jab_fx = LoadFx("audio/sounds/Enemies/DisplacerBeastShadowJab.wav");
+	displacer_beast_call_of_the_dead_fx = LoadFx("audio/sounds/Enemies/DisplacerBeastCallOfTheDead.wav");
+
+	lich1_attack_fx = LoadFx("audio/sounds/Enemies/Lich1Attack.wav");
+	lich1_run_fx = kobold_run_fx;
+	lich1_damaged_fx = LoadFx("audio/sounds/Enemies/Lich1Damaged.wav");
+	lich1_death_fx = LoadFx("audio/sounds/Enemies/Lich1Death.wav");
+	lich1_dragon_flames_fx = LoadFx("audio/sounds/Enemies/Lich1DragonFlames.wav");
+	lich1_lightning_flash_fx = LoadFx("audio/sounds/Enemies/Lich1LightningFlash.wav");
+	lich1_abyssal_sphere_fx = LoadFx("audio/sounds/Enemies/Lich1AbyssalSphere.wav");
+
+	lich2_attack_fx = LoadFx("audio/sounds/Enemies/Lich2Attack.wav");
+	lich2_run_fx = gnoll_run_fx;
+	lich2_damaged_fx = LoadFx("audio/sounds/Enemies/Lich2Damaged.wav");
+	lich2_death_fx = LoadFx("audio/sounds/Enemies/Lich2Death.wav");
+	lich2_bidimensional_claw_fx = LoadFx("audio/sounds/Enemies/Lich2.wav");
+	lich2_sea_of_flames_fx = LoadFx("audio/sounds/Enemies/Lich2.wav");
+	
+
 	//heroes
 	cleric_attack_fx = LoadFx("audio/sounds/Characters/ClericAttack.wav");
 	cleric_run_fx = LoadFx("audio/sounds/Characters/ClericRun.wav");

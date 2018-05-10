@@ -5,7 +5,7 @@
   <enemies>
 
     <kobold>
-      <statistics constitution ="5" focus="5" strength="5" agility="7" dexterity ="6" intelligence="4" physicalDefense="2" magicalDefense="2" judgement="35"/>
+      <statistics constitution ="5" focus="5" strength="3" agility="7" dexterity ="6" intelligence="4" physicalDefense="2" magicalDefense="2" judgement="35"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -294,7 +294,7 @@
     </heavyGoblin>
 
     <gnoll>
-      <statistics constitution ="9" focus="6" strength="6" agility="6"  dexterity ="6" intelligence="3" physicalDefense="5" magicalDefense="1" judgement="60"/>
+      <statistics constitution ="9" focus="6" strength="5" agility="6"  dexterity ="6" intelligence="3" physicalDefense="5" magicalDefense="1" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -367,7 +367,7 @@
     </gnoll>
 
     <gnollArcher>
-      <statistics constitution ="7" focus="6" strength="6" agility="7" dexterity ="6" intelligence="4" physicalDefense="2" magicalDefense="2" judgement="60"/>
+      <statistics constitution ="7" focus="6" strength="5" agility="7" dexterity ="6" intelligence="4" physicalDefense="2" magicalDefense="2" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -420,7 +420,7 @@
     </gnollArcher>
 
     <skeleton>
-      <statistics constitution ="9" focus="8" strength="8" agility="6" dexterity ="7" intelligence="5" physicalDefense="10" magicalDefense="12" judgement="50"/>
+      <statistics constitution ="9" focus="8" strength="6" agility="6" dexterity ="7" intelligence="5" physicalDefense="10" magicalDefense="12" judgement="50"/>
       <animations>
 
         <animation name="idle" speed="1.5" loop="true">
@@ -501,7 +501,7 @@
     </skeleton>
 
     <owlbear>
-      <statistics constitution ="15" focus="8" strength="10" agility="3" dexterity ="7" intelligence="3" physicalDefense="8" magicalDefense="14" judgement="35"/>
+      <statistics constitution ="15" focus="8" strength="4" agility="3" dexterity ="7" intelligence="3" physicalDefense="8" magicalDefense="14" judgement="35"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -653,7 +653,7 @@
     </triton>
 
     <hellhound>
-      <statistics constitution ="9" focus="9" strength="9" agility="14" dexterity ="9" intelligence="9" physicalDefense="7" magicalDefense="5" judgement="40"/>
+      <statistics constitution ="9" focus="9" strength="6" agility="14" dexterity ="9" intelligence="9" physicalDefense="7" magicalDefense="5" judgement="40"/>
       <animations>
 
         <animation name="idle" speed="2.0" loop="true">
@@ -727,7 +727,7 @@
     </hellhound>
 
     <darkWarrior>
-      <statistics constitution ="40" focus="15" strength="20" agility="14" dexterity ="15" intelligence="33" physicalDefense="14" magicalDefense="14" judgement="40"/>
+      <statistics constitution ="40" focus="15" strength="9" agility="14" dexterity ="15" intelligence="33" physicalDefense="14" magicalDefense="14" judgement="40"/>
       <animations>
 
         <animation name="idle" speed="2.0" loop="true">

@@ -61,6 +61,8 @@ bool ctCombat::Start()
 {
 	bool ret = true;
 
+	heroes_are_dead = false;
+
 	making_decision = false;
 	App->task_manager->Start();
 
@@ -87,7 +89,7 @@ bool ctCombat::Start()
 
 	/*---------------------------------------------------------- LE PETIT TESTING ZONE -------------------------------------------------------------*/
 
-	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(4));
+	/*App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(4));
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(5));
 	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(6));
 	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(4));
@@ -95,7 +97,7 @@ bool ctCombat::Start()
 	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(6));
 	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(4));
 	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(5));
-	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(6));
+	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(6));*/
 	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(4));
 	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(5));
 	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(6));
@@ -269,8 +271,9 @@ bool ctCombat::Update(float dt)
 				if (turn_priority_entity.size() == 0) { //all heroes are dead!
 					LOG("All heroes are dead!");
 					condition_victory = false;
+					heroes_are_dead = true;
 					if (App->fadeToBlack->FadeIsOver())
-						App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+						App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 				}
 				else
 					current_entities = turn_priority_entity.size();
@@ -375,9 +378,11 @@ bool ctCombat::CleanUp()
 
 	for (int i = 0; i < App->entities->entities.size(); i++)
 	{
-		if(App->entities->entities.at(i)->type != DWARF && App->entities->entities.at(i)->type != ELF && App->entities->entities.at(i)->type != WARRIOR && App->entities->entities.at(i)->type != CLERIC)
+		if((App->entities->entities.at(i)->type != DWARF && App->entities->entities.at(i)->type != ELF && App->entities->entities.at(i)->type != WARRIOR && App->entities->entities.at(i)->type != CLERIC) || heroes_are_dead)
 			App->entities->entities.at(i)->to_destroy = true;
 	}
+
+	heroes_are_dead = false;
 
 	enemies.clear();
 	heroes.clear();
@@ -717,7 +722,7 @@ void ctCombat::LoadDataFromXML()
 		std::string tmp(heroe.attribute("name").as_string());
 
 		if (tmp == "cleric") {
-			if (App->main_menu->is_new_game) {
+			if (!App->main_menu->is_new_game) {
 				App->entities->GetCleric()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 				App->entities->GetCleric()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			}
@@ -728,7 +733,7 @@ void ctCombat::LoadDataFromXML()
 				LoadItem(item, App->entities->GetCleric());
 		}
 		else if (tmp == "warrior") {
-			if (App->main_menu->is_new_game) {
+			if (!App->main_menu->is_new_game) {
 				App->entities->GetWarrior()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 				App->entities->GetWarrior()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			}
@@ -739,7 +744,7 @@ void ctCombat::LoadDataFromXML()
 				LoadItem(item, App->entities->GetWarrior());
 		}
 		else if (tmp == "dwarf") {
-			if (App->main_menu->is_new_game) {
+			if (!App->main_menu->is_new_game) {
 				App->entities->GetDwarf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 				App->entities->GetDwarf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			}
@@ -750,7 +755,7 @@ void ctCombat::LoadDataFromXML()
 				LoadItem(item, App->entities->GetDwarf());
 		}
 		else if (tmp == "elf") {
-			if (App->main_menu->is_new_game) {
+			if (!App->main_menu->is_new_game) {
 				App->entities->GetElf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 				App->entities->GetElf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			}

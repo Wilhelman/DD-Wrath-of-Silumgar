@@ -81,6 +81,8 @@ public:
 	UIElement* pauseMenu = nullptr;
 	
 private:
+
+	bool heroes_are_dead = false;
 	
 	//spawn heroes and enemies
 	void SpawnEntities();

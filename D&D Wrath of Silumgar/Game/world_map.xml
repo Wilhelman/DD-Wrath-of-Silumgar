@@ -6,32 +6,34 @@
 
     <world_map_elements>
       
-        <map_element>
+       <map_element>
           <tier type="1" />
-          <entity name="LICH" />
+          <entity name="GOBLIN" />
+          <entity name="GOBLIN"/>
           <scene name="tavern.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="After getting to defeat that band of vermin in Allard, our heroes decide to understand the path to Silumgar. This is where your first decision is presented:"/>
-          <option name = "soy opcion"/>
+          <option name = "Empty"/>
         </map_element>
       
       <map_element>
         <tier type="2" />
         <entity name="KOBOLD" />
-		<entity name="KOBOLD" />
+		    <entity name="KOBOLD" />
         <scene name="mountain.tmx" />
         <icon_coords x="160" y="512" width="32" height="32" />
-        <decision name ="1 ALCHEMIST_GOBLIN 1 HEAVY_GOBLIN"/>
+        <decision name ="After an arduous battle to be ambushed by a small group of enemies, you stop for a moment to recover your strength, but quickly you hear the footsteps of more enemies arriving, which is why you run out of the way and come to a fork:"/>
         <option name = "Leaving the city you are shown a path that passes through the foot of the mountain, in which you can clearly see a few strange traces, surely enemies. Apparently it seems clear."/>
       </map_element>
       
       <map_element>
         <tier type="2" />
-        <entity name="KOBOLD" />
-        <entity name="KOBOLD" />
+        <entity name="GOBLIN" />
+        <entity name="GNOLL" />
         <scene name="cave_05.tmx" />
         <icon_coords x="96" y="480" width="32" height="32" />
-        <decision name ="2 gnoll"/>
+        <decision name ="As you guessed, the cave would not be a simple place, it hides part of the army led by Silumgar.
+        But now there is no turning back, because of the battle part of the exit to be buried by stones, the only way out is crossing it, luckily, more than one route leads to the exit, where you should go:"/>
         <option name = "What seems like the beginning of a cave is shown on the way, from it, several lights and noises come out. You know that it will not be an easy path, but that your reward can be very good.
 "/>
       </map_element>
@@ -59,34 +61,41 @@
 
       <map_element>
         <tier type="3" />
-        <entity name="TRITON" />
-        <scene name="forest.tmx" />
-        <icon_coords x="160" y="480" width="32" height="32" />
-        <decision name ="1 triton"/>
-        <option name = "1 triton"/>
-      </map_element>
-
-      <map_element>
-        <tier type="3" />
-        <entity name="GNOLL" />
-        <entity name="GNOLL" />
-        <scene name="cave_03.tmx" />
-        <icon_coords x="192" y="480" width="32" height="32" />
-        <decision name ="2 gnoll"/>
-        <option name = "2 gnoll"/>
-      </map_element>
-
-      <map_element>
-        <tier type="3" />
         <entity name="KOBOLD" />
-        <entity name="GNOLL" />
-        <scene name="cave_03.tmx" />
-        <icon_coords x="256" y="480" width="32" height="32" />
-        <decision name ="1 kobold 1 gnoll"/>
-        <option name = "1 kobol 1 gnoll"/>
+        <entity name="HELLHOUND" />
+        <entity name="GOBLIN" />
+        <scene name="cave_02.tmx" />
+        <icon_coords x="64" y="480" width="32" height="32" />
+        <decision name ="After defeating that small group of enemies that took your step, you decided to cross the corridor.
+In the end there is a room with a small bonfire with a few embers.
+Once you cross it you see two possible outputs:"/>
+        <option name = "You go down steep stones which lead to a large room with a long corridor, in this you can see a small light in the end.
+"/>
       </map_element>
 
       <map_element>
+        <tier type="3" />
+        <entity name="GOBLIN" />
+        <entity name="HEAVYGOBLIN" />
+        <entity name="GOBLIN" />
+        <scene name="cave_03.tmx" />
+        <icon_coords x="128" y="480" width="32" height="32" />
+        <decision name ="2 gnoll"/>
+        <option name = "You see a small crack through which you can pass. You notice that on this path there is someone or something waiting for you, but without the option of going backwards, you get the strength to continue forward."/>
+      </map_element>
+
+      <map_element>
+        <tier type="3" />
+        <entity name="TRITON" />
+        <entity name="GNOLL" />
+        <scene name="cave_04.tmx" />
+        <icon_coords x="288" y="480" width="32" height="32" />
+        <decision name ="After defeating the enemies you continue following the river. This ends with a waterfall, thinking that you have no where to go, it turns out that on the wall there is a crack and a narrow tunnel.
+Through the crack you see a light that gives to the outside, while through the tunnel a stream of air is allowed to escape:"/>
+        <option name = "It seems that you listen to water running very close, thanks to your knowledge you know that everything goes to a good port, so you will follow it."/>
+      </map_element>
+
+      <!--<map_element>
         <tier type="3" />
         <entity name="KOBOLD" />
         <entity name="KOBOLD" />
@@ -114,72 +123,75 @@
         <icon_coords x="96" y="512" width="32" height="32" />
         <decision name ="2 gnoll"/>
         <option name = "2 gnoll"/>
-      </map_element>
+      </map_element>-->
 	  
 	   <map_element>
         <tier type="4" />
         <entity name="GNOLL" />
         <scene name="forest.tmx" />
-        <icon_coords x="224" y="480" width="32" height="32" />
-        <decision name ="decision 1 gnoll"/>
-        <option name = "pues te spawneo 1 gnoll"/>
+        <icon_coords x="96" y="512" width="32" height="32" />
+        <decision name ="After defeating the enemies, one of them tells you that in the city you will find defeat. Without knowing very well what he says, you continue advancing through the forest until you come across some walls.
+You go around until you find the door that leads to the city. Once inside that feeling that you had in the forest begins to disappear, but for a short time, since you see the dark warrior trying to escape. It is your only hope to get information about Silumgar, DO NOT LET ME ESCAPE!"/>
+        <option name = "A dense forest in which the environment is charged, a sensation of heaviness that only increased being there."/>
       </map_element>
       
       <map_element>
         <tier type="4" />
         <entity name="GNOLL" />
         <entity name="GNOLL" />
-        <scene name="cave_03.tmx" />
+        <scene name="dungeon.tmx" />
         <icon_coords x="64" y="512" width="32" height="32" />
-        <decision name ="decision 2 gnoll"/>
-        <option name = "pues te spawneo 2 gnoll"/>
+        <decision name ="Dead the enemies of the exit, you find yourself in what looks like the courtyard of a collapsed castle. When you leave, you see the dark knight in the harbor, about to take a boat. You start going out in your search, you can not let it escape:"/>
+        <option name = "An illuminated corridor, where in the end you can see something similar to a castle courtyard. Surely it is the path of the enemies, for which, it would not be strange to meet more than one."/>
       </map_element>
 	  
 	  <map_element>
         <tier type="5" />
         <entity name="DARK_WARRIOR" />
-        <scene name="cave_03.tmx" />
-        <icon_coords x="64" y="512" width="32" height="32" />
-        <decision name ="dark warrior"/>
-        <option name = "dark warrior"/>
+        <scene name="ship.tmx" />
+        <icon_coords x="192" y="512" width="32" height="32" />
+        <decision name ="Once the Dark Knight is dead, he ends up telling you that Silumgar is at the end of the region in search of more people to exterminate. That said, you start the road again, but this time more difficult, since you are starting to become known among the ranks of the enemies. For this, a new path opens up:"/>
+        <option name = "Pursue the dark knight and start the battle against him."/>
       </map_element>
 	  
 	  <map_element>
         <tier type="6" />
         <entity name="TRITON" />
-        <scene name="forest.tmx" />
-        <icon_coords x="224" y="480" width="32" height="32" />
-        <decision name ="1 TRITON"/>
-        <option name = "1 TRITON"/>
+        <entity name="TRITON" />
+        <scene name="river.tmx" />
+        <icon_coords x="224" y="512" width="32" height="32" />
+        <decision name ="Because of the attack the boat, is unusable so you must walk forward again, luckily, you had more than one way to choose:"/>
+        <option name = "Take a boat, spent to continue moving forward."/>
       </map_element>
       
       <map_element>
         <tier type="6" />
-        <entity name="TRITON" />
-        <entity name="TRITON" />
-        <scene name="cave_03.tmx" />
-        <icon_coords x="64" y="512" width="32" height="32" />
+        <entity name="ALCHEMISTGOBLIN" />
+        <entity name="GNOLL" />
+        <scene name="mountain.tmx" />
+        <icon_coords x="160" y="512" width="32" height="32" />
         <decision name ="2 TRITON"/>
-        <option name = "2 TRITON"/>
+        <option name = "Leave the city by the other band, entering again towards the mountain."/>
       </map_element>
 	  
 	  <map_element>
         <tier type="7" />
-        <entity name="KOBOLD" />
-        <scene name="forest.tmx" />
-        <icon_coords x="224" y="480" width="32" height="32" />
+        <entity name="HEAVYGOBLIN" />
+      <entity name="HELLBOUND" />
+        <scene name="cave.tmx" />
+        <icon_coords x="32" y="480" width="32" height="32" />
         <decision name ="1 KOBOLD"/>
-        <option name = "1 KOBOLD"/>
+        <option name = "Cross a small cave in which you can see crystals that illuminate a lot."/>
       </map_element>
       
       <map_element>
         <tier type="7" />
-        <entity name="KOBOLD" />
-        <entity name="KOBOLD" />
-        <scene name="cave_03.tmx" />
+        <entity name="GOBLIN" />
+        <entity name="TROLL_LEADERS" />
+        <scene name="dungeon.tmx" />
         <icon_coords x="64" y="512" width="32" height="32" />
         <decision name ="2 KOBOLD"/>
-        <option name = "2 KOBOLD"/>
+        <option name = "Go to an abandoned town in which there seems to be nobody."/>
       </map_element>
 	  
 	  <map_element>
@@ -187,19 +199,19 @@
         <entity name="KOBOLD" />
         <entity name="KOBOLD" />
 		<entity name="KOBOLD" />
-        <scene name="cave_03.tmx" />
-        <icon_coords x="64" y="512" width="32" height="32" />
+        <scene name="forest.tmx" />
+        <icon_coords x="96" y="512" width="32" height="32" />
         <decision name ="3 KOBOLD"/>
-        <option name = "3 KOBOLD"/>
+        <option name = "Going into the forest."/>
       </map_element>
 	  
 	  <map_element>
         <tier type="8" />
         <entity name="DARK_WARRIOR" />
-        <scene name="cave_03.tmx" />
-        <icon_coords x="64" y="512" width="32" height="32" />
-        <decision name ="mimi"/>
-        <option name = "ahora dark warrior pero deberia ser final boss"/>
+        <scene name="castle.tmx" />
+        <icon_coords x="32" y="512" width="32" height="32" />
+        <decision name ="You have managed to save the world once more. CONGRATULATIONS!"/>
+        <option name = "You are before the doors of the castle where Lich is, there is no way back, at this moment it is where the destiny of the whole earth will be decided:"/>
       </map_element>
      <!-- <icon_coords x="32" y="480" width="32" height="32" /> Cave interior 
       <icon_coords x="64" y="480" width="32" height="32" />     River

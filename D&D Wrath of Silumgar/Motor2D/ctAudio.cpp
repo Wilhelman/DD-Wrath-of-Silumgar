@@ -91,13 +91,13 @@ void ctAudio::InitAudio()
 	skeleton_death_fx = LoadFx("audio/sounds/Enemies/SkeletonDeath.wav");
 	skeleton_damaged_fx = LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
 	skeleton_run_fx = kobold_run_fx;
-	//dark_warrior_attack_fx = LoadFx("audio/sounds/Enemies/DarkWarriorAttack.wav");
+	dark_warrior_attack_fx = LoadFx("audio/sounds/Enemies/DarkWarriorAttack.wav");
 	dark_warrior_death_fx = LoadFx("audio/sounds/Enemies/DarkWarriorDeath.wav");
 	dark_warrior_damaged_fx = LoadFx("audio/sounds/Enemies/DarkWarriorDamaged.wav");
 	dark_warrior_run_fx = gnoll_run_fx;
-	//dark_warrior_insignificant_mortals_fx= LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
-	//dark_warrior_thunder_punch_fx= LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
-	//dark_warrior_void_cannon_fx= LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
+	dark_warrior_insignificant_mortals_fx= LoadFx("audio/sounds/Enemies/DarkWarriorInsignificantMortals.wav");
+	dark_warrior_thunder_punch_fx= LoadFx("audio/sounds/Enemies/DarkWarriorThunderPunch.wav");
+	dark_warrior_void_cannon_fx= LoadFx("audio/sounds/Enemies/DarkWarriorVoidCannon.wav");
 
 	troll_leaders_attack_fx = LoadFx("audio/sounds/Enemies/TrollLeadersAttack.wav");
 	troll_leaders_run_fx = gnoll_run_fx;

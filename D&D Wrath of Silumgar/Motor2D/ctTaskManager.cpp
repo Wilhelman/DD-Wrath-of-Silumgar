@@ -913,6 +913,8 @@ bool PerformActionToEntity::Execute()
 							tmp_dmg = std::to_string(damage_to_deal);
 
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+
+
 							//TODO SITO
 							fPoint posP;
 							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
@@ -956,7 +958,7 @@ bool PerformActionToEntity::Execute()
 
 			}
 		}
-						 break;
+		break;
 
 
 		
@@ -993,8 +995,7 @@ bool PerformActionToEntity::Execute()
 					else {// THE ATTACK HITS
 
 						bool critical = false;
-
-						int damage_to_deal = action_to_perform.health_points_effect;
+						int damage_to_deal = App->entities->GetDwarf()->GetCurrentStrengthPoints();
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 						random_thousand_faces_die = (rand() % 100) + 1;
@@ -1017,6 +1018,12 @@ bool PerformActionToEntity::Execute()
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 253,103,6,255 }, 16, nullptr, nullptr);
 						else
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 },14, nullptr, nullptr);
+
+						Altered_Stat defense;
+						defense.turn_left = 1;
+						defense.stat_effect_magical_defense = -1;
+						defense.stat_effect_physical_defense = -1;
+						actioner_entity->AddAlteredStat(defense);
 
 						receiver_entity->Damaged();
 					}
@@ -1049,10 +1056,13 @@ bool PerformActionToEntity::Execute()
 			
 				std::string tmp_dmg = "STRENGTH UP";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+				tmp_dmg = "INTELLIGENCE UP";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
 				Altered_Stat strength_up;
 				strength_up.turn_left = 2;
 				strength_up.stat_effect_strength = 1;
+				strength_up.stat_effect_intelligence = 1;
 				receiver_entity->AddAlteredStat(strength_up);
 
 				//animate the receiver to hit + audio or smth
@@ -1064,88 +1074,29 @@ bool PerformActionToEntity::Execute()
 
 		case DWARFS_WRATH: {
 
-			if (!HaveObjective())
+			if (!HaveTeamObjective())
 				return true;
 
-			actioner_entity->animation = &actioner_entity->dwarfs_wrath;
+			actioner_entity->animation = &actioner_entity->morale_boost;
 
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->dwarfs_wrath.Reset();
-
-				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
-
-				int random_thousand_faces_die = (rand() % 100) + 1;
-
-				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
-					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
-
-					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK
-						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
-						receiver_entity->animation = &receiver_entity->dodge;
-					}
-					else {// THE ATTACK HITS
-
-						bool critical = false;
-
-						int damage_to_deal = action_to_perform.health_points_effect;
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
-						actioner_dexterity = actioner_dexterity / 10;
-
-						random_thousand_faces_die = (rand() % 100) + 1;
-						if (random_thousand_faces_die <= actioner_dexterity) {
-							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
-							critical = true;
-						}
-						damage_to_deal = damage_to_deal - damage_reduction;
-						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-						receiver_entity->animation = &receiver_entity->hit;
-						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
-						std::string tmp_dmg = std::to_string(damage_to_deal);
-						if (!critical) {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_ENEMY);
-							}
-						}
-						else {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
-							}
-						}
+				actioner_entity->morale_boost.Reset();
 
 
+				std::string tmp_dmg = "DEXTERITY X 1.5";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+				
+				//TODO IMPLEMENT LOSE HP
+				Altered_Stat dexterity;
+				dexterity.turn_left = 2;
+				dexterity.stat_effect_dexterity = 2;
 
+				receiver_entity->AddAlteredStat(dexterity);
 
-						receiver_entity->Damaged();
-					}
-				}
-				else {//ACTIONER MISSES!
-					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
-				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				actioner_entity->Ability1T1();
 
 			}
 		}
@@ -1156,18 +1107,24 @@ bool PerformActionToEntity::Execute()
 			if (!HaveObjective())
 				return true;
 
-			actioner_entity->animation = &actioner_entity->high_axe_plus;
+			actioner_entity->animation = &actioner_entity->high_axe;
+
+
 
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->high_axe_plus.Reset();
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
+				actioner_entity->high_axe.Reset();
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 
-				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
+				if (random_thousand_faces_die <= actioner_dexterity || receiver_entity->IsStunned()) {// THE ACTIONER HITS THE RECEIVER
 					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
 					random_thousand_faces_die = (rand() % 100) + 1;
@@ -1178,54 +1135,36 @@ bool PerformActionToEntity::Execute()
 					else {// THE ATTACK HITS
 
 						bool critical = false;
-
-						int damage_to_deal = action_to_perform.health_points_effect;
+						int dwarfdmg = App->entities->GetDwarf()->GetCurrentStrengthPoints();
+						int damage_to_deal = 20+ dwarfdmg;
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
-
 						random_thousand_faces_die = (rand() % 100) + 1;
 						if (random_thousand_faces_die <= actioner_dexterity) {
 							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
 							critical = true;
 						}
+
+						if (receiver_entity->IsStunned())
+							damage_to_deal = damage_to_deal * 2;
+
 						damage_to_deal = damage_to_deal - damage_reduction;
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 						receiver_entity->animation = &receiver_entity->hit;
 						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
 						std::string tmp_dmg = std::to_string(damage_to_deal);
-						if (!critical) {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_ENEMY);
-							}
-						}
-						else {
+						if (critical)
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
-							}
-						}
+						else if (receiver_entity->IsStunned())
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 253,103,6,255 }, 16, nullptr, nullptr);
+						else
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
-
-
+						Altered_Stat defense;
+						defense.turn_left = 1;
+						defense.stat_effect_magical_defense = -1;
+						defense.stat_effect_physical_defense = -1;
+						actioner_entity->AddAlteredStat(defense);
 
 						receiver_entity->Damaged();
 					}
@@ -1234,6 +1173,9 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
+				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIGH_AXE);
 				actioner_entity->Ability2T1();
 
 			}
@@ -1242,86 +1184,28 @@ bool PerformActionToEntity::Execute()
 
 		case MORALE_BOOST_PLUS: {
 
-			if (!HaveObjective())
+			if (!HaveTeamObjective())
 				return true;
 
-			actioner_entity->animation = &actioner_entity->morale_boost_plus;
+			actioner_entity->animation = &actioner_entity->morale_boost;
 
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->morale_boost_plus.Reset();
-
-				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
-
-				int random_thousand_faces_die = (rand() % 100) + 1;
-
-				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
-					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
-
-					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK
-						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
-						receiver_entity->animation = &receiver_entity->dodge;
-					}
-					else {// THE ATTACK HITS
-
-						bool critical = false;
-
-						int damage_to_deal = action_to_perform.health_points_effect;
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
-						actioner_dexterity = actioner_dexterity / 10;
-
-						random_thousand_faces_die = (rand() % 100) + 1;
-						if (random_thousand_faces_die <= actioner_dexterity) {
-							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
-							critical = true;
-						}
-						damage_to_deal = damage_to_deal - damage_reduction;
-						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-						receiver_entity->animation = &receiver_entity->hit;
-						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
-						std::string tmp_dmg = std::to_string(damage_to_deal);
-						if (!critical) {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_ENEMY);
-							}
-						}
-						else {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
-							}
-						}
+				actioner_entity->morale_boost.Reset();
 
 
+				std::string tmp_dmg = "STRENGTH UP x2";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+				tmp_dmg = "INTELLIGENCE UP";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
+				Altered_Stat strength_up;
+				strength_up.turn_left = 3;
+				strength_up.stat_effect_strength = 2;
+				strength_up.stat_effect_intelligence = 1;
+				receiver_entity->AddAlteredStat(strength_up);
 
-						receiver_entity->Damaged();
-					}
-				}
-				else {//ACTIONER MISSES!
-					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
-				}
 				//animate the receiver to hit + audio or smth
 				actioner_entity->Ability1T1();
 
@@ -1331,88 +1215,29 @@ bool PerformActionToEntity::Execute()
 
 		case DWARFS_WRATH_PLUS: {
 
-			if (!HaveObjective())
+			if (!HaveTeamObjective())
 				return true;
 
-			actioner_entity->animation = &actioner_entity->dwarfs_wrath_plus;
+			actioner_entity->animation = &actioner_entity->morale_boost;
 
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->dwarfs_wrath_plus.Reset();
-
-				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
-
-				int random_thousand_faces_die = (rand() % 100) + 1;
-
-				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
-					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
-
-					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK
-						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
-						receiver_entity->animation = &receiver_entity->dodge;
-					}
-					else {// THE ATTACK HITS
-
-						bool critical = false;
-
-						int damage_to_deal = action_to_perform.health_points_effect;
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
-						actioner_dexterity = actioner_dexterity / 10;
-
-						random_thousand_faces_die = (rand() % 100) + 1;
-						if (random_thousand_faces_die <= actioner_dexterity) {
-							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
-							critical = true;
-						}
-						damage_to_deal = damage_to_deal - damage_reduction;
-						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-						receiver_entity->animation = &receiver_entity->hit;
-						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
-						std::string tmp_dmg = std::to_string(damage_to_deal);
-						if (!critical) {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_ENEMY);
-							}
-						}
-						else {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
-							}
-						}
+				actioner_entity->morale_boost.Reset();
 
 
+				std::string tmp_dmg = "DEXTERITY X 2.25";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
+				//TODO IMPLEMENT LOSE HP
+				Altered_Stat dexterity;
+				dexterity.turn_left = 3;
+				dexterity.stat_effect_dexterity = 2;
 
-						receiver_entity->Damaged();
-					}
-				}
-				else {//ACTIONER MISSES!
-					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
-				}
+				receiver_entity->AddAlteredStat(dexterity);
+				receiver_entity->AddAlteredStat(dexterity);
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				actioner_entity->Ability1T1();
 
 			}
 		}
@@ -1420,7 +1245,7 @@ bool PerformActionToEntity::Execute()
 
 		case RAGING_MOCK: {
 
-			if (!HaveObjective())
+			if (!HaveTeamObjective())
 				return true;
 
 			actioner_entity->animation = &actioner_entity->raging_mock;
@@ -1430,78 +1255,24 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->raging_mock.Reset();
 
-				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
-				int random_thousand_faces_die = (rand() % 100) + 1;
+				std::string tmp_dmg = "DEBUFFED JUDGEMENT";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+				tmp_dmg = "DEBUFFED STRENGHT";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+				tmp_dmg = "DEBUFFED INTELLIGENCE";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 30, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
-				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
-					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
+				//TODO IMPLEMENT LOSE HP
+				Altered_Stat debuff;
+				debuff.turn_left = 3;
+				debuff.stat_effect_judgement= 2;
+				debuff.stat_effect_strength = 2;
+				debuff.stat_effect_intelligence = 2;
+				receiver_entity->AddAlteredStat(debuff);
 
-					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK
-						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
-						receiver_entity->animation = &receiver_entity->dodge;
-					}
-					else {// THE ATTACK HITS
-
-						bool critical = false;
-
-						int damage_to_deal = action_to_perform.health_points_effect;
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
-						actioner_dexterity = actioner_dexterity / 10;
-
-						random_thousand_faces_die = (rand() % 100) + 1;
-						if (random_thousand_faces_die <= actioner_dexterity) {
-							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
-							critical = true;
-						}
-						damage_to_deal = damage_to_deal - damage_reduction;
-						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-						receiver_entity->animation = &receiver_entity->hit;
-						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
-						std::string tmp_dmg = std::to_string(damage_to_deal);
-						if (!critical) {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_ENEMY);
-							}
-						}
-						else {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
-							}
-						}
-
-
-
-
-						receiver_entity->Damaged();
-					}
-				}
-				else {//ACTIONER MISSES!
-					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
-				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability1T2();
+				actioner_entity->Ability1T1();
 
 			}
 		}
@@ -1512,18 +1283,24 @@ bool PerformActionToEntity::Execute()
 			if (!HaveObjective())
 				return true;
 
-			actioner_entity->animation = &actioner_entity->meteor;
+			actioner_entity->animation = &actioner_entity->high_axe;
+
+
 
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->meteor.Reset();
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
+				actioner_entity->high_axe.Reset();
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 
-				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
+				if (random_thousand_faces_die <= actioner_dexterity || receiver_entity->IsStunned()) {// THE ACTIONER HITS THE RECEIVER
 					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
 					random_thousand_faces_die = (rand() % 100) + 1;
@@ -1534,54 +1311,37 @@ bool PerformActionToEntity::Execute()
 					else {// THE ATTACK HITS
 
 						bool critical = false;
+						int dwarfdmg = App->entities->GetDwarf()->GetCurrentStrengthPoints();
 
-						int damage_to_deal = action_to_perform.health_points_effect;
+						int damage_to_deal = 50 + dwarfdmg;
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
-
 						random_thousand_faces_die = (rand() % 100) + 1;
 						if (random_thousand_faces_die <= actioner_dexterity) {
 							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
 							critical = true;
 						}
+
+						if (receiver_entity->IsStunned())
+							damage_to_deal = damage_to_deal * 1.5;
+
 						damage_to_deal = damage_to_deal - damage_reduction;
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 						receiver_entity->animation = &receiver_entity->hit;
 						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
 						std::string tmp_dmg = std::to_string(damage_to_deal);
-						if (!critical) {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_ENEMY);
-							}
-						}
-						else {
+						if (critical)
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
-							}
-						}
+						else if (receiver_entity->IsStunned())
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 253,103,6,255 }, 16, nullptr, nullptr);
+						else
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
-
-
+						Altered_Stat defense;
+						defense.turn_left = 1;
+						defense.stat_effect_magical_defense = -1;
+						defense.stat_effect_physical_defense = -1;
+						actioner_entity->AddAlteredStat(defense);
 
 						receiver_entity->Damaged();
 					}
@@ -1590,7 +1350,10 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability2T2();
+				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+
+				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIGH_AXE);
+				actioner_entity->Ability2T1();
 
 			}
 		}
@@ -1598,88 +1361,34 @@ bool PerformActionToEntity::Execute()
 
 		case COUNTER: {
 
-			if (!HaveObjective())
+			if (!HaveTeamObjective())
 				return true;
 
-			actioner_entity->animation = &actioner_entity->counter;
+			actioner_entity->animation = &actioner_entity->raging_mock;
 
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->counter.Reset();
-
-				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
-
-				int random_thousand_faces_die = (rand() % 100) + 1;
-
-				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
-					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
-
-					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK
-						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
-						receiver_entity->animation = &receiver_entity->dodge;
-					}
-					else {// THE ATTACK HITS
-
-						bool critical = false;
-
-						int damage_to_deal = action_to_perform.health_points_effect;
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
-						actioner_dexterity = actioner_dexterity / 10;
-
-						random_thousand_faces_die = (rand() % 100) + 1;
-						if (random_thousand_faces_die <= actioner_dexterity) {
-							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
-							critical = true;
-						}
-						damage_to_deal = damage_to_deal - damage_reduction;
-						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-						receiver_entity->animation = &receiver_entity->hit;
-						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
-						std::string tmp_dmg = std::to_string(damage_to_deal);
-						if (!critical) {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_ENEMY);
-							}
-						}
-						else {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
-							//TODO SITO
-							fPoint posP;
-							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
-							{
-								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
-							}
-							else
-							{
-								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
-							}
-						}
+				actioner_entity->raging_mock.Reset();
 
 
+				std::string tmp_dmg = "BUFFED PHYSICAL DEFENSE";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+				tmp_dmg = "BUFFED MAGICAL DEFENSE";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+				tmp_dmg = "DEBUFFED STRENGTH x2.25";
+				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 30, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
+				//TODO IMPLEMENT LOSE HP
+				Altered_Stat debuff;
+				debuff.turn_left = 3;
+				debuff.stat_effect_magical_defense = 2;
+				debuff.stat_effect_physical_defense = 2;
+				debuff.stat_effect_strength = 2;
+				receiver_entity->AddAlteredStat(debuff);
 
-						receiver_entity->Damaged();
-					}
-				}
-				else {//ACTIONER MISSES!
-					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
-				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T2();
+				actioner_entity->Ability1T1();
 
 			}
 		}
@@ -1706,10 +1415,10 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->heal.Reset();
 
 				bool critical = false;
-
+				App->entities->GetElf()->GetCurrentIntelligencePoints();
 				int damage_to_deal = action_to_perform.health_points_effect;
 
-				damage_to_deal = damage_to_deal;
+				damage_to_deal = App->entities->GetElf()->GetCurrentIntelligencePoints();
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 				//receiver_entity->animation = &receiver_entity->hit;
 				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);

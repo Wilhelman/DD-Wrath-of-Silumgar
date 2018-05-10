@@ -147,19 +147,34 @@ void DisplacerBeast::PerformAction()
 {
 	Entity* entity_objective = nullptr;
 
-	if (IsGoingToDoAnythingClever()) {
+	entity_objective = App->combat->GetRandomHeroe();
 
-		entity_objective = App->combat->GetTheWeakestHeroe();
-	}
-	else {
+	if (IsGoingToDoAnythingClever()) {//hacer algo cheto
 		
-		entity_objective = App->combat->GetRandomHeroe();
+			if (GetCurrentManaPoints() >= 70) {
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+				App->task_manager->AddTask(new PerformActionToEntity(this, shadow_jab, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
+			}
+
+			else {
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+				App->task_manager->AddTask(new PerformActionToEntity(this, this->infernal_fire, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
+			}
+		
 	}
+	else {//hacer algo mal
+		
 
-	App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
-	App->task_manager->AddTask(new PerformActionToEntity(this, this->rush, entity_objective));
-	App->task_manager->AddTask(new MoveToInitialPosition(this));
+		App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+		App->task_manager->AddTask(new PerformActionToEntity(this, this->rush, entity_objective));
+		App->task_manager->AddTask(new MoveToInitialPosition(this));
+	}
+	}
+	
 
-}
+
+
 
 

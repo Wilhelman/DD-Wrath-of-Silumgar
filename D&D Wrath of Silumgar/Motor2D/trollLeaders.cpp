@@ -144,16 +144,41 @@ void TrollLeaders::PerformAction()
 {
 	Entity* entity_objective = nullptr;
 
-	if (IsGoingToDoAnythingClever()) {
-		
-		entity_objective = App->combat->GetTheWeakestHeroe();
+	if (IsGoingToDoAnythingClever()) {//hacer algo cheto
+		if (!boosted) {
+
+			App->task_manager->AddTask(new PerformActionToEntity(this, brotherly_rage, App->combat->GetRandomHeroe()));
+			boosted = true;
+
+		}
+
+		else {
+			entity_objective = App->combat->GetTheWeakestHeroe();
+
+			if (GetCurrentManaPoints() >= 70) {
+				App->task_manager->AddTask(new PerformActionToEntity(this, infested_claw, entity_objective));
+			}
+
+			else if (GetCurrentManaPoints() > 70 && GetCurrentManaPoints() >= 45) {
+
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+				App->task_manager->AddTask(new PerformActionToEntity(this, block, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
+			}
+
+			else {
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+				App->task_manager->AddTask(new PerformActionToEntity(this, this->claw_attack, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
+			}
+		}
 	}
-	else {
-		//in this case, the kobold will attack one random heroe
+	else {//hacer algo mal
 		entity_objective = App->combat->GetRandomHeroe();
+
+		App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+		App->task_manager->AddTask(new PerformActionToEntity(this, this->infested_claw, entity_objective));
+		App->task_manager->AddTask(new MoveToInitialPosition(this));
 	}
 
-	//App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
-	App->task_manager->AddTask(new PerformActionToEntity(this, this->brotherly_rage, entity_objective));
-	//App->task_manager->AddTask(new MoveToInitialPosition(this));
 }

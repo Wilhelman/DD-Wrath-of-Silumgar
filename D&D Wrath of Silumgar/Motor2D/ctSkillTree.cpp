@@ -680,17 +680,19 @@ void ctSkillTree::ChangeDescriptionBG() {
 }
 
 void ctSkillTree::SelectAbility() {
-	if (current_hero == 1) {
-		GetPreviousAbility(cleric_abilities);
-	}
-	else if (current_hero == 2) {
-		GetPreviousAbility(warrior_abilities);
-	}
-	else if (current_hero == 3) {
-		GetPreviousAbility(dwarf_abilities);
-	}
-	else if (current_hero == 4) {
-		GetPreviousAbility(elf_abilities);
+	if ((*selected_ability)->tier != 1) {
+		if (current_hero == 1) {
+			GetPreviousAbility(cleric_abilities);
+		}
+		else if (current_hero == 2) {
+			GetPreviousAbility(warrior_abilities);
+		}
+		else if (current_hero == 3) {
+			GetPreviousAbility(dwarf_abilities);
+		}
+		else if (current_hero == 4) {
+			GetPreviousAbility(elf_abilities);
+		}
 	}
 	if ((*selected_ability)->active == 0) {
 		if ((*previous_ability)->active == 1) {

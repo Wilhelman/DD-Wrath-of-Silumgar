@@ -301,22 +301,38 @@ bool ctSkillTree::CleanUp()
 	cleric_abilities.clear();
 	dwarf_abilities.clear();
 	elf_abilities.clear();
-	App->gui->DeleteUIElement(*description);
-	description = nullptr;
-	App->gui->DeleteUIElement(*description_bg);
-	description_bg = nullptr;
-	App->gui->DeleteUIElement(*title);
-	title = nullptr;
-	App->gui->DeleteUIElement(*select_menu_bg);
-	select_menu_bg = nullptr;
-	App->gui->DeleteUIElement(*select_menu_text);
-	select_menu_text = nullptr;
-	App->gui->DeleteUIElement(*arrow);
-	arrow = nullptr;
-	App->gui->DeleteUIElement(*select_menu_A);
-	select_menu_A = nullptr;
-	App->gui->DeleteUIElement(*select_menu_B);
-	select_menu_B = nullptr;
+	if (description!=nullptr) {
+		App->gui->DeleteUIElement(*description);
+		description = nullptr;
+	}
+	if (description_bg!=nullptr) {
+		App->gui->DeleteUIElement(*description_bg);
+		description_bg = nullptr;
+	}
+	if (title != nullptr) {
+		App->gui->DeleteUIElement(*title);
+		title = nullptr;
+	}
+	if (select_menu_bg != nullptr) {
+		App->gui->DeleteUIElement(*select_menu_bg);
+		select_menu_bg = nullptr;
+	}
+	if (select_menu_text != nullptr) {
+		App->gui->DeleteUIElement(*select_menu_text);
+		select_menu_text = nullptr;
+	}
+	if (arrow != nullptr) {
+		App->gui->DeleteUIElement(*arrow);
+		arrow = nullptr;
+	}
+	if (select_menu_A != nullptr) {
+		App->gui->DeleteUIElement(*select_menu_A);
+		select_menu_A = nullptr;
+	}
+	if (select_menu_B != nullptr) {
+		App->gui->DeleteUIElement(*select_menu_B);
+		select_menu_B = nullptr;
+	}
 	accept_decline.clear();
 	
 	App->tex->UnLoad(spritesheet_abilities);

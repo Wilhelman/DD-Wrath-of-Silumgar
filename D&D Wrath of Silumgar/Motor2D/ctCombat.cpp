@@ -127,11 +127,7 @@ bool ctCombat::Start()
 	App->items->dwarf_equip.clear();
 
 
-	if (!App->main_menu->is_new_game) {
-		//load from data.xml the current health, mana, items that have the heroes
-		LoadDataFromXML();
-	}
-	//LoadDataFromXML();
+	LoadDataFromXML();
 
 	SetDataToUI();
 
@@ -717,8 +713,10 @@ void ctCombat::LoadDataFromXML()
 		std::string tmp(heroe.attribute("name").as_string());
 
 		if (tmp == "cleric") {
-			App->entities->GetCleric()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
-			App->entities->GetCleric()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+			if (App->main_menu->is_new_game) {
+				App->entities->GetCleric()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+				App->entities->GetCleric()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+			}
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetCleric());
 
@@ -726,8 +724,10 @@ void ctCombat::LoadDataFromXML()
 				LoadItem(item, App->entities->GetCleric());
 		}
 		else if (tmp == "warrior") {
-			App->entities->GetWarrior()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
-			App->entities->GetWarrior()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+			if (App->main_menu->is_new_game) {
+				App->entities->GetWarrior()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+				App->entities->GetWarrior()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+			}
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetWarrior());
 
@@ -735,8 +735,10 @@ void ctCombat::LoadDataFromXML()
 				LoadItem(item, App->entities->GetWarrior());
 		}
 		else if (tmp == "dwarf") {
-			App->entities->GetDwarf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
-			App->entities->GetDwarf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+			if (App->main_menu->is_new_game) {
+				App->entities->GetDwarf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+				App->entities->GetDwarf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+			}
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetDwarf());
 
@@ -744,8 +746,10 @@ void ctCombat::LoadDataFromXML()
 				LoadItem(item, App->entities->GetDwarf());
 		}
 		else if (tmp == "elf") {
-			App->entities->GetElf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
-			App->entities->GetElf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+			if (App->main_menu->is_new_game) {
+				App->entities->GetElf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
+				App->entities->GetElf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
+			}
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
 				LoadSkill(skill, App->entities->GetElf());
 

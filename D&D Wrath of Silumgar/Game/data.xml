@@ -66,7 +66,7 @@
 			</items>
 		</heroe>
 		<heroe name="elf">
-			<values health_points="102" mana_points="91" />
+			<values health_points="130" mana_points="91" />
 			<skills>
 				<skill name="Blizzard" description="Magic attack that hits the mind of the enemy" mana_points_effect_to_himself="1" health_points_effect="-40" objective="1" have_to_move="0" owned="0" />
 				<skill name="Seed Of Life" description="Seed Of Life" mana_points_effect_to_himself="1" health_points_effect="-40" objective="1" have_to_move="0" owned="0" />

@@ -32,9 +32,9 @@ TrollLeaders::TrollLeaders(int x, int y, EntityType type) : Entity(x, y, type) {
 		else if (tmp == "run")
 			LoadAnimation(animations, &run_forward);
 		else if (tmp == "attack_1")
-			LoadAnimation(animations, &attack_1);
+			LoadAnimation(animations, &attack);
 		else if (tmp == "attack_2")
-			LoadAnimation(animations, &attack_2);
+			LoadAnimation(animations, &attack_1);
 		else if (tmp == "hit")
 			LoadAnimation(animations, &hit);
 		else if (tmp == "death")

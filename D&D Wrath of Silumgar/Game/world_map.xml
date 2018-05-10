@@ -8,8 +8,8 @@
       
         <map_element>
           <tier type="1" />
-          <entity name="GNOLL" />
-		  <entity name="GNOLL" />
+          <entity name="GOBLIN" />
+		  <entity name="KOBOLD" />
           <scene name="cave_06.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="soy primera decision"/>
@@ -18,11 +18,12 @@
       
       <map_element>
         <tier type="2" />
-        <entity name="GNOLL" />
+        <entity name="ALCHEMIST_GOBLIN" />
+		<entity name="HEAVY_GOBLIN" />
         <scene name="forest.tmx" />
         <icon_coords x="224" y="480" width="32" height="32" />
-        <decision name ="decision 1 gnoll"/>
-        <option name = "pues te spawneo 1 gnoll"/>
+        <decision name ="1 ALCHEMIST_GOBLIN 1 HEAVY_GOBLIN"/>
+        <option name = "1 ALCHEMIST_GOBLIN 1 HEAVY_GOBLIN"/>
       </map_element>
       
       <map_element>
@@ -31,8 +32,8 @@
         <entity name="GNOLL" />
         <scene name="cave_03.tmx" />
         <icon_coords x="64" y="512" width="32" height="32" />
-        <decision name ="decision 2 gnoll"/>
-        <option name = "pues te spawneo 2 gnoll"/>
+        <decision name ="2 gnoll"/>
+        <option name = "2 gnoll"/>
       </map_element>
 
       <map_element>

@@ -6,6 +6,7 @@
 #include "j1ParticleSystem.h"
 #include "ctCombat.h"
 #include "ctLog.h"
+#include "ctLootMenu.h"
 
 //randomize libs
 #include <stdlib.h>     /* srand, rand */
@@ -25,6 +26,73 @@ Entity::~Entity()
 
 	abilities.clear();
 	altered_stats.clear();
+	int random_number = 0;
+	switch (this->type)
+	{
+	case GNOLL:
+		random_number = (rand() % App->items->tier_2_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_2_equips.at(random_number));
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(3));
+		break;
+	case KOBOLD:
+		random_number = (rand() % App->items->tier_1_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_1_equips.at(random_number));
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(0));
+		break;
+	case GOBLIN:
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(0));
+		break;
+	case ALCHEMIST_GOBLIN:
+		random_number = (rand() % App->items->tier_1_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_1_equips.at(random_number));
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(5));
+		break;
+	case HEAVY_GOBLIN:
+		random_number = (rand() % App->items->tier_1_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_1_equips.at(random_number));
+		random_number = (rand() % App->items->usable_items.size());
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(random_number));
+		break;
+	case SKELETON:
+		random_number = (rand() % App->items->tier_2_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_2_equips.at(random_number));
+		random_number = (rand() % App->items->usable_items.size());
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(random_number));
+		break;
+	case OWLBEAR:
+		random_number = (rand() % App->items->tier_3_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_3_equips.at(random_number));
+		random_number = (rand() % App->items->usable_items.size());
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(random_number));
+		break;
+	case TRITON:
+		random_number = (rand() % App->items->tier_2_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_2_equips.at(random_number));
+		random_number = (rand() % App->items->usable_items.size());
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(random_number));
+		break;
+	case HELLHOUND:
+		random_number = (rand() % App->items->tier_3_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_3_equips.at(random_number));
+		random_number = (rand() % App->items->usable_items.size());
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(random_number));
+		break;
+	case DARK_WARRIOR:
+	case TROLL_LEADERS:
+		//case DISPLACER
+		random_number = (rand() % App->items->tier_2_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_2_equips.at(random_number));
+		random_number = (rand() % App->items->tier_3_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_3_equips.at(random_number));
+		random_number = (rand() % App->items->usable_items.size());
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(random_number));
+		random_number = (rand() % App->items->usable_items.size());
+		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(random_number));
+		break;
+
+	default:
+		break;
+	}
 	
 }
 

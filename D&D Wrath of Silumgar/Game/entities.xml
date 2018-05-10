@@ -941,7 +941,7 @@
           <frame x="1174" y="2152" width="200" height="103"/>
         </animation>
         
-        <animation name="default_attack" speed="5.0" loop="true">
+        <!--<animation name="default_attack" speed="5.0" loop="true">
           <frame x="1340" y="1149" width="216" height="125"/>
           <frame x="977" y="1149" width="216" height="125"/>
           <frame x="577" y="1149" width="216" height="125"/>
@@ -950,6 +950,16 @@
           <frame x="976" y="1403" width="216" height="125"/>
           <frame x="570" y="1403" width="216" height="125"/>
           <frame x="196" y="1403" width="216" height="125"/>
+        </animation>-->
+
+        <animation name="default_attack" speed="5.0" loop="true">
+          <frame x="1172" y="320" width="431" height="106"/>
+          <frame x="750" y="320" width="431" height="106"/>
+          <frame x="238" y="320" width="431" height="106"/>
+          <frame x="1172" y="488" width="431" height="106"/>
+          <frame x="749" y="488" width="431" height="106"/>
+          <frame x="240" y="488" width="431" height="106"/>
+          <frame x="1168" y="655" width="431" height="106"/>
         </animation>
         
         <animation name="infernal_fire" speed="5.0" loop="true">

@@ -138,5 +138,5 @@ void  Dwarf::Ability2T2() {
 	App->audio->PlayFx(App->audio->dwarf_meteor_fx, 0);
 }
 void  Dwarf::Ability3T2() {
-	//App->audio->PlayFx(App->audio->dwarf_counter_fx, 0);
+	App->audio->PlayFx(App->audio->dwarf_counter_fx, 0);
 }

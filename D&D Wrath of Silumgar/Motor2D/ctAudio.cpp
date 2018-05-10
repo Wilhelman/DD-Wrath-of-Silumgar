@@ -152,7 +152,7 @@ void ctAudio::InitAudio()
 	dwarf_dwarfs_wrath_fx = LoadFx("audio/sounds/Characters/DwarfDwarfsWrath.wav");
 	dwarf_raging_mock_fx = LoadFx("audio/sounds/Characters/DwarfRagingMock.wav");
 	dwarf_meteor_fx = LoadFx("audio/sounds/Characters/DwarfMeteor.wav");
-	//dwarf_counter_fx = LoadFx("audio/sounds/Characters/DwarfCounter.wav");
+	dwarf_counter_fx = LoadFx("audio/sounds/Characters/DwarfCounter.wav");
 	elf_attack_fx = LoadFx("audio/sounds/Characters/ElfAttack.wav");
 	elf_run_fx = LoadFx("audio/sounds/Characters/ElfRun.wav");
 	elf_damaged_fx = LoadFx("audio/sounds/Characters/ElfDamaged.wav");
@@ -163,7 +163,7 @@ void ctAudio::InitAudio()
 	elf_lightning_bolt_fx = LoadFx("audio/sounds/Characters/ElfLightningBolt.wav");
 	elf_revive_fx = LoadFx("audio/sounds/Characters/ElfRevive.wav");
 	elf_blizzard_fx = LoadFx("audio/sounds/Characters/ElfBlizzard.wav");
-	//elf_fire_djiin_fx = LoadFx("audio/sounds/Characters/ElfFireDjiin.wav");
+	elf_fire_djiin_fx = LoadFx("audio/sounds/Characters/ElfFireDjiin.wav");
 	warrior_attack_fx = LoadFx("audio/sounds/Characters/WarriorAttack.wav");
 	warrior_run_fx = LoadFx("audio/sounds/Characters/WarriorRun.wav");
 	warrior_damaged_fx = LoadFx("audio/sounds/Characters/WarriorDamaged.wav");

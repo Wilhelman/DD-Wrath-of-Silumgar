@@ -117,11 +117,33 @@ public:
 	uint troll_leaders_attack_fx = 0u;
 	uint troll_leaders_damaged_fx = 0u;
 	uint troll_leaders_death_fx = 0u;
+	uint troll_leaders_block_fx = 0u;//1T1
+	uint troll_leaders_infested_claw_fx = 0u;//2T1
+	uint troll_leaders_brotherly_rage_fx = 0u;//3T1
 
 	uint displacer_beast_run_fx = 0u;
 	uint displacer_beast_attack_fx = 0u;
 	uint displacer_beast_damaged_fx = 0u;
 	uint displacer_beast_death_fx = 0u;
+	uint displacer_beast_infernal_fire_fx = 0u;//1T1
+	uint displacer_beast_shadow_jab_fx = 0u;//2T1
+	uint displacer_beast_call_of_the_dead_fx = 0u;//3T1
+
+	uint lich1_dragon_flames_fx = 0u;//1T1
+	uint lich1_lightning_flash_fx = 0u;//2T1
+	uint lich1_abyssal_sphere_fx = 0u;//3T1
+	uint lich1_run_fx = 0u;
+	uint lich1_attack_fx = 0u;
+	uint lich1_damaged_fx = 0u;
+	uint lich1_death_fx = 0u;
+
+	
+	uint lich2_bidimensional_claw_fx = 0u;//1T1
+	uint lich2_sea_of_flames_fx = 0u;//2T1
+	uint lich2_run_fx = 0u;
+	uint lich2_attack_fx = 0u;
+	uint lich2_damaged_fx = 0u;
+	uint lich2_death_fx = 0u;
 
 	//fx heroes
 	uint cleric_attack_fx = 0u;

@@ -119,27 +119,27 @@ void DisplacerBeast::LoadAnimation(pugi::xml_node animation_node, ctAnimation* a
 
 void DisplacerBeast::Attack()
 {
-	//App->audio->PlayFx(App->audio->dark_warrior_attack_fx, 0);
+	App->audio->PlayFx(App->audio->displacer_beast_attack_fx, 0);
 
 }
 
 void  DisplacerBeast::Death() {
-	App->audio->PlayFx(App->audio->dark_warrior_death_fx, 0);
+	App->audio->PlayFx(App->audio->displacer_beast_death_fx, 0);
 }
 void  DisplacerBeast::Run() {
-	App->audio->PlayFx(App->audio->dark_warrior_run_fx, 0);
+	App->audio->PlayFx(App->audio->displacer_beast_run_fx, 0);
 }
 void  DisplacerBeast::Damaged() {
-	App->audio->PlayFx(App->audio->dark_warrior_damaged_fx, 0);
+	App->audio->PlayFx(App->audio->displacer_beast_damaged_fx, 0);
 }
 void DisplacerBeast::Ability1T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_thunder_punch_fx, 0);
+	App->audio->PlayFx(App->audio->displacer_beast_infernal_fire_fx, 0);
 }
 void DisplacerBeast::Ability2T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_void_cannon_fx, 0);
+	App->audio->PlayFx(App->audio->displacer_beast_shadow_jab_fx, 0);
 }
 void DisplacerBeast::Ability3T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_insignificant_mortals_fx, 0);
+	App->audio->PlayFx(App->audio->displacer_beast_call_of_the_dead_fx, 0);
 }
 
 

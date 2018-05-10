@@ -55,7 +55,7 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	explanation_label->SetParent(explanation_background);
 	arrow = App->gui->AddUIImage(x - (main_label1_pos.x / 1.5), y, { 1333, 272, 7, 14 }, callback, background);
 	main_labels.push_back(attack_label);
-	if (entity->abilities.size()!=0) {
+	if (owned_abilities > 0) {
 		main_labels.push_back(abilities_label);
 	}
 	if (entity->usable_items.size() != 0) {
@@ -733,7 +733,7 @@ void UICombatMenu::GoBack() {
 		attack_label->current_state = STATE_FOCUSED;
 		arrow->SetParent(attack_label);
 		main_labels.push_back(attack_label);
-		if (entity->abilities.size() != 0) {
+		if (owned_abilities > 0) {
 			main_labels.push_back(abilities_label);
 		}
 		if (entity->usable_items.size() != 0) {

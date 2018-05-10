@@ -73,6 +73,12 @@ bool ctSkillTree::Start()
 		ret = false;
 	}
 
+	current_hero = 1;
+	cleric_upgrades = 1;
+	warrior_upgrades = 1;
+	dwarf_upgrades = 1;
+	elf_upgrades = 1;
+
 	App->map->sceneName = skill_tree_map_tmx.c_str();
 	App->map->Load(App->map->sceneName.c_str());
 	App->map->LayersSetUp();
@@ -152,7 +158,7 @@ bool ctSkillTree::Update(float dt)
 {
 	// Draw everything --------------------------------------
 
-	if (App->entities->entities.size() == 0) {
+	if (App->entities->entities.size() == 0 && App->fadeToBlack->FadeIsOver() == true) {
 		App->entities->SpawnEntity(-100,-100,CLERIC);
 		App->entities->SpawnEntity(-100, -100, WARRIOR);
 		App->entities->SpawnEntity(-100, -100, DWARF);
@@ -238,7 +244,38 @@ bool ctSkillTree::Update(float dt)
 	}
 
 	if (selecting_ability == true) {
-		SelectAbility();
+		if (current_hero == 1) {
+			if (cleric_upgrades > 0) {
+				SelectAbility();
+			}
+			else {
+				selecting_ability = false;
+			}
+		}
+		else if (current_hero == 2) {
+			if (warrior_upgrades > 0) {
+				SelectAbility();
+			}
+			else {
+				selecting_ability = false;
+			}
+		}
+		else if (current_hero == 3) {
+			if (dwarf_upgrades > 0) {
+				SelectAbility();
+			}
+			else {
+				selecting_ability = false;
+			}
+		}
+		else if (current_hero == 4) {
+			if (elf_upgrades > 0) {
+				SelectAbility();
+			}
+			else {
+				selecting_ability = false;
+			}
+		}
 	}
 
 	return true;
@@ -286,8 +323,20 @@ bool ctSkillTree::CleanUp()
 
 	for (int i = 0; i < App->entities->entities.size(); i++)
 	{
-		App->entities->entities.at(i)->to_destroy = true;
+		App->entities->entities.at(i)->~Entity();
 	}
+	App->entities->entities.clear();
+	for (int i = 0; i < App->entities->entities.size(); i++)
+	{
+		App->combat->draw_turn_priority_entity.at(i)->~Entity();
+	}
+	App->combat->draw_turn_priority_entity.clear();
+
+	for (int i = 0; i < App->entities->entities.size(); i++)
+	{
+		App->combat->turn_priority_entity.at(i)->~Entity();
+	}
+	App->combat->turn_priority_entity.clear();
 
 	return true;
 }
@@ -694,6 +743,19 @@ void ctSkillTree::SelectAbility() {
 				accept_decline.clear();
 				option._Ptr = nullptr;
 				selecting_ability = false;
+				if (current_hero == 1) {
+					cleric_upgrades--;
+				}
+				if (current_hero == 2) {
+					warrior_upgrades--;
+				}
+				if (current_hero == 3) {
+					dwarf_upgrades--;
+				}
+				if (current_hero == 4) {
+					elf_upgrades--;
+				}
+
 			}
 			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 				if (select_menu_A->current_state == STATE_FOCUSED) {

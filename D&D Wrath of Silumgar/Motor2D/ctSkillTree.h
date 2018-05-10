@@ -93,6 +93,10 @@ private:
 	std::vector<Ability*>::const_iterator selected_ability;
 	std::vector<Ability*>::const_iterator previous_ability;
 	uint current_hero = 1;
+	uint cleric_upgrades = 1;
+	uint warrior_upgrades = 1;
+	uint dwarf_upgrades = 1;
+	uint elf_upgrades = 1;
 	SDL_Rect marker_pos = {0,0,44,44};
 
 	UIElement* description = nullptr;

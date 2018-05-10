@@ -114,7 +114,7 @@ void DarkWarrior::LoadAnimation(pugi::xml_node animation_node, ctAnimation* anim
 
 void DarkWarrior::Attack()
 {
-	//App->audio->PlayFx(App->audio->dark_warrior_attack_fx, 0);
+	App->audio->PlayFx(App->audio->dark_warrior_attack_fx, 0);
 
 }
 
@@ -128,13 +128,13 @@ void  DarkWarrior::Damaged() {
 	App->audio->PlayFx(App->audio->dark_warrior_damaged_fx, 0);
 }
 void DarkWarrior::Ability1T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_thunder_punch_fx, 0);
+	App->audio->PlayFx(App->audio->dark_warrior_thunder_punch_fx, 0);
 }
 void DarkWarrior::Ability2T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_void_cannon_fx, 0);
+	App->audio->PlayFx(App->audio->dark_warrior_void_cannon_fx, 0);
 }
 void DarkWarrior::Ability3T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_insignificant_mortals_fx, 0);
+	App->audio->PlayFx(App->audio->dark_warrior_insignificant_mortals_fx, 0);
 }
 
 

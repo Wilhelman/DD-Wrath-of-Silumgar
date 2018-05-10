@@ -1954,7 +1954,7 @@ bool PerformActionToEntity::Execute()
 
 				//App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_KICK);
 
-				//actioner_entity->Ability3T1();
+				actioner_entity->Ability3T1();
 
 			}
 		}

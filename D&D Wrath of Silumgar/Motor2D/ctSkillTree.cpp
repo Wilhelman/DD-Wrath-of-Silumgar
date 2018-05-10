@@ -264,6 +264,11 @@ bool ctSkillTree::CleanUp()
 	
 	App->tex->UnLoad(spritesheet_abilities);
 
+	for (int i = 0; i < App->entities->entities.size(); i++)
+	{
+		App->entities->entities.at(i)->to_destroy = true;
+	}
+
 	return true;
 }
 

@@ -222,6 +222,9 @@
     <ClCompile Include="trollLeaders.cpp">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Lich2.cpp">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -424,6 +427,9 @@
       <Filter>Core\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="trollLeaders.h">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Lich2.h">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

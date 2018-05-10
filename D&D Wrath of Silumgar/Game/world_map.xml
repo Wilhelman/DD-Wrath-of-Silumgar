@@ -9,34 +9,36 @@
         <map_element>
           <tier type="1" />
           <entity name="GOBLIN" />
+          <entity name="KOBOLD"/>
 		  <entity name="KOBOLD" />
-          <scene name="cave_06.tmx" />
+          <scene name="tavern.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
-          <decision name ="soy primera decision"/>
+          <decision name ="After getting to defeat that band of vermin in Allard, our heroes decide to understand the path to Silumgar. This is where your first decision is presented:"/>
           <option name = "soy opcion"/>
         </map_element>
       
       <map_element>
         <tier type="2" />
-        <entity name="ALCHEMIST_GOBLIN" />
-		<entity name="HEAVY_GOBLIN" />
-        <scene name="forest.tmx" />
-        <icon_coords x="224" y="480" width="32" height="32" />
+        <entity name="KOBOLD" />
+		<entity name="KOBOLD" />
+        <scene name="mountain.tmx" />
+        <icon_coords x="160" y="512" width="32" height="32" />
         <decision name ="1 ALCHEMIST_GOBLIN 1 HEAVY_GOBLIN"/>
-        <option name = "1 ALCHEMIST_GOBLIN 1 HEAVY_GOBLIN"/>
+        <option name = "Leaving the city you are shown a path that passes through the foot of the mountain, in which you can clearly see a few strange traces, surely enemies. Apparently it seems clear."/>
       </map_element>
       
       <map_element>
         <tier type="2" />
-        <entity name="GNOLL" />
-        <entity name="GNOLL" />
-        <scene name="cave_03.tmx" />
-        <icon_coords x="64" y="512" width="32" height="32" />
+        <entity name="KOBOLD" />
+        <entity name="KOBOLD" />
+        <scene name="cave_05.tmx" />
+        <icon_coords x="96" y="480" width="32" height="32" />
         <decision name ="2 gnoll"/>
-        <option name = "2 gnoll"/>
+        <option name = "What seems like the beginning of a cave is shown on the way, from it, several lights and noises come out. You know that it will not be an easy path, but that your reward can be very good.
+"/>
       </map_element>
 
-      <map_element>
+      <!--<map_element>
         <tier type="2" />
         <entity name="KOBOLD" />
         <entity name="GNOLL" />
@@ -55,7 +57,7 @@
         <icon_coords x="32" y="512" width="32" height="32" />
         <decision name ="decision 1 gnoll 2 kobold"/>
         <option name = "pues te spawneo 1 gnoll 2 kobold"/>
-      </map_element>
+      </map_element>-->
 
       <map_element>
         <tier type="3" />

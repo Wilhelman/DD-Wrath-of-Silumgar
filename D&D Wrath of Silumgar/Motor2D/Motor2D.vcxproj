@@ -37,6 +37,7 @@
     <ClCompile Include="ctWindow.cpp" />
     <ClCompile Include="ctWorldMap.cpp" />
     <ClCompile Include="DarkWarrior.cpp" />
+    <ClCompile Include="DisplacerBeast.cpp" />
     <ClCompile Include="Dwarf.cpp" />
     <ClCompile Include="Elf.cpp" />
     <ClCompile Include="Emitter.cpp" />
@@ -106,6 +107,7 @@
     <ClInclude Include="ctWindow.h" />
     <ClInclude Include="ctWorldMap.h" />
     <ClInclude Include="DarkWarrior.h" />
+    <ClInclude Include="DisplacerBeast.h" />
     <ClInclude Include="Dwarf.h" />
     <ClInclude Include="Elf.h" />
     <ClInclude Include="Emitter.h" />

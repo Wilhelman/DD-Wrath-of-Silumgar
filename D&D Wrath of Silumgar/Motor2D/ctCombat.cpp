@@ -511,6 +511,7 @@ void ctCombat::UpdateHPBarOfEntity(Entity * entity_to_update_bar, int quantity)
 	case TRITON:
 	case HELLHOUND:
 	case DARK_WARRIOR:
+	case DISPLACER_BEAST:
 	case TROLL_LEADERS:
 	case SKELETON:
 	{
@@ -698,6 +699,9 @@ void ctCombat::SpawnEntities()
 			break;
 		case TROLL_LEADERS:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, TROLL_LEADERS);
+			break;
+		case DISPLACER_BEAST:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, DISPLACER_BEAST);
 			break;
 		default:
 			break;
@@ -1284,6 +1288,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		case SKELETON:
 		case DARK_WARRIOR:
 		case TROLL_LEADERS:
+		case DISPLACER_BEAST:
 		{
 			bool can_perform_action = true;
 			//todo do an action like IsStunned()

@@ -79,6 +79,7 @@ Entity::~Entity()
 		break;
 	case DARK_WARRIOR:
 	case TROLL_LEADERS:
+	case DISPLACER_BEAST:
 		//case DISPLACER
 		random_number = (rand() % App->items->tier_2_equips.size());
 		App->loot_menu->dropped_items.push_back(&App->items->tier_2_equips.at(random_number));

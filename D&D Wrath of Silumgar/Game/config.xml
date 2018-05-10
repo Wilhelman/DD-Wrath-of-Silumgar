@@ -47,6 +47,7 @@
 		<skeleton spritesheetName="textures/Enemies/Skeleton_sheet.png" />
 		<triton spritesheetName="textures/Enemies/Triton_sheet.png" />
 		<trollLeader spritesheetName="textures/Enemies/TrollLeader_sheet.png" />
+		<displacerBeast spritesheetName="textures/Enemies/DisplacerBeast_sheet.png" />
 		<spritesheetSource name="textures/" />
 		<player>
 			<fxPlayerJump name="audio/fx/jump_fx.wav" />

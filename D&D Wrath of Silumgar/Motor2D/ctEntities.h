@@ -50,6 +50,7 @@ enum EntityType
 	SKELETON,
 	DARK_WARRIOR,
 	TROLL_LEADERS,
+	DISPLACER_BEAST,
 
 	MINIHEROES,
 
@@ -152,6 +153,8 @@ public:
 	std::string dark_warrior_spritesheet_name;
 	//TrollLeaders sources
 	std::string trollLeader_spritesheet_name;
+	//Displacer beast sources
+	std::string displacerBeast_spritesheet_name;
 
 	//Miniheroes source
 	std::string miniheroes_spritesheet_name;

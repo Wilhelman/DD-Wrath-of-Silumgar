@@ -96,6 +96,10 @@ public:
 	ctAnimation thunder_punch = ctAnimation();
 	ctAnimation insignificant_mortals = ctAnimation();
 
+	//Displacer Beast
+	ctAnimation infernal_fire_animation = ctAnimation();
+	ctAnimation shadow_jab_animation = ctAnimation();
+
 	//troll_leaders
 	ctAnimation attack_1 = ctAnimation();
 	ctAnimation attack_2 = ctAnimation();

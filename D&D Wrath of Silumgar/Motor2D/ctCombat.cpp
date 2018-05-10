@@ -928,14 +928,14 @@ void ctCombat::SaveDataToXML()
 		if (tmp == "cleric") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetCleric()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetCleric()->GetCurrentManaPoints());
-			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			for (int i = 0; i < App->entities->GetCleric()->usable_items.size(); i++)
 			{
-				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+				std::string tmp = App->entities->GetCleric()->usable_items.at(i).name;
 
 				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 					std::string tmp2 = item.attribute("name").as_string();
 					if (tmp2 == tmp)
-						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+						item.attribute("quantity").set_value(App->entities->GetCleric()->usable_items.at(i).quantity);
 				}
 			}
 			App->items->cleric_equip.push_back(App->entities->GetCleric()->helmet);
@@ -955,11 +955,11 @@ void ctCombat::SaveDataToXML()
 			{
 				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
 
-					for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
-						std::string tmp2 = item.attribute("name").as_string();
-						if (tmp2 == tmp)
-							item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
-					}
+				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+					std::string tmp2 = item.attribute("name").as_string();
+					if (tmp2 == tmp)
+						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+				}
 			}
 			App->items->warrior_equip.push_back(App->entities->GetWarrior()->helmet);
 			App->items->warrior_equip.push_back(App->entities->GetWarrior()->chest);
@@ -969,19 +969,19 @@ void ctCombat::SaveDataToXML()
 			App->items->warrior_equip.push_back(App->entities->GetWarrior()->accessory);
 			App->items->warrior_equip.push_back(App->entities->GetWarrior()->shield);
 			App->items->warrior_equip.push_back(App->entities->GetWarrior()->weapon);
-			
+
 		}
 		else if (tmp == "dwarf") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetDwarf()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetDwarf()->GetCurrentManaPoints());
-			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			for (int i = 0; i < App->entities->GetDwarf()->usable_items.size(); i++)
 			{
-				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+				std::string tmp = App->entities->GetDwarf()->usable_items.at(i).name;
 
 				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 					std::string tmp2 = item.attribute("name").as_string();
 					if (tmp2 == tmp)
-						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+						item.attribute("quantity").set_value(App->entities->GetDwarf()->usable_items.at(i).quantity);
 				}
 			}
 			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->helmet);
@@ -996,14 +996,14 @@ void ctCombat::SaveDataToXML()
 		else if (tmp == "elf") {
 			heroe.child("values").attribute("health_points").set_value(App->entities->GetElf()->GetCurrentHealthPoints());
 			heroe.child("values").attribute("mana_points").set_value(App->entities->GetElf()->GetCurrentManaPoints());
-			for (int i = 0; i < App->entities->GetWarrior()->usable_items.size(); i++)
+			for (int i = 0; i < App->entities->GetElf()->usable_items.size(); i++)
 			{
-				std::string tmp = App->entities->GetWarrior()->usable_items.at(i).name;
+				std::string tmp = App->entities->GetElf()->usable_items.at(i).name;
 
 				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 					std::string tmp2 = item.attribute("name").as_string();
 					if (tmp2 == tmp)
-						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+						item.attribute("quantity").set_value(App->entities->GetElf()->usable_items.at(i).quantity);
 				}
 			}
 			App->items->elf_equip.push_back(App->entities->GetElf()->helmet);

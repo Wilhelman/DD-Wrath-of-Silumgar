@@ -1960,6 +1960,182 @@ bool PerformActionToEntity::Execute()
 		}
 		break;
 
+		case CLAW_ATTACK:
+		{
+			if (!HaveObjective())
+				return true;
+
+			actioner_entity->animation = &actioner_entity->attack_1;
+			ret = actioner_entity->animation->Finished();
+			if (ret)
+			{
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
+				actioner_entity->attack_1.Reset();
+				actioner_entity->animation = &actioner_entity->idle;
+
+				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
+
+				int random_thousand_faces_die = (rand() % 100) + 1;
+
+				if (random_thousand_faces_die <= actioner_dexterity && !receiver_entity->IsStunned()) {// THE ACTIONER HITS THE RECEIVER
+					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
+
+					random_thousand_faces_die = (rand() % 100) + 1;
+					if (random_thousand_faces_die <= receiver_agility) {// THE RECEIVER DODGES THE ATTACK
+						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
+						receiver_entity->animation = &receiver_entity->dodge;
+					}
+					else {// THE ATTACK HITS
+
+						bool critical = false;
+
+						int damage_to_deal = action_to_perform.health_points_effect;
+						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						actioner_dexterity = actioner_dexterity / 10;
+						random_thousand_faces_die = (rand() % 100) + 1;
+						if (random_thousand_faces_die <= actioner_dexterity) {
+							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
+							critical = true;
+						}
+						damage_to_deal = damage_to_deal - damage_reduction;
+						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
+						receiver_entity->animation = &receiver_entity->hit;
+						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+						std::string tmp_dmg = std::to_string(damage_to_deal);
+						if (!critical)
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+						else
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
+
+						receiver_entity->Damaged();
+
+
+					}
+				}
+			}
+
+		}
+		break;
+
+		case BLOCK:
+		{
+			// TO GUILLERMO
+
+			actioner_entity->animation = &actioner_entity->attack;
+			
+			ret = actioner_entity->animation->Finished();
+			if (ret = true)
+			{
+
+				actioner_entity->attack.Reset();
+				actioner_entity->animation = &actioner_entity->idle;
+
+				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "Block Physical Damage", { 0,255,0,255 }, 14, nullptr, nullptr);
+
+				Altered_Stat block;
+
+				block.stat_effect_physical_defense = 2;
+				block.turn_left = 2;
+
+				receiver_entity->AddAlteredStat(block);
+				receiver_entity->AddAlteredStat(block);
+				receiver_entity->AddAlteredStat(block);
+				receiver_entity->AddAlteredStat(block);
+
+			}
+		}
+		break;
+
+		case INFESTED_CLAW:
+		{
+
+			if (!HaveObjective())
+				return true;
+
+			actioner_entity->animation = &actioner_entity->attack;
+			ret = actioner_entity->animation->Finished();
+			if (ret)
+			{
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
+				actioner_entity->attack.Reset();
+				actioner_entity->animation = &actioner_entity->idle;
+
+				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
+
+				int random_thousand_faces_die = (rand() % 100) + 1;
+
+				if (random_thousand_faces_die <= actioner_dexterity && !receiver_entity->IsStunned()) {// THE ACTIONER HITS THE RECEIVER
+					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
+
+					random_thousand_faces_die = (rand() % 100) + 1;
+					if (random_thousand_faces_die <= receiver_agility) {// THE RECEIVER DODGES THE ATTACK
+						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
+						receiver_entity->animation = &receiver_entity->dodge;
+					}
+					else {// THE ATTACK HITS
+
+						bool critical = false;
+
+						int damage_to_deal = action_to_perform.health_points_effect;
+						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						actioner_dexterity = actioner_dexterity / 10;
+						random_thousand_faces_die = (rand() % 100) + 1;
+						if (random_thousand_faces_die <= actioner_dexterity) {
+							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
+							critical = true;
+						}
+						damage_to_deal = damage_to_deal - damage_reduction;
+						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
+						receiver_entity->animation = &receiver_entity->hit;
+						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+						std::string tmp_dmg = std::to_string(damage_to_deal);
+						if (!critical)
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+						else
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
+
+						receiver_entity->Damaged();
+
+
+					}
+				}
+			}
+		}
+		break;
+
+		case BROTHERLY_RAGE:
+		{
+			if (!HaveObjective())
+				return true;
+			//TO GUILLERMO
+			actioner_entity->animation = &actioner_entity->attack;
+			ret = actioner_entity->animation->Finished();
+			if (ret)
+			{
+				actioner_entity->SetCurrentManaPoints(1000);
+				actioner_entity->attack_2.Reset();
+				actioner_entity->animation = &actioner_entity->idle;
+				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "BUFF STRENGHT++ ", { 0,255,0,255 }, 14, nullptr, nullptr);
+				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h+10, "BUFF CONSTITUTION+ ", { 0,255,0,255 }, 14, nullptr, nullptr);
+				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h+20, "RESTORED ALL MANA ", { 0,255,0,255 }, 14, nullptr, nullptr);
+				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h+30, "JUDGEMENT -- ", { 0,255,0,255 }, 14, nullptr, nullptr);
+				Altered_Stat stats_up;
+
+				stats_up.stat_effect_constitution = 1;
+				stats_up.stat_effect_judgement = -2;
+				stats_up.stat_effect_strength = 2;
+				stats_up.turn_left = 2;
+
+				receiver_entity->AddAlteredStat(stats_up);
+
+			}
+
+		}
+		break;
 
 		case LIGHT_STRIKE: {
 

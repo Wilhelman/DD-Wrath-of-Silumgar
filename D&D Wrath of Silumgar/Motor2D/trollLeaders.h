@@ -18,9 +18,10 @@ private:
 	//animations velocity
 	uint idle_vel = 0u, run_forward_vel = 0u;
 
-	Action void_cannon_action;
-	Action thunder_punch_action;
-	Action insignificant_mortals_action;
+	Action claw_attack;
+	Action block;
+	Action infested_claw;
+	Action brotherly_rage;
 
 private:
 

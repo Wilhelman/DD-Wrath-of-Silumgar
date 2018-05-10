@@ -47,6 +47,30 @@ TrollLeaders::TrollLeaders(int x, int y, EntityType type) : Entity(x, y, type) {
 	LoadProperties(node->child("statistics"));
 	animation = &idle;
 
+	//PREPARE ACTIONS	
+
+	claw_attack.name = "Claw Attack";
+	claw_attack.health_points_effect = -20;
+	claw_attack.mana_points_effect_to_himself = 0;
+	claw_attack.objective = HEROES;
+	claw_attack.type = CLAW_ATTACK;
+
+	block.name = "Block";
+	block.mana_points_effect_to_himself = 40;
+	block.objective = ENEMIES;
+	block.type = BLOCK;
+
+	infested_claw.name = "Infested Claw";
+	infested_claw.health_points_effect = -15;
+	infested_claw.mana_points_effect_to_himself = 30;
+	infested_claw.objective = HEROES;
+	infested_claw.type = INFESTED_CLAW;
+
+	brotherly_rage.name = "Brotherly Rage";
+	brotherly_rage.mana_points_effect_to_himself = 60;
+	brotherly_rage.objective = ENEMIES;
+	brotherly_rage.type = BROTHERLY_RAGE;
+
 }
 
 
@@ -111,7 +135,7 @@ void TrollLeaders::PerformAction()
 	Entity* entity_objective = nullptr;
 
 	if (IsGoingToDoAnythingClever()) {
-		//in this case the kobold will search the weakest heroe since we dont have abilities
+		
 		entity_objective = App->combat->GetTheWeakestHeroe();
 	}
 	else {
@@ -119,7 +143,7 @@ void TrollLeaders::PerformAction()
 		entity_objective = App->combat->GetRandomHeroe();
 	}
 
-	App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
-	App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
-	App->task_manager->AddTask(new MoveToInitialPosition(this));
+	//App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+	App->task_manager->AddTask(new PerformActionToEntity(this, this->brotherly_rage, entity_objective));
+	//App->task_manager->AddTask(new MoveToInitialPosition(this));
 }

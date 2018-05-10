@@ -510,6 +510,8 @@ void ctCombat::UpdateHPBarOfEntity(Entity * entity_to_update_bar, int quantity)
 	case OWLBEAR:
 	case TRITON:
 	case HELLHOUND:
+	case DARK_WARRIOR:
+	case TROLL_LEADERS:
 	case SKELETON:
 	{
 		UIBar* tmp_bar = this->GetUIBarFromEntity(entity_to_update_bar);

@@ -187,7 +187,7 @@ bool ctCombat::Update(float dt)
 	
 	if (making_decision == true)
 	{
-		if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)
+		if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || App->input->gamepad.Y == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 		{
 			if (pauseMenu == nullptr) {
 				pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);

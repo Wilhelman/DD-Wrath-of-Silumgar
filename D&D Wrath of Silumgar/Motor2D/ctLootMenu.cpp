@@ -90,14 +90,14 @@ bool LootMenu::Start()
 
 
 
-	dropped_items.push_back(&App->items->tier_3_equips.at(3));
+	/*dropped_items.push_back(&App->items->tier_3_equips.at(3));
 	dropped_items.push_back(&App->items->tier_3_equips.at(2));
 	dropped_items.push_back(&App->items->tier_3_equips.at(1));
 
 	dropped_usable_items.push_back(&App->items->usable_items.at(1));
 	dropped_usable_items.push_back(&App->items->usable_items.at(2));
 	dropped_usable_items.push_back(&App->items->usable_items.at(2));
-	dropped_usable_items.push_back(&App->items->usable_items.at(3));
+	dropped_usable_items.push_back(&App->items->usable_items.at(3));*/
 	//-------------------------------
 
 	to_cleric_label = new UITextBox(430, 200, TEXTBOX, "To Cleric", { 255,255,255,255 }, 17,100);
@@ -131,11 +131,19 @@ bool LootMenu::Start()
 	App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->menu_animation;
 	App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->menu_animation;
 	App->entities->GetElf()->animation = &App->entities->GetElf()->menu_animation;
+
+	update_count = 0;
 	return true;
 }
 
 bool LootMenu::Update(float dt) 
 {
+	if (update_count <= 2)
+	{
+		SetInformationDroppedItem();
+		SetComparation();
+		update_count++;
+	}
 	arrow->Update();
 
 	if(App->entities->GetCleric()->animation != &App->entities->GetCleric()->menu_animation)
@@ -174,39 +182,41 @@ bool LootMenu::Update(float dt)
 	}
 
 	
-
-	
-	if (dropped_items.size() == 0 && dropped_usable_items.size() != 0)
+	if (update_count > 2)
 	{
-		if (information_dropped_items.size() != 0)
-		{
-			for (std::vector<UIElement*>::iterator it = information_dropped_items.begin(); it != information_dropped_items.end(); it++)
-			{
-				(*it)->~UIElement();
-			}
-			information_dropped_items.clear();
-		}
 
-		if (preview_stats_items.size() != 0)
+		if (dropped_items.size() == 0 && dropped_usable_items.size() != 0)
 		{
-			for (std::vector<UIElement*>::iterator it = preview_stats_items.begin(); it != preview_stats_items.end(); it++)
+			if (information_dropped_items.size() != 0)
 			{
-				(*it)->~UIElement();
+				for (std::vector<UIElement*>::iterator it = information_dropped_items.begin(); it != information_dropped_items.end(); it++)
+				{
+					(*it)->~UIElement();
+				}
+				information_dropped_items.clear();
 			}
 
-			preview_stats_items.clear();
+			if (preview_stats_items.size() != 0)
+			{
+				for (std::vector<UIElement*>::iterator it = preview_stats_items.begin(); it != preview_stats_items.end(); it++)
+				{
+					(*it)->~UIElement();
+				}
+
+				preview_stats_items.clear();
+			}
+
+			SetInformationUsableItems();
+
 		}
 
-		SetInformationUsableItems();
-	
-	}
-
-	if (dropped_usable_items.size() == 0 && dropped_items.size() == 0)
-	{
-		if(App->map->actual_tier== TierList::TIER_MAP_2 || App->map->actual_tier == TierList::TIER_MAP_4 || App->map->actual_tier == TierList::TIER_MAP_6 || App->map->actual_tier == TierList::TIER_MAP_8)
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->skill_tree, 1.0);//skill_tree
-		else
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map,1.0);
+		if (dropped_usable_items.size() == 0 && dropped_items.size() == 0)
+		{
+			if (App->map->actual_tier == TierList::TIER_MAP_2 || App->map->actual_tier == TierList::TIER_MAP_4 || App->map->actual_tier == TierList::TIER_MAP_6 || App->map->actual_tier == TierList::TIER_MAP_8)
+				App->fadeToBlack->FadeToBlackBetweenModules(this, App->skill_tree, 1.0);//skill_tree
+			else
+				App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0);
+		}
 	}
 	return true;
 }
@@ -942,13 +952,13 @@ void LootMenu::SetInformationUsableItems()
 							information_usable_items.push_back(new UITextBox(472, 200, TEXTBOX,std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100));
 							break;
 						case DWARF:
-							information_usable_items.push_back(new UITextBox(472, 20, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity ), { 0,255,0 }, 17, 100));
+							information_usable_items.push_back(new UITextBox(472, 220, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity ), { 0,255,0 }, 17, 100));
 							break;
 						case WARRIOR:
-							information_usable_items.push_back(new UITextBox(472, 200, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100));
+							information_usable_items.push_back(new UITextBox(472, 240, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100));
 							break;
 						case ELF:
-							information_usable_items.push_back(new UITextBox(472, 200, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100));
+							information_usable_items.push_back(new UITextBox(472, 260, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100));
 							break;
 						}
 
@@ -1043,7 +1053,7 @@ void LootMenu::SetInformationDroppedItem()
 		}
 		if (dropped_items[0]->statistics.luck != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 40 + parent_dropped_position, TEXTBOX, "Luck " + std::to_string(dropped_items[0]->statistics.luck), { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Luck " + std::to_string(dropped_items[0]->statistics.luck), { 255,255,255 }, 17, 200));
 			parent_dropped_position += 20;
 		}
 	}

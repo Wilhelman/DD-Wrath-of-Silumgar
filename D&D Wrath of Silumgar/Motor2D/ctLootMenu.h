@@ -41,6 +41,7 @@ private:
 	
 	std::vector<UIElement*> preview_stats_items;
 
+	int update_count = 0;
 public:
 	LootMenu();
 	~LootMenu();

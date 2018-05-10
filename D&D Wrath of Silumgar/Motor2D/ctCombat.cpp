@@ -382,8 +382,6 @@ bool ctCombat::CleanUp()
 			App->entities->entities.at(i)->to_destroy = true;
 	}
 
-	heroes_are_dead = false;
-
 	enemies.clear();
 	heroes.clear();
 	for (int i = 0; i < enemies_bars.size(); i++)
@@ -458,6 +456,9 @@ bool ctCombat::CleanUp()
 		App->map->actual_tier = TIER_MAP_7;
 	else if (App->map->actual_tier == TIER_MAP_7)
 		App->map->actual_tier = TIER_MAP_8;
+
+	if (heroes_are_dead)
+		App->map->actual_tier = TIER_MAP_1;
 	
 	return true;
 }

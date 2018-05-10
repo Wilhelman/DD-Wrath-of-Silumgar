@@ -67,6 +67,8 @@ public:
 
 	void SelectAbility();
 
+	void SavedataToXML();
+
 private:
 
 	std::string skill_tree_map_tmx;

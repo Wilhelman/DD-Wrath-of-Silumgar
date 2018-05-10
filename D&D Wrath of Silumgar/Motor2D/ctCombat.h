@@ -47,6 +47,9 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
+	//load all the values like health and mana from the xml
+	void LoadDataFromXML();
+
 	
 
 public:
@@ -83,7 +86,7 @@ private:
 	void SpawnEntities();
 
 	//load all the values like health and mana from the xml
-	void LoadDataFromXML();
+	//void LoadDataFromXML();
 
 	void LoadSkill(pugi::xml_node skill_node, Entity* entity);
 	void LoadItem(pugi::xml_node item, Entity* entity);

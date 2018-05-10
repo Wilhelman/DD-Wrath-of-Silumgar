@@ -15,6 +15,7 @@
 
 #include "ctSkillTree.h"
 #include "ctCombat.h"
+#include "ctWorldMap.h"
 
 #include "ctFadeToBlack.h"
 
@@ -64,6 +65,8 @@ bool ctSkillTree::Start()
 	App->entities->SpawnEntity(-100, -100, WARRIOR);
 	App->entities->SpawnEntity(-100, -100, DWARF);
 	App->entities->SpawnEntity(-100, -100, ELF);
+
+	App->combat->LoadDataFromXML();
 
 	if (spritesheet_abilities == NULL) {
 		LOG("Fail to load spritesheet_abilities in SkillTree!");
@@ -179,13 +182,14 @@ bool ctSkillTree::Update(float dt)
 			}
 		}
 		else {
-			current_hero = 1;
+			/*current_hero = 1;
 			selected_ability = cleric_abilities.begin();
 			ChangeDescriptionBG();
 			PrintAbilityDescription();
 			marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
 			marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
-			ChangeTitle();
+			ChangeTitle();*/
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 		}
 	}
 
@@ -238,6 +242,9 @@ bool ctSkillTree::PostUpdate()
 bool ctSkillTree::CleanUp()
 {
 	LOG("Freeing ctSkillTree");
+
+	if (App->entities->entities.size()>0)
+		SavedataToXML();
 
 	App->map->CleanUp();
 	warrior_abilities.clear();
@@ -764,4 +771,69 @@ void ctSkillTree::GetPreviousAbility(std::vector<Ability*> &abilities) {
 			previous_ability++;
 		}
 	}
+}
+
+void ctSkillTree::SavedataToXML() {
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+	node = &node->child("heroes");
+
+	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
+	{
+		std::string tmp(heroe.attribute("name").as_string());
+
+		if (tmp == "cleric") {
+			for (int i = 0; i < App->entities->GetCleric()->abilities.size(); i++)
+			{
+				std::string tmp = App->entities->GetCleric()->abilities.at(i).name;
+
+				for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+					std::string tmp2 = skill.attribute("name").as_string();
+					if (tmp2 == tmp)
+						skill.attribute("owned").set_value(App->entities->GetCleric()->abilities.at(i).owned);
+				}
+			}
+		}
+		else if (tmp == "warrior") {
+			for (int i = 0; i < App->entities->GetWarrior()->abilities.size(); i++)
+			{
+				std::string tmp = App->entities->GetWarrior()->abilities.at(i).name;
+
+				for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+					std::string tmp2 = skill.attribute("name").as_string();
+					if (tmp2 == tmp)
+						skill.attribute("owned").set_value(App->entities->GetWarrior()->abilities.at(i).owned);
+				}
+			}
+
+		}
+		else if (tmp == "dwarf") {
+			for (int i = 0; i < App->entities->GetDwarf()->abilities.size(); i++)
+			{
+				std::string tmp = App->entities->GetDwarf()->abilities.at(i).name;
+
+				for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+					std::string tmp2 = skill.attribute("name").as_string();
+					if (tmp2 == tmp)
+						skill.attribute("owned").set_value(App->entities->GetDwarf()->abilities.at(i).owned);
+				}
+			}
+		}
+		else if (tmp == "elf") {
+			for (int i = 0; i < App->entities->GetElf()->abilities.size(); i++)
+			{
+				std::string tmp = App->entities->GetElf()->abilities.at(i).name;
+
+				for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+					std::string tmp2 = skill.attribute("name").as_string();
+					if (tmp2 == tmp)
+						skill.attribute("owned").set_value(App->entities->GetElf()->abilities.at(i).owned);
+				}
+			}
+		}
+
+	}
+
+	data_file.save_file("data.xml");
+	data_file.reset();
 }

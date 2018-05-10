@@ -508,6 +508,51 @@ MiniHeroes* ctEntities::GetMiniheroes() const {
 
 }
 
+DarkWarrior* ctEntities::GetDarkWarrior() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == DARK_WARRIOR)
+				return (DarkWarrior*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+
+TrollLeaders* ctEntities::GetTrollLeader() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == TROLL_LEADERS)
+				return (TrollLeaders*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+
+DisplacerBeast* ctEntities::GetDisplacerBeast() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == DISPLACER_BEAST)
+				return (DisplacerBeast*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+
 void ctEntities::OrderDrawEntities()
 {
 	bool ordered = false;

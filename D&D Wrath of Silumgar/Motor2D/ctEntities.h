@@ -25,7 +25,9 @@ class Goblin_Alchemist;
 class Hellhound;
 class Triton;
 class Skeleton;
-
+class DarkWarrior;
+class DisplacerBeast;
+class TrollLeaders;
 
 class MiniHeroes;
 
@@ -111,6 +113,9 @@ public:
 	Triton* GetTriton()const;
 	Hellhound* GetHellhound()const;
 	Skeleton* GetSkeleton()const;
+	DarkWarrior* GetDarkWarrior()const;
+	TrollLeaders* GetTrollLeader()const;
+	DisplacerBeast* GetDisplacerBeast()const;
 
 	MiniHeroes* GetMiniheroes()const;
 

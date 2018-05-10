@@ -82,6 +82,7 @@ public:
 private:
 	std::vector<Entity*>::const_iterator selected_enemy;
 	std::vector<Entity*>::const_iterator selected_ally;
+	std::vector<Action*>::const_iterator selected_ability;
 	ctPerfTimer execute_comand_time;
 };
 

@@ -178,6 +178,7 @@ void UIPauseMenu::Update() {
 				SetInformationLabels();
 			}
 			if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+				App->audio->PlayFx(App->audio->cm_back_fx);
 				SetUpPauseMenu();
 			}
 
@@ -583,6 +584,7 @@ void UIPauseMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 				it_vector++;
 				(*it_vector)->current_state = STATE_FOCUSED;
 				arrow->SetParent((*it_vector));
+				App->audio->PlayFx(App->audio->mm_movement_fx);
 				break;
 			}
 			else
@@ -591,6 +593,7 @@ void UIPauseMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 				it_vector = current_vector.begin();
 				(*it_vector)->current_state = STATE_FOCUSED;
 				arrow->SetParent((*it_vector));
+				App->audio->PlayFx(App->audio->mm_movement_fx);
 			}
 		}
 		it_vector++;
@@ -606,6 +609,7 @@ void UIPauseMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 				it_vector--;
 				(*it_vector)->current_state = STATE_FOCUSED;
 				arrow->SetParent((*it_vector));
+				App->audio->PlayFx(App->audio->mm_movement_fx);
 				break;
 			}
 			else
@@ -614,6 +618,7 @@ void UIPauseMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 				it_vector = current_vector.end() - 1;
 				(*it_vector)->current_state = STATE_FOCUSED;
 				arrow->SetParent((*it_vector));
+				App->audio->PlayFx(App->audio->mm_movement_fx);
 			}
 		}
 		it_vector++;
@@ -621,6 +626,7 @@ void UIPauseMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 }
 
 void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
+	App->audio->PlayFx(App->audio->mm_select_fx);
 	for (int i = 0; i < current_vector.size(); i++) {
 		if (current_vector.at(i)->current_state == STATE_FOCUSED) {
 			current_vector.at(i)->current_state = STATE_EXECUTED;

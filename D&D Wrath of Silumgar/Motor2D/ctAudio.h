@@ -113,6 +113,16 @@ public:
 	uint dark_warrior_insignificant_mortals_fx = 0u;
 	uint dark_warrior_void_cannon_fx = 0u;
 
+	uint troll_leaders_run_fx = 0u;
+	uint troll_leaders_attack_fx = 0u;
+	uint troll_leaders_damaged_fx = 0u;
+	uint troll_leaders_death_fx = 0u;
+
+	uint displacer_beast_run_fx = 0u;
+	uint displacer_beast_attack_fx = 0u;
+	uint displacer_beast_damaged_fx = 0u;
+	uint displacer_beast_death_fx = 0u;
+
 	//fx heroes
 	uint cleric_attack_fx = 0u;
 	uint cleric_run_fx = 0u;

@@ -99,6 +99,15 @@ void ctAudio::InitAudio()
 	//dark_warrior_thunder_punch_fx= LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
 	//dark_warrior_void_cannon_fx= LoadFx("audio/sounds/Enemies/SkeletonDamaged.wav");
 
+	troll_leaders_attack_fx = LoadFx("audio/sounds/Enemies/TrollLeadersAttack.wav");
+	troll_leaders_run_fx = gnoll_run_fx;
+	troll_leaders_damaged_fx = LoadFx("audio/sounds/Enemies/TrollLeadersDamaged.wav");
+	troll_leaders_death_fx = LoadFx("audio/sounds/Enemies/TrollLeadersDeath.wav");
+
+	displacer_beast_attack_fx = LoadFx("audio/sounds/Enemies/DisplacerBeastAttack.wav");
+	displacer_beast_run_fx = kobold_run_fx;
+	displacer_beast_damaged_fx = LoadFx("audio/sounds/Enemies/DisplacerBeastDamaged.wav");
+	displacer_beast_death_fx = LoadFx("audio/sounds/Enemies/DisplacerBeastDeath.wav");
 	//heroes
 	cleric_attack_fx = LoadFx("audio/sounds/Characters/ClericAttack.wav");
 	cleric_run_fx = LoadFx("audio/sounds/Characters/ClericRun.wav");

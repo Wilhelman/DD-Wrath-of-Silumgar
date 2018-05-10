@@ -216,6 +216,7 @@ bool ctSkillTree::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_ability == false|| App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
 		selecting_ability = true;
 		execute_comand_time.Start();
+		App->audio->PlayFx(App->audio->mm_select_fx);
 	}
 
 	if (selecting_ability == true) {
@@ -320,18 +321,22 @@ void ctSkillTree::DrawAbilities(std::vector<Ability*> &abilities)
 void ctSkillTree::NavigateSkills(std::vector<Ability*> &abilities) {
 	//Navigate Down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
+		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateSkillsDown(abilities);
 	}
 	//Navigate Up
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
+		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateSkillsUp(abilities);
 	}
 	//Navigate Left
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
+		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateSkillsLeft(abilities);
 	}
 	//Navigate Right
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
+		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateSkillsRight(abilities);
 	}
 }
@@ -614,7 +619,9 @@ void ctSkillTree::SelectAbility() {
 			}
 			if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
 				if (select_menu_A->current_state == STATE_FOCUSED) {
+					App->audio->PlayFx(App->audio->mm_select_fx);
 					//if ((*previous_ability)->active == 1) {
+					
 					(*selected_ability)->active = 1;
 					if (current_hero == 1) {
 						for (int i = 0; i < App->entities->GetCleric()->abilities.size(); i++) {
@@ -645,6 +652,9 @@ void ctSkillTree::SelectAbility() {
 						}
 					}
 				}
+				else if (select_menu_B->current_state == STATE_FOCUSED) {
+					App->audio->PlayFx(App->audio->cm_back_fx);
+				}
 				App->gui->DeleteUIElement(*select_menu_bg);
 				select_menu_bg = nullptr;
 				App->gui->DeleteUIElement(*select_menu_text);
@@ -670,6 +680,7 @@ void ctSkillTree::SelectAbility() {
 					select_menu_B->current_state = STATE_NORMAL;
 					arrow->SetParent(select_menu_A);
 				}
+				App->audio->PlayFx(App->audio->mm_movement_fx);
 			}
 		}
 		else {

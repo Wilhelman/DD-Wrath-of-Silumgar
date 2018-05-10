@@ -116,18 +116,18 @@ void TrollLeaders::LoadAnimation(pugi::xml_node animation_node, ctAnimation* ani
 
 void TrollLeaders::Attack()
 {
-	App->audio->PlayFx(App->audio->gnoll_attack_fx, 0);
+	App->audio->PlayFx(App->audio->troll_leaders_attack_fx, 0);
 
 }
 
 void  TrollLeaders::Death() {
-	App->audio->PlayFx(App->audio->gnoll_death_fx, 0);
+	App->audio->PlayFx(App->audio->troll_leaders_death_fx, 0);
 }
 void  TrollLeaders::Run() {
-	App->audio->PlayFx(App->audio->gnoll_run_fx, 0);
+	App->audio->PlayFx(App->audio->troll_leaders_run_fx, 0);
 }
 void  TrollLeaders::Damaged() {
-	App->audio->PlayFx(App->audio->gnoll_damaged_fx, 0);
+	App->audio->PlayFx(App->audio->troll_leaders_damaged_fx, 0);
 }
 
 void TrollLeaders::PerformAction()

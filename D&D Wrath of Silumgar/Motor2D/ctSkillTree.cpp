@@ -585,77 +585,95 @@ void ctSkillTree::ChangeDescriptionBG() {
 }
 
 void ctSkillTree::SelectAbility() {
+	if (current_hero == 1) {
+		GetPreviousAbility(cleric_abilities);
+	}
+	else if (current_hero == 2) {
+		GetPreviousAbility(warrior_abilities);
+	}
+	else if (current_hero == 3) {
+		GetPreviousAbility(dwarf_abilities);
+	}
+	else if (current_hero == 4) {
+		GetPreviousAbility(elf_abilities);
+	}
 	if ((*selected_ability)->active == 0) {
-		if (select_menu_bg == nullptr) {
-			select_menu_bg = App->gui->AddUIImage(0, 0, { 1141,484,340,178 }, this);
-			string new_mesage = "Are you sure you want to unlock " + (*selected_ability)->ability_name;
-			select_menu_text = App->gui->AddUITextBox(20, 20, 10, 336, new_mesage, { 255,255,255,255 });
-			select_menu_A = App->gui->AddUITextBox(20, 60, 10, 336, "Yes", { 255,255,255,255 });
-			select_menu_B = App->gui->AddUITextBox(20, 100, 10, 336, "No", { 255,255,255,255 });
-			arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this, select_menu_bg);
-			arrow->SetParent(select_menu_A);
-			select_menu_A->current_state = STATE_FOCUSED;
-			accept_decline.push_back(select_menu_A);
-			accept_decline.push_back(select_menu_B);
-			option = accept_decline.begin();
-		}
-		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
-			if (select_menu_A->current_state == STATE_FOCUSED) {
-				(*selected_ability)->active = 1;
-				if (current_hero == 1) {
-					for (int i = 0; i < App->entities->GetCleric()->abilities.size(); i++) {
-						if (App->entities->GetCleric()->abilities.at(i).name == (*selected_ability)->ability_name) {
-							App->entities->GetCleric()->abilities.at(i).owned = true;
-						}
-					}
-				}
-				else if (current_hero == 2) {
-					for (int i = 0; i < App->entities->GetWarrior()->abilities.size(); i++) {
-						if (App->entities->GetWarrior()->abilities.at(i).name == (*selected_ability)->ability_name) {
-							App->entities->GetWarrior()->abilities.at(i).owned = true;
-						}
-					}
-				}
-				else if (current_hero == 3) {
-					for (int i = 0; i < App->entities->GetDwarf()->abilities.size(); i++) {
-						if (App->entities->GetDwarf()->abilities.at(i).name == (*selected_ability)->ability_name) {
-							App->entities->GetDwarf()->abilities.at(i).owned = true;
-						}
-					}
-				}
-				else if (current_hero == 4) {
-					for (int i = 0; i < App->entities->GetElf()->abilities.size(); i++) {
-						if (App->entities->GetElf()->abilities.at(i).name == (*selected_ability)->ability_name) {
-							App->entities->GetElf()->abilities.at(i).owned = true;
-						}
-					}
-				}
-			}
-			App->gui->DeleteUIElement(*select_menu_bg);
-			select_menu_bg = nullptr;
-			App->gui->DeleteUIElement(*select_menu_text);
-			select_menu_text = nullptr;
-			App->gui->DeleteUIElement(*arrow);
-			arrow = nullptr;
-			App->gui->DeleteUIElement(*select_menu_A);
-			select_menu_A = nullptr;
-			App->gui->DeleteUIElement(*select_menu_B);
-			select_menu_B = nullptr;
-			accept_decline.clear();
-			option._Ptr = nullptr;
-			selecting_ability = false;
-		}
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			if (select_menu_A->current_state == STATE_FOCUSED) {
-				select_menu_A->current_state = STATE_NORMAL;
-				select_menu_B->current_state = STATE_FOCUSED;
-				arrow->SetParent(select_menu_B);
-			}
-			else {
-				select_menu_A->current_state = STATE_FOCUSED;
-				select_menu_B->current_state = STATE_NORMAL;
+		if ((*previous_ability)->active == 1) {
+			if (select_menu_bg == nullptr) {
+				select_menu_bg = App->gui->AddUIImage(0, 0, { 1141,484,340,178 }, this);
+				string new_mesage = "Are you sure you want to unlock " + (*selected_ability)->ability_name;
+				select_menu_text = App->gui->AddUITextBox(20, 20, 10, 336, new_mesage, { 255,255,255,255 });
+				select_menu_A = App->gui->AddUITextBox(20, 60, 10, 336, "Yes", { 255,255,255,255 });
+				select_menu_B = App->gui->AddUITextBox(20, 100, 10, 336, "No", { 255,255,255,255 });
+				arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this, select_menu_bg);
 				arrow->SetParent(select_menu_A);
+				select_menu_A->current_state = STATE_FOCUSED;
+				accept_decline.push_back(select_menu_A);
+				accept_decline.push_back(select_menu_B);
+				option = accept_decline.begin();
 			}
+			if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
+				if (select_menu_A->current_state == STATE_FOCUSED) {
+					//if ((*previous_ability)->active == 1) {
+					(*selected_ability)->active = 1;
+					if (current_hero == 1) {
+						for (int i = 0; i < App->entities->GetCleric()->abilities.size(); i++) {
+							if (App->entities->GetCleric()->abilities.at(i).name == (*selected_ability)->ability_name) {
+								App->entities->GetCleric()->abilities.at(i).owned = true;
+							}
+						}
+					}
+					else if (current_hero == 2) {
+						for (int i = 0; i < App->entities->GetWarrior()->abilities.size(); i++) {
+							if (App->entities->GetWarrior()->abilities.at(i).name == (*selected_ability)->ability_name) {
+								App->entities->GetWarrior()->abilities.at(i).owned = true;
+							}
+						}
+					}
+					else if (current_hero == 3) {
+						for (int i = 0; i < App->entities->GetDwarf()->abilities.size(); i++) {
+							if (App->entities->GetDwarf()->abilities.at(i).name == (*selected_ability)->ability_name) {
+								App->entities->GetDwarf()->abilities.at(i).owned = true;
+							}
+						}
+					}
+					else if (current_hero == 4) {
+						for (int i = 0; i < App->entities->GetElf()->abilities.size(); i++) {
+							if (App->entities->GetElf()->abilities.at(i).name == (*selected_ability)->ability_name) {
+								App->entities->GetElf()->abilities.at(i).owned = true;
+							}
+						}
+					}
+				}
+				App->gui->DeleteUIElement(*select_menu_bg);
+				select_menu_bg = nullptr;
+				App->gui->DeleteUIElement(*select_menu_text);
+				select_menu_text = nullptr;
+				App->gui->DeleteUIElement(*arrow);
+				arrow = nullptr;
+				App->gui->DeleteUIElement(*select_menu_A);
+				select_menu_A = nullptr;
+				App->gui->DeleteUIElement(*select_menu_B);
+				select_menu_B = nullptr;
+				accept_decline.clear();
+				option._Ptr = nullptr;
+				selecting_ability = false;
+			}
+			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+				if (select_menu_A->current_state == STATE_FOCUSED) {
+					select_menu_A->current_state = STATE_NORMAL;
+					select_menu_B->current_state = STATE_FOCUSED;
+					arrow->SetParent(select_menu_B);
+				}
+				else {
+					select_menu_A->current_state = STATE_FOCUSED;
+					select_menu_B->current_state = STATE_NORMAL;
+					arrow->SetParent(select_menu_A);
+				}
+			}
+		}
+		else {
+			selecting_ability = false;
 		}
 	}
 	else {
@@ -715,5 +733,19 @@ void ctSkillTree::LookForActiveAbilities(std::vector<Ability*> &abilities) {
 			}
 		}
 		ability++;
+	}
+}
+
+void ctSkillTree::GetPreviousAbility(std::vector<Ability*> &abilities) {
+	previous_ability = abilities.begin();
+	if ((*selected_ability)->tier == 2) {
+		while ((*previous_ability)->tier != 1) {
+			previous_ability++;
+		}
+	}
+	else {
+		while ((*previous_ability)->tier != (*selected_ability)->tier-1 || (*previous_ability)->branch != (*selected_ability)->branch) {
+			previous_ability++;
+		}
 	}
 }

@@ -63,6 +63,8 @@ public:
 	void ChangeDescriptionBG();
 	void LookForActiveAbilities(std::vector<Ability*> &abilities);
 
+	void GetPreviousAbility(std::vector<Ability*> &abilities);
+
 	void SelectAbility();
 
 private:
@@ -87,6 +89,7 @@ private:
 	std::vector<Ability*> dwarf_abilities;
 	std::vector<Ability*> elf_abilities;
 	std::vector<Ability*>::const_iterator selected_ability;
+	std::vector<Ability*>::const_iterator previous_ability;
 	uint current_hero = 1;
 	SDL_Rect marker_pos = {0,0,44,44};
 

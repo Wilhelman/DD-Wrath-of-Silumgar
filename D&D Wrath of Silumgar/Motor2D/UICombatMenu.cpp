@@ -338,8 +338,8 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 		}
 		if (current_vector == abilities) {
 			current_ability++;
-			if (current_ability > entity->abilities.size()-1) {
-				current_ability = entity->abilities.size()-1;
+			if (current_ability > entity_actions.size()-1) {
+				current_ability = entity_actions.size()-1;
 			}
 		}
 		else if (current_vector == items) {

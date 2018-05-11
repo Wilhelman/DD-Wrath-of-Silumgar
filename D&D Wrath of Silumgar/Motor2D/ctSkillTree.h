@@ -69,6 +69,8 @@ public:
 
 	void SavedataToXML();
 
+	void GoToNextSkillTree();
+
 private:
 
 	std::string skill_tree_map_tmx;

@@ -174,43 +174,44 @@ bool ctSkillTree::Update(float dt)
 	App->map->Draw();
 	App->render->DrawQuad(marker_pos, 255, 0, 0, 255, true, true);
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
-		if (current_hero < 4) {
-			current_hero++;
-			if (current_hero == 2) { 
-				selected_ability = warrior_abilities.begin();
-				ChangeDescriptionBG();
-				PrintAbilityDescription();
-				marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
-				marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
-				ChangeTitle();
-			}
-			else if (current_hero == 3) { 
-				selected_ability = dwarf_abilities.begin(); 
-				ChangeDescriptionBG();
-				PrintAbilityDescription();
-				marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
-				marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
-				ChangeTitle();
-			}
-			else if (current_hero == 4) {
-				selected_ability = elf_abilities.begin();
-				ChangeDescriptionBG();
-				PrintAbilityDescription();
-				marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
-				marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
-				ChangeTitle();
-			}
-		}
-		else {
-			/*current_hero = 1;
-			selected_ability = cleric_abilities.begin();
-			ChangeDescriptionBG();
-			PrintAbilityDescription();
-			marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
-			marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
-			ChangeTitle();*/
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
-		}
+		GoToNextSkillTree();
+		//if (current_hero < 4) {
+		//	current_hero++;
+		//	if (current_hero == 2) { 
+		//		selected_ability = warrior_abilities.begin();
+		//		ChangeDescriptionBG();
+		//		PrintAbilityDescription();
+		//		marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
+		//		marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
+		//		ChangeTitle();
+		//	}
+		//	else if (current_hero == 3) { 
+		//		selected_ability = dwarf_abilities.begin(); 
+		//		ChangeDescriptionBG();
+		//		PrintAbilityDescription();
+		//		marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
+		//		marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
+		//		ChangeTitle();
+		//	}
+		//	else if (current_hero == 4) {
+		//		selected_ability = elf_abilities.begin();
+		//		ChangeDescriptionBG();
+		//		PrintAbilityDescription();
+		//		marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
+		//		marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
+		//		ChangeTitle();
+		//	}
+		//}
+		//else {
+		//	/*current_hero = 1;
+		//	selected_ability = cleric_abilities.begin();
+		//	ChangeDescriptionBG();
+		//	PrintAbilityDescription();
+		//	marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
+		//	marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
+		//	ChangeTitle();*/
+		//	App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+		//}
 	}
 
 	if (current_hero == 1)
@@ -759,6 +760,7 @@ void ctSkillTree::SelectAbility() {
 					if (current_hero == 4) {
 						elf_upgrades--;
 					}
+					GoToNextSkillTree();
 				}
 				else if (select_menu_B->current_state == STATE_FOCUSED) {
 					App->audio->PlayFx(App->audio->cm_back_fx);
@@ -953,4 +955,44 @@ void ctSkillTree::SavedataToXML() {
 
 	data_file.save_file("data.xml");
 	data_file.reset();
+}
+
+void ctSkillTree::GoToNextSkillTree(){
+	if (current_hero < 4) {
+		current_hero++;
+		if (current_hero == 2) {
+			selected_ability = warrior_abilities.begin();
+			ChangeDescriptionBG();
+			PrintAbilityDescription();
+			marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
+			marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
+			ChangeTitle();
+		}
+		else if (current_hero == 3) {
+			selected_ability = dwarf_abilities.begin();
+			ChangeDescriptionBG();
+			PrintAbilityDescription();
+			marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
+			marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
+			ChangeTitle();
+		}
+		else if (current_hero == 4) {
+			selected_ability = elf_abilities.begin();
+			ChangeDescriptionBG();
+			PrintAbilityDescription();
+			marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
+			marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
+			ChangeTitle();
+		}
+	}
+	else {
+		/*current_hero = 1;
+		selected_ability = cleric_abilities.begin();
+		ChangeDescriptionBG();
+		PrintAbilityDescription();
+		marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
+		marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
+		ChangeTitle();*/
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+	}
 }

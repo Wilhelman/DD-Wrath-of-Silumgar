@@ -286,8 +286,15 @@ bool ctCombat::Update(float dt)
 
 					if (turn_priority_entity.size() == current_entities) { //all enemies are dead!
 						LOG("All enemies are dead!");
-						if (App->fadeToBlack->FadeIsOver())
-							App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu, 1.0f);
+						
+						if (App->map->actual_tier == TIER_MAP_8 && App->fadeToBlack->FadeIsOver()) {
+							heroes_are_dead = true;
+							App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+						}
+						else {
+							if (App->fadeToBlack->FadeIsOver())
+								App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu, 1.0f);
+						}
 					}
 
 
@@ -456,6 +463,9 @@ bool ctCombat::CleanUp()
 		App->map->actual_tier = TIER_MAP_7;
 	else if (App->map->actual_tier == TIER_MAP_7)
 		App->map->actual_tier = TIER_MAP_8;
+	else if (App->map->actual_tier == TIER_MAP_8) {
+		App->map->actual_tier == TIER_MAP_1;
+	}
 
 	if (heroes_are_dead)
 		App->map->actual_tier = TIER_MAP_1;

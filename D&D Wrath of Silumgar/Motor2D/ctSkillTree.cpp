@@ -294,18 +294,19 @@ bool ctSkillTree::CleanUp()
 {
 	LOG("Freeing ctSkillTree");
 
-	SavedataToXML();
+	if (App->entities->GetCleric() != nullptr)
+		SavedataToXML();
 
 	App->map->CleanUp();
 	warrior_abilities.clear();
 	cleric_abilities.clear();
 	dwarf_abilities.clear();
 	elf_abilities.clear();
-	if (description!=nullptr) {
+	if (description != nullptr) {
 		App->gui->DeleteUIElement(*description);
 		description = nullptr;
 	}
-	if (description_bg!=nullptr) {
+	if (description_bg != nullptr) {
 		App->gui->DeleteUIElement(*description_bg);
 		description_bg = nullptr;
 	}
@@ -334,7 +335,7 @@ bool ctSkillTree::CleanUp()
 		select_menu_B = nullptr;
 	}
 	accept_decline.clear();
-	
+
 	App->tex->UnLoad(spritesheet_abilities);
 
 	for (int i = 0; i < App->entities->entities.size(); i++)
@@ -353,6 +354,47 @@ bool ctSkillTree::CleanUp()
 		App->combat->turn_priority_entity.at(i)->~Entity();
 	}
 	App->combat->turn_priority_entity.clear();
+
+	/*chapusa*/
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+	node = &node->child("heroes");
+
+	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
+	{
+		std::string tmp(heroe.attribute("name").as_string());
+
+		if (tmp == "cleric") {
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				skill.attribute("owned").set_value(0);
+			}
+
+		}
+		else if (tmp == "warrior") {
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				skill.attribute("owned").set_value(0);
+			}
+
+
+		}
+		else if (tmp == "dwarf") {
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				skill.attribute("owned").set_value(0);
+
+			}
+
+		}
+		else if (tmp == "elf") {
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				skill.attribute("owned").set_value(0);
+			}
+
+		}
+
+	}
+
+	data_file.save_file("data.xml");
+	data_file.reset();
 
 	return true;
 }

@@ -139,6 +139,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <tier type="4" />
         <entity name="GNOLL" />
         <entity name="GNOLL" />
+        <entity name="KOBOLD" />
         <scene name="dungeon.tmx" />
         <icon_coords x="64" y="512" width="32" height="32" />
         <decision name ="Dead the enemies of the exit, you find yourself in what looks like the courtyard of a collapsed castle. When you leave, you see the dark knight in the harbor, about to take a boat. You start going out in your search, you can not let it escape:"/>
@@ -166,7 +167,9 @@ You go around until you find the door that leads to the city. Once inside that f
       
       <map_element>
         <tier type="6" />
-        <entity name="ALCHEMISTGOBLIN" />
+       <entity name="ALCHEMISTGOBLIN" />
+         <entity name="ALCHEMISTGOBLIN" />
+        <entity name="GNOLL" />
         <entity name="GNOLL" />
         <scene name="mountain.tmx" />
         <icon_coords x="160" y="512" width="32" height="32" />
@@ -188,6 +191,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <tier type="7" />
         <entity name="GOBLIN" />
         <entity name="TROLL_LEADERS" />
+         <entity name="ALCHEMISTGOBLIN" />
         <scene name="dungeon.tmx" />
         <icon_coords x="64" y="512" width="32" height="32" />
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
@@ -196,9 +200,10 @@ You go around until you find the door that leads to the city. Once inside that f
 	  
 	  <map_element>
         <tier type="7" />
+        <entity name="HEAVYGOBLIN" />
         <entity name="KOBOLD" />
         <entity name="KOBOLD" />
-		<entity name="KOBOLD" />
+		    <entity name="OWLBEAR" />
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>

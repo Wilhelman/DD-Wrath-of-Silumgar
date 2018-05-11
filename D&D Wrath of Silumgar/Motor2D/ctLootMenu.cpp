@@ -1370,7 +1370,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -1392,7 +1392,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -2232,7 +2232,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -2254,7 +2254,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -3095,7 +3095,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -3117,7 +3117,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -3857,7 +3857,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -3879,7 +3879,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -4716,7 +4716,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -4738,7 +4738,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -5578,7 +5578,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -5600,7 +5600,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -6338,7 +6338,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -6360,7 +6360,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -7095,7 +7095,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -7117,7 +7117,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{

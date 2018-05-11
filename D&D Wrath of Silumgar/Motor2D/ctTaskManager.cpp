@@ -348,7 +348,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Attack();
+				actioner_entity->Ability1T1();
 
 			}
 		}
@@ -454,7 +454,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Attack();
+				actioner_entity->Ability1T1();
 
 			}
 		}
@@ -560,7 +560,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Attack();
+				actioner_entity->Ability2T1();
 
 			}
 		}
@@ -659,7 +659,7 @@ bool PerformActionToEntity::Execute()
 				 App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 			 }
 			 //animate the receiver to hit + audio or smth
-			 actioner_entity->Attack();
+			 actioner_entity->Ability3T1();
 
 		 }
 	 }
@@ -1521,7 +1521,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(dexterity);
 
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability1T1();
+				actioner_entity->Ability3T1();
 
 			}
 		}
@@ -1672,7 +1672,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(dexterity);
 				receiver_entity->AddAlteredStat(dexterity);
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability1T1();
+				actioner_entity->Ability3T1();
 
 			}
 		}
@@ -1823,7 +1823,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(debuff);
 
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability1T1();
+				actioner_entity->Ability3T1();
 
 			}
 		}
@@ -2017,7 +2017,7 @@ bool PerformActionToEntity::Execute()
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
 
 						receiver_entity->Damaged();
-
+						actioner_entity->Attack();
 
 					}
 				}
@@ -2054,6 +2054,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(block);
 				receiver_entity->AddAlteredStat(block);
 
+				actioner_entity->Ability1T1();
 			}
 		}
 		break;
@@ -2113,6 +2114,7 @@ bool PerformActionToEntity::Execute()
 
 					}
 				}
+				actioner_entity->Ability2T1();
 			}
 		}
 		break;
@@ -2170,6 +2172,7 @@ bool PerformActionToEntity::Execute()
 
 					}
 				}
+				actioner_entity->Attack();
 			}
 		}
 		break;
@@ -2228,6 +2231,7 @@ bool PerformActionToEntity::Execute()
 
 					}
 				}
+				actioner_entity->Ability1T1();
 			}
 		}
 		break;
@@ -2286,6 +2290,7 @@ bool PerformActionToEntity::Execute()
 
 					}
 				}
+				actioner_entity->Ability2T1();
 			}
 		}
 		break;
@@ -2375,6 +2380,7 @@ bool PerformActionToEntity::Execute()
 
 				receiver_entity->AddAlteredStat(stats_up);
 
+				actioner_entity->Ability3T1();
 			}
 
 		}
@@ -2876,6 +2882,7 @@ bool PerformActionToEntity::Execute()
 
 				receiver_entity->AddAlteredStat(stats_up);
 
+				actioner_entity->Ability2T2();
 			}
 		}
 		break;

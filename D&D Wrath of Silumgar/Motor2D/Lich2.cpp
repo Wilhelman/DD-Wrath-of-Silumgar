@@ -108,19 +108,19 @@ void Lich2::Attack()
 }
 
 void  Lich2::Death() {
-	//App->audio->PlayFx(App->audio->dark_warrior_death_fx, 0);
+	App->audio->PlayFx(App->audio->lich2_attack_fx, 0);
 }
 void  Lich2::Run() {
-	//App->audio->PlayFx(App->audio->dark_warrior_run_fx, 0);
+	App->audio->PlayFx(App->audio->lich2_run_fx, 0);
 }
 void  Lich2::Damaged() {
-	//App->audio->PlayFx(App->audio->dark_warrior_damaged_fx, 0);
+	App->audio->PlayFx(App->audio->lich2_damaged_fx, 0);
 }
 void Lich2::Ability1T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_thunder_punch_fx, 0);
+	App->audio->PlayFx(App->audio->lich2_bidimensional_claw_fx, 0);
 }
 void Lich2::Ability2T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_void_cannon_fx, 0);
+	App->audio->PlayFx(App->audio->lich2_sea_of_flames_fx, 0);
 }
 void Lich2::Ability3T1() {
 	//App->audio->PlayFx(App->audio->dark_warrior_insignificant_mortals_fx, 0);

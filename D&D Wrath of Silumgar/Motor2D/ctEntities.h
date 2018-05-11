@@ -165,6 +165,8 @@ public:
 
 	std::string lich2_spritesheet_name;
 
+	std::string lich1_spritesheet_name;
+
 	//Miniheroes source
 	std::string miniheroes_spritesheet_name;
 

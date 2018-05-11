@@ -228,6 +228,9 @@
     <ClCompile Include="DisplacerBeast.cpp">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Lich1.cpp">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -436,6 +439,9 @@
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="DisplacerBeast.h">
+      <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Lich1.h">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

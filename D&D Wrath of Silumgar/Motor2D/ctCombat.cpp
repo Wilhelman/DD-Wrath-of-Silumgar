@@ -556,6 +556,11 @@ void ctCombat::UpdateManaBarOfEntity(Entity * entity_to_update_bar, int quantity
 	case OWLBEAR:
 	case TRITON:
 	case HELLHOUND:
+	case DARK_WARRIOR:
+	case DISPLACER_BEAST:
+	case TROLL_LEADERS:
+	case LICH_1:
+	case LICH_2:
 	case SKELETON:
 	case MINIHEROES:
 	case NO_TYPE:
@@ -703,6 +708,9 @@ void ctCombat::SpawnEntities()
 			break;
 		case TROLL_LEADERS:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, TROLL_LEADERS);
+			break;
+		case LICH_1:
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, LICH_1);
 			break;
 		case LICH_2:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, LICH_2);
@@ -1303,6 +1311,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 		case SKELETON:
 		case DARK_WARRIOR:
 		case TROLL_LEADERS:
+		case LICH_1:
 		case LICH_2:
 		case DISPLACER_BEAST:
 		{

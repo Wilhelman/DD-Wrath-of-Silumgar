@@ -91,6 +91,11 @@ public:
 	ctAnimation throw_object = ctAnimation();
 	ctAnimation use_potion = ctAnimation();
 
+	//Lich 1
+	ctAnimation lightning_flash = ctAnimation();
+	ctAnimation abyssal_sphere = ctAnimation();
+	ctAnimation dragon_flames = ctAnimation();
+
 	//Lich 2nd
 	ctAnimation bidimensional_claw = ctAnimation();
 	ctAnimation sea_of_flames = ctAnimation();

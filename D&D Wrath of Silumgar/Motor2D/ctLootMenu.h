@@ -46,7 +46,7 @@ public:
 	LootMenu();
 	~LootMenu();
 
-
+	void SavedataToXML();
 	bool Start();
 
 	// Called before all Updates

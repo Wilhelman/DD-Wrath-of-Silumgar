@@ -36,7 +36,7 @@
           <frame x="240" y="371" width="79" height="69"/>
         </animation>
 
-        <animation name="quick_stab" speed="5.0" loop="true">
+        <animation name="quick_stab" speed="5.0" loop="false">
           <frame x="1414" y="317" width="113" height="44"/>
           <frame x="1293" y="317" width="113" height="44"/>
           <frame x="1172" y="317" width="113" height="44"/>
@@ -750,7 +750,7 @@
           <frame x="112" y="2502" width="156" height="146"/>
         </animation>
 
-        <animation name="death" speed="0.5" loop="true">
+        <animation name="death" speed="0.1" loop="false">
           <frame x="88" y="2502" width="205" height="152"/>
           <frame x="309" y="2502" width="205" height="152"/>
           <frame x="540" y="2502" width="205" height="152"/>
@@ -922,12 +922,12 @@
           <frame x="196" y="1403" width="216" height="125"/>
         </animation>
         
-        <animation name="hit" speed="5.0" loop="true">
+        <animation name="hit" speed="5.0" loop="false">
           <frame x="1373" y="2155" width="191" height="123"/>
           <frame x="1128" y="2155" width="191" height="123"/>
         </animation>
         
-        <animation name="death" speed="5.0" loop="true">
+        <animation name="death" speed="5.0" loop="false">
           <frame x="1373" y="2152" width="191" height="126"/>
           <frame x="1128" y="2152" width="191" height="126"/>
           <frame x="861" y="2152" width="191" height="126"/>
@@ -1812,7 +1812,7 @@
           <frame x="1745" y="2308" width="57" height="76"/>
         </animation>
 
-        <animation name="heavy_slash" speed="0.5" loop="false">
+        <animation name="heavy_slash" speed="0.1" loop="false">
           <frame x="1904" y="1177" width="156" height="106"/>
           <frame x="1699" y="1177" width="156" height="106"/>
           <frame x="1476" y="1177" width="156" height="106"/>
@@ -1842,7 +1842,7 @@
           <frame x="1745" y="2308" width="57" height="76"/>
         </animation>
 
-        <animation name="heavy_slash+" speed="0.5" loop="false">
+        <animation name="heavy_slash+" speed="0.1" loop="false">
           <frame x="1904" y="1177" width="156" height="106"/>
           <frame x="1699" y="1177" width="156" height="106"/>
           <frame x="1476" y="1177" width="156" height="106"/>
@@ -1855,7 +1855,7 @@
           <frame x="281" y="1177" width="156" height="106"/>
         </animation>
 
-        <animation name="charge" speed="0.5" loop="false">
+        <animation name="charge" speed="0.1" loop="false">
           <frame x="122" y="116" width="79" height="76"/>
           <frame x="231" y="116" width="79" height="76"/>
           <frame x="346" y="116" width="79" height="76"/>
@@ -1877,7 +1877,7 @@
           <frame x="1760" y="223" width="110" height="97"/>
         </animation>
         
-        <animation name="whirlwind" speed="0.5" loop="false">
+        <animation name="whirlwind" speed="0.1" loop="false">
           <frame x="39" y="3681" width="195" height="114"/>
           <frame x="302" y="3681" width="195" height="114"/>
           <frame x="635" y="3681" width="195" height="114"/>

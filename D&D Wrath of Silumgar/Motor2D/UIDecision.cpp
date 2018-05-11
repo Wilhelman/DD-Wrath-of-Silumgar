@@ -27,7 +27,7 @@ UIDecision::UIDecision(int x, int y, UI_Type type, UIElement* &arrow, std::strin
 	int yE = App->win->screen_surface->h / App->win->GetHScalade() / 50;
 	text_border = App->gui->AddUIImage(xE, yE, { 843,484,264,280 }, nullptr, this);
 
-	aux_element = App->gui->AddUITextBox( xE + 20, yE + 24, 12, 290, text, { 255,255,255,255 }, this, Second_Font);
+	aux_element = App->gui->AddUITextBox( xE + 20, yE + 24, 20, 430, text, { 255,255,255,255 }, this, Second_Font);
 	this->text_decision = aux_element;
 
 	int extra_h = 0;
@@ -35,7 +35,7 @@ UIDecision::UIDecision(int x, int y, UI_Type type, UIElement* &arrow, std::strin
 	for (int i = 1; i >= 0; i--) {
 
 		if (!text_options[i].empty() && !text_options[i].empty()) { //text box for every option
-			aux_element = App->gui->AddUITextBox(xE + 20, 208 - extra_h, 12, 245, text_options[i], { 255,255,255,255 }, this,Second_Font);   //Old: 300 - extra_h 
+			aux_element = App->gui->AddUITextBox(xE + 25, 208 - extra_h, 20, 440, text_options[i], { 255,255,255,255 }, this,Second_Font);   //Old: 300 - extra_h 
 			if(i == 1)
 				this->option_1 = aux_element;
 			else

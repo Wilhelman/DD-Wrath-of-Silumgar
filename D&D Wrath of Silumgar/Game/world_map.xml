@@ -32,20 +32,19 @@
         <entity name="GNOLL" />
         <scene name="cave_05.tmx" />
         <icon_coords x="96" y="480" width="32" height="32" />
-        <decision name ="As you guessed, the cave would not be a simple place, it hides part of the army led by Silumgar.
-        But now there is no turning back, because of the battle part of the exit to be buried by stones, the only way out is crossing it, luckily, more than one route leads to the exit, where you should go:"/>
-        <option name = "What seems like the beginning of a cave is shown on the way, from it, several lights and noises come out. You know that it will not be an easy path, but that your reward can be very good.
+        <decision name ="As you guessed, the cave would not be a simple place, it hides part of the army led by Silumgar. But now there is no turning back, because of the battle part of the exit to be buried by stones, the only way out is crossing it, luckily, more than one route leads to the exit, where you should go:"/>
+        <option name = "What seems like the beginning of a cave is shown on the way, from it, several lights and noises come out. You know that it will not be an easy path, but that your reward can be good.
 "/>
       </map_element>
 
-      <!--<map_element>
+      <map_element>
         <tier type="2" />
         <entity name="KOBOLD" />
         <entity name="GNOLL" />
-        <scene name="cave_03.tmx" />
-        <icon_coords x="128" y="512" width="32" height="32" />
-        <decision name ="decision 1 gnoll 1 kobold"/>
-        <option name = "pues te spawneo 1 gnoll 1 kobold"/>
+        <scene name="cave_06.tmx" />
+        <icon_coords x="160" y="480" width="32" height="32" />
+        <decision name ="Right at the end of the battle, the narrow corridor through which you go begins to break, you started to run, but without result, since you end up in what looks like a cave. In it there are several corridors:"/>
+        <option name = "Departing towards a mountainous pass, in the village it was said that little adventurers returned when they went towards it."/>
       </map_element>
 
       <map_element>
@@ -53,11 +52,11 @@
         <entity name="KOBOLD" />
         <entity name="KOBOLD" />
         <entity name="GNOLL" />
-		<scene name="cave_03.tmx" />
+		    <scene name="dungeon.tmx" />
         <icon_coords x="32" y="512" width="32" height="32" />
-        <decision name ="decision 1 gnoll 2 kobold"/>
-        <option name = "pues te spawneo 1 gnoll 2 kobold"/>
-      </map_element>-->
+        <decision name ="Once you finish with the enemies in the village, you see that there is a path that leads to a cave through which you enter. Once inside a small earthquake, it buries the entrance, so we have to move forward:"/>
+        <option name = "You go to a small village to the east, from it comes a large column of smoke, you know that there was part of the army of Silumgar."/>
+      </map_element>
 
       <map_element>
         <tier type="3" />
@@ -65,7 +64,7 @@
         <entity name="HELLHOUND" />
         <entity name="GOBLIN" />
         <scene name="cave_02.tmx" />
-        <icon_coords x="64" y="480" width="32" height="32" />
+        <icon_coords x="64"  y="480" width="32" height="32" />
         <decision name ="After defeating that small group of enemies that took your step, you decided to cross the corridor.
 In the end there is a room with a small bonfire with a few embers.
 Once you cross it you see two possible outputs:"/>
@@ -81,7 +80,7 @@ Once you cross it you see two possible outputs:"/>
         <scene name="cave_03.tmx" />
         <icon_coords x="128" y="480" width="32" height="32" />
         <decision name ="After being ambushed and forced to fight, you see what the exit of the cave looks like."/>
-        <option name = "You see a small crack through which you can pass. You notice that on this path there is someone or something waiting for you, but without the option of going backwards, you get the strength to continue forward."/>
+        <option name = "You see a small crack through which you can pass. You know that something complicated is coming, but without the option of returning, you get the strength to keep going."/>
       </map_element>
 
       <map_element>
@@ -95,35 +94,27 @@ Through the crack you see a light that gives to the outside, while through the t
         <option name = "It seems that you listen to water running very close, thanks to your knowledge you know that everything goes to a good port, so you will follow it."/>
       </map_element>
 
-      <!--<map_element>
+      <map_element>
         <tier type="3" />
         <entity name="KOBOLD" />
         <entity name="KOBOLD" />
         <entity name="GNOLL" />
-        <scene name="cave_03.tmx" />
-        <icon_coords x="288" y="480" width="32" height="32" />
-        <decision name ="2 kobold 1 gnoll"/>
-        <option name = "2 kobold 1 gnoll"/>
+        <scene name="cave.tmx" />
+        <icon_coords x="32" y="480" width="32" height="32" />
+        <decision name ="After fighting on the bridge, it begins to collapse, so you run out to save yourself. Once you reach the other side you see that passing a corridor is the exit at the end of this, another band a small crack is left to appear on the wall, from which you can see a forest:"/>
+        <option name = "Going down a bit you will find a large room in which there are bright crystals, this is crossed by a large bridge in which you can not see the bottom."/>
       </map_element>
 
       <map_element>
         <tier type="3" />
         <entity name="GNOLL" />
-        <scene name="forest.tmx" />
-        <icon_coords x="0" y="512" width="32" height="32" />
+        <scene name="cave_06.tmx" />
+        <icon_coords x="320" y="480" width="32" height="32" />
         <decision name ="1 gnoll"/>
         <option name = "1 gnoll"/>
       </map_element>
 
-      <map_element>
-        <tier type="3" />
-        <entity name="GNOLL" />
-        <entity name="GNOLL" />
-        <scene name="cave_03.tmx" />
-        <icon_coords x="96" y="512" width="32" height="32" />
-        <decision name ="2 gnoll"/>
-        <option name = "2 gnoll"/>
-      </map_element>-->
+      
 	  
 	   <map_element>
         <tier type="4" />
@@ -131,7 +122,7 @@ Through the crack you see a light that gives to the outside, while through the t
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
         <decision name ="After defeating the enemies, one of them tells you that in the city you will find defeat. Without knowing very well what he says, you continue advancing through the forest until you come across some walls.
-You go around until you find the door that leads to the city. Once inside that feeling that you had in the forest begins to disappear, but for a short time, since you see the dark warrior trying to escape. It is your only hope to get information about Silumgar, DO NOT LET ME ESCAPE!"/>
+You go around until you find the door that leads to the city. Once inside that feeling that you had in the forest begins to disappear, but for a short time, since you see the head of the region trying to escape. It is your only hope to get information about Silumgar, DO NOT LET ME ESCAPE!"/>
         <option name = "A dense forest in which the environment is charged, a sensation of heaviness that only increased being there."/>
       </map_element>
       
@@ -142,7 +133,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <entity name="KOBOLD" />
         <scene name="dungeon.tmx" />
         <icon_coords x="64" y="512" width="32" height="32" />
-        <decision name ="Dead the enemies of the exit, you find yourself in what looks like the courtyard of a collapsed castle. When you leave, you see the dark knight in the harbor, about to take a boat. You start going out in your search, you can not let it escape:"/>
+        <decision name ="Dead the enemies of the exit, you find yourself in what looks like the courtyard of a collapsed castle. When you leave, you see the head of the region in the harbor, about to take a boat. You start going out in your search, you can not let it escape:"/>
         <option name = "An illuminated corridor, where in the end you can see something similar to a castle courtyard. Surely it is the path of the enemies, for which, it would not be strange to meet more than one."/>
       </map_element>
 	  
@@ -153,6 +144,24 @@ You go around until you find the door that leads to the city. Once inside that f
         <icon_coords x="192" y="512" width="32" height="32" />
         <decision name ="Once the Dark Knight is dead, he ends up telling you that Silumgar is at the end of the region in search of more people to exterminate. That said, you start the road again, but this time more difficult, since you are starting to become known among the ranks of the enemies. For this, a new path opens up:"/>
         <option name = "Pursue the dark knight and start the battle against him."/>
+      </map_element>
+      
+       <map_element>
+        <tier type="5" />
+        <entity name="TROLL_LEADERS" />
+        <scene name="ship.tmx" />
+        <icon_coords x="192" y="512" width="32" height="32" />
+        <decision name ="Once the Troll Lead is dead, you will find a letter written by Silumgar, which explains his plans is at the end of the region in search of more people to exterminate. That said, you start the road again, but this time more difficult, since you are starting to become known among the ranks of the enemies. For this, a new path opens up:"/>
+        <option name = "Pursue the troll leaders and start the battle against him."/>
+      </map_element>
+      
+       <map_element>
+        <tier type="5" />
+        <entity name="DISPLACER_BEAST" />
+        <scene name="ship.tmx" />
+        <icon_coords x="192" y="512" width="32" height="32" />
+        <decision name ="After defeating the Displacer Beast, one of your henchmen begs you for mercy in exchange for information, this explains Silumgar's plans, go east in search of new villages. Without further delay you will forgive your life and go on your search. As the last sneak tells you that your path will begin to seriously complicate to be gaining fame. For this, a new path opens up:"/>
+        <option name = "Pursue the displacer beast and start the battle against him."/>
       </map_element>
 	  
 	  <map_element>

@@ -16,13 +16,13 @@
 				<skill name="Clarity" description="Purifies party removing all debuffs" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" have_to_move="0" owned="0" />
 			</skills>
 			<items>
-				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="13" />
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
 				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
 				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
 				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0" />
-				<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER" quantity="1" />
-				<item name="Dragon Essence" objective="1" use="BURN_TARGET" quantity="1" />
-				<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY" quantity="1" />
+				<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER" quantity="0" />
+				<item name="Dragon Essence" objective="1" use="BURN_TARGET" quantity="0" />
+				<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY" quantity="0" />
 			</items>
 		</heroe>
 		<heroe name="warrior">
@@ -39,7 +39,7 @@
 				<skill name="Whirlwind" description="Sword spining attack that deals damage to all enemies based on strength" mana_points_effect_to_himself="1" health_points_effect="80" objective="1" have_to_move="1" owned="0" />
 			</skills>
 			<items>
-				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="1" />
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
 				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
 				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
 				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0" />
@@ -62,7 +62,13 @@
 				<skill name="Counter" description="The Dwarf gets ready for the next attacks and protects from all the damage this turn while reflecting back some of the damage too" mana_points_effect_to_himself="1" health_points_effect="-23" objective="0" have_to_move="0" owned="0" />
 			</skills>
 			<items>
-				<item name="test" etc="etc" />
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
+				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
+				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
+				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0" />
+				<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER" quantity="0" />
+				<item name="Dragon Essence" objective="1" use="BURN_TARGET" quantity="0" />
+				<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY" quantity="0" />
 			</items>
 		</heroe>
 		<heroe name="elf">
@@ -79,7 +85,13 @@
 				<skill name="Fire Djinn" description="Summons the Fire Djiin to deal damage based on intelligence and burns an enemy" mana_points_effect_to_himself="1" health_points_effect="-40" burn_chance="100" objective="1" have_to_move="0" owned="0" />
 			</skills>
 			<items>
-				<item name="test" etc="etc" />
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
+				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
+				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
+				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0" />
+				<item name="Poisoned Dagger" objective="1" use="POISONED_DAGGER" quantity="0" />
+				<item name="Dragon Essence" objective="1" use="BURN_TARGET" quantity="0" />
+				<item name="Fenix Tail" objective="2" use="REVIVE_AN_ALLY" quantity="0" />
 			</items>
 		</heroe>
 	</heroes>

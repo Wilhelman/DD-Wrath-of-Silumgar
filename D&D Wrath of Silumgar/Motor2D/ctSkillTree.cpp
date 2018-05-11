@@ -355,46 +355,7 @@ bool ctSkillTree::CleanUp()
 	}
 	App->combat->turn_priority_entity.clear();
 
-	/*chapusa*/
-	pugi::xml_document	data_file;
-	pugi::xml_node* node = &App->LoadData(data_file);
-	node = &node->child("heroes");
-
-	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
-	{
-		std::string tmp(heroe.attribute("name").as_string());
-
-		if (tmp == "cleric") {
-			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
-				skill.attribute("owned").set_value(0);
-			}
-
-		}
-		else if (tmp == "warrior") {
-			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
-				skill.attribute("owned").set_value(0);
-			}
-
-
-		}
-		else if (tmp == "dwarf") {
-			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
-				skill.attribute("owned").set_value(0);
-
-			}
-
-		}
-		else if (tmp == "elf") {
-			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
-				skill.attribute("owned").set_value(0);
-			}
-
-		}
-
-	}
-
-	data_file.save_file("data.xml");
-	data_file.reset();
+	
 
 	return true;
 }

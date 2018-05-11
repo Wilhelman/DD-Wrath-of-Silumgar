@@ -258,7 +258,8 @@ bool PerformActionToEntity::Execute()
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->attack.Reset();
+				actioner_entity->bidimensional_claw.Reset();
+				actioner_entity->animation = &actioner_entity->idle;
 
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
@@ -364,7 +365,8 @@ bool PerformActionToEntity::Execute()
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->attack.Reset();
+				actioner_entity->dragon_flames.Reset();
+				actioner_entity->animation = &actioner_entity->idle;
 
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
@@ -470,7 +472,8 @@ bool PerformActionToEntity::Execute()
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->attack.Reset();
+				actioner_entity->lightning_flash.Reset();
+				actioner_entity->animation = &actioner_entity->idle;
 
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
@@ -576,8 +579,9 @@ bool PerformActionToEntity::Execute()
 		 ret = actioner_entity->animation->Finished();
 
 		 if (ret == true) {
-			 actioner_entity->attack.Reset();
+			 actioner_entity->abyssal_sphere.Reset();
 
+			 actioner_entity->animation = &actioner_entity->idle;
 
 			 int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 

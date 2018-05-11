@@ -74,7 +74,7 @@ Lich1::Lich1(int x, int y, EntityType type) : Entity(x, y, type) {
 		else if (tmp == "sea_of_flames")
 			LoadAnimation(animations, &sea_of_flames);
 		else if (tmp == "default_attack")
-			LoadAnimation(animations, &sea_of_flames);
+			LoadAnimation(animations, &attack);
 	}
 
 	LoadProperties(node->child("statistics"));
@@ -129,7 +129,8 @@ void Lich1::Update(float dt)
 		
 		LoadProperties(node->child("statistics"));
 		
-		
+		App->combat->UpdateHPBarOfEntity(this, current_health_points);
+
 		idle = idle_transformed;
 		run_forward = run_transformed;
 		hit = hit_transformed;

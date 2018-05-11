@@ -47,11 +47,41 @@ Lich1::Lich1(int x, int y, EntityType type) : Entity(x, y, type) {
 		else if (tmp == "abyssal_sphere")
 			LoadAnimation(animations, &abyssal_sphere);
 	}
+
+	pugi::xml_document	config_file2;
+	pugi::xml_node* node2 = &App->LoadEntities(config_file2);
+	node2 = &node2->child("enemies").child("lich2nd");
+
+
+	for (pugi::xml_node animations = node2->child("animations").child("animation"); animations; animations = animations.next_sibling("animation"))
+	{
+		std::string tmp(animations.attribute("name").as_string());
+
+		if (tmp == "idle")
+			LoadAnimation(animations, &idle_transformed);
+		else if (tmp == "run")
+			LoadAnimation(animations, &run_transformed);
+		else if (tmp == "hit")
+			LoadAnimation(animations, &hit_transformed);
+		else if (tmp == "death")
+			LoadAnimation(animations, &death_transformed);
+		else if (tmp == "stun")
+			LoadAnimation(animations, &stun_transformed);
+		else if (tmp == "dodge")
+			LoadAnimation(animations, &dodge_transformed);
+		else if (tmp == "bidimensional_claw")
+			LoadAnimation(animations, &bidimensional_claw);
+		else if (tmp == "sea_of_flames")
+			LoadAnimation(animations, &sea_of_flames);
+		else if (tmp == "default_attack")
+			LoadAnimation(animations, &sea_of_flames);
+	}
+
 	LoadProperties(node->child("statistics"));
 	animation = &idle;
 
 	//prepare the actions:
-
+	current_health_points = 10;
 	dragon_flames_action.name = "Dragon Flames";
 	dragon_flames_action.mana_points_effect_to_himself = 0;
 	dragon_flames_action.objective = HEROES;
@@ -66,6 +96,16 @@ Lich1::Lich1(int x, int y, EntityType type) : Entity(x, y, type) {
 	abyssal_sphere_action.mana_points_effect_to_himself = 0;
 	abyssal_sphere_action.objective = ENEMIES;
 	abyssal_sphere_action.type = ABYSSAL_SPHERE;
+
+	bidimensional_claw_action.name = "Bidimensional Claw";
+	bidimensional_claw_action.mana_points_effect_to_himself = 45;
+	bidimensional_claw_action.objective = HEROES;
+	bidimensional_claw_action.type = BIDIMENSIONAL_CLAW;
+
+	sea_of_flames_action.name = "Sea of Flames";
+	sea_of_flames_action.mana_points_effect_to_himself = 70;
+	sea_of_flames_action.objective = HEROES;
+	sea_of_flames_action.type = SEA_OF_FLAMES;
 }
 
 
@@ -82,6 +122,24 @@ void Lich1::Update(float dt)
 		SetPlayerAnimationsSpeed(dt);
 	}
 
+	if (current_health_points <= 0 && is_transformed == false) {
+		pugi::xml_document	config_file;
+		pugi::xml_node* node = &App->LoadEntities(config_file);
+		node = &node->child("enemies").child("lich2nd");
+		
+		LoadProperties(node->child("statistics"));
+		
+		
+		idle = idle_transformed;
+		run_forward = run_transformed;
+		hit = hit_transformed;
+		death = death_transformed;
+		stun = stun_transformed;
+		dodge = dodge_transformed;
+
+		animation = &idle_transformed;
+		is_transformed = true;
+	}
 }
 
 void Lich1::SetPlayerAnimationsSpeed(float dt)
@@ -137,16 +195,54 @@ void Lich1::Ability3T1() {
 
 void Lich1::PerformAction()
 {
-	Entity* entity_objective = nullptr;
 
-	entity_objective = App->combat->GetRandomHeroe();
+	if (!is_transformed) {
+		Entity* entity_objective = nullptr;
 
-	int random_number = (rand() % 2) + 1; //random del 1-2
+		entity_objective = App->combat->GetRandomHeroe();
 
-	if (random_number == 1)
-		App->task_manager->AddTask(new PerformActionToEntity(this, this->dragon_flames_action, entity_objective));
-	else if (random_number == 2)
-		App->task_manager->AddTask(new PerformActionToEntity(this, this->lightning_flash_action, entity_objective));
+		int random_number = (rand() % 2) + 1; //random del 1-2
+
+		if (random_number == 1)
+			App->task_manager->AddTask(new PerformActionToEntity(this, this->dragon_flames_action, entity_objective));
+		else if (random_number == 2)
+			App->task_manager->AddTask(new PerformActionToEntity(this, this->lightning_flash_action, entity_objective));
+	}
+
+	else {
+		Entity* entity_objective = nullptr;
+
+		if (IsGoingToDoAnythingClever()) {//hacer algo cheto
+
+
+			entity_objective = App->combat->GetTheWeakestHeroe();
+
+			if (GetCurrentManaPoints() >= 70) {
+				App->task_manager->AddTask(new PerformActionToEntity(this, sea_of_flames_action, entity_objective));
+			}
+			else if (GetCurrentManaPoints() > 70 && GetCurrentManaPoints() >= 45) {
+
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+				App->task_manager->AddTask(new PerformActionToEntity(this, bidimensional_claw_action, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
+			}
+
+			else {
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+				App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
+			}
+		}
+		else {//hacer algo mal
+			entity_objective = App->combat->GetRandomHeroe();
+
+			App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+			App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
+			App->task_manager->AddTask(new MoveToInitialPosition(this));
+		}
+
+
+	}
 }
 
 

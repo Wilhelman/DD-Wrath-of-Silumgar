@@ -140,6 +140,12 @@
           <frame x="908"  y="883" width="47" height="44"/>
         </animation>
 
+		<animation name="dodge" speed="0.05" loop="false">
+		  <frame x="684"  y="665" width="80" height="59"/>
+		  <frame x="540"  y="665" width="80" height="59"/>
+		  <frame x="370"  y="665" width="80" height="59"/>	  
+        </animation>
+		
         <animation name="death" speed="0.5" loop="false">
           <frame x="984"  y="877" width="67" height="53"/>
           <frame x="898"  y="877" width="67" height="53"/>
@@ -206,6 +212,13 @@
           <frame x="908"  y="450" width="44" height="47"/>
         </animation>
 
+		<animation name="dodge" speed="0.05" loop="false">
+          <frame x="439"  y="176" width="79" height="59"/>
+		  <frame x="231"  y="176" width="79" height="59"/>
+		  <frame x="61"  y="176" width="79" height="59"/>
+		  
+        </animation>
+		
         <animation name="death" speed="0.5" loop="false">
           <frame x="1001"  y="447" width="78" height="53"/>
           <frame x="891"  y="447" width="78" height="53"/>
@@ -263,6 +276,13 @@
           <frame x="895"  y="1313" width="47" height="46"/>
         </animation>
 
+		<animation name="dodge" speed="0.05" loop="false">
+		  <frame x="661"  y="1092" width="80" height="64"/>
+		  <frame x="536"  y="1092" width="80" height="64"/>
+		  <frame x="381"  y="1092" width="80" height="64"/>
+	  
+        </animation>
+		
         <animation name="death" speed="0.5" loop="false">
           <frame x="972"  y="1309" width="70" height="53"/>
           <frame x="884"  y="1309" width="70" height="53"/>

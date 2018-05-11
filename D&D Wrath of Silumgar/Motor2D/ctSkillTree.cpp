@@ -744,6 +744,18 @@ void ctSkillTree::SelectAbility() {
 							}
 						}
 					}
+					if (current_hero == 1) {
+						cleric_upgrades--;
+					}
+					if (current_hero == 2) {
+						warrior_upgrades--;
+					}
+					if (current_hero == 3) {
+						dwarf_upgrades--;
+					}
+					if (current_hero == 4) {
+						elf_upgrades--;
+					}
 				}
 				else if (select_menu_B->current_state == STATE_FOCUSED) {
 					App->audio->PlayFx(App->audio->cm_back_fx);
@@ -761,18 +773,6 @@ void ctSkillTree::SelectAbility() {
 				accept_decline.clear();
 				option._Ptr = nullptr;
 				selecting_ability = false;
-				if (current_hero == 1) {
-					cleric_upgrades--;
-				}
-				if (current_hero == 2) {
-					warrior_upgrades--;
-				}
-				if (current_hero == 3) {
-					dwarf_upgrades--;
-				}
-				if (current_hero == 4) {
-					elf_upgrades--;
-				}
 
 			}
 			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {

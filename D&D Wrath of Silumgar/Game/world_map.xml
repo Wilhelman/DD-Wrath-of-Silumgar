@@ -80,7 +80,7 @@ Once you cross it you see two possible outputs:"/>
         <entity name="GOBLIN" />
         <scene name="cave_03.tmx" />
         <icon_coords x="128" y="480" width="32" height="32" />
-        <decision name ="2 gnoll"/>
+        <decision name ="After being ambushed and forced to fight, you see what the exit of the cave looks like."/>
         <option name = "You see a small crack through which you can pass. You notice that on this path there is someone or something waiting for you, but without the option of going backwards, you get the strength to continue forward."/>
       </map_element>
 
@@ -170,7 +170,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <entity name="GNOLL" />
         <scene name="mountain.tmx" />
         <icon_coords x="160" y="512" width="32" height="32" />
-        <decision name ="2 TRITON"/>
+        <decision name ="After defeating the enemies you are forced to flee the path to divert attention. To get out of this you have more than one possibility:"/>
         <option name = "Leave the city by the other band, entering again towards the mountain."/>
       </map_element>
 	  
@@ -180,7 +180,7 @@ You go around until you find the door that leads to the city. Once inside that f
       <entity name="HELLBOUND" />
         <scene name="cave.tmx" />
         <icon_coords x="32" y="480" width="32" height="32" />
-        <decision name ="1 KOBOLD"/>
+        <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
         <option name = "Cross a small cave in which you can see crystals that illuminate a lot."/>
       </map_element>
       
@@ -190,7 +190,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <entity name="TROLL_LEADERS" />
         <scene name="dungeon.tmx" />
         <icon_coords x="64" y="512" width="32" height="32" />
-        <decision name ="2 KOBOLD"/>
+        <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
         <option name = "Go to an abandoned town in which there seems to be nobody."/>
       </map_element>
 	  
@@ -201,7 +201,7 @@ You go around until you find the door that leads to the city. Once inside that f
 		<entity name="KOBOLD" />
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
-        <decision name ="3 KOBOLD"/>
+        <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
         <option name = "Going into the forest."/>
       </map_element>
 	  
@@ -211,7 +211,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <scene name="castle.tmx" />
         <icon_coords x="32" y="512" width="32" height="32" />
         <decision name ="You have managed to save the world once more. CONGRATULATIONS!"/>
-        <option name = "You are before the doors of the castle where Lich is, there is no way back, at this moment it is where the destiny of the whole earth will be decided:"/>
+        <option name = "start the final battle!"/>
       </map_element>
      <!-- <icon_coords x="32" y="480" width="32" height="32" /> Cave interior 
       <icon_coords x="64" y="480" width="32" height="32" />     River

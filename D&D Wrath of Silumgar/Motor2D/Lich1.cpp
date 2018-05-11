@@ -111,27 +111,27 @@ void Lich1::LoadAnimation(pugi::xml_node animation_node, ctAnimation* animation)
 
 void Lich1::Attack()
 {
-	//App->audio->PlayFx(App->audio->dark_warrior_attack_fx, 0);
+	App->audio->PlayFx(App->audio->lich1_attack_fx, 0);
 
 }
 
 void  Lich1::Death() {
-	App->audio->PlayFx(App->audio->dark_warrior_death_fx, 0);
+	App->audio->PlayFx(App->audio->lich1_death_fx, 0);
 }
 void  Lich1::Run() {
-	App->audio->PlayFx(App->audio->dark_warrior_run_fx, 0);
+	App->audio->PlayFx(App->audio->lich1_run_fx, 0);
 }
 void  Lich1::Damaged() {
-	App->audio->PlayFx(App->audio->dark_warrior_damaged_fx, 0);
+	App->audio->PlayFx(App->audio->lich1_damaged_fx, 0);
 }
 void Lich1::Ability1T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_thunder_punch_fx, 0);
+	App->audio->PlayFx(App->audio->lich1_dragon_flames_fx, 0);
 }
 void Lich1::Ability2T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_void_cannon_fx, 0);
+	App->audio->PlayFx(App->audio->lich1_lightning_flash_fx, 0);
 }
 void Lich1::Ability3T1() {
-	//App->audio->PlayFx(App->audio->dark_warrior_insignificant_mortals_fx, 0);
+	App->audio->PlayFx(App->audio->lich1_abyssal_sphere_fx, 0);
 }
 
 

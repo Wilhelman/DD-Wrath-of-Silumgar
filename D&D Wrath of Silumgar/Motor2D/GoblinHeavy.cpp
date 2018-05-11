@@ -39,6 +39,8 @@ Goblin_Heavy::Goblin_Heavy(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &death);
 		else if (tmp == "stun")
 			LoadAnimation(animations, &stun);
+		else if (tmp == "dodge")
+			LoadAnimation(animations, &dodge);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

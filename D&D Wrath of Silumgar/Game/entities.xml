@@ -36,7 +36,7 @@
           <frame x="240" y="371" width="79" height="69"/>
         </animation>
 
-        <animation name="quick_stab" speed="5.0" loop="true">
+        <animation name="quick_stab" speed="5.0" loop="false">
           <frame x="1414" y="317" width="113" height="44"/>
           <frame x="1293" y="317" width="113" height="44"/>
           <frame x="1172" y="317" width="113" height="44"/>
@@ -140,6 +140,12 @@
           <frame x="908"  y="883" width="47" height="44"/>
         </animation>
 
+		<animation name="dodge" speed="0.05" loop="false">
+		  <frame x="684"  y="665" width="80" height="59"/>
+		  <frame x="540"  y="665" width="80" height="59"/>
+		  <frame x="370"  y="665" width="80" height="59"/>	  
+        </animation>
+		
         <animation name="death" speed="0.5" loop="false">
           <frame x="984"  y="877" width="67" height="53"/>
           <frame x="898"  y="877" width="67" height="53"/>
@@ -206,6 +212,13 @@
           <frame x="908"  y="450" width="44" height="47"/>
         </animation>
 
+		<animation name="dodge" speed="0.05" loop="false">
+          <frame x="439"  y="176" width="79" height="59"/>
+		  <frame x="231"  y="176" width="79" height="59"/>
+		  <frame x="61"  y="176" width="79" height="59"/>
+		  
+        </animation>
+		
         <animation name="death" speed="0.5" loop="false">
           <frame x="1001"  y="447" width="78" height="53"/>
           <frame x="891"  y="447" width="78" height="53"/>
@@ -263,6 +276,13 @@
           <frame x="895"  y="1313" width="47" height="46"/>
         </animation>
 
+		<animation name="dodge" speed="0.05" loop="false">
+		  <frame x="661"  y="1092" width="80" height="64"/>
+		  <frame x="536"  y="1092" width="80" height="64"/>
+		  <frame x="381"  y="1092" width="80" height="64"/>
+	  
+        </animation>
+		
         <animation name="death" speed="0.5" loop="false">
           <frame x="972"  y="1309" width="70" height="53"/>
           <frame x="884"  y="1309" width="70" height="53"/>
@@ -294,7 +314,7 @@
     </heavyGoblin>
 
     <gnoll>
-      <statistics constitution ="9" focus="6" strength="5" agility="6"  dexterity ="6" intelligence="3" physicalDefense="5" magicalDefense="1" judgement="60"/>
+      <statistics constitution ="9" focus="6" strength="5" agility="2"  dexterity ="5" intelligence="3" physicalDefense="5" magicalDefense="1" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -727,7 +747,7 @@
     </hellhound>
 
     <darkWarrior>
-      <statistics constitution ="40" focus="15" strength="9" agility="14" dexterity ="15" intelligence="33" physicalDefense="14" magicalDefense="14" judgement="40"/>
+      <statistics constitution ="40" focus="15" strength="9" agility="8" dexterity ="10" intelligence="33" physicalDefense="14" magicalDefense="14" judgement="40"/>
       <animations>
 
         <animation name="idle" speed="2.0" loop="true">
@@ -750,7 +770,7 @@
           <frame x="112" y="2502" width="156" height="146"/>
         </animation>
 
-        <animation name="death" speed="0.5" loop="true">
+        <animation name="death" speed="0.1" loop="false">
           <frame x="88" y="2502" width="205" height="152"/>
           <frame x="309" y="2502" width="205" height="152"/>
           <frame x="540" y="2502" width="205" height="152"/>
@@ -922,12 +942,12 @@
           <frame x="196" y="1403" width="216" height="125"/>
         </animation>
         
-        <animation name="hit" speed="5.0" loop="true">
+        <animation name="hit" speed="5.0" loop="false">
           <frame x="1373" y="2155" width="191" height="123"/>
           <frame x="1128" y="2155" width="191" height="123"/>
         </animation>
         
-        <animation name="death" speed="5.0" loop="true">
+        <animation name="death" speed="5.0" loop="false">
           <frame x="1373" y="2152" width="191" height="126"/>
           <frame x="1128" y="2152" width="191" height="126"/>
           <frame x="861" y="2152" width="191" height="126"/>
@@ -1812,7 +1832,7 @@
           <frame x="1745" y="2308" width="57" height="76"/>
         </animation>
 
-        <animation name="heavy_slash" speed="0.5" loop="false">
+        <animation name="heavy_slash" speed="0.1" loop="false">
           <frame x="1904" y="1177" width="156" height="106"/>
           <frame x="1699" y="1177" width="156" height="106"/>
           <frame x="1476" y="1177" width="156" height="106"/>
@@ -1842,7 +1862,7 @@
           <frame x="1745" y="2308" width="57" height="76"/>
         </animation>
 
-        <animation name="heavy_slash+" speed="0.5" loop="false">
+        <animation name="heavy_slash+" speed="0.1" loop="false">
           <frame x="1904" y="1177" width="156" height="106"/>
           <frame x="1699" y="1177" width="156" height="106"/>
           <frame x="1476" y="1177" width="156" height="106"/>
@@ -1855,7 +1875,7 @@
           <frame x="281" y="1177" width="156" height="106"/>
         </animation>
 
-        <animation name="charge" speed="0.5" loop="false">
+        <animation name="charge" speed="0.1" loop="false">
           <frame x="122" y="116" width="79" height="76"/>
           <frame x="231" y="116" width="79" height="76"/>
           <frame x="346" y="116" width="79" height="76"/>
@@ -1877,7 +1897,7 @@
           <frame x="1760" y="223" width="110" height="97"/>
         </animation>
         
-        <animation name="whirlwind" speed="0.5" loop="false">
+        <animation name="whirlwind" speed="0.1" loop="false">
           <frame x="39" y="3681" width="195" height="114"/>
           <frame x="302" y="3681" width="195" height="114"/>
           <frame x="635" y="3681" width="195" height="114"/>

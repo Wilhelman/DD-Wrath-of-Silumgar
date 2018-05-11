@@ -724,39 +724,39 @@ void LootMenu::LoadClerictStats() {
 	Entity* current_entity = App->entities->GetCleric();
 	current_entity->CalculateAllStats();
 
-	std::string entity_stat = "Con  " + std::to_string(current_entity->max_health_points);
+	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
 	cleric_statistics.push_back(new UITextBox(135, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Foc  " + std::to_string(current_entity->max_mana_points);
+	entity_stat = "Foc  " + std::to_string(current_entity->base_stats.focus);
 	cleric_statistics.push_back(new UITextBox(135, 48, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Str  " + std::to_string(current_entity->current_strength);
+	entity_stat = "Str  " + std::to_string(current_entity->base_stats.strength);
 	cleric_statistics.push_back(new UITextBox(135, 58, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Agi   " + std::to_string(current_entity->current_agility_points);
+	entity_stat = "Agi   " + std::to_string(current_entity->base_stats.agility);
 	cleric_statistics.push_back(new UITextBox(135, 68, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Dex  " + std::to_string(current_entity->current_dexterity_points);
+	entity_stat = "Dex  " + std::to_string(current_entity->base_stats.dexterity);
 	cleric_statistics.push_back(new UITextBox(135, 78, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Int   " + std::to_string(current_entity->current_intelligence);
+	entity_stat = "Int   " + std::to_string(current_entity->base_stats.intelligence);
 	cleric_statistics.push_back(new UITextBox(135, 88, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "M.Def " + std::to_string(current_entity->current_magical_defense_points);
+	entity_stat = "M.Def " + std::to_string(current_entity->base_stats.magical_defense);
 	cleric_statistics.push_back(new UITextBox(135, 98, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "P.Def " + std::to_string(current_entity->current_physical_defense_points);
+	entity_stat = "P.Def " + std::to_string(current_entity->base_stats.physical_defense);
 	cleric_statistics.push_back(new UITextBox(135, 108, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Luck " + std::to_string(current_entity->current_luck);
+	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
 	cleric_statistics.push_back(new UITextBox(135, 118, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 }
@@ -777,31 +777,31 @@ void LootMenu::LoadWarriorStats() {
 	Entity* current_entity = App->entities->GetWarrior();
 	current_entity->CalculateAllStats();
 
-	std::string entity_stat = "Con  " + std::to_string(current_entity->max_health_points);
+	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
 	warrior_statistics.push_back(new UITextBox(135, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Foc  " + std::to_string(current_entity->max_mana_points);
+	entity_stat = "Foc  " + std::to_string(current_entity->base_stats.focus);
 	warrior_statistics.push_back(new UITextBox(135, 205, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Str  " + std::to_string(current_entity->current_strength);
+	entity_stat = "Str  " + std::to_string(current_entity->base_stats.strength);
 	warrior_statistics.push_back(new UITextBox(135, 215, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Agi   " + std::to_string(current_entity->current_agility_points);
+	entity_stat = "Agi   " + std::to_string(current_entity->base_stats.agility);
 	warrior_statistics.push_back(new UITextBox(135, 225, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Dex  " + std::to_string(current_entity->current_dexterity_points);
+	entity_stat = "Dex  " + std::to_string(current_entity->base_stats.dexterity);
 	warrior_statistics.push_back(new UITextBox(135, 235, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Int   " + std::to_string(current_entity->current_intelligence);
+	entity_stat = "Int   " + std::to_string(current_entity->base_stats.intelligence);
 	warrior_statistics.push_back(new UITextBox(135, 245, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "M.Def " + std::to_string(current_entity->current_magical_defense_points);
+	entity_stat = "M.Def " + std::to_string(current_entity->base_stats.magical_defense);
 	warrior_statistics.push_back(new UITextBox(135, 255, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "P.Def " + std::to_string(current_entity->current_physical_defense_points);
+	entity_stat = "P.Def " + std::to_string(current_entity->base_stats.physical_defense);
 	warrior_statistics.push_back(new UITextBox(135, 265, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Luck " + std::to_string(current_entity->current_luck);
+	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
 	warrior_statistics.push_back(new UITextBox(135, 275, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 }
 
@@ -820,34 +820,34 @@ void LootMenu::LoadDwarfStats() {
 	Entity* current_entity = App->entities->GetDwarf();
 	current_entity->CalculateAllStats();
 
-	std::string entity_stat = "Con  " + std::to_string(current_entity->max_health_points);
+	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
 	dwarf_statistics.push_back(new UITextBox(340, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Foc  " + std::to_string(current_entity->max_mana_points);
+	entity_stat = "Foc  " + std::to_string(current_entity->base_stats.focus);
 	dwarf_statistics.push_back(new UITextBox(340, 48, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Str  " + std::to_string(current_entity->current_strength);
+	entity_stat = "Str  " + std::to_string(current_entity->base_stats.strength);
 	dwarf_statistics.push_back(new UITextBox(340, 58, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Agi   " + std::to_string(current_entity->current_agility_points);
+	entity_stat = "Agi   " + std::to_string(current_entity->base_stats.agility);
 	dwarf_statistics.push_back(new UITextBox(340, 68, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Dex  " + std::to_string(current_entity->current_dexterity_points);
+	entity_stat = "Dex  " + std::to_string(current_entity->base_stats.dexterity);
 	dwarf_statistics.push_back(new UITextBox(340, 78, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Int   " + std::to_string(current_entity->current_intelligence);
+	entity_stat = "Int   " + std::to_string(current_entity->base_stats.intelligence);
 	dwarf_statistics.push_back(new UITextBox(340, 88, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "M.Def " + std::to_string(current_entity->current_magical_defense_points);
+	entity_stat = "M.Def " + std::to_string(current_entity->base_stats.magical_defense);
 	dwarf_statistics.push_back(new UITextBox(340, 98, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "P.Def " + std::to_string(current_entity->current_physical_defense_points);
+	entity_stat = "P.Def " + std::to_string(current_entity->base_stats.physical_defense);
 	dwarf_statistics.push_back(new UITextBox(340, 108, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Luck " + std::to_string(current_entity->current_luck);
+	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
 	dwarf_statistics.push_back(new UITextBox(340, 118, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 }
 
@@ -866,31 +866,31 @@ void LootMenu::LoadElfStats() {
 	Entity* current_entity = App->entities->GetElf();
 	current_entity->CalculateAllStats();
 
-	std::string entity_stat = "Con  " + std::to_string(current_entity->max_health_points);
+	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
 	elf_statistics.push_back(new UITextBox(340, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Foc  " + std::to_string(current_entity->max_mana_points);
+	entity_stat = "Foc  " + std::to_string(current_entity->base_stats.focus);
 	elf_statistics.push_back(new UITextBox(340, 205, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Str  " + std::to_string(current_entity->current_strength);
+	entity_stat = "Str  " + std::to_string(current_entity->base_stats.strength);
 	elf_statistics.push_back(new UITextBox(340, 215, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Agi   " + std::to_string(current_entity->current_agility_points);
+	entity_stat = "Agi   " + std::to_string(current_entity->base_stats.agility);
 	elf_statistics.push_back(new UITextBox(340, 225, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Dex  " + std::to_string(current_entity->current_dexterity_points);
+	entity_stat = "Dex  " + std::to_string(current_entity->base_stats.dexterity);
 	elf_statistics.push_back(new UITextBox(340, 235, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Int   " + std::to_string(current_entity->current_intelligence);
+	entity_stat = "Int   " + std::to_string(current_entity->base_stats.intelligence);
 	elf_statistics.push_back(new UITextBox(340, 245, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "M.Def " + std::to_string(current_entity->current_magical_defense_points);
+	entity_stat = "M.Def " + std::to_string(current_entity->base_stats.magical_defense);
 	elf_statistics.push_back(new UITextBox(340, 255, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "P.Def " + std::to_string(current_entity->current_physical_defense_points);
+	entity_stat = "P.Def " + std::to_string(current_entity->base_stats.physical_defense);
 	elf_statistics.push_back(new UITextBox(340, 265, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Luck " + std::to_string(current_entity->current_luck);
+	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
 	elf_statistics.push_back(new UITextBox(340, 275, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 }
 
@@ -1370,7 +1370,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -1392,7 +1392,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -2232,7 +2232,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -2254,7 +2254,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -3095,7 +3095,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -3117,7 +3117,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -3857,7 +3857,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -3879,7 +3879,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -4716,7 +4716,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -4738,7 +4738,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -5578,7 +5578,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -5600,7 +5600,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -6338,7 +6338,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -6360,7 +6360,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{
@@ -7095,7 +7095,7 @@ void LootMenu::SetComparation()
 							else if (total_value > 0)
 								color = { 0,255,0 };
 
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[5]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.intelligence), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.dexterity != 0)
 						{
@@ -7117,7 +7117,7 @@ void LootMenu::SetComparation()
 								color = { 255,0,0 };
 							else if (total_value > 0)
 								color = { 0,255,0 };
-							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[5]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
+							preview_stats_items.push_back(new UITextBox(cleric_statistics[3]->screen_position.x + 40, cleric_statistics[3]->screen_position.y, TEXTBOX, std::to_string(dropped_items[0]->statistics.agility), color, 17, 200));
 						}
 						if (dropped_items[0]->statistics.magical_defense != 0)
 						{

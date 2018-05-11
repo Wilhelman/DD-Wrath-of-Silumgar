@@ -383,7 +383,7 @@ bool PerformActionToEntity::Execute()
 
 						bool critical = false;
 
-						int damage_to_deal = -actioner_entity->GetCurrentIntelligencePoints() * 3;
+						int damage_to_deal = -actioner_entity->GetCurrentIntelligencePoints() * 2;
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
@@ -489,7 +489,7 @@ bool PerformActionToEntity::Execute()
 
 						bool critical = false;
 
-						int damage_to_deal = -actioner_entity->GetCurrentIntelligencePoints() * 3;
+						int damage_to_deal = -actioner_entity->GetCurrentIntelligencePoints() * 2.5;
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
@@ -595,7 +595,7 @@ bool PerformActionToEntity::Execute()
 
 					 bool critical = false;
 
-					 int damage_to_deal = -actioner_entity->GetCurrentIntelligencePoints() * 3;
+					 int damage_to_deal = -actioner_entity->GetCurrentIntelligencePoints() * 1.4;
 					 float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 					 actioner_dexterity = actioner_dexterity / 10;
 
@@ -693,7 +693,7 @@ bool PerformActionToEntity::Execute()
 					else {// THE ATTACK HITS
 
 
-						int damage_to_deal = action_to_perform.health_points_effect*App->entities->GetDarkWarrior()->GetCurrentStrengthPoints();
+						int damage_to_deal = action_to_perform.health_points_effect-(App->entities->GetDarkWarrior()->GetCurrentStrengthPoints());
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 					
 						
@@ -1955,7 +1955,7 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->base_stats.agility += 7;
 				
-				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "Stats Up!", { 0,255,0,255 }, 14, nullptr, nullptr);
+				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "AGILITY UP", { 0,255,0,255 }, 14, nullptr, nullptr);
 				//animate the receiver to hit + audio or smth
 				//fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 

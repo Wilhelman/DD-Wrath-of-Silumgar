@@ -41,6 +41,8 @@ Entity::~Entity()
 		break;
 	case GOBLIN:
 		App->loot_menu->dropped_usable_items.push_back(&App->items->usable_items.at(0));
+		random_number = (rand() % App->items->tier_1_equips.size());
+		App->loot_menu->dropped_items.push_back(&App->items->tier_1_equips.at(random_number));
 		break;
 	case ALCHEMIST_GOBLIN:
 		random_number = (rand() % App->items->tier_1_equips.size());

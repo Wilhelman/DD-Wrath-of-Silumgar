@@ -953,8 +953,13 @@ void ctCombat::SaveDataToXML()
 
 				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 					std::string tmp2 = item.attribute("name").as_string();
-					if (tmp2 == tmp)
-						item.attribute("quantity").set_value(App->entities->GetCleric()->usable_items.at(i).quantity);
+					if (tmp2 == tmp) {
+						if(!heroes_are_dead)
+							item.attribute("quantity").set_value(App->entities->GetCleric()->usable_items.at(i).quantity);
+						else
+							item.attribute("quantity").set_value(0);
+					}
+						
 				}
 			}
 			App->items->cleric_equip.push_back(App->entities->GetCleric()->helmet);
@@ -976,8 +981,12 @@ void ctCombat::SaveDataToXML()
 
 				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 					std::string tmp2 = item.attribute("name").as_string();
-					if (tmp2 == tmp)
-						item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+					if (tmp2 == tmp) {
+						if (!heroes_are_dead)
+							item.attribute("quantity").set_value(App->entities->GetWarrior()->usable_items.at(i).quantity);
+						else
+							item.attribute("quantity").set_value(0);
+					}
 				}
 			}
 			App->items->warrior_equip.push_back(App->entities->GetWarrior()->helmet);
@@ -999,8 +1008,12 @@ void ctCombat::SaveDataToXML()
 
 				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 					std::string tmp2 = item.attribute("name").as_string();
-					if (tmp2 == tmp)
-						item.attribute("quantity").set_value(App->entities->GetDwarf()->usable_items.at(i).quantity);
+					if (tmp2 == tmp) {
+						if (!heroes_are_dead)
+							item.attribute("quantity").set_value(App->entities->GetDwarf()->usable_items.at(i).quantity);
+						else
+							item.attribute("quantity").set_value(0);
+					}
 				}
 			}
 			App->items->dwarf_equip.push_back(App->entities->GetDwarf()->helmet);
@@ -1021,8 +1034,12 @@ void ctCombat::SaveDataToXML()
 
 				for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 					std::string tmp2 = item.attribute("name").as_string();
-					if (tmp2 == tmp)
-						item.attribute("quantity").set_value(App->entities->GetElf()->usable_items.at(i).quantity);
+					if (tmp2 == tmp) {
+						if (!heroes_are_dead)
+							item.attribute("quantity").set_value(App->entities->GetElf()->usable_items.at(i).quantity);
+						else
+							item.attribute("quantity").set_value(0);
+					}
 				}
 			}
 			App->items->elf_equip.push_back(App->entities->GetElf()->helmet);

@@ -76,16 +76,16 @@ bool LootMenu::Start()
 	//App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(4));
 	//App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(6));
 
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(3));
+	/*App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(3));
 	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(1));
 	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(2));
 	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(4));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(6));
+	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(6));*/
 
 	//App->entities->GetDwarf()->AddEquipItem(App->items->tier_1_equips.at(3));
 	//App->entities->GetDwarf()->AddEquipItem(App->items->tier_1_equips.at(1));
 	//App->entities->GetDwarf()->AddEquipItem(App->items->tier_1_equips.at(2));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_2_equips.at(4));
+	//App->entities->GetDwarf()->AddEquipItem(App->items->tier_2_equips.at(4));
 	//App->entities->GetDwarf()->AddEquipItem(App->items->tier_1_equips.at(6));
 
 
@@ -234,6 +234,7 @@ bool LootMenu::PostUpdate()
 
 bool LootMenu::CleanUp()
 {
+	LOG("loot menu clean up");
 	App->tex->UnLoad(background_texture);
 	App->tex->UnLoad(equip_texture);
 
@@ -355,6 +356,47 @@ bool LootMenu::CleanUp()
 		arrow->~UIElement();
 		arrow = nullptr;
 	}
+
+	if (App->entities->GetCleric() != nullptr && App->entities->GetWarrior() != nullptr && App->entities->GetElf() != nullptr && App->entities->GetDwarf() != nullptr) {
+		App->items->cleric_equip.push_back(App->entities->GetCleric()->helmet);
+		App->items->cleric_equip.push_back(App->entities->GetCleric()->chest);
+		App->items->cleric_equip.push_back(App->entities->GetCleric()->guantlet);
+		App->items->cleric_equip.push_back(App->entities->GetCleric()->boot);
+		App->items->cleric_equip.push_back(App->entities->GetCleric()->ring);
+		App->items->cleric_equip.push_back(App->entities->GetCleric()->accessory);
+		App->items->cleric_equip.push_back(App->entities->GetCleric()->shield);
+		App->items->cleric_equip.push_back(App->entities->GetCleric()->weapon);
+
+		App->items->warrior_equip.push_back(App->entities->GetWarrior()->helmet);
+		App->items->warrior_equip.push_back(App->entities->GetWarrior()->chest);
+		App->items->warrior_equip.push_back(App->entities->GetWarrior()->guantlet);
+		App->items->warrior_equip.push_back(App->entities->GetWarrior()->boot);
+		App->items->warrior_equip.push_back(App->entities->GetWarrior()->ring);
+		App->items->warrior_equip.push_back(App->entities->GetWarrior()->accessory);
+		App->items->warrior_equip.push_back(App->entities->GetWarrior()->shield);
+		App->items->warrior_equip.push_back(App->entities->GetWarrior()->weapon);
+
+		App->items->dwarf_equip.push_back(App->entities->GetDwarf()->helmet);
+		App->items->dwarf_equip.push_back(App->entities->GetDwarf()->chest);
+		App->items->dwarf_equip.push_back(App->entities->GetDwarf()->guantlet);
+		App->items->dwarf_equip.push_back(App->entities->GetDwarf()->boot);
+		App->items->dwarf_equip.push_back(App->entities->GetDwarf()->ring);
+		App->items->dwarf_equip.push_back(App->entities->GetDwarf()->accessory);
+		App->items->dwarf_equip.push_back(App->entities->GetDwarf()->shield);
+		App->items->dwarf_equip.push_back(App->entities->GetDwarf()->weapon);
+
+		App->items->elf_equip.push_back(App->entities->GetElf()->helmet);
+		App->items->elf_equip.push_back(App->entities->GetElf()->chest);
+		App->items->elf_equip.push_back(App->entities->GetElf()->guantlet);
+		App->items->elf_equip.push_back(App->entities->GetElf()->boot);
+		App->items->elf_equip.push_back(App->entities->GetElf()->ring);
+		App->items->elf_equip.push_back(App->entities->GetElf()->accessory);
+		App->items->elf_equip.push_back(App->entities->GetElf()->shield);
+		App->items->elf_equip.push_back(App->entities->GetElf()->weapon);
+	}
+	
+
+	
 	return true;
 }
 

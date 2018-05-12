@@ -860,7 +860,7 @@
     </darkWarrior>
 
     <trollLeaders>
-      <statistics constitution ="20" focus="15" strength="22" agility="12" dexterity ="16" intelligence="9"   physicalDefense="13" magicalDefense="11" judgement="30"/>
+      <statistics constitution ="20" focus="15" strength="17" agility="12" dexterity ="16" intelligence="9"   physicalDefense="13" magicalDefense="11" judgement="30"/>
       <animations>
 
        <animation name="idle" speed="1.5" loop="true">

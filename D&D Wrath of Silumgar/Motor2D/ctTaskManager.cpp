@@ -3275,12 +3275,12 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->lightning_bolt.Reset();
 
-				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
+				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints()+5;
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 
 				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
-					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
+					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints()+7;
 
 					random_thousand_faces_die = (rand() % 100) + 1;
 					if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK

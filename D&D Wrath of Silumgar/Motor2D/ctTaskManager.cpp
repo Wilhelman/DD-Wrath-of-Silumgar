@@ -812,7 +812,8 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->guard.Reset();
 
-
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				std::string tmp_dmg = "MAGICAL DEFENSE UP";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
@@ -844,6 +845,10 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->heavy_slash.Reset();
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -1017,7 +1022,8 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->guard.Reset();
 
-
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				std::string tmp_dmg = "MAGICAL DEFENSE UP";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
@@ -1049,6 +1055,9 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->heavy_slash.Reset();
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -1146,6 +1155,8 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->charge.Reset();
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -1245,6 +1256,9 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->taunt.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
 				std::string tmp_dmg = "STRENGTH UP";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 				tmp_dmg = "PHYSICAL DEFENSE REDUCED";
@@ -1277,6 +1291,9 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->whirlwind.Reset();
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -1482,6 +1499,8 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->morale_boost.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				std::string tmp_dmg = "STRENGTH UP";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
@@ -1513,6 +1532,8 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->morale_boost.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				std::string tmp_dmg = "DEXTERITY X 1.5";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
@@ -1633,6 +1654,8 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->morale_boost.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				std::string tmp_dmg = "STRENGTH UP x2";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
@@ -1664,6 +1687,8 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->morale_boost.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				std::string tmp_dmg = "DEXTERITY X 2.25";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
@@ -1694,6 +1719,8 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->raging_mock.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				std::string tmp_dmg = "DEBUFFED JUDGEMENT";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
@@ -1810,6 +1837,8 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->raging_mock.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				std::string tmp_dmg = "BUFFED PHYSICAL DEFENSE";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
@@ -2401,6 +2430,9 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->light_strike.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
@@ -2486,6 +2518,9 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->mace_throw.Reset();
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -2630,6 +2665,9 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->light_strike.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
@@ -2723,6 +2761,9 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->mace_throw_plus.Reset();
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -2870,6 +2911,9 @@ bool PerformActionToEntity::Execute()
 			if (ret)
 			{
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
 				actioner_entity->blessing.Reset();
 				actioner_entity->animation = &actioner_entity->idle;
 				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "BUFF STRENGHT", { 0,255,0,255 }, 14, nullptr, nullptr);
@@ -2900,6 +2944,9 @@ bool PerformActionToEntity::Execute()
 			ret = actioner_entity->animation->Finished();
 			if (ret)
 			{
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
 				actioner_entity->clarity.Reset();
 				actioner_entity->animation = &actioner_entity->idle;
 
@@ -3000,6 +3047,9 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->seed_of_life.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
@@ -3088,6 +3138,9 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->fireball.Reset();
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -3274,6 +3327,9 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->lightning_bolt.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints()+5;
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
@@ -3372,6 +3428,9 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->seed_of_life.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
@@ -3459,6 +3518,9 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->fireball.Reset();
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
@@ -3561,6 +3623,9 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->lightning_bolt.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
+
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
@@ -3658,6 +3723,8 @@ bool PerformActionToEntity::Execute()
 			if (ret == true) {
 				actioner_entity->revive.Reset();
 
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				bool critical = false;
 
@@ -3691,6 +3758,9 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->fire_djinn.Reset();
+
+				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
+				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 

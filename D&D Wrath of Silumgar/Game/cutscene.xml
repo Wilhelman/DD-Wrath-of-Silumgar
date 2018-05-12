@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--cutscene action codes: 0->MoveX 1->MoveY  2->DialogBox  3->MoveCameraX  4->MoveCameraY-->
+<!--cutscene action codes: 0->MoveX 1->MoveY  2->DialogBox  3->MoveCameraX  4->MoveCameraY  5->Execute action-->
 
 <cutscenes>
   <final_cutscene>
     <cutscene_action cutscene_action ="2" start_time ="0" end_time="5000" text="Que puta es tu yaya"/>
     
   </final_cutscene>
+
+  <lich_cutscene>
+    <cutscene_action cutscene_action ="5" start_time ="0" actor="18" end_time="4000" animation="lich_transformation"/>
+
+  </lich_cutscene>
 </cutscenes>

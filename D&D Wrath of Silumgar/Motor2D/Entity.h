@@ -99,6 +99,7 @@ public:
 	//Lich 2nd
 	ctAnimation bidimensional_claw = ctAnimation();
 	ctAnimation sea_of_flames = ctAnimation();
+	ctAnimation transformation = ctAnimation();
 
 	//Dark Warrior
 	ctAnimation void_cannon = ctAnimation();

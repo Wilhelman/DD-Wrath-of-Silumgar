@@ -81,10 +81,22 @@ bool CutsceneDialog::Execute()
 	return ret;
 }
 
-bool ExecuteLichAnimation::Execute()
+bool ExecuteAnimation::Execute()
 {
 	bool ret = false;
 
+	if (animation == "lich_transformation") {
+
+		actor->animation = &actor->transformation;
+	}
+
+	ret = actor->transformation.Finished();
+
+	if (ret == true){
+		
+		actor->transformation.Reset();
+		actor->animation = &actor->idle;
+	}
 	
 
 	return ret;
@@ -137,6 +149,9 @@ bool ctCutsceneManager::ChargeCutscene(Cutscene_code cutscene)
 	case FINAL_CUTSCENE:
 		cutscene_node = track_file.child("cutscenes").child("final_cutscene").child("cutscene_action");
 		break;
+	case LICH_CUTSCENE:
+		cutscene_node = track_file.child("cutscenes").child("lich_cutscene").child("cutscene_action");
+		break;
 	default:
 		break;
 	}
@@ -153,7 +168,7 @@ bool ctCutsceneManager::ChargeCutscene(Cutscene_code cutscene)
 		}
 
 		if (action == 2) {
-			CutsceneActions.push_back(new CutsceneDialog(cutscene_node.attribute("start_time").as_int(), cutscene_node.attribute("end_time").as_int(), "tu yaya"));
+			CutsceneActions.push_back(new CutsceneDialog(cutscene_node.attribute("start_time").as_int(), cutscene_node.attribute("end_time").as_int(), cutscene_node.attribute("text").as_string()));
 		}
 
 		if (action == 3) {
@@ -162,6 +177,10 @@ bool ctCutsceneManager::ChargeCutscene(Cutscene_code cutscene)
 
 		if (action == 4) {
 			CutsceneActions.push_back(new MoveCameraY(cutscene_node.attribute("start_time").as_int(), cutscene_node.attribute("end_time").as_int(), cutscene_node.attribute("speed").as_int()));
+		}
+
+		if (action == 5) {
+			CutsceneActions.push_back(new ExecuteAnimation(cutscene_node.attribute("start_time").as_int(), cutscene_node.attribute("end_time").as_int(), App->entities->GetActor(cutscene_node.attribute("actor").as_int()), cutscene_node.attribute("animation").as_string()));
 		}
 		cutscene_node = cutscene_node.next_sibling();
 	}

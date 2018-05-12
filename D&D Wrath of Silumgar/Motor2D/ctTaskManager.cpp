@@ -1957,19 +1957,18 @@ bool PerformActionToEntity::Execute()
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
-				actioner_entity->base_stats.agility += 7;
+				actioner_entity->base_stats.agility += 3;
+				actioner_entity->base_stats.agility += 3;
+				actioner_entity->base_stats.strength += 2;
 
 				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "AGILITY UP", { 0,255,0,255 }, 14, nullptr, nullptr);
-				//animate the receiver to hit + audio or smth
-				//fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-
-				//App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_KICK);
+				
 
 				actioner_entity->Ability3T1();
 
 			}
 		}
-									break;
+		break;
 
 		case CLAW_ATTACK:
 		{

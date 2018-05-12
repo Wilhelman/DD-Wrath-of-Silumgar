@@ -42,6 +42,8 @@ Lich2::Lich2(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &bidimensional_claw);
 		else if (tmp == "sea_of_flames")
 			LoadAnimation(animations, &sea_of_flames);
+		else if (tmp == "transformation")
+			LoadAnimation(animations, &transformation);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

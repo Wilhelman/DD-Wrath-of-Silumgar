@@ -860,7 +860,7 @@
     </darkWarrior>
 
     <trollLeaders>
-      <statistics constitution ="40" focus="17" strength="17" agility="21" dexterity ="11" intelligence="9" physicalDefense="2" magicalDefense="2" judgement="30"/>
+      <statistics constitution ="40" focus="70" strength="17" agility="21" dexterity ="11" intelligence="9" physicalDefense="2" magicalDefense="2" judgement="30"/>
       <animations>
 
        <animation name="idle" speed="1.5" loop="true">
@@ -928,7 +928,7 @@
     </trollLeaders>
 
     <displacerBeast>
-      <statistics constitution ="30" focus="30" strength="20" agility="6" dexterity ="20" intelligence="18" physicalDefense="11" magicalDefense="11" judgement="50"/>
+      <statistics constitution ="30" focus="80" strength="20" agility="6" dexterity ="20" intelligence="18" physicalDefense="11" magicalDefense="11" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -937,7 +937,7 @@
           <frame x="1049" y="177" width="191" height="103"/>
           <frame x="844" y="177" width="191" height="103"/>
           <frame x="638" y="177" width="191" height="103"/>
-          <frame x="448" y="177" width="191" height="103"/>
+          <frame x="433" y="177" width="191" height="103"/>
           <frame x="227" y="177" width="191" height="103"/>
           <frame x="20" y="177" width="191" height="103"/>
         </animation>

@@ -61,8 +61,8 @@ TrollLeaders::TrollLeaders(int x, int y, EntityType type) : Entity(x, y, type) {
 	block.type = BLOCK;
 
 	infested_claw.name = "Infested Claw";
-	infested_claw.health_points_effect = -15;
-	infested_claw.mana_points_effect_to_himself = 30;
+	infested_claw.health_points_effect = -25;
+	infested_claw.mana_points_effect_to_himself = 15;
 	infested_claw.objective = HEROES;
 	infested_claw.type = INFESTED_CLAW;
 

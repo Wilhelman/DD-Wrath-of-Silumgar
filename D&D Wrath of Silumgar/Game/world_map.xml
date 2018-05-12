@@ -93,14 +93,14 @@ Once you cross it you see two possible outputs:"/>
         <scene name="cave_04.tmx" />
         <icon_coords x="288" y="480" width="32" height="32" />
         <decision name ="After defeating the enemies you continue following the river. This ends with a waterfall, thinking that you have no where to go, it turns out that on the wall there is a crack and a narrow tunnel.
-Through the crack you see a light that gives to the outside, while through the tunnel a stream of air is allowed to escape:"/>
+          Through the crack you see a light that gives to the outside, while through the tunnel a stream of air is allowed to escape:"/>
         <option name = "It seems that you listen to water running very close, thanks to your knowledge you know that everything goes to a good port, so you will follow it."/>
       </map_element>
 
       <map_element>
         <tier type="3" />
         <entity name="KOBOLD" />
-        <entity name="KOBOLD" />
+        <entity name="TRITON" />
         <entity name="GNOLL" />
         <scene name="cave.tmx" />
         <icon_coords x="32" y="480" width="32" height="32" />
@@ -123,6 +123,8 @@ Through the crack you see a light that gives to the outside, while through the t
 	   <map_element>
         <tier type="4" />
         <entity name="GNOLL" />
+       <entity name="GNOLL" />
+       <entity name="GNOLL" />
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
         <decision name ="After defeating the enemies, one of them tells you that in the city you will find defeat. Without knowing very well what he says, you continue advancing through the forest until you come across some walls.
@@ -134,7 +136,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <tier type="4" />
         <entity name="GNOLL" />
         <entity name="GNOLL" />
-        <entity name="KOBOLD" />
+        <entity name="OWLBEAR" />
         <scene name="dungeon.tmx" />
         <icon_coords x="64" y="512" width="32" height="32" />
         <decision name ="Dead the enemies of the exit, you find yourself in what looks like the courtyard of a collapsed castle. When you leave, you see the head of the region in the harbor, about to take a boat. You start going out in your search, you can not let it escape:"/>
@@ -190,7 +192,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <entity name="GNOLL" />
         <scene name="mountain.tmx" />
         <icon_coords x="160" y="512" width="32" height="32" />
-        <decision name ="TO DO"/>
+        <decision name ="Leaving behind the corpses of the enemies, you get out of that way, seeing several ways to the distance:"/>
         <option name = "Taking a new route, you decide to go by a narrow passage that sneaks through the mountains, several crows fly around you, inspiring mistrust."/>
       </map_element>
       
@@ -200,7 +202,7 @@ You go around until you find the door that leads to the city. Once inside that f
          <entity name="ALCHEMISTGOBLIN" />
         <entity name="GNOLL" />
         <entity name="GNOLL" />
-        <scene name="mountain.tmx" />
+        <scene name="cave_06.tmx" />
         <icon_coords x="160" y="480" width="32" height="32" />
         <decision name ="After defeating the enemies you are forced to flee the path to divert attention. To get out of this you have more than one possibility:"/>
         <option name = "Leave the city by the other band, entering again towards the mountain."/>
@@ -232,25 +234,37 @@ You go around until you find the door that leads to the city. Once inside that f
 	  <map_element>
         <tier type="7" />
         <entity name="HEAVYGOBLIN" />
-        <entity name="KOBOLD" />
+        <entity name="TRITON" />
         <entity name="KOBOLD" />
 		    <entity name="OWLBEAR" />
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
-        <option name = "Going into the forest."/>
+        <option name = "Go into the forest from which comes a large smoke."/>
       </map_element>
       
        <map_element>
         <tier type="7" />
         <entity name="HEAVYGOBLIN" />
         <entity name="KOBOLD" />
-        <entity name="KOBOLD" />
+        <entity name="GOBLIN" />
 		    <entity name="OWLBEAR" />
         <scene name="cave_06.tmx" />
         <icon_coords x="160" y="480" width="32" height="32" />
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
-        <option name = "Going into the forest."/>
+        <option name = "You cross a rocky area, apparently open."/>
+      </map_element>
+
+      <map_element>
+        <tier type="7" />
+        <entity name="TRITON" />
+        <entity name="TRITON" />
+        <entity name="OWLBEAR" />
+        <entity name="TRITON" />
+        <scene name="cave_06.tmx" />
+        <icon_coords x="160" y="480" width="32" height="32" />
+        <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
+        <option name = "EASTER EGG: I'm ready to die."/>
       </map_element>
       
       <!--TIER 8 MAP-->
@@ -260,7 +274,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <scene name="castle.tmx" />
         <icon_coords x="32" y="512" width="32" height="32" />
         <decision name ="You have managed to save the world once more. CONGRATULATIONS!"/>
-        <option name = "start the final battle!"/>
+        <option name = "START THE FINAL BATTLE!"/>
       </map_element>
       
      <!-- <icon_coords x="32" y="480" width="32" height="32" /> Cave interior 

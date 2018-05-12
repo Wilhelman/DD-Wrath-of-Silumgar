@@ -680,39 +680,39 @@ void LootMenu::LoadClerictStats() {
 	Entity* current_entity = App->entities->GetCleric();
 	current_entity->CalculateAllStatsNoMultiply();
 
-	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
+	std::string entity_stat = "Con  " + std::to_string(current_entity->current_health_points);
 	cleric_statistics.push_back(new UITextBox(135, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Foc  " + std::to_string(current_entity->base_stats.focus);
+	entity_stat = "Foc  " + std::to_string(current_entity->current_mana_points);
 	cleric_statistics.push_back(new UITextBox(135, 48, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Str  " + std::to_string(current_entity->base_stats.strength);
+	entity_stat = "Str  " + std::to_string(current_entity->current_strength);
 	cleric_statistics.push_back(new UITextBox(135, 58, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Agi   " + std::to_string(current_entity->base_stats.agility);
+	entity_stat = "Agi   " + std::to_string(current_entity->current_agility_points);
 	cleric_statistics.push_back(new UITextBox(135, 68, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Dex  " + std::to_string(current_entity->base_stats.dexterity);
+	entity_stat = "Dex  " + std::to_string(current_entity->current_dexterity_points);
 	cleric_statistics.push_back(new UITextBox(135, 78, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Int   " + std::to_string(current_entity->base_stats.intelligence);
+	entity_stat = "Int   " + std::to_string(current_entity->current_intelligence);
 	cleric_statistics.push_back(new UITextBox(135, 88, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "M.Def " + std::to_string(current_entity->base_stats.magical_defense);
+	entity_stat = "M.Def " + std::to_string(current_entity->current_magical_defense_points);
 	cleric_statistics.push_back(new UITextBox(135, 98, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "P.Def " + std::to_string(current_entity->base_stats.physical_defense);
+	entity_stat = "P.Def " + std::to_string(current_entity->current_physical_defense_points);
 	cleric_statistics.push_back(new UITextBox(135, 108, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
+	entity_stat = "Luck " + std::to_string(current_entity->current_luck);
 	cleric_statistics.push_back(new UITextBox(135, 118, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 	current_entity->CalculateAllStats();
@@ -736,31 +736,31 @@ void LootMenu::LoadWarriorStats() {
 	current_entity->CalculateAllStatsNoMultiply();
 	
 
-	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
+	std::string entity_stat = "Con  " + std::to_string(current_entity->current_health_points);
 	warrior_statistics.push_back(new UITextBox(135, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Foc  " + std::to_string(current_entity->base_stats.focus);
+	entity_stat = "Foc  " + std::to_string(current_entity->current_mana_points);
 	warrior_statistics.push_back(new UITextBox(135, 205, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Str  " + std::to_string(current_entity->base_stats.strength);
+	entity_stat = "Str  " + std::to_string(current_entity->current_strength);
 	warrior_statistics.push_back(new UITextBox(135, 215, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Agi   " + std::to_string(current_entity->base_stats.agility);
+	entity_stat = "Agi   " + std::to_string(current_entity->current_agility_points);
 	warrior_statistics.push_back(new UITextBox(135, 225, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Dex  " + std::to_string(current_entity->base_stats.dexterity);
+	entity_stat = "Dex  " + std::to_string(current_entity->current_dexterity_points);
 	warrior_statistics.push_back(new UITextBox(135, 235, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Int   " + std::to_string(current_entity->base_stats.intelligence);
+	entity_stat = "Int   " + std::to_string(current_entity->current_intelligence);
 	warrior_statistics.push_back(new UITextBox(135, 245, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "M.Def " + std::to_string(current_entity->base_stats.magical_defense);
+	entity_stat = "M.Def " + std::to_string(current_entity->current_magical_defense_points);
 	warrior_statistics.push_back(new UITextBox(135, 255, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "P.Def " + std::to_string(current_entity->base_stats.physical_defense);
+	entity_stat = "P.Def " + std::to_string(current_entity->current_physical_defense_points);
 	warrior_statistics.push_back(new UITextBox(135, 265, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
+	entity_stat = "Luck " + std::to_string(current_entity->current_luck);
 	warrior_statistics.push_back(new UITextBox(135, 275, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 	current_entity->CalculateAllStats();
@@ -781,11 +781,11 @@ void LootMenu::LoadDwarfStats() {
 	Entity* current_entity = App->entities->GetDwarf();
 	current_entity->CalculateAllStatsNoMultiply();
 
-	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
+	std::string entity_stat = "Con  " + std::to_string(current_entity->current_health_points);
 	dwarf_statistics.push_back(new UITextBox(340, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Foc  " + std::to_string(current_entity->base_stats.focus);
+	entity_stat = "Foc  " + std::to_string(current_entity->current_mana_points);
 	dwarf_statistics.push_back(new UITextBox(340, 48, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
@@ -793,22 +793,22 @@ void LootMenu::LoadDwarfStats() {
 	dwarf_statistics.push_back(new UITextBox(340, 58, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 
-	entity_stat = "Agi   " + std::to_string(current_entity->base_stats.agility);
+	entity_stat = "Agi   " + std::to_string(current_entity->current_agility_points);
 	dwarf_statistics.push_back(new UITextBox(340, 68, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Dex  " + std::to_string(current_entity->base_stats.dexterity);
+	entity_stat = "Dex  " + std::to_string(current_entity->current_dexterity_points);
 	dwarf_statistics.push_back(new UITextBox(340, 78, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Int   " + std::to_string(current_entity->base_stats.intelligence);
+	entity_stat = "Int   " + std::to_string(current_entity->current_intelligence);
 	dwarf_statistics.push_back(new UITextBox(340, 88, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "M.Def " + std::to_string(current_entity->base_stats.magical_defense);
+	entity_stat = "M.Def " + std::to_string(current_entity->current_magical_defense_points);
 	dwarf_statistics.push_back(new UITextBox(340, 98, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "P.Def " + std::to_string(current_entity->base_stats.physical_defense);
+	entity_stat = "P.Def " + std::to_string(current_entity->current_physical_defense_points);
 	dwarf_statistics.push_back(new UITextBox(340, 108, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
+	entity_stat = "Luck " + std::to_string(current_entity->current_luck);
 	dwarf_statistics.push_back(new UITextBox(340, 118, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 	current_entity->CalculateAllStats();
@@ -829,31 +829,31 @@ void LootMenu::LoadElfStats() {
 	Entity* current_entity = App->entities->GetElf();
 	current_entity->CalculateAllStatsNoMultiply();
 
-	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
+	std::string entity_stat = "Con  " + std::to_string(current_entity->current_health_points);
 	elf_statistics.push_back(new UITextBox(340, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Foc  " + std::to_string(current_entity->base_stats.focus);
+	entity_stat = "Foc  " + std::to_string(current_entity->current_mana_points);
 	elf_statistics.push_back(new UITextBox(340, 205, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Str  " + std::to_string(current_entity->base_stats.strength);
+	entity_stat = "Str  " + std::to_string(current_entity->current_strength);
 	elf_statistics.push_back(new UITextBox(340, 215, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Agi   " + std::to_string(current_entity->base_stats.agility);
+	entity_stat = "Agi   " + std::to_string(current_entity->current_agility_points);
 	elf_statistics.push_back(new UITextBox(340, 225, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Dex  " + std::to_string(current_entity->base_stats.dexterity);
+	entity_stat = "Dex  " + std::to_string(current_entity->current_dexterity_points);
 	elf_statistics.push_back(new UITextBox(340, 235, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Int   " + std::to_string(current_entity->base_stats.intelligence);
+	entity_stat = "Int   " + std::to_string(current_entity->current_intelligence);
 	elf_statistics.push_back(new UITextBox(340, 245, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "M.Def " + std::to_string(current_entity->base_stats.magical_defense);
+	entity_stat = "M.Def " + std::to_string(current_entity->current_magical_defense_points);
 	elf_statistics.push_back(new UITextBox(340, 255, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "P.Def " + std::to_string(current_entity->base_stats.physical_defense);
+	entity_stat = "P.Def " + std::to_string(current_entity->current_physical_defense_points);
 	elf_statistics.push_back(new UITextBox(340, 265, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
-	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
+	entity_stat = "Luck " + std::to_string(current_entity->current_luck);
 	elf_statistics.push_back(new UITextBox(340, 275, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
 	current_entity->CalculateAllStats();
@@ -918,18 +918,22 @@ void LootMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		if (current_vector[0]->current_state == STATE_EXECUTED)
 		{
 			App->entities->GetCleric()->AddEquipItem(*dropped_items[0]);
+			LoadClerictStats();
 		}
 		else if (current_vector[1]->current_state == STATE_EXECUTED)
 		{
 			App->entities->GetDwarf()->AddEquipItem(*dropped_items[0]);
+			LoadDwarfStats();
 		}
 		else if (current_vector[2]->current_state == STATE_EXECUTED)
 		{
 			App->entities->GetWarrior()->AddEquipItem(*dropped_items[0]);
+			LoadWarriorStats();
 		}
 		else if (current_vector[3]->current_state == STATE_EXECUTED)
 		{
 			App->entities->GetElf()->AddEquipItem(*dropped_items[0]);
+			LoadElfStats();
 		}
 
 		dropped_items.erase(dropped_items.begin());

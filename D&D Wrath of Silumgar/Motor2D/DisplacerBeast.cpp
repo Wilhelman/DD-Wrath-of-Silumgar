@@ -53,13 +53,13 @@ DisplacerBeast::DisplacerBeast(int x, int y, EntityType type) : Entity(x, y, typ
 	//prepare the actions:
 
 	rush.name = "Rush";
-	rush.health_points_effect = -50;
+	rush.health_points_effect = -20;
 	rush.mana_points_effect_to_himself = 70;
 	rush.objective = HEROES;
 	rush.type = RUSH;
 
 	infernal_fire.name = "Infernal Fire";
-	infernal_fire.health_points_effect = -25;
+	infernal_fire.health_points_effect = -30;
 	infernal_fire.mana_points_effect_to_himself = 45;
 	infernal_fire.objective = HEROES;
 	infernal_fire.type = INFERNAL_FIRE;
@@ -149,7 +149,7 @@ void DisplacerBeast::PerformAction()
 
 	entity_objective = App->combat->GetRandomHeroe();
 
-	if (IsGoingToDoAnythingClever()) {//hacer algo cheto
+	if (!IsGoingToDoAnythingClever()) {//hacer algo cheto
 		
 			if (GetCurrentManaPoints() >= 70) {
 				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));

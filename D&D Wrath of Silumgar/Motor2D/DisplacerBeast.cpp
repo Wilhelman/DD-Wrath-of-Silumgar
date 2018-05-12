@@ -53,7 +53,7 @@ DisplacerBeast::DisplacerBeast(int x, int y, EntityType type) : Entity(x, y, typ
 	//prepare the actions:
 
 	rush.name = "Rush";
-	rush.health_points_effect = -26;
+	rush.health_points_effect = -16;
 	rush.mana_points_effect_to_himself = 70;
 	rush.objective = HEROES;
 	rush.type = RUSH;

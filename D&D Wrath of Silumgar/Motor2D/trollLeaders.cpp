@@ -50,7 +50,7 @@ TrollLeaders::TrollLeaders(int x, int y, EntityType type) : Entity(x, y, type) {
 	//PREPARE ACTIONS	
 
 	claw_attack.name = "Claw Attack";
-	claw_attack.health_points_effect = -20;
+	claw_attack.health_points_effect = -16;
 	claw_attack.mana_points_effect_to_himself = 0;
 	claw_attack.objective = HEROES;
 	claw_attack.type = CLAW_ATTACK;
@@ -61,8 +61,8 @@ TrollLeaders::TrollLeaders(int x, int y, EntityType type) : Entity(x, y, type) {
 	block.type = BLOCK;
 
 	infested_claw.name = "Infested Claw";
-	infested_claw.health_points_effect = -15;
-	infested_claw.mana_points_effect_to_himself = 30;
+	infested_claw.health_points_effect = -18;
+	infested_claw.mana_points_effect_to_himself = 15;
 	infested_claw.objective = HEROES;
 	infested_claw.type = INFESTED_CLAW;
 

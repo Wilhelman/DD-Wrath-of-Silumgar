@@ -35,7 +35,7 @@ UIDecision::UIDecision(int x, int y, UI_Type type, UIElement* &arrow, std::strin
 	for (int i = 1; i >= 0; i--) {
 
 		if (!text_options[i].empty() && !text_options[i].empty()) { //text box for every option
-			aux_element = App->gui->AddUITextBox(xE + 25, 208 - extra_h, 20, 440, text_options[i], { 255,255,255,255 }, this,Second_Font);   //Old: 300 - extra_h 
+			aux_element = App->gui->AddUITextBox(xE + 25, text_decision->current_rect.h+20+i*75 , 20, 440, text_options[i], { 255,255,255,255 }, this,Second_Font);   //Old: 300 - extra_h 
 			if(i == 1)
 				this->option_1 = aux_element;
 			else

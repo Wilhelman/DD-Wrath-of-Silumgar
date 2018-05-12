@@ -54,13 +54,13 @@ DarkWarrior::DarkWarrior(int x, int y, EntityType type) : Entity(x, y, type) {
 	//prepare the actions:
 
 	void_cannon_action.name = "Void Cannon";
-	void_cannon_action.health_points_effect = -25;
+	void_cannon_action.health_points_effect = -40;
 	void_cannon_action.mana_points_effect_to_himself = 70;
 	void_cannon_action.objective = HEROES;
 	void_cannon_action.type = VOID_CANNON;
 
 	thunder_punch_action.name = "Thunder Punch";
-	thunder_punch_action.health_points_effect = -15;
+	thunder_punch_action.health_points_effect = -25;
 	thunder_punch_action.mana_points_effect_to_himself = 45;
 	thunder_punch_action.objective = HEROES;
 	thunder_punch_action.type = THUNDER_PUNCH;

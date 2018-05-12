@@ -53,19 +53,19 @@ DisplacerBeast::DisplacerBeast(int x, int y, EntityType type) : Entity(x, y, typ
 	//prepare the actions:
 
 	rush.name = "Rush";
-	rush.health_points_effect = -9;
+	rush.health_points_effect = -16;
 	rush.mana_points_effect_to_himself = 70;
 	rush.objective = HEROES;
 	rush.type = RUSH;
 
 	infernal_fire.name = "Infernal Fire";
-	infernal_fire.health_points_effect = -12;
+	infernal_fire.health_points_effect = -25;
 	infernal_fire.mana_points_effect_to_himself = 45;
 	infernal_fire.objective = HEROES;
 	infernal_fire.type = INFERNAL_FIRE;
 
 	shadow_jab.name = "Shadow Jab";
-	shadow_jab.health_points_effect = -15;
+	shadow_jab.health_points_effect = -25;
 	shadow_jab.mana_points_effect_to_himself = 45;
 	shadow_jab.objective = HEROES;
 	shadow_jab.type = SHADOW_JAB;

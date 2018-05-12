@@ -47,8 +47,8 @@
 			<draw_coords x="512" y="32" width="64" height="32"/>
 		
 			<stats>
-				<stat fcs="8"/>
-				<stat agi="8"/>
+				<stat fcs="4"/>
+				<stat agi="4"/>
 			</stats>
 		
 		</equip>
@@ -58,7 +58,7 @@
       <draw_coords x="512" y="64" width="64" height="32"/>
 
       <stats>
-        <stat dext="11"/>
+        <stat dext="5"/>
       </stats>
 
     </equip>
@@ -78,9 +78,9 @@
       <draw_coords x="64" y="64" width="64" height="32"/>
 
       <stats>
-        <stat pr="2"/>
-        <stat mr="2"/>
-        <stat agi="3"/>
+        <stat pr="1"/>
+        <stat mr="1"/>
+        <stat agi="1"/>
       </stats>
 
     </equip>
@@ -89,9 +89,9 @@
       <draw_coords x="128" y="64" width="64" height="32"/>
 
       <stats>
-        <stat pr="5"/>
-        <stat mr="5"/>
-        <stat agi="5"/>
+        <stat pr="2"/>
+        <stat mr="2"/>
+        <stat agi="1"/>
       </stats>
 
     </equip>
@@ -101,7 +101,7 @@
       <draw_coords x="192" y="64" width="64" height="32"/>
 
       <stats>
-        <stat lck="6"/>
+        <stat lck="3"/>
       </stats>
 
     </equip>
@@ -111,7 +111,7 @@
       <draw_coords x="256" y="64" width="64" height="32"/>
 
       <stats>
-        <stat pr="2"/>
+        <stat pr="3"/>
         <stat agi="-2"/>
       </stats>
 
@@ -133,8 +133,8 @@
       <draw_coords x="384" y="64" width="64" height="32"/>
 
       <stats>
-        <stat cnst="8"/>
-        <stat agi="9"/>
+        <stat cnst="4"/>
+        <stat agi="4"/>
       </stats>
 
     </equip>
@@ -145,7 +145,7 @@
 
       <stats>
         <stat agi="-3"/>
-        <stat fcs="6"/>
+        <stat fcs="4"/>
       </stats>
 
     </equip>
@@ -179,8 +179,8 @@
       <draw_coords x="512" y="96" width="64" height="32"/>
 
       <stats>
-        <stat mr="8"/>
-        <stat pr="8"/>
+        <stat mr="4"/>
+        <stat pr="4"/>
       </stats>
 
     </equip>
@@ -190,7 +190,7 @@
       <draw_coords x="0" y="128" width="64" height="32"/>
 
       <stats>
-        <stat int="11"/>
+        <stat int="5"/>
       </stats>
 
     </equip>
@@ -200,8 +200,8 @@
       <draw_coords x="0" y="96" width="64" height="32"/>
 
       <stats>
-        <stat mr="5"/>
-        <stat lck="5"/>
+        <stat mr="3"/>
+        <stat lck="3"/>
       </stats>
 
     </equip>
@@ -211,8 +211,8 @@
       <draw_coords x="64" y="96" width="64" height="32"/>
 
       <stats>
-        <stat str="10"/>
-        <stat agi="-4"/>
+        <stat str="4"/>
+        <stat agi="-2"/>
       </stats>
 
     </equip>
@@ -222,8 +222,8 @@
       <draw_coords x="128" y="96" width="64" height="32"/>
 
       <stats>
-        <stat cnst="5"/>
-        <stat dext="5"/>
+        <stat cnst="2"/>
+        <stat dext="3"/>
       </stats>
 
     </equip>
@@ -234,7 +234,7 @@
 
       <stats>
         <stat str="-2"/>
-        <stat agi="2"/>
+        <stat agi="3"/>
       </stats>
 
     </equip>
@@ -255,9 +255,9 @@
       <draw_coords x="320" y="96" width="64" height="32"/>
 
       <stats>
-        <stat str="6"/>
-        <stat cnst="5"/>
-        <stat pr="5"/>
+        <stat str="2"/>
+        <stat cnst="2"/>
+        <stat pr="2"/>
       </stats>
 
     </equip>
@@ -271,7 +271,7 @@
       <draw_coords x="128" y="192" width="64" height="32"/>
 
       <stats>
-        <stat str="2"/>
+        <stat str="3"/>
       </stats>
 
     </equip>
@@ -280,7 +280,7 @@
 
       <draw_coords x="128" y="160" width="64" height="32"/>
       <stats>
-        <stat cnst="2"/>
+        <stat cnst="3"/>
       </stats>
 
     </equip>
@@ -289,8 +289,8 @@
 
       <draw_coords x="192" y="160" width="64" height="32"/>
       <stats>
-        <stat cnst="-3"/>
-        <stat agi="6"/>
+        <stat cnst="-2"/>
+        <stat agi="3"/>
       </stats>
 
     </equip>
@@ -300,7 +300,7 @@
       <draw_coords x="256" y="160" width="64" height="32"/>
       <stats>
         <stat str="-2"/>
-        <stat cnst="2"/>
+        <stat cnst="3"/>
       </stats>
 
     </equip>
@@ -310,7 +310,7 @@
       <draw_coords x="320" y="160" width="64" height="32"/>
       <stats>
         <stat pr="-2"/>
-        <stat str="2"/>
+        <stat str="3"/>
       </stats>
 
     </equip>
@@ -319,8 +319,8 @@
 
       <draw_coords x="384" y="160" width="64" height="32"/>
       <stats>
-        <stat int="10"/>
-        <stat dext="8"/>
+        <stat int="4"/>
+        <stat dext="4"/>
       </stats>
 
     </equip>
@@ -329,8 +329,8 @@
 
       <draw_coords x="448" y="160" width="64" height="32"/>
       <stats>
-        <stat lck="5"/>
-        <stat cnst="5"/>
+        <stat lck="3"/>
+        <stat cnst="3"/>
       </stats>
 
     </equip>
@@ -348,8 +348,8 @@
 
       <draw_coords x="64" y="192" width="64" height="32"/>
       <stats>
-        <stat pr="9"/>
-        <stat mr="9"/>
+        <stat pr="4"/>
+        <stat mr="4"/>
       </stats>
 
     </equip>
@@ -358,7 +358,7 @@
 
       <draw_coords x="512" y="160" width="64" height="32"/>
       <stats>
-        <stat agi="2"/>
+        <stat agi="3"/>
       </stats>
 
     </equip>
@@ -385,8 +385,8 @@
       <draw_coords x="0" y="320" width="48" height="48"/>
 
       <stats>
-        <stat mr="9"/>
-        <stat pr="9"/>
+        <stat mr="5"/>
+        <stat pr="4"/>
         <stat agi="-2"/>
       </stats>
 
@@ -397,8 +397,8 @@
       <draw_coords x="96" y="320" width="48" height="48"/>
 
       <stats>
-        <stat mr="5"/>
-        <stat cnst="5"/>
+        <stat mr="3"/>
+        <stat cnst="3"/>
       </stats>
 
     </equip>
@@ -408,8 +408,8 @@
       <draw_coords x="144" y="320" width="48" height="48"/>
 
       <stats>
-        <stat pr="5"/>
-        <stat cnst="5"/>
+        <stat pr="3"/>
+        <stat cnst="3"/>
       </stats>
 
     </equip>
@@ -440,7 +440,7 @@
       <draw_coords x="240" y="320" width="48" height="48"/>
 
       <stats>
-        <stat cnst="10"/>
+        <stat cnst="5"/>
       </stats>
 
     </equip>
@@ -471,8 +471,8 @@
       <draw_coords x="384" y="320" width="48" height="48"/>
 
       <stats>
-        <stat mr="10"/>
-        <stat pr="10"/>
+        <stat mr="5"/>
+        <stat pr="5"/>
         <stat agi="-4"/>
       </stats>
 
@@ -484,7 +484,7 @@
 
       <stats>
         <stat agi="2"/>
-        <stat lck="3"/>
+        <stat lck="2"/>
       </stats>
 
     </equip>
@@ -508,8 +508,8 @@
       <draw_coords x="128" y="128" width="64" height="32"/>
 
       <stats>
-        <stat dext="5"/>
-        <stat agi="5"/>
+        <stat dext="3"/>
+        <stat agi="3"/>
       </stats>
 
     </equip>
@@ -529,7 +529,7 @@
       <draw_coords x="256" y="128" width="64" height="32"/>
 
       <stats>
-        <stat cnst="10"/>
+        <stat cnst="5"/>
 
       </stats>
 
@@ -540,9 +540,9 @@
       <draw_coords x="320" y="128" width="64" height="32"/>
 
       <stats>
-        <stat int="5"/>
-        <stat agi="5"/>
-        <stat fcs="5"/>
+        <stat int="3"/>
+        <stat agi="3"/>
+        <stat fcs="3"/>
       </stats>
 
     </equip>
@@ -562,8 +562,8 @@
       <draw_coords x="448" y="128" width="64" height="32"/>
 
       <stats>
-        <stat int="9"/>
-        <stat mr="9"/>
+        <stat int="4"/>
+        <stat mr="4"/>
       </stats>
 
     </equip>
@@ -573,8 +573,8 @@
       <draw_coords x="512" y="128" width="64" height="32"/>
 
       <stats>
-        <stat lck="5"/>
-        <stat cnst="5"/>
+        <stat lck="3"/>
+        <stat cnst="3"/>
       </stats>
 
     </equip>
@@ -584,8 +584,8 @@
       <draw_coords x="0" y="160" width="64" height="32"/>
 
       <stats>
-        <stat mr="6"/>
-        <stat pr="6"/>
+        <stat mr="3"/>
+        <stat pr="3"/>
         <stat agi="-2"/>
       </stats>
 
@@ -620,7 +620,7 @@
       <draw_coords x="256" y="192" width="64" height="32"/>
 
       <stats>
-        <stat lck="6"/>
+        <stat lck="4"/>
       </stats>
 
     </equip>
@@ -630,9 +630,9 @@
       <draw_coords x="320" y="192" width="64" height="32"/>
 
       <stats>
-        <stat fcs="8"/>
-       <stat pr="8"/>
-       <stat mr="8"/>
+        <stat fcs="3"/>
+       <stat pr="3"/>
+       <stat mr="3"/>
       </stats>
 
     </equip>
@@ -642,7 +642,7 @@
       <draw_coords x="384" y="192" width="64" height="32"/>
 
       <stats>
-        <stat dext="6"/>
+        <stat dext="4"/>
       </stats>
 
     </equip>
@@ -652,7 +652,7 @@
       <draw_coords x="448" y="192" width="64" height="32"/>
 
       <stats>
-        <stat dext="3"/>
+        <stat dext="2"/>
        <stat pr="2"/>
         <stat agi="-3"/>
       </stats>
@@ -664,7 +664,7 @@
       <draw_coords x="512" y="192" width="64" height="32"/>
 
       <stats>
-        <stat cnst="6"/>
+        <stat cnst="4"/>
       </stats>
 
     </equip>
@@ -674,7 +674,7 @@
       <draw_coords x="0" y="224" width="64" height="32"/>
 
       <stats>
-        <stat fcs="6"/>
+        <stat fcs="4"/>
       </stats>
 
     </equip>
@@ -684,7 +684,7 @@
       <draw_coords x="64" y="224" width="64" height="32"/>
 
       <stats>
-        <stat mr="10"/>
+        <stat mr="5"/>
       </stats>
 
     </equip>
@@ -705,8 +705,8 @@
       <draw_coords x="192" y="224" width="64" height="32"/>
 
       <stats>
-        <stat pr="3"/>
-       <stat cnst="3"/>
+        <stat pr="2"/>
+       <stat cnst="2"/>
       </stats>
 
     </equip>
@@ -719,7 +719,7 @@
       <draw_coords x="192" y="256" width="64" height="32"/>
 
       <stats>
-        <stat str="6"/>
+        <stat str="4"/>
       </stats>
 
     </equip>
@@ -750,7 +750,7 @@
       <draw_coords x="64" y="256" width="64" height="32"/>
 
       <stats>
-        <stat str="10"/>
+        <stat str="3"/>
       </stats>
 
     </equip>
@@ -781,8 +781,8 @@
       <draw_coords x="64" y="160" width="64" height="32"/>
 
       <stats>
-        <stat int="5"/>
-       <stat fcs="5"/>
+        <stat int="3"/>
+       <stat fcs="3"/>
       </stats>
 
     </equip>

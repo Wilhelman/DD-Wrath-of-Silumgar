@@ -3,9 +3,9 @@
 	<world_map current_location="here_the_coords_maybe" />
 	<heroes>
 		<heroe name="cleric">
-			<values health_points="0" mana_points="18" />
+			<values health_points="141" mana_points="78" />
 			<skills>
-				<skill name="Heal" description="Heals an ally or himself based on intelligence" mana_points_effect_to_himself="28" health_points_effect="28" objective="0" have_to_move="0" owned="0" />
+				<skill name="Heal" description="Heals an ally or himself based on intelligence" mana_points_effect_to_himself="28" health_points_effect="28" objective="0" have_to_move="0" owned="1" />
 				<skill name="Light Strike" description="Hits enemy with a magic attack based on intelligence" mana_points_effect_to_himself="40" health_points_effect="-28" objective="1" have_to_move="1" owned="0" />
 				<skill name="Mace Throw" description="Throws mace at an enemy dealing damage based on strength. If target is burning reduces the enemy physical debense by 50%, magical defense by 25% and strength by 25% for 2 turns" mana_points_effect_to_himself="28" health_points_effect="-30" objective="1" have_to_move="0" owned="0" />
 				<skill name="Heal Plus" description="Strengthens Heal healing even more" mana_points_effect_to_himself="35" health_points_effect="56" objective="0" have_to_move="0" owned="0" />
@@ -16,7 +16,7 @@
 				<skill name="Clarity" description="Purifies a party member removing all its debuffs" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" have_to_move="0" owned="0" />
 			</skills>
 			<items>
-				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="1" />
 				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
 				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
 				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0" />
@@ -26,9 +26,9 @@
 			</items>
 		</heroe>
 		<heroe name="warrior">
-			<values health_points="0" mana_points="48" />
+			<values health_points="175" mana_points="52" />
 			<skills>
-				<skill name="Kick" description="Physical attack that deals reduced damage based on strength and has a chance to stun the enemy for 2 turns" mana_points_effect_to_himself="20" health_points_effect="-16" stun_chance="80" objective="1" have_to_move="1" owned="0" />
+				<skill name="Kick" description="Physical attack that deals reduced damage based on strength and has a chance to stun the enemy for 2 turns" mana_points_effect_to_himself="20" health_points_effect="-16" stun_chance="80" objective="1" have_to_move="1" owned="1" />
 				<skill name="Guard" description="Protects himself or an ally for 1 turn increasing their physical and magical defenses by 25%" mana_points_effect_to_himself="20" health_points_effect="16" physical_defense_variation="5" magical_defense_variation="5" objective="0" have_to_move="1" owned="0" />
 				<skill name="Heavy Slash" description="Deals physical damage based on strength that also 50% chance of causing bleed for 3 turns" mana_points_effect_to_himself="25" health_points_effect="-16" bleeding_chance="50" objective="1" have_to_move="1" owned="0" />
 				<skill name="Kick Plus" description="Strengthens Kick attack augmenting the stun chance and lowering enemy physical defense by 25%" mana_points_effect_to_himself="30" health_points_effect="-30" stun_chance="90" physical_defense_variation="-5" objective="1" have_to_move="1" owned="0" />
@@ -39,7 +39,7 @@
 				<skill name="Whirlwind" description="Sword spining attack that deals damage to an enemy based on strength" mana_points_effect_to_himself="40" health_points_effect="80" objective="1" have_to_move="1" owned="0" />
 			</skills>
 			<items>
-				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="1" />
 				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
 				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
 				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0" />
@@ -49,9 +49,9 @@
 			</items>
 		</heroe>
 		<heroe name="dwarf">
-			<values health_points="0" mana_points="50" />
+			<values health_points="148" mana_points="52" />
 			<skills>
-				<skill name="H. Axe" description="Attacks with multiple axe swings that deal physical damage based on strength and deal extra damage to stunned enemies. Reduces enemy defenses by 25% for 1 turn" mana_points_effect_to_himself="26" health_points_effect="-23" objective="1" have_to_move="1" owned="0" />
+				<skill name="H. Axe" description="Attacks with multiple axe swings that deal physical damage based on strength and deal extra damage to stunned enemies. Reduces enemy defenses by 25% for 1 turn" mana_points_effect_to_himself="26" health_points_effect="-23" objective="1" have_to_move="1" owned="1" />
 				<skill name="Morale Boost" description="25% boost to strength and intelligence for 2 turns on an ally" mana_points_effect_to_himself="18" strength_variation="3" intelligence_variation="3" objective="0" have_to_move="0" owned="0" />
 				<skill name="Dwarfs Wrath" description="Boosts dexterity by 50% for 2 turns" mana_points_effect_to_himself="18" dexterity_variation="3" objective="0" have_to_move="0" owned="0" />
 				<skill name="High Axe Plus" description="Strengthens Double Edged Axe dealing more damage" mana_points_effect_to_himself="30" health_points_effect="-60" objective="1" have_to_move="1" owned="0" />
@@ -62,7 +62,7 @@
 				<skill name="Counter" description="Increases defenses and strength by 50% for 3 turns" mana_points_effect_to_himself="30" health_points_effect="-23" objective="0" have_to_move="0" owned="0" />
 			</skills>
 			<items>
-				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
+				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="1" />
 				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
 				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
 				<item name="Mega Mana Potion" objective="0" use="HIGH_MANA_RECOVER" quantity="0" />
@@ -72,12 +72,12 @@
 			</items>
 		</heroe>
 		<heroe name="elf">
-			<values health_points="0" mana_points="78" />
+			<values health_points="79" mana_points="91" />
 			<skills>
 				<skill name="Blizzard" description="Calls forth a strong blizzard that deals damage based on intelligence and lowers the enemy agility by 50%" mana_points_effect_to_himself="34" health_points_effect="-40" objective="0" have_to_move="0" owned="0" />
 				<skill name="Seed Of Life" description="Casts 2 magic life balls that damage an enemy based on intelligence" mana_points_effect_to_himself="15" health_points_effect="-40" objective="1" have_to_move="0" owned="0" />
 				<skill name="Fireball" description="Big fire spell that hits an enemy with damage based on intelligence and has a chance to burn them for 2 turns. If enemy stunned, deals extra damage" mana_points_effect_to_himself="18" health_points_effect="-40" burn_chance="30" objective="1" have_to_move="0" owned="0" />
-				<skill name="Lightning Boolt" description="Strikes an enemy with an electrical attack based on intelligence that has a chance to stun them" mana_points_effect_to_himself="22" health_points_effect="-40" stun_chance="40" objective="1" have_to_move="0" owned="0" />
+				<skill name="Lightning Boolt" description="Strikes an enemy with an electrical attack based on intelligence that has a chance to stun them" mana_points_effect_to_himself="22" health_points_effect="-40" stun_chance="40" objective="1" have_to_move="0" owned="1" />
 				<skill name="Seed Of Life Plus" description="Empowers Seeds of Life to increase the damage" mana_points_effect_to_himself="19" health_points_effect="-80" objective="1" have_to_move="0" owned="0" />
 				<skill name="Fireball Plus" description="Empowers Fireball to deal greater damage and have a higher chance to burn enemies" mana_points_effect_to_himself="23" health_points_effect="-40" burn_chance="50" objective="1" have_to_move="0" owned="0" />
 				<skill name="Lightning Boolt Plus" description="Strenghtens Lightning Bolt to deal higher damage and increase the chance to stun" mana_points_effect_to_himself="26" health_points_effect="-40" stun_chance="70" objective="1" have_to_move="0" owned="0" />

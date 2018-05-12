@@ -314,7 +314,7 @@
     </heavyGoblin>
 
     <gnoll>
-      <statistics constitution ="12" focus="6" strength="5" agility="3"  dexterity ="4" intelligence="3" physicalDefense="5" magicalDefense="3" judgement="60"/>
+      <statistics constitution ="11" focus="6" strength="5" agility="3"  dexterity ="4" intelligence="3" physicalDefense="4" magicalDefense="3" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -526,7 +526,7 @@
     </skeleton>
 
     <owlbear>
-      <statistics constitution ="15" focus="8" strength="6" agility="2" dexterity ="5" intelligence="3" physicalDefense="7" magicalDefense="14" judgement="35"/>
+      <statistics constitution ="15" focus="8" strength="4" agility="1" dexterity ="5" intelligence="3" physicalDefense="7" magicalDefense="12" judgement="35"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -610,7 +610,7 @@
     </owlbear>
 
     <triton>
-      <statistics constitution ="9" focus="14" strength="12" agility="10" dexterity ="9" intelligence="10" physicalDefense="8" magicalDefense="12" judgement="60"/>
+      <statistics constitution ="9" focus="14" strength="9" agility="10" dexterity ="9" intelligence="10" physicalDefense="8" magicalDefense="12" judgement="60"/>
       <animations>
 
  		    <animation name="idle" speed="1.5" loop="true">
@@ -928,7 +928,7 @@
     </trollLeaders>
 
     <displacerBeast>
-      <statistics constitution ="30" focus="80" strength="20" agility="6" dexterity ="20" intelligence="18" physicalDefense="11" magicalDefense="11" judgement="60"/>
+      <statistics constitution ="30" focus="80" strength="10" agility="6" dexterity ="20" intelligence="18" physicalDefense="11" magicalDefense="11" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -1189,7 +1189,7 @@
   <heroes>
 
     <cleric>
-      <statistics constitution ="6" focus="5" strength="6" agility="5" dexterity ="4" intelligence="7"  physicalDefense="8" magicalDefense="4" luck="4"/>
+      <statistics constitution ="6" focus="6" strength="6" agility="5" dexterity ="4" intelligence="7"  physicalDefense="8" magicalDefense="4" luck="4"/>
       <animations>
 
         <animation name="idle" speed="1.0" loop="true">

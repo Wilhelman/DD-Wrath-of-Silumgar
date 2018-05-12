@@ -114,7 +114,7 @@
       <ability  name="Lightning Boolt" tier="2" mana="24" branch="3" active ="0" description ="Strikes an enemy with an electrical attack based on intelligence that has a chance to stun them">
         <frame x="288" y="284 " width="40" height="40"/>
       </ability>
-      <ability  name="Seed Of Life Plus" tier="3" mana="27" branch="1" active ="0" description ="Empowers Seeds of Life to increase the damage">
+      <ability  name="Seed Of Life Plus" tier="3" mana="27" branch="1" active ="1" description ="Empowers Seeds of Life to increase the damage">
         <frame x="200" y="284" width="40" height="40"/>
       </ability>
       <ability  name="Fireball Plus" tier="3" mana="29" branch="2" active ="0" description ="Empowers Fireball to deal greater damage and have a higher chance to burn enemies">

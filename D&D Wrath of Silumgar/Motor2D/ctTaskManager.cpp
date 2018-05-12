@@ -1880,7 +1880,7 @@ bool PerformActionToEntity::Execute()
 
 				bool critical = false;
 
-				int damage_to_deal = 3 * App->entities->GetElf()->GetCurrentIntelligencePoints();
+				int damage_to_deal = 6 * App->entities->GetElf()->GetCurrentIntelligencePoints();
 
 				damage_to_deal = App->entities->GetElf()->GetCurrentIntelligencePoints();
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
@@ -2631,7 +2631,7 @@ bool PerformActionToEntity::Execute()
 
 				bool critical = false;
 
-				int damage_to_deal = 7 * App->entities->GetElf()->GetCurrentIntelligencePoints();
+				int damage_to_deal = 9 * App->entities->GetElf()->GetCurrentIntelligencePoints();
 
 				damage_to_deal = App->entities->GetElf()->GetCurrentIntelligencePoints();
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
@@ -3066,7 +3066,7 @@ bool PerformActionToEntity::Execute()
 
 						bool critical = false;
 
-						int damage_to_deal = action_to_perform.health_points_effect - (App->entities->GetCleric()->GetCurrentIntelligencePoints() / 6);
+						int damage_to_deal =  1.5*App->entities->GetCleric()->GetCurrentIntelligencePoints() ;
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
@@ -3447,7 +3447,7 @@ bool PerformActionToEntity::Execute()
 
 						bool critical = false;
 
-						int damage_to_deal = action_to_perform.health_points_effect - (1.6 - App->entities->GetCleric()->GetCurrentIntelligencePoints());
+						int damage_to_deal =  (2.1 * App->entities->GetCleric()->GetCurrentIntelligencePoints());
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 

@@ -21,8 +21,6 @@ private:
 	Action bidimensional_claw_action;
 	Action sea_of_flames_action;
 
-	
-
 private:
 
 	bool boosted = false;

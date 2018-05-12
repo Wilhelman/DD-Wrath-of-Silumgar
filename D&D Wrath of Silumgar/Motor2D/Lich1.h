@@ -17,21 +17,10 @@ private:
 
 	//animations velocity
 	uint idle_vel = 0u, run_forward_vel = 0u;
-	bool is_transformed = false;
 
 	Action dragon_flames_action;
 	Action lightning_flash_action;
 	Action abyssal_sphere_action;
-	Action bidimensional_claw_action;
-	Action sea_of_flames_action;
-
-	ctAnimation idle_transformed = ctAnimation();
-	ctAnimation run_transformed = ctAnimation();
-	ctAnimation hit_transformed = ctAnimation();
-	ctAnimation death_transformed = ctAnimation();
-	ctAnimation stun_transformed = ctAnimation();
-	ctAnimation dodge_transformed = ctAnimation();
-
 
 private:
 

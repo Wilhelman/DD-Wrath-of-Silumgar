@@ -116,11 +116,6 @@ bool LootMenu::Start()
 
 	background = new UIImage(0, 0, IMAGE, { 0,0,484,324 }, nullptr);
 
-	//DELETE LATE
-	/*App->entities->SpawnEntity(30, 125, CLERIC);
-	App->entities->SpawnEntity(30, 275, WARRIOR);
-	App->entities->SpawnEntity(250, 125, DWARF);
-	App->entities->SpawnEntity(250, 275, ELF);*/
 
 	App->entities->GetCleric()->position = { 30,125 };
 	App->entities->GetWarrior()->position = { 30,275 };
@@ -132,47 +127,8 @@ bool LootMenu::Start()
 	App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->menu_animation;
 	App->entities->GetElf()->animation = &App->entities->GetElf()->menu_animation;
 	LoadClerictStats();
-	//*******************************************************
-	//when implement in combat
-	/*App->entities->GetCleric()->position = { 30,125 };
-	App->entities->GetWarrior()->position = { 30,275 };
-	App->entities->GetDwarf()->position = { 250,125 };
-	App->entities->GetElf()->position = { 250,275 };*/
 
 
-
-
-
-	//------------------------------- TO DELETEEEEEEEEE
-	//App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
-	//App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(1));
-	//App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(2));
-	//App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(4));
-	//App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(6));
-
-	/*App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(3));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(1));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(2));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(4));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(6));*/
-
-	//App->entities->GetDwarf()->AddEquipItem(App->items->tier_1_equips.at(3));
-	//App->entities->GetDwarf()->AddEquipItem(App->items->tier_1_equips.at(1));
-	//App->entities->GetDwarf()->AddEquipItem(App->items->tier_1_equips.at(2));
-	//App->entities->GetDwarf()->AddEquipItem(App->items->tier_2_equips.at(4));
-	//App->entities->GetDwarf()->AddEquipItem(App->items->tier_1_equips.at(6));
-
-
-
-	/*dropped_items.push_back(&App->items->tier_3_equips.at(3));
-	dropped_items.push_back(&App->items->tier_3_equips.at(2));
-	dropped_items.push_back(&App->items->tier_3_equips.at(1));
-
-	dropped_usable_items.push_back(&App->items->usable_items.at(1));
-	dropped_usable_items.push_back(&App->items->usable_items.at(2));
-	dropped_usable_items.push_back(&App->items->usable_items.at(2));
-	dropped_usable_items.push_back(&App->items->usable_items.at(3));*/
-	//-------------------------------
 
 	to_cleric_label = new UITextBox(430, 200, TEXTBOX, "To Cleric", { 255,255,255,255 }, 17, 100);
 	to_dwarf_label = new UITextBox(430, 220, TEXTBOX, "To Dwarf", { 255,255,255,255 }, 17, 100);

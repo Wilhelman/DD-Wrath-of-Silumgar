@@ -433,6 +433,12 @@
           <frame x="171" y="388" width="60" height="17"/>
           <frame x="238" y="388" width="60" height="17"/>
         </animation>
+        
+        <animation name="dodge" speed="0.1" loop="false">
+          <frame x="590" y="226" width="58" height="86"/>
+		      <frame x="590" y="226" width="58" height="86"/>
+		      <frame x="590" y="226" width="58" height="86"/>
+        </animation>
 		
       </animations>
 

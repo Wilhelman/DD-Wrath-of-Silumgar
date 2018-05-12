@@ -11,7 +11,7 @@
 				<skill name="Heal Plus" description="Strengthens Heal healing even more" mana_points_effect_to_himself="50" health_points_effect="56" objective="0" have_to_move="0" owned="0" />
 				<skill name="Light Strike Plus" description="Empowers Light Strike to reduce the magic defense of the enemy by 25% for 2 turns" mana_points_effect_to_himself="50" health_points_effect="-40" magical_defense_variation="-5" objective="1" have_to_move="1" owned="1" />
 				<skill name="Mace Throw Plus" description="Strengthens Mace Throw deal extra damage and increasing the debuffs turns by 3" mana_points_effect_to_himself="45" health_points_effect="-28" objective="1" have_to_move="0" owned="0" />
-				<skill name="Blessing" description="Blessing that heals a lot of health to an ally" mana_points_effect_to_himself="60" health_points_effect="-60" objective="1" have_to_move="0" owned="0" />
+				<skill name="Blessing" description="Blessing that heals a lot of health to an ally" mana_points_effect_to_himself="60" health_points_effect="-60" objective="0" have_to_move="0" owned="0" />
 				<skill name="Harden Skin" description="Hardens skin as tough as stone to gain a 50% boost to physical defense, intelligence and strength" mana_points_effect_to_himself="25" health_points_effect="28" magical_defense_variation="5" intelligence_variation="5" strength_variation="5" objective="0" have_to_move="0" owned="0" />
 				<skill name="Clarity" description="Purifies a party member removing all its debuffs" mana_points_effect_to_himself="36" health_points_effect="28" objective="0" have_to_move="0" owned="0" />
 			</skills>
@@ -29,7 +29,7 @@
 			<values health_points="208" mana_points="52" />
 			<skills>
 				<skill name="Kick" description="Physical attack that deals reduced damage based on strength and has a chance to stun the enemy for 2 turns" mana_points_effect_to_himself="1" health_points_effect="-16" stun_chance="80" objective="1" have_to_move="1" owned="0" />
-				<skill name="Guard" description="Protects himself or an ally for 1 turn increasing their physical and magical defenses by 25%" mana_points_effect_to_himself="1" health_points_effect="16" physical_defense_variation="5" magical_defense_variation="5" objective="0" have_to_move="1" owned="1" />
+				<skill name="Guard" description="Protects himself or an ally for 1 turn increasing their physical and magical defenses by 25%" mana_points_effect_to_himself="0" health_points_effect="16" physical_defense_variation="5" magical_defense_variation="5" objective="0" have_to_move="1" owned="1" />
 				<skill name="Heavy Slash" description="Deals physical damage based on strength that also 50% chance of causing bleed for 3 turns" mana_points_effect_to_himself="1" health_points_effect="-16" bleeding_chance="50" objective="1" have_to_move="1" owned="0" />
 				<skill name="Kick Plus" description="Strengthens Kick attack augmenting the stun chance and lowering enemy physical defense by 25%" mana_points_effect_to_himself="1" health_points_effect="-16" stun_chance="80" physical_defense_variation="-5" objective="1" have_to_move="1" owned="0" />
 				<skill name="Guard Plus" description="Strengthens Guard increasing the defenses by 50%" mana_points_effect_to_himself="1" health_points_effect="16" physical_defense_variation="8" magical_defense_variation="8" objective="1" have_to_move="1" owned="1" />

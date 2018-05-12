@@ -750,47 +750,80 @@ void ctCombat::LoadDataFromXML()
 				App->entities->GetCleric()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 				App->entities->GetCleric()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			}
-			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				if (App->main_menu->is_new_game == true) {
+					skill.attribute("owned").set_value(0);
+				}
 				LoadSkill(skill, App->entities->GetCleric());
-
-			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+			}
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+				if (App->main_menu->is_new_game == true) {
+					item.attribute("quantity").set_value(0);
+				}
 				LoadItem(item, App->entities->GetCleric());
+			}
 		}
 		else if (tmp == "warrior") {
 			if (!App->main_menu->is_new_game) {
 				App->entities->GetWarrior()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 				App->entities->GetWarrior()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			}
-			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				if (App->main_menu->is_new_game == true) {
+					skill.attribute("owned").set_value(0);
+				}
 				LoadSkill(skill, App->entities->GetWarrior());
-
-			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+			}
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+				if (App->main_menu->is_new_game == true) {
+					item.attribute("quantity").set_value(0);
+				}
 				LoadItem(item, App->entities->GetWarrior());
+			}
 		}
 		else if (tmp == "dwarf") {
 			if (!App->main_menu->is_new_game) {
 				App->entities->GetDwarf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 				App->entities->GetDwarf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			}
-			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				if (App->main_menu->is_new_game == true) {
+					skill.attribute("owned").set_value(0);
+				}
 				LoadSkill(skill, App->entities->GetDwarf());
+			}
 
-			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+				if (App->main_menu->is_new_game == true) {
+					item.attribute("quantity").set_value(0);
+				}
 				LoadItem(item, App->entities->GetDwarf());
+			}
 		}
 		else if (tmp == "elf") {
 			if (!App->main_menu->is_new_game) {
 				App->entities->GetElf()->SetCurrentHealthPoints(heroe.child("values").attribute("health_points").as_uint());
 				App->entities->GetElf()->SetCurrentManaPoints(heroe.child("values").attribute("mana_points").as_uint());
 			}
-			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill"))
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				if (App->main_menu->is_new_game == true) {
+					skill.attribute("owned").set_value(0);
+				}
 				LoadSkill(skill, App->entities->GetElf());
-
-			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item"))
+			}
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+				if (App->main_menu->is_new_game == true) {
+					item.attribute("quantity").set_value(0);
+				}
 				LoadItem(item, App->entities->GetElf());
+			}
 		}
 
 	}
+
+	data_file.save_file("data.xml");
+	data_file.reset();
+
 }
 
 void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)

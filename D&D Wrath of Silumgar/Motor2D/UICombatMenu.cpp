@@ -306,19 +306,19 @@ void UICombatMenu::NavigateDown(std::vector<UIElement*> &current_vector) {
 			}
 			if(current_vector == abilities){
 				current_vector.clear();
-				if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator - 1).mana_points_effect_to_himself) {
+				if (entity->GetCurrentManaPoints() >= entity_actions.at(names_iterator - 1).mana_points_effect_to_himself) {
 					current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(names_iterator - 1), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 				}
 				else {
 					current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(names_iterator - 1), { 255,0,0,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 				}
-				if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator).mana_points_effect_to_himself) {
+				if (entity->GetCurrentManaPoints() >= entity_actions.at(names_iterator).mana_points_effect_to_himself) {
 					current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(names_iterator), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 				}
 				else {
 					current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(names_iterator), { 255,0,0,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 				}
-				if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator + 1).mana_points_effect_to_himself) {
+				if (entity->GetCurrentManaPoints() >= entity_actions.at(names_iterator + 1).mana_points_effect_to_himself) {
 					current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(names_iterator + 1), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 				}
 				else {
@@ -411,19 +411,19 @@ void UICombatMenu::NavigateUp(std::vector<UIElement*> &current_vector) {
 			}
 			if (current_vector == abilities) {
 				current_vector.clear();
-				if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator - 3).mana_points_effect_to_himself) {
+				if (entity->GetCurrentManaPoints() >= entity_actions.at(names_iterator - 3).mana_points_effect_to_himself) {
 					current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(names_iterator - 3), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 				}
 				else {
 					current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label1_pos.x, backgroundPos.y + label1_pos.y, names.at(names_iterator - 3), { 255,0,0,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 				}
-				if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator - 2).mana_points_effect_to_himself) {
+				if (entity->GetCurrentManaPoints() >= entity_actions.at(names_iterator - 2).mana_points_effect_to_himself) {
 					current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(names_iterator - 2), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 				}
 				else {
 					current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(names_iterator - 2), { 255,0,0,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 				}
-				if (entity->GetCurrentManaPoints() >= entity->abilities.at(names_iterator - 1).mana_points_effect_to_himself) {
+				if (entity->GetCurrentManaPoints() >= entity_actions.at(names_iterator - 1).mana_points_effect_to_himself) {
 					current_vector.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(names_iterator - 1), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 				}
 				else {

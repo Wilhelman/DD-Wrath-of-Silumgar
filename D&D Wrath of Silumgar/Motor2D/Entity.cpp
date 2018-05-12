@@ -824,6 +824,120 @@ void Entity::CalculateAllStats()
 	current_judgement = tmp_judgement;
 }
 
+void Entity::CalculateAllStatsNoMultiply()
+{
+	int tmp_constitution = base_stats.constitution;
+	int tmp_focus = base_stats.focus;
+	int tmp_strength = base_stats.strength;
+	int tmp_intelligence = base_stats.intelligence;
+	int tmp_dexterity = base_stats.dexterity;
+	int tmp_agility = base_stats.agility;
+	int tmp_physical_defense = base_stats.physical_defense;
+	int tmp_magical_defense = base_stats.magical_defense;
+	int tmp_luck = base_stats.luck;
+	int tmp_judgement = base_stats.judgement;
+
+	tmp_constitution += helmet.statistics.constitution;
+	tmp_focus += helmet.statistics.focus;
+	tmp_strength += helmet.statistics.strength;
+	tmp_intelligence += helmet.statistics.intelligence;
+	tmp_dexterity += helmet.statistics.dexterity;
+	tmp_agility += helmet.statistics.agility;
+	tmp_physical_defense += helmet.statistics.physical_defense;
+	tmp_magical_defense += helmet.statistics.magical_defense;
+	tmp_luck += helmet.statistics.luck;
+	tmp_judgement += helmet.statistics.judgement;
+
+
+	tmp_constitution += chest.statistics.constitution;
+	tmp_focus += chest.statistics.focus;
+	tmp_strength += chest.statistics.strength;
+	tmp_intelligence += chest.statistics.intelligence;
+	tmp_dexterity += chest.statistics.dexterity;
+	tmp_agility += chest.statistics.agility;
+	tmp_physical_defense += chest.statistics.physical_defense;
+	tmp_magical_defense += chest.statistics.magical_defense;
+	tmp_luck += chest.statistics.luck;
+	tmp_judgement += chest.statistics.judgement;
+
+	tmp_constitution += guantlet.statistics.constitution;
+	tmp_focus += guantlet.statistics.focus;
+	tmp_strength += guantlet.statistics.strength;
+	tmp_intelligence += guantlet.statistics.intelligence;
+	tmp_dexterity += guantlet.statistics.dexterity;
+	tmp_agility += guantlet.statistics.agility;
+	tmp_physical_defense += guantlet.statistics.physical_defense;
+	tmp_magical_defense += guantlet.statistics.magical_defense;
+	tmp_luck += guantlet.statistics.luck;
+	tmp_judgement += guantlet.statistics.judgement;
+
+	tmp_constitution += boot.statistics.constitution;
+	tmp_focus += boot.statistics.focus;
+	tmp_strength += boot.statistics.strength;
+	tmp_intelligence += boot.statistics.intelligence;
+	tmp_dexterity += boot.statistics.dexterity;
+	tmp_agility += boot.statistics.agility;
+	tmp_physical_defense += boot.statistics.physical_defense;
+	tmp_magical_defense += boot.statistics.magical_defense;
+	tmp_luck += boot.statistics.luck;
+	tmp_judgement += boot.statistics.judgement;
+
+	tmp_constitution += weapon.statistics.constitution;
+	tmp_focus += weapon.statistics.focus;
+	tmp_strength += weapon.statistics.strength;
+	tmp_intelligence += weapon.statistics.intelligence;
+	tmp_dexterity += weapon.statistics.dexterity;
+	tmp_agility += weapon.statistics.agility;
+	tmp_physical_defense += weapon.statistics.physical_defense;
+	tmp_magical_defense += weapon.statistics.magical_defense;
+	tmp_luck += weapon.statistics.luck;
+	tmp_judgement += weapon.statistics.judgement;
+
+	tmp_constitution += shield.statistics.constitution;
+	tmp_focus += shield.statistics.focus;
+	tmp_strength += shield.statistics.strength;
+	tmp_intelligence += shield.statistics.intelligence;
+	tmp_dexterity += shield.statistics.dexterity;
+	tmp_agility += shield.statistics.agility;
+	tmp_physical_defense += shield.statistics.physical_defense;
+	tmp_magical_defense += shield.statistics.magical_defense;
+	tmp_luck += shield.statistics.luck;
+	tmp_judgement += shield.statistics.judgement;
+
+	tmp_constitution += ring.statistics.constitution;
+	tmp_focus += ring.statistics.focus;
+	tmp_strength += ring.statistics.strength;
+	tmp_intelligence += ring.statistics.intelligence;
+	tmp_dexterity += ring.statistics.dexterity;
+	tmp_agility += ring.statistics.agility;
+	tmp_physical_defense += ring.statistics.physical_defense;
+	tmp_magical_defense += ring.statistics.magical_defense;
+	tmp_luck += ring.statistics.luck;
+	tmp_judgement += ring.statistics.judgement;
+
+	tmp_constitution += accessory.statistics.constitution;
+	tmp_focus += accessory.statistics.focus;
+	tmp_strength += accessory.statistics.strength;
+	tmp_intelligence += accessory.statistics.intelligence;
+	tmp_dexterity += accessory.statistics.dexterity;
+	tmp_agility += accessory.statistics.agility;
+	tmp_physical_defense += accessory.statistics.physical_defense;
+	tmp_magical_defense += accessory.statistics.magical_defense;
+	tmp_luck += accessory.statistics.luck;
+	tmp_judgement += accessory.statistics.judgement;
+
+	max_health_points = current_health_points = tmp_constitution;
+	max_mana_points = current_mana_points = tmp_focus;
+	current_strength = tmp_strength;
+	current_intelligence = tmp_intelligence;
+	current_dexterity_points = tmp_dexterity;
+	current_agility_points = tmp_agility;
+	current_physical_defense_points = tmp_physical_defense;
+	current_magical_defense_points = tmp_magical_defense;
+	current_luck = tmp_luck;
+	current_judgement = tmp_judgement;
+}
+
 bool Entity::IsGoingToDoAnythingClever()
 {
 	int random_number = (rand() % 100) + 1; //random del 1-100

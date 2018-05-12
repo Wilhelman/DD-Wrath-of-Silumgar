@@ -678,7 +678,7 @@ void LootMenu::LoadClerictStats() {
 	}
 
 	Entity* current_entity = App->entities->GetCleric();
-	current_entity->CalculateAllStats();
+	current_entity->CalculateAllStatsNoMultiply();
 
 	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
 	cleric_statistics.push_back(new UITextBox(135, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
@@ -715,6 +715,8 @@ void LootMenu::LoadClerictStats() {
 	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
 	cleric_statistics.push_back(new UITextBox(135, 118, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
 
+	current_entity->CalculateAllStats();
+
 }
 
 void LootMenu::LoadWarriorStats() {
@@ -731,7 +733,8 @@ void LootMenu::LoadWarriorStats() {
 
 
 	Entity* current_entity = App->entities->GetWarrior();
-	current_entity->CalculateAllStats();
+	current_entity->CalculateAllStatsNoMultiply();
+	
 
 	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
 	warrior_statistics.push_back(new UITextBox(135, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
@@ -759,6 +762,8 @@ void LootMenu::LoadWarriorStats() {
 
 	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
 	warrior_statistics.push_back(new UITextBox(135, 275, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	current_entity->CalculateAllStats();
 }
 
 
@@ -774,7 +779,7 @@ void LootMenu::LoadDwarfStats() {
 	}
 
 	Entity* current_entity = App->entities->GetDwarf();
-	current_entity->CalculateAllStats();
+	current_entity->CalculateAllStatsNoMultiply();
 
 	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
 	dwarf_statistics.push_back(new UITextBox(340, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
@@ -805,6 +810,8 @@ void LootMenu::LoadDwarfStats() {
 
 	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
 	dwarf_statistics.push_back(new UITextBox(340, 118, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	current_entity->CalculateAllStats();
 }
 
 
@@ -820,7 +827,7 @@ void LootMenu::LoadElfStats() {
 	}
 
 	Entity* current_entity = App->entities->GetElf();
-	current_entity->CalculateAllStats();
+	current_entity->CalculateAllStatsNoMultiply();
 
 	std::string entity_stat = "Con  " + std::to_string(current_entity->base_stats.constitution);
 	elf_statistics.push_back(new UITextBox(340, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
@@ -848,6 +855,8 @@ void LootMenu::LoadElfStats() {
 
 	entity_stat = "Luck " + std::to_string(current_entity->base_stats.luck);
 	elf_statistics.push_back(new UITextBox(340, 275, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
+
+	current_entity->CalculateAllStats();
 }
 
 

@@ -214,6 +214,7 @@ public:
 
 	
 	void CalculateAllStats();
+	void CalculateAllStatsNoMultiply();
 };
 
 #endif // __ENTITY_H__

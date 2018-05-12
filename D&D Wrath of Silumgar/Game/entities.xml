@@ -5,7 +5,7 @@
   <enemies>
 
     <kobold>
-      <statistics constitution ="5" focus="5" strength="3" agility="7" dexterity ="6" intelligence="4" physicalDefense="2" magicalDefense="2" judgement="35"/>
+      <statistics constitution ="5" focus="5" strength="2" agility="7" dexterity ="6" intelligence="4" physicalDefense="2" magicalDefense="2" judgement="35"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">

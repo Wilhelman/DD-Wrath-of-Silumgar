@@ -96,8 +96,6 @@ bool ctSkillTree::Start()
 		warrior->active = read_warrior_icons.attribute("active").as_uint();
 		warrior->description = read_warrior_icons.attribute("description").as_string();
 		warrior->icon_rect = { read_warrior_icons.child("frame").attribute("x").as_int(), read_warrior_icons.child("frame").attribute("y").as_int(), read_warrior_icons.child("frame").attribute("width").as_int(),read_warrior_icons.child("frame").attribute("height").as_int() };
-		if (new_game && warrior->tier != 1)
-			warrior->active = 0;
 
 		warrior_abilities.push_back(warrior);
 	}
@@ -111,8 +109,7 @@ bool ctSkillTree::Start()
 		cleric->active = read_cleric_icons.attribute("active").as_uint();
 		cleric->description = read_cleric_icons.attribute("description").as_string();
 		cleric->icon_rect = { read_cleric_icons.child("frame").attribute("x").as_int(), read_cleric_icons.child("frame").attribute("y").as_int(), read_cleric_icons.child("frame").attribute("width").as_int(),read_cleric_icons.child("frame").attribute("height").as_int() };
-		if (new_game && cleric->tier != 1)
-			cleric->active =  0;
+
 		cleric_abilities.push_back(cleric);
 	}
 	for (pugi::xml_node read_dwarf_icons = node->child("dwarf").child("ability"); read_dwarf_icons && ret; read_dwarf_icons = read_dwarf_icons.next_sibling("ability"))
@@ -124,8 +121,7 @@ bool ctSkillTree::Start()
 		dwarf->active = read_dwarf_icons.attribute("active").as_uint();
 		dwarf->description = read_dwarf_icons.attribute("description").as_string();
 		dwarf->icon_rect = { read_dwarf_icons.child("frame").attribute("x").as_int(), read_dwarf_icons.child("frame").attribute("y").as_int(), read_dwarf_icons.child("frame").attribute("width").as_int(),read_dwarf_icons.child("frame").attribute("height").as_int() };
-		if (new_game && dwarf->tier != 1)
-			dwarf->active = 0;
+		
 		dwarf_abilities.push_back(dwarf);
 	}
 	for (pugi::xml_node read_elf_icons = node->child("elf").child("ability"); read_elf_icons && ret; read_elf_icons = read_elf_icons.next_sibling("ability"))
@@ -137,8 +133,7 @@ bool ctSkillTree::Start()
 		elf->active = read_elf_icons.attribute("active").as_uint();
 		elf->description = read_elf_icons.attribute("description").as_string();
 		elf->icon_rect = { read_elf_icons.child("frame").attribute("x").as_int(), read_elf_icons.child("frame").attribute("y").as_int(), read_elf_icons.child("frame").attribute("width").as_int(),read_elf_icons.child("frame").attribute("height").as_int() };
-		if (new_game && elf->tier != 1)
-			elf->active = 0;
+		
 		elf_abilities.push_back(elf);
 	}
 
@@ -153,7 +148,6 @@ bool ctSkillTree::Start()
 	LookForActiveAbilities(warrior_abilities);
 	LookForActiveAbilities(dwarf_abilities);
 	LookForActiveAbilities(elf_abilities);
-	new_game = false;
 	return ret;
 }
 

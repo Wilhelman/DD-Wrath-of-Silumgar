@@ -3,6 +3,7 @@
 #include "ctApp.h"
 #include "ctInput.h"
 #include "ctAudio.h"
+#include "j1Map.h"
 #include "ctCutsceneManager.h"
 #include "ctFinalScene.h"
 #include "ctFadeToBlack.h"
@@ -40,6 +41,11 @@ bool  ctFinalScene::Awake(pugi::xml_node& config)
 bool  ctFinalScene::Start()
 {
 	bool ret = true;
+
+	App->map->Load("castle.tmx");
+	App->map->LayersSetUp();
+	App->map->setAllLogicForMap();
+
 	App->entities->SpawnEntity(50, 125, CLERIC);
 	App->entities->SpawnEntity(150, 125, WARRIOR);
 	App->entities->SpawnEntity(250, 125, DWARF);
@@ -69,6 +75,8 @@ bool  ctFinalScene::Update(float dt)
 	if (!App->cutscene_manager->isActive()) {
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 	}
+
+	App->map->Draw();
 	return true;
 }
 

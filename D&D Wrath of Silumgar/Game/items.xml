@@ -5,7 +5,7 @@
 	<usables>
 	
 		<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER"><!--- 1==Objetivo enemigo | 0 Aliado -->
-			<draw_coords x="192" y="2" width="16" height="8"/>
+			<draw_coords x="192" y="32" width="64" height="32"/>
 		</item>
 		<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER">
 		  <draw_coords x="320" y="32" width="64" height="32"/>
@@ -726,7 +726,7 @@
     
     <equip name="Normal Sword" tier="1" type="WEAPONS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="64" y="256" width="64" height="32"/>
 
       <stats>
         <stat str="2"/>
@@ -737,7 +737,7 @@
 
 <equip name="Short Sword" tier="1" type="WEAPONS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="0" y="256" width="64" height="32"/>
 
       <stats>
         <stat dext="2"/>
@@ -747,7 +747,7 @@
 
 <equip name="Dragonslayer Sword" tier="3" type="WEAPONS">
 
-      <draw_coords x="64" y="160" width="64" height="32"/>
+      <draw_coords x="64" y="256" width="64" height="32"/>
 
       <stats>
         <stat str="3"/>

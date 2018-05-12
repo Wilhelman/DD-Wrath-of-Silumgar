@@ -15,7 +15,6 @@
 #include "ctTabernScene.h"
 #include "ctSettings.h"
 #include "ctSkillTree.h"
-#include "ctFinalScene.h"
 
 #include "j1Language.h"
 

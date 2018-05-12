@@ -72,7 +72,6 @@ public:
 	void GoToNextSkillTree();
 
 private:
-	bool new_game = true;
 
 	std::string skill_tree_map_tmx;
 	std::string name_spritesheet_skill_tree_map;

@@ -6,6 +6,7 @@
 
     <world_map_elements>
       
+      <!--TIER 1 MAPS-->
        <map_element>
           <tier type="1" />
          <entity name="GOBLIN" />
@@ -17,13 +18,14 @@
           <option name = "Empty"/>
         </map_element>
       
+      <!--TIER 2 MAPS-->
       <map_element>
         <tier type="2" />
         <entity name="KOBOLD" />
 		    <entity name="KOBOLD" />
         <scene name="mountain.tmx" />
         <icon_coords x="160" y="512" width="32" height="32" />
-        <decision name ="After an arduous battle to be ambushed by a small group of enemies, you stop for a moment to recover your strength, but quickly you hear the footsteps of more enemies arriving, which is why you run out of the way and come to a fork:"/>
+        <decision name ="After an arduous battle to be ambushed by a small group of enemies, you stop for a moment to recover your strength, but you quickly hear the footsteps of more enemies that arrive, that's why you enter a small cave, in it you find more than a path to follow:"/>
         <option name = "Leaving the city you are shown a path that passes through the foot of the mountain, in which you can clearly see a few strange traces, surely enemies. Apparently it seems clear."/>
       </map_element>
       
@@ -44,7 +46,7 @@
         <entity name="GNOLL" />
         <scene name="cave_06.tmx" />
         <icon_coords x="160" y="480" width="32" height="32" />
-        <decision name ="Right at the end of the battle, the narrow corridor through which you go begins to break, you started to run, but without result, since you end up in what looks like a cave. In it there are several corridors:"/>
+        <decision name ="Right at the end of the battle, the narrow corridor through which you go begins to break, you started to run, but without result, since you end up in what looks like a cave. In it there are several routes:"/>
         <option name = "Departing towards a mountainous pass, in the village it was said that little adventurers returned when they went towards it."/>
       </map_element>
 
@@ -58,7 +60,8 @@
         <decision name ="Once you finish with the enemies in the village, you see that there is a path that leads to a cave through which you enter. Once inside a small earthquake, it buries the entrance, so we have to move forward:"/>
         <option name = "You go to a small village to the east, from it comes a large column of smoke, you know that there was part of the army of Silumgar."/>
       </map_element>
-
+      
+      <!--TIER 3 MAPS-->
       <map_element>
         <tier type="3" />
         <entity name="KOBOLD" />
@@ -80,7 +83,7 @@ Once you cross it you see two possible outputs:"/>
         <entity name="GOBLIN" />
         <scene name="cave_03.tmx" />
         <icon_coords x="128" y="480" width="32" height="32" />
-        <decision name ="After being ambushed and forced to fight, you see what the exit of the cave looks like."/>
+        <decision name ="After being ambushed and forced to fight, you see what the exit of the cave looks like:"/>
         <option name = "You see a small crack through which you can pass. You know that something complicated is coming, but without the option of returning, you get the strength to keep going."/>
       </map_element>
 
@@ -102,21 +105,22 @@ Through the crack you see a light that gives to the outside, while through the t
         <entity name="GNOLL" />
         <scene name="cave.tmx" />
         <icon_coords x="32" y="480" width="32" height="32" />
-        <decision name ="After fighting on the bridge, it begins to collapse, so you run out to save yourself. Once you reach the other side you see that passing a corridor is the exit at the end of this, another band a small crack is left to appear on the wall, from which you can see a forest:"/>
+        <decision name ="After fighting on the bridge, it begins to collapse, so you run out to save yourself. Once you reach the other side, you will see that there will be an exit at the end of this, a small crack in the wall allows you to see something, apparently it seems to clear place:"/>
         <option name = "Going down a bit you will find a large room in which there are bright crystals, this is crossed by a large bridge in which you can not see the bottom."/>
       </map_element>
 
       <map_element>
         <tier type="3" />
-        <entity name="GNOLL" />
+        <entity name="GNOLL"/>
+        <entity name="KOBOLD"/>
+        <entity name="HEAVYGOBLIN"/>
         <scene name="cave_06.tmx" />
         <icon_coords x="320" y="480" width="32" height="32" />
-        <decision name ="1 gnoll"/>
-        <option name = "1 gnoll"/>
+        <decision name ="As you well thought, that road just brings you difficulties and helps you cross the cave, at the end this road is divided into two:"/>
+        <option name = "You see a large corridor that crosses part of the cave, along this you see a couple of enemies which should not take you many problems."/>
       </map_element>
 
-      
-	  
+      <!--TIER 4 MAPS-->
 	   <map_element>
         <tier type="4" />
         <entity name="GNOLL" />
@@ -138,6 +142,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <option name = "An illuminated corridor, where in the end you can see something similar to a castle courtyard. Surely it is the path of the enemies, for which, it would not be strange to meet more than one."/>
       </map_element>
 	  
+      <!--TIER 5 MAPS-->
 	  <map_element>
         <tier type="5" />
         <entity name="DARK_WARRIOR" />
@@ -164,7 +169,8 @@ You go around until you find the door that leads to the city. Once inside that f
         <decision name ="After defeating the Displacer Beast, one of your henchmen begs you for mercy in exchange for information, this explains Silumgar's plans, go east in search of new villages. Without further delay you will forgive your life and go on your search. As the last sneak tells you that your path will begin to seriously complicate to be gaining fame. For this, a new path opens up:"/>
         <option name = "Pursue the displacer beast and start the battle against him."/>
       </map_element>
-	  
+      
+	  <!--TIER 6 MAPS-->
 	  <map_element>
         <tier type="6" />
         <entity name="TRITON" />
@@ -172,7 +178,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <scene name="river.tmx" />
         <icon_coords x="224" y="512" width="32" height="32" />
         <decision name ="Because of the attack the boat, is unusable so you must walk forward again, luckily, you had more than one way to choose:"/>
-        <option name = "Take a boat, spent to continue moving forward."/>
+        <option name = "When leaving the city, you see a river in which there is a boat, it does not seem the safest but it will help you to move fast."/>
       </map_element>
       
       <map_element>
@@ -183,10 +189,23 @@ You go around until you find the door that leads to the city. Once inside that f
         <entity name="GNOLL" />
         <scene name="mountain.tmx" />
         <icon_coords x="160" y="512" width="32" height="32" />
+        <decision name ="TO DO"/>
+        <option name = "Taking a new route, you decide to go by a narrow passage that sneaks through the mountains, several crows fly around you, inspiring mistrust."/>
+      </map_element>
+      
+       <map_element>
+        <tier type="6" />
+       <entity name="ALCHEMISTGOBLIN" />
+         <entity name="ALCHEMISTGOBLIN" />
+        <entity name="GNOLL" />
+        <entity name="GNOLL" />
+        <scene name="mountain.tmx" />
+        <icon_coords x="160" y="480" width="32" height="32" />
         <decision name ="After defeating the enemies you are forced to flee the path to divert attention. To get out of this you have more than one possibility:"/>
         <option name = "Leave the city by the other band, entering again towards the mountain."/>
       </map_element>
-	  
+      
+        <!--TIER 7 MAPS-->
 	  <map_element>
         <tier type="7" />
         <entity name="HEAVYGOBLIN" />
@@ -219,7 +238,20 @@ You go around until you find the door that leads to the city. Once inside that f
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
         <option name = "Going into the forest."/>
       </map_element>
-	  
+      
+       <map_element>
+        <tier type="7" />
+        <entity name="HEAVYGOBLIN" />
+        <entity name="KOBOLD" />
+        <entity name="KOBOLD" />
+		    <entity name="OWLBEAR" />
+        <scene name="cave_06.tmx" />
+        <icon_coords x="160" y="480" width="32" height="32" />
+        <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
+        <option name = "Going into the forest."/>
+      </map_element>
+      
+      <!--TIER 8 MAP-->
 	  <map_element>
         <tier type="8" />
         <entity name="DARK_WARRIOR" />
@@ -228,6 +260,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <decision name ="You have managed to save the world once more. CONGRATULATIONS!"/>
         <option name = "start the final battle!"/>
       </map_element>
+      
      <!-- <icon_coords x="32" y="480" width="32" height="32" /> Cave interior 
       <icon_coords x="64" y="480" width="32" height="32" />     River
       <icon_coords x="96" y="480" width="32" height="32" />     Exit Cave 

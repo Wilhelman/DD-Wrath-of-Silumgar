@@ -502,7 +502,7 @@ Hellhound* ctEntities::GetHellhound() const {
 	return nullptr;
 
 }
-/*
+
 Lich2* ctEntities::GetLich() const {
 
 	for (uint i = 0; i < entities.size(); ++i)
@@ -517,7 +517,7 @@ Lich2* ctEntities::GetLich() const {
 	return nullptr;
 
 }
-*/
+
 
 MiniHeroes* ctEntities::GetMiniheroes() const {
 
@@ -649,6 +649,9 @@ Entity* ctEntities::GetActor(int actor_code) {
 		break;
 	case WARRIOR:
 		return GetWarrior();
+		break;
+	case LICH_2:
+		return GetLich();
 		break;
 	default:
 		return nullptr;

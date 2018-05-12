@@ -28,6 +28,7 @@ class Skeleton;
 class DarkWarrior;
 class DisplacerBeast;
 class TrollLeaders;
+class Lich2;
 
 class MiniHeroes;
 
@@ -116,7 +117,7 @@ public:
 	DarkWarrior* GetDarkWarrior()const;
 	TrollLeaders* GetTrollLeader()const;
 	DisplacerBeast* GetDisplacerBeast()const;
-	//Lich2* GetLich() const;
+	Lich2* GetLich() const;
 
 	MiniHeroes* GetMiniheroes()const;
 

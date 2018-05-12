@@ -7,7 +7,7 @@
 #include "ctModule.h"
 #include "ctTimer.h"
 #include "Entity.h"
-#include "Lich2.h"
+#include "ctEntities.h"
 #include "SDL/include/SDL.h"
 
 class Entity;
@@ -16,7 +16,8 @@ enum EntityType;
 
 enum Cutscene_code
 {
-	FINAL_CUTSCENE
+	FINAL_CUTSCENE,
+	LICH_CUTSCENE
 };
 
 
@@ -94,18 +95,20 @@ private:
 	int move_speed;
 };
 
-class ExecuteLichAnimation : public CutsceneAction
+class ExecuteAnimation : public CutsceneAction
 {
 public:
-	ExecuteLichAnimation(uint32 start_time, uint32 end_time) : CutsceneAction(start_time, end_time) {
-		//actor = App->entities->GetLich();
+	ExecuteAnimation(uint32 start_time, uint32 end_time, Entity* actor, const char* animation) : CutsceneAction(start_time, end_time) {
+		this->actor = actor;
+		this->animation = animation;
 	};
-	~ExecuteLichAnimation() {};
+	~ExecuteAnimation() {};
 
 	bool Execute();
 private:
 
-	Lich2* actor = nullptr;
+	Entity* actor = nullptr;
+	string animation;
 };
 
 class CutsceneDialog : public CutsceneAction

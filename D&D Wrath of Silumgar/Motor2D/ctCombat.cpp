@@ -358,12 +358,13 @@ bool ctCombat::Update(float dt)
 			// Draw everything --------------------------------------
 		}
 		
-		DrawTurnPriority();
-
-		EnemiesBarShouldBeVisible();
+		
 	}
 
 	App->map->Draw();
+	DrawTurnPriority();
+
+	EnemiesBarShouldBeVisible();
 	return true;
 }
 

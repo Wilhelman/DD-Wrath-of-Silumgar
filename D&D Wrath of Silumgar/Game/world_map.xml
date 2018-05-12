@@ -9,7 +9,6 @@
       <!--TIER 1 MAPS-->
        <map_element>
           <tier type="1" />
-         <entity name="GOBLIN" />
          <entity name="KOBOLD"/>
          <entity name="KOBOLD"/>
           <scene name="tavern.tmx" />

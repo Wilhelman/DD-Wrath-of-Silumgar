@@ -758,7 +758,7 @@
     </hellhound>
 
     <darkWarrior>
-      <statistics constitution ="60" focus="20" strength="11" agility="7" dexterity ="7" intelligence="33" physicalDefense="20" magicalDefense="20" judgement="40"/>
+      <statistics constitution ="45" focus="20" strength="9" agility="7" dexterity ="7" intelligence="15" physicalDefense="20" magicalDefense="20" judgement="40"/>
       <animations>
 
         <animation name="idle" speed="2.0" loop="true">

@@ -697,7 +697,7 @@ bool PerformActionToEntity::Execute()
 					else {// THE ATTACK HITS
 
 
-						int damage_to_deal = action_to_perform.health_points_effect - (App->entities->GetDarkWarrior()->GetCurrentStrengthPoints());
+						int damage_to_deal = - (App->entities->GetDarkWarrior()->GetCurrentIntelligencePoints() * 2);
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 
 
@@ -1934,7 +1934,7 @@ bool PerformActionToEntity::Execute()
 
 						bool critical = false;
 
-						int damage_to_deal = action_to_perform.health_points_effect - App->entities->GetDarkWarrior()->GetCurrentIntelligencePoints();
+						int damage_to_deal = - App->entities->GetDarkWarrior()->GetCurrentIntelligencePoints()/3;
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 						random_thousand_faces_die = (rand() % 100) + 1;
@@ -1987,8 +1987,8 @@ bool PerformActionToEntity::Execute()
 
 			if (ret == true) {
 				actioner_entity->base_stats.agility += 3;
-				actioner_entity->base_stats.agility += 3;
-				actioner_entity->base_stats.strength += 2;
+				actioner_entity->base_stats.dexterity += 5;
+				actioner_entity->base_stats.strength += 3;
 
 				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "AGILITY UP", { 0,255,0,255 }, 14, nullptr, nullptr);
 				

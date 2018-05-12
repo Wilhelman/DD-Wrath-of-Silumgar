@@ -1857,7 +1857,7 @@
           <frame x="1745" y="2308" width="57" height="76"/>
         </animation>
 
-        <animation name="heavy_slash" speed="0.1" loop="false">
+        <animation name="heavy_slash" speed="0.25" loop="false">
           <frame x="1904" y="1177" width="156" height="106"/>
           <frame x="1699" y="1177" width="156" height="106"/>
           <frame x="1476" y="1177" width="156" height="106"/>
@@ -1887,7 +1887,7 @@
           <frame x="1745" y="2308" width="57" height="76"/>
         </animation>
 
-        <animation name="heavy_slash+" speed="0.1" loop="false">
+        <animation name="heavy_slash+" speed="0.25" loop="false">
           <frame x="1904" y="1177" width="156" height="106"/>
           <frame x="1699" y="1177" width="156" height="106"/>
           <frame x="1476" y="1177" width="156" height="106"/>

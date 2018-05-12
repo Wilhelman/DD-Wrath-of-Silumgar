@@ -156,7 +156,6 @@ You go around until you find the door that leads to the city. Once inside that f
        <map_element>
         <tier type="5" />
         <entity name="TROLL_LEADERS" />
-         <entity name="TROLL_LEADERS" />
         <scene name="ship.tmx" />
         <icon_coords x="192" y="512" width="32" height="32" />
         <decision name ="Once the Troll Lead is dead, you will find a letter written by Silumgar, which explains his plans is at the end of the region in search of more people to exterminate. That said, you start the road again, but this time more difficult, since you are starting to become known among the ranks of the enemies. For this, a new path opens up:"/>
@@ -166,7 +165,6 @@ You go around until you find the door that leads to the city. Once inside that f
        <map_element>
         <tier type="5" />
         <entity name="DISPLACER_BEAST" />
-         <entity name="DISPLACER_BEAST" />
         <scene name="ship.tmx" />
         <icon_coords x="192" y="512" width="32" height="32" />
         <decision name ="After defeating the Displacer Beast, one of your henchmen begs you for mercy in exchange for information, this explains Silumgar's plans, go east in search of new villages. Without further delay you will forgive your life and go on your search. As the last sneak tells you that your path will begin to seriously complicate to be gaining fame. For this, a new path opens up:"/>

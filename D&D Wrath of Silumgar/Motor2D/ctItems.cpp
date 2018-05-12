@@ -119,7 +119,7 @@ bool ctItems::Awake(pugi::xml_node& config)
 		switch (tmp_action.type)
 		{
 		case LOW_HEALTH_RECOVER_ACTION: {
-			tmp_action.health_points_effect = 30;
+			tmp_action.health_points_effect = 80;
 			description = "Heals 30 hp to an ally";
 			break;
 		}
@@ -130,7 +130,7 @@ bool ctItems::Awake(pugi::xml_node& config)
 			break;
 		}
 		case HIGH_HEALTH_RECOVER_ACTION: {
-			tmp_action.health_points_effect = 60;
+			tmp_action.health_points_effect = 200;
 			description = "Heals 60 hp to an ally";
 			break;
 		}

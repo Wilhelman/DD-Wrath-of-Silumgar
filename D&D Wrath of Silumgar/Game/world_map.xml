@@ -12,7 +12,7 @@
          <entity name="KOBOLD"/>
          <entity name="KOBOLD"/>
          <entity name="KOBOLD"/>
-          <scene name="tavern.tmx" />
+          <scene name="cave.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="After getting to defeat that band of vermin in Allard, our heroes decide to understand the path to Silumgar. This is where your first decision is presented:"/>
           <option name = "Empty"/>
@@ -128,7 +128,7 @@ Once you cross it you see two possible outputs:"/>
 	   <map_element>
         <tier type="4" />
         <entity name="GNOLL" />
-       <entity name="GNOLL" />
+       <entity name="KOBOLD" />
        <entity name="GNOLL" />
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
@@ -139,9 +139,9 @@ You go around until you find the door that leads to the city. Once inside that f
       
       <map_element>
         <tier type="4" />
-        <entity name="GNOLL" />
-        <entity name="GNOLL" />
+        <entity name="KOBOLD" />
         <entity name="OWLBEAR" />
+        <entity name="GNOLL" />
         <scene name="dungeon.tmx" />
         <icon_coords x="64" y="512" width="32" height="32" />
         <decision name ="Dead the enemies of the exit, you find yourself in what looks like the courtyard of a collapsed castle. When you leave, you see the head of the region in the harbor, about to take a boat. You start going out in your search, you can not let it escape:"/>

@@ -36,10 +36,10 @@
     </warrior>
 
     <cleric>
-      <ability  name="Mace Hit" tier="1" mana="0" branch="0" active ="1" description="Swings the mace to hit enemies based on strength">
+      <ability  name="Mace Hit" tier="1" mana="20" branch="0" active ="1" description="Swings the mace to hit enemies based on strength">
         <frame x="22" y="15" width="40" height="40"/>
       </ability>
-      <ability  name="Heal" tier="2" mana="32" branch="1" active ="0" description="Heals an ally or himself based on intelligence">
+      <ability  name="Heal" tier="2" mana="20" branch="1" active ="0" description="Heals an ally or himself based on intelligence">
         <frame x="108" y="56" width="40" height="40"/>
       </ability>
       <ability  name="Light Strike" tier="2" mana="26" branch="2" active ="0" description="Hits enemy with a magic attack based on intelligence">
@@ -69,7 +69,7 @@
     </cleric>
 
     <dwarf>
-      <ability  name="Axe slash" tier="1" mana="0" branch="0" active ="1" description ="Deals physical damage based on strength">
+      <ability  name="Axe slash" tier="1" mana="20" branch="0" active ="1" description ="Deals physical damage based on strength">
         <frame x="197" y="98" width="40" height="40"/>
       </ability>
       <ability  name="Morale Boost" tier="2" mana="17" branch="1" active ="0" description ="Small boost to strength and intelligence for 2 turns on an ally">
@@ -102,7 +102,7 @@
     </dwarf>
 
     <elf>
-      <ability  name="Slash" tier="1" mana="0" branch="0" active ="1" description ="Deals damage based on strength">
+      <ability  name="Slash" tier="1" mana="20" branch="0" active ="1" description ="Deals damage based on strength">
         <frame x="288" y="242" width="40" height="40"/>
       </ability>
       <ability  name="Seed Of Life" tier="2" mana="27" branch="1" active ="0" description ="Casts 2 magic life balls that heal an ally or damage an enemy based on intelligence">

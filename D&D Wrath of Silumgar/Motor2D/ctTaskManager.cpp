@@ -3964,7 +3964,7 @@ bool PerformActionToEntity::Execute()
 				damage_to_deal = damage_to_deal;
 				receiver_entity->SetCurrentManaPoints(receiver_entity->GetCurrentManaPoints() + damage_to_deal);
 				//receiver_entity->animation = &receiver_entity->hit;
-				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+				App->combat->UpdateManaBarOfEntity(receiver_entity, damage_to_deal);
 				std::string tmp_dmg = std::to_string(damage_to_deal);
 
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 0,0,255,255 }, 14, nullptr, nullptr);
@@ -4007,7 +4007,7 @@ bool PerformActionToEntity::Execute()
 				damage_to_deal = damage_to_deal;
 				receiver_entity->SetCurrentManaPoints(receiver_entity->GetCurrentManaPoints() + damage_to_deal);
 				//receiver_entity->animation = &receiver_entity->hit;
-				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
+				App->combat->UpdateManaBarOfEntity(receiver_entity, damage_to_deal);
 				std::string tmp_dmg = std::to_string(damage_to_deal);
 
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 0,0,255,255 }, 14, nullptr, nullptr);

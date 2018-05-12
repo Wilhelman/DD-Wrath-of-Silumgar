@@ -190,7 +190,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <entity name="GNOLL" />
         <scene name="mountain.tmx" />
         <icon_coords x="160" y="512" width="32" height="32" />
-        <decision name ="TO DO"/>
+        <decision name ="Leaving behind the corpses of the enemies, you get out of that way, seeing several ways to the distance:"/>
         <option name = "Taking a new route, you decide to go by a narrow passage that sneaks through the mountains, several crows fly around you, inspiring mistrust."/>
       </map_element>
       
@@ -200,7 +200,7 @@ You go around until you find the door that leads to the city. Once inside that f
          <entity name="ALCHEMISTGOBLIN" />
         <entity name="GNOLL" />
         <entity name="GNOLL" />
-        <scene name="mountain.tmx" />
+        <scene name="cave_06.tmx" />
         <icon_coords x="160" y="480" width="32" height="32" />
         <decision name ="After defeating the enemies you are forced to flee the path to divert attention. To get out of this you have more than one possibility:"/>
         <option name = "Leave the city by the other band, entering again towards the mountain."/>
@@ -238,7 +238,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
-        <option name = "Going into the forest."/>
+        <option name = "Go into the forest from which comes a large smoke."/>
       </map_element>
       
        <map_element>
@@ -250,7 +250,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <scene name="cave_06.tmx" />
         <icon_coords x="160" y="480" width="32" height="32" />
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
-        <option name = "Going into the forest."/>
+        <option name = "You cross a rocky area, apparently open."/>
       </map_element>
       
       <!--TIER 8 MAP-->
@@ -260,7 +260,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <scene name="castle.tmx" />
         <icon_coords x="32" y="512" width="32" height="32" />
         <decision name ="You have managed to save the world once more. CONGRATULATIONS!"/>
-        <option name = "start the final battle!"/>
+        <option name = "START THE FINAL BATTLE!"/>
       </map_element>
       
      <!-- <icon_coords x="32" y="480" width="32" height="32" /> Cave interior 

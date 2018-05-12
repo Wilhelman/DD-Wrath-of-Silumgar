@@ -109,7 +109,7 @@
     </kobold>
 
     <goblin>
-      <statistics constitution ="7" focus="3" strength="5" agility="4" dexterity ="4" intelligence="2" physicalDefense="3" magicalDefense="0" judgement="10"/>
+      <statistics constitution ="7" focus="3" strength="4" agility="5" dexterity ="4" intelligence="2" physicalDefense="3" magicalDefense="0" judgement="10"/>
       <animations>
 
         <animation name="idle" speed="1.5" loop="true">
@@ -172,7 +172,7 @@
     </goblin>
 
     <alchemistGoblin>
-      <statistics constitution ="5" focus="5" strength="6" agility="4" dexterity ="4" intelligence="4"  physicalDefense="2" magicalDefense="3" judgement="25"/>
+      <statistics constitution ="5" focus="5" strength="2" agility="7" dexterity ="4" intelligence="4"  physicalDefense="2" magicalDefense="3" judgement="25"/>
       <animations>
 
         <animation name="idle" speed="1.5" loop="true">
@@ -245,7 +245,7 @@
     </alchemistGoblin>
 
     <heavyGoblin>
-      <statistics constitution ="10" focus="5" strength="3" agility="4" dexterity ="7" intelligence="3" physicalDefense="4" magicalDefense="2" judgement="30"/>
+      <statistics constitution ="10" focus="5" strength="4" agility="4" dexterity ="7" intelligence="3" physicalDefense="4" magicalDefense="2" judgement="30"/>
       <animations>
 
         <animation name="idle" speed="1.5" loop="true">
@@ -314,7 +314,7 @@
     </heavyGoblin>
 
     <gnoll>
-      <statistics constitution ="11" focus="6" strength="5" agility="3"  dexterity ="4" intelligence="3" physicalDefense="4" magicalDefense="3" judgement="60"/>
+      <statistics constitution ="11" focus="6" strength="4" agility="3"  dexterity ="4" intelligence="3" physicalDefense="4" magicalDefense="3" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">

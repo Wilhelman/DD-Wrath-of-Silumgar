@@ -11,6 +11,7 @@
           <tier type="1" />
          <entity name="KOBOLD"/>
          <entity name="KOBOLD"/>
+         <entity name="KOBOLD"/>
           <scene name="tavern.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="After getting to defeat that band of vermin in Allard, our heroes decide to understand the path to Silumgar. This is where your first decision is presented:"/>
@@ -20,8 +21,9 @@
       <!--TIER 2 MAPS-->
       <map_element>
         <tier type="2" />
-        <entity name="KOBOLD" />
-		    <entity name="KOBOLD" />
+        <entity name="GOBLIN" />
+		    <entity name="ALCHEMISTGOBLIN"/>
+        <entity name="HEAVYGOBLIN"/>
         <scene name="mountain.tmx" />
         <icon_coords x="160" y="512" width="32" height="32" />
         <decision name ="After an arduous battle to be ambushed by a small group of enemies, you stop for a moment to recover your strength, but you quickly hear the footsteps of more enemies that arrive, that's why you enter a small cave, in it you find more than a path to follow:"/>
@@ -31,6 +33,7 @@
       <map_element>
         <tier type="2" />
         <entity name="GOBLIN" />
+        <entity name="KOBOLD" />
         <entity name="GNOLL" />
         <scene name="cave_05.tmx" />
         <icon_coords x="96" y="480" width="32" height="32" />
@@ -41,8 +44,10 @@
 
       <map_element>
         <tier type="2" />
-        <entity name="KOBOLD" />
-        <entity name="GNOLL" />
+        <entity name="GOBLIN" />
+        <entity name="ALCHEMISTGOBLIN"/>
+        <entity name="KOBOLD"/>
+        <entity name="KOBOLD"/>
         <scene name="cave_06.tmx" />
         <icon_coords x="160" y="480" width="32" height="32" />
         <decision name ="Right at the end of the battle, the narrow corridor through which you go begins to break, you started to run, but without result, since you end up in what looks like a cave. In it there are several routes:"/>
@@ -51,7 +56,7 @@
 
       <map_element>
         <tier type="2" />
-        <entity name="KOBOLD" />
+        <entity name="ALCHEMISTGOBLIN" />
         <entity name="KOBOLD" />
         <entity name="GNOLL" />
 		    <scene name="dungeon.tmx" />

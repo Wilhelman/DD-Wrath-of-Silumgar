@@ -61,19 +61,7 @@ private:
 	void NavigateUp(std::vector<UIElement*> &current_vector);
 	void ExecuteComand(std::vector<UIElement*> &current_vector);
 
-	//test
-	Emitter* eFire = nullptr;
-	Emitter* eSmoke = nullptr;
-	Emitter* eFlame = nullptr;
-	Emitter* eWave_1 = nullptr;
-	Emitter* eWave_2 = nullptr;
-	Emitter* eBurst_1 = nullptr;
-	Emitter* eBurst_2 = nullptr;
-	Emitter* eBubbles = nullptr;
-	Emitter* eSpark = nullptr;
-	Emitter* ePixelSmoke = nullptr;
-	SDL_Rect rect = { 0, 0, 400, 400 };
-	SDL_Texture* torchTex = nullptr;
+	bool music_is_playing = false;
 };
 
 

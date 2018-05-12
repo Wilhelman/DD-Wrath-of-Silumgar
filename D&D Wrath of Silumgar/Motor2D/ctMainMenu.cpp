@@ -71,7 +71,7 @@ bool ctMainMenu::Start()
 		
 		LOG("Error playing music in ctMainMenu Start");
 	}
-
+	music_is_playing = false;
 	//App->gui->AddUIPauseMenu(0,0,this,nullptr);
 	
 	return ret;
@@ -87,74 +87,6 @@ bool ctMainMenu::PreUpdate()
 bool ctMainMenu::Update(float dt)
 {
 	
-
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_POISON);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_POTION); 
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_MANA_POTION); 
-		
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		//App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_MINDBLOWN);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		//App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_KICK);
-	}
-	
-	if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		//App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HIGH_AXE);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
-	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos((float)mx, (float)my);
-		//App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_HEALTH_AREA);//health
-		App->psystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURNING);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
-	{
-		App->psystem->RemoveAllEmitters();
-	}
-	//----------------------------------
-
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
@@ -310,9 +242,13 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	if (new_game_label->current_state == STATE_EXECUTED) {
 		LOG("new_game_label pressed");
 
-		if (!App->audio->PlayMusic(App->audio->MainMenuVoice.c_str(),0.0f)) {
+		if (!music_is_playing) {
 
-			LOG("Error playing music in ctMainMenu Start");
+			if (!App->audio->PlayMusic(App->audio->MainMenuVoice.c_str(), 0.0f)) {
+
+				LOG("Error playing music in ctMainMenu Start");
+			}
+			music_is_playing = true;
 		}
 		if (App->fadeToBlack->FadeIsOver()) {
 			is_new_game = true;

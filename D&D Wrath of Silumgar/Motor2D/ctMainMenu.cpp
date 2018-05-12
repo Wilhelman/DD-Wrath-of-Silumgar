@@ -52,14 +52,14 @@ bool ctMainMenu::Start()
 	about_label = App->gui->AddUILabel(35, 70, App->language->GetDictionary().MM_about_btn.c_str(), { 255,0,0,255 }, 15, this);
 	quit_label = App->gui->AddUILabel(35, 90, App->language->GetDictionary().MM_quit_btn.c_str(), { 255,255,255,255 }, 15, this);
 	arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this);
-	//continue_label->current_state = STATE_FOCUSED;
+
 	new_game_label->current_state = STATE_FOCUSED;
-	//arrow->SetParent(continue_label);
+
 	arrow->SetParent(new_game_label);
-	//labels.push_back(continue_label);
+
 	labels.push_back(new_game_label);
 	labels.push_back(settings_label);
-	//labels.push_back(about_label);
+
 	labels.push_back(quit_label);
 
 	if (App->audio->device_connected) {
@@ -72,7 +72,7 @@ bool ctMainMenu::Start()
 		LOG("Error playing music in ctMainMenu Start");
 	}
 	music_is_playing = false;
-	//App->gui->AddUIPauseMenu(0,0,this,nullptr);
+
 	
 	return ret;
 }

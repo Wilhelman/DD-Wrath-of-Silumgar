@@ -996,13 +996,7 @@ void ctSkillTree::GoToNextSkillTree(){
 		}
 	}
 	else {
-		/*current_hero = 1;
-		selected_ability = cleric_abilities.begin();
-		ChangeDescriptionBG();
-		PrintAbilityDescription();
-		marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
-		marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
-		ChangeTitle();*/
+
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 	}
 }

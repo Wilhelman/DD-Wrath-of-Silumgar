@@ -920,27 +920,27 @@ void ctCombat::LoadItem(pugi::xml_node item, Entity * entity)
 	}
 	else if (tmp == "Mega Life Potion") {
 		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
-			entity->AddUsableItem(App->items->usable_items.at(0));
+			entity->AddUsableItem(App->items->usable_items.at(1));
 	}
 	else if (tmp == "Mana Potion") {
 		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
-			entity->AddUsableItem(App->items->usable_items.at(0));
+			entity->AddUsableItem(App->items->usable_items.at(2));
 	}
 	else if (tmp == "Mega Mana Potion") {
 		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
-			entity->AddUsableItem(App->items->usable_items.at(0));
+			entity->AddUsableItem(App->items->usable_items.at(3));
 	}
 	else if (tmp == "Poisoned Dagger") {
 		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
-			entity->AddUsableItem(App->items->usable_items.at(0));
+			entity->AddUsableItem(App->items->usable_items.at(4));
 	}
 	else if (tmp == "Dragon Essence") {
 		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
-			entity->AddUsableItem(App->items->usable_items.at(0));
+			entity->AddUsableItem(App->items->usable_items.at(5));
 	}
 	else if (tmp == "Fenix Tail") {
 		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
-			entity->AddUsableItem(App->items->usable_items.at(0));
+			entity->AddUsableItem(App->items->usable_items.at(6));
 	}
 }
 

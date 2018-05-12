@@ -698,7 +698,7 @@ bool PerformActionToEntity::Execute()
 
 
 						int damage_to_deal = - (App->entities->GetDarkWarrior()->GetCurrentIntelligencePoints() * 2);
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 
 
 						damage_to_deal = damage_to_deal - damage_reduction;
@@ -1935,7 +1935,7 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = - App->entities->GetDarkWarrior()->GetCurrentIntelligencePoints()/3;
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 						random_thousand_faces_die = (rand() % 100) + 1;
 						if (random_thousand_faces_die <= actioner_dexterity) {
@@ -2240,8 +2240,8 @@ bool PerformActionToEntity::Execute()
 
 						bool critical = false;
 
-						int damage_to_deal = action_to_perform.health_points_effect- App->entities->GetDisplacerBeast()->GetCurrentStrengthPoints();
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						int damage_to_deal = action_to_perform.health_points_effect- App->entities->GetDisplacerBeast()->GetCurrentIntelligencePoints();
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 						random_thousand_faces_die = (rand() % 100) + 1;
 						if (random_thousand_faces_die <= actioner_dexterity) {
@@ -2300,7 +2300,7 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect-App->entities->GetDisplacerBeast()->GetCurrentStrengthPoints();
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 						random_thousand_faces_die = (rand() % 100) + 1;
 						if (random_thousand_faces_die <= actioner_dexterity) {
@@ -2450,7 +2450,8 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect - (5 + App->entities->GetCleric()->GetCurrentIntelligencePoints());
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints()
+							/ 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
 						random_thousand_faces_die = (rand() % 100) + 1;
@@ -2685,7 +2686,7 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect - (1.6* App->entities->GetCleric()->GetCurrentIntelligencePoints());
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
 						random_thousand_faces_die = (rand() % 100) + 1;
@@ -3067,7 +3068,7 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect - (App->entities->GetCleric()->GetCurrentIntelligencePoints() / 6);
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
 						random_thousand_faces_die = (rand() % 100) + 1;
@@ -3159,7 +3160,7 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect - (1.4*App->entities->GetCleric()->GetCurrentIntelligencePoints());
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
 						random_thousand_faces_die = (rand() % 100) + 1;
@@ -3347,7 +3348,7 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect - (1.2*App->entities->GetElf()->GetCurrentIntelligencePoints());
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
 						random_thousand_faces_die = (rand() % 100) + 1;
@@ -3448,7 +3449,7 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect - (1.6 - App->entities->GetCleric()->GetCurrentIntelligencePoints());
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
 						random_thousand_faces_die = (rand() % 100) + 1;
@@ -3539,7 +3540,7 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect - (2.1* App->entities->GetCleric()->GetCurrentIntelligencePoints());
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
 						random_thousand_faces_die = (rand() % 100) + 1;
@@ -3643,7 +3644,7 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect - (1.8 * App->entities->GetElf()->GetCurrentIntelligencePoints());
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
 						random_thousand_faces_die = (rand() % 100) + 1;
@@ -3779,7 +3780,7 @@ bool PerformActionToEntity::Execute()
 						bool critical = false;
 
 						int damage_to_deal = action_to_perform.health_points_effect - (75 + App->entities->GetElf()->GetCurrentIntelligencePoints());
-						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
 						random_thousand_faces_die = (rand() % 100) + 1;

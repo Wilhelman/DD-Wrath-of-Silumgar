@@ -1880,9 +1880,9 @@ bool PerformActionToEntity::Execute()
 
 				bool critical = false;
 
-				int damage_to_deal = 6 * App->entities->GetElf()->GetCurrentIntelligencePoints();
+				int damage_to_deal = 2 * App->entities->GetElf()->GetCurrentIntelligencePoints();
 
-				damage_to_deal = App->entities->GetElf()->GetCurrentIntelligencePoints();
+				
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 				//receiver_entity->animation = &receiver_entity->hit;
 				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
@@ -2632,9 +2632,9 @@ bool PerformActionToEntity::Execute()
 
 				bool critical = false;
 
-				int damage_to_deal = 9 * App->entities->GetElf()->GetCurrentIntelligencePoints();
+				int damage_to_deal = 3.2 * App->entities->GetElf()->GetCurrentIntelligencePoints();
 
-				damage_to_deal = App->entities->GetElf()->GetCurrentIntelligencePoints();
+				
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 
 				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
@@ -2880,9 +2880,9 @@ bool PerformActionToEntity::Execute()
 
 				bool critical = false;
 
-				int damage_to_deal = 14 * App->entities->GetElf()->GetCurrentIntelligencePoints();
+				int damage_to_deal = 4 * App->entities->GetElf()->GetCurrentIntelligencePoints();
 
-				damage_to_deal = App->entities->GetElf()->GetCurrentIntelligencePoints();
+				
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 
 				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);

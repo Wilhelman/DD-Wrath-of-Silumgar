@@ -26,6 +26,7 @@
 #include "j1Language.h"
 #include "ctLootMenu.h"
 #include "ctFinalScene.h"
+#include "ctCutsceneManager.h"
 
 // Constructor
 ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
@@ -50,6 +51,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	gui = new ctGui();
 	fonts = new ctFonts();
 	task_manager = new ctTaskManager();
+	cutscene_manager = new ctCutsceneManager();
 	fadeToBlack = new ctFadeToBlack();
 	skill_tree = new ctSkillTree();
 	psystem = new j1ParticleSystem();
@@ -76,6 +78,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(gui);
 	AddModule(fonts);
 	AddModule(task_manager);
+	AddModule(cutscene_manager);
 	AddModule(psystem);
 	AddModule(fadeToBlack);
 	

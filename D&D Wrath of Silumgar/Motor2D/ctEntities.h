@@ -116,8 +116,11 @@ public:
 	DarkWarrior* GetDarkWarrior()const;
 	TrollLeaders* GetTrollLeader()const;
 	DisplacerBeast* GetDisplacerBeast()const;
+	//Lich2* GetLich() const;
 
 	MiniHeroes* GetMiniheroes()const;
+
+	Entity* GetActor(int actor_code);
 
 	std::vector<Entity*> entities;
 	std::vector<Entity*> draw_priority_entities;

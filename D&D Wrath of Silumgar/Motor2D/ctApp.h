@@ -31,6 +31,7 @@ class ctSkillTree;
 class j1ParticleSystem;
 class LootMenu;
 class ctFinalScene;
+class ctCutsceneManager;
 
 class ctApp
 {
@@ -120,6 +121,7 @@ public:
 	j1Language*			language = nullptr;
 	ctFonts*			fonts = nullptr;
 	ctTaskManager*		task_manager = nullptr;
+	ctCutsceneManager*	cutscene_manager = nullptr;
 	ctFadeToBlack*		fadeToBlack = nullptr;
 	ctSkillTree*		skill_tree = nullptr;
 	j1ParticleSystem*	psystem = nullptr;

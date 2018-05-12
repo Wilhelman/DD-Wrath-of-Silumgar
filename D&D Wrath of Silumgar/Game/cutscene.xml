@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--cutscene action codes: 0->MoveX 1->MoveY  2->DialogBox  3->MoveCameraX  4->MoveCameraY-->
+
+<cutscenes>
+  <final_cutscene>
+    <cutscene_action cutscene_action ="2" start_time ="0" end_time="5000" text="Que puta es tu yaya"/>
+    
+  </final_cutscene>
+</cutscenes>

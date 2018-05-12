@@ -53,11 +53,6 @@ public:
 
 private:
 
-	UIElement* Dialog_Box = nullptr;
-	UIElement* Text_continue = nullptr;
-	UIElement* Background = nullptr;
-	int times_x_pressed = 0;
-
 
 };
 

@@ -231,6 +231,9 @@
     <ClCompile Include="Lich1.cpp">
       <Filter>Core\Modules\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="ctCutsceneManager.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -443,6 +446,9 @@
     </ClInclude>
     <ClInclude Include="Lich1.h">
       <Filter>Core\Modules\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ctCutsceneManager.h">
+      <Filter>Core\Modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

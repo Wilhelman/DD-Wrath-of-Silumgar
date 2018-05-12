@@ -502,6 +502,22 @@ Hellhound* ctEntities::GetHellhound() const {
 	return nullptr;
 
 }
+/*
+Lich2* ctEntities::GetLich() const {
+
+	for (uint i = 0; i < entities.size(); ++i)
+	{
+		if (entities.at(i) != nullptr)
+		{
+			if (entities[i]->type == LICH_2)
+				return (Lich2*)entities[i];
+		}
+	}
+
+	return nullptr;
+
+}
+*/
 
 MiniHeroes* ctEntities::GetMiniheroes() const {
 
@@ -623,5 +639,21 @@ void ctEntities::OrderDrawEntities()
 	draw_priority_entities = order_entity;
 
 	order_entity.clear();
+}
+
+Entity* ctEntities::GetActor(int actor_code) {
+
+	switch (actor_code) {
+	case CLERIC:
+		return GetCleric();
+		break;
+	case WARRIOR:
+		return GetWarrior();
+		break;
+	default:
+		return nullptr;
+		break;
+	}
+
 }
 

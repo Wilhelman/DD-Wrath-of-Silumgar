@@ -12,7 +12,7 @@
          <entity name="KOBOLD"/>
          <entity name="KOBOLD"/>
          <entity name="KOBOLD"/>
-          <scene name="cave.tmx" />
+          <scene name="tavern.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="After getting to defeat that band of vermin in Allard, our heroes decide to understand the path to Silumgar. This is where your first decision is presented:"/>
           <option name = "Empty"/>
@@ -69,7 +69,6 @@
       <map_element>
         <tier type="3" />
         <entity name="KOBOLD" />
-        <entity name="HELLHOUND" />
         <entity name="GOBLIN" />
         <scene name="cave_02.tmx" />
         <icon_coords x="64"  y="480" width="32" height="32" />
@@ -105,7 +104,7 @@ Once you cross it you see two possible outputs:"/>
       <map_element>
         <tier type="3" />
         <entity name="KOBOLD" />
-        <entity name="TRITON" />
+        <entity name="GOBLIN" />
         <entity name="GNOLL" />
         <scene name="cave.tmx" />
         <icon_coords x="32" y="480" width="32" height="32" />

@@ -131,7 +131,7 @@ Once you cross it you see two possible outputs:"/>
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
         <decision name ="After defeating the enemies, one of them tells you that in the city you will find defeat. Without knowing very well what he says, you continue advancing through the forest until you come across some walls.
-You go around until you find the door that leads to the city. Once inside that feeling that you had in the forest begins to disappear, but for a short time, since you see the head of the region trying to escape. It is your only hope to get information about Silumgar, DO NOT LET ME ESCAPE!"/>
+You go around until you find the door that leads to the city. Once inside that feeling that you had in the forest begins to disappear, but for a short time, since you see the head of the region trying to escape. It is your only hope to get information about Silumgar, you can not let it escape:"/>
         <option name = "A dense forest in which the environment is charged, a sensation of heaviness that only increased being there."/>
       </map_element>
       

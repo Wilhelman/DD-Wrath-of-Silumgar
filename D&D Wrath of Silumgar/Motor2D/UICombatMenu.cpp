@@ -591,13 +591,13 @@ void UICombatMenu::LoadAbilities() {
 			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background,DEFAULT_FONT, true));
 		}
 		else {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,0,0,0 }, font_size, nullptr, background, DEFAULT_FONT, true));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,0,0,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		if (entity->GetCurrentManaPoints() >= entity_actions.at(2).mana_points_effect_to_himself) {
 			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		else {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label3_pos.x, backgroundPos.y + label3_pos.y, names.at(2), { 255,0,0,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		names_iterator = 2;
 	}
@@ -612,7 +612,7 @@ void UICombatMenu::LoadAbilities() {
 			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,255,255,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		else {
-			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,0,0,0 }, font_size, nullptr, background, DEFAULT_FONT, true));
+			abilities.push_back(App->gui->AddUILabel(backgroundPos.x + label2_pos.x, backgroundPos.y + label2_pos.y, names.at(1), { 255,0,0,255 }, font_size, nullptr, background, DEFAULT_FONT, true));
 		}
 		names_iterator = 1;
 	}

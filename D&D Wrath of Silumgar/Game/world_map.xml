@@ -152,8 +152,8 @@ You go around until you find the door that leads to the city. Once inside that f
         <entity name="DARK_WARRIOR" />
         <scene name="ship.tmx" />
         <icon_coords x="192" y="512" width="32" height="32" />
-        <decision name ="Once the Dark Knight is dead, he ends up telling you that Silumgar is at the end of the region in search of more people to exterminate. That said, you start the road again, but this time more difficult, since you are starting to become known among the ranks of the enemies. For this, a new path opens up:"/>
-        <option name = "Pursue the dark knight and start the battle against him."/>
+        <decision name ="Once the Dark Warrior is dead, he ends up telling you that Silumgar is at the end of the region in search of more people to exterminate. That said, you start the road again, but this time more difficult, since you are starting to become known among the ranks of the enemies. For this, a new path opens up:"/>
+        <option name = "Pursue the Dark Warrior and start the battle against him."/>
       </map_element>
       
        <map_element>
@@ -179,6 +179,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <tier type="6" />
         <entity name="SKELETON" />
         <entity name="TRITON" />
+      <entity name="SKELETON" />
         <scene name="river.tmx" />
         <icon_coords x="224" y="512" width="32" height="32" />
         <decision name ="Because of the attack the boat, is unusable so you must walk forward again, luckily, you had more than one way to choose:"/>
@@ -200,18 +201,19 @@ You go around until you find the door that leads to the city. Once inside that f
         <tier type="6" />
          <entity name="OWLBEAR" />
         <entity name="GNOLL" />
-        <entity name="GNOLL" />
+        <entity name="GOBLIN" />
         <scene name="cave_06.tmx" />
         <icon_coords x="160" y="480" width="32" height="32" />
         <decision name ="After defeating the enemies you are forced to flee the path to divert attention. To get out of this you have more than one possibility:"/>
-        <option name = "Leave the city by the other band, entering again towards the mountain."/>
+        <option name = "Leave the city by the other side, entering again towards the mountain."/>
       </map_element>
       
         <!--TIER 7 MAPS-->
 	  <map_element>
         <tier type="7" />
        <entity name="OWLBEAR" />
-       <entity name="HELLHOUND" />
+       <entity name="HELLHOUND"/>
+      <entity name="SKELETON"/>
         <scene name="cave.tmx" />
         <icon_coords x="32" y="480" width="32" height="32" />
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>

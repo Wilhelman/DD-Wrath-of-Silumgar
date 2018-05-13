@@ -684,7 +684,7 @@
     </triton>
 
     <hellhound>
-      <statistics constitution ="9" focus="9" strength="6" agility="15" dexterity ="9" intelligence="9" physicalDefense="7" magicalDefense="5" judgement="40"/>
+      <statistics constitution ="9" focus="9" strength="6" agility="11" dexterity ="9" intelligence="9" physicalDefense="8" magicalDefense="6" judgement="40"/>
       <animations>
 
         <animation name="idle" speed="2.0" loop="true">
@@ -1080,7 +1080,7 @@
     </lich1st>
 
     <lich2nd>
-      <statistics constitution ="70" focus="999" strength="17"  agility="8"  dexterity ="25" intelligence="30" physicalDefense="18" magicalDefense="20" judgement="70"/>
+      <statistics constitution ="70" focus="999" strength="15"  agility="8"  dexterity ="25" intelligence="30" physicalDefense="18" magicalDefense="20" judgement="70"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">

@@ -134,15 +134,7 @@ bool ctCombat::Start()
 
 	SetDataToUI();
 
-	App->entities->GetCleric()->CalculateAllStatsNoMultiply();
-	App->entities->GetDwarf()->CalculateAllStatsNoMultiply();
-	App->entities->GetElf()->CalculateAllStatsNoMultiply();
-	App->entities->GetWarrior()->CalculateAllStatsNoMultiply();
 	OrderTurnPriority();
-	App->entities->GetCleric()->CalculateAllStats();
-	App->entities->GetDwarf()->CalculateAllStats();
-	App->entities->GetElf()->CalculateAllStats();
-	App->entities->GetWarrior()->CalculateAllStats();
 
 	for (std::vector<Entity *>::iterator it = turn_priority_entity.begin(); it != turn_priority_entity.end(); ++it) {
 		if ((*it)->type != CLERIC && (*it)->type != WARRIOR && (*it)->type != DWARF && (*it)->type != ELF) {
@@ -165,15 +157,7 @@ bool ctCombat::Start()
 			turn_priority_entity.push_back(*it_enemy);
 	}
 
-	App->entities->GetCleric()->CalculateAllStatsNoMultiply();
-	App->entities->GetDwarf()->CalculateAllStatsNoMultiply();
-	App->entities->GetElf()->CalculateAllStatsNoMultiply();
-	App->entities->GetWarrior()->CalculateAllStatsNoMultiply();
 	OrderTurnPriority();
-	App->entities->GetCleric()->CalculateAllStats();
-	App->entities->GetDwarf()->CalculateAllStats();
-	App->entities->GetElf()->CalculateAllStats();
-	App->entities->GetWarrior()->CalculateAllStats();
 
 	for (int i = 0; i < enemies.size(); i++) {
 		int pos_x = enemies.at(i)->position.x + (enemies.at(i)->animation->GetCurrentFrame().w / 2) - 25;
@@ -316,15 +300,7 @@ bool ctCombat::Update(float dt)
 						if (!(App->entities->GetDwarf()->GetCurrentManaPoints() >= dwarf_mana_bar->max_capacity))
 							dwarf_mana_bar->LowerBar(8);
 
-						App->entities->GetCleric()->CalculateAllStatsNoMultiply();
-						App->entities->GetDwarf()->CalculateAllStatsNoMultiply();
-						App->entities->GetElf()->CalculateAllStatsNoMultiply();
-						App->entities->GetWarrior()->CalculateAllStatsNoMultiply();
 						OrderTurnPriority();
-						App->entities->GetCleric()->CalculateAllStats();
-						App->entities->GetDwarf()->CalculateAllStats();
-						App->entities->GetElf()->CalculateAllStats();
-						App->entities->GetWarrior()->CalculateAllStats();
 
 					}
 

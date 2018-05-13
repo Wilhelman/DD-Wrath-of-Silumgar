@@ -827,7 +827,7 @@ bool PerformActionToEntity::Execute()
 
 
 				Altered_Stat defense;
-				defense.turn_left = 1;
+				defense.turn_left = 2;
 				defense.stat_effect_magical_defense = 1;
 				defense.stat_effect_physical_defense = 1;
 				receiver_entity->AddAlteredStat(defense);
@@ -2455,7 +2455,7 @@ bool PerformActionToEntity::Execute()
 
 						bool critical = false;
 
-						int damage_to_deal = action_to_perform.health_points_effect - (5 + App->entities->GetCleric()->GetCurrentIntelligencePoints());
+						int damage_to_deal = action_to_perform.health_points_effect * App->entities->GetCleric()->GetCurrentIntelligencePoints();
 						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints()
 							/ 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
@@ -2691,7 +2691,7 @@ bool PerformActionToEntity::Execute()
 
 						bool critical = false;
 
-						int damage_to_deal = action_to_perform.health_points_effect - (1.6* App->entities->GetCleric()->GetCurrentIntelligencePoints());
+						int damage_to_deal = action_to_perform.health_points_effect * App->entities->GetCleric()->GetCurrentIntelligencePoints();
 						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 

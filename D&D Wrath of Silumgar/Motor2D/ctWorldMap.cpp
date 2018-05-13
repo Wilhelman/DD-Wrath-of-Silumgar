@@ -204,6 +204,7 @@ bool ctWorldMap::Start()
 			decision->option_1->current_state = STATE_FOCUSED;
 			arrow->SetParent(decision->option_1);
 		}
+
 	}
 	return ret;
 }
@@ -244,13 +245,6 @@ bool ctWorldMap::Update(float dt)
 
 		}
 		
-
-
-		/*	IF HAVE TO QUIT THE GAME
-			App->main_menu->is_new_game = false;
-					if (App->fadeToBlack->FadeIsOver())
-						App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
-		*/
 
 		// DECISION
 		if (decision != nullptr)

@@ -1016,7 +1016,7 @@
     </displacerBeast>
 
     <lich1st>
-      <statistics constitution ="60" focus="999" strength="12" agility="20" dexterity ="30" intelligence="40"  physicalDefense="18" magicalDefense="20" judgement="70"/>
+      <statistics constitution ="60" focus="999" strength="8" agility="15" dexterity ="30" intelligence="30"  physicalDefense="18" magicalDefense="20" judgement="70"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -1080,7 +1080,7 @@
     </lich1st>
 
     <lich2nd>
-      <statistics constitution ="70" focus="999" strength="21"  agility="8"  dexterity ="25" intelligence="40" physicalDefense="18" magicalDefense="20" judgement="70"/>
+      <statistics constitution ="70" focus="999" strength="17"  agility="8"  dexterity ="25" intelligence="30" physicalDefense="18" magicalDefense="20" judgement="70"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">

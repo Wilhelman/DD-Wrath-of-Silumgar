@@ -95,8 +95,11 @@ bool  ctFinalScene::PostUpdate()
 bool  ctFinalScene::CleanUp()
 {
 	LOG("Freeing ctWorldMap");
-
 	
+	for (int i = 0; i < App->entities->entities.size(); i++)
+	{
+		App->entities->entities.at(i)->to_destroy = true;
+	}
 
 
 	return true;

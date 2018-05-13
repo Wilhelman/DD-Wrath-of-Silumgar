@@ -258,6 +258,10 @@ bool LootMenu::PostUpdate()
 
 
 	Draw();
+
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+		return false;
+
 	return true;
 }
 

@@ -44,6 +44,11 @@ bool ctMainMenu::Start()
 {
 	bool ret = true;
 
+	App->items->warrior_equip.clear();
+	App->items->cleric_equip.clear();
+	App->items->elf_equip.clear();
+	App->items->dwarf_equip.clear();
+
 	background = App->gui->AddUIImage(0, 0, { 337, 479, 484, 324 }, this);
 	continue_label = App->gui->AddUILabel(35, 10, App->language->GetDictionary().MM_continue_btn.c_str(), { 255,0,0,255 }, 15, this);
 	new_game_label = App->gui->AddUILabel(35, 30, App->language->GetDictionary().MM_new_game_btn.c_str(), { 255,255,255,255 }, 15, this);

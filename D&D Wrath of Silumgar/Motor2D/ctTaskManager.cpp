@@ -1886,7 +1886,7 @@ bool PerformActionToEntity::Execute()
 
 				bool critical = false;
 
-				int damage_to_deal = 2 * App->entities->GetElf()->GetCurrentIntelligencePoints();
+				int damage_to_deal = 2 * App->entities->GetCleric()->GetCurrentIntelligencePoints();
 
 				
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
@@ -2638,7 +2638,7 @@ bool PerformActionToEntity::Execute()
 
 				bool critical = false;
 
-				int damage_to_deal = 3.2 * App->entities->GetElf()->GetCurrentIntelligencePoints();
+				int damage_to_deal = 3.2 * App->entities->GetCleric()->GetCurrentIntelligencePoints();
 
 				
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
@@ -3077,7 +3077,7 @@ bool PerformActionToEntity::Execute()
 						}
 				
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-						App->combat->UpdateHPBarOfEntity(receiver_entity, receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
+						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
 
 						std::string tmp_dmg = std::to_string(damage_to_deal);
 						if (!critical) {
@@ -3444,7 +3444,7 @@ bool PerformActionToEntity::Execute()
 
 				receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 				//receiver_entity->animation = &receiver_entity->hit;
-				App->combat->UpdateHPBarOfEntity(receiver_entity, receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
+				App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
 
 				std::string tmp_dmg = std::to_string(damage_to_deal);
 				if (!critical) {

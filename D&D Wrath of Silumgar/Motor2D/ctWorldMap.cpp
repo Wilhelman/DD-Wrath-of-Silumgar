@@ -126,6 +126,12 @@ bool ctWorldMap::Start()
 		LOG("Fail to load spritesheet in WorldMap!");
 		ret = false;
 	}
+	
+
+	if (App->map->actual_tier == TIER_MAP_1) {
+		avatar_position.x = 40;
+		avatar_position.y = 170;
+	}
 
 	App->entities->SpawnEntity(avatar_position.x,avatar_position.y, MINIHEROES);
 
@@ -208,6 +214,9 @@ bool ctWorldMap::Start()
 		}
 
 	}
+
+	
+
 	return ret;
 }
 
@@ -325,10 +334,6 @@ bool ctWorldMap::CleanUp()
 		App->entities->GetMiniheroes()->to_destroy = true;
 
 	App->gui->DeleteUIElement(*start_combat_label);
-
-	if (App->map->actual_tier == TIER_MAP_8)
-		App->map->actual_tier = TIER_MAP_1;
-
 
 	App->map->CleanUp();
 	

@@ -610,7 +610,7 @@
     </owlbear>
 
     <triton>
-      <statistics constitution ="9" focus="14" strength="8" agility="9" dexterity ="9" intelligence="10" physicalDefense="8" magicalDefense="12" judgement="60"/>
+      <statistics constitution ="8" focus="14" strength="7" agility="8" dexterity ="9" intelligence="10" physicalDefense="7" magicalDefense="10" judgement="60"/>
       <animations>
 
  		    <animation name="idle" speed="1.5" loop="true">
@@ -1080,7 +1080,7 @@
     </lich1st>
 
     <lich2nd>
-      <statistics constitution ="70" focus="999" strength="15"  agility="8"  dexterity ="25" intelligence="30" physicalDefense="18" magicalDefense="20" judgement="70"/>
+      <statistics constitution ="60" focus="999" strength="13"  agility="8"  dexterity ="20" intelligence="20" physicalDefense="16" magicalDefense="18" judgement="70"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">

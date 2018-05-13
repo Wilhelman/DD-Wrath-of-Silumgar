@@ -200,8 +200,10 @@ bool ctWorldMap::Start()
 			break;
 		}
 		
-		decision->option_1->current_state = STATE_FOCUSED;
-		arrow->SetParent(decision->option_1);
+		if (decision != nullptr) {
+			decision->option_1->current_state = STATE_FOCUSED;
+			arrow->SetParent(decision->option_1);
+		}
 	}
 	return ret;
 }

@@ -78,7 +78,7 @@
       <ability  name="H. Axe" tier="2" mana="21" branch="2" active ="0" description ="Attacks with multiple axe swings that deal physical damage based on strength and deal extra damage to stunned enemies. Reduces enemy defenses by 25% for 1 turn">
         <frame x="197" y="10" width="40" height="40"/>
       </ability>
-      <ability  name="Dwarfs Wrath Plus" tier="2" mana="25" branch="3" active ="0" description ="Boosts dexterity by 50% for 2 turns">
+      <ability  name="Dwarfs Wrath" tier="2" mana="25" branch="3" active ="0" description ="Boosts dexterity by 50% for 2 turns">
         <frame x="244" y="54" width="40" height="40"/>
       </ability>
       <ability  name="Dwarfs Wrath Plus" tier="3" mana="17" branch="3" active ="0" description ="Strengthens Dwarfs Wrath lasting 3 turns">

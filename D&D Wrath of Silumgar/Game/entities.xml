@@ -1133,7 +1133,7 @@
         </animation>
 
         <animation name="hit" speed="0.05" loop="false">
-          <frame x="1305" y="591" width="114" height="51"/>
+          <frame x="1305" y="649" width="114" height="51"/>
         </animation>
 
         <animation name="death" speed="0.05" loop="false">

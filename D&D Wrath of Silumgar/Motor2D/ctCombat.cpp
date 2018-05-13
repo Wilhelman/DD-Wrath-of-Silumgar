@@ -318,11 +318,6 @@ bool ctCombat::Update(float dt)
 				}
 			}
 
-			//todo remove
-			if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
-				App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu, 1.0f);
-
-
 		}
 		
 		

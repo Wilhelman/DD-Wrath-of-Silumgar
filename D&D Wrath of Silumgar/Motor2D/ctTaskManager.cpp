@@ -782,7 +782,7 @@ bool PerformActionToEntity::Execute()
 						random_thousand_faces_die = (rand() % 100) + 1;
 
 						//TO TEST
-						if (random_thousand_faces_die < 50)
+						if (random_thousand_faces_die < 60)
 						{
 							Altered_Stat stun;
 							stun.stun = true;
@@ -3383,7 +3383,7 @@ bool PerformActionToEntity::Execute()
 							}
 						}
 
-						if (critical)
+						if (random_thousand_faces_die < 50)
 						{
 							App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "STUN", { 0,255,0,255 }, 14, nullptr, nullptr);
 							Altered_Stat stats_down;
@@ -3666,7 +3666,7 @@ bool PerformActionToEntity::Execute()
 							}
 						}
 
-						if (critical)
+						if (random_thousand_faces_die < 70)
 						{
 							App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "STUN", { 0,255,0,255 }, 14, nullptr, nullptr);
 							Altered_Stat stats_down;

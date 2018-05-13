@@ -177,9 +177,6 @@ bool ctSkillTree::Update(float dt)
 
 	App->map->Draw();
 	App->render->DrawQuad(marker_pos, 255, 0, 0, 255, true, true);
-	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
-		//GoToNextSkillTree();
-	//}
 
 	if (current_hero == 1)
 	{

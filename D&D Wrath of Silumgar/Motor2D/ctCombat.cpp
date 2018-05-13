@@ -1233,6 +1233,9 @@ void ctCombat::DrawTurnPriority()
 		case DARK_WARRIOR:
 			rect = { 89,251,26,26 };
 			break;
+		case LICH_2:
+			rect = { 719,19,26,26 };
+			break;
 		case MINIHEROES:
 			break;
 		case NO_TYPE:

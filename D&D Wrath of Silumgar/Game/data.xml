@@ -83,7 +83,7 @@
 				<skill name="Fireball Plus" description="Empowers Fireball to deal greater damage and have a higher chance to burn enemies" mana_points_effect_to_himself="23" health_points_effect="-40" burn_chance="50" objective="1" have_to_move="0" owned="0" />
 				<skill name="Lightning Boolt Plus" description="Strenghtens Lightning Bolt to deal higher damage and increase the chance to stun" mana_points_effect_to_himself="40" health_points_effect="-40" stun_chance="70" objective="1" have_to_move="0" owned="0" />
 				<skill name="Revive" description="Casts a powerfull spell to bring back from the dead an ally with a small amount of health that increases based on intelligence" mana_points_effect_to_himself="20" health_points_effect="60" objective="2" have_to_move="0" owned="0" />
-				<skill name="Fire Djinn" description="Summons the Fire Djiin to deal heavy damage based on intelligence" mana_points_effect_to_himself="35" health_points_effect="-40" burn_chance="100" objective="1" have_to_move="0" owned="0" />
+				<skill name="Fire Djinn" description="Summons the Fire Djiin to deal heavy damage based on intelligence" mana_points_effect_to_himself="40" health_points_effect="-40" burn_chance="100" objective="1" have_to_move="0" owned="0" />
 			</skills>
 			<items>
 				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />

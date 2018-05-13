@@ -779,12 +779,17 @@ bool PerformActionToEntity::Execute()
 						receiver_entity->Damaged();
 
 
-						//TO TEST 
-						Altered_Stat stun;
-						stun.stun = true;
-						stun.turn_left = 2;
+						random_thousand_faces_die = (rand() % 100) + 1;
 
-						receiver_entity->AddAlteredStat(stun);
+						//TO TEST
+						if (random_thousand_faces_die < 50)
+						{
+							Altered_Stat stun;
+							stun.stun = true;
+							stun.turn_left = 2;
+
+							receiver_entity->AddAlteredStat(stun);
+						}
 					}
 				}
 				else {//ACTIONER MISSES!
@@ -987,13 +992,14 @@ bool PerformActionToEntity::Execute()
 						receiver_entity->Damaged();
 
 
-						//TO TEST 
-						Altered_Stat stun;
-						stun.stun = true;
-						stun.turn_left = 2;
-						stun.stat_effect_physical_defense = -1;
+						if (random_thousand_faces_die < 70)
+						{
+							Altered_Stat stun;
+							stun.stun = true;
+							stun.turn_left = 2;
 
-						receiver_entity->AddAlteredStat(stun);
+							receiver_entity->AddAlteredStat(stun);
+						}
 					}
 				}
 				else {//ACTIONER MISSES!
@@ -1596,7 +1602,7 @@ bool PerformActionToEntity::Execute()
 						}
 
 						if (receiver_entity->IsStunned())
-							damage_to_deal = damage_to_deal * 1.5;
+							damage_to_deal = damage_to_deal * 1.3;
 
 						damage_to_deal = damage_to_deal - damage_reduction;
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
@@ -3333,7 +3339,7 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
-				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints()+5;
+				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints()+7;
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 
@@ -3349,7 +3355,7 @@ bool PerformActionToEntity::Execute()
 
 						bool critical = false;
 
-						int damage_to_deal = action_to_perform.health_points_effect - (1.2*App->entities->GetElf()->GetCurrentIntelligencePoints());
+						int damage_to_deal = action_to_perform.health_points_effect - (1.5*App->entities->GetElf()->GetCurrentIntelligencePoints());
 						float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 
@@ -3631,7 +3637,7 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
-				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
+				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints()+14;
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 

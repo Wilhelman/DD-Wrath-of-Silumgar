@@ -4162,6 +4162,18 @@ bool PerformActionToEntity::HaveObjective()
 
 	if (receiver_entity->GetCurrentHealthPoints() == 0) {
 		if (actioner_entity->type == ELF || actioner_entity->type == CLERIC || actioner_entity->type == WARRIOR || actioner_entity->type == DWARF) {
+			if (receiver_entity->type == ELF || receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == DWARF) {
+				for (int i = 0; i < App->combat->heroes.size(); i++)
+				{
+					receiver_entity = App->combat->heroes.at(i);
+					if (receiver_entity->GetCurrentHealthPoints() != 0)
+						break;
+				}
+				if (receiver_entity->GetCurrentHealthPoints() == 0)
+					return false;
+			}
+
+		else {
 			for (int i = 0; i < App->combat->enemies.size(); i++)
 			{
 				receiver_entity = App->combat->enemies.at(i);
@@ -4170,6 +4182,7 @@ bool PerformActionToEntity::HaveObjective()
 			}
 			if (receiver_entity->GetCurrentHealthPoints() == 0)
 				return false;
+		}
 		}
 		else {
 			for (int i = 0; i < App->combat->heroes.size(); i++)

@@ -218,24 +218,7 @@ bool ctCombat::Update(float dt)
 				}
 			}
 
-			//if (pauseMenu == nullptr && pause_menu_is_open == true)
-			/*{
-				//THAT NEED A EYE
-				if (App->entities->GetCleric()->position == App->entities->GetCleric()->initial_position)
-				{
-					if (App->entities->GetWarrior()->position == App->entities->GetWarrior()->initial_position)
-					{
-						if (App->entities->GetElf()->position == App->entities->GetElf()->initial_position)
-						{
-							if (App->entities->GetDwarf()->position == App->entities->GetDwarf()->initial_position)
-							{
-								pause_menu_is_open = false;
-
-							}
-						}
-					}
-				}
-			}*/
+	
 		}
 
 		if (pauseMenu == nullptr || pause_menu_is_open == false)
@@ -262,6 +245,8 @@ bool ctCombat::Update(float dt)
 
 				int current_entities = 0;
 				if (App->task_manager->TaskQueue.size() == 0 && App->task_manager->aux_task == nullptr) {
+
+					
 
 					for (int i = 0; i < App->entities->entities.size(); i++)
 					{
@@ -336,26 +321,7 @@ bool ctCombat::Update(float dt)
 			if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
 				App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu, 1.0f);
 
-			// ZOOM
 
-			//if (App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN)
-			//{
-			//	App->render->scale_factor += 0.1;
-			//}
-			//if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
-			//{
-			//	App->render->scale_factor -= 0.1;
-			//}
-			//if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
-			//{
-			//	App->render->camera.x+=10;
-			//}
-			//if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
-			//{
-			//	App->render->camera.x -= 10;
-			//}
-
-			// Draw everything --------------------------------------
 		}
 		
 		
@@ -1174,7 +1140,7 @@ void ctCombat::OrderTurnPriority()
 			count++;
 			if (count != turn_priority_entity.size())
 			{
-				if ((*it)->base_stats.agility < (*itnext)->base_stats.agility)
+				if ((*it)->current_agility_points < (*itnext)->current_agility_points)
 				{
 					Entity* entity_tmp = (*it);
 

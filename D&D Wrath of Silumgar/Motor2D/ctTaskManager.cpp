@@ -3061,20 +3061,20 @@ bool PerformActionToEntity::Execute()
 
 				int random_thousand_faces_die = (rand() % 100) + 1;
 
-				if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
-					int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
+				//if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
+				//	int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
-					random_thousand_faces_die = (rand() % 100) + 1;
-					if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK
-						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
-						receiver_entity->animation = &receiver_entity->dodge;
-					}
-					else {// THE ATTACK HITS
+				//	random_thousand_faces_die = (rand() % 100) + 1;
+				//	if (random_thousand_faces_die <= receiver_agility && !receiver_entity->IsStunned()) {// THE RECEIVER DODGES THE ATTACK
+				//		App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Dodge", { 204,204,0,255 }, 14, nullptr, nullptr);
+				//		receiver_entity->animation = &receiver_entity->dodge;
+				//	}
+				//	else {// THE ATTACK HITS
 
 						bool critical = false;
 
 
-						int damage_to_deal =  1.5*App->entities->GetCleric()->GetCurrentIntelligencePoints() ;
+						int damage_to_deal =  1.5*App->entities->GetElf()->GetCurrentIntelligencePoints() ;
 			
 
 						actioner_dexterity = actioner_dexterity / 10;
@@ -3086,14 +3086,14 @@ bool PerformActionToEntity::Execute()
 						}
 				
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-						receiver_entity->animation = &receiver_entity->hit;
+						//receiver_entity->animation = &receiver_entity->hit;
 						App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
 
 						std::string tmp_dmg = std::to_string(damage_to_deal);
 						if (!critical) {
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 0,255,0,255 }, 14, nullptr, nullptr);
 							App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
-							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 0,255,0,255 }, 14, nullptr, nullptr);
 							//TODO SITO
 							fPoint posP;
 							if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
@@ -3123,12 +3123,12 @@ bool PerformActionToEntity::Execute()
 							}
 						}
 
-						receiver_entity->Damaged();
-					}
-				}
-				else {//ACTIONER MISSES!
-					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
-				}
+						//receiver_entity->Damaged();
+					//}
+				//}
+				//else {//ACTIONER MISSES!
+					//App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
+				//}
 				//animate the receiver to hit + audio or smth
 				actioner_entity->Ability1T1();
 

@@ -177,7 +177,7 @@ You go around until you find the door that leads to the city. Once inside that f
 	  <!--TIER 6 MAPS-->
 	  <map_element>
         <tier type="6" />
-        <entity name="TRITON" />
+        <entity name="SKELETON" />
         <entity name="TRITON" />
         <scene name="river.tmx" />
         <icon_coords x="224" y="512" width="32" height="32" />
@@ -187,8 +187,7 @@ You go around until you find the door that leads to the city. Once inside that f
       
       <map_element>
         <tier type="6" />
-       <entity name="ALCHEMISTGOBLIN" />
-         <entity name="ALCHEMISTGOBLIN" />
+         <entity name="HELLHOUND" />
         <entity name="GNOLL" />
         <entity name="GNOLL" />
         <scene name="mountain.tmx" />
@@ -199,8 +198,7 @@ You go around until you find the door that leads to the city. Once inside that f
       
        <map_element>
         <tier type="6" />
-       <entity name="ALCHEMISTGOBLIN" />
-         <entity name="ALCHEMISTGOBLIN" />
+         <entity name="OWLBEAR" />
         <entity name="GNOLL" />
         <entity name="GNOLL" />
         <scene name="cave_06.tmx" />
@@ -212,9 +210,8 @@ You go around until you find the door that leads to the city. Once inside that f
         <!--TIER 7 MAPS-->
 	  <map_element>
         <tier type="7" />
-        <entity name="HEAVYGOBLIN" />
        <entity name="OWLBEAR" />
-       <entity name="TRITON" />
+       <entity name="HELLHOUND" />
         <scene name="cave.tmx" />
         <icon_coords x="32" y="480" width="32" height="32" />
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
@@ -223,7 +220,7 @@ You go around until you find the door that leads to the city. Once inside that f
       
       <map_element>
         <tier type="7" />
-        <entity name="GOBLIN" />
+        <entity name="SKELETON" />
         <entity name="OWLBEAR" />
         <entity name="OWLBEAR" />
          <entity name="ALCHEMISTGOBLIN" />
@@ -235,7 +232,7 @@ You go around until you find the door that leads to the city. Once inside that f
 	  
 	  <map_element>
         <tier type="7" />
-        <entity name="HEAVYGOBLIN" />
+        <entity name="SKELETON" />
         <entity name="GNOLL" />
 		    <entity name="OWLBEAR" />
         <scene name="forest.tmx" />
@@ -246,7 +243,7 @@ You go around until you find the door that leads to the city. Once inside that f
       
        <map_element>
         <tier type="7" />
-        <entity name="HEAVYGOBLIN" />
+        <entity name="SKELETON" />
         <entity name="KOBOLD" />
         <entity name="GOBLIN" />
 		    <entity name="OWLBEAR" />

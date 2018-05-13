@@ -105,7 +105,7 @@
       <ability  name="Slash" tier="1" mana="20" branch="0" active ="1" description ="Deals damage based on strength">
         <frame x="288" y="242" width="40" height="40"/>
       </ability>
-      <ability  name="Seed Of Life" tier="2" mana="27" branch="1" active ="0" description ="Casts 2 magic life balls that damage an enemy based on intelligence">
+      <ability  name="Seed Of Life" tier="2" mana="27" branch="1" active ="0" description ="Casts 2 magic life balls that heal an ally based on intelligence">
         <frame x="200" y="199" width="40" height="40"/>
       </ability>
       <ability  name="Fireball" tier="2" mana="29" branch="2" active ="0" description ="Big fire spell that hits an enemy with damage based on intelligence and has a chance to burn them for 2 turns. If enemy stunned, deals extra damage">
@@ -114,7 +114,7 @@
       <ability  name="Lightning Boolt" tier="2" mana="24" branch="3" active ="0" description ="Strikes an enemy with an electrical attack based on intelligence that has a chance to stun them">
         <frame x="288" y="284 " width="40" height="40"/>
       </ability>
-      <ability  name="Seed Of Life Plus" tier="3" mana="27" branch="1" active ="1" description ="Empowers Seeds of Life to increase the damage">
+      <ability  name="Seed Of Life Plus" tier="3" mana="27" branch="1" active ="1" description ="Empowers Seeds of Life to increase healing">
         <frame x="200" y="284" width="40" height="40"/>
       </ability>
       <ability  name="Fireball Plus" tier="3" mana="29" branch="2" active ="0" description ="Empowers Fireball to deal greater damage and have a higher chance to burn enemies">

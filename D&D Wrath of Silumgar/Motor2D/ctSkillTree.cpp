@@ -177,46 +177,9 @@ bool ctSkillTree::Update(float dt)
 
 	App->map->Draw();
 	App->render->DrawQuad(marker_pos, 255, 0, 0, 255, true, true);
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
-		GoToNextSkillTree();
-		//if (current_hero < 4) {
-		//	current_hero++;
-		//	if (current_hero == 2) { 
-		//		selected_ability = warrior_abilities.begin();
-		//		ChangeDescriptionBG();
-		//		PrintAbilityDescription();
-		//		marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
-		//		marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
-		//		ChangeTitle();
-		//	}
-		//	else if (current_hero == 3) { 
-		//		selected_ability = dwarf_abilities.begin(); 
-		//		ChangeDescriptionBG();
-		//		PrintAbilityDescription();
-		//		marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
-		//		marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
-		//		ChangeTitle();
-		//	}
-		//	else if (current_hero == 4) {
-		//		selected_ability = elf_abilities.begin();
-		//		ChangeDescriptionBG();
-		//		PrintAbilityDescription();
-		//		marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
-		//		marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
-		//		ChangeTitle();
-		//	}
-		//}
-		//else {
-		//	/*current_hero = 1;
-		//	selected_ability = cleric_abilities.begin();
-		//	ChangeDescriptionBG();
-		//	PrintAbilityDescription();
-		//	marker_pos.x = App->map->branch_0_coords.at((*selected_ability)->tier - 1).x - 2;
-		//	marker_pos.y = App->map->branch_0_coords.at((*selected_ability)->tier - 1).y - 2;
-		//	ChangeTitle();*/
-		//	App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
-		//}
-	}
+	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+		//GoToNextSkillTree();
+	//}
 
 	if (current_hero == 1)
 	{
@@ -705,12 +668,12 @@ void ctSkillTree::SelectAbility() {
 	if ((*selected_ability)->active == 0) {
 		if ((*previous_ability)->active == 1) {
 			if (select_menu_bg == nullptr) {
-				select_menu_bg = App->gui->AddUIImage(0, 0, { 1141,484,340,178 }, this);
+				select_menu_bg = App->gui->AddUIImage(75, 75, { 1141,484,340,178 }, this);
 				string new_mesage = "Are you sure you want to unlock " + (*selected_ability)->ability_name;
-				select_menu_text = App->gui->AddUITextBox(20, 20, 20, 500, new_mesage, { 255,255,255,255 });
-				select_menu_A = App->gui->AddUITextBox(20, 60, 20, 336, "Yes", { 255,255,255,255 });
-				select_menu_B = App->gui->AddUITextBox(20, 100, 20, 336, "No", { 255,255,255,255 });
-				arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this, select_menu_bg);
+				select_menu_text = App->gui->AddUITextBox(95, 95, 20, 500, new_mesage, { 255,255,255,255 });
+				select_menu_A = App->gui->AddUITextBox(95, 135, 20, 336, "Yes", { 255,255,255,255 });
+				select_menu_B = App->gui->AddUITextBox(95, 195, 20, 336, "No", { 255,255,255,255 });
+				arrow = App->gui->AddUIImage(65, 75, { 1333, 272, 7, 14 }, this, select_menu_bg);
 				arrow->SetParent(select_menu_A);
 				select_menu_A->current_state = STATE_FOCUSED;
 				accept_decline.push_back(select_menu_A);

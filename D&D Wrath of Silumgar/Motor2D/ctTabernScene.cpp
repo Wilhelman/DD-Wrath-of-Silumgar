@@ -116,6 +116,8 @@ bool ctTabernScene::Update(float dt)
 				App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
 
 		}
+
+		App->input->Update(dt);
 	}
 
 	return true;

@@ -213,7 +213,8 @@ You go around until you find the door that leads to the city. Once inside that f
 	  <map_element>
         <tier type="7" />
         <entity name="HEAVYGOBLIN" />
-      <entity name="HELLBOUND" />
+       <entity name="OWLBEAR" />
+       <entity name="TRITON" />
         <scene name="cave.tmx" />
         <icon_coords x="32" y="480" width="32" height="32" />
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>

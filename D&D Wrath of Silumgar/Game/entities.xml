@@ -526,7 +526,7 @@
     </skeleton>
 
     <owlbear>
-      <statistics constitution ="15" focus="8" strength="4" agility="1" dexterity ="5" intelligence="3" physicalDefense="7" magicalDefense="12" judgement="35"/>
+      <statistics constitution ="13" focus="8" strength="6" agility="1" dexterity ="5" intelligence="3" physicalDefense="7" magicalDefense="12" judgement="35"/>
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
@@ -610,7 +610,7 @@
     </owlbear>
 
     <triton>
-      <statistics constitution ="9" focus="14" strength="9" agility="10" dexterity ="9" intelligence="10" physicalDefense="8" magicalDefense="12" judgement="60"/>
+      <statistics constitution ="9" focus="14" strength="8" agility="9" dexterity ="9" intelligence="10" physicalDefense="8" magicalDefense="12" judgement="60"/>
       <animations>
 
  		    <animation name="idle" speed="1.5" loop="true">

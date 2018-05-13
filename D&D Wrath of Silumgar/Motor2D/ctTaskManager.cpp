@@ -4121,6 +4121,17 @@ bool PerformActionToEntity::Execute()
 			ret = actioner_entity->animation->Finished();
 
 			if (ret == true) {
+
+				for (int i = 0; i < actioner_entity->usable_items.size(); i++)
+				{
+					if (actioner_entity->usable_items.at(i).action.type == action_to_perform.type) {
+						actioner_entity->usable_items.at(i).quantity--;
+						if (actioner_entity->usable_items.at(i).quantity == 0)
+							actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin() + i);
+						break;
+					}
+				}
+
 				actioner_entity->throw_object.Reset();
 
 

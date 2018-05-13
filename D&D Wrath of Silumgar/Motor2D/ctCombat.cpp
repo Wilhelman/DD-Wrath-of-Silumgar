@@ -14,6 +14,7 @@
 #include "j1Map.h"
 #include "ctMainMenu.h"
 #include "ctCutsceneManager.h"
+#include "ctFinalScene.h"
 
 #include "Cleric.h"
 #include "Dwarf.h"
@@ -279,7 +280,7 @@ bool ctCombat::Update(float dt)
 
 							if (App->map->actual_tier == TIER_MAP_8 && App->fadeToBlack->FadeIsOver()) {
 								heroes_are_dead = true;
-								App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
+								App->fadeToBlack->FadeToBlackBetweenModules(this, App->final_scene, 1.0f);
 							}
 							else {
 								if (App->fadeToBlack->FadeIsOver())

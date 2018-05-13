@@ -230,7 +230,7 @@ bool ctWorldMap::PreUpdate()
 bool ctWorldMap::Update(float dt)
 {
 
-	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || App->input->gamepad.Y == GAMEPAD_STATE::PAD_BUTTON_DOWN)
+	/*if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || App->input->gamepad.Y == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 	{
 		if (pauseMenu == nullptr) {
 			pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);
@@ -241,7 +241,7 @@ bool ctWorldMap::Update(float dt)
 			pauseMenu = nullptr;
 			pause_menu_is_open = false;
 		}
-	}
+	}*/
 
 
 	if (!pause_menu_is_open)

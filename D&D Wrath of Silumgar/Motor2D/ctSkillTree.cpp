@@ -648,7 +648,7 @@ void ctSkillTree::PrintAbilityDescription(){
 	if (description != nullptr) {
 		App->gui->DeleteUIElement(*description);
 	}
-	description = App->gui->AddUITextBox(131, 293, 15, 400, (*selected_ability)->description, {0,0,0,255});
+	description = App->gui->AddUITextBox(131, 293, 15, 400, (*selected_ability)->description, {255,255,255,255});
 }
 
 void ctSkillTree::ChangeTitle() {

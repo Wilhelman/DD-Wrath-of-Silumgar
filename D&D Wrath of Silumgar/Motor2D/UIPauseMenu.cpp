@@ -39,24 +39,7 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 		App->entities->GetDwarf()->position = { 250,125 };
 		App->entities->GetElf()->position = { 250,275 };
 	}
-	//------------------------------- TO DELETEEEEEEEEE
-	/*App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(1));
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(2));
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(4));
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(6));
 
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(3));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(1));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(2));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(4));
-	App->entities->GetCleric()->AddEquipItem(App->items->tier_1_equips.at(6));
-
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(3));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(1));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(2));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(4));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(6));*/
 	//-------------------------------
 
 	App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
@@ -152,7 +135,7 @@ void UIPauseMenu::Update() {
 	{
 		arrow->Update();
 		//Go down
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		/*if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 			App->audio->PlayFx(App->audio->mm_movement_fx);
 
 			NavigateDown(main_labels);
@@ -161,7 +144,7 @@ void UIPauseMenu::Update() {
 		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 			App->audio->PlayFx(App->audio->mm_movement_fx);
 			NavigateUp(main_labels);
-		}
+		}*/
 		//ExecuteCommand
 		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 			ExecuteComand(main_labels);
@@ -571,9 +554,17 @@ void UIPauseMenu::SetUpPauseMenu()
 	continue_label = new UILabel(420, 10, LABEL, "Continue", { 255,255,255,255 }, 15);
 	main_labels.push_back(continue_label);
 	continue_label->current_state = STATE_FOCUSED;
-	inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,255,255,255 }, 15);
+	if (information_inventory_items.size() != 0)
+	{
+		inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,255,255,255 }, 15);
+	}
+	else
+	{
+		inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,0,0,255 }, 15);
+	}
 	main_labels.push_back(inventory_label);
-	quit_label = new UILabel(420, 70, LABEL, "Quit", { 255,255,255,255 }, 15);
+
+	quit_label = new UILabel(420, 70, LABEL, "Quit", { 255,0,0,255 }, 15);
 	main_labels.push_back(quit_label);
 	arrow = new UIImage(-10, 0, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
 	arrow->SetParent(continue_label);
@@ -938,74 +929,77 @@ void UIPauseMenu::ChangePositionFakeArrow(const SDL_Scancode code)
 
 void UIPauseMenu::SetInformationLabels()
 {
-	if (information_inventory_items.size() != 0)
+	if (inventory_items.size() != 0)
 	{
-		for (std::vector<UIElement*>::iterator it = information_inventory_items.begin(); it != information_inventory_items.end(); it++)
+		if (information_inventory_items.size() != 0)
 		{
-			(*it)->~UIElement();
+			for (std::vector<UIElement*>::iterator it = information_inventory_items.begin(); it != information_inventory_items.end(); it++)
+			{
+				(*it)->~UIElement();
+			}
+
+			information_inventory_items.clear();
 		}
 
-		information_inventory_items.clear();
-	}
 
-	
-	information_inventory_items.push_back(new UITextBox(420, 50, TEXTBOX, inventory_items.at(fake_arrow)->name.c_str(), { 255,255,255 },20,100));
-	uint parent_invetory_items = 22;
+		information_inventory_items.push_back(new UITextBox(420, 50, TEXTBOX, inventory_items.at(fake_arrow)->name.c_str(), { 255,255,255 }, 20, 100));
+		uint parent_invetory_items = 22;
 
-	if (inventory_items.at(fake_arrow)->statistics.constitution != 0)
-	{
-		std::string text = "Con " + std::to_string(inventory_items.at(fake_arrow)->statistics.constitution);
-		information_inventory_items.push_back(new UITextBox(420, 60+parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items+= 20;
+		if (inventory_items.at(fake_arrow)->statistics.constitution != 0)
+		{
+			std::string text = "Con " + std::to_string(inventory_items.at(fake_arrow)->statistics.constitution);
+			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+			parent_invetory_items += 20;
+		}
+		if (inventory_items.at(fake_arrow)->statistics.focus != 0)
+		{
+			std::string text = "Foc " + std::to_string(inventory_items.at(fake_arrow)->statistics.focus);
+			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+			parent_invetory_items += 20;
+		}
+		if (inventory_items.at(fake_arrow)->statistics.strength != 0)
+		{
+			std::string text = "Str " + std::to_string(inventory_items.at(fake_arrow)->statistics.strength);
+			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+			parent_invetory_items += 20;
+		}
+		if (inventory_items.at(fake_arrow)->statistics.intelligence != 0)
+		{
+			std::string text = "Int " + std::to_string(inventory_items.at(fake_arrow)->statistics.intelligence);
+			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+			parent_invetory_items += 20;
+		}
+		if (inventory_items.at(fake_arrow)->statistics.dexterity != 0)
+		{
+			std::string text = "Dex " + std::to_string(inventory_items.at(fake_arrow)->statistics.dexterity);
+			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+			parent_invetory_items += 20;
+		}
+		if (inventory_items.at(fake_arrow)->statistics.agility != 0)
+		{
+			std::string text = "Agi " + std::to_string(inventory_items.at(fake_arrow)->statistics.agility);
+			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+			parent_invetory_items += 20;
+		}
+		if (inventory_items.at(fake_arrow)->statistics.magical_defense != 0)
+		{
+			std::string text = "M.Def " + std::to_string(inventory_items.at(fake_arrow)->statistics.magical_defense);
+			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+			parent_invetory_items += 20;
+		}
+		if (inventory_items.at(fake_arrow)->statistics.physical_defense != 0)
+		{
+			std::string text = "P.Def " + std::to_string(inventory_items.at(fake_arrow)->statistics.physical_defense);
+			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+			parent_invetory_items += 20;
+		}
+		if (inventory_items.at(fake_arrow)->statistics.luck != 0)
+		{
+			std::string text = "Lck " + std::to_string(inventory_items.at(fake_arrow)->statistics.luck);
+			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
+			parent_invetory_items += 20;
+		}
+
+		information_inventory_items.push_back(new UITextBox(420, 300, TEXTBOX, "Press SPACE\n to return", { 255,255,255 }, 17, 200));
 	}
-	if (inventory_items.at(fake_arrow)->statistics.focus != 0)
-	{
-		std::string text = "Foc " + std::to_string(inventory_items.at(fake_arrow)->statistics.focus);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.strength != 0)
-	{
-		std::string text = "Str " + std::to_string(inventory_items.at(fake_arrow)->statistics.strength);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.intelligence != 0)
-	{
-		std::string text = "Int " + std::to_string(inventory_items.at(fake_arrow)->statistics.intelligence);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.dexterity != 0)
-	{
-		std::string text = "Dex " + std::to_string(inventory_items.at(fake_arrow)->statistics.dexterity);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.agility != 0)
-	{
-		std::string text = "Agi " + std::to_string(inventory_items.at(fake_arrow)->statistics.agility);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.magical_defense != 0)
-	{
-		std::string text = "M.Def " + std::to_string(inventory_items.at(fake_arrow)->statistics.magical_defense);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.physical_defense != 0)
-	{
-		std::string text = "P.Def " + std::to_string(inventory_items.at(fake_arrow)->statistics.physical_defense);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	if (inventory_items.at(fake_arrow)->statistics.luck != 0)
-	{
-		std::string text = "Lck " + std::to_string(inventory_items.at(fake_arrow)->statistics.luck);
-		information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-		parent_invetory_items += 20;
-	}
-	
-	information_inventory_items.push_back(new UITextBox(420, 300, TEXTBOX, "Press SPACE\n to return", { 255,255,255 }, 17, 200));
 }

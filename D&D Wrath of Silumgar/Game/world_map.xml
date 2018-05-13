@@ -235,7 +235,7 @@ You go around until you find the door that leads to the city. Once inside that f
 	  <map_element>
         <tier type="7" />
         <entity name="SKELETON" />
-        <entity name="GNOLL" />
+        <entity name="SKELETON" />
 		    <entity name="OWLBEAR" />
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
@@ -246,7 +246,6 @@ You go around until you find the door that leads to the city. Once inside that f
        <map_element>
         <tier type="7" />
         <entity name="SKELETON" />
-        <entity name="KOBOLD" />
         <entity name="GOBLIN" />
 		    <entity name="OWLBEAR" />
         <scene name="cave_06.tmx" />
@@ -255,7 +254,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <option name = "You cross a rocky area, apparently open."/>
       </map_element>
 
-      <map_element>
+      <!--<map_element>
         <tier type="7" />
         <entity name="TRITON" />
         <entity name="TRITON" />
@@ -265,7 +264,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <icon_coords x="160" y="480" width="32" height="32" />
         <decision name ="After this hard battle, in the distance you can see the castle where this Lich, you advance at a rapid pace to give chase:"/>
         <option name = "EASTER EGG: I'm ready to die."/>
-      </map_element>
+      </map_element>-->
       
       <!--TIER 8 MAP-->
 	  <map_element>

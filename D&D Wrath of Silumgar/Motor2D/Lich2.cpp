@@ -51,12 +51,12 @@ Lich2::Lich2(int x, int y, EntityType type) : Entity(x, y, type) {
 	//prepare the actions:
 
 	bidimensional_claw_action.name = "Bidimensional Claw";
-	bidimensional_claw_action.mana_points_effect_to_himself = -45;
+	bidimensional_claw_action.mana_points_effect_to_himself = -35;
 	bidimensional_claw_action.objective = HEROES;
 	bidimensional_claw_action.type = BIDIMENSIONAL_CLAW;
 
 	sea_of_flames_action.name = "Sea of Flames";
-	sea_of_flames_action.mana_points_effect_to_himself = -70;
+	sea_of_flames_action.mana_points_effect_to_himself = -40;
 	sea_of_flames_action.objective = HEROES;
 	sea_of_flames_action.type = SEA_OF_FLAMES;
 

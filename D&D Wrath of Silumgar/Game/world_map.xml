@@ -236,8 +236,7 @@ You go around until you find the door that leads to the city. Once inside that f
 	  <map_element>
         <tier type="7" />
         <entity name="HEAVYGOBLIN" />
-        <entity name="TRITON" />
-        <entity name="KOBOLD" />
+        <entity name="GNOLL" />
 		    <entity name="OWLBEAR" />
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />

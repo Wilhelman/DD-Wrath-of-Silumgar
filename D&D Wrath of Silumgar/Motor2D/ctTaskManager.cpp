@@ -492,7 +492,7 @@ bool PerformActionToEntity::Execute()
 
 						bool critical = false;
 
-						int damage_to_deal = -actioner_entity->GetCurrentIntelligencePoints() * 1.8;
+						int damage_to_deal = -actioner_entity->GetCurrentIntelligencePoints() * 1.6;
 						float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 						actioner_dexterity = actioner_dexterity / 10;
 

@@ -1137,10 +1137,10 @@
         </animation>
 
         <animation name="death" speed="0.05" loop="false">
-          <frame x="1102" y="621" width="150" height="79"/>
-          <frame x="936" y="621" width="150" height="79"/>
-          <frame x="759" y="621" width="150" height="79"/>
-          <frame x="566" y="621" width="150" height="79"/>
+          <frame x="1061" y="621" width="150" height="79"/>
+          <frame x="895" y="621" width="150" height="79"/>
+          <frame x="716" y="621" width="150" height="79"/>
+          <frame x="525" y="621" width="150" height="79"/>
         </animation>
 
         <animation name="head" speed="5.0" loop="false">
@@ -1159,7 +1159,7 @@
 		      <frame x="1275" y="406" width="130" height="62"/>
         </animation>
         
-        <animation name="transformation" speed="0.1" loop="false">
+        <animation name="transformation" speed="0.05" loop="false">
           <frame x="134" y="492" width="141" height="95"/>
           <frame x="273" y="492" width="141" height="95"/>
           <frame x="409" y="492" width="141" height="95"/>

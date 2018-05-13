@@ -246,7 +246,7 @@ bool ctCombat::Update(float dt)
 				int current_entities = 0;
 				if (App->task_manager->TaskQueue.size() == 0 && App->task_manager->aux_task == nullptr) {
 
-					OrderTurnPriority();
+					
 
 					for (int i = 0; i < App->entities->entities.size(); i++)
 					{

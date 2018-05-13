@@ -105,6 +105,8 @@ bool ctWorldMap::Awake(pugi::xml_node& co)
 		
 	}
 
+	
+
 
 
 	return ret;
@@ -324,7 +326,12 @@ bool ctWorldMap::CleanUp()
 
 	App->gui->DeleteUIElement(*start_combat_label);
 
+	if (App->map->actual_tier == TIER_MAP_8)
+		App->map->actual_tier = TIER_MAP_1;
+
+
 	App->map->CleanUp();
+	
 
 	return true;
 }
@@ -364,6 +371,7 @@ void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 
 			App->task_manager->AddTask(new MoveAvatarsToPosition(avatar, iPoint(current_map_element->coords_in_map.x + 5, current_map_element->coords_in_map.y + 30)));
 			avatar_position = iPoint(current_map_element->coords_in_map.x + 5, current_map_element->coords_in_map.y + 30);
+
 
 			App->task_manager->PerformAllTheTasks();
 

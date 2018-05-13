@@ -40,7 +40,7 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 		App->entities->GetElf()->position = { 250,275 };
 	}
 	//------------------------------- TO DELETEEEEEEEEE
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
+	/*App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(1));
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(2));
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(4));
@@ -56,7 +56,7 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(1));
 	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(2));
 	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(4));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(6));
+	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(6));*/
 	//-------------------------------
 
 	App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;

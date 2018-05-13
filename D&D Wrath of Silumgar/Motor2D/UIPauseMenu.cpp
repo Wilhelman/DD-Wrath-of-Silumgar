@@ -40,7 +40,7 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 		App->entities->GetElf()->position = { 250,275 };
 	}
 	//------------------------------- TO DELETEEEEEEEEE
-	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
+	/*App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(3));
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(1));
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(2));
 	App->entities->GetElf()->AddEquipItem(App->items->tier_2_equips.at(4));
@@ -56,7 +56,7 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(1));
 	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(2));
 	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(4));
-	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(6));
+	App->entities->GetDwarf()->AddEquipItem(App->items->tier_3_equips.at(6));*/
 	//-------------------------------
 
 	App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
@@ -93,6 +93,13 @@ UIPauseMenu::~UIPauseMenu() {
 		App->entities->GetDwarf()->position = App->entities->GetCleric()->initial_position;
 		App->entities->GetElf()->position = App->entities->GetCleric()->initial_position;
 	}
+
+
+	//current_entity->CalculateAllStatsNoMultiply();
+	App->entities->GetElf()->CalculateAllStats();
+	App->entities->GetCleric()->CalculateAllStats();
+	App->entities->GetDwarf()->CalculateAllStats();
+	App->entities->GetWarrior()->CalculateAllStats();
 
 	background->~UIElement();
 	background = nullptr;
@@ -400,7 +407,7 @@ void UIPauseMenu::DrawItems() {
 void UIPauseMenu::LoadClerictStats() {
 	Entity* current_entity = App->entities->GetCleric();
 	
-	current_entity->CalculateAllStats();
+	current_entity->CalculateAllStatsNoMultiply();
 
 	std::string entity_stat = "Con  " + std::to_string(current_entity->max_health_points);
 	cleric_statistics.push_back(new UITextBox(135, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
@@ -441,7 +448,7 @@ void UIPauseMenu::LoadClerictStats() {
 
 void UIPauseMenu::LoadWarriorStats() {
 	Entity* current_entity = App->entities->GetWarrior();
-	current_entity->CalculateAllStats();
+	current_entity->CalculateAllStatsNoMultiply();
 
 	std::string entity_stat = "Con  " + std::to_string(current_entity->max_health_points);
 	warrior_statistics.push_back(new UITextBox(135, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
@@ -475,7 +482,7 @@ void UIPauseMenu::LoadWarriorStats() {
 void UIPauseMenu::LoadDwarfStats() {
 	Entity* current_entity = App->entities->GetDwarf();
 
-	current_entity->CalculateAllStats();
+	current_entity->CalculateAllStatsNoMultiply();
 
 	std::string entity_stat = "Con  " + std::to_string(current_entity->max_health_points);
 	dwarf_statistics.push_back(new UITextBox(340, 38, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));
@@ -513,7 +520,7 @@ void UIPauseMenu::LoadDwarfStats() {
 void UIPauseMenu::LoadElfStats() {
 	Entity* current_entity = App->entities->GetElf();
  
-	current_entity->CalculateAllStats();
+	current_entity->CalculateAllStatsNoMultiply();
 
 	std::string entity_stat = "Con  " + std::to_string(current_entity->max_health_points);
 	elf_statistics.push_back(new UITextBox(340, 195, TEXTBOX, entity_stat, { 255,255,255,255 }, 10, 428));

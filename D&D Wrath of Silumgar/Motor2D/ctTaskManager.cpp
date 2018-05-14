@@ -3345,6 +3345,9 @@ bool PerformActionToEntity::Execute()
 								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
 							}
 						}
+						fPoint posP;
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_MINDBLOWN);
 
 						if (random_thousand_faces_die < 50)
 						{
@@ -3590,6 +3593,10 @@ bool PerformActionToEntity::Execute()
 								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
 							}
 						}
+
+						fPoint posP;
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_MINDBLOWN);
 
 						if (random_thousand_faces_die < 70)
 						{

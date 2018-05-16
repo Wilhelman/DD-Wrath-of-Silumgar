@@ -90,7 +90,12 @@ bool ctMainMenu::PreUpdate()
 // Called each loop iteration
 bool ctMainMenu::Update(float dt)
 {
-	
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		int x, y;
+		App->input->GetMousePosition(x, y);
+		fPoint p = { (float)x,(float)y };
+		App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_BLEEDING);
+	}
 	
 	//Go down
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {

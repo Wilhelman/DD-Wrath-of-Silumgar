@@ -208,6 +208,13 @@ bool ctCombat::Update(float dt)
 					App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->idle;
 				}
 			}*/
+			if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+				int x, y;
+				App->input->GetMousePosition(x,y);
+				fPoint p = { (float)x,(float)y };
+				App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_BURNING);
+			}
+
 			if (pause_menu_is_open == false)
 			{
 				if (App->entities->GetDwarf()->position != App->entities->GetDwarf()->initial_position)

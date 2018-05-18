@@ -22,20 +22,20 @@
 
 
       <emitter type ="lower_health">
-        <angleRange min ="50" max ="80"/>
+        <angleRange min ="160" max ="20"/>
         <rotSpeed value ="200" randMin ="-1" randMax ="1"/>
         <startSpeed value ="300" randMin ="0" randMax ="1"/>
         <endSpeed value ="0" randMin ="0" randMax ="1"/>
         <startSize value ="30" randMin ="0" randMax ="1"/>
         <endSize value =" 10" randMin ="1" randMax ="1"/>
-        <emitNumber value ="1"/>
+        <emitNumber value ="7"/>
         <emitVariance value ="0" randMin ="0" randMax ="1"/>
-        <maxParticleLife value ="10" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="26" randMin ="0" randMax ="1"/>
         <textureRect x="128" y="0" w="256" h="256"/>
-        <startColor r ="0" g="145" b="0" a ="255"/>
+        <startColor r ="0" g="180" b="0" a ="255"/>
         <endColor r ="50" g="255" b="50" a ="0"/>
         <blendMode mode ="add"/>
-        <lifetime value ="20"/>
+        <lifetime value ="26"/>
       </emitter>
       
       <emitter type ="hit_critical_enemy">

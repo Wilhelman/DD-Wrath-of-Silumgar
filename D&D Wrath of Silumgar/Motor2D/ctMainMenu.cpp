@@ -94,7 +94,7 @@ bool ctMainMenu::Update(float dt)
 		int x, y;
 		App->input->GetMousePosition(x, y);
 		fPoint p = { (float)x,(float)y };
-		App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_BLEEDING);
+		App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_LOWER_HEALTH);
 	}
 	
 	//Go down

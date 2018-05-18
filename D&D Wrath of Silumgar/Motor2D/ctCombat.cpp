@@ -212,9 +212,9 @@ bool ctCombat::Update(float dt)
 				int x, y;
 				App->input->GetMousePosition(x,y);
 				fPoint p = { (float)x,(float)y };
-				App->psystem->AddEmiter({ p.x + 5 , p.y - 5 }, EmitterType::EMITTER_TYPE_BLEEDING);
-				App->psystem->AddEmiter({p.x -5 , p.y+5}, EmitterType::EMITTER_TYPE_BLEEDING);
-				//App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_BLEEDING);
+				/*App->psystem->AddEmiter({ p.x + 5 , p.y - 5 }, EmitterType::EMITTER_TYPE_BLEEDING);
+				App->psystem->AddEmiter({p.x -5 , p.y+5}, EmitterType::EMITTER_TYPE_BLEEDING);*/
+				App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_LOWER_HEALTH);
 				//App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_BLEEDING);
 			}
 

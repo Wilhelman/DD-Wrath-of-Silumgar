@@ -188,6 +188,16 @@ bool ctCombat::PreUpdate()
 // Called each loop iteration
 bool ctCombat::Update(float dt)
 {
+	//DELETE WHEN DONE WITH SHADOWS
+	/*if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
+	{
+		App->entities->GetElf()->animation = &App->entities->GetElf()->dodge;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN)
+	{
+		App->entities->GetElf()->animation = &App->entities->GetElf()->idle;
+	}*/
+
 	if (!App->cutscene_manager->isActive()) {
 		if (making_decision == true)
 		{

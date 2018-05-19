@@ -36,34 +36,97 @@ bool j1ParticleSystem::Awake(pugi::xml_node& config)
 
 		std::string emitterType = emitters.attribute("type").as_string();
 
+		//DEFAULT ATTACK
 		if (emitterType == "hit_heroes")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_HEROES);
-		if (emitterType == "hit_critical_heroes")
+		else if (emitterType == "hit_critical_heroes")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
-		if (emitterType == "hit_enemy")
+		else if (emitterType == "hit_enemies")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_ENEMY);
 		else if (emitterType == "hit_critical_enemy")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);
-		else if (emitterType == "lower_health")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_LOWER_HEALTH);
-		else if (emitterType == "health_area")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEALTH_AREA);
+		//ALTERED STATS
 		else if (emitterType == "poison")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_POISON);
 		else if (emitterType == "bleeding")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BLEEDING);
-		else if (emitterType == "health_potion")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEALTH_POTION);
-		else if (emitterType == "mana_potion")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_MANA_POTION);
-		else if (emitterType == "mindblown")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_MINDBLOWN);
-		else if (emitterType == "kick")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_KICK);
-		else if (emitterType == "high_axe")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIGH_AXE);
 		else if (emitterType == "burning")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BURNING);
+		else if (emitterType == "stun")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_STUN);
+		else if (emitterType == "debuff")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_DEBUFF);
+		else if (emitterType == "buff")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BUFF);
+		//CLERIC
+		else if (emitterType == "heal")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEAL);
+		else if (emitterType == "heal_plus")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEAL_PLUS);
+		else if (emitterType == "blessing")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BLESSING);
+		else if (emitterType == "clarity")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_CLARITY);
+		//DWARF
+		else if (emitterType == "morale_boost")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_MORALE_BOOST);
+		else if (emitterType == "morale_boost_plus")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_MORALE_BOOST_PLUS);
+		else if (emitterType == "dwarfs_wrath")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_DWARFS_WRATH);
+		else if (emitterType == "dwarfs_wrath_plus")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_DWARFS_WRATH_PLUS);
+		else if (emitterType == "ragging_mock")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_RAGGING_MOCK);
+		//ELF
+		else if (emitterType == "seed_of_life")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_SEED_OF_LIFE);
+		else if (emitterType == "seed_of_life_plus")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_SEED_OF_LIFE_PLUS);
+		else if (emitterType == "fireball")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_FIREBALL);
+		else if (emitterType == "fireball_plus")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_FIREBALL_PLUS);
+		else if (emitterType == "ligthning_bolt")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_LIGTHNING_BOLT);
+		else if (emitterType == "lightning_bolt_plus")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_LIGHTNING_BOLT_PLUS);
+		else if (emitterType == "revive")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_REVIVE);
+		else if (emitterType == "blizzard")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BLIZZARD);
+		else if (emitterType == "fire_djin")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_FIRE_DJIN);
+		//WARRIOR
+		else if (emitterType == "kick")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_KICK);
+		else if (emitterType == "kick_plus")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_KICK_PLUS);
+		else if (emitterType == "heavy_slash")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEAVY_SLASH);
+		else if (emitterType == "heavy_slash_plus")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEAVY_SLASH_PLUS);
+		else if (emitterType == "charge")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_CHARGE);
+		else if (emitterType == "taunt")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_TAUNT);
+		else if (emitterType == "whirlwind")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_WHIRLWIND);
+		//OBJECTS
+		else if (emitterType == "health_potion")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HEALTH_POTION);
+		else if (emitterType == "mega_health_potion")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_MEGA_HEALTH_POTION);
+		else if (emitterType == "mana_potion")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_MANA_POTION);
+		else if (emitterType == "mega_mana_potion")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_MEGA_MANA_POTION);
+		else if (emitterType == "poisoned_dagger")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_POISONED_DAGGER);
+		else if (emitterType == "dragon_essence")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_DRAGON_ESSENCE);
+		else if (emitterType == "fenix_tears")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_FENIX_TEARS);
 	}
 	return ret;
 }

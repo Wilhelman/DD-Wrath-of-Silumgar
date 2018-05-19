@@ -400,6 +400,57 @@
         <lifetime value ="30"/>
       </emitter>
       
+        <emitter type ="revive">
+        <angleRange min ="0" max ="360"/>
+        <rotSpeed value ="200" randMin ="-1" randMax ="1"/>
+        <startSpeed value ="120" randMin ="0" randMax ="1"/>
+        <endSpeed value ="30" randMin ="0" randMax ="1"/>
+        <startSize value ="10" randMin ="0" randMax ="1"/>
+        <endSize value =" 10" randMin ="1" randMax ="1"/>
+        <emitNumber value ="10"/>
+        <emitVariance value ="40" randMin ="0" randMax ="3"/>
+        <maxParticleLife value ="30" randMin ="0" randMax ="1"/>
+        <textureRect x="128" y="0" w="256" h="256"/>
+        <startColor r ="0" g="180" b="0" a ="255"/>
+        <endColor r ="50" g="255" b="50" a ="255"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="26"/>
+      </emitter>
+      
+          <emitter type ="blizzard">
+        <angleRange min ="0" max ="360"/>
+        <rotSpeed value ="200" randMin = "-1" randMax ="1"/>
+        <startSpeed value ="0" randMin = "0" randMax ="1"/>
+        <endSpeed value ="200" randMin = "0" randMax ="1"/>
+        <startSize value ="300" randMin ="0" randMax ="1"/>
+        <endSize value ="50" randMin ="1" randMax ="1"/>
+        <emitNumber value ="8"/>
+        <emitVariance value ="6" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="50"  randMin ="0" randMax ="1"/>
+        <textureRect x="0" y="223" w="69" h="65"/>
+        <startColor r ="0" g="0" b="255" a="255"/>
+        <endColor r ="0" g="0" b="0" a ="255"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="10"/>
+      </emitter>
+      
+      
+            <emitter type ="fire_djin">
+        <angleRange min ="0" max ="360"/>
+        <rotSpeed value ="200" randMin = "-1" randMax ="1"/>
+        <startSpeed value ="0" randMin = "0" randMax ="1"/>
+        <endSpeed value ="200" randMin = "0" randMax ="1"/>
+        <startSize value ="300" randMin ="0" randMax ="1"/>
+        <endSize value ="50" randMin ="1" randMax ="1"/>
+        <emitNumber value ="8"/>
+        <emitVariance value ="6" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="50"  randMin ="0" randMax ="1"/>
+        <textureRect x="0" y="223" w="69" h="65"/>
+        <startColor r ="255" g="50" b="0" a="255"/>
+        <endColor r ="150" g="50" b="0" a ="255"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="10"/>
+      </emitter>
         
       <emitter type ="mindblown">
          <angleRange min ="0" max ="360"/>

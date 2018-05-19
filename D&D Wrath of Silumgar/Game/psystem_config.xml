@@ -527,6 +527,23 @@
         <blendMode mode ="add"/>
         <lifetime value ="16"/>
       </emitter>
+
+      <emitter type ="mega_health_potion">
+        <angleRange min ="0" max ="360"/>
+        <rotSpeed value ="200" randMin ="-1" randMax ="1"/>
+        <startSpeed value ="140" randMin ="0" randMax ="1"/>
+        <endSpeed value ="0" randMin ="0" randMax ="1"/>
+        <startSize value ="40" randMin ="0" randMax ="2"/>
+        <endSize value =" 0" randMin ="1" randMax ="1"/>
+        <emitNumber value ="12"/>
+        <emitVariance value ="3" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="50" randMin ="0" randMax ="1"/>
+        <textureRect x="0" y="223" w="68" h="65"/>
+        <startColor r ="27" g="255" b="0" a="255"/>
+        <endColor r ="27" g="255" b="0" a="255"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="16"/>
+      </emitter>
     
        <emitter type ="mana_potion">
         <angleRange min ="0" max ="360"/>
@@ -544,8 +561,74 @@
         <blendMode mode ="add"/>
         <lifetime value ="16"/>
       </emitter>
-      
-     
 
+      <emitter type ="mega_mana_potion">
+        <angleRange min ="0" max ="360"/>
+        <rotSpeed value ="200" randMin ="-1" randMax ="1"/>
+        <startSpeed value ="140" randMin ="0" randMax ="1"/>
+        <endSpeed value ="0" randMin ="0" randMax ="1"/>
+        <startSize value ="40" randMin ="0" randMax ="2"/>
+        <endSize value =" 0" randMin ="1" randMax ="1"/>
+        <emitNumber value ="12"/>
+        <emitVariance value ="3" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="50" randMin ="0" randMax ="1"/>
+        <textureRect x="0" y="223" w="68" h="65"/>
+        <startColor r ="0" g="155" b="238" a="255"/>
+        <endColor r ="0" g="155" b="238" a="255"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="16"/>
+      </emitter>
+
+      <emitter type ="poisoned_dagger">
+        <angleRange min ="360" max ="0"/>
+        <rotSpeed value ="0" randMin ="-1" randMax ="2"/>
+        <startSpeed value ="0" randMin ="0" randMax ="1"/>
+        <endSpeed value ="0" randMin ="0" randMax ="1"/>
+        <startSize value ="50" randMin ="0" randMax ="2"/>
+        <endSize value =" 10" randMin ="1" randMax ="1"/>
+        <emitNumber value ="1"/>
+        <emitVariance value ="2" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="10" randMin ="0" randMax ="1"/>
+        <textureRect x="32" y="128" w="30" h="27"/>
+        <startColor r ="51" g="0" b="102" a="255"/>
+        <endColor r ="51" g="0" b="102" a="255"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="200"/>
+      </emitter>
+
+      <emitter type ="dragon_essence">
+        <angleRange min ="180" max ="0"/>
+        <rotSpeed value ="2" randMin ="-1" randMax ="1"/>
+        <startSpeed value ="60" randMin ="0" randMax ="1"/>
+        <endSpeed value ="200" randMin ="0" randMax ="1"/>
+        <startSize value ="60" randMin ="0" randMax ="1"/>
+        <endSize value = "0" randMin ="0" randMax ="0"/>
+        <emitNumber value ="20"/>
+        <emitVariance value ="1" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="30" randMin ="0" randMax ="1"/>
+        <textureRect x="128" y="0" w="256" h="256"/>
+        <startColor r ="255" g="0" b="0" a="255"/>
+        <endColor r ="255" g="139" b="0" a="255"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="30"/>
+      </emitter>
+
+      <emitter type ="fenix_tears">
+        <angleRange min ="-180" max ="0"/>
+        <rotSpeed value ="0" randMin ="-1" randMax ="1"/>
+        <startSpeed value ="260" randMin ="0" randMax ="1"/>
+        <endSpeed value ="0" randMin ="0" randMax ="1"/>
+        <startSize value ="20" randMin ="0" randMax ="2"/>
+        <endSize value =" 0" randMin ="1" randMax ="1"/>
+        <emitNumber value ="60"/>
+        <emitVariance value ="3" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="40" randMin ="0" randMax ="1"/>
+        <textureRect x="0" y="223" w="68" h="65"/>
+        <startColor r ="27" g="0" b="255" a="255"/>
+        <endColor r ="27" g="255" b="0" a="255"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="16"/>
+      </emitter>
+      
     </particleAtlas>
 </emitters>

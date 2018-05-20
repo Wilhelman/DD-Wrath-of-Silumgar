@@ -68,6 +68,10 @@ bool j1ParticleSystem::Awake(pugi::xml_node& config)
 		else if (emitterType == "clarity")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_CLARITY);
 		//DWARF
+		else if (emitterType == "high_axe")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIGH_AXE);
+		else if (emitterType == "high_axe_plus")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIGH_AXE_PLUS);
 		else if (emitterType == "morale_boost")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_MORALE_BOOST);
 		else if (emitterType == "morale_boost_plus")

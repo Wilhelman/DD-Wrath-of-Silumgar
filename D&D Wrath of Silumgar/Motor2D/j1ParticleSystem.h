@@ -8,7 +8,7 @@
 #include <string>
 #include "SDL/include/SDL.h"
 
-#define MAX_NUM_EMITTERS_TYPE 50
+#define MAX_NUM_EMITTERS_TYPE 80
 
 class Emitter;
 struct SDL_Texture;
@@ -30,8 +30,8 @@ enum EmitterType
 	EMITTER_TYPE_BLEEDING,//
 	EMITTER_TYPE_BURNING,//
 	EMITTER_TYPE_STUN,
-	EMITTER_TYPE_DEBUFF,
-	EMITTER_TYPE_BUFF,
+	EMITTER_TYPE_DEBUFF,//
+	EMITTER_TYPE_BUFF,//
 
 	//CLERIC
 	EMITTER_TYPE_HEAL,//

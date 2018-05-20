@@ -41,7 +41,7 @@ bool j1ParticleSystem::Awake(pugi::xml_node& config)
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_HEROES);
 		else if (emitterType == "hit_critical_heroes")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_CRITICAL_HEROES);
-		else if (emitterType == "hit_enemies")
+		else if (emitterType == "hit_enemy")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_ENEMY);
 		else if (emitterType == "hit_critical_enemy")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_HIT_CRITICAL_ENEMY);

@@ -897,7 +897,7 @@ bool PerformActionToEntity::Execute()
 						}
 
 						fPoint posP;
-						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HEAVY_SLASH);
 
 						if (!receiver_entity->IsBleeding()) {
@@ -1090,7 +1090,7 @@ bool PerformActionToEntity::Execute()
 						}
 
 						fPoint posP;
-						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HEAVY_SLASH_PLUS);
 
 						if (!receiver_entity->IsBleeding()) {
@@ -1310,7 +1310,7 @@ bool PerformActionToEntity::Execute()
 						}
 
 						fPoint posP;
-						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_WHIRLWIND);
 
 
@@ -1439,7 +1439,7 @@ bool PerformActionToEntity::Execute()
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
 				fPoint posP;
-				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_MORALE_BOOST);
 
 				Altered_Stat strength_up;
@@ -1475,7 +1475,7 @@ bool PerformActionToEntity::Execute()
 
 
 				fPoint posP;
-				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_DWARFS_WRATH);
 
 				//TODO IMPLEMENT LOSE HP
@@ -1640,7 +1640,7 @@ bool PerformActionToEntity::Execute()
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
 				fPoint posP;
-				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_DWARFS_WRATH_PLUS);
 
 				//TODO IMPLEMENT LOSE HP
@@ -1681,7 +1681,7 @@ bool PerformActionToEntity::Execute()
 
 
 				fPoint posP;
-				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w/2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_RAGGING_MOCK);
 
 				//TODO IMPLEMENT LOSE HP
@@ -2909,7 +2909,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->altered_stats.clear();
 
 				fPoint posP;
-				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w/2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_CLARITY);
 			}
 		}
@@ -3094,7 +3094,7 @@ bool PerformActionToEntity::Execute()
 
 						}
 						fPoint posP;
-						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_FIREBALL);
 
 
@@ -3258,7 +3258,7 @@ bool PerformActionToEntity::Execute()
 
 						}
 						fPoint posP;
-						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w/2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_LIGTHNING_BOLT);
 
 						if (random_thousand_faces_die < 50)
@@ -3387,7 +3387,7 @@ bool PerformActionToEntity::Execute()
 
 						}
 						fPoint posP;
-						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_FIREBALL_PLUS);
 
 						App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "BURNIG", { 0,255,0,255 }, 14, nullptr, nullptr);
@@ -3467,7 +3467,7 @@ bool PerformActionToEntity::Execute()
 						}
 
 						fPoint posP;
-						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w/2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_LIGHTNING_BOLT_PLUS);
 
 						if (random_thousand_faces_die < 70)
@@ -3522,7 +3522,7 @@ bool PerformActionToEntity::Execute()
 
 				fPoint posP;
 
-				posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				posP = { (float)(receiver_entity->position.x + receiver_entity->animation->GetCurrentFrame().w/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_REVIVE);
 
 				actioner_entity->Ability1T2();
@@ -3585,7 +3585,7 @@ bool PerformActionToEntity::Execute()
 						}
 
 						fPoint posP;
-						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w/2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_FIRE_DJIN);
 
 
@@ -3804,7 +3804,7 @@ bool PerformActionToEntity::Execute()
 								actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin() + i);
 
 							fPoint posP;
-							posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+							posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w/2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 							App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_POISONED_DAGGER);
 
 							break;
@@ -3857,7 +3857,7 @@ bool PerformActionToEntity::Execute()
 							actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin() + i);
 
 						fPoint posP;
-						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w/2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_DRAGON_ESSENCE);
 
 						break;
@@ -3908,7 +3908,7 @@ bool PerformActionToEntity::Execute()
 							actioner_entity->usable_items.erase(actioner_entity->usable_items.cbegin() + i);
 						fPoint posP;
 
-						posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						posP = { (float)(receiver_entity->position.x+ receiver_entity->animation->GetCurrentFrame().w/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_FENIX_TEARS);
 						break;
 					}
@@ -3930,7 +3930,7 @@ bool PerformActionToEntity::Execute()
 
 				fPoint posP;
 
-				posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+				posP = { (float)(receiver_entity->position.x + receiver_entity->animation->GetCurrentFrame().w / 2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_REVIVE);
 
 			}

@@ -219,15 +219,8 @@ bool ctCombat::Update(float dt)
 				}
 			}*/
 			if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-				int x, y;
-				App->input->GetMousePosition(x,y);
-				fPoint p = { (float)x,(float)y };
-				/*App->psystem->AddEmiter({ p.x + 5 , p.y - 5 }, EmitterType::EMITTER_TYPE_BLEEDING);
-				App->psystem->AddEmiter({p.x -5 , p.y+5}, EmitterType::EMITTER_TYPE_BLEEDING);*/
-				/*Emitter * j;
-				j = App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_LOWER_HEALTH);*/
-				
-				//App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_BLEEDING);
+				if (App->fadeToBlack->FadeIsOver())
+					App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu, 1.0f);
 			}
 
 			if (pause_menu_is_open == false)

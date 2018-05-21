@@ -15,6 +15,7 @@ public:
 	UIElement* lower_bar = nullptr;
 	UIElement* upper_bar = nullptr;
 	UIElement* yellow_bar = nullptr;
+	UIElement* bar_numbers = nullptr;
 	int player_bar_height = 11;
 	int enemy_bar_height = 5;
 	int max_player_bar_width = 160;
@@ -41,6 +42,8 @@ public:
 		upper_bar->to_destroy = true;
 		if( yellow_bar != nullptr)
 		yellow_bar->to_destroy = true;
+		if (bar_numbers != nullptr)
+		bar_numbers->to_destroy = true;
 	}; 
 	void Update();
 	void LowerBar(int quantity);
@@ -50,6 +53,7 @@ public:
 	void MakeElementsInvisible();
 	void MakeElementsVisible();
 	int CurrentQuantity();
+	void SetBarNumbers();
 
 	int CalculateBarWidth(int quantity);
 

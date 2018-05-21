@@ -39,6 +39,10 @@ UIBar::UIBar(int x, int y, int max_capacity, UI_Type type, ctModule* callback, E
 		upper_bar = App->gui->AddUIImage(bar_pos.x, bar_pos.y, { 1,110,max_width,bar_height });
 	}
 
+	if (bar_type != ENEMYLIFEBAR) {
+		SetBarNumbers();
+	}
+
 	LOG("UIBar created in x:%i, y:%i", x, y);
 }
 
@@ -129,6 +133,9 @@ void UIBar::LowerBar(int quantity)
 		}
 
 	}
+	if (bar_type != ENEMYLIFEBAR) {
+		SetBarNumbers();
+	}
 }
 
 void UIBar::RecoverBar(int quantity)
@@ -162,6 +169,9 @@ void UIBar::RecoverBar(int quantity)
 			}
 		}
 	}
+	if (bar_type != ENEMYLIFEBAR) {
+		SetBarNumbers();
+	}
 }
 
 void UIBar::DrawYellowBar() {
@@ -185,6 +195,8 @@ void UIBar::DeleteElements() {
 	upper_bar = nullptr;
 	App->gui->DeleteUIElement(*yellow_bar);
 	yellow_bar = nullptr;
+	App->gui->DeleteUIElement(*bar_numbers);
+	bar_numbers = nullptr;
 }
 
 int UIBar::CalculateBarWidth(int quantity) {
@@ -218,4 +230,16 @@ void UIBar::MakeElementsVisible() {
 	if (yellow_bar!=nullptr) {
 		yellow_bar->non_drawable = false;
 	}
+}
+
+void UIBar::SetBarNumbers() {
+
+	if (bar_numbers != nullptr) {
+		App->gui->DeleteUIElement(*bar_numbers);
+	}
+
+	std::string bar_nums_char = std::to_string(current_quantity) + "/" + std::to_string(max_capacity);
+
+	bar_numbers = App->gui->AddUILabel(bar_pos.x + (max_width/2) - 5, bar_pos.y, bar_nums_char, { 255,255,255,255 }, 10);
+
 }

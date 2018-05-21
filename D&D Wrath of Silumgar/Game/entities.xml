@@ -688,27 +688,27 @@
       <animations>
 
         <animation name="idle" speed="2.0" loop="true">
-          <frame x="859" y="12" width="110" height="52"/>
-          <frame x="30" y="400" width="110" height="52"/>
+          <frame x="859" y="12" width="110" height="55"/>
+          <frame x="30" y="400" width="110" height="55"/>
         </animation>
 
         <animation name="run" speed="5.0" loop="true">
-          <frame x="855" y="80" width="111" height="52"/>
-          <frame x="726" y="80" width="111" height="52"/>
-          <frame x="585" y="80" width="111" height="52"/>
-          <frame x="437" y="80" width="111" height="52"/>
-          <frame x="296" y="80" width="111" height="52"/>
-          <frame x="157" y="80" width="111" height="52"/>
-          <frame x="25" y="80" width="111" height="52"/>
+          <frame x="855" y="80" width="111" height="57"/>
+          <frame x="726" y="80" width="111" height="57"/>
+          <frame x="585" y="80" width="111" height="57"/>
+          <frame x="437" y="80" width="111" height="57"/>
+          <frame x="296" y="80" width="111" height="57"/>
+          <frame x="157" y="80" width="111" height="57"/>
+          <frame x="25" y="80" width="111" height="57"/>
         </animation>
 
         <animation name="default_attack" speed="0.2" loop="false">
-          <frame x="834" y="226" width="134" height="49"/>
-          <frame x="664" y="226" width="134" height="49"/>
-          <frame x="485" y="226" width="134" height="49"/>
-          <frame x="324" y="226" width="134" height="49"/>
-          <frame x="174" y="226" width="134" height="49"/>
-          <frame x="18" y="226" width="134" height="49"/>
+          <frame x="834" y="226" width="134" height="60"/>
+          <frame x="664" y="226" width="134" height="60"/>
+          <frame x="485" y="226" width="134" height="60"/>
+          <frame x="324" y="226" width="134" height="60"/>
+          <frame x="174" y="226" width="134" height="60"/>
+          <frame x="18" y="226" width="134" height="60"/>
         </animation>
 
         <animation name="flare" speed="2.0" loop="true">
@@ -723,13 +723,13 @@
         </animation>
 
         <animation name="dodge" speed="0.05" loop="false">
-          <frame x="851" y="552" width="107" height="85"/>
-          <frame x="732" y="552" width="107" height="85"/>
-          <frame x="611" y="552" width="107" height="85"/>
-          <frame x="473" y="552" width="107" height="85"/>
-          <frame x="330" y="552" width="107" height="85"/>
-          <frame x="179" y="552" width="107" height="85"/>
-          <frame x="25" y="552" width="107" height="85"/>
+          <frame x="851" y="552" width="107" height="94"/>
+          <frame x="732" y="552" width="107" height="94"/>
+          <frame x="611" y="552" width="107" height="94"/>
+          <frame x="473" y="552" width="107" height="94"/>
+          <frame x="330" y="552" width="107" height="94"/>
+          <frame x="179" y="552" width="107" height="94"/>
+          <frame x="25" y="552" width="107" height="94"/>
         </animation>
 
         <animation name="hit" speed="0.05" loop="false">
@@ -738,13 +738,13 @@
         </animation>
 
         <animation name="death" speed="2.0" loop="false">
-          <frame x="971" y="647" width="128" height="92"/>
-          <frame x="725" y="647" width="128" height="92"/>
-          <frame x="593" y="647" width="128" height="92"/>
-          <frame x="466" y="647" width="128" height="92"/>
-          <frame x="313" y="647" width="128" height="92"/>
-          <frame x="158" y="647" width="128" height="92"/>
-          <frame x="6" y="647" width="128" height="92"/>
+          <frame x="971" y="647" width="128" height="100"/>
+          <frame x="725" y="647" width="128" height="100"/>
+          <frame x="593" y="647" width="128" height="100"/>
+          <frame x="466" y="647" width="128" height="100"/>
+          <frame x="313" y="647" width="128" height="100"/>
+          <frame x="158" y="647" width="128" height="100"/>
+          <frame x="6" y="647" width="128" height="100"/>
         </animation>
 
         <animation name="stun" speed="0.05" loop="true">

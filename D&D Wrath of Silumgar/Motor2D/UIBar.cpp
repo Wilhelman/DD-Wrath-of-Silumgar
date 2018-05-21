@@ -238,6 +238,10 @@ void UIBar::SetBarNumbers() {
 		App->gui->DeleteUIElement(*bar_numbers);
 	}
 
+	if (current_quantity<0) {
+		current_quantity = 0;
+	}
+
 	std::string bar_nums_char = std::to_string(current_quantity) + "/" + std::to_string(max_capacity);
 
 	bar_numbers = App->gui->AddUILabel(bar_pos.x + (max_width/2) - 5, bar_pos.y, bar_nums_char, { 255,255,255,255 }, 10);

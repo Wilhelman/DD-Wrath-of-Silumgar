@@ -29,6 +29,7 @@ public:
 	UIElement* lower_points = nullptr;
 	UIElement* explanation_background = nullptr;
 	UIElement* explanation_label = nullptr;
+	UIElement* mana_cost = nullptr;
 	iPoint upper_points_pos = { 0,0 };
 	iPoint lower_points_pos = { 0,0 };
 	std::vector<UIElement*> main_labels;

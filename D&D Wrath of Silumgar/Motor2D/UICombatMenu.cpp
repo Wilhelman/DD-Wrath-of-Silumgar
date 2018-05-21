@@ -51,7 +51,7 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 		items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
 	}
 	attack_label->current_state = STATE_FOCUSED;
-	explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, ATTACKEXPLANATION, {255,255,255,255}, nullptr, Second_Font);
+	explanation_label = App->gui->AddUITextBox(2, 1, 15, 450, ATTACKEXPLANATION, {255,255,255,255}, nullptr, Second_Font);
 	explanation_label->SetParent(explanation_background);
 	arrow = App->gui->AddUIImage(x - (main_label1_pos.x / 1.5), y, { 1333, 272, 7, 14 }, callback, background);
 	main_labels.push_back(attack_label);
@@ -89,6 +89,8 @@ UICombatMenu::~UICombatMenu() {
 	lower_points = nullptr;
 	App->gui->DeleteUIElement(*background);
 	background = nullptr;
+	App->gui->DeleteUIElement(*mana_cost);
+	mana_cost = nullptr;
 	App->gui->DeleteUIElement(*explanation_label);
 	explanation_label = nullptr;
 	App->gui->DeleteUIElement(*explanation_background);
@@ -1154,22 +1156,25 @@ void UICombatMenu::SelectDeadAlly(std::vector<UIElement*> &current_vector) {
 
 void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 	std::vector<UIElement*>::const_iterator it_vector = current_vector.begin();
+	if (mana_cost != nullptr) {
+		App->gui->DeleteUIElement(*mana_cost);
+	}
 	if (current_vector == main_labels) {
 		App->gui->DeleteUIElement(*explanation_label);
 		while (it_vector != current_vector.end()) {
 			if ((*it_vector)->current_state == STATE_FOCUSED) {
 				if ((*it_vector) == attack_label) {
-					explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, ATTACKEXPLANATION, { 255,255,255,255 }, nullptr, Second_Font);
+					explanation_label = App->gui->AddUITextBox(2, 1, 15, 450, ATTACKEXPLANATION, { 255,255,255,255 }, nullptr, Second_Font);
 					explanation_label->SetParent(explanation_background);
 					break;
 				}
 				else if ((*it_vector) == abilities_label) {
-					explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, ABILITIESEXPLANATION, { 255,255,255,255 }, nullptr, Second_Font);
+					explanation_label = App->gui->AddUITextBox(2, 1, 15, 450, ABILITIESEXPLANATION, { 255,255,255,255 }, nullptr, Second_Font);
 					explanation_label->SetParent(explanation_background);
 					break;
 				}
 				else if ((*it_vector) == items_label) {
-					explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, ITEMSEXPLANATION, { 255,255,255,255 }, nullptr, Second_Font);
+					explanation_label = App->gui->AddUITextBox(2, 1, 15, 450, ITEMSEXPLANATION, { 255,255,255,255 }, nullptr, Second_Font);
 					explanation_label->SetParent(explanation_background);
 					break;
 				}
@@ -1183,11 +1188,13 @@ void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 		}
 		if (entity->abilities.size() != 0) {
 			string description = entity_actions.at(current_ability).description;
-			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, description, { 255,255,255,255 }, nullptr, Second_Font);
+			explanation_label = App->gui->AddUITextBox(2, 1, 15, 400, description, { 255,255,255,255 }, nullptr, Second_Font);
 			explanation_label->SetParent(explanation_background);
+			std::string mana_string = std::to_string(entity_actions.at(current_ability).mana_points_effect_to_himself);
+			mana_cost = App->gui->AddUILabel(325, explanationPos.y, mana_string, { 0,0,255,255 }, 17, nullptr, nullptr, Second_Font);
 		}
 		else {
-			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, "You have non abilities in this moment", { 255,255,255,255 }, nullptr, Second_Font);
+			explanation_label = App->gui->AddUITextBox(2, 1, 15, 450, "You have non abilities in this moment", { 255,255,255,255 }, nullptr, Second_Font);
 			explanation_label->SetParent(explanation_background);
 		}
 	}
@@ -1197,11 +1204,11 @@ void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 		}
 		if (entity->usable_items.size() != 0) {
 			string description = entity->usable_items.at(current_item).action.description;
-			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, description, { 255,255,255,255 }, nullptr, Second_Font);
+			explanation_label = App->gui->AddUITextBox(2, 1, 15, 450, description, { 255,255,255,255 }, nullptr, Second_Font);
 			explanation_label->SetParent(explanation_background);
 		}
 		else {
-			explanation_label = App->gui->AddUITextBox(2, 1, 15, 224, "You have non abilities in this moment", { 255,255,255,255 }, nullptr, Second_Font);
+			explanation_label = App->gui->AddUITextBox(2, 1, 15, 450, "You have non abilities in this moment", { 255,255,255,255 }, nullptr, Second_Font);
 			explanation_label->SetParent(explanation_background);
 		}
 	}

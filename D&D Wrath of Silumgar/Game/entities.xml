@@ -113,37 +113,37 @@
       <animations>
 
         <animation name="idle" speed="1.5" loop="true">
-          <frame x="1028"  y="607" width="61" height="48"/>
-          <frame x="1029"  y="674" width="61" height="48"/>     
+          <frame x="1028"  y="607" width="61" height="51"/>
+          <frame x="1029"  y="674" width="61" height="51"/>     
         </animation>
 
         <animation name="run" speed="5.0" loop="true">
-          <frame x="1026"  y="604" width="65" height="51"/>
-          <frame x="937"  y="604" width="65" height="51"/>
-          <frame x="846"  y="604" width="65" height="51"/>
-          <frame x="756"  y="604" width="65" height="51"/>
-          <frame x="667"  y="604" width="65" height="51"/>
-          <frame x="574"  y="604" width="65" height="51"/>
-          <frame x="479"  y="604" width="65" height="51"/>
-          <frame x="388"  y="604" width="65" height="51"/>
+          <frame x="1026"  y="604" width="65" height="56"/>
+          <frame x="937"  y="604" width="65" height="56"/>
+          <frame x="846"  y="604" width="65" height="56"/>
+          <frame x="756"  y="604" width="65" height="56"/>
+          <frame x="667"  y="604" width="65" height="56"/>
+          <frame x="574"  y="604" width="65" height="56"/>
+          <frame x="479"  y="604" width="65" height="56"/>
+          <frame x="388"  y="604" width="65" height="56 "/>
         </animation>
 
         <animation name="default_attack" speed="0.2" loop="false">
-          <frame x="464"  y="729" width="103" height="83"/>
-          <frame x="341"  y="729" width="103" height="83"/>
-          <frame x="211"  y="729" width="103" height="83"/>
-          <frame x="41"  y="729" width="103" height="83"/>
+          <frame x="464"  y="729" width="103" height="88"/>
+          <frame x="341"  y="729" width="103" height="88"/>
+          <frame x="211"  y="729" width="103" height="88"/>
+          <frame x="41"  y="729" width="103" height="88"/>
         </animation>
 
         <animation name="hit" speed="0.05" loop="false">
-          <frame x="994"  y="883" width="47" height="44"/>
-          <frame x="908"  y="883" width="47" height="44"/>
+          <frame x="994"  y="883" width="47" height="48"/>
+          <frame x="908"  y="883" width="47" height="48"/>
         </animation>
 
 		<animation name="dodge" speed="0.05" loop="false">
-		  <frame x="684"  y="665" width="80" height="59"/>
-		  <frame x="540"  y="665" width="80" height="59"/>
-		  <frame x="370"  y="665" width="80" height="59"/>	  
+		  <frame x="684"  y="665" width="80" height="74"/>
+		  <frame x="540"  y="665" width="80" height="74"/>
+		  <frame x="370"  y="665" width="80" height="74"/>	  
         </animation>
 		
         <animation name="death" speed="0.5" loop="false">
@@ -176,58 +176,58 @@
       <animations>
 
         <animation name="idle" speed="1.5" loop="true">
-          <frame x="1021" y="120" width="68" height="46"/>
-					<frame x="1025" y="187" width="68" height="46"/>
+          <frame x="1021" y="120" width="68" height="49"/>
+					<frame x="1025" y="187" width="68" height="49"/>
         </animation>
 
         <animation name="run" speed="5.0" loop="true">
-          <frame x="1022"  y="117" width="69" height="49"/>
-          <frame x="934"  y="117" width="69" height="49"/>
-          <frame x="843"  y="117" width="69" height="49"/>
-          <frame x="747"  y="117" width="69" height="49"/>
-          <frame x="651"  y="117" width="69" height="49"/>
-          <frame x="551"  y="117" width="69" height="49"/>
-          <frame x="452"  y="117" width="69" height="49"/>
-          <frame x="354"  y="117" width="69" height="49"/>
+          <frame x="1022"  y="117" width="69" height="54"/>
+          <frame x="934"  y="117" width="69" height="54"/>
+          <frame x="843"  y="117" width="69" height="54"/>
+          <frame x="747"  y="117" width="69" height="54"/>
+          <frame x="651"  y="117" width="69" height="54"/>
+          <frame x="551"  y="117" width="69" height="54"/>
+          <frame x="452"  y="117" width="69" height="54"/>
+          <frame x="354"  y="117" width="69" height="54"/>
         </animation>
 
         <animation name="default_attack" speed="0.15" loop="false">
-          <frame x="471" y="238" width="109" height="83"/>
-          <frame x="347" y="238" width="109" height="83"/>
-          <frame x="216" y="238" width="109" height="83"/>
-          <frame x="57" y="238" width="109" height="83"/>
+          <frame x="471" y="295" width="109" height="83"/>
+          <frame x="347" y="295" width="109" height="83"/>
+          <frame x="216" y="295" width="109" height="83"/>
+          <frame x="57" y="295" width="109" height="83"/>
         </animation>
 
-        <animation name="cooking_oil" speed="0.05" loop="false">
+        <!--<animation name="cooking_oil" speed="0.05" loop="false">
           <frame x="978" y="326" width="80" height="55"/>
           <frame x="860" y="326" width="80" height="55"/>
           <frame x="755" y="326" width="80" height="55"/>
           <frame x="640" y="326" width="80" height="55"/>
           <frame x="531" y="326" width="80" height="55"/>
           <frame x="417" y="326" width="80" height="55"/>
-        </animation>
+        </animation>-->
 
         <animation name="hit" speed="0.05" loop="false">
-          <frame x="1018"  y="450" width="44" height="47"/>
-          <frame x="908"  y="450" width="44" height="47"/>
+          <frame x="1018"  y="450" width="44" height="51"/>
+          <frame x="908"  y="450" width="44" height="51"/>
         </animation>
 
 		<animation name="dodge" speed="0.05" loop="false">
-          <frame x="439"  y="176" width="79" height="59"/>
-		  <frame x="231"  y="176" width="79" height="59"/>
-		  <frame x="61"  y="176" width="79" height="59"/>
+          <frame x="439"  y="176" width="79" height="74"/>
+		  <frame x="231"  y="176" width="79" height="74"/>
+		  <frame x="61"  y="176" width="79" height="74"/>
 		  
         </animation>
 		
         <animation name="death" speed="0.5" loop="false">
-          <frame x="1001"  y="447" width="78" height="53"/>
-          <frame x="891"  y="447" width="78" height="53"/>
-          <frame x="775"  y="447" width="78" height="53"/>
-          <frame x="674"  y="447" width="78" height="53"/>
-          <frame x="541"  y="447" width="78" height="53"/>
-          <frame x="417"  y="447" width="78" height="53"/>
-          <frame x="282"  y="447" width="78" height="53"/>
-          <frame x="133"  y="447" width="78" height="53"/>
+          <frame x="1001"  y="447" width="78" height="58"/>
+          <frame x="891"  y="447" width="78" height="58"/>
+          <frame x="775"  y="447" width="78" height="58"/>
+          <frame x="674"  y="447" width="78" height="58"/>
+          <frame x="541"  y="447" width="78" height="58"/>
+          <frame x="417"  y="447" width="78" height="58"/>
+          <frame x="282"  y="447" width="78" height="58"/>
+          <frame x="133"  y="447" width="78" height="58"/>
         </animation>
 
         <animation name="head" speed="5.0" loop="true">
@@ -249,37 +249,37 @@
       <animations>
 
         <animation name="idle" speed="1.5" loop="true">
-          <frame x="1027" y="1039" width="64" height="48"/>
-					<frame x="1031" y="1106" width="64" height="48"/>
+          <frame x="1027" y="1039" width="64" height="51"/>
+					<frame x="1031" y="1106" width="64" height="51"/>
         </animation>
 
         <animation name="run" speed="5.0" loop="true">
-          <frame x="1028"  y="1039" width="65" height="48"/>
-          <frame x="935"  y="1039" width="65" height="48"/>
-          <frame x="838"  y="1039" width="65" height="48"/>
-          <frame x="741"  y="1039" width="65" height="48"/>
-          <frame x="647"  y="1039" width="65" height="48"/>
-          <frame x="548"  y="1039" width="65" height="48"/>
-          <frame x="452"  y="1039" width="65" height="48"/>
-          <frame x="346"  y="1039" width="65" height="48"/>
+          <frame x="1028"  y="1039" width="65" height="53"/>
+          <frame x="935"  y="1039" width="65" height="53"/>
+          <frame x="838"  y="1039" width="65" height="53"/>
+          <frame x="741"  y="1039" width="65" height="53"/>
+          <frame x="647"  y="1039" width="65" height="53"/>
+          <frame x="548"  y="1039" width="65" height="53"/>
+          <frame x="452"  y="1039" width="65" height="53"/>
+          <frame x="346"  y="1039" width="65" height="53"/>
         </animation>
 
         <animation name="default_attack" speed="0.2" loop="false">
-          <frame x="452" y="1161" width="103" height="83"/>
-          <frame x="341" y="1161" width="103" height="83"/>
-          <frame x="220" y="1161" width="103" height="83"/>
-          <frame x="73" y="1161" width="103" height="83"/>
+          <frame x="452" y="1161" width="103" height="88"/>
+          <frame x="341" y="1161" width="103" height="88"/>
+          <frame x="220" y="1161" width="103" height="88"/>
+          <frame x="73" y="1161" width="103" height="88"/>
         </animation>
 
         <animation name="hit" speed="0.05" loop="false">
-          <frame x="983"  y="1313" width="47" height="46"/>
-          <frame x="895"  y="1313" width="47" height="46"/>
+          <frame x="983"  y="1313" width="47" height="50"/>
+          <frame x="895"  y="1313" width="47" height="50"/>
         </animation>
 
 		<animation name="dodge" speed="0.05" loop="false">
-		  <frame x="661"  y="1092" width="80" height="64"/>
-		  <frame x="536"  y="1092" width="80" height="64"/>
-		  <frame x="381"  y="1092" width="80" height="64"/>
+		  <frame x="661"  y="1092" width="80" height="79"/>
+		  <frame x="536"  y="1092" width="80" height="79"/>
+		  <frame x="381"  y="1092" width="80" height="79"/>
 	  
         </animation>
 		

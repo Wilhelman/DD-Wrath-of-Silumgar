@@ -54,6 +54,8 @@ Warrior::Warrior(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &charge);
 		else if (tmp == "taunt")
 			LoadAnimation(animations, &taunt);
+		else if (tmp == "whirlwind")
+			LoadAnimation(animations, &whirlwind);
 		else if (tmp == "menu_animation")
 			LoadAnimation(animations, &menu_animation);
 		else if (tmp == "stun")

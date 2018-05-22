@@ -1789,9 +1789,9 @@
       <animations>
 
         <animation name="idle" speed="1.0" loop="true">
-          <frame x="1624" y="118" width="67" height="75"/>
-          <frame x="1708" y="118" width="67" height="75"/>
-          <frame x="1792" y="118" width="67" height="75"/>
+          <frame x="1624" y="118" width="67" height="80"/>
+          <frame x="1708" y="118" width="67" height="80"/>
+          <frame x="1792" y="118" width="67" height="80"/>
         </animation>
 
         <animation name="run" speed="10.0" loop="true">

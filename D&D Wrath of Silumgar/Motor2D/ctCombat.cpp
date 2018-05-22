@@ -338,6 +338,10 @@ bool ctCombat::Update(float dt)
 					turn_priority_entity.shrink_to_fit();
 
 				}
+				else {
+					entity_performing_action = entity_to_perform_action;
+				}
+				
 			}
 
 		}
@@ -358,6 +362,9 @@ bool ctCombat::PostUpdate()
 	bool ret = true;
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
+
+	
+	
 
 	return ret;
 }

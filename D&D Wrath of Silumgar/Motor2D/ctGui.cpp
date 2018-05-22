@@ -6,6 +6,7 @@
 //#include "ctFonts.h"
 #include "ctInput.h"
 #include "ctGui.h"
+#include "ctCombat.h"
 
 #include "UILabel.h"
 #include "UIImage.h"
@@ -104,6 +105,31 @@ bool ctGui::PostUpdate()
 	}
 
 	//LOG("NUM ELEM: %i", ui_elements.size());
+
+	if (App->combat->entity_performing_action != nullptr && App->combat->making_decision) {
+		switch (App->combat->entity_performing_action->type)
+		{
+		case WARRIOR:
+			App->render->DrawQuad({ 242,0,242,32 }, 255, 255, 0, 255, false);
+			App->render->DrawQuad({243,1,240,30 }, 255, 255, 0, 255, false);
+			break;
+		case ELF:
+			App->render->DrawQuad({ 0,293,240,33 }, 255, 255, 0, 255, false);
+			App->render->DrawQuad({ 1,294,238,31 }, 255, 255, 0, 255, false);
+			break;
+		case DWARF:
+			App->render->DrawQuad({ 242,293,242,32 }, 255, 255, 0, 255, false);
+			App->render->DrawQuad({ 243,294,240,30 }, 255, 255, 0, 255, false);
+			break;
+		case CLERIC:
+			App->render->DrawQuad({ 0,0,241,32 }, 255, 255, 0, 255, false);
+			App->render->DrawQuad({ 1,1,239,30 }, 255, 255, 0, 255, false);
+			break;
+		default:
+			break;
+		}
+
+	}
 
 	return true;
 }

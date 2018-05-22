@@ -53,6 +53,7 @@ public:
 	
 
 public:
+	bool making_decision = false;
 
 	void SetSceneName(string new_scene_name);
 
@@ -79,6 +80,8 @@ public:
 	void SelectWithPreviousHeroe();
 	bool pause_menu_is_open = false;
 	UIElement* pauseMenu = nullptr;
+
+	Entity* entity_performing_action = nullptr;
 	
 private:
 
@@ -117,7 +120,7 @@ private:
 	
 
 	string scene_name;
-	bool making_decision = false;
+	
 
 	//UICombat stuff
 	UICombatMenu* combat_menu = nullptr;
@@ -151,6 +154,7 @@ private:
 	std::vector<UIBar*> enemies_bars;
 public:
 	bool condition_victory = true;
+	
 };
 
 

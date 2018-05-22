@@ -175,7 +175,14 @@ bool ctCombat::Start()
 		App->cutscene_manager->ChargeCutscene(LICH_CUTSCENE);
 		App->cutscene_manager->StartCutscene();
 	}
-	
+
+	//recover hp and mana
+	for (int i = 0; i < App->entities->entities.size(); i++)
+	{
+		App->entities->entities.at(i)->Recover();
+	}
+
+
 	return ret;
 }
 
@@ -331,6 +338,10 @@ bool ctCombat::Update(float dt)
 					turn_priority_entity.shrink_to_fit();
 
 				}
+				else {
+					entity_performing_action = entity_to_perform_action;
+				}
+				
 			}
 
 		}
@@ -351,6 +362,9 @@ bool ctCombat::PostUpdate()
 	bool ret = true;
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
+
+	
+	
 
 	return ret;
 }

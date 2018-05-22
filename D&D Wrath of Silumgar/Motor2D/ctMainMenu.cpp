@@ -269,7 +269,7 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		}
 		if (App->fadeToBlack->FadeIsOver()) {
 			is_new_game = true;
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->tabern_scene, 5.0f); 
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->tabern_scene, 0.0f); //5.0f 
 		}
 	}
 	if (settings_label->current_state == STATE_EXECUTED) {

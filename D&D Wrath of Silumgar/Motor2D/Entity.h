@@ -178,6 +178,7 @@ public:
 	//Combat stuff
 
 	virtual void NewTurn();
+	virtual void Recover();
 
 	virtual void PerformAction() {};
 

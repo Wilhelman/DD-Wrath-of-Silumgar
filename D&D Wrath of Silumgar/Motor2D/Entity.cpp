@@ -277,6 +277,17 @@ void Entity::NewTurn()
 	}
 }
 
+void Entity::Recover()
+{
+	int health_to_recover = (int)(0.25 * current_health_points);
+	App->combat->UpdateHPBarOfEntity(this, health_to_recover);
+	this->SetCurrentHealthPoints(this->GetCurrentHealthPoints() + health_to_recover);
+
+	int mana_to_recover = (int)(0.25 * current_mana_points);
+	App->combat->UpdateManaBarOfEntity(this, mana_to_recover);
+	this->SetCurrentManaPoints(this->GetCurrentHealthPoints() + mana_to_recover);
+}
+
 void Entity::AddAlteredStat(Altered_Stat new_altered_stat)
 {
 	altered_stats.push_back(new_altered_stat);

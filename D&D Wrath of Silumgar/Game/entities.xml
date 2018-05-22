@@ -1087,11 +1087,7 @@
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
-          <frame x="1286" y="6" width="131" height="62"/>
-          <frame x="1147" y="6" width="131" height="62"/>
-          <frame x="1009" y="6" width="131" height="62"/>
-          <frame x="869"  y="6" width="131" height="62"/>
-          <frame x="719"  y="6" width="131" height="62"/>
+          <frame x="111" y="149" width="126" height="127"/>
         </animation>
 
         <animation name="run" speed="5.0" loop="true">

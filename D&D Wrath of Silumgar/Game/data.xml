@@ -3,7 +3,6 @@
 	<world_map current_location="here_the_coords_maybe" />
 	<heroes>
 		<heroe name="cleric">
-
 			<values health_points="141" mana_points="78" />
 			<skills>
 				<skill name="Heal" description="Heals an ally or himself based on intelligence" mana_points_effect_to_himself="28" health_points_effect="28" objective="0" have_to_move="0" owned="0" />

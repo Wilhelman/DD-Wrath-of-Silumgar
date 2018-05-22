@@ -175,7 +175,14 @@ bool ctCombat::Start()
 		App->cutscene_manager->ChargeCutscene(LICH_CUTSCENE);
 		App->cutscene_manager->StartCutscene();
 	}
-	
+
+	//recover hp and mana
+	for (int i = 0; i < App->entities->entities.size(); i++)
+	{
+		App->entities->entities.at(i)->Recover();
+	}
+
+
 	return ret;
 }
 

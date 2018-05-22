@@ -468,6 +468,8 @@ bool ctCombat::CleanUp()
 
 	if (heroes_are_dead)
 		App->map->actual_tier = TIER_MAP_1;
+
+	entity_performing_action = nullptr;
 	
 	return true;
 }

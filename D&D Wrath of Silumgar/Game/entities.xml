@@ -781,6 +781,18 @@
           <frame x="88" y="2502" width="205" height="154"/>
           <frame x="309" y="2502" width="205" height="154"/>
         </animation>
+		
+		<animation name="dodge" speed="0.2" loop="false">
+          <frame x="1040" y="1217" width="196" height="162"/>
+		  <frame x="806" y="1217" width="196" height="162"/>
+		  <frame x="572" y="1217" width="196" height="162"/>
+		  <frame x="322" y="1217" width="196" height="162"/>
+		  <frame x="71" y="1217" width="196" height="162"/>
+		  <frame x="322" y="1217" width="196" height="162"/>
+		  <frame x="572" y="1217" width="196" height="162"/>
+		  <frame x="806" y="1217" width="196" height="162"/>
+        
+        </animation>
 
         <animation name="death" speed="0.1" loop="false">
           <frame x="88" y="2502" width="205" height="155"/>

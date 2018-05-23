@@ -61,7 +61,7 @@ private:
 	Task*		buttonS = nullptr;
 	Task*		buttonX = nullptr;
 
-
+	
 
 public:
 	std::list<Task*> TaskQueue;
@@ -139,6 +139,7 @@ private:
 	Entity* actioner_entity = nullptr;
 	Action action_to_perform;
 	Entity* receiver_entity = nullptr;
+	bool sound_playing = false;
 };
 
 class MoveBackward : public Task

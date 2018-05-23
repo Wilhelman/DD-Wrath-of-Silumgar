@@ -169,6 +169,11 @@ bool PerformActionToEntity::Execute()
 
 			ret = actioner_entity->animation->Finished();
 
+			if (!sound_playing) {
+				actioner_entity->Attack();
+				sound_playing = true;
+			}
+
 			if (ret == true) {
 				actioner_entity->attack.Reset();
 
@@ -242,7 +247,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Attack();
+				sound_playing = false;
 
 			}
 		}
@@ -256,7 +261,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->bidimensional_claw;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->bidimensional_claw.Reset();
 				actioner_entity->animation = &actioner_entity->idle;
@@ -349,7 +357,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -364,6 +372,10 @@ bool PerformActionToEntity::Execute()
 
 			ret = actioner_entity->animation->Finished();
 
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->dragon_flames.Reset();
 				actioner_entity->animation = &actioner_entity->idle;
@@ -456,7 +468,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -470,7 +482,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->lightning_flash;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->lightning_flash.Reset();
 				actioner_entity->animation = &actioner_entity->idle;
@@ -563,7 +578,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -577,7 +592,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->abyssal_sphere;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->abyssal_sphere.Reset();
 
@@ -663,7 +681,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -677,7 +695,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->void_cannon;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->void_cannon.Reset();
 				actioner_entity->animation = &actioner_entity->idle;
@@ -722,7 +743,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -735,7 +756,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->kick;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
@@ -804,7 +828,7 @@ bool PerformActionToEntity::Execute()
 
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_KICK);
 
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -817,7 +841,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->guard;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->guard.Reset();
 
@@ -837,7 +864,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(defense);
 
 
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -851,7 +878,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->heavy_slash;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->heavy_slash.Reset();
 
@@ -918,7 +948,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -932,7 +962,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->kick;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
@@ -995,7 +1028,7 @@ bool PerformActionToEntity::Execute()
 				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_KICK_PLUS);
 
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1009,7 +1042,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->guard;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->guard.Reset();
 
@@ -1029,7 +1065,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(defense);
 
 
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1043,7 +1079,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->heavy_slash;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->heavy_slash.Reset();
 
@@ -1111,7 +1150,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1125,7 +1164,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->charge;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->charge.Reset();
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -1191,7 +1233,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1205,7 +1247,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->taunt;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->taunt.Reset();
 
@@ -1227,7 +1272,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(defense);
 
 
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1241,7 +1286,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->whirlwind;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T2();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->whirlwind.Reset();
 
@@ -1321,7 +1369,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T2();
+				sound_playing = false;
 
 			}
 		}
@@ -1339,7 +1387,10 @@ bool PerformActionToEntity::Execute()
 
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -1412,7 +1463,7 @@ bool PerformActionToEntity::Execute()
 				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIGH_AXE);
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1426,7 +1477,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->morale_boost;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->morale_boost.Reset();
 
@@ -1449,7 +1503,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(strength_up);
 
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1463,7 +1517,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->morale_boost;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->morale_boost.Reset();
 
@@ -1486,7 +1543,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(dexterity);
 
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1502,7 +1559,10 @@ bool PerformActionToEntity::Execute()
 
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -1578,7 +1638,7 @@ bool PerformActionToEntity::Execute()
 				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIGH_AXE_PLUS);
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1592,7 +1652,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->morale_boost;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->morale_boost.Reset();
 
@@ -1615,7 +1678,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(strength_up);
 
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1629,7 +1692,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->morale_boost;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->morale_boost.Reset();
 
@@ -1651,7 +1717,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(dexterity);
 				receiver_entity->AddAlteredStat(dexterity);
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1665,7 +1731,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->raging_mock;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T2();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->raging_mock.Reset();
 
@@ -1693,7 +1762,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(debuff);
 
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1709,7 +1778,10 @@ bool PerformActionToEntity::Execute()
 
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -1774,7 +1846,7 @@ bool PerformActionToEntity::Execute()
 				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 
 				//App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIGH_AXE);
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1788,7 +1860,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->raging_mock;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->raging_mock.Reset();
 
@@ -1811,7 +1886,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(debuff);
 
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1825,7 +1900,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->heal;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -1851,7 +1929,7 @@ bool PerformActionToEntity::Execute()
 
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HEAL);
 
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1865,7 +1943,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->thunder_punch;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
@@ -1924,7 +2005,7 @@ bool PerformActionToEntity::Execute()
 
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_KICK);
 
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1939,7 +2020,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->insignificant_mortals;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->base_stats.agility += 3;
 				actioner_entity->base_stats.dexterity += 5;
@@ -1948,7 +2032,7 @@ bool PerformActionToEntity::Execute()
 				App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "AGILITY UP", { 0,255,0,255 }, 14, nullptr, nullptr);
 				
 
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -1961,6 +2045,12 @@ bool PerformActionToEntity::Execute()
 
 			actioner_entity->animation = &actioner_entity->attack_1;
 			ret = actioner_entity->animation->Finished();
+
+			if (!sound_playing) {
+				actioner_entity->Attack();
+				sound_playing = true;
+			}
+
 			if (ret)
 			{
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -2004,7 +2094,7 @@ bool PerformActionToEntity::Execute()
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,255,255 }, 16, nullptr, nullptr);
 
 						receiver_entity->Damaged();
-						actioner_entity->Attack();
+						sound_playing = false;
 
 					}
 				}
@@ -2018,7 +2108,10 @@ bool PerformActionToEntity::Execute()
 			// TO GUILLERMO
 
 			actioner_entity->animation = &actioner_entity->attack;
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			ret = actioner_entity->animation->Finished();
 			if (ret = true)
 			{
@@ -2041,7 +2134,7 @@ bool PerformActionToEntity::Execute()
 				receiver_entity->AddAlteredStat(block);
 				receiver_entity->AddAlteredStat(block);
 
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 			}
 		}
 		break;
@@ -2054,6 +2147,12 @@ bool PerformActionToEntity::Execute()
 
 			actioner_entity->animation = &actioner_entity->attack;
 			ret = actioner_entity->animation->Finished();
+
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
+
 			if (ret)
 			{
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -2101,7 +2200,7 @@ bool PerformActionToEntity::Execute()
 
 					}
 				}
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 			}
 		}
 		break;
@@ -2112,6 +2211,12 @@ bool PerformActionToEntity::Execute()
 
 			actioner_entity->animation = &actioner_entity->attack;
 			ret = actioner_entity->animation->Finished();
+
+			if (!sound_playing) {
+				actioner_entity->Attack();
+				sound_playing = true;
+			}
+
 			if (ret)
 			{
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -2159,7 +2264,7 @@ bool PerformActionToEntity::Execute()
 
 					}
 				}
-				actioner_entity->Attack();
+				sound_playing = false;
 			}
 		}
 		break;
@@ -2171,6 +2276,12 @@ bool PerformActionToEntity::Execute()
 
 			actioner_entity->animation = &actioner_entity->infernal_fire_animation;
 			ret = actioner_entity->animation->Finished();
+
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
+
 			if (ret)
 			{
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -2218,7 +2329,7 @@ bool PerformActionToEntity::Execute()
 
 					}
 				}
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 			}
 		}
 		break;
@@ -2230,6 +2341,12 @@ bool PerformActionToEntity::Execute()
 
 			actioner_entity->animation = &actioner_entity->shadow_jab_animation;
 			ret = actioner_entity->animation->Finished();
+
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
+
 			if (ret)
 			{
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -2277,7 +2394,7 @@ bool PerformActionToEntity::Execute()
 
 					}
 				}
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 			}
 		}
 		break;
@@ -2348,6 +2465,12 @@ bool PerformActionToEntity::Execute()
 			//TO GUILLERMO
 			actioner_entity->animation = &actioner_entity->attack;
 			ret = actioner_entity->animation->Finished();
+
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
+
 			if (ret)
 			{
 				actioner_entity->SetCurrentManaPoints(1000);
@@ -2367,7 +2490,7 @@ bool PerformActionToEntity::Execute()
 
 				receiver_entity->AddAlteredStat(stats_up);
 
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 			}
 
 		}
@@ -2381,7 +2504,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->light_strike;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->light_strike.Reset();
 
@@ -2457,7 +2583,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -2471,7 +2597,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->mace_throw;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->mace_throw.Reset();
 
@@ -2563,7 +2692,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -2577,7 +2706,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->heal;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -2603,7 +2735,7 @@ bool PerformActionToEntity::Execute()
 
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HEAL_PLUS);
 
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -2617,7 +2749,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->light_strike;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->light_strike.Reset();
 
@@ -2700,7 +2835,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -2714,7 +2849,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->mace_throw_plus;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->mace_throw_plus.Reset();
 
@@ -2811,7 +2949,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -2825,7 +2963,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->heal;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -2851,7 +2992,7 @@ bool PerformActionToEntity::Execute()
 
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BLESSING);
 				
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -2864,6 +3005,12 @@ bool PerformActionToEntity::Execute()
 			//TO GUILLERMO
 			actioner_entity->animation = &actioner_entity->blessing;
 			ret = actioner_entity->animation->Finished();
+
+			if (!sound_playing) {
+				actioner_entity->Ability2T2();
+				sound_playing = true;
+			}
+
 			if (ret)
 			{
 
@@ -2886,7 +3033,7 @@ bool PerformActionToEntity::Execute()
 
 				receiver_entity->AddAlteredStat(stats_up);
 
-				actioner_entity->Ability2T2();
+				sound_playing = false;
 			}
 		}
 						  break;
@@ -2898,6 +3045,11 @@ bool PerformActionToEntity::Execute()
 			//TO GUILLERMO
 			actioner_entity->animation = &actioner_entity->clarity;
 			ret = actioner_entity->animation->Finished();
+			if (!sound_playing) {
+				actioner_entity->Ability3T2();
+				sound_playing = true;
+			}
+
 			if (ret)
 			{
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -2911,6 +3063,8 @@ bool PerformActionToEntity::Execute()
 				fPoint posP;
 				posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w/2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_CLARITY);
+
+				sound_playing = false;
 			}
 		}
 					  break;
@@ -2926,7 +3080,10 @@ bool PerformActionToEntity::Execute()
 
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T2();
+				sound_playing = true;
+			}
 			if (ret == true) {
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -2989,7 +3146,7 @@ bool PerformActionToEntity::Execute()
 				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_BLIZZARD);
-				actioner_entity->Ability2T2();
+				sound_playing = false;
 
 			}
 		}
@@ -3003,7 +3160,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->seed_of_life;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -3029,7 +3189,7 @@ bool PerformActionToEntity::Execute()
 
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_SEED_OF_LIFE);
 
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -3044,6 +3204,10 @@ bool PerformActionToEntity::Execute()
 
 			ret = actioner_entity->animation->Finished();
 
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->fireball.Reset();
 
@@ -3115,7 +3279,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -3130,7 +3294,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->sea_of_flames;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->sea_of_flames.Reset();
 
@@ -3199,7 +3366,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -3213,7 +3380,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->lightning_bolt;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->lightning_bolt.Reset();
 
@@ -3280,7 +3450,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -3294,7 +3464,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->seed_of_life_plus;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
@@ -3320,7 +3493,7 @@ bool PerformActionToEntity::Execute()
 
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_SEED_OF_LIFE_PLUS);
 
-				actioner_entity->Ability1T1();
+				sound_playing = false;
 
 			}
 		}
@@ -3334,7 +3507,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->fireball;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability2T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->fireball.Reset();
 
@@ -3407,7 +3583,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability2T1();
+				sound_playing = false;
 
 			}
 		}
@@ -3421,7 +3597,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->lightning_bolt;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T1();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->lightning_bolt.Reset();
 
@@ -3489,7 +3668,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T1();
+				sound_playing = false;
 
 			}
 		}
@@ -3502,7 +3681,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->revive;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability1T2();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->revive.Reset();
 
@@ -3525,7 +3707,7 @@ bool PerformActionToEntity::Execute()
 				posP = { (float)(receiver_entity->position.x + receiver_entity->animation->GetCurrentFrame().w/2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 				App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_REVIVE);
 
-				actioner_entity->Ability1T2();
+				sound_playing = false;
 			}
 		}
 					 break;
@@ -3538,7 +3720,10 @@ bool PerformActionToEntity::Execute()
 			actioner_entity->animation = &actioner_entity->fire_djinn;
 
 			ret = actioner_entity->animation->Finished();
-
+			if (!sound_playing) {
+				actioner_entity->Ability3T2();
+				sound_playing = true;
+			}
 			if (ret == true) {
 				actioner_entity->fire_djinn.Reset();
 
@@ -3596,7 +3781,7 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				actioner_entity->Ability3T2();
+				sound_playing = false;
 
 			}
 		}

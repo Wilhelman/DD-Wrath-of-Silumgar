@@ -15,7 +15,7 @@
 				<skill name="Harden Skin" description="Hardens skin as tough as stone to gain a 50% boost to physical defense, intelligence and strength" mana_points_effect_to_himself="25" health_points_effect="28" magical_defense_variation="5" intelligence_variation="5" strength_variation="5" objective="0" have_to_move="0" owned="0" />
 				<skill name="Clarity" description="Purifies a party member removing all its debuffs" mana_points_effect_to_himself="45" health_points_effect="28" objective="0" have_to_move="0" owned="0" />
 			</skills>
-			<items boot="" ring="Amethyst Ring" helmet="" shield="" weapon="" gauntlet="" chest="" accessory="">
+			<items boot="" ring="" helmet="" shield="" weapon="" gauntlet="" chest="" accessory="">
 				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
 				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
 				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
@@ -38,7 +38,7 @@
 				<skill name="Taunt" description="Angers an enemy, reducing its defenses by 50% but increasing the strength by 25%" mana_points_effect_to_himself="30" health_points_effect="16" objective="1" have_to_move="0" owned="0" />
 				<skill name="Whirlwind" description="Sword spining attack that deals damage to an enemy based on strength" mana_points_effect_to_himself="40" health_points_effect="80" objective="1" have_to_move="1" owned="0" />
 			</skills>
-			<items>
+			<items boot="" ring="" helmet="" shield="" weapon="" gauntlet="" chest="" accessory="">
 				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
 				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
 				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
@@ -61,7 +61,7 @@
 				<skill name="Meteor" description="Throws enormous rock to an enemy that deals big physical damage based on strength. If enemy is stunned, deals extra damage" mana_points_effect_to_himself="40" health_points_effect="-50" objective="1" have_to_move="0" owned="0" />
 				<skill name="Counter" description="Increases defenses and strength by 50% for 3 turns" mana_points_effect_to_himself="30" health_points_effect="-23" objective="0" have_to_move="0" owned="0" />
 			</skills>
-			<items>
+			<items boot="" ring="" helmet="" shield="" weapon="" gauntlet="" chest="" accessory="">
 				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
 				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
 				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />
@@ -84,7 +84,7 @@
 				<skill name="Revive" description="Casts a powerfull spell to bring back from the dead an ally with a small amount of health that increases based on intelligence" mana_points_effect_to_himself="20" health_points_effect="60" objective="2" have_to_move="0" owned="0" />
 				<skill name="Fire Djinn" description="Summons the Fire Djiin to deal heavy damage based on intelligence" mana_points_effect_to_himself="40" health_points_effect="-40" burn_chance="100" objective="1" have_to_move="0" owned="0" />
 			</skills>
-			<items>
+      <items boot="" ring="" helmet="" shield="" weapon="" gauntlet="" chest="" accessory="">
 				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
 				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
 				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />

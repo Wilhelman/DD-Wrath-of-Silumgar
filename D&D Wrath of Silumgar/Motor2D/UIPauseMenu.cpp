@@ -1089,6 +1089,48 @@ void UIPauseMenu::SaveInPauseMenu()
 			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 				item.attribute("quantity").set_value(0);
 			}
+
+			pugi::xml_node item = heroe.child("items");
+			Entity* curr = App->entities->GetWarrior();
+
+			if (App->items->warrior_equip.size() != 0)
+			{
+				if (curr->helmet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("helmet").set_value(curr->helmet.name.c_str());
+				}
+
+				if (curr->boot.type != NO_ITEM_TYPE)
+				{
+					item.attribute("boot").set_value(curr->boot.name.c_str());
+				}
+
+				if (curr->guantlet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("gauntlet").set_value(curr->guantlet.name.c_str());
+				}
+				if (curr->ring.type != NO_ITEM_TYPE)
+				{
+					item.attribute("ring").set_value(curr->ring.name.c_str());
+				}
+				if (curr->accessory.type != NO_ITEM_TYPE)
+				{
+					item.attribute("accessory").set_value(curr->accessory.name.c_str());
+				}
+				if (curr->chest.type != NO_ITEM_TYPE)
+				{
+					item.attribute("chest").set_value(curr->chest.name.c_str());
+				}
+				if (curr->shield.type != NO_ITEM_TYPE)
+				{
+					item.attribute("shield").set_value(curr->shield.name.c_str());
+				}
+				if (curr->weapon.type != NO_ITEM_TYPE)
+				{
+					item.attribute("weapon").set_value(curr->weapon.name.c_str());
+				}
+
+			}
 		}
 		else if (tmp == "dwarf") {
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
@@ -1098,6 +1140,48 @@ void UIPauseMenu::SaveInPauseMenu()
 			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 				item.attribute("quantity").set_value(0);
 			}
+
+			pugi::xml_node item = heroe.child("items");
+			Entity* curr = App->entities->GetDwarf();
+
+			if (App->items->warrior_equip.size() != 0)
+			{
+				if (curr->helmet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("helmet").set_value(curr->helmet.name.c_str());
+				}
+
+				if (curr->boot.type != NO_ITEM_TYPE)
+				{
+					item.attribute("boot").set_value(curr->boot.name.c_str());
+				}
+
+				if (curr->guantlet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("gauntlet").set_value(curr->guantlet.name.c_str());
+				}
+				if (curr->ring.type != NO_ITEM_TYPE)
+				{
+					item.attribute("ring").set_value(curr->ring.name.c_str());
+				}
+				if (curr->accessory.type != NO_ITEM_TYPE)
+				{
+					item.attribute("accessory").set_value(curr->accessory.name.c_str());
+				}
+				if (curr->chest.type != NO_ITEM_TYPE)
+				{
+					item.attribute("chest").set_value(curr->chest.name.c_str());
+				}
+				if (curr->shield.type != NO_ITEM_TYPE)
+				{
+					item.attribute("shield").set_value(curr->shield.name.c_str());
+				}
+				if (curr->weapon.type != NO_ITEM_TYPE)
+				{
+					item.attribute("weapon").set_value(curr->weapon.name.c_str());
+				}
+
+			}
 		}
 		else if (tmp == "elf") {
 			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
@@ -1105,6 +1189,48 @@ void UIPauseMenu::SaveInPauseMenu()
 			}
 			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 				item.attribute("quantity").set_value(0);
+			}
+
+			pugi::xml_node item = heroe.child("items");
+			Entity* curr = App->entities->GetElf();
+
+			if (App->items->warrior_equip.size() != 0)
+			{
+				if (curr->helmet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("helmet").set_value(curr->helmet.name.c_str());
+				}
+
+				if (curr->boot.type != NO_ITEM_TYPE)
+				{
+					item.attribute("boot").set_value(curr->boot.name.c_str());
+				}
+
+				if (curr->guantlet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("gauntlet").set_value(curr->guantlet.name.c_str());
+				}
+				if (curr->ring.type != NO_ITEM_TYPE)
+				{
+					item.attribute("ring").set_value(curr->ring.name.c_str());
+				}
+				if (curr->accessory.type != NO_ITEM_TYPE)
+				{
+					item.attribute("accessory").set_value(curr->accessory.name.c_str());
+				}
+				if (curr->chest.type != NO_ITEM_TYPE)
+				{
+					item.attribute("chest").set_value(curr->chest.name.c_str());
+				}
+				if (curr->shield.type != NO_ITEM_TYPE)
+				{
+					item.attribute("shield").set_value(curr->shield.name.c_str());
+				}
+				if (curr->weapon.type != NO_ITEM_TYPE)
+				{
+					item.attribute("weapon").set_value(curr->weapon.name.c_str());
+				}
+
 			}
 		}
 

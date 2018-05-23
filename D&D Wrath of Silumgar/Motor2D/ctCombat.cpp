@@ -773,6 +773,7 @@ void ctCombat::LoadDataFromXML()
 				item.attribute("accessory").set_value("");
 				item.attribute("chest").set_value("");
 				item.attribute("shield").set_value("");
+				item.attribute("ring").set_value("");
 				item.attribute("weapon").set_value("");
 			}
 
@@ -794,6 +795,22 @@ void ctCombat::LoadDataFromXML()
 				}
 				LoadSkill(skill, App->entities->GetWarrior());
 			}
+
+			if (App->main_menu->is_new_game == true) {
+
+				pugi::xml_node item = heroe.child("items");
+
+				item.attribute("helmet").set_value("");
+				item.attribute("boot").set_value("");
+				item.attribute("gauntlet").set_value("");
+				item.attribute("accessory").set_value("");
+				item.attribute("chest").set_value("");
+				item.attribute("shield").set_value("");
+				item.attribute("ring").set_value("");
+				item.attribute("weapon").set_value("");
+			}
+
+
 			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 				if (App->main_menu->is_new_game == true) {
 					item.attribute("quantity").set_value(0);
@@ -813,6 +830,21 @@ void ctCombat::LoadDataFromXML()
 				LoadSkill(skill, App->entities->GetDwarf());
 			}
 
+			if (App->main_menu->is_new_game == true) {
+
+				pugi::xml_node item = heroe.child("items");
+
+				item.attribute("helmet").set_value("");
+				item.attribute("boot").set_value("");
+				item.attribute("gauntlet").set_value("");
+				item.attribute("accessory").set_value("");
+				item.attribute("chest").set_value("");
+				item.attribute("shield").set_value("");
+				item.attribute("ring").set_value("");
+				item.attribute("weapon").set_value("");
+			}
+
+
 			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 				if (App->main_menu->is_new_game == true) {
 					item.attribute("quantity").set_value(0);
@@ -831,6 +863,22 @@ void ctCombat::LoadDataFromXML()
 				}
 				LoadSkill(skill, App->entities->GetElf());
 			}
+
+			if (App->main_menu->is_new_game == true) {
+
+				pugi::xml_node item = heroe.child("items");
+
+				item.attribute("helmet").set_value("");
+				item.attribute("boot").set_value("");
+				item.attribute("gauntlet").set_value("");
+				item.attribute("accessory").set_value("");
+				item.attribute("chest").set_value("");
+				item.attribute("shield").set_value("");
+				item.attribute("ring").set_value("");
+				item.attribute("weapon").set_value("");
+			}
+
+
 			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 				if (App->main_menu->is_new_game == true) {
 					item.attribute("quantity").set_value(0);
@@ -995,6 +1043,11 @@ void ctCombat::LoadItem(pugi::xml_node item, Entity * entity)
 		for (int i = 0; i < item.attribute("quantity").as_int(); i++)
 			entity->AddUsableItem(App->items->usable_items.at(6));
 	}
+}
+
+void ctCombat::LoadEquipableItem()
+{
+
 }
 
 void ctCombat::SaveDataToXML()

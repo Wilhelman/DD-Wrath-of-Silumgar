@@ -135,7 +135,7 @@ void UIPauseMenu::Update() {
 	{
 		arrow->Update();
 		//Go down
-		/*if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 			App->audio->PlayFx(App->audio->mm_movement_fx);
 
 			NavigateDown(main_labels);
@@ -144,7 +144,7 @@ void UIPauseMenu::Update() {
 		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 			App->audio->PlayFx(App->audio->mm_movement_fx);
 			NavigateUp(main_labels);
-		}*/
+		}
 		//ExecuteCommand
 		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 			ExecuteComand(main_labels);
@@ -564,7 +564,7 @@ void UIPauseMenu::SetUpPauseMenu()
 	}
 	main_labels.push_back(inventory_label);
 
-	quit_label = new UILabel(420, 70, LABEL, "Quit", { 255,0,0,255 }, 15);
+	quit_label = new UILabel(420, 70, LABEL, "Save and\n Quit", { 255,255,255,255 }, 15);
 	main_labels.push_back(quit_label);
 	arrow = new UIImage(-10, 0, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
 	arrow->SetParent(continue_label);
@@ -669,10 +669,18 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 
 		}
 		else if (inventory_label->current_state == STATE_EXECUTED) {
+			if (inventory_items.size() != 0)
+			{
 				SetUpInventory();
 				SetInformationLabels();
+			}
+			else
+			{
+				inventory_label->current_state = STATE_FOCUSED;
+			}
 		}
 		else if (quit_label->current_state == STATE_EXECUTED) {
+			SaveInPauseMenu();
 			App->fadeToBlack->FadeToBlackBetweenModules(callback, App->main_menu, 1.0f);
 		}
 	}
@@ -1002,4 +1010,106 @@ void UIPauseMenu::SetInformationLabels()
 
 		information_inventory_items.push_back(new UITextBox(420, 300, TEXTBOX, "Press SPACE\n to return", { 255,255,255 }, 17, 200));
 	}
+}
+
+void UIPauseMenu::SaveInPauseMenu()
+{
+
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+	node = &node->child("heroes");
+
+	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
+	{
+		std::string tmp(heroe.attribute("name").as_string());
+
+		if (tmp == "cleric") {
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				skill.attribute("owned").set_value(0);
+			}
+
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+				item.attribute("quantity").set_value(0);
+			}
+			pugi::xml_node item = heroe.child("items");
+
+			for (int i = 0; i < App->items->cleric_equip.size(); i++)
+			{
+				App->entities->GetCleric()->AddEquipItem(App->items->cleric_equip.at(i));
+			}
+
+			Entity* curr = App->entities->GetCleric();
+
+			if (App->items->cleric_equip.size() != 0)
+			{
+				if (curr->helmet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("helmet").set_value(curr->helmet.name.c_str());
+				}
+
+				if (curr->boot.type != NO_ITEM_TYPE)
+				{
+					item.attribute("boot").set_value(curr->boot.name.c_str());
+				}
+
+				if (curr->guantlet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("gauntlet").set_value(curr->guantlet.name.c_str());
+				}
+				if (curr->ring.type != NO_ITEM_TYPE)
+				{
+					item.attribute("ring").set_value(curr->ring.name.c_str());
+				}
+				if (curr->accessory.type != NO_ITEM_TYPE)
+				{
+					item.attribute("accessory").set_value(curr->accessory.name.c_str());
+				}
+				if (curr->chest.type != NO_ITEM_TYPE)
+				{
+					item.attribute("chest").set_value(curr->chest.name.c_str());
+				}
+				if (curr->shield.type != NO_ITEM_TYPE)
+				{
+					item.attribute("shield").set_value(curr->shield.name.c_str());
+				}
+				if (curr->weapon.type != NO_ITEM_TYPE)
+				{
+					item.attribute("weapon").set_value(curr->weapon.name.c_str());
+				}
+
+			}
+
+
+		}
+		else if (tmp == "warrior") {
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				skill.attribute("owned").set_value(0);
+			}
+
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+				item.attribute("quantity").set_value(0);
+			}
+		}
+		else if (tmp == "dwarf") {
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				skill.attribute("owned").set_value(0);
+
+			}
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+				item.attribute("quantity").set_value(0);
+			}
+		}
+		else if (tmp == "elf") {
+			for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
+				skill.attribute("owned").set_value(0);
+			}
+			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
+				item.attribute("quantity").set_value(0);
+			}
+		}
+
+	}
+
+	data_file.save_file("data.xml");
+	data_file.reset();
 }

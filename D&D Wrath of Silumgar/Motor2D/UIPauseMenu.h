@@ -84,6 +84,7 @@ public:
 	void NavigateDown(std::vector<UIElement*> &current_vector);
 	void NavigateUp(std::vector<UIElement*> &current_vector);
 	void ExecuteComand(std::vector<UIElement*> &current_vector);
+	void SaveInPauseMenu();
 
 	void SetUpInventory();
 	void SetUpPauseMenu();

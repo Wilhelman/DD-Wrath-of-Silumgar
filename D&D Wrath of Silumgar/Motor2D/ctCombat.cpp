@@ -205,6 +205,11 @@ bool ctCombat::Update(float dt)
 		App->entities->GetElf()->animation = &App->entities->GetElf()->idle;
 	}*/
 
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	{
+		App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu);
+	}
+
 	if (!App->cutscene_manager->isActive()) {
 		if (making_decision == true)
 		{
@@ -757,6 +762,20 @@ void ctCombat::LoadDataFromXML()
 				}
 				LoadSkill(skill, App->entities->GetCleric());
 			}
+
+			if (App->main_menu->is_new_game == true) {
+
+				pugi::xml_node item = heroe.child("items");
+
+				item.attribute("helmet").set_value("");
+				item.attribute("boot").set_value("");
+				item.attribute("gauntlet").set_value("");
+				item.attribute("accessory").set_value("");
+				item.attribute("chest").set_value("");
+				item.attribute("shield").set_value("");
+				item.attribute("weapon").set_value("");
+			}
+
 			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 				if (App->main_menu->is_new_game == true) {
 					item.attribute("quantity").set_value(0);

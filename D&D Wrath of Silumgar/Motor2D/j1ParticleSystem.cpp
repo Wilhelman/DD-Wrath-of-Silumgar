@@ -131,6 +131,23 @@ bool j1ParticleSystem::Awake(pugi::xml_node& config)
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_DRAGON_ESSENCE);
 		else if (emitterType == "fenix_tears")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_FENIX_TEARS);
+		//DARK WARRIOR
+		else if (emitterType == "void_cannon")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_VOID_CANNON);
+		else if (emitterType == "thunder_punch")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_THUNDER_PUNCH);
+		//DISPLACER BEAST
+		else if (emitterType == "infernal_fire")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_INFERNAL_FIRE);
+		else if (emitterType == "shadow_jab")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_SHADOW_JAB);
+		//TROLL LEADER
+		else if (emitterType == "claw_attack")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_CLAW_ATTACK);
+		else if (emitterType == "block")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BLOCK);
+		else if (emitterType == "infested_claw")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_INFESTED_CLAW);
 	}
 	return ret;
 }

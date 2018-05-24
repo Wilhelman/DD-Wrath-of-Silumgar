@@ -1577,6 +1577,12 @@
           <frame x="902" y="2156" width="45" height="71"/>
           <frame x="962" y="2156" width="45" height="71"/>
         </animation>
+		
+		<animation name="selected" speed="1.0" loop="true">
+          <frame x="1050" y="2154" width="50" height="72"/>
+          <frame x="1110" y="2154" width="50" height="72"/>
+          <frame x="1170" y="2154" width="50" height="72"/>
+        </animation>
 
         <animation name="run" speed="10.0" loop="true">
           <frame x="1776" y="449" width="94" height="66"/>

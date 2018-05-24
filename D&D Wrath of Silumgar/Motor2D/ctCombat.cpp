@@ -813,6 +813,10 @@ void ctCombat::LoadDataFromXML()
 				item.attribute("ring").set_value("");
 				item.attribute("weapon").set_value("");
 			}
+			else
+			{
+				LoadEquipableItem(heroe.child("items"), App->entities->GetWarrior());
+			}
 
 
 			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
@@ -847,6 +851,10 @@ void ctCombat::LoadDataFromXML()
 				item.attribute("ring").set_value("");
 				item.attribute("weapon").set_value("");
 			}
+			else
+			{
+				LoadEquipableItem(heroe.child("items"), App->entities->GetDwarf());
+			}
 
 
 			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
@@ -880,6 +888,10 @@ void ctCombat::LoadDataFromXML()
 				item.attribute("shield").set_value("");
 				item.attribute("ring").set_value("");
 				item.attribute("weapon").set_value("");
+			}
+			else
+			{
+				LoadEquipableItem(heroe.child("items"), App->entities->GetElf());
 			}
 
 

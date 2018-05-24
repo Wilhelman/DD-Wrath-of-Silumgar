@@ -681,6 +681,7 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		}
 		else if (quit_label->current_state == STATE_EXECUTED) {
 			SaveInPauseMenu();
+			App->gui->DeleteAllUIElements();
 			App->fadeToBlack->FadeToBlackBetweenModules(callback, App->main_menu, 1.0f);
 		}
 	}

@@ -33,6 +33,7 @@ public:
 	ctAnimation* stun_animation = nullptr;
 
 	ctAnimation idle = ctAnimation();
+	ctAnimation selected = ctAnimation();
 	ctAnimation run_forward = ctAnimation();
 	ctAnimation run_backward = ctAnimation();
 	ctAnimation attack = ctAnimation();

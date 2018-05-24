@@ -1201,6 +1201,13 @@
           <frame x="380" y="2659" width="70" height="82"/>
         </animation>
 
+        <animation name="selected" speed="0.05" loop="true">
+         <frame x="2024" y="2655" width="75" height="85"/>
+          <frame x="2112" y="2655" width="75" height="85"/>
+          <frame x="2200" y="2655" width="75" height="85"/>
+          <frame x="2288" y="2655" width="75" height="85"/>
+        </animation>
+
         <animation name="run" speed="10.0" loop="true">
           <frame x="1124"  y="2255" width="97" height="92"/>
           <frame x="1020"  y="2255" width="97" height="92"/>
@@ -1378,6 +1385,12 @@
           <frame x="66"  y="334" width="49" height="69"/>
           <frame x="134" y="334" width="49" height="69"/>
           <frame x="202" y="334" width="49" height="69"/>
+        </animation>
+
+        <animation name="selected" speed="0.05" loop="true">
+          <frame x="2070" y="38" width="53" height="73"/>
+          <frame x="2138" y="38" width="53" height="73"/>
+          <frame x="2206" y="38" width="53" height="73"/>
         </animation>
 
         <animation name="run" speed="10.0" loop="true">
@@ -1578,7 +1591,7 @@
           <frame x="962" y="2156" width="45" height="71"/>
         </animation>
 		
-		<animation name="selected" speed="1.0" loop="true">
+		<animation name="selected" speed="0.05" loop="true">
           <frame x="1050" y="2154" width="50" height="72"/>
           <frame x="1110" y="2154" width="50" height="72"/>
           <frame x="1170" y="2154" width="50" height="72"/>

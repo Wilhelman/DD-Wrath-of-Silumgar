@@ -26,6 +26,8 @@ Cleric::Cleric(int x, int y, EntityType type) : Entity(x, y, type) {
 
 		if (tmp == "idle")
 			LoadAnimation(animations, &idle);
+		else if (tmp == "selected")
+			LoadAnimation(animations, &selected);
 		else if (tmp == "run")
 			LoadAnimation(animations, &run_forward);
 		else if (tmp == "default_attack")

@@ -788,7 +788,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 				selected_enemy = App->combat->enemies.begin();
 			}
 		}
-		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 12, { 1328, 289, 14, 7 }, callback, nullptr);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if (selected_enemy != App->combat->enemies.end()) {
@@ -809,7 +809,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 				selected_enemy = App->combat->enemies.begin();
 			}
 		}
-		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 12, { 1328, 289, 14, 7 }, callback, nullptr);
 		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
@@ -835,7 +835,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 			App->gui->DeleteUIElement(*enemy_select_arrow);
 			enemy_select_arrow = nullptr;
 		}
-		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		enemy_select_arrow = App->gui->AddUIImage((*selected_enemy)->position.x + ((*selected_enemy)->idle.GetCurrentFrame().w / 2), (*selected_enemy)->position.y - (*selected_enemy)->idle.GetCurrentFrame().h - 12, { 1328, 289, 14, 7 }, callback, nullptr);
 		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 
@@ -920,7 +920,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 				selected_ally = App->combat->heroes.begin();
 			}
 		}
-		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 12, { 1328, 289, 14, 7 }, callback, nullptr);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if (selected_ally != App->combat->heroes.end()) {
@@ -941,7 +941,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 				selected_ally = App->combat->heroes.begin();
 			}
 		}
-		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 12, { 1328, 289, 14, 7 }, callback, nullptr);
 		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
@@ -967,7 +967,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 			App->gui->DeleteUIElement(*enemy_select_arrow);
 			enemy_select_arrow = nullptr;
 		}
-		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 12, { 1328, 289, 14, 7 }, callback, nullptr);
 		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 
@@ -1051,7 +1051,7 @@ void UICombatMenu::SelectDeadAlly(std::vector<UIElement*> &current_vector) {
 				selected_ally = App->combat->heroes.begin();
 			}
 		}
-		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 12, { 1328, 289, 14, 7 }, callback, nullptr);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if (selected_ally != App->combat->heroes.end()) {
@@ -1072,7 +1072,7 @@ void UICombatMenu::SelectDeadAlly(std::vector<UIElement*> &current_vector) {
 				selected_ally = App->combat->heroes.begin();
 			}
 		}
-		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 12, { 1328, 289, 14, 7 }, callback, nullptr);
 		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
@@ -1098,7 +1098,7 @@ void UICombatMenu::SelectDeadAlly(std::vector<UIElement*> &current_vector) {
 			App->gui->DeleteUIElement(*enemy_select_arrow);
 			enemy_select_arrow = nullptr;
 		}
-		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 5, { 1328, 289, 14, 7 }, callback, nullptr);
+		enemy_select_arrow = App->gui->AddUIImage((*selected_ally)->position.x + ((*selected_ally)->idle.GetCurrentFrame().w / 2), (*selected_ally)->position.y - (*selected_ally)->idle.GetCurrentFrame().h - 12, { 1328, 289, 14, 7 }, callback, nullptr);
 		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 

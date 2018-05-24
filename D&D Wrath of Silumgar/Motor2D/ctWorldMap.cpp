@@ -113,7 +113,8 @@ bool ctWorldMap::Start()
 {
 	bool ret = true;
 
-	start_combat_label=App->gui->AddUITextBox(320, 293, 10, 224, "Press ENTER or A to start combat", { 0,0,0,255 }, nullptr, Second_Font);
+	start_combat_label=App->gui->AddUITextBox(150, 293, 24, 500, "Press ENTER or A to start combat", { 0,0,0,255 }, nullptr, Second_Font);
+	start_combat_label->non_drawable = true;
 
 	//TO DELETE 1
 	spritesheet_world_map = App->tex->Load(name_spritesheet_world_map.c_str());
@@ -225,6 +226,8 @@ bool ctWorldMap::PreUpdate()
 // Called each loop iteration
 bool ctWorldMap::Update(float dt)
 {
+	
+
 
 	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || App->input->gamepad.Y == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 	{
@@ -269,6 +272,11 @@ bool ctWorldMap::Update(float dt)
 				NavigateDown(options);
 			}
 
+			start_combat_label->non_drawable = true;
+		}
+		else
+		{
+			start_combat_label->non_drawable = false;
 		}
 	}
 		// Draw everything --------------------------------------

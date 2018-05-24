@@ -1,6 +1,23 @@
 <?xml version="1.0"?>
 <data>
-	<world_map current_location="here_the_coords_maybe" />
+	<world_map location_x="40" location_y="170" />
+	<tiers>
+		<tier number="0" />
+		<tier number="0" />
+		<tier number="1" />
+		<tier number="4" />
+		<tier number="1" />
+		<tier number="0" />
+		<tier number="0" />
+		<tier number="1" />
+		<tier number="2" />
+		<tier number="1" />
+		<tier number="2" />
+		<tier number="1" />
+		<tier number="0" />
+		<tier number="3" />
+		<tier number="0" />
+	</tiers>
 	<heroes>
 		<heroe name="cleric">
 			<values health_points="156" mana_points="78" />
@@ -84,7 +101,7 @@
 				<skill name="Revive" description="Casts a powerfull spell to bring back from the dead an ally with a small amount of health that increases based on intelligence" mana_points_effect_to_himself="20" health_points_effect="60" objective="2" have_to_move="0" owned="0" />
 				<skill name="Fire Djinn" description="Summons the Fire Djiin to deal heavy damage based on intelligence" mana_points_effect_to_himself="40" health_points_effect="-40" burn_chance="100" objective="1" have_to_move="0" owned="0" />
 			</skills>
-      <items boot="" ring="" helmet="" shield="" weapon="" gauntlet="" chest="" accessory="">
+			<items boot="" ring="" helmet="" shield="" weapon="" gauntlet="" chest="" accessory="">
 				<item name="Life Potion" objective="0" use="LOW_HEALTH_RECOVER" quantity="0" />
 				<item name="Mega Life Potion" objective="0" use="HIGH_HEALTH_RECOVER" quantity="0" />
 				<item name="Mana Potion" objective="0" use="LOW_MANA_RECOVER" quantity="0" />

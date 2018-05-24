@@ -196,6 +196,9 @@ void UIPauseMenu::Update() {
 				App->audio->PlayFx(App->audio->cm_back_fx);
 				SetUpPauseMenu();
 			}
+			if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+				SetUpPauseMenu();
+			}
 
 		}
 		
@@ -590,7 +593,7 @@ void UIPauseMenu::SetUpPauseMenu()
 	}
 	main_labels.push_back(inventory_label);
 
-	quit_label = new UILabel(420, 70, LABEL, "Save and\n Quit", { 255,255,255,255 }, 15);
+	quit_label = new UILabel(420, 70, LABEL, "Save\Quit", { 255,255,255,255 }, 15);
 	main_labels.push_back(quit_label);
 	arrow = new UIImage(-10, 0, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
 	arrow->SetParent(continue_label);
@@ -1035,7 +1038,7 @@ void UIPauseMenu::SetInformationLabels()
 			parent_invetory_items += 20;
 		}
 
-		information_inventory_items.push_back(new UITextBox(420, 300, TEXTBOX, "Press SPACE\n to return", { 255,255,255 }, 17, 200));
+		information_inventory_items.push_back(new UITextBox(420, 300, TEXTBOX, "Press ENTER\n to return", { 255,255,255 }, 17, 200));
 	}
 }
 

@@ -5,6 +5,7 @@
 #include "ctInput.h"
 #include "UIButton.h"
 #include "ctTextures.h"
+#include "ctWorldMap.h"
 
 UIElement::UIElement(int x, int y, UI_Type type, UIElement* parent) : screen_position(x,y), type(type), parent(parent)
 {
@@ -33,7 +34,8 @@ void UIElement::Update()
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 	{
 		if (type == DECISION)
-			current_state = STATE_EXECUTED;
+			if(App->world_map->pause_menu_is_open == false)
+				current_state = STATE_EXECUTED;
 	}
 	
 	

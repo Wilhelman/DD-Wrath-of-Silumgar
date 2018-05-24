@@ -213,7 +213,7 @@ bool ctCombat::Update(float dt)
 	if (!App->cutscene_manager->isActive()) {
 		if (making_decision == true)
 		{
-			/*if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || App->input->gamepad.Y == GAMEPAD_STATE::PAD_BUTTON_DOWN)
+			if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || App->input->gamepad.Y == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 			{
 				if (pauseMenu == nullptr) {
 					pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);
@@ -229,7 +229,7 @@ bool ctCombat::Update(float dt)
 					App->entities->GetElf()->animation = &App->entities->GetElf()->idle;
 					App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->idle;
 				}
-			}*/
+			}
 			if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 				if (App->fadeToBlack->FadeIsOver())
 					App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu, 1.0f);

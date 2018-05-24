@@ -40,16 +40,41 @@ UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIEleme
 		App->entities->GetElf()->position = { 250,275 };
 	}
 
+
+	for (int i = 0; i < App->items->elf_equip.size(); i++)
+	{
+		App->entities->GetElf()->AddEquipItem(App->items->elf_equip.at(i));
+	}
+	
+
+	for (int i = 0; i < App->items->warrior_equip.size(); i++)
+	{
+		App->entities->GetWarrior()->AddEquipItem(App->items->warrior_equip.at(i));
+	}
+
+
+	for (int i = 0; i < App->items->cleric_equip.size(); i++)
+	{
+		App->entities->GetCleric()->AddEquipItem(App->items->cleric_equip.at(i));
+	}
+
+
+	for (int i = 0; i < App->items->dwarf_equip.size(); i++)
+	{
+		App->entities->GetDwarf()->AddEquipItem(App->items->dwarf_equip.at(i));
+	}
+
+
 	//-------------------------------
 
 	App->entities->GetCleric()->animation = &App->entities->GetCleric()->menu_animation;
 	App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->menu_animation;
 	App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->menu_animation;
 	App->entities->GetElf()->animation = &App->entities->GetElf()->menu_animation;
-	SetUpPauseMenu();
+
 
 	LoadEquipableObjects();
-
+	SetUpPauseMenu();
 
 	LoadClerictStats();
 	LoadWarriorStats();
@@ -554,7 +579,8 @@ void UIPauseMenu::SetUpPauseMenu()
 	continue_label = new UILabel(420, 10, LABEL, "Continue", { 255,255,255,255 }, 15);
 	main_labels.push_back(continue_label);
 	continue_label->current_state = STATE_FOCUSED;
-	if (information_inventory_items.size() != 0)
+
+	if (inventory_items.size() != 0)
 	{
 		inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,255,255,255 }, 15);
 	}

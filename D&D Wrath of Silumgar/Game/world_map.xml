@@ -9,7 +9,7 @@
       <!--TIER 1 MAPS-->
        <map_element>
           <tier type="1" />
-         <entity name="LICH"/>
+         <entity name="KOBOLD"/>
           <scene name="tavern.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="After getting to defeat that band of vermin in Allard, our heroes decide to understand the path to Silumgar. This is where your first decision is presented:"/>

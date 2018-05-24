@@ -142,10 +142,6 @@ bool j1ParticleSystem::Awake(pugi::xml_node& config)
 		else if (emitterType == "shadow_jab")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_SHADOW_JAB);
 		//TROLL LEADER
-		else if (emitterType == "claw_attack")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_CLAW_ATTACK);
-		else if (emitterType == "block")
-			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_BLOCK);
 		else if (emitterType == "infested_claw")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_INFESTED_CLAW);
 	}

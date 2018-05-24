@@ -94,7 +94,7 @@ bool ctMainMenu::Update(float dt)
 		int x, y;
 		App->input->GetMousePosition(x, y);
 		fPoint p = { (float)x,(float)y };
-		App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_SHADOW_JAB);
+		App->psystem->AddEmiter(p, EmitterType::EMITTER_TYPE_INFESTED_CLAW);
 	}
 	
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {

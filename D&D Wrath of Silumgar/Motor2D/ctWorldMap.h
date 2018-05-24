@@ -70,6 +70,7 @@ public:
 	std::vector<UIElement*> options;
 	UIElement* pauseMenu = nullptr;
 	bool pause_menu_is_open = false;
+	std::vector<int> number_map_generated;
 private:
 
 	//used to load easily a rect from XML

@@ -19,6 +19,8 @@
 #include "Warrior.h"
 #include "ctCombat.h"
 #include "ctWorldMap.h"
+#include "Entity.h"
+#include "MiniHeroes.h"
 
 UIPauseMenu::UIPauseMenu(int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
@@ -1047,6 +1049,23 @@ void UIPauseMenu::SaveInPauseMenu()
 
 	pugi::xml_document	data_file;
 	pugi::xml_node* node = &App->LoadData(data_file);
+
+	//-----------------------------------------------------------
+	node = &node->child("world_map");
+	
+	node->attribute("location_x").set_value(App->entities->GetMiniheroes()->position.x);
+	node->attribute("location_y").set_value(App->entities->GetMiniheroes()->position.y);
+
+	int count = 0;
+
+	node = &node->next_sibling();
+	for (pugi::xml_node tiers = node->child("tier"); tiers; tiers = tiers.next_sibling("tier"))
+	{
+		tiers.attribute("number").set_value(App->world_map->number_map_generated[count]);
+		count++;
+	}
+	
+	//-----------------------------------------------------------
 	node = &node->child("heroes");
 
 	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))

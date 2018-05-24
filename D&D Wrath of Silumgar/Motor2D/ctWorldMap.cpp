@@ -105,10 +105,6 @@ bool ctWorldMap::Awake(pugi::xml_node& co)
 		
 	}
 
-	
-
-
-
 	return ret;
 }
 
@@ -453,6 +449,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 		tier_1_vec.at(random_number)->coords_in_map = App->map->tier_1_coords.at(i);
 		
 		final_map_elements.push_back(tier_1_vec.at(random_number));
+		number_map_generated.push_back(random_number);
 	}
 
 	//TIER 2 randomize
@@ -467,6 +464,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 		tier_2_vec.at(random_number)->coords_in_map = App->map->tier_2_coords.at(i);
 
 		final_map_elements.push_back(tier_2_vec.at(random_number));
+		number_map_generated.push_back(random_number);
 	}
 
 	//TIER 3 randomize
@@ -487,6 +485,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 			tier_3_vec.at(last_random)->coords_in_map = App->map->tier_3_coords.at(i);
 
 			final_map_elements.push_back(tier_3_vec.at(last_random));
+			number_map_generated.push_back(random_number);
 		}
 	}
 
@@ -508,6 +507,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 			tier_4_vec.at(last_random)->coords_in_map = App->map->tier_4_coords.at(i);
 
 			final_map_elements.push_back(tier_4_vec.at(last_random));
+			number_map_generated.push_back(random_number);
 		}
 	}
 
@@ -529,6 +529,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 			tier_5_vec.at(last_random)->coords_in_map = App->map->tier_5_coords.at(i);
 
 			final_map_elements.push_back(tier_5_vec.at(last_random));
+			number_map_generated.push_back(random_number);
 		}
 	}
 
@@ -550,6 +551,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 			tier_6_vec.at(last_random)->coords_in_map = App->map->tier_6_coords.at(i);
 
 			final_map_elements.push_back(tier_6_vec.at(last_random));
+			number_map_generated.push_back(random_number);
 		}
 	}
 
@@ -571,6 +573,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 			tier_7_vec.at(last_random)->coords_in_map = App->map->tier_7_coords.at(i);
 
 			final_map_elements.push_back(tier_7_vec.at(last_random));
+			number_map_generated.push_back(random_number);
 		}
 	}
 
@@ -592,6 +595,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 			tier_8_vec.at(last_random)->coords_in_map = App->map->tier_8_coords.at(i);
 
 			final_map_elements.push_back(tier_8_vec.at(last_random));
+			number_map_generated.push_back(random_number);
 		}
 	}
 

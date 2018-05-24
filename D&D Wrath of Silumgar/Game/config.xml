@@ -71,8 +71,11 @@
 		</scene>
 	</map>
 	<skill_tree>
-		<spritesheet name="textures/SkillTree/skil_tree.png" />
-		<skill_tree_map_tmx name="skill_tree_map.tmx" />
+		<spritesheet name="textures/SkillTree/skill_tree_elf.png" />
+		<skill_tree_elf_tmx name="skill_tree_elf.tmx" />
+		<skill_tree_dwarf_tmx name="skill_tree_dwarf.tmx" />
+		<skill_tree_cleric_tmx name="skill_tree_cleric.tmx" />
+		<skill_tree_warrior_tmx name="skill_tree_warrior.tmx" />
 		<spritesheet_abilities name="textures/Abilities/abilities.png" />
 	</skill_tree>
 </config>

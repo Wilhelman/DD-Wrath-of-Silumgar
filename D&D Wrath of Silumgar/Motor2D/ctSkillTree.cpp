@@ -41,7 +41,11 @@ bool ctSkillTree::Awake(pugi::xml_node& config)
 	LOG("Loading SkillTree Map");
 	bool ret = true;
 
-	skill_tree_map_tmx = config.child("skill_tree_map_tmx").attribute("name").as_string();
+	skill_tree_elf_tmx = config.child("skill_tree_elf_tmx").attribute("name").as_string();
+	skill_tree_cleric_tmx = config.child("skill_tree_cleric_tmx").attribute("name").as_string();
+	skill_tree_warrior_tmx = config.child("skill_tree_warrior_tmx").attribute("name").as_string();
+	skill_tree_dwarf_tmx = config.child("skill_tree_dwarf_tmx").attribute("name").as_string();
+
 	//name_spritesheet_skill_tree_map = config.child("spritesheet").attribute("name").as_string();
 	name_spritesheet_abilities = config.child("spritesheet_abilities").attribute("name").as_string();
 
@@ -79,7 +83,7 @@ bool ctSkillTree::Start()
 	dwarf_upgrades = 1;
 	elf_upgrades = 1;
 
-	App->map->sceneName = skill_tree_map_tmx.c_str();
+	App->map->sceneName = skill_tree_cleric_tmx.c_str();
 	App->map->Load(App->map->sceneName.c_str());
 	App->map->LayersSetUp();
 	App->map->setAllLogicForMap();
@@ -630,17 +634,17 @@ void ctSkillTree::ChangeTitle() {
 	if (title != nullptr) {
 		App->gui->DeleteUIElement(*title);
 	}
-	if (current_hero == 1) {
-		title = App->gui->AddUITextBox(210, title_pos.y, 50, 200, "CLERIC", { 0,0,0,255 });
-	}
 	else if (current_hero == 2) {
-		title = App->gui->AddUITextBox(200, title_pos.y, 50, 200, "WARRIOR", { 0,0,0,255 });
+		App->map->sceneName = skill_tree_warrior_tmx.c_str();
+		App->map->Load(App->map->sceneName.c_str());
 	}
 	else if (current_hero == 3) {
-		title = App->gui->AddUITextBox(210, title_pos.y, 50, 200, "DWARF", { 0,0,0,255 });
+		App->map->sceneName = skill_tree_dwarf_tmx.c_str();
+		App->map->Load(App->map->sceneName.c_str());
 	}
 	else if (current_hero == 4) {
-		title = App->gui->AddUITextBox(220, title_pos.y, 50, 200, "ELF", { 0,0,0,255 });
+		App->map->sceneName = skill_tree_elf_tmx.c_str();
+		App->map->Load(App->map->sceneName.c_str());
 	}
 }
 

@@ -75,7 +75,12 @@ public:
 
 private:
 
-	std::string skill_tree_map_tmx;
+
+	std::string skill_tree_elf_tmx;
+	std::string skill_tree_dwarf_tmx;
+	std::string skill_tree_warrior_tmx;
+	std::string skill_tree_cleric_tmx;
+
 	std::string name_spritesheet_skill_tree_map;
 
 	SDL_Texture* spritesheet_skill_tree_map = nullptr;

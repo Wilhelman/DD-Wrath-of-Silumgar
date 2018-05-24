@@ -176,6 +176,18 @@ bool ctSkillTree::Update(float dt)
 	}
 
 	App->map->Draw();
+	if (current_hero == 1) {
+		MarkUnlockableAbilities(cleric_abilities);
+	}
+	else if (current_hero == 2) {
+		MarkUnlockableAbilities(warrior_abilities);
+	}
+	else if (current_hero == 3) {
+		MarkUnlockableAbilities(dwarf_abilities);
+	}
+	else if (current_hero == 4) {
+		MarkUnlockableAbilities(elf_abilities);
+	}
 	App->render->DrawQuad(marker_pos, 255, 0, 0, 255, true, true);
 
 	if (current_hero == 1)
@@ -955,5 +967,49 @@ void ctSkillTree::GoToNextSkillTree(){
 	else {
 
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->world_map, 1.0f);
+	}
+}
+
+void ctSkillTree::MarkUnlockableAbilities(std::vector<Ability*> &abilities) {
+	std::vector<Ability*>::const_iterator ability = abilities.begin();
+	std::vector<Ability*>::const_iterator prev_ability = abilities.begin();
+	while (ability != abilities.end()) {
+		prev_ability = abilities.begin();
+		if ((*ability)->tier != 1) {
+			if ((*ability)->tier == 2) {
+				while ((*prev_ability)->tier != 1) {
+					prev_ability++;
+				}
+			}
+			else {
+				while ((*prev_ability)->tier != (*ability)->tier - 1 || (*prev_ability)->branch != (*ability)->branch) {
+					prev_ability++;
+				}
+			}
+
+			if ((*prev_ability)->active == true) {
+				if ((*ability)->branch == 0) {
+					if ((*ability)->active == 0) {
+						App->render->DrawQuad({ App->map->branch_0_coords.at((*ability)->tier - 1).x - 2, App->map->branch_0_coords.at((*ability)->tier - 1).y - 2 ,44,44 }, 255, 255, 0, 255, true, true);
+					}
+				}
+				else if ((*ability)->branch == 1) {
+					if ((*ability)->active == 0) {
+						App->render->DrawQuad({ App->map->branch_1_coords.at((*ability)->tier - 2).x - 2, App->map->branch_1_coords.at((*ability)->tier - 2).y - 2 ,44,44 }, 255, 255, 0, 255, true, true);
+					}
+				}
+				else if ((*ability)->branch == 2) {
+					if ((*ability)->active == 0) {
+						App->render->DrawQuad({ App->map->branch_2_coords.at((*ability)->tier - 2).x - 2, App->map->branch_2_coords.at((*ability)->tier - 2).y - 2 ,44,44 }, 255, 255, 0, 255, true, true);
+					}
+				}
+				else if ((*ability)->branch == 3) {
+					if ((*ability)->active == 0) {
+						App->render->DrawQuad({ App->map->branch_3_coords.at((*ability)->tier - 2).x - 2, App->map->branch_3_coords.at((*ability)->tier - 2).y - 2 ,44,44 }, 255, 255, 0, 255, true, true);
+					}
+				}
+			}
+		}
+		ability++;
 	}
 }

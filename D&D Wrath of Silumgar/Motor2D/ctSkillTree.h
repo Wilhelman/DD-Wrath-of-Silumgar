@@ -71,6 +71,8 @@ public:
 
 	void GoToNextSkillTree();
 
+	void MarkUnlockableAbilities(std::vector<Ability*> &abilities);
+
 private:
 
 	std::string skill_tree_map_tmx;

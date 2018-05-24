@@ -41,6 +41,7 @@ public:
 	int current_ability = 0;
 	int current_item = 0;
 	int dead_heroes = 0;
+	bool enemy_select_arrow_is_disapearing = true;
 
 	iPoint label1_pos{ 10,20 };
 	iPoint label2_pos{ 10,40 };

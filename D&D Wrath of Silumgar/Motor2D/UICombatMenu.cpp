@@ -255,6 +255,24 @@ void UICombatMenu::Update()
 
 		executed_command = false;
 	}
+
+	if (enemy_select_arrow != nullptr) {
+		if (enemy_select_arrow_is_disapearing == true) {
+			enemy_select_arrow->alpha -= 4;
+		}
+		else {
+			enemy_select_arrow->alpha += 4;
+		}
+		if (enemy_select_arrow->alpha <= 0) {
+			enemy_select_arrow->alpha = 0;
+			enemy_select_arrow_is_disapearing = false;
+		}
+		if (enemy_select_arrow->alpha >= 255) {
+			enemy_select_arrow->alpha = 255;
+			enemy_select_arrow_is_disapearing = true;
+		}
+	}
+
 }
 
 

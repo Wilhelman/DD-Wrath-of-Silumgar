@@ -1591,7 +1591,7 @@
           <frame x="962" y="2156" width="45" height="71"/>
         </animation>
 		
-		<animation name="selected" speed="0.05" loop="true">
+		    <animation name="selected" speed="0.05" loop="true">
           <frame x="1050" y="2154" width="50" height="72"/>
           <frame x="1110" y="2154" width="50" height="72"/>
           <frame x="1170" y="2154" width="50" height="72"/>
@@ -1807,9 +1807,15 @@
       <animations>
 
         <animation name="idle" speed="1.0" loop="true">
-          <frame x="1624" y="118" width="67" height="80"/>
-          <frame x="1708" y="118" width="67" height="80"/>
-          <frame x="1792" y="118" width="67" height="80"/>
+          <frame x="1619" y="118" width="72" height="78"/>
+          <frame x="1703" y="118" width="72" height="78"/>
+          <frame x="1787" y="118" width="72" height="78"/>
+        </animation>
+
+        <animation name="selected" speed="0.05" loop="true">
+          <frame x="2107" y="498" width="74" height="80"/>
+          <frame x="2191" y="498" width="74" height="80"/>
+          <frame x="2275" y="498" width="74" height="80"/>
         </animation>
 
         <animation name="run" speed="10.0" loop="true">

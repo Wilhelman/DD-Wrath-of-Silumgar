@@ -776,6 +776,10 @@ void ctCombat::LoadDataFromXML()
 				item.attribute("ring").set_value("");
 				item.attribute("weapon").set_value("");
 			}
+			else
+			{
+				LoadEquipableItem(heroe.child("items"), App->entities->GetCleric());
+			}
 
 			for (pugi::xml_node item = heroe.child("items").child("item"); item; item = item.next_sibling("item")) {
 				if (App->main_menu->is_new_game == true) {
@@ -1045,8 +1049,79 @@ void ctCombat::LoadItem(pugi::xml_node item, Entity * entity)
 	}
 }
 
-void ctCombat::LoadEquipableItem()
+void ctCombat::LoadEquipableItem(pugi::xml_node item, Entity* entity)
 {
+	std::string tmp = "";
+
+	for (int i = 0; i < 8; i++)
+	{
+		switch (i)
+		{
+		case 0:
+			tmp = item.attribute("boot").as_string();
+			break;
+		case 1:
+			tmp = item.attribute("ring").as_string();
+			break;
+		case 2:
+			tmp = item.attribute("helmet").as_string();
+			break;
+		case 3:
+			tmp = item.attribute("shield").as_string();
+			break;
+		case 4:
+			tmp = item.attribute("weapon").as_string();
+			break;
+		case 5:
+			tmp = item.attribute("gauntlet").as_string();
+			break;
+		case 6:
+			tmp = item.attribute("chest").as_string();
+			break;
+		case 7:
+			tmp = item.attribute("accessory").as_string();
+			break;
+		}
+
+		bool finded = false;
+
+		for (int i = 0; i < App->items->tier_1_equips.size(); i++)
+		{
+			if (tmp == App->items->tier_1_equips.at(i).name)
+			{
+				finded = true;
+				entity->AddEquipItem(App->items->tier_1_equips.at(i));
+				break;
+			}
+		}
+
+		if (!finded)
+		{
+			for (int i = 0; i < App->items->tier_2_equips.size(); i++)
+			{
+				if (tmp == App->items->tier_2_equips.at(i).name)
+				{
+					finded = true;
+					entity->AddEquipItem(App->items->tier_2_equips.at(i));
+					break;
+				}
+			}
+		}
+
+		if (!finded)
+		{
+			for (int i = 0; i < App->items->tier_3_equips.size(); i++)
+			{
+				if (tmp == App->items->tier_3_equips.at(i).name)
+				{
+					finded = true;
+					entity->AddEquipItem(App->items->tier_3_equips.at(i));
+					break;
+				}
+			}
+		}
+
+	}
 
 }
 

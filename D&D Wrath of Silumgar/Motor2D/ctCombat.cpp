@@ -82,10 +82,10 @@ bool ctCombat::Start()
 	warrior_background = App->gui->AddUIImage(242, -1, { 242,31,242,32 }, this, nullptr);
 	elf_background = App->gui->AddUIImage(-1, 293, { 0,32,242,32 }, this, nullptr);
 	dwarf_background = App->gui->AddUIImage(242, 293, { 242,0,242,32 }, this, nullptr);
-	cleric_name = App->gui->AddUILabel(200, 3, "Cleric", { 255,255,255,255 }, 15, this);
-	warrior_name = App->gui->AddUILabel(438, 3, "Warrior", { 255,255,255,255 }, 15, this);
-	elf_name = App->gui->AddUILabel(210, 296, "Elf", { 255,255,255,255 }, 15, this);
-	dwarf_name = App->gui->AddUILabel(443, 296, "Dwarf", { 255,255,255,255 }, 15, this);
+	cleric_name = App->gui->AddUILabel(200, 3, "Cleric", { 255,255,255,255 }, 13, this);
+	warrior_name = App->gui->AddUILabel(438, 3, "Warrior", { 255,255,255,255 }, 13, this);
+	elf_name = App->gui->AddUILabel(210, 296, "Elf", { 255,255,255,255 }, 13, this);
+	dwarf_name = App->gui->AddUILabel(443, 296, "Dwarf", { 255,255,255,255 }, 13, this);
 	
 	SpawnEntities();
 

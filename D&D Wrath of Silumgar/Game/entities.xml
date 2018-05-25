@@ -1026,61 +1026,26 @@
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
-          <frame x="575" y="520" width="97" height="67"/>
-          <frame x="694" y="520" width="97" height="67"/>
-          <frame x="802" y="520" width="97" height="67"/>
+          
         </animation>
 
-        <animation name="death" speed="5.0" loop="true">
-          <frame x="189" y="796" width="84" height="62"/>
-          <frame x="304" y="796" width="84" height="62"/>
-          <frame x="189" y="796" width="84" height="62"/>
-          <frame x="304" y="796" width="84" height="62"/>
+        <animation name="dodge" speed="5.0" loop="true">
+          <frame x="17" y="0" width="95" height="106"/>
         </animation>
 
-        <animation name="dragon_flames" speed="5.0" loop="true">
-          <frame x="19" y="94" width="110" height="94"/>
-          <frame x="157" y="94" width="110" height="94"/>
-          <frame x="296" y="94" width="110" height="94"/>
-          <frame x="432" y="94" width="110" height="94"/>
-          <frame x="573" y="94" width="110" height="94"/>
-          <frame x="703" y="94" width="110" height="94"/>
-          <frame x="831" y="94" width="110" height="94"/>
-          <frame x="952" y="94" width="110" height="94"/>
+        <animation name="run" speed="5.0" loop="true">
+          <frame x="121" y="15" width="97" height="89"/>
+          <frame x="219" y="16" width="97" height="89"/>
+          <frame x="328" y="20" width="97" height="89"/>
         </animation>
 
-        <animation name="lightning_flash" speed="5.0" loop="true">
-          <frame x="19" y="94" width="110" height="94"/>
-          <frame x="157" y="94" width="110" height="94"/>
-          <frame x="296" y="94" width="110" height="94"/>
-          <frame x="432" y="94" width="110" height="94"/>
-          <frame x="573" y="94" width="110" height="94"/>
-          <frame x="703" y="94" width="110" height="94"/>
-          <frame x="831" y="94" width="110" height="94"/>
-          <frame x="952" y="94" width="110" height="94"/>
+        <animation name="default_attack" speed="5.0" loop="true">
+          <frame x="425" y="31" width="103" height="82"/>
+          <frame x="541" y="31" width="103" height="82"/>
+          <frame x="651" y="31" width="172" height="82"/>
         </animation>
 
-        <animation name="abyssal_sphere" speed="5.0" loop="true">
-          <frame x="19" y="94" width="110" height="94"/>
-          <frame x="157" y="94" width="110" height="94"/>
-          <frame x="296" y="94" width="110" height="94"/>
-          <frame x="432" y="94" width="110" height="94"/>
-          <frame x="573" y="94" width="110" height="94"/>
-          <frame x="703" y="94" width="110" height="94"/>
-          <frame x="831" y="94" width="110" height="94"/>
-          <frame x="952" y="94" width="110" height="94"/>
-        </animation>
-
-        <animation name="head" speed="5.0" loop="false">
-          <frame x="597" y="517" width="26" height="26"/>
-        </animation>
-        
-        <animation name="stun" speed="0.05" loop="true">
-          <frame x="177" y="352" width="60" height="17"/>
-          <frame x="245" y="352" width="60" height="17"/>
-          <frame x="312" y="352" width="60" height="17"/>
-        </animation>
-
+    
       </animations>
 
     </lich1st>

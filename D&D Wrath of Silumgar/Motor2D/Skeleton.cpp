@@ -109,7 +109,6 @@ void  Skeleton::Damaged() {
 void Skeleton::PerformAction()
 {
 	Entity* entity_objective = nullptr;
-
 	if (IsGoingToDoAnythingClever()) {
 		//in this case the kobold will search the weakest heroe since we dont have abilities
 		entity_objective = App->combat->GetTheWeakestHeroe();
@@ -117,6 +116,11 @@ void Skeleton::PerformAction()
 	else {
 		//in this case, the kobold will attack one random heroe
 		entity_objective = App->combat->GetRandomHeroe();
+	}
+
+	if (is_taunted) {
+		entity_objective = (Entity*)App->entities->GetWarrior();
+		is_taunted = false;
 	}
 
 	App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));

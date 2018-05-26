@@ -136,7 +136,14 @@ void Lich2::PerformAction()
 	if (IsGoingToDoAnythingClever()) {//hacer algo cheto
 
 		
+		if (is_taunted) {
+			entity_objective = (Entity*)App->entities->GetWarrior();
+			is_taunted = false;
+		}
+
+		else {
 			entity_objective = App->combat->GetTheWeakestHeroe();
+		}
 
 			if (GetCurrentManaPoints() >= 70) {
 				App->task_manager->AddTask(new PerformActionToEntity(this, sea_of_flames_action, entity_objective));
@@ -155,7 +162,14 @@ void Lich2::PerformAction()
 			}
 		}
 	else {//hacer algo mal
-		entity_objective = App->combat->GetRandomHeroe();
+		if (is_taunted) {
+			entity_objective = (Entity*)App->entities->GetWarrior();
+			is_taunted = false;
+		}
+
+		else {
+			entity_objective = App->combat->GetRandomHeroe();
+		}
 
 		App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
 		App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));

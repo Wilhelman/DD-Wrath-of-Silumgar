@@ -1257,19 +1257,18 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
-				std::string tmp_dmg = "STRENGTH UP";
+				std::string tmp_dmg = "TAUNTED";
 				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-				tmp_dmg = "PHYSICAL DEFENSE REDUCED";
-				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-				tmp_dmg = "MAGICAL DEFENSE REDUCED";
-				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
-				Altered_Stat defense;
-				defense.turn_left = 1;
-				defense.stat_effect_strength = 1;
-				defense.stat_effect_magical_defense = -2;
-				defense.stat_effect_physical_defense = -2;
-				receiver_entity->AddAlteredStat(defense);
+				Altered_Stat judg;
+				judg.turn_left = 2;
+				judg.stat_effect_magical_defense=-2;
+				judg.stat_effect_physical_defense = -2;
+				judg.stat_effect_strength = 1;
+				receiver_entity->AddAlteredStat(judg);
+
+
+				receiver_entity->is_taunted = true;
 
 
 				sound_playing = false;

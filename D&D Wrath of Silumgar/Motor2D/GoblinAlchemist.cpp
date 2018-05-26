@@ -117,6 +117,11 @@ void Goblin_Alchemist::PerformAction()
 		entity_objective = App->combat->GetRandomHeroe();
 	}
 
+	if (is_taunted) {
+		entity_objective = (Entity*)App->entities->GetWarrior();
+		is_taunted = false;
+	}
+
 	App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
 	App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
 	App->task_manager->AddTask(new MoveToInitialPosition(this));

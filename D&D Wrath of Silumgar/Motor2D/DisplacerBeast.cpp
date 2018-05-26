@@ -147,10 +147,17 @@ void DisplacerBeast::PerformAction()
 {
 	Entity* entity_objective = nullptr;
 
-	entity_objective = App->combat->GetRandomHeroe();
-
 	if (!IsGoingToDoAnythingClever()) {//hacer algo cheto
 		
+		if (is_taunted) {
+			entity_objective = (Entity*)App->entities->GetWarrior();
+			is_taunted = false;
+		}
+
+		else {
+			entity_objective = App->combat->GetTheWeakestHeroe();
+		}
+
 			if (GetCurrentManaPoints() >= 70) {
 				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
 				App->task_manager->AddTask(new PerformActionToEntity(this, shadow_jab, entity_objective));
@@ -166,6 +173,15 @@ void DisplacerBeast::PerformAction()
 	}
 	else {//hacer algo mal
 		
+
+		if (is_taunted) {
+			entity_objective = (Entity*)App->entities->GetWarrior();
+			is_taunted = false;
+		}
+
+		else {
+			entity_objective = App->combat->GetRandomHeroe();
+		}
 
 		App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
 		App->task_manager->AddTask(new PerformActionToEntity(this, this->rush, entity_objective));

@@ -121,6 +121,8 @@ public:
 	EntityType type = EntityType::NO_TYPE;
 	bool to_destroy = false;
 	bool flip_texture = false;
+
+	bool is_taunted = false;
 	
 	SDL_Texture* texture = nullptr;
 

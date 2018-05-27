@@ -367,8 +367,8 @@
     <!--- ACCESSORIES -->
     
     <equip name="Berserker Greaves" tier="3" type="ACCESSORIES" passive ="MORE_LIFE_REGENERATION_OUT">
-
-      <draw_coords x="0" y="2" width="16" height="8"/>
+    <!--de 64 a 48 en w  y de 32 a -->
+      <draw_coords x="0" y="0" width="48" height="48"/>
 
       <stats>
         <stat str="10"/>

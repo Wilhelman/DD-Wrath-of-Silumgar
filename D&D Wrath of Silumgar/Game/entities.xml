@@ -1055,20 +1055,29 @@
       <animations>
 
         <animation name="idle" speed="5.0" loop="true">
-          <frame x="111" y="149" width="126" height="127"/>
+       <!--   <frame x="700" y="537" width="92" height="104"/>
+          <frame x="555" y="537" width="92" height="104"/>
+          <frame x="426" y="537" width="92" height="104"/>-->
+                  <frame x="296" y="32" width="100" height="79"/>
+          <frame x="189" y="36" width="91" height="75"/>
+          <frame x="2"  y="39" width="169" height="72"/>
+
         </animation>
 
         <animation name="run" speed="5.0" loop="true">
-          <frame x="1297" y="168" width="132" height="67"/>
-          <frame x="1163" y="168" width="132" height="67"/>
-          <frame x="1016" y="168" width="132" height="67"/>
-          <frame x="875"  y="168" width="132" height="67"/>
-          <frame x="731"  y="168" width="132" height="67"/>
-          <frame x="593"  y="168" width="132" height="67"/>
-          <frame x="450"  y="168" width="132" height="67"/>
-          <frame x="296"  y="168" width="132" height="67"/>
-          <frame x="147"  y="168" width="132" height="67"/>
-          <frame x="2"    y="168" width="132" height="67"/>
+
+          <frame x="612" y="19" width="95" height="88"/>
+          <frame x="508" y="19" width="95" height="88"/>
+          <frame x="408" y="19" width="95" height="88"/>
+
+        </animation>
+        
+          <animation name="default_attack" speed="0.05" loop="false">
+            
+          <frame x="296" y="32" width="100" height="79"/>
+          <frame x="189" y="36" width="91" height="75"/>
+          <frame x="2"  y="39" width="169" height="72"/>
+
         </animation>
 
         <animation name="bidimensional_claw" speed="0.05" loop="false">
@@ -1080,14 +1089,7 @@
           <frame x="167"  y="280" width="160" height="58"/>
         </animation>
 
-        <animation name="default_attack" speed="0.05" loop="false">
-          <frame x="1257" y="280" width="160" height="58"/>
-          <frame x="1067" y="280" width="160" height="58"/>
-          <frame x="838"  y="280" width="160" height="58"/>
-          <frame x="614"  y="280" width="160" height="58"/>
-          <frame x="403"  y="280" width="160" height="58"/>
-          <frame x="167"  y="280" width="160" height="58"/>
-        </animation>
+
 
         <animation name="sea_of_flames" speed="0.05" loop="false">
           <frame x="1259" y="357" width="154" height="110"/>

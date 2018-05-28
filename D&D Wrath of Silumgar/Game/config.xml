@@ -49,7 +49,7 @@
 		<trollLeader spritesheetName="textures/Enemies/TrollLeader_sheet.png" />
 		<displacerBeast spritesheetName="textures/Enemies/DisplacerBeast_sheet.png" />
 		<lich1 spritesheetName="textures/Enemies/Lich1st_sheet.png" />
-		<lich2 spritesheetName="textures/Enemies/Lich2nd_sheet.png" />
+		<lich2 spritesheetName="textures/Enemies/new_lich.png" />
 		<spritesheetSource name="textures/" />
 		<player>
 			<fxPlayerJump name="audio/fx/jump_fx.wav" />

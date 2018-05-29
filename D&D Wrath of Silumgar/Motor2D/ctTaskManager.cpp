@@ -2569,6 +2569,8 @@ bool PerformActionToEntity::Execute()
 							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
 							critical = true;
 						}
+						if (receiver_entity->IsBleeding())
+							damage_to_deal = damage_to_deal * 1.5;
 						damage_to_deal = damage_to_deal - damage_reduction;
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 						receiver_entity->animation = &receiver_entity->hit;
@@ -2583,6 +2585,13 @@ bool PerformActionToEntity::Execute()
 								posP = { (float)(receiver_entity->position.x), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 								App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIT_HEROES);
 							}
+
+							else if (receiver_entity->IsStunned())
+							{
+								App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 253,103,6,255 }, 16, nullptr, nullptr);
+								App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 253,103,6,255 }, 16, nullptr, nullptr);
+							}
+
 							else
 							{
 								posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
@@ -2813,6 +2822,10 @@ bool PerformActionToEntity::Execute()
 							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
 							critical = true;
 						}
+
+						if (receiver_entity->IsBleeding())
+							damage_to_deal = damage_to_deal * 1.5;
+
 						damage_to_deal = damage_to_deal - damage_reduction;
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 						receiver_entity->animation = &receiver_entity->hit;

@@ -88,7 +88,9 @@ void Lich1::Update(float dt)
 
 void Lich1::SetPlayerAnimationsSpeed(float dt)
 {
-	idle.speed = idle_vel * dt;
+	float percentage_hp = ((current_health_points * 100) / max_health_points);
+	idle_animation_damaged_speed = (((100 - percentage_hp) * IDLE_SPEED_DAMAGED) / 100) + 1;
+	idle.speed = idle_vel * dt * idle_animation_damaged_speed;
 	run_forward.speed = run_forward_vel * dt;
 }
 

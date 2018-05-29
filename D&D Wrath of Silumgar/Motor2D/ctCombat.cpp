@@ -1452,6 +1452,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 				if (!making_decision) {
 					combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
 					making_decision = true;
+					App->entities->GetCleric()->animation = &App->entities->GetCleric()->selected;
 				}
 				else {
 					if (combat_menu->background == nullptr) {
@@ -1462,6 +1463,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 						combat_menu = nullptr;
 						established_action = true;
 						making_decision = false;
+						App->entities->GetCleric()->animation = &App->entities->GetCleric()->idle;
 					}
 				}
 			}else
@@ -1472,6 +1474,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 				if (!making_decision) {
 					combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
 					making_decision = true;
+					App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->selected;
 				}
 				else {
 					if (combat_menu->background == nullptr) {
@@ -1482,6 +1485,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 						combat_menu = nullptr;
 						established_action = true;
 						making_decision = false;
+						App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->idle;
 					}
 				}
 			}
@@ -1493,6 +1497,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 				if (!making_decision) {
 					combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
 					making_decision = true;
+					App->entities->GetElf()->animation = &App->entities->GetElf()->selected;
 				}
 				else {
 					if (combat_menu->background == nullptr) {
@@ -1503,6 +1508,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 						combat_menu = nullptr;
 						established_action = true;
 						making_decision = false;
+						App->entities->GetElf()->animation = &App->entities->GetElf()->idle;
 					}
 				}
 			}
@@ -1514,6 +1520,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 				if (!making_decision) {
 					combat_menu = (UICombatMenu*)App->gui->AddUICombatMenu(entity_to_perform_action, entity_to_perform_action->position.x + entity_to_perform_action->animation->GetCurrentFrame().w + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 10, this, nullptr);
 					making_decision = true;
+					App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->selected;
 				}
 				else {
 					if (combat_menu->background == nullptr) {
@@ -1524,6 +1531,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 						combat_menu = nullptr;
 						established_action = true;
 						making_decision = false;
+						App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->idle;
 					}
 				}
 			}

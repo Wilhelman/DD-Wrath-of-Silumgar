@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<alteredstats>
+	
+	<alteredstat name="str+">
+		<draw_coords x="0" y="0" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="str++">
+		<draw_coords x="32" y="0" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="str-">
+		<draw_coords x="64" y="0" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="str--">
+		<draw_coords x="96" y="0" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="pdef+">
+		<draw_coords x="128" y="0" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="pdef++">
+		<draw_coords x="0" y="32" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="pdef-">
+		<draw_coords x="32" y="32" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="pdef--">
+		<draw_coords x="64" y="32" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="mdef+">
+		<draw_coords x="96" y="32" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="mdef++">
+		<draw_coords x="128" y="32" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="mdef-">
+		<draw_coords x="0" y="64" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="mdef--">
+		<draw_coords x="32" y="64" width="32" height="32"/>
+	</alteredstat>
+		
+	<alteredstat name="jud-">
+		<draw_coords x="64" y="64" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="jud--">
+		<draw_coords x="96" y="64" width="32" height="32"/>
+	</alteredstat>
+	
+		<alteredstat name="int+">
+		<draw_coords x="128" y="64" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="int++">
+		<draw_coords x="0" y="96" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="int-">
+		<draw_coords x="32" y="96" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="int--">
+		<draw_coords x="64" y="96" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="dex+">
+		<draw_coords x="128" y="96" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="dex++">
+		<draw_coords x="128" y="96" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="dex-">
+		<draw_coords x="0" y="128" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="dex--">
+		<draw_coords x="32" y="128" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="agi+">
+		<draw_coords x="64" y="128" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="agi++">
+		<draw_coords x="96" y="128" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="agi-">
+		<draw_coords x="128" y="128" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="agi--">
+		<draw_coords x="0" y="160" width="32" height="32"/>
+	</alteredstat>
+	
+		<alteredstat name="bleed">
+		<draw_coords x="32" y="160" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="burn">
+		<draw_coords x="64" y="160" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="poison">
+		<draw_coords x="96" y="160" width="32" height="32"/>
+	</alteredstat>
+	
+	<alteredstat name="stun">
+		<draw_coords x="128" y="160" width="32" height="32"/>
+	</alteredstat>
+</alteredstats>

@@ -35,6 +35,7 @@
     <ClCompile Include="ctTaskManager.cpp" />
     <ClCompile Include="ctTextures.cpp" />
     <ClCompile Include="ctTimer.cpp" />
+    <ClCompile Include="ctVideoIntro.cpp" />
     <ClCompile Include="ctWindow.cpp" />
     <ClCompile Include="ctWorldMap.cpp" />
     <ClCompile Include="DarkWarrior.cpp" />
@@ -52,6 +53,7 @@
     <ClCompile Include="j1Language.cpp" />
     <ClCompile Include="j1Map.cpp" />
     <ClCompile Include="j1ParticleSystem.cpp" />
+    <ClCompile Include="j1Video.cpp" />
     <ClCompile Include="Kobold.cpp" />
     <ClCompile Include="Lich1.cpp" />
     <ClCompile Include="Lich2.cpp" />
@@ -107,6 +109,7 @@
     <ClInclude Include="ctTaskManager.h" />
     <ClInclude Include="ctTextures.h" />
     <ClInclude Include="ctTimer.h" />
+    <ClInclude Include="ctVideoIntro.h" />
     <ClInclude Include="ctWindow.h" />
     <ClInclude Include="ctWorldMap.h" />
     <ClInclude Include="DarkWarrior.h" />
@@ -124,6 +127,7 @@
     <ClInclude Include="j1Language.h" />
     <ClInclude Include="j1Map.h" />
     <ClInclude Include="j1ParticleSystem.h" />
+    <ClInclude Include="j1Video.h" />
     <ClInclude Include="Kobold.h" />
     <ClInclude Include="Lich1.h" />
     <ClInclude Include="Lich2.h" />

@@ -234,6 +234,12 @@
     <ClCompile Include="ctCutsceneManager.cpp">
       <Filter>Core\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="j1Video.cpp">
+      <Filter>Core\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ctVideoIntro.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -449,6 +455,12 @@
     </ClInclude>
     <ClInclude Include="ctCutsceneManager.h">
       <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Video.h">
+      <Filter>Core\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ctVideoIntro.h">
+      <Filter>Core\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

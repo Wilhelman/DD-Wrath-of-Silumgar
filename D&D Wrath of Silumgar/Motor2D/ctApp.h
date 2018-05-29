@@ -32,6 +32,9 @@ class j1ParticleSystem;
 class LootMenu;
 class ctFinalScene;
 class ctCutsceneManager;
+class j1Video;
+class ctVideoIntro;
+
 
 class ctApp
 {
@@ -127,6 +130,8 @@ public:
 	j1ParticleSystem*	psystem = nullptr;
 	LootMenu*			loot_menu = nullptr;
 	ctFinalScene*		final_scene = nullptr;
+	j1Video*			video_manager = nullptr;
+	ctVideoIntro*       video_intro_scene = nullptr;
 
 	bool				cap_state = false;
 

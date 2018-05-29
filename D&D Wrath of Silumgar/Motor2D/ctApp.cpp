@@ -10,6 +10,7 @@
 #include "ctTextures.h"
 #include "ctAudio.h"
 #include "j1Map.h"
+#include "ctVideoIntro.h"
 #include "ctMainMenu.h"
 #include "ctTabernScene.h"
 #include "ctSettings.h"
@@ -27,6 +28,7 @@
 #include "ctLootMenu.h"
 #include "ctFinalScene.h"
 #include "ctCutsceneManager.h"
+#include "j1Video.h"
 
 // Constructor
 ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
@@ -39,6 +41,8 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	tex = new ctTextures();
 	audio = new ctAudio();
 	map = new j1Map();
+	video_manager = new j1Video();
+	video_intro_scene = new ctVideoIntro();
 	main_menu = new ctMainMenu();
 	tabern_scene = new ctTabernScene();
 	final_scene = new ctFinalScene();
@@ -63,6 +67,8 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(win);
 	AddModule(tex);
 	AddModule(audio);
+	AddModule(video_manager);
+	AddModule(video_intro_scene);
 	AddModule(map);
 	AddModule(main_menu);
 	AddModule(tabern_scene);
@@ -87,9 +93,10 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(render);
 
 	//the start one
-	main_menu->active = true;
+	video_intro_scene->active = true;
 
 	//disable modules here
+	main_menu->active = false;
 	final_scene->active = false;
 	tabern_scene->active = false;
 	loot_menu->active = false;

@@ -1055,7 +1055,7 @@
       <animations>
 
 
-        <animation name="idle" speed="5.0" loop="true">
+        <animation name="idle" speed="2.0" loop="true">
 
         <frame x="0" y="0" width="400" height="116"/>
         <frame x="400" y="0" width="400" height="116"/>
@@ -1063,14 +1063,14 @@
 
         </animation>
 
-        <animation name="run" speed="5.0" loop="true">
+        <animation name="run" speed="2.0" loop="true">
 
         <frame x="0" y="116" width="400" height="116"/>
         <frame x="400" y="116" width="400" height="116"/>
         <frame x="800" y="116" width="400" height="116"/>
         </animation>
         
-          <animation name="default_attack" speed="5.0" loop="false">
+          <animation name="default_attack" speed="2.0" loop="true">
             
         <frame x="0" y="348" width="400" height="116"/>
         <frame x="400" y="348" width="400" height="116"/>
@@ -1079,7 +1079,7 @@
         </animation>
 
 
-        <animation name="bidimensional_claw" speed="5.0" loop="false">
+        <animation name="bidimensional_claw" speed="2.0" loop="true">
           
         <frame x="0" y="232" width="400" height="116"/>
         <frame x="400" y="232" width="400" height="116"/>
@@ -1089,23 +1089,23 @@
 
 
 
-        <animation name="sea_of_flames" speed="5.0" loop="false">
+        <animation name="sea_of_flames" speed="2.0" loop="true">
         <frame x="0" y="464" width="400" height="116"/>
         <frame x="400" y="464" width="400" height="116"/>
         <frame x="800" y="464" width="400" height="116"/>
         </animation>
 
-        <animation name="hit" speed="0.05" loop="false">
+        <animation name="hit" speed="2.0" loop="true">
           <frame x="800" y="696" width="400" height="116"/>
         </animation>
 
-        <animation name="death" speed="0.03" loop="false">
+        <animation name="death" speed="2.0" loop="true">
         <frame x="0" y="580" width="400" height="116"/>
         <frame x="400" y="580" width="400" height="116"/>
         <frame x="800" y="580" width="400" height="116"/>
         </animation>
 
-        <animation name="head" speed="5.0" loop="false">
+        <animation name="head" speed="2.0" loop="true">
           <frame x="800" y="696" width="400" height="116"/>
         </animation>
 
@@ -1115,7 +1115,7 @@
            <frame x="800" y="0" width="400" height="116"/>
         </animation>
         
-        <animation name="dodge" speed="5.0" loop="false">
+        <animation name="dodge" speed="5.0" loop="true">
           <frame x="800" y="0" width="400" height="116"/>
           <frame x="400" y="696" width="400" height="116"/>
           <frame x="800" y="696" width="400" height="116"/>

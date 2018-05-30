@@ -130,11 +130,11 @@ bool LootMenu::Start()
 
 
 
-	to_cleric_label = new UITextBox(430, 200, TEXTBOX, "To Cleric", { 255,255,255,255 }, 17, 100);
-	to_dwarf_label = new UITextBox(430, 220, TEXTBOX, "To Dwarf", { 255,255,255,255 }, 17, 100);
-	to_warrior_label = new  UITextBox(430, 240, TEXTBOX, "To Warrior", { 255,255,255,255 }, 17, 100);
-	to_elf_label = new UITextBox(430, 260, TEXTBOX, "To Elf", { 255,255,255,255 }, 17, 100);
-	for_no_one_label = new UITextBox(430, 280, TEXTBOX, "Do not want this object", { 255,255,255,255 }, 17, 100);
+	to_cleric_label = new UITextBox(430, 240, TEXTBOX, "To Cleric", { 255,255,255,255 }, 17, 100);
+	to_dwarf_label = new UITextBox(430, 255, TEXTBOX, "To Dwarf", { 255,255,255,255 }, 17, 100);
+	to_warrior_label = new  UITextBox(430, 270, TEXTBOX, "To Warrior", { 255,255,255,255 }, 17, 100);
+	to_elf_label = new UITextBox(430, 285, TEXTBOX, "To Elf", { 255,255,255,255 }, 17, 100);
+	for_no_one_label = new UITextBox(430, 300, TEXTBOX, "Do not want this object", { 255,255,255,255 }, 17, 100);
 	to_cleric_label->current_state = STATE_FOCUSED;
 	main_labels.push_back(to_cleric_label);
 	main_labels.push_back(to_dwarf_label);
@@ -142,7 +142,7 @@ bool LootMenu::Start()
 	main_labels.push_back(to_elf_label);
 	main_labels.push_back(for_no_one_label);
 
-	arrow = new UIImage(-10, 0, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
+	arrow = new UIImage(-10, -5, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
 	arrow->SetParent(to_cleric_label);
 	arrow->Update();
 
@@ -1098,90 +1098,90 @@ void LootMenu::SetInformationDroppedItem()
 
 		}
 
-		information_dropped_items.push_back(new UITextBox(420, 20, TEXTBOX, dropped_items[0]->name, { 255,255,255 }, 17, 100));
-		information_dropped_items.push_back(new UIImage(420, 50, IMAGE, dropped_items[0]->draw_coords, nullptr));
+		information_dropped_items.push_back(new UITextBox(420, 10, TEXTBOX, dropped_items[0]->name, { 255,255,255 }, 17, 100));
+		information_dropped_items.push_back(new UIImage(420, 30, IMAGE, dropped_items[0]->draw_coords, nullptr));
 
-		uint parent_dropped_position = 20;
+		uint parent_dropped_position = 25;
 		uint helped_text_parent_position = 110;
 
 		if (dropped_items[0]->statistics.constitution != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Con  " + std::to_string(dropped_items[0]->statistics.constitution), { 255,255,255 }, 17, 200));
-			parent_dropped_position += 20;
+			information_dropped_items.push_back(new UITextBox(420, 30 + parent_dropped_position, TEXTBOX, "Con  " + std::to_string(dropped_items[0]->statistics.constitution), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 10;
 			std::string txt = "Con increases\n the maximum life";
-			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
 			helped_text_parent_position += 25;
 		}
 		if (dropped_items[0]->statistics.focus != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Foc  " + std::to_string(dropped_items[0]->statistics.focus), { 255,255,255 }, 17, 200));
-			parent_dropped_position += 20;
+			information_dropped_items.push_back(new UITextBox(420, 30 + parent_dropped_position, TEXTBOX, "Foc  " + std::to_string(dropped_items[0]->statistics.focus), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 10;
 
 			std::string txt = "Foc increases\n the maximum mana";
-			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
 			helped_text_parent_position += 25;
 		}
 		if (dropped_items[0]->statistics.strength != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Str  " + std::to_string(dropped_items[0]->statistics.strength), { 255,255,255 }, 17, 200));
-			parent_dropped_position += 20;
+			information_dropped_items.push_back(new UITextBox(420, 30 + parent_dropped_position, TEXTBOX, "Str  " + std::to_string(dropped_items[0]->statistics.strength), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 10;
 
 			std::string txt = "Str: increases\n the physical damage";
-			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
 			helped_text_parent_position += 25;
 		}
 		if (dropped_items[0]->statistics.intelligence != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Int  " + std::to_string(dropped_items[0]->statistics.intelligence), { 255,255,255 }, 17, 200));
-			parent_dropped_position += 20;
+			information_dropped_items.push_back(new UITextBox(420, 30 + parent_dropped_position, TEXTBOX, "Int  " + std::to_string(dropped_items[0]->statistics.intelligence), { 255,255,255 }, 17, 200));
+			parent_dropped_position +=10;
 
 			std::string txt = "Int increases\n the magical damage";
-			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
 			helped_text_parent_position += 25;
 		}
 		if (dropped_items[0]->statistics.dexterity != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Dex  " + std::to_string(dropped_items[0]->statistics.dexterity), { 255,255,255 }, 17, 200));
-			parent_dropped_position += 20;
+			information_dropped_items.push_back(new UITextBox(420, 30 + parent_dropped_position, TEXTBOX, "Dex  " + std::to_string(dropped_items[0]->statistics.dexterity), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 10;
 
 			std::string txt = "Dex increases\n the probability of critical";
-			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
 			helped_text_parent_position += 25;
 		}
 		if (dropped_items[0]->statistics.agility != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Agi  " + std::to_string(dropped_items[0]->statistics.agility), { 255,255,255 }, 17, 200));
-			parent_dropped_position += 20;
+			information_dropped_items.push_back(new UITextBox(420, 30 + parent_dropped_position, TEXTBOX, "Agi  " + std::to_string(dropped_items[0]->statistics.agility), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 10;
 
-			std::string txt = "Agi increases\n the probability of dodging and hitting attacks";
-			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 17, 200));
+			std::string txt = "Agi increases the probability of dodging and hitting attacks";
+			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
 			helped_text_parent_position += 25;
 		}
 		if (dropped_items[0]->statistics.magical_defense != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "M.Def " + std::to_string(dropped_items[0]->statistics.magical_defense), { 255,255,255 }, 17, 200));
-			parent_dropped_position += 20;
+			information_dropped_items.push_back(new UITextBox(420, 30 + parent_dropped_position, TEXTBOX, "M.Def " + std::to_string(dropped_items[0]->statistics.magical_defense), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 10;
 
 			std::string txt = "M.def magical defense\n increases resistance to magical attacks";
-			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
 			helped_text_parent_position += 25;
 		}
 		if (dropped_items[0]->statistics.physical_defense != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "P.Def " + std::to_string(dropped_items[0]->statistics.physical_defense), { 255,255,255 }, 17, 200));
-			parent_dropped_position += 20;
+			information_dropped_items.push_back(new UITextBox(420, 30 + parent_dropped_position, TEXTBOX, "P.Def " + std::to_string(dropped_items[0]->statistics.physical_defense), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 10;
 
 			std::string txt = "P.def increases\n resistance to physical attacks";
-			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
 			helped_text_parent_position += 25;
 		}
 		if (dropped_items[0]->statistics.luck != 0)
 		{
-			information_dropped_items.push_back(new UITextBox(420, 60 + parent_dropped_position, TEXTBOX, "Luck " + std::to_string(dropped_items[0]->statistics.luck), { 255,255,255 }, 17, 200));
-			parent_dropped_position += 20;
+			information_dropped_items.push_back(new UITextBox(420, 30 + parent_dropped_position, TEXTBOX, "Luck " + std::to_string(dropped_items[0]->statistics.luck), { 255,255,255 }, 17, 200));
+			parent_dropped_position += 10;
 
 			std::string txt = "Luck increases\n probability of drop items";
-			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 17, 200));
+			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
 			helped_text_parent_position += 25;
 		}
 	}

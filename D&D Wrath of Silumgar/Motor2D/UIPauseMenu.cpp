@@ -242,7 +242,7 @@ void UIPauseMenu::Draw(SDL_Texture* sprites)
 void UIPauseMenu::DrawItems() {
 
 	
-	App->render->DrawQuad({ position_fake_arrow.x+ App->render->camera.x,position_fake_arrow.y + App->render->camera.y,26,24 }, 255, 0, 0, 255);
+
 
 	for (std::vector<Item*>::iterator it = inventory_items.begin(); it != inventory_items.end(); it++)
 	{
@@ -411,10 +411,13 @@ void UIPauseMenu::DrawItems() {
 
 	for (std::vector<UIElement*>::iterator it = information_inventory_items.begin(); it != information_inventory_items.end(); it++)
 	{
-		App->render->UIBlit((*it)->texture, (*it)->screen_position.x, (*it)->screen_position.y, &(*it)->current_rect);
+		if ((*it)->type != IMAGE)
+			App->render->UIBlit((*it)->texture, (*it)->screen_position.x, (*it)->screen_position.y, &(*it)->current_rect);
+		else
+			App->render->UIBlit(equip_texture, (*it)->screen_position.x, (*it)->screen_position.y, &(*it)->current_rect);
 	}
 	
-
+	App->render->DrawQuad({ position_fake_arrow.x + App->render->camera.x,position_fake_arrow.y + App->render->camera.y,26,24 }, 255, 0, 0, 255,false);
 }
 
 void UIPauseMenu::LoadClerictStats() {
@@ -581,21 +584,21 @@ void UIPauseMenu::SetUpPauseMenu()
 
 
 
-	continue_label = new UILabel(420, 10, LABEL, "Continue", { 255,255,255,255 }, 15);
+	continue_label = new UILabel(420, 10, LABEL, "Continue", { 255,255,255,255 }, 12);
 	main_labels.push_back(continue_label);
 	continue_label->current_state = STATE_FOCUSED;
 
 	if (inventory_items.size() != 0)
 	{
-		inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,255,255,255 }, 15);
+		inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,255,255,255 }, 12);
 	}
 	else
 	{
-		inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,0,0,255 }, 15);
+		inventory_label = new UILabel(420, 40, LABEL, "Inventory", { 255,0,0,255 }, 12);
 	}
 	main_labels.push_back(inventory_label);
 
-	quit_label = new UILabel(420, 70, LABEL, "Save\Quit", { 255,255,255,255 }, 15);
+	quit_label = new UILabel(420, 70, LABEL, "Save Quit", { 255,255,255,255 }, 12);
 	main_labels.push_back(quit_label);
 	arrow = new UIImage(-10, 0, IMAGE, { 1333, 272, 7, 14 }, nullptr, nullptr);
 	arrow->SetParent(continue_label);
@@ -982,62 +985,101 @@ void UIPauseMenu::SetInformationLabels()
 		}
 
 
-		information_inventory_items.push_back(new UITextBox(420, 50, TEXTBOX, inventory_items.at(fake_arrow)->name.c_str(), { 255,255,255 }, 20, 100));
-		uint parent_invetory_items = 22;
+		information_inventory_items.push_back(new UITextBox(420, 10, TEXTBOX, inventory_items.at(fake_arrow)->name.c_str(), { 255,255,255 }, 20, 100));
+		information_inventory_items.push_back(new UIImage(420, 30, IMAGE, inventory_items.at(fake_arrow)->draw_coords, nullptr));
+
+		uint parent_invetory_items = 25;
+		uint helped_text_parent_position = 140;
 
 		if (inventory_items.at(fake_arrow)->statistics.constitution != 0)
 		{
 			std::string text = "Con " + std::to_string(inventory_items.at(fake_arrow)->statistics.constitution);
 			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-			parent_invetory_items += 20;
+			parent_invetory_items += 10;
+
+			std::string txt = "Con increases\n the maximum life";
+			information_inventory_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
+			helped_text_parent_position += 25;
 		}
 		if (inventory_items.at(fake_arrow)->statistics.focus != 0)
 		{
 			std::string text = "Foc " + std::to_string(inventory_items.at(fake_arrow)->statistics.focus);
 			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-			parent_invetory_items += 20;
+			parent_invetory_items += 10;
+
+			std::string txt = "Foc increases\n the maximum mana";
+			information_inventory_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
+			helped_text_parent_position += 25;
 		}
 		if (inventory_items.at(fake_arrow)->statistics.strength != 0)
 		{
 			std::string text = "Str " + std::to_string(inventory_items.at(fake_arrow)->statistics.strength);
 			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-			parent_invetory_items += 20;
+			parent_invetory_items += 10;
+
+			std::string txt = "Str: increases\n the physical damage";
+			information_inventory_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
+			helped_text_parent_position += 25;
 		}
 		if (inventory_items.at(fake_arrow)->statistics.intelligence != 0)
 		{
 			std::string text = "Int " + std::to_string(inventory_items.at(fake_arrow)->statistics.intelligence);
 			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-			parent_invetory_items += 20;
+			parent_invetory_items += 10;
+
+			std::string txt = "Int increases\n the magical damage";
+			information_inventory_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
+			helped_text_parent_position += 25;
 		}
 		if (inventory_items.at(fake_arrow)->statistics.dexterity != 0)
 		{
 			std::string text = "Dex " + std::to_string(inventory_items.at(fake_arrow)->statistics.dexterity);
 			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-			parent_invetory_items += 20;
+			parent_invetory_items += 10;
+
+			std::string txt = "Dex increases\n the probability of critical";
+			information_inventory_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
+			helped_text_parent_position += 25;
 		}
 		if (inventory_items.at(fake_arrow)->statistics.agility != 0)
 		{
 			std::string text = "Agi " + std::to_string(inventory_items.at(fake_arrow)->statistics.agility);
 			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-			parent_invetory_items += 20;
+			parent_invetory_items += 10;
+
+			std::string txt = "Agi increases the probability of dodging and hitting attacks";
+			information_inventory_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
+			helped_text_parent_position += 25;
 		}
 		if (inventory_items.at(fake_arrow)->statistics.magical_defense != 0)
 		{
 			std::string text = "M.Def " + std::to_string(inventory_items.at(fake_arrow)->statistics.magical_defense);
 			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-			parent_invetory_items += 20;
+			parent_invetory_items += 10;
+
+			std::string txt = "M.def magical defense\n increases resistance to magical attacks";
+			information_inventory_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
+			helped_text_parent_position += 25;
 		}
 		if (inventory_items.at(fake_arrow)->statistics.physical_defense != 0)
 		{
 			std::string text = "P.Def " + std::to_string(inventory_items.at(fake_arrow)->statistics.physical_defense);
 			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-			parent_invetory_items += 20;
+			parent_invetory_items += 10;
+
+			std::string txt = "P.def increases\n resistance to physical attacks";
+			information_inventory_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
+			helped_text_parent_position += 25;
 		}
 		if (inventory_items.at(fake_arrow)->statistics.luck != 0)
 		{
 			std::string text = "Lck " + std::to_string(inventory_items.at(fake_arrow)->statistics.luck);
 			information_inventory_items.push_back(new UITextBox(420, 60 + parent_invetory_items, TEXTBOX, text, { 255,255,255 }, 17, 200));
-			parent_invetory_items += 20;
+			parent_invetory_items += 10;
+
+			std::string txt = "Luck increases\n probability of drop items";
+			information_inventory_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 12, 140));
+			helped_text_parent_position += 25;
 		}
 
 		information_inventory_items.push_back(new UITextBox(420, 300, TEXTBOX, "Press ENTER\n to return", { 255,255,255 }, 17, 200));

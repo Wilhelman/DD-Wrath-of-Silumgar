@@ -98,7 +98,7 @@
     
     <equip name="Light Boots" tier="2" type="BOOT" passive ="ATTACK_FIRST">
 
-      <draw_coords x="96" y="96" width="96" height="48"/>
+      <draw_coords x="96" y="96" width="48" height="48"/>
 
       <stats>
         <stat lck="3"/>

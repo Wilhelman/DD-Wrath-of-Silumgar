@@ -146,6 +146,7 @@ bool LootMenu::Start()
 	arrow->SetParent(to_cleric_label);
 	arrow->Update();
 
+
 	LoadEquipableObjects();
 
 	SetInformationDroppedItem();

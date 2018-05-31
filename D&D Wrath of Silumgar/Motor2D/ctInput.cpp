@@ -47,6 +47,7 @@ bool ctInput::Awake(pugi::xml_node& config)
 	for (int i = 0; i < SDL_NumJoysticks(); i++)
 	{
 		if (SDL_IsGameController(i)) {
+			joystick = SDL_JoystickOpen(0);
 			controller = SDL_GameControllerOpen(i);
 			if (controller) {
 				break;
@@ -304,4 +305,65 @@ void ctInput::buttonForGamepad() {
 		else
 			gamepad.CROSS_RIGHT = PAD_BUTTON_IDLE;
 	}
+
+	//JOYSTICK UP
+	if (SDL_JoystickGetAxis(joystick, 1) < -12000) {
+		if (gamepad.JOYSTICK_UP == PAD_BUTTON_IDLE)
+			gamepad.JOYSTICK_UP = PAD_BUTTON_DOWN;
+		else
+			gamepad.JOYSTICK_UP = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.JOYSTICK_UP == PAD_BUTTON_REPEAT || (gamepad.JOYSTICK_UP == PAD_BUTTON_DOWN))
+			gamepad.JOYSTICK_UP = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.JOYSTICK_UP = PAD_BUTTON_IDLE;
+	}
+
+	//JOYSTICK DOWN
+	if (SDL_JoystickGetAxis(joystick, 1) > 12000) {
+		if (gamepad.JOYSTICK_DOWN == PAD_BUTTON_IDLE)
+			gamepad.JOYSTICK_DOWN = PAD_BUTTON_DOWN;
+		else
+			gamepad.JOYSTICK_DOWN = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.JOYSTICK_DOWN == PAD_BUTTON_REPEAT || (gamepad.JOYSTICK_DOWN == PAD_BUTTON_DOWN))
+			gamepad.JOYSTICK_DOWN = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.JOYSTICK_DOWN = PAD_BUTTON_IDLE;
+	}
+
+	//JOYSTICK LEFT
+	if (SDL_JoystickGetAxis(joystick, 0) < -12000) {
+		if (gamepad.JOYSTICK_LEFT == PAD_BUTTON_IDLE)
+			gamepad.JOYSTICK_LEFT = PAD_BUTTON_DOWN;
+		else
+			gamepad.JOYSTICK_LEFT = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.JOYSTICK_LEFT == PAD_BUTTON_REPEAT || (gamepad.JOYSTICK_LEFT == PAD_BUTTON_DOWN))
+			gamepad.JOYSTICK_LEFT = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.JOYSTICK_LEFT = PAD_BUTTON_IDLE;
+	}
+
+	//JOYSTICK RIGHT
+	if (SDL_JoystickGetAxis(joystick, 0) > 12000) {
+		if (gamepad.JOYSTICK_RIGHT == PAD_BUTTON_IDLE)
+			gamepad.JOYSTICK_RIGHT = PAD_BUTTON_DOWN;
+		else
+			gamepad.JOYSTICK_RIGHT = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.JOYSTICK_RIGHT == PAD_BUTTON_REPEAT || (gamepad.JOYSTICK_RIGHT == PAD_BUTTON_DOWN))
+			gamepad.JOYSTICK_RIGHT = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.JOYSTICK_RIGHT = PAD_BUTTON_IDLE;
+	}
+
 }

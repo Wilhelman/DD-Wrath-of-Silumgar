@@ -47,6 +47,11 @@ struct Gamepad {
 	GAMEPAD_STATE CROSS_LEFT;
 	GAMEPAD_STATE CROSS_RIGHT;
 
+	GAMEPAD_STATE JOYSTICK_UP;
+	GAMEPAD_STATE JOYSTICK_DOWN;
+	GAMEPAD_STATE JOYSTICK_LEFT;
+	GAMEPAD_STATE JOYSTICK_RIGHT;
+
 };
 
 class ctInput : public ctModule
@@ -103,6 +108,7 @@ private:
 	int			mouse_y = 0;
 
 	SDL_GameController *controller;
+	SDL_Joystick *joystick;
 
 };
 

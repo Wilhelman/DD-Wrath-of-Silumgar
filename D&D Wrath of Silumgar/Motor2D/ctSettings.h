@@ -52,6 +52,11 @@ private:
 	UIElement* music_volume = nullptr;
 	UIElement* fx_volume = nullptr;
 	UIElement* arrow = nullptr;
+	UIElement* controls_label = nullptr;
+	UIElement* select_button_label = nullptr;
+	UIElement* back_button_label = nullptr;
+	UIElement* select_button_image = nullptr;
+	UIElement* back_button_image = nullptr;
 	std::vector<UIElement*> labels;
 	uint max_volume = 128;
 

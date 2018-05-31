@@ -162,13 +162,13 @@ void UIPauseMenu::Update() {
 	{
 		arrow->Update();
 		//Go down
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 			App->audio->PlayFx(App->audio->mm_movement_fx);
 
 			NavigateDown(main_labels);
 		}
 		//Go up
-		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 			App->audio->PlayFx(App->audio->mm_movement_fx);
 			NavigateUp(main_labels);
 		}
@@ -183,13 +183,13 @@ void UIPauseMenu::Update() {
 		{
 			
 
-			if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 				App->audio->PlayFx(App->audio->mm_movement_fx);
 				ChangePositionFakeArrow(SDL_SCANCODE_LEFT);
 				SetInformationLabels();
 			}
 
-			if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 				App->audio->PlayFx(App->audio->mm_movement_fx);
 				ChangePositionFakeArrow(SDL_SCANCODE_RIGHT);
 				SetInformationLabels();

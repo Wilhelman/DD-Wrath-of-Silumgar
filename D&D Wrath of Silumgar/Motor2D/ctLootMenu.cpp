@@ -188,7 +188,7 @@ bool LootMenu::Update(float dt)
 
 
 	//Go down
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateDown(main_labels);
 		if (dropped_items.size() != 0)
@@ -197,7 +197,7 @@ bool LootMenu::Update(float dt)
 		}
 	}
 	//Go up
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateUp(main_labels);
 

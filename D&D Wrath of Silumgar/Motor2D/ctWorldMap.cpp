@@ -260,13 +260,13 @@ bool ctWorldMap::Update(float dt)
 		if (decision != nullptr)
 		{
 
-			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN)
+			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 			{
 				App->audio->PlayFx(App->audio->wm_walk_fx);
 				NavigateUp(options);
 			}
 
-			if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN)
+			if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && decision != nullptr || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 			{
 				App->audio->PlayFx(App->audio->wm_walk_fx);
 				NavigateDown(options);

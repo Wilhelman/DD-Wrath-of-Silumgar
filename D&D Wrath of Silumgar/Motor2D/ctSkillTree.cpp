@@ -397,22 +397,22 @@ void ctSkillTree::DrawAbilities(std::vector<Ability*> &abilities)
 
 void ctSkillTree::NavigateSkills(std::vector<Ability*> &abilities) {
 	//Navigate Down
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false || App->input->gamepad.JOYSTICK_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateSkillsDown(abilities);
 	}
 	//Navigate Up
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false || App->input->gamepad.JOYSTICK_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateSkillsUp(abilities);
 	}
 	//Navigate Left
-	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false || App->input->gamepad.JOYSTICK_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateSkillsLeft(abilities);
 	}
 	//Navigate Right
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN && selecting_ability == false || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false || App->input->gamepad.JOYSTICK_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
 		App->audio->PlayFx(App->audio->mm_movement_fx);
 		NavigateSkillsRight(abilities);
 	}
@@ -763,7 +763,7 @@ void ctSkillTree::SelectAbility() {
 				selecting_ability = false;
 
 			}
-			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 				if (select_menu_A->current_state == STATE_FOCUSED) {
 					select_menu_A->current_state = STATE_NORMAL;
 					select_menu_B->current_state = STATE_FOCUSED;

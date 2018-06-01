@@ -55,7 +55,7 @@ bool ctAbout::Start()
 	App->win->GetWindowSize(w, h);
 	int licence_x = (-400 + App->win->GetWScalade()*w / 2) / 2;//first number is width/2
 
-	about_lbl = (UILabel*)App->gui->AddUILabel(licence_x, 10+y_delay, "ABOUT", { 255,255,255,255 }, 22);
+	about_lbl = (UILabel*)App->gui->AddUILabel(licence_x, 10+y_delay, "ABOUT", { 255,255,255,255 }, 22, nullptr, nullptr, "Fonts/FritzQuadrata Regular.ttf");
 	
 	
 	std::string licence;
@@ -63,11 +63,11 @@ bool ctAbout::Start()
 
 	std::string esc;
 	esc = "ESC to return";
-	esc_lbl = (UILabel*)App->gui->AddUILabel(192+(-29 + App->win->GetWScalade()*w / 2) / 2, y_delay+345, esc, { 200,200,200,255 }, 10);
+	esc_lbl = (UILabel*)App->gui->AddUILabel(192+(-29 + App->win->GetWScalade()*w / 2) / 2, y_delay+345, esc, { 200,200,200,255 }, 10,nullptr,nullptr,"Fonts/FritzQuadrata Regular.ttf");
 
 	
 	//licence_lbl = (UILabel*)App->gui->AddUILabel(50, 50, licence, { 255,255,255,255 }, 10); // ,200);
-	licence_lbl = (UITextBox*)App->gui->AddUITextBox(licence_x, 35+y_delay, 20, 800, licence, { 255,255,255,255 });
+	licence_lbl = (UITextBox*)App->gui->AddUITextBox(licence_x, 35+y_delay, 20, 800, licence, { 255,255,255,255 },nullptr, "Fonts/FritzQuadrata Regular.ttf");
 	//licence_lbl->interactable = false;
 	//labels.push_back(licence_lbl);
 
@@ -103,7 +103,7 @@ bool ctAbout::Start()
 	std::string hold;
 	hold="Hold space to skip";
 
-	hold_lbl = (UILabel*)App->gui->AddUILabel((-41 + App->win->GetWScalade()*w / 2) / 2, 5, hold, { 255,255,255,255 }, 10);
+	hold_lbl = (UILabel*)App->gui->AddUILabel((-41 + App->win->GetWScalade()*w / 2) / 2, 5, hold, { 255,255,255,255 }, 10, nullptr, nullptr, "Fonts/FritzQuadrata Regular.ttf");
 	//hold_lbl->SetLocalPosition(w / App->win->GetScale() / 2 - hold_lbl->GetRect().w / 2, hold_lbl->GetLocalPosition().y);
 	
 	

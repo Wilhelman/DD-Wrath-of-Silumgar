@@ -50,6 +50,8 @@ public:
 
 	iPoint screen_position = iPoint(0, 0);//TODO mirar si esto aqui envez de protected esta okay
 
+	bool have_to_resize = true;
+
 
 public:
 	UIElement(int x, int y, UI_Type type = UI_NOT_DEF, UIElement* parent = nullptr);

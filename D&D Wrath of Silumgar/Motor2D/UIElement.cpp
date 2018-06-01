@@ -60,7 +60,10 @@ void UIElement::Draw(SDL_Texture* sprites)
 		{
 		case IMAGE:
 		case BUTTON:
-			App->render->Blit(sprites, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
+			if(have_to_resize)
+				App->render->Blit(sprites, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
+			else
+				App->render->UIBlit(sprites, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);
 				break;
 		case LABEL:
 			App->render->Blit(texture, screen_position.x, screen_position.y, &current_rect, 2.0f, 0.0, this->alpha);

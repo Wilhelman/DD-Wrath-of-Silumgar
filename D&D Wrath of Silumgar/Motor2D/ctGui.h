@@ -7,10 +7,11 @@
 #include "ctFonts.h"
 #include "ctEntities.h"
 
-#define STUN_COORDS {128,160,32,32}
-#define BLEED_COORDS {32,160,32,32}
-#define POSION_COORDS {96,160,32,32}
-#define BURN_COORDS {64,160,32,32}
+#define STUN_COORDS {128,1204,32,32}
+#define BLEED_COORDS {32,1204,32,32}
+#define POSION_COORDS {96,1204,32,32}
+#define BURN_COORDS {64,1204,32,32}
+#define DEX_1_COORDS {128,1140,32,32}
 
 struct SDL_Texture;
 struct SDL_Rect;

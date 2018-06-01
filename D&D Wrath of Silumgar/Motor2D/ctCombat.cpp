@@ -182,9 +182,6 @@ bool ctCombat::Start()
 		App->entities->entities.at(i)->Recover();
 	}
 
-	//to remove
-	App->gui->AddUIImage(50, 50, STUN_COORDS, this, nullptr);
-
 
 	return ret;
 }
@@ -207,6 +204,49 @@ bool ctCombat::Update(float dt)
 	{
 		App->entities->GetElf()->animation = &App->entities->GetElf()->idle;
 	}*/
+
+	for (int i = 0; i < altered_stats_icons.size(); i++)
+	{
+		altered_stats_icons.at(i)->to_destroy = true;
+	}
+
+	altered_stats_icons.clear();
+
+	int x_pos_icon = 0;
+	int y_pos_icon = 0;
+	for (int i = 0; i < enemies.size(); i++)
+	{
+		if (enemies.at(i)->GetCurrentHealthPoints() <= 0)
+			continue;
+		for (int j = 0; j < enemies.at(i)->altered_stats.size(); j++)
+		{
+			y_pos_icon = enemies.at(i)->position.y - enemies.at(i)->animation->GetCurrentFrame().h - 4;
+			if (j == 0) {
+				x_pos_icon = enemies.at(i)->position.x + 8;
+			}
+			else {
+				x_pos_icon = x_pos_icon + 16;
+			}
+
+			UIElement* tmp = nullptr;
+
+			if (enemies.at(i)->altered_stats.at(j).stun == true) {
+				tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STUN_COORDS, this, nullptr);
+				tmp->have_to_resize = false;
+			}
+			else if (enemies.at(i)->altered_stats.at(j).bleeding == true) {
+				tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, BLEED_COORDS, this, nullptr);
+				tmp->have_to_resize = false;
+			}
+			else if (enemies.at(i)->altered_stats.at(j).stat_effect_dexterity == 1) {
+				tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_1_COORDS, this, nullptr);
+				tmp->have_to_resize = false;
+			}
+
+			altered_stats_icons.push_back(tmp); //clean this every frame!
+		}
+	}
+	
 
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{

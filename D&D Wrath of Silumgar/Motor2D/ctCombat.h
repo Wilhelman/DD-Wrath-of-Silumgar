@@ -82,6 +82,8 @@ public:
 	UIElement* pauseMenu = nullptr;
 
 	Entity* entity_performing_action = nullptr;
+
+	vector<UIElement*> altered_stats_icons;
 	
 private:
 

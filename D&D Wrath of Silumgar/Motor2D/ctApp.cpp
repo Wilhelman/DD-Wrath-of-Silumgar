@@ -29,6 +29,7 @@
 #include "ctFinalScene.h"
 #include "ctCutsceneManager.h"
 #include "j1Video.h"
+#include "ctAbout.h"
 
 // Constructor
 ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
@@ -48,6 +49,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	final_scene = new ctFinalScene();
 	world_map = new ctWorldMap();
 	settings = new ctSettings();
+	about = new ctAbout();
 	language = new j1Language();
 	entities = new ctEntities();
 	items = new ctItems();
@@ -75,6 +77,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(final_scene);
 	AddModule(world_map);
 	AddModule(settings);
+	AddModule(about);
 	AddModule(combat);
 	AddModule(loot_menu);
 	AddModule(skill_tree);
@@ -102,6 +105,7 @@ ctApp::ctApp(int argc, char* args[]) : argc(argc), args(args)
 	loot_menu->active = false;
 	world_map->active = false;
 	settings->active = false;
+	about->active = false;
 	combat->active = false;
 	skill_tree->active = false;
 

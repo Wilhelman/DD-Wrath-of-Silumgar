@@ -45,10 +45,10 @@ bool ctAbout::Start()
 
 	credits_over = false;
 
-	if (!App->audio->PlayMusic("audio/music/Visager_End_Credits.ogg"))
+	if (!App->audio->PlayMusic("audio/music/D&D Shadow Over Mystara - Song 13 Sprite  Theme (Stage 3-B).ogg"))
 	{
 		//ret = false;
-		LOG("Error playing music in j1Credits Start");
+		LOG("Error playing music in ctAbout Start");
 	}
 
 	uint w, h;

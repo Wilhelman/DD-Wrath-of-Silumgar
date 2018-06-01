@@ -182,6 +182,9 @@ bool ctCombat::Start()
 		App->entities->entities.at(i)->Recover();
 	}
 
+	//to remove
+	App->gui->AddUIImage(50, 50, STUN_COORDS, this, nullptr);
+
 
 	return ret;
 }

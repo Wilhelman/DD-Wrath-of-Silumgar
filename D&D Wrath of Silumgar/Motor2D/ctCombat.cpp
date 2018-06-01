@@ -1487,6 +1487,15 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 	if (entity_to_perform_action->GetCurrentHealthPoints() == 0)
 		established_action = true;
 
+	if (App->entities->GetCleric()->animation == &App->entities->GetCleric()->selected && App->entities->GetCleric() != entity_to_perform_action)
+		App->entities->GetCleric()->animation = &App->entities->GetCleric()->idle;
+	if (App->entities->GetWarrior()->animation == &App->entities->GetWarrior()->selected && App->entities->GetWarrior() != entity_to_perform_action)
+		App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->idle;
+	if (App->entities->GetElf()->animation == &App->entities->GetElf()->selected && App->entities->GetElf() != entity_to_perform_action)
+		App->entities->GetElf()->animation = &App->entities->GetElf()->idle;
+	if (App->entities->GetDwarf()->animation == &App->entities->GetDwarf()->selected && App->entities->GetDwarf() != entity_to_perform_action)
+		App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->idle;
+
 	if (!established_action) {
 		switch (entity_to_perform_action->type)
 		{
@@ -1498,6 +1507,7 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 					App->entities->GetCleric()->animation = &App->entities->GetCleric()->selected;
 				}
 				else {
+
 					if (combat_menu->background == nullptr) {
 						ready_cleric = App->gui->AddUILabel(entity_to_perform_action->position.x, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h - 20, "Ready", { 255,255,255,255 }, 15, this);
 						combat_menu->~UICombatMenu();

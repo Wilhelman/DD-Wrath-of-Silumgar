@@ -46,16 +46,16 @@ bool ctSettings::Start()
 	sprintf_s(fx_volume_char, "%d", fx_num);
 
 	background = App->gui->AddUIImage(0, 0, { 337, 479, 800, 450 }, this);
-	music_volume_label = App->gui->AddUILabel(35, 10, "Music Volume", { 255,255,255,255 }, 15, this);
-	music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 15, this);
-	fx_volume_label = App->gui->AddUILabel(35, 30, "Fx Volume", { 255,255,255,255 }, 15, this);
-	fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 15, this);
-	controls_label = App->gui->AddUILabel(35, 50, "Controls:", { 255,255,255,255 }, 15, this);
-	select_button_label = App->gui->AddUILabel(55, 70, "Select ->", { 255,255,255,255 }, 15, this);
+	music_volume_label = App->gui->AddUILabel(35, 10, "Music Volume", { 255,255,255,255 }, 25, this);
+	music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 25, this);
+	fx_volume_label = App->gui->AddUILabel(35, 30, "Fx Volume", { 255,255,255,255 }, 25, this);
+	fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 25, this);
+	controls_label = App->gui->AddUILabel(35, 50, "Controls:", { 255,255,255,255 }, 25, this);
+	select_button_label = App->gui->AddUILabel(55, 70, "Select ->", { 255,255,255,255 }, 25, this);
 	select_button_image = App->gui->AddUIImage(125, 70, { 1360, 224, 17, 17 }, this);
-	back_button_label = App->gui->AddUILabel(55, 90, "Back   ->", { 255,255,255,255 }, 15, this);
+	back_button_label = App->gui->AddUILabel(55, 90, "Back   ->", { 255,255,255,255 }, 25, this);
 	back_button_image = App->gui->AddUIImage(125, 90, { 1342, 242, 17, 17 }, this);
-	back_label = App->gui->AddUILabel(35, 110, "Back to Menu", { 255,255,255,255 }, 15, this);
+	back_label = App->gui->AddUILabel(35, 110, "Back to Menu", { 255,255,255,255 }, 25, this);
 	arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this);
 	music_volume_label->current_state = STATE_FOCUSED;
 	arrow->SetParent(music_volume_label);
@@ -308,7 +308,7 @@ void ctSettings::TurnUp(std::vector<UIElement*> &current_vector) {
 			char music_volume_char[(((sizeof music_num) * CHAR_BIT) + 2) / 3 + 2];
 			sprintf_s(music_volume_char, "%d", music_num);
 			App->gui->DeleteUIElement(*music_volume);
-			music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 15, this);
+			music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 25, this);
 		}
 		Mix_VolumeMusic(music_volume_value);
 	}
@@ -319,7 +319,7 @@ void ctSettings::TurnUp(std::vector<UIElement*> &current_vector) {
 			char fx_volume_char[(((sizeof fx_num) * CHAR_BIT) + 2) / 3 + 2];
 			sprintf_s(fx_volume_char, "%d", fx_num);
 			App->gui->DeleteUIElement(*fx_volume);
-			fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 15, this);
+			fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 25, this);
 		}
 		Mix_Volume(-1, fx_volume_value);
 	}
@@ -333,7 +333,7 @@ void ctSettings::TurnDown(std::vector<UIElement*> &current_vector) {
 			char music_volume_char[(((sizeof music_num) * CHAR_BIT) + 2) / 3 + 2];
 			sprintf_s(music_volume_char, "%d", music_num);
 			App->gui->DeleteUIElement(*music_volume);
-			music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 15, this);
+			music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 25, this);
 		}
 		Mix_VolumeMusic(music_volume_value);
 	}
@@ -344,7 +344,7 @@ void ctSettings::TurnDown(std::vector<UIElement*> &current_vector) {
 			char fx_volume_char[(((sizeof fx_num) * CHAR_BIT) + 2) / 3 + 2];
 			sprintf_s(fx_volume_char, "%d", fx_num);
 			App->gui->DeleteUIElement(*fx_volume);
-			fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 15, this);
+			fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 25, this);
 		}
 		Mix_Volume(-1, fx_volume_value);
 	}

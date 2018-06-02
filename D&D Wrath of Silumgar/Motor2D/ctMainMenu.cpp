@@ -151,7 +151,7 @@ bool ctMainMenu::CleanUp()
 	}
 	labels.clear();
 	
-	
+	App->psystem->RemoveAllEmitters();
 	return true;
 }
 
@@ -245,6 +245,9 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	if (new_game_label->current_state == STATE_EXECUTED) {
 		LOG("new_game_label pressed");
 
+		App->psystem->AddEmiter({ 180,175 }, EmitterType::EMITTER_TYPE_NEW_GAME);
+		
+
 		if (!music_is_playing) {
 
 			if (!App->audio->PlayMusic(App->audio->MainMenuVoice.c_str(), 0.0f)) {
@@ -255,7 +258,7 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		}
 		if (App->fadeToBlack->FadeIsOver()) {
 			is_new_game = true;
-			App->fadeToBlack->FadeToBlackBetweenModules(this, App->tabern_scene, 0.0f); //5.0f 
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->tabern_scene, 5.0f); //5.0f 
 		}
 	}
 	if (settings_label->current_state == STATE_EXECUTED) {

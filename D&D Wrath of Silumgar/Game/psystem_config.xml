@@ -883,6 +883,24 @@
         <blendMode mode ="add"/>
         <lifetime value ="30"/>
       </emitter>
+
+      <!--NEW GAME-->
+        <emitter type ="new_game">
+          <angleRange min ="290" max ="360"/>
+          <rotSpeed value ="2" randMin ="-1" randMax ="1"/>
+          <startSpeed value ="60" randMin ="0" randMax ="1"/>
+          <endSpeed value ="1200" randMin ="0" randMax ="1"/>
+          <startSize value ="80" randMin ="0" randMax ="1"/>
+          <endSize value = "0" randMin ="0" randMax ="0"/>
+          <emitNumber value ="280"/>
+          <emitVariance value ="3" randMin ="0" randMax ="1"/>
+          <maxParticleLife value ="300" randMin ="0" randMax ="1"/>
+          <textureRect x="128" y="0" w="256" h="256"/>
+          <startColor r ="255" g="0" b="0" a="255"/>
+          <endColor r ="255" g="139" b="0" a="255"/>
+          <blendMode mode ="add"/>
+          <lifetime value ="80"/>
+      </emitter>
       
     </particleAtlas>
 </emitters>

@@ -144,6 +144,9 @@ bool j1ParticleSystem::Awake(pugi::xml_node& config)
 		//TROLL LEADER
 		else if (emitterType == "infested_claw")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_INFESTED_CLAW);
+		//NEW GAME
+		else if (emitterType == "new_game")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_NEW_GAME);
 	}
 	return ret;
 }

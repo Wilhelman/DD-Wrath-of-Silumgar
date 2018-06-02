@@ -628,6 +628,11 @@ void ctSkillTree::PrintAbilityDescription(){
 		App->gui->DeleteUIElement(*description);
 	}
 	description = App->gui->AddUITextBox(131, 293, 15, 400, (*selected_ability)->description, {255,255,255,255});
+
+	if (ability_name != nullptr) {
+		App->gui->DeleteUIElement(*ability_name);
+	}
+	ability_name = App->gui->AddUITextBox(300, 0, 25, 200, (*selected_ability)->ability_name, { 255,255,255,255 }, ability_name_bg);
 }
 
 void ctSkillTree::ChangeTitle() {
@@ -663,6 +668,22 @@ void ctSkillTree::ChangeDescriptionBG() {
 	}
 	else if (current_hero == 4) {
 		description_bg = App->gui->AddUIImage(129, 291, { 3, 693, 226, 33 }, this);
+	}
+
+	if (ability_name_bg != nullptr) {
+		App->gui->DeleteUIElement(*ability_name_bg);
+	}
+	if (current_hero == 1) {
+		ability_name_bg = App->gui->AddUIImage(300, 0, { 3, 622, 226, 33 }, this);
+	}
+	else if (current_hero == 2) {
+		ability_name_bg = App->gui->AddUIImage(300, 0, { 3, 552, 226, 33 }, this);
+	}
+	else if (current_hero == 3) {
+		ability_name_bg = App->gui->AddUIImage(300,0, { 3, 762, 226, 33 }, this);
+	}
+	else if (current_hero == 4) {
+		ability_name_bg = App->gui->AddUIImage(300, 0, { 3, 693, 226, 33 }, this);
 	}
 }
 

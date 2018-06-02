@@ -110,6 +110,8 @@ private:
 
 	UIElement* description = nullptr;
 	UIElement* description_bg = nullptr;
+	UIElement* ability_name = nullptr;
+	UIElement* ability_name_bg = nullptr;
 	UIElement* title = nullptr;
 	iPoint title_pos = { 0,25 };
 	bool selecting_ability = false;

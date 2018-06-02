@@ -15,7 +15,7 @@
 #include "ctTabernScene.h"
 #include "ctSettings.h"
 #include "ctSkillTree.h"
-
+#include "ctAbout.h"
 #include "j1Language.h"
 
 
@@ -53,7 +53,7 @@ bool ctMainMenu::Start()
 	continue_label = App->gui->AddUILabel(35, 10, App->language->GetDictionary().MM_continue_btn.c_str(), { 255,0,0,255 }, 25, this);
 	new_game_label = App->gui->AddUILabel(35, 30, App->language->GetDictionary().MM_new_game_btn.c_str(), { 255,255,255,255 }, 25, this);
 	settings_label = App->gui->AddUILabel(35, 50, App->language->GetDictionary().MM_settings_btn.c_str(), { 255,255,255,255 }, 25, this);
-	about_label = App->gui->AddUILabel(35, 70, App->language->GetDictionary().MM_about_btn.c_str(), { 255,0,0,255 }, 25, this);
+	about_label = App->gui->AddUILabel(35, 70, App->language->GetDictionary().MM_about_btn.c_str(), { 255,255,255,255 }, 25, this);
 	quit_label = App->gui->AddUILabel(35, 90, App->language->GetDictionary().MM_quit_btn.c_str(), { 255,255,255,255 }, 25, this);
 	arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this);
 
@@ -63,7 +63,7 @@ bool ctMainMenu::Start()
 
 	labels.push_back(new_game_label);
 	labels.push_back(settings_label);
-
+	labels.push_back(about_label);
 	labels.push_back(quit_label);
 
 	if (App->audio->device_connected) {
@@ -280,6 +280,8 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	}
 	if (about_label->current_state == STATE_EXECUTED) {
 		LOG("about_label pressed");
+		if (App->fadeToBlack->FadeIsOver())
+			App->fadeToBlack->FadeToBlackBetweenModules(this, App->about, 1.0f);
 		about_label->current_state = STATE_FOCUSED;
 	}
 	if (quit_label->current_state == STATE_EXECUTED) {

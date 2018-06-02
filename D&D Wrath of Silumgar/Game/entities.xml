@@ -1051,7 +1051,7 @@
     </lich1st>
 
     <lich2nd>
-      <statistics constitution ="1" focus="999" strength="12"  agility="8"  dexterity ="20" intelligence="20" physicalDefense="14" magicalDefense="16" judgement="70"/>
+      <statistics constitution ="90" focus="80" strength="12"  agility="7"  dexterity ="20" intelligence="20" physicalDefense="14" magicalDefense="16" judgement="70"/>
       <animations>
 
         <animation name="idle" speed="2.0" loop="true">

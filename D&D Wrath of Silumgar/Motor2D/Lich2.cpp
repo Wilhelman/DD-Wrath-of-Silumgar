@@ -38,6 +38,8 @@ Lich2::Lich2(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &stun);
 		else if (tmp == "dodge")
 			LoadAnimation(animations, &dodge);
+		else if (tmp == "default_attack")
+			LoadAnimation(animations, &attack);
 		else if (tmp == "bidimensional_claw")
 			LoadAnimation(animations, &bidimensional_claw);
 		else if (tmp == "sea_of_flames")
@@ -148,7 +150,9 @@ void Lich2::PerformAction()
 		}
 
 			if (GetCurrentManaPoints() >= 70) {
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
 				App->task_manager->AddTask(new PerformActionToEntity(this, sea_of_flames_action, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
 			}
 			else if (GetCurrentManaPoints() > 70 && GetCurrentManaPoints() >= 45) {
 

@@ -36,9 +36,9 @@ bool ctVideoIntro::Start()
 {
 	//App->win->SetTitle("Video Player");
 	// TODO 1: Call the initialize function from the video module in the start of the scene.
-	App->video_manager->Initialize("video/sample(good).avi");
+	App->video_manager->Initialize("video/TriggeredSquidIntro.avi");
 	// TODO 8: Play the music of the video using the audio module. 
-	App->audio->PlayMusic("video/sample.ogg", 0.0f);
+	App->audio->PlayMusic("video/IntroAudio.ogg", 0.0f);
 
 	is_active = true;
 
@@ -54,6 +54,7 @@ bool ctVideoIntro::PreUpdate()
 // Called each loop iteration
 bool ctVideoIntro::Update(float dt)
 {
+	App->render->DrawQuad({0,0,App->render->camera.w,App->render->camera.h},13,97,191,255,true);
 	if (App->video_manager->isVideoFinished == true) {
 		App->audio->PauseMusic();
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu);
@@ -68,8 +69,8 @@ bool ctVideoIntro::Update(float dt)
 		//Mix_PauseMusic();
 
 	if (App->input->GetKey(SDL_SCANCODE_1) && App->video_manager->isVideoFinished) {
-		App->video_manager->Initialize("video/sample(good).avi");
-		App->audio->PlayMusic("video/sample.ogg", 0.0f);
+		App->video_manager->Initialize("video/TriggeredSquidIntro.avi");
+		App->audio->PlayMusic("video/IntroAudio.ogg", 0.0f);
 	}
 
 

@@ -80,7 +80,7 @@ bool j1Video::GrabAVIFrame()
 	SDL_Texture* texture = App->tex->LoadSurface(surface);
 
 	//TODO 6.1: Blit the texture of the frame.
-	App->render->Blit(texture, 0, 0, NULL, NULL, NULL, 255, SDL_FLIP_VERTICAL);
+	App->render->Blit(texture, (App->render->camera.w/2-width/2)/4, 0, NULL, NULL, NULL, 255, SDL_FLIP_VERTICAL);
 
 
 	//TODO 7: Limit the change of the frame to one out of two times.

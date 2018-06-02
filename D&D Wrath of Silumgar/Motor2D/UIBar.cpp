@@ -244,6 +244,6 @@ void UIBar::SetBarNumbers() {
 
 	std::string bar_nums_char = std::to_string(current_quantity) + "/" + std::to_string(max_capacity);
 
-	bar_numbers = App->gui->AddUILabel(bar_pos.x + (max_width/2) - 5, bar_pos.y, bar_nums_char, { 255,255,255,255 }, 10);
+	bar_numbers = App->gui->AddUILabel(bar_pos.x + (max_width/2) - 10 , bar_pos.y + 3, bar_nums_char, { 255,255,255,255 }, 16, nullptr, nullptr, Second_Font);
 
 }

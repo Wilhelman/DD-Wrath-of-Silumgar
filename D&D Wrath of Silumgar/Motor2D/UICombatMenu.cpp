@@ -53,7 +53,7 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	attack_label->current_state = STATE_FOCUSED;
 	explanation_label = App->gui->AddUITextBox(2, 1, 15, 450, ATTACKEXPLANATION, {255,255,255,255}, nullptr, Second_Font);
 	explanation_label->SetParent(explanation_background);
-	arrow = App->gui->AddUIImage(x - (main_label1_pos.x / 1.5), y, { 1333, 272, 7, 14 }, callback, background);
+	arrow = App->gui->AddUIImage(x - (main_label1_pos.x / 1.7), y - 2, { 1333, 272, 7, 14 }, callback, background);
 	main_labels.push_back(attack_label);
 	if (owned_abilities > 0) {
 		main_labels.push_back(abilities_label);

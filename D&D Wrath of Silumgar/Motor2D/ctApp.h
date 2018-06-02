@@ -34,7 +34,7 @@ class ctFinalScene;
 class ctCutsceneManager;
 class j1Video;
 class ctVideoIntro;
-
+class ctAbout;
 
 class ctApp
 {
@@ -132,6 +132,7 @@ public:
 	ctFinalScene*		final_scene = nullptr;
 	j1Video*			video_manager = nullptr;
 	ctVideoIntro*       video_intro_scene = nullptr;
+	ctAbout*			about = nullptr;
 
 	bool				cap_state = false;
 

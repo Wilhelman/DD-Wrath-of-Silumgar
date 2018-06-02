@@ -43,17 +43,17 @@ public:
 	int dead_heroes = 0;
 	bool enemy_select_arrow_is_disapearing = true;
 
-	iPoint label1_pos{ 10,20 };
-	iPoint label2_pos{ 10,40 };
-	iPoint label3_pos{ 10,60 };
+	iPoint label1_pos{ 12,20 };
+	iPoint label2_pos{ 12,40 };
+	iPoint label3_pos{ 12,60 };
 
-	iPoint main_label1_pos{ 10,10 };
-	iPoint main_label2_pos{ 10,40 };
-	iPoint main_label3_pos{ 10,70 };
+	iPoint main_label1_pos{ 12,10 };
+	iPoint main_label2_pos{ 12,40 };
+	iPoint main_label3_pos{ 12,70 };
 
 	iPoint explanationPos{129,31};
 
-	int font_size = 12;
+	int font_size = 24;
 
 	bool selecting_enemy = false;
 	bool executed_command = false;

@@ -240,6 +240,9 @@
     <ClCompile Include="ctVideoIntro.cpp">
       <Filter>Core\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="ctAbout.cpp">
+      <Filter>Core\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ctApp.h">
@@ -460,6 +463,9 @@
       <Filter>Core\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ctVideoIntro.h">
+      <Filter>Core\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ctAbout.h">
       <Filter>Core\Scenes</Filter>
     </ClInclude>
   </ItemGroup>

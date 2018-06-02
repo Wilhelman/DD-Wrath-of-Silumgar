@@ -242,6 +242,10 @@ bool ctCombat::Update(float dt)
 				tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_1_COORDS, this, nullptr);
 				tmp->have_to_resize = false;
 			}
+			else if (enemies.at(i)->altered_stats.at(j).stat_effect_dexterity == 2) {
+				tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_2_COORDS, this, nullptr);
+				tmp->have_to_resize = false;
+			}
 
 			altered_stats_icons.push_back(tmp); //clean this every frame!
 		}

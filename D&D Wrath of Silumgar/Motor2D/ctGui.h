@@ -11,7 +11,8 @@
 #define BLEED_COORDS {32,1204,32,32}
 #define POSION_COORDS {96,1204,32,32}
 #define BURN_COORDS {64,1204,32,32}
-#define DEX_1_COORDS {128,1140,32,32}
+#define DEX_1_COORDS {96,1140,32,32}
+#define DEX_2_COORDS {128,1140,32,32}
 
 struct SDL_Texture;
 struct SDL_Rect;

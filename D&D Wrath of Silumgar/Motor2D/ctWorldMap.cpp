@@ -113,7 +113,15 @@ bool ctWorldMap::Start()
 {
 	bool ret = true;
 
-	start_combat_label=App->gui->AddUITextBox(150, 293, 24, 500, "Press ENTER or A to start combat", { 0,0,0,255 }, nullptr, Second_Font);
+	if(App->main_menu->key_select == 0)
+		start_combat_label=App->gui->AddUITextBox(150, 293, 24, 500, "Press ENTER or A to start combat", { 0,0,0,255 }, nullptr, Second_Font);
+	else if (App->main_menu->key_select == 1)
+		start_combat_label = App->gui->AddUITextBox(150, 293, 24, 500, "Press ENTER or B to start combat", { 0,0,0,255 }, nullptr, Second_Font);
+	else if (App->main_menu->key_select == 2)
+		start_combat_label = App->gui->AddUITextBox(150, 293, 24, 500, "Press ENTER or Y to start combat", { 0,0,0,255 }, nullptr, Second_Font);
+	else if (App->main_menu->key_select == 3)
+		start_combat_label = App->gui->AddUITextBox(150, 293, 24, 500, "Press ENTER or X to start combat", { 0,0,0,255 }, nullptr, Second_Font);
+
 	start_combat_label->non_drawable = true;
 
 	//TO DELETE 1

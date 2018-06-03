@@ -50,6 +50,7 @@ bool ctMainMenu::Start()
 	App->items->dwarf_equip.clear();
 
 	background = App->gui->AddUIImage(0, 0, { 337, 479, 484, 324 }, this);
+	labels_bg = App->gui->AddUIImage(15, 0, { 220, 1044, 80, 115 }, this);
 	continue_label = App->gui->AddUILabel(35, 10, App->language->GetDictionary().MM_continue_btn.c_str(), { 255,0,0,255 }, 25, this);
 	new_game_label = App->gui->AddUILabel(35, 30, App->language->GetDictionary().MM_new_game_btn.c_str(), { 255,255,255,255 }, 25, this);
 	settings_label = App->gui->AddUILabel(35, 50, App->language->GetDictionary().MM_settings_btn.c_str(), { 255,255,255,255 }, 25, this);
@@ -145,6 +146,8 @@ bool ctMainMenu::CleanUp()
 	about_label = nullptr;
 	App->gui->DeleteUIElement(*quit_label);
 	quit_label = nullptr;
+	App->gui->DeleteUIElement(*labels_bg);
+	labels_bg = nullptr;
 
 	for (int i = 0; i < labels.size(); i++)
 	{

@@ -59,6 +59,7 @@ private:
 	UIElement* back_button_image = nullptr;
 	std::vector<UIElement*> labels;
 	uint max_volume = 128;
+	UIElement* labels_bg = nullptr;
 
 	void NavigateDown(std::vector<UIElement*> &current_vector);
 	void NavigateUp(std::vector<UIElement*> &current_vector);

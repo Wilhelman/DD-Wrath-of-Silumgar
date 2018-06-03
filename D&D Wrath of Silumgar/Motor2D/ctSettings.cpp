@@ -46,6 +46,7 @@ bool ctSettings::Start()
 	sprintf_s(fx_volume_char, "%d", fx_num);
 
 	background = App->gui->AddUIImage(0, 0, { 337, 479, 800, 450 }, this);
+	labels_bg = App->gui->AddUIImage(15, -1, { 314, 1046, 160, 135 }, this);
 	music_volume_label = App->gui->AddUILabel(35, 10, "Music Volume", { 255,255,255,255 }, 25, this);
 	music_volume = App->gui->AddUILabel(150, 10, music_volume_char, { 255,255,255,255 }, 25, this);
 	fx_volume_label = App->gui->AddUILabel(35, 30, "Fx Volume", { 255,255,255,255 }, 25, this);
@@ -252,6 +253,8 @@ bool ctSettings::CleanUp()
 	select_button_image = nullptr;
 	App->gui->DeleteUIElement(*back_button_image);
 	back_button_image = nullptr;
+	App->gui->DeleteUIElement(*labels_bg);
+	labels_bg = nullptr;
 
 	for (int i = 0; i < labels.size(); i++)
 	{

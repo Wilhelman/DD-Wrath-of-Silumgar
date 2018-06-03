@@ -354,8 +354,8 @@ void ctSettings::ExecuteComand(std::vector<UIElement*> &current_vector) {
 
 void ctSettings::TurnUp(std::vector<UIElement*> &current_vector) {
 	if (music_volume_label->current_state == STATE_FOCUSED) {
-		if (music_volume_value <= 120) {
-			music_volume_value += 8;
+		if (music_volume_value <= 127) {
+			music_volume_value += 1;
 			uint music_num = NumberToPercentage(music_volume_value, max_volume);
 			char music_volume_char[(((sizeof music_num) * CHAR_BIT) + 2) / 3 + 2];
 			sprintf_s(music_volume_char, "%d", music_num);
@@ -365,8 +365,8 @@ void ctSettings::TurnUp(std::vector<UIElement*> &current_vector) {
 		Mix_VolumeMusic(music_volume_value);
 	}
 	else if (fx_volume_label->current_state == STATE_FOCUSED) {
-		if (fx_volume_value <= 120) {
-			fx_volume_value += 8;
+		if (fx_volume_value <= 127) {
+			fx_volume_value += 1;
 			uint fx_num = NumberToPercentage(fx_volume_value, max_volume);
 			char fx_volume_char[(((sizeof fx_num) * CHAR_BIT) + 2) / 3 + 2];
 			sprintf_s(fx_volume_char, "%d", fx_num);
@@ -379,8 +379,8 @@ void ctSettings::TurnUp(std::vector<UIElement*> &current_vector) {
 
 void ctSettings::TurnDown(std::vector<UIElement*> &current_vector) {
 	if (music_volume_label->current_state == STATE_FOCUSED) {
-		if (music_volume_value >= 8) {
-			music_volume_value -= 8;
+		if (music_volume_value >= 1) {
+			music_volume_value -= 1;
 			uint music_num = NumberToPercentage(music_volume_value, max_volume);
 			char music_volume_char[(((sizeof music_num) * CHAR_BIT) + 2) / 3 + 2];
 			sprintf_s(music_volume_char, "%d", music_num);
@@ -390,8 +390,8 @@ void ctSettings::TurnDown(std::vector<UIElement*> &current_vector) {
 		Mix_VolumeMusic(music_volume_value);
 	}
 	else if (fx_volume_label->current_state == STATE_FOCUSED) {
-		if (fx_volume_value >= 8) {
-			fx_volume_value -= 8;
+		if (fx_volume_value >= 1) {
+			fx_volume_value -= 1;
 			uint fx_num = NumberToPercentage(fx_volume_value, max_volume);
 			char fx_volume_char[(((sizeof fx_num) * CHAR_BIT) + 2) / 3 + 2];
 			sprintf_s(fx_volume_char, "%d", fx_num);

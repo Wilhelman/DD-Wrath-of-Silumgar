@@ -90,6 +90,19 @@ public:
 		return mouse_buttons[id - 1];
 	}
 
+	GAMEPAD_STATE GetGamepadButton(int key)
+	{
+		if (key == 0)
+			return gamepad.A;
+		else if (key == 1)
+			return gamepad.B;
+		else if (key == 2)
+			return gamepad.Y;
+		else if (key == 3)
+			return gamepad.X;
+		
+	}
+
 	// Get mouse / axis position
 	void GetMousePosition(int &x, int &y);
 	void GetWorldMousePosition(int &x, int &y);

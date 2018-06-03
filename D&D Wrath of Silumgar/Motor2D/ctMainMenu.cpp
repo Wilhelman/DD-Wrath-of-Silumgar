@@ -43,7 +43,7 @@ bool ctMainMenu::Awake()
 bool ctMainMenu::Start()
 {
 	bool ret = true;
-
+	
 	App->items->warrior_equip.clear();
 	App->items->cleric_equip.clear();
 	App->items->elf_equip.clear();
@@ -77,6 +77,8 @@ bool ctMainMenu::Start()
 	}
 	music_is_playing = false;
 
+	if(key_select == -1)
+		LoadButtonsInteractions();
 	
 	return ret;
 }
@@ -101,7 +103,7 @@ bool ctMainMenu::Update(float dt)
 		NavigateUp(labels);
 	}
 	//Execute
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->GetGamepadButton(key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		ExecuteComand(labels);
 	}
 	
@@ -278,4 +280,20 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		this->quit_pressed = true;
 	}
 
+}
+
+void ctMainMenu::LoadButtonsInteractions()
+{
+	pugi::xml_document doc;
+	pugi::xml_parse_result result = doc.load_file("data.xml");
+
+	if (result != NULL)
+	{
+		pugi::xml_node node = doc.child("data").child("settings");
+
+		key_select = node.attribute("select").as_int();
+
+		key_back = node.attribute("back").as_int();
+
+	}
 }

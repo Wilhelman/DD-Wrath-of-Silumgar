@@ -13,7 +13,7 @@
 #include "UIElement.h"
 #include "UIImage.h"
 #include "UIDecision.h"
-
+#include "ctMainMenu.h"
 
 //randomize libs
 #include <stdlib.h>     /* srand, rand */
@@ -66,7 +66,7 @@ bool ctTabernScene::PreUpdate()
 // Called each loop iteration
 bool ctTabernScene::Update(float dt)
 {
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN ||App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 
 		times_x_pressed++;
 

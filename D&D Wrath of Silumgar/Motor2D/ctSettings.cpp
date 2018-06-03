@@ -93,7 +93,7 @@ bool ctSettings::Update(float dt)
 		NavigateUp(labels);
 	}
 	//Execute
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		/*App->audio->PlayFx(menu_select_fx);*/
 		if ((*select_button_label).current_state == STATE_NORMAL && (*back_button_label).current_state == STATE_NORMAL) {
 			ExecuteComand(labels);
@@ -105,40 +105,48 @@ bool ctSettings::Update(float dt)
 		if ((*select_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*select_button_image);
 			select_button_image = App->gui->AddUIImage(125, 70, { 1360, 224, 17, 17 }, this);
+			App->main_menu->key_select = 0;
 		}
 		else if ((*back_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*back_button_image);
 			back_button_image = App->gui->AddUIImage(125, 90, { 1360, 224, 17, 17 }, this);
+			App->main_menu->key_back = 0;
 		}
 	}
 	if (App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if ((*select_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*select_button_image);
 			select_button_image = App->gui->AddUIImage(125, 70, { 1342, 242, 17, 17 }, this);
+			App->main_menu->key_back = 1;
 		}
 		else if ((*back_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*back_button_image);
 			back_button_image = App->gui->AddUIImage(125, 90, { 1342, 242, 17, 17 }, this);
+			App->main_menu->key_back = 1;
 		}
 	}
 	if (App->input->gamepad.X == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if ((*select_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*select_button_image);
 			select_button_image = App->gui->AddUIImage(125, 70, { 1342, 206, 17, 17 }, this);
+			App->main_menu->key_back = 3;
 		}
 		else if ((*back_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*back_button_image);
 			back_button_image = App->gui->AddUIImage(125, 90, { 1342, 206, 17, 17 }, this);
+			App->main_menu->key_back = 3;
 		}
 	}
 	if (App->input->gamepad.Y == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if ((*select_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*select_button_image);
 			select_button_image = App->gui->AddUIImage(125, 70, { 1324, 224, 17, 17 }, this);
+			App->main_menu->key_back = 2;
 		}
 		else if ((*back_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*back_button_image);
 			back_button_image = App->gui->AddUIImage(125, 90, { 1324, 224, 17, 17 }, this);
+			App->main_menu->key_back = 2;
 		}
 	}
 

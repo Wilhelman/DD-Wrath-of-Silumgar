@@ -173,7 +173,7 @@ void UIPauseMenu::Update() {
 			NavigateUp(main_labels);
 		}
 		//ExecuteCommand
-		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 			ExecuteComand(main_labels);
 		}
 	}
@@ -198,7 +198,7 @@ void UIPauseMenu::Update() {
 				App->audio->PlayFx(App->audio->cm_back_fx);
 				SetUpPauseMenu();
 			}
-			if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 				SetUpPauseMenu();
 			}
 

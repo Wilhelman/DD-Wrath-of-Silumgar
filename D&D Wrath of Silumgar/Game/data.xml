@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <data>
+  <!--DEFAULT SETTINGS 0/1    0 is A 1 is b 2 is Y 3 is X-->
+  <settings select="2" back="3" />
 	<world_map location_x="40" location_y="170" />
 	<tiers>
 		<tier number="0" />

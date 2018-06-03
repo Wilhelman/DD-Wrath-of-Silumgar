@@ -41,9 +41,16 @@ public:
 
 	void OnUITrigger(UIElement* elementTriggered, UI_State ui_state);
 
+	void LoadButtonsInteractions();
+
+
 public:
 	bool is_new_game = false;
 	UIElement* pauseMenu = nullptr;
+	int key_select = -1;
+	int key_back = -1;
+	GAMEPAD_STATE select, back;
+
 
 private:
 	bool quit_pressed = false;

@@ -245,7 +245,7 @@ bool ctWorldMap::Update(float dt)
 
 	if (!pause_menu_is_open)
 	{
-		if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() && decision == nullptr && App->task_manager->aux_task == nullptr) {
+		if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver() && decision == nullptr && App->task_manager->aux_task == nullptr) {
 
 			App->combat->SetSceneName(current_map_element->scene_name);
 			App->combat->entities_to_spawn = current_map_element->entities;

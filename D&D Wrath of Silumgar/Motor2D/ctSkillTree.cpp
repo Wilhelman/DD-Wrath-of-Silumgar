@@ -16,7 +16,7 @@
 #include "ctSkillTree.h"
 #include "ctCombat.h"
 #include "ctWorldMap.h"
-
+#include "ctMainMenu.h"
 #include "ctFadeToBlack.h"
 
 #include "Cleric.h"
@@ -218,7 +218,7 @@ bool ctSkillTree::Update(float dt)
 		NavigateSkills(elf_abilities);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_ability == false|| App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_ability == false|| App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_ability == false) {
 		selecting_ability = true;
 		execute_comand_time.Start();
 		App->audio->PlayFx(App->audio->mm_select_fx);
@@ -717,7 +717,7 @@ void ctSkillTree::SelectAbility() {
 				accept_decline.push_back(select_menu_B);
 				option = accept_decline.begin();
 			}
-			if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
+			if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
 				if (select_menu_A->current_state == STATE_FOCUSED) {
 					App->audio->PlayFx(App->audio->mm_select_fx);
 					//if ((*previous_ability)->active == 1) {

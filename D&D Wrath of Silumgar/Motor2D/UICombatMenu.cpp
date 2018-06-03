@@ -9,6 +9,7 @@
 #include "ctPerfTimer.h"
 #include "ctFadeToBlack.h"
 #include "ctItems.h"
+#include "ctMainMenu.h"
 
 UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule* callback, UIElement* parent) : UIElement(x, y, type, parent)
 {
@@ -143,7 +144,7 @@ void UICombatMenu::Update()
 			}
 		}
 		//Execute
-		if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false)&& App->combat->pause_menu_is_open == false) {
+		if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false)&& App->combat->pause_menu_is_open == false) {
 			App->audio->PlayFx(App->audio->cm_select_fx);
 			execute_comand_time.Start();
 			if (main_labels.size() != 0) {
@@ -157,7 +158,7 @@ void UICombatMenu::Update()
 			}
 		}
 		//Go back to the start combat menu
-		if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
+		if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && selecting_enemy == false || App->input->GetGamepadButton(App->main_menu->key_back) == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
 
 			if (main_labels.size() != 0) {
 				App->combat->SelectWithPreviousHeroe();
@@ -839,7 +840,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
 		App->gui->DeleteUIElement(*arrow);
 		arrow = nullptr;
 		App->gui->DeleteUIElement(*background);
@@ -895,7 +896,7 @@ void UICombatMenu::SelectEnemy(std::vector<UIElement*> &current_vector) {
 	}
 
 
-	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN || App->input->GetGamepadButton(App->main_menu->key_back) == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		
 		selected_enemy = App->combat->enemies.begin();
 		App->gui->DeleteUIElement(*enemy_select_arrow);
@@ -971,7 +972,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
 		App->gui->DeleteUIElement(*arrow);
 		arrow = nullptr;
 		App->gui->DeleteUIElement(*background);
@@ -1027,7 +1028,7 @@ void UICombatMenu::SelectAlly(std::vector<UIElement*> &current_vector) {
 	}
 
 
-	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN || App->input->GetGamepadButton(App->main_menu->key_back) == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		selected_ally = App->combat->heroes.begin();
 		App->gui->DeleteUIElement(*enemy_select_arrow);
 		enemy_select_arrow = nullptr;
@@ -1102,7 +1103,7 @@ void UICombatMenu::SelectDeadAlly(std::vector<UIElement*> &current_vector) {
 		App->audio->PlayFx(App->audio->cm_move_fx);
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && execute_comand_time.ReadMs() >= 500 || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN && execute_comand_time.ReadMs() >= 500) {
 		App->gui->DeleteUIElement(*arrow);
 		arrow = nullptr;
 		App->gui->DeleteUIElement(*background);
@@ -1158,7 +1159,7 @@ void UICombatMenu::SelectDeadAlly(std::vector<UIElement*> &current_vector) {
 	}
 
 
-	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN || App->input->gamepad.B == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN || App->input->GetGamepadButton(App->main_menu->key_back) == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		selected_ally = App->combat->heroes.begin();
 		App->gui->DeleteUIElement(*enemy_select_arrow);
 		enemy_select_arrow = nullptr;

@@ -229,7 +229,7 @@ bool ctWorldMap::Update(float dt)
 	
 
 
-	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || App->input->gamepad.Y == GAMEPAD_STATE::PAD_BUTTON_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || App->input->gamepad.START == GAMEPAD_STATE::PAD_BUTTON_DOWN)
 	{
 		if (pauseMenu == nullptr) {
 			pauseMenu = App->gui->AddUIPauseMenu(0, 0, this, nullptr);

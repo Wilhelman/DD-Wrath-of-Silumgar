@@ -52,6 +52,8 @@ struct Gamepad {
 	GAMEPAD_STATE JOYSTICK_LEFT;
 	GAMEPAD_STATE JOYSTICK_RIGHT;
 
+	GAMEPAD_STATE START;
+
 };
 
 class ctInput : public ctModule

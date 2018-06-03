@@ -194,7 +194,7 @@ void UIPauseMenu::Update() {
 				ChangePositionFakeArrow(SDL_SCANCODE_RIGHT);
 				SetInformationLabels();
 			}
-			if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || App->input->gamepad.Y == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || App->input->gamepad.START == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 				App->audio->PlayFx(App->audio->cm_back_fx);
 				SetUpPauseMenu();
 			}

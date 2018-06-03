@@ -246,6 +246,21 @@ void ctInput::buttonForGamepad() {
 			gamepad.Y = PAD_BUTTON_IDLE;
 	}
 
+	//BUTTON START
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START) == 1) {
+		if (gamepad.START == PAD_BUTTON_IDLE)
+			gamepad.START = PAD_BUTTON_DOWN;
+		else
+			gamepad.START = PAD_BUTTON_REPEAT;
+	}
+	else
+	{
+		if (gamepad.START == PAD_BUTTON_REPEAT || (gamepad.START == PAD_BUTTON_DOWN))
+			gamepad.START = PAD_BUTTON_KEY_UP;
+		else
+			gamepad.START = PAD_BUTTON_IDLE;
+	}
+
 	//BUTTON DPAD UP
 	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP) == 1) {
 		if (gamepad.CROSS_UP == PAD_BUTTON_IDLE)

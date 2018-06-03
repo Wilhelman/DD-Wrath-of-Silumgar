@@ -104,7 +104,7 @@ bool ctMainMenu::Update(float dt)
 		NavigateUp(labels);
 	}
 	//Execute
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || App->input->GetGamepadButton(key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && App->fadeToBlack->FadeIsOver() == true || App->input->GetGamepadButton(key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN && App->fadeToBlack->FadeIsOver() == true) {
 		ExecuteComand(labels);
 	}
 	

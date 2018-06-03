@@ -139,7 +139,7 @@ bool ctSettings::Update(float dt)
 		if ((*select_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*select_button_image);
 			select_button_image = App->gui->AddUIImage(125, 70, { 1342, 242, 17, 17 }, this);
-			App->main_menu->key_back = 1;
+			App->main_menu->key_select = 1;
 		}
 		else if ((*back_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*back_button_image);
@@ -151,7 +151,7 @@ bool ctSettings::Update(float dt)
 		if ((*select_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*select_button_image);
 			select_button_image = App->gui->AddUIImage(125, 70, { 1342, 206, 17, 17 }, this);
-			App->main_menu->key_back = 3;
+			App->main_menu->key_select = 3;
 		}
 		else if ((*back_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*back_button_image);
@@ -163,7 +163,7 @@ bool ctSettings::Update(float dt)
 		if ((*select_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*select_button_image);
 			select_button_image = App->gui->AddUIImage(125, 70, { 1324, 224, 17, 17 }, this);
-			App->main_menu->key_back = 2;
+			App->main_menu->key_select = 2;
 		}
 		else if ((*back_button_label).current_state == STATE_FOCUSED) {
 			App->gui->DeleteUIElement(*back_button_image);

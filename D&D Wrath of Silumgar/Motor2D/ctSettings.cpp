@@ -51,9 +51,9 @@ bool ctSettings::Start()
 	fx_volume_label = App->gui->AddUILabel(35, 30, "Fx Volume", { 255,255,255,255 }, 25, this);
 	fx_volume = App->gui->AddUILabel(150, 30, fx_volume_char, { 255,255,255,255 }, 25, this);
 	controls_label = App->gui->AddUILabel(35, 50, "Controls:", { 255,255,255,255 }, 25, this);
-	select_button_label = App->gui->AddUILabel(55, 70, "Select ->", { 255,255,255,255 }, 25, this);
+	select_button_label = App->gui->AddUILabel(55, 70, "Select   ", { 255,255,255,255 }, 25, this);
 	select_button_image = App->gui->AddUIImage(125, 70, { 1360, 224, 17, 17 }, this);
-	back_button_label = App->gui->AddUILabel(55, 90, "Back   ->", { 255,255,255,255 }, 25, this);
+	back_button_label = App->gui->AddUILabel(55, 90, "Back    ", { 255,255,255,255 }, 25, this);
 	back_button_image = App->gui->AddUIImage(125, 90, { 1342, 242, 17, 17 }, this);
 	back_label = App->gui->AddUILabel(35, 110, "Back to Menu", { 255,255,255,255 }, 25, this);
 	arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this);
@@ -64,6 +64,26 @@ bool ctSettings::Start()
 	labels.push_back(select_button_label);
 	labels.push_back(back_button_label);
 	labels.push_back(back_label);
+
+	if(App->main_menu->key_select == 0)
+		select_button_image = App->gui->AddUIImage(125, 70, { 1360, 224, 17, 17 }, this);
+	else if(App->main_menu->key_select == 1)
+		select_button_image = App->gui->AddUIImage(125, 70, { 1342, 242, 17, 17 }, this);
+	else if (App->main_menu->key_select == 2)
+		select_button_image = App->gui->AddUIImage(125, 70, { 1324, 224, 17, 17 }, this);
+	else if (App->main_menu->key_select == 3)
+		select_button_image = App->gui->AddUIImage(125, 70, { 1342, 206, 17, 17 }, this);
+
+	if (App->main_menu->key_back == 0)
+		back_button_image = App->gui->AddUIImage(125, 90, { 1360, 224, 17, 17 }, this);
+	else if (App->main_menu->key_back == 1)
+		back_button_image = App->gui->AddUIImage(125, 90, { 1342, 242, 17, 17 }, this);
+	else if (App->main_menu->key_back == 2)
+		back_button_image = App->gui->AddUIImage(125, 90, { 1324, 224, 17, 17 }, this);
+	else if (App->main_menu->key_back == 3)
+		back_button_image = App->gui->AddUIImage(125, 90, { 1342, 206, 17, 17 }, this);
+
+
 
 	if (!App->audio->PlayMusic(App->audio->SettingsBSO.c_str(), 1)) {
 		LOG("Error playing music in ctMainMenu Start");
@@ -103,6 +123,8 @@ bool ctSettings::Update(float dt)
 	//Change Controlls
 	if (App->input->gamepad.A == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 		if ((*select_button_label).current_state == STATE_FOCUSED) {
+
+
 			App->gui->DeleteUIElement(*select_button_image);
 			select_button_image = App->gui->AddUIImage(125, 70, { 1360, 224, 17, 17 }, this);
 			App->main_menu->key_select = 0;

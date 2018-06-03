@@ -318,6 +318,16 @@ bool ctSkillTree::CleanUp()
 		App->gui->DeleteUIElement(*select_menu_B);
 		select_menu_B = nullptr;
 	}
+	
+	if (ability_name != nullptr) {
+		App->gui->DeleteUIElement(*ability_name);
+		ability_name = nullptr;
+	}
+
+	if (ability_name_bg != nullptr) {
+		App->gui->DeleteUIElement(*ability_name_bg);
+		ability_name_bg = nullptr;
+	}
 	accept_decline.clear();
 
 	App->tex->UnLoad(spritesheet_abilities);
@@ -632,7 +642,7 @@ void ctSkillTree::PrintAbilityDescription(){
 	if (ability_name != nullptr) {
 		App->gui->DeleteUIElement(*ability_name);
 	}
-	ability_name = App->gui->AddUITextBox(300, 0, 25, 200, (*selected_ability)->ability_name, { 255,255,255,255 }, ability_name_bg);
+	ability_name = App->gui->AddUITextBox(56, 307, 18, 200, (*selected_ability)->ability_name, { 255,255,255,255 }, ability_name_bg);
 }
 
 void ctSkillTree::ChangeTitle() {
@@ -674,16 +684,16 @@ void ctSkillTree::ChangeDescriptionBG() {
 		App->gui->DeleteUIElement(*ability_name_bg);
 	}
 	if (current_hero == 1) {
-		ability_name_bg = App->gui->AddUIImage(300, 0, { 3, 622, 226, 33 }, this);
+		ability_name_bg = App->gui->AddUIImage(53, 302, { 232, 634,77,22 }, this);
 	}
 	else if (current_hero == 2) {
-		ability_name_bg = App->gui->AddUIImage(300, 0, { 3, 552, 226, 33 }, this);
+		ability_name_bg = App->gui->AddUIImage(53, 302, { 232, 563,77,22 }, this);
 	}
 	else if (current_hero == 3) {
-		ability_name_bg = App->gui->AddUIImage(300,0, { 3, 762, 226, 33 }, this);
+		ability_name_bg = App->gui->AddUIImage(53, 302, { 232, 772,77,22 }, this);
 	}
 	else if (current_hero == 4) {
-		ability_name_bg = App->gui->AddUIImage(300, 0, { 3, 693, 226, 33 }, this);
+		ability_name_bg = App->gui->AddUIImage(53, 302, { 232, 704,77,22 }, this);
 	}
 }
 

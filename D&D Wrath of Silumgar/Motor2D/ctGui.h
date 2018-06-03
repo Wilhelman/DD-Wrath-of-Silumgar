@@ -7,12 +7,45 @@
 #include "ctFonts.h"
 #include "ctEntities.h"
 
-#define STUN_COORDS {128,1204,32,32}
+// 3 IS FOR -1 AND 4 IS FOR -2
+
 #define BLEED_COORDS {32,1204,32,32}
-#define POSION_COORDS {96,1204,32,32}
 #define BURN_COORDS {64,1204,32,32}
+#define POISON_COORDS {96,1204,32,32}
+#define STUN_COORDS {128,1204,32,32}
+
+#define STR_1_COORDS {0,1044,32,32}
+#define STR_2_COORDS {32,1044,32,32}
+#define STR_3_COORDS {64,1044,32,32}
+#define STR_4_COORDS {96,1044,32,32}
+
+#define INT_1_COORDS {128,1108,32,32}
+#define INT_2_COORDS {0,1140,32,32}
+#define INT_3_COORDS {32,1140,32,32}
+#define INT_4_COORDS {64,1140,32,32}
+
 #define DEX_1_COORDS {96,1140,32,32}
 #define DEX_2_COORDS {128,1140,32,32}
+#define DEX_3_COORDS {0,1172,32,32}
+#define DEX_4_COORDS {32,1172,32,32}
+
+#define AGI_1_COORDS {64,1172,32,32}
+#define AGI_2_COORDS {96,1172,32,32}
+#define AGI_3_COORDS {128,1172,32,32}
+#define AGI_4_COORDS {0,1204,32,32}
+
+#define PDEF_1_COORDS {128,1044,32,32}
+#define PDEF_2_COORDS {0,1076,32,32}
+#define PDEF_3_COORDS {32,1076,32,32}
+#define PDEF_4_COORDS {64,1076,32,32}
+
+#define MDEF_1_COORDS {96,1076,32,32}
+#define MDEF_2_COORDS {128,1076,32,32}
+#define MDEF_3_COORDS {0,1108,32,32}
+#define MDEF_4_COORDS {32,1108,32,32}
+
+#define JUD_3_COORDS {64,1108,32,32}
+#define JUD_4_COORDS {96,1108,32,32}
 
 struct SDL_Texture;
 struct SDL_Rect;

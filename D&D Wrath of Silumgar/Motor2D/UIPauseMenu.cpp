@@ -1092,6 +1092,11 @@ void UIPauseMenu::SaveInPauseMenu()
 	pugi::xml_document	data_file;
 	pugi::xml_node* node = &App->LoadData(data_file);
 
+	//---------------------------------------------------------
+	node = &node->child("settings");
+	node->attribute("select").set_value(App->main_menu->key_select);
+	node->attribute("back").set_value(App->main_menu->key_back);
+
 	//-----------------------------------------------------------
 	node = &node->child("world_map");
 	

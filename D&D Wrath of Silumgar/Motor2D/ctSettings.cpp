@@ -258,8 +258,9 @@ bool ctSettings::CleanUp()
 		App->gui->DeleteUIElement(*labels[i]);
 
 	}
+	
 	labels.clear();
-
+	App->gui->DeleteAllUIElements();
 	return true;
 }
 

@@ -49,7 +49,7 @@ public:
 	UIElement* pauseMenu = nullptr;
 	int key_select = -1;
 	int key_back = -1;
-	GAMEPAD_STATE select, back;
+	
 
 
 private:

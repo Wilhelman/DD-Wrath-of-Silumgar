@@ -53,7 +53,7 @@ public:
 
 	iPoint explanationPos{129,31};
 
-	int font_size = 24;
+	int font_size = 14;
 
 	bool selecting_enemy = false;
 	bool executed_command = false;

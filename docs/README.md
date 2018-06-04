@@ -5,7 +5,7 @@ Project II for Videogame Development subject. The main goal here is to redesign 
 This project has been done by seven spanish students of CITM - UPC (Terrasa, Spain).  
 
 * [Github repository](https://github.com/Wilhelman/DD-Shadow-over-Mystara)  
-* [Website] (https://wilhelman.github.io/DD-Wrath-of-Silumgar/AlexCampamar_contribution)
+* [Website] 
 
 ## About the game
 Dungeons & Dragons: Shadow over Mystara is an arcade game created and published by Capcom in 1996 and it's a sequel of Dungeons & Dragons: Tower of Doom. The game combines the genre of beat'em up with a lot of aspects about the role-playing. Brought a great innovation around the mechanics of the inventory system and habilities mechanics.
@@ -43,30 +43,37 @@ TODO: ALL INNOVATIONS WE HAVE
 _García Subirana, Guillermo's responsability and Github account_
 * Lead
 * [Github account](https://github.com/Wilhelman)
+* [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Guillermo_contribution)
 
 _Sánchez-Cortés Puerta, Alfonso's responsability and Github account_
 * Code
 * [Github account](https://github.com/Siitoo)
+* [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Alfonso_contribution)
 
 _Gutiérrez Llenas, Ricardo's responsability and Github account_
 * Management
 * [Github account](https://github.com/Ricardogll)
+* [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Ricardo_contribution)
 
 _Tirado Fernández, Victor's responsability and Github account_
 * Design
 * [Github account](https://github.com/VictorTirado)
+* [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Victor_contribution)
 
 _Tarrés i Urbieta, Marc's responsability and Github account_
 * Art + Audio
 * [Github account](https://github.com/MAtaur00)
+* [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Marc_contribution)
 
 _Campamar Redol, Alex's responsability and Github account_
 * UI
 * [Github account](https://github.com/Acaree)
+* [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Alex_contribution)
 
 _Mourelo Montero, Manel's responsability and Github account_
 * QA
 * [Github account](https://github.com/manelmourelo)
+* [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Manel_contribution)
 
 
 ## Tools used

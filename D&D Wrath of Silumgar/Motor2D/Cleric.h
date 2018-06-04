@@ -12,7 +12,7 @@ public:
 
 	//clerics's current frame (entity)
 	SDL_Rect current_frame = { 0,0,0,0 };
-
+	float IDLE_SPEED_DAMAGED = 3.0f;
 private:
 
 	//sounds fx

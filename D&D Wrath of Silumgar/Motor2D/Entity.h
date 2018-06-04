@@ -14,7 +14,7 @@
 #define BURN_DAMAGE -25
 #define POISON_DAMAGE -45
 #define BLEEDING_DAMAGE -10
-#define IDLE_SPEED_DAMAGED 3
+
 struct SDL_Texture;
 
 class Entity
@@ -154,6 +154,7 @@ public:
 	uint current_timer = 0u;
 
 	float idle_animation_damaged_speed = 1.0f;
+	float IDLE_SPEED_DAMAGED = 2.0f;
 
 public:
 

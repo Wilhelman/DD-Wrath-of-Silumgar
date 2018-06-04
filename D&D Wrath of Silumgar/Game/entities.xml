@@ -8,7 +8,7 @@
       <statistics constitution ="5" focus="5" strength="2" agility="9" dexterity ="3" intelligence="4" physicalDefense="2" magicalDefense="2" judgement="35"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
+        <animation name="idle" speed="2.0" loop="true">
           <frame x="991" y="70" width="54" height="51"/>
           <frame x="932" y="70" width="54" height="51"/>
           <frame x="874" y="70" width="54" height="51"/>
@@ -317,7 +317,7 @@
       <statistics constitution ="11" focus="6" strength="4" agility="3"  dexterity ="4" intelligence="3" physicalDefense="4" magicalDefense="3" judgement="60"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
+        <animation name="idle" speed="2.0" loop="true">
           <frame x="899" y="9" width="110" height="83"/>
           <frame x="785" y="9" width="110" height="83"/>
           <frame x="670" y="9" width="110" height="83"/>
@@ -448,7 +448,7 @@
       <statistics constitution ="9" focus="8" strength="6" agility="3" dexterity ="9" intelligence="5" physicalDefense="10" magicalDefense="12" judgement="50"/>
       <animations>
 
-        <animation name="idle" speed="1.5" loop="true">
+        <animation name="idle" speed="1" loop="true">
           <frame x="325" y="477" width="54" height="69"/>
           <frame x="402" y="477" width="54" height="69"/>
         </animation>
@@ -529,7 +529,7 @@
       <statistics constitution ="13" focus="8" strength="6" agility="1" dexterity ="5" intelligence="3" physicalDefense="7" magicalDefense="12" judgement="35"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
+        <animation name="idle" speed="2.0" loop="true">
           <frame x="1286" y="6" width="131" height="67"/>
           <frame x="1147" y="6" width="131" height="67"/>
           <frame x="1009" y="6" width="131" height="67"/>
@@ -678,7 +678,7 @@
       <statistics constitution ="9" focus="9" strength="6" agility="11" dexterity ="9" intelligence="9" physicalDefense="8" magicalDefense="6" judgement="40"/>
       <animations>
 
-        <animation name="idle" speed="2.0" loop="true">
+        <animation name="idle" speed="1.0" loop="true">
           <frame x="859" y="12" width="110" height="55"/>
           <frame x="30" y="400" width="110" height="55"/>
         </animation>
@@ -752,7 +752,7 @@
       <statistics constitution ="45" focus="20" strength="9" agility="7" dexterity ="7" intelligence="15" physicalDefense="20" magicalDefense="20" judgement="40"/>
       <animations>
 
-        <animation name="idle" speed="2.0" loop="true">
+        <animation name="idle" speed="1.0" loop="true">
           <frame x="1759" y="403" width="151" height="157"/>
           <frame x="1515" y="403" width="151" height="157"/>
         </animation>
@@ -937,7 +937,7 @@
       <statistics constitution ="30" focus="80" strength="10" agility="6" dexterity ="20" intelligence="18" physicalDefense="11" magicalDefense="11" judgement="60"/>
       <animations>
 
-        <animation name="idle" speed="5.0" loop="true">
+        <animation name="idle" speed="2.0" loop="true">
           <frame x="1442" y="177" width="191" height="111"/>
           <frame x="1247" y="177" width="191" height="111"/>
           <frame x="1049" y="177" width="191" height="111"/>

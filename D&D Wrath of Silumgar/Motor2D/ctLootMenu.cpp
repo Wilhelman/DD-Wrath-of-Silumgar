@@ -337,13 +337,6 @@ bool LootMenu::Start()
 	arrow->SetParent(to_cleric_label);
 	arrow->Update();
 
-	dropped_usable_items.push_back(&App->items->usable_items[0]);
-	dropped_usable_items.push_back(&App->items->usable_items[0]);
-	dropped_usable_items.push_back(&App->items->usable_items[0]);
-	dropped_usable_items.push_back(&App->items->usable_items[0]);
-	dropped_usable_items.push_back(&App->items->usable_items[0]);
-	dropped_usable_items.push_back(&App->items->usable_items[0]);
-	dropped_usable_items.push_back(&App->items->usable_items[0]);
 
 	LoadEquipableObjects();
 

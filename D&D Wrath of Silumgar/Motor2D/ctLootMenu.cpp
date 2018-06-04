@@ -146,6 +146,13 @@ bool LootMenu::Start()
 	arrow->SetParent(to_cleric_label);
 	arrow->Update();
 
+	dropped_usable_items.push_back(&App->items->usable_items[0]);
+	dropped_usable_items.push_back(&App->items->usable_items[0]);
+	dropped_usable_items.push_back(&App->items->usable_items[0]);
+	dropped_usable_items.push_back(&App->items->usable_items[0]);
+	dropped_usable_items.push_back(&App->items->usable_items[0]);
+	dropped_usable_items.push_back(&App->items->usable_items[0]);
+	dropped_usable_items.push_back(&App->items->usable_items[0]);
 
 	LoadEquipableObjects();
 
@@ -1006,8 +1013,8 @@ void LootMenu::SetInformationUsableItems()
 			information_usable_items.clear();
 		}
 
-		information_usable_items.push_back(new UITextBox(420, 20, TEXTBOX, dropped_usable_items[0]->name, { 255,255,255 }, 17, 100));
-		information_usable_items.push_back(new UIImage(420, 50, IMAGE, dropped_usable_items[0]->draw_coords, nullptr));
+		information_usable_items.push_back(new UITextBox(420, 10, TEXTBOX, dropped_usable_items[0]->name, { 255,255,255 }, 17, 100));
+		information_usable_items.push_back(new UIImage(420, 30, IMAGE, dropped_usable_items[0]->draw_coords, nullptr));
 		information_usable_items.push_back(new UITextBox(420, 70, TEXTBOX, dropped_usable_items[0]->action.description, { 255,255,255 }, 17, 100, Second_Font));
 
 		if (main_labels.size() != 0)
@@ -1043,16 +1050,16 @@ void LootMenu::SetInformationUsableItems()
 						switch (current_entity->type)
 						{
 						case CLERIC:
-							information_usable_items.push_back(new UITextBox(472, 200, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100, Second_Font));
-							break;
-						case DWARF:
-							information_usable_items.push_back(new UITextBox(472, 220, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100, Second_Font));
-							break;
-						case WARRIOR:
 							information_usable_items.push_back(new UITextBox(472, 240, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100, Second_Font));
 							break;
+						case DWARF:
+							information_usable_items.push_back(new UITextBox(472, 255, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100, Second_Font));
+							break;
+						case WARRIOR:
+							information_usable_items.push_back(new UITextBox(472, 270, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100, Second_Font));
+							break;
 						case ELF:
-							information_usable_items.push_back(new UITextBox(472, 260, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100, Second_Font));
+							information_usable_items.push_back(new UITextBox(472, 285, TEXTBOX, std::to_string(current_entity->usable_items.at(i).quantity), { 0,255,0 }, 17, 100, Second_Font));
 							break;
 						}
 
@@ -1074,7 +1081,7 @@ void LootMenu::SetInformationUsableItems()
 						information_usable_items.push_back(new UITextBox(472, 270, TEXTBOX, "0", { 255,0,0 }, 17, 100, Second_Font));
 						break;
 					case ELF:
-						information_usable_items.push_back(new UITextBox(472, 290, TEXTBOX, "0", { 255,0,0 }, 17, 100, Second_Font));
+						information_usable_items.push_back(new UITextBox(472, 285, TEXTBOX, "0", { 255,0,0 }, 17, 100, Second_Font));
 						break;
 					}
 				}

@@ -959,12 +959,12 @@
           <frame x="196" y="1403" width="216" height="133"/>
         </animation>
         
-        <animation name="hit" speed="5.0" loop="false">
+        <animation name="hit" speed="0.1" loop="false">
           <frame x="1373" y="2155" width="191" height="133"/>
           <frame x="1128" y="2155" width="191" height="133"/>
         </animation>
         
-        <animation name="death" speed="5.0" loop="false">
+        <animation name="death" speed="0.5" loop="false">
           <frame x="1373" y="2152" width="191" height="136"/>
           <frame x="1128" y="2152" width="191" height="136"/>
           <frame x="861" y="2152" width="191" height="136"/>
@@ -973,12 +973,12 @@
           <frame x="85" y="2152" width="191" height="136"/>
         </animation>
         
-        <animation name="dodge" speed="5.0" loop="true">
+        <animation name="dodge" speed="0.1" loop="false">
           <frame x="1446" y="34" width="200" height="111"/>
           <frame x="1174" y="34" width="200" height="111"/>
         </animation>
         
-        <animation name="default_attack" speed="5.0" loop="true">
+        <animation name="default_attack" speed="0.4" loop="false">
           <frame x="1172" y="320" width="431" height="114"/>
           <frame x="750" y="320" width="431" height="114"/>
           <frame x="238" y="320" width="431" height="114"/>
@@ -988,7 +988,7 @@
           <frame x="1168" y="655" width="431" height="114"/>
         </animation>
         
-        <animation name="infernal_fire" speed="5.0" loop="true">
+        <animation name="infernal_fire" speed="0.5" loop="false">
           <frame x="1416" y="991" width="219" height="118"/>
           <frame x="1194" y="991" width="219" height="118"/>
           <frame x="947" y="991" width="219" height="118"/>
@@ -997,7 +997,7 @@
           <frame x="119" y="991" width="219" height="118"/>
         </animation>
         
-        <animation name="shadow_jab" speed="5.0" loop="true">
+        <animation name="shadow_jab" speed="0.5" loop="false">
           <frame x="1172" y="320" width="431" height="114"/>
           <frame x="750" y="320" width="431" height="114"/>
           <frame x="238" y="320" width="431" height="114"/>
@@ -1149,7 +1149,7 @@
           <frame x="380" y="2659" width="70" height="82"/>
         </animation>
 
-        <animation name="selected" speed="0.05" loop="true">
+        <animation name="selected" speed="1.5" loop="true">
          <frame x="2024" y="2655" width="75" height="85"/>
           <frame x="2112" y="2655" width="75" height="85"/>
           <frame x="2200" y="2655" width="75" height="85"/>
@@ -1335,7 +1335,7 @@
           <frame x="202" y="334" width="49" height="69"/>
         </animation>
 
-        <animation name="selected" speed="0.05" loop="true">
+        <animation name="selected" speed="1.0" loop="true">
           <frame x="2070" y="38" width="53" height="73"/>
           <frame x="2138" y="38" width="53" height="73"/>
           <frame x="2206" y="38" width="53" height="73"/>
@@ -1539,7 +1539,7 @@
           <frame x="962" y="2156" width="45" height="71"/>
         </animation>
 		
-		    <animation name="selected" speed="0.05" loop="true">
+		    <animation name="selected" speed="1.0" loop="true">
           <frame x="1050" y="2154" width="50" height="72"/>
           <frame x="1110" y="2154" width="50" height="72"/>
           <frame x="1170" y="2154" width="50" height="72"/>
@@ -1760,7 +1760,7 @@
           <frame x="1787" y="118" width="72" height="78"/>
         </animation>
 
-        <animation name="selected" speed="0.05" loop="true">
+        <animation name="selected" speed="1.0" loop="true">
           <frame x="2107" y="498" width="74" height="80"/>
           <frame x="2191" y="498" width="74" height="80"/>
           <frame x="2275" y="498" width="74" height="80"/>

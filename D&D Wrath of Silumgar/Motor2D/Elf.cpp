@@ -93,6 +93,7 @@ void Elf::SetPlayerAnimationsSpeed(float dt)
 	idle_animation_damaged_speed = (((100 - percentage_hp) * IDLE_SPEED_DAMAGED) / 100) + 1;
 	idle.speed = idle_vel * dt * idle_animation_damaged_speed;
 	run_forward.speed = run_forward_vel * dt;
+	selected.speed = idle.speed;
 }
 
 void Elf::SetEntitiesSpeed(float dt)

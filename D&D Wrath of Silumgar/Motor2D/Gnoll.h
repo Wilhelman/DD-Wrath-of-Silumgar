@@ -19,7 +19,7 @@ private:
 
 	//animations velocity
 	uint idle_vel = 0u, run_forward_vel = 0u;
-
+	float IDLE_SPEED_DAMAGED = 1.5f;
 private:
 
 	void SetPlayerAnimationsSpeed(float dt);

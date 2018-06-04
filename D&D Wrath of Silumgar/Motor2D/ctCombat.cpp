@@ -1181,6 +1181,8 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 		new_action.objective = HEROES;
 	else if (skill_node.attribute("objective").as_int() == 2)
 		new_action.objective = DEAD_HEROES;
+	else if (skill_node.attribute("objective").as_int() == 3)
+		new_action.objective = NO_SELECTION;
 
 	new_action.have_to_move = skill_node.attribute("have_to_move").as_int();
 

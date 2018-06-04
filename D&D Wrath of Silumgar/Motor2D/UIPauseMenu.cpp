@@ -1098,7 +1098,7 @@ void UIPauseMenu::SaveInPauseMenu()
 	node->attribute("back").set_value(App->main_menu->key_back);
 
 	//-----------------------------------------------------------
-	node = &node->child("world_map");
+	/*node = &node->child("world_map");
 	
 	node->attribute("location_x").set_value(App->entities->GetMiniheroes()->position.x);
 	node->attribute("location_y").set_value(App->entities->GetMiniheroes()->position.y);
@@ -1110,7 +1110,7 @@ void UIPauseMenu::SaveInPauseMenu()
 	{
 		tiers.attribute("number").set_value(App->world_map->number_map_generated[count]);
 		count++;
-	}
+	}*/
 	
 	//-----------------------------------------------------------
 	node = &node->child("heroes");

@@ -64,9 +64,9 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 	}
 	arrow->SetParent(attack_label);
 	upper_points_pos.x = x + 8;
-	upper_points_pos.y = y - 20;
+	upper_points_pos.y = y - 10;
 	lower_points_pos.x = x + 8;
-	lower_points_pos.y = y + 47;
+	lower_points_pos.y = y + 57;
 	LOG("UICombatMenu created in x:%i, y:%i", x, y);
 
 	selected_enemy = App->combat->enemies.begin();

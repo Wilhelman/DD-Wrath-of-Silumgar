@@ -102,6 +102,7 @@ public:
 	std::vector<Item> tier_2_equips;
 	std::vector<Item> tier_3_equips;
 
+	std::vector<Item> all_tiers_equips;
 
 	//TODO SAVE IT IN THE XML SORRY FOR THIS:
 

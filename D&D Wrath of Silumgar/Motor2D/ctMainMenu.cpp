@@ -276,6 +276,15 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 		{
 			std::string tmp(heroe.attribute("name").as_string());
 
+			heroe.child("items").attribute("boot").set_value("");
+			heroe.child("items").attribute("ring").set_value("");
+			heroe.child("items").attribute("helmet").set_value("");
+			heroe.child("items").attribute("shield").set_value("");
+			heroe.child("items").attribute("weapon").set_value("");
+			heroe.child("items").attribute("gauntlet").set_value("");
+			heroe.child("items").attribute("chest").set_value("");
+			heroe.child("items").attribute("accessory").set_value("");
+
 			if (tmp == "cleric") {
 				for (pugi::xml_node skill = heroe.child("skills").child("skill"); skill; skill = skill.next_sibling("skill")) {
 					skill.attribute("owned").set_value(0);

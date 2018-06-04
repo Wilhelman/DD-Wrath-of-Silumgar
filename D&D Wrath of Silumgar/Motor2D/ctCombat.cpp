@@ -1315,6 +1315,8 @@ void ctCombat::SaveDataToXML()
 	pugi::xml_node* node = &App->LoadData(data_file);
 	node = &node->child("heroes");
 
+
+
 	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
 	{
 		std::string tmp(heroe.attribute("name").as_string());

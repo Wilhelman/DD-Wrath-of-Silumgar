@@ -45,6 +45,197 @@ void LootMenu::SavedataToXML()
 		std::string tmp(heroe.attribute("name").as_string());
 
 		if (tmp == "cleric") {
+
+			pugi::xml_node item = heroe.child("items");
+
+			for (int i = 0; i < App->items->cleric_equip.size(); i++)
+			{
+				App->entities->GetCleric()->AddEquipItem(App->items->cleric_equip.at(i));
+			}
+
+			Entity* curr = App->entities->GetCleric();
+
+			if (App->items->cleric_equip.size() != 0)
+			{
+				if (curr->helmet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("helmet").set_value(curr->helmet.name.c_str());
+				}
+
+				if (curr->boot.type != NO_ITEM_TYPE)
+				{
+					item.attribute("boot").set_value(curr->boot.name.c_str());
+				}
+
+				if (curr->guantlet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("gauntlet").set_value(curr->guantlet.name.c_str());
+				}
+				if (curr->ring.type != NO_ITEM_TYPE)
+				{
+					item.attribute("ring").set_value(curr->ring.name.c_str());
+				}
+				if (curr->accessory.type != NO_ITEM_TYPE)
+				{
+					item.attribute("accessory").set_value(curr->accessory.name.c_str());
+				}
+				if (curr->chest.type != NO_ITEM_TYPE)
+				{
+					item.attribute("chest").set_value(curr->chest.name.c_str());
+				}
+				if (curr->shield.type != NO_ITEM_TYPE)
+				{
+					item.attribute("shield").set_value(curr->shield.name.c_str());
+				}
+				if (curr->weapon.type != NO_ITEM_TYPE)
+				{
+					item.attribute("weapon").set_value(curr->weapon.name.c_str());
+				}
+
+			}
+
+
+		}
+		else if (tmp == "warrior") {
+
+			pugi::xml_node item = heroe.child("items");
+			Entity* curr = App->entities->GetWarrior();
+
+			if (App->items->warrior_equip.size() != 0)
+			{
+				if (curr->helmet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("helmet").set_value(curr->helmet.name.c_str());
+				}
+
+				if (curr->boot.type != NO_ITEM_TYPE)
+				{
+					item.attribute("boot").set_value(curr->boot.name.c_str());
+				}
+
+				if (curr->guantlet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("gauntlet").set_value(curr->guantlet.name.c_str());
+				}
+				if (curr->ring.type != NO_ITEM_TYPE)
+				{
+					item.attribute("ring").set_value(curr->ring.name.c_str());
+				}
+				if (curr->accessory.type != NO_ITEM_TYPE)
+				{
+					item.attribute("accessory").set_value(curr->accessory.name.c_str());
+				}
+				if (curr->chest.type != NO_ITEM_TYPE)
+				{
+					item.attribute("chest").set_value(curr->chest.name.c_str());
+				}
+				if (curr->shield.type != NO_ITEM_TYPE)
+				{
+					item.attribute("shield").set_value(curr->shield.name.c_str());
+				}
+				if (curr->weapon.type != NO_ITEM_TYPE)
+				{
+					item.attribute("weapon").set_value(curr->weapon.name.c_str());
+				}
+
+			}
+		}
+		else if (tmp == "dwarf") {
+
+			pugi::xml_node item = heroe.child("items");
+			Entity* curr = App->entities->GetDwarf();
+
+			if (App->items->warrior_equip.size() != 0)
+			{
+				if (curr->helmet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("helmet").set_value(curr->helmet.name.c_str());
+				}
+
+				if (curr->boot.type != NO_ITEM_TYPE)
+				{
+					item.attribute("boot").set_value(curr->boot.name.c_str());
+				}
+
+				if (curr->guantlet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("gauntlet").set_value(curr->guantlet.name.c_str());
+				}
+				if (curr->ring.type != NO_ITEM_TYPE)
+				{
+					item.attribute("ring").set_value(curr->ring.name.c_str());
+				}
+				if (curr->accessory.type != NO_ITEM_TYPE)
+				{
+					item.attribute("accessory").set_value(curr->accessory.name.c_str());
+				}
+				if (curr->chest.type != NO_ITEM_TYPE)
+				{
+					item.attribute("chest").set_value(curr->chest.name.c_str());
+				}
+				if (curr->shield.type != NO_ITEM_TYPE)
+				{
+					item.attribute("shield").set_value(curr->shield.name.c_str());
+				}
+				if (curr->weapon.type != NO_ITEM_TYPE)
+				{
+					item.attribute("weapon").set_value(curr->weapon.name.c_str());
+				}
+
+			}
+		}
+		else if (tmp == "elf") {
+
+			pugi::xml_node item = heroe.child("items");
+			Entity* curr = App->entities->GetElf();
+
+			if (App->items->warrior_equip.size() != 0)
+			{
+				if (curr->helmet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("helmet").set_value(curr->helmet.name.c_str());
+				}
+
+				if (curr->boot.type != NO_ITEM_TYPE)
+				{
+					item.attribute("boot").set_value(curr->boot.name.c_str());
+				}
+
+				if (curr->guantlet.type != NO_ITEM_TYPE)
+				{
+					item.attribute("gauntlet").set_value(curr->guantlet.name.c_str());
+				}
+				if (curr->ring.type != NO_ITEM_TYPE)
+				{
+					item.attribute("ring").set_value(curr->ring.name.c_str());
+				}
+				if (curr->accessory.type != NO_ITEM_TYPE)
+				{
+					item.attribute("accessory").set_value(curr->accessory.name.c_str());
+				}
+				if (curr->chest.type != NO_ITEM_TYPE)
+				{
+					item.attribute("chest").set_value(curr->chest.name.c_str());
+				}
+				if (curr->shield.type != NO_ITEM_TYPE)
+				{
+					item.attribute("shield").set_value(curr->shield.name.c_str());
+				}
+				if (curr->weapon.type != NO_ITEM_TYPE)
+				{
+					item.attribute("weapon").set_value(curr->weapon.name.c_str());
+				}
+
+			}
+		}
+
+	}
+
+	for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
+	{
+		std::string tmp(heroe.attribute("name").as_string());
+
+		if (tmp == "cleric") {
 			for (int i = 0; i < App->entities->GetCleric()->usable_items.size(); i++)
 			{
 				std::string tmp = App->entities->GetCleric()->usable_items.at(i).name;

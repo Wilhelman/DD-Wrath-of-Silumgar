@@ -226,12 +226,15 @@ bool ctItems::Awake(pugi::xml_node& config)
 		{
 		case 1:
 			tier_1_equips.push_back(item);
+			all_tiers_equips.push_back(item);
 			break;
 		case 2:
 			tier_2_equips.push_back(item);
+			all_tiers_equips.push_back(item);
 			break;
 		case 3:
 			tier_3_equips.push_back(item);
+			all_tiers_equips.push_back(item);
 			break;
 		default:
 			break;

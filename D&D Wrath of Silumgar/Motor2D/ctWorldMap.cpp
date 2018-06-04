@@ -234,7 +234,267 @@ bool ctWorldMap::Start()
 
 	//save all in data.xml
 
+	if (App->main_menu->is_continue) {
+		node = &node->child("heroes");
+
+		for (pugi::xml_node heroe = node->child("heroe"); heroe; heroe = heroe.next_sibling("heroe"))
+		{
+			std::string tmp(heroe.attribute("name").as_string());
+
+			if (tmp == "cleric") {
+
+				pugi::xml_node item = heroe.child("items");
+
+				std::string item_name(item.attribute("boot").as_string());
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->cleric_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("ring").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->cleric_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("helmet").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->cleric_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("shield").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->cleric_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("weapon").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->cleric_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("gauntlet").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->cleric_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("chest").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->cleric_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("accessory").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->cleric_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+
+			}
+			else if (tmp == "warrior") {
+
+				pugi::xml_node item = heroe.child("items");
+
+				std::string item_name(item.attribute("boot").as_string());
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->warrior_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("ring").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->warrior_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("helmet").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->warrior_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("shield").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->warrior_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("weapon").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->warrior_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("gauntlet").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->warrior_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("chest").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->warrior_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("accessory").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->warrior_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+
+			}
+			else if (tmp == "dwarf") {
+				pugi::xml_node item = heroe.child("items");
+
+				std::string item_name(item.attribute("boot").as_string());
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->dwarf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("ring").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->dwarf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("helmet").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->dwarf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("shield").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->dwarf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("weapon").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->dwarf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("gauntlet").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->dwarf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("chest").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->dwarf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("accessory").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->dwarf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+
+			}
+			else if (tmp == "elf") {
+
+				pugi::xml_node item = heroe.child("items");
+
+				std::string item_name(item.attribute("boot").as_string());
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->elf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("ring").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->elf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("helmet").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->elf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("shield").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->elf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("weapon").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->elf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("gauntlet").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->elf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("chest").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->elf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+				item_name = item.attribute("accessory").as_string();
+				for (int i = 0; i < App->items->all_tiers_equips.size(); i++)
+				{
+					if (item_name == App->items->all_tiers_equips.at(i).name) {
+						App->items->elf_equip.push_back(App->items->all_tiers_equips.at(i));
+					}
+				}
+
+			}
+
+		}
+	}
+
 	App->main_menu->is_continue = false;
+
+
 
 	SaveAllToData();
 

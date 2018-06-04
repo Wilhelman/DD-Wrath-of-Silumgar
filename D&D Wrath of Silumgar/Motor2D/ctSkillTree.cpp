@@ -374,7 +374,7 @@ void ctSkillTree::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 
 void ctSkillTree::DrawAbilities(std::vector<Ability*> &abilities)
 {
-	LOG("%d", abilities);
+	//LOG("%d", abilities);
 	std::vector<Ability*>::const_iterator ability = abilities.begin();
 	while (ability != abilities.end()) {
 		if ((*ability)->branch == 0) {

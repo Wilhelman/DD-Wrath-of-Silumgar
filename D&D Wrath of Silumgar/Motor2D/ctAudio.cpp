@@ -181,8 +181,13 @@ void ctAudio::InitAudio()
 	MainMenuVoice = "audio/music/D&D Shadow Over Mystara - Song 02  Dungeons & Dragons.ogg";
 	SettingsBSO = "audio/music/D&D Shadow Over Mystara - Song 21 What Sleeps in The Rotting Sea (Stage 5-B).ogg";
 	CutsceneBSO = "audio/music/D&D Shadow Over Mystara - Song 04 Prologue (Stage 1).ogg";
-	WorldMapBSO = "audio/music/D_D-Shadow-Over-Mystara-Song-39-Our-Divine-Protection-First-Child-Amidst-Death.ogg";
+	WorldMapBSO = "audio/music/D&D Shadow Over Mystara - Song 05 The Journey (Stage 1).ogg";
 	CombatBSO = "audio/music/D&D Shadow Over Mystara - Song 07 Battle at Trintan Village (Stage 2).ogg";
+	CombatBSO2 = "audio/music/D&D Shadow Over Mystara - Song 11 Head Down Vesuvia  River(Stage 3-B).ogg";
+	CombatBSO3 = "audio/music/D&D Shadow Over Mystara - Song 15 Heavy Battle Tank Juggernaut (Stage 3-A).ogg";
+	CombatBSO4 = "audio/music/D&D Shadow Over Mystara - Song 17 Shadow Elf in The Harsh Fight(Stage 4).ogg";
+	CombatBSO5 = "audio/music/D&D Shadow Over Mystara - Song 23 Eyes Glinting in Darkness (Stage 10).ogg";
+	CombatBSO6 = "audio/music/D_D-Shadow-Over-Mystara-Song-35-War-of-Spiral-_Stage-10_.ogg";
 	WinBSO = "audio/music/D_D-Shadow-Over-Mystara-Song-38-Epiloge-_Stage-10_.ogg";
 	LoseBSO = "audio/music/D_D-Shadow-Over-Mystara-Song-39-Our-Divine-Protection-First-Child-Amidst-Death.ogg";
 

@@ -166,9 +166,55 @@ bool ctCombat::Start()
 		UIBar* bar = (UIBar*)App->gui->AddUIBar(pos_x, pos_y, enemies.at(i)->GetCurrentHealthPoints(), ENEMYLIFEBAR, enemies.at(i), this, nullptr);
 		enemies_bars.push_back(bar);
 	}
-	if (!App->audio->PlayMusic(App->audio->CombatBSO.c_str(), 1)) {
 
-		LOG("Error playing music in ctMainMenu Start");
+	int random_music = (rand() % 6);
+
+	switch (random_music) {
+
+	case 0:
+		if (!App->audio->PlayMusic(App->audio->CombatBSO.c_str(), 1)) {
+
+			LOG("Error playing music in ctMainMenu Start");
+		}
+		break;
+	case 1:
+		if (!App->audio->PlayMusic(App->audio->CombatBSO2.c_str(), 1)) {
+
+			LOG("Error playing music in ctMainMenu Start");
+		}
+		break;
+	case 2:
+		if (!App->audio->PlayMusic(App->audio->CombatBSO3.c_str(), 1)) {
+
+			LOG("Error playing music in ctMainMenu Start");
+		}
+		break;
+	case 3:
+		if (!App->audio->PlayMusic(App->audio->CombatBSO4.c_str(), 1)) {
+
+			LOG("Error playing music in ctMainMenu Start");
+		}
+		break;
+	case 4:
+		if (!App->audio->PlayMusic(App->audio->CombatBSO5.c_str(), 1)) {
+
+			LOG("Error playing music in ctMainMenu Start");
+		}
+		break;
+	case 5:
+		if (!App->audio->PlayMusic(App->audio->CombatBSO6.c_str(), 1)) {
+
+			LOG("Error playing music in ctMainMenu Start");
+		}
+		break;
+	default:
+		if (!App->audio->PlayMusic(App->audio->CombatBSO.c_str(), 1)) {
+
+			LOG("Error playing music in ctMainMenu Start");
+		}
+		break;
+
+		break;
 	}
 
 	if (App->entities->GetLich() != nullptr) {

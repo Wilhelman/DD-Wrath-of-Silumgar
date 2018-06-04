@@ -198,6 +198,11 @@ public:
 	std::string CutsceneBSO;
 	std::string WorldMapBSO;
 	std::string CombatBSO;
+	std::string CombatBSO2;
+	std::string CombatBSO3;
+	std::string CombatBSO4;
+	std::string CombatBSO5;
+	std::string CombatBSO6;
 	std::string WinBSO;
 	std::string LoseBSO;
 

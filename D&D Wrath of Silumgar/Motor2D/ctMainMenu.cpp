@@ -248,6 +248,7 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 	}
 	
 	if (continue_label->current_state == STATE_EXECUTED) {
+		is_continue = true;
 		LOG("continue_label pressed");
 		App->audio->PlayFx(App->audio->mm_select_fx);
 

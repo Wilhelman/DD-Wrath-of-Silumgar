@@ -46,6 +46,7 @@ public:
 
 public:
 	bool is_new_game = false;
+	bool is_continue = false;
 	UIElement* pauseMenu = nullptr;
 	int key_select = -1;
 	int key_back = -1;

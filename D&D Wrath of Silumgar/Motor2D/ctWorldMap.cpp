@@ -116,7 +116,7 @@ bool ctWorldMap::Start()
 	pugi::xml_document	data_file;
 	pugi::xml_node* node = &App->LoadData(data_file);
 
-	if(!App->main_menu->is_new_game)
+	if(App->main_menu->is_continue)
 		App->map->actual_tier = (TierList)node->child("tiers").attribute("actual_tier").as_int();
 
 	if(App->main_menu->key_select == 0)
@@ -138,7 +138,7 @@ bool ctWorldMap::Start()
 		ret = false;
 	}
 	
-	if (!App->main_menu->is_new_game) {
+	if (App->main_menu->is_continue) {
 		avatar_position.x = node->child("world_map").attribute("location_x").as_int();
 		avatar_position.y = node->child("world_map").attribute("location_y").as_int();
 	}
@@ -158,6 +158,9 @@ bool ctWorldMap::Start()
 
 	if (!map_generated)
 		GenerateNewRandomlyMap();
+
+	if (App->main_menu->is_continue)
+		current_map_element = final_map_elements.at(node->child("tiers").attribute("actual_element").as_int());
 
 	// MORE TIER
 
@@ -230,6 +233,8 @@ bool ctWorldMap::Start()
 	}
 
 	//save all in data.xml
+
+	App->main_menu->is_continue = false;
 
 	SaveAllToData();
 
@@ -394,6 +399,15 @@ void ctWorldMap::SaveAllToData()
 
 	node = &node->next_sibling();
 	node->attribute("actual_tier").set_value(App->map->actual_tier);
+
+	for (int i = 0; i < final_map_elements.size(); i++)
+	{
+		if (current_map_element == final_map_elements.at(i)) {
+			node->attribute("actual_element").set_value(i);
+			break;
+		}
+	}
+
 	for (pugi::xml_node tiers = node->child("tier"); tiers; tiers = tiers.next_sibling("tier"))
 	{
 		tiers.attribute("number").set_value(App->world_map->number_map_generated[count]);
@@ -503,7 +517,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 	for (int i = 0; i < App->map->tier_1_coords.size(); i++) {
 		/* generate secret number: */
 		int random_number = 0;
-		if (!App->main_menu->is_new_game)
+		if (App->main_menu->is_continue)
 			random_number = node->attribute("number").as_int();
 		else
 			random_number = (rand() % tier_1_vec.size());
@@ -526,7 +540,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 		while(last_random == random_number)
 			random_number = rand() % tier_2_vec.size();
 
-		if (!App->main_menu->is_new_game)
+		if (App->main_menu->is_continue)
 			last_random = node->attribute("number").as_int();
 		else
 			last_random = random_number;
@@ -552,7 +566,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_3_vec.size();
 
 			}
-			if (!App->main_menu->is_new_game)
+			if (App->main_menu->is_continue)
 				last_random = node->attribute("number").as_int();
 			else
 				last_random = random_number;
@@ -578,7 +592,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_4_vec.size();
 
 			}
-			if (!App->main_menu->is_new_game)
+			if (App->main_menu->is_continue)
 				last_random = node->attribute("number").as_int();
 			else
 				last_random = random_number;
@@ -604,7 +618,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_5_vec.size();
 
 			}
-			if (!App->main_menu->is_new_game)
+			if (App->main_menu->is_continue)
 				last_random = node->attribute("number").as_int();
 			else
 				last_random = random_number;
@@ -630,7 +644,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_6_vec.size();
 
 			}
-			if (!App->main_menu->is_new_game)
+			if (App->main_menu->is_continue)
 				last_random = node->attribute("number").as_int();
 			else
 				last_random = random_number;
@@ -656,7 +670,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_7_vec.size();
 
 			}
-			if (!App->main_menu->is_new_game)
+			if (App->main_menu->is_continue)
 				last_random = node->attribute("number").as_int();
 			else
 				last_random = random_number;
@@ -682,7 +696,7 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_8_vec.size();
 
 			}
-			if (!App->main_menu->is_new_game)
+			if (App->main_menu->is_continue)
 				last_random = node->attribute("number").as_int();
 			else
 				last_random = random_number;

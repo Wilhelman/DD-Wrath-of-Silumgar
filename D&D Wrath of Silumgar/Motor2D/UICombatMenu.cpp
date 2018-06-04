@@ -32,7 +32,7 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 		explanation_background = App->gui->AddUIImage(explanationPos.x, explanationPos.y, { 3, 693, 226, 33 }, callback);
 	}
 	//background = App->gui->AddUIImage(x, y, { 1260, 208, 60, 90 }, callback);
-	attack_label = App->gui->AddUILabel(x + main_label1_pos.x, y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
+	attack_label = App->gui->AddUILabel(x + main_label1_pos.x, y + main_label1_pos.y, "Attack", { 255,255,255,255 }, 25, nullptr, background);
 	int owned_abilities = 0;
 	for (int i = 0; i < entity->abilities.size(); i++) {
 		if (entity->abilities.at(i).owned == true) {
@@ -40,16 +40,16 @@ UICombatMenu::UICombatMenu(Entity* entity, int x, int y, UI_Type type, ctModule*
 		}
 	}
 	if (owned_abilities > 0) {
-		abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
+		abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, 25, nullptr, background);
 	}
 	else {
-		abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,0,0,255 }, font_size, nullptr, background);
+		abilities_label = App->gui->AddUILabel(x + main_label2_pos.x, y + main_label2_pos.y, "Abilities", { 255,0,0,255 }, 25, nullptr, background);
 	}
 	if (entity->usable_items.size() != 0) {
-		items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,255,255,255 }, font_size, nullptr, background);
+		items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,255,255,255 }, 25, nullptr, background);
 	}
 	else {
-		items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
+		items_label = App->gui->AddUILabel(x + main_label3_pos.x, y + main_label3_pos.y, "Items", { 255,0,0,255 }, 25, nullptr, background);
 	}
 	attack_label->current_state = STATE_FOCUSED;
 	explanation_label = App->gui->AddUITextBox(2, 1, 15, 450, ATTACKEXPLANATION, {255,255,255,255}, nullptr, Second_Font);
@@ -757,7 +757,7 @@ void UICombatMenu::GoBack() {
 	if (main_labels.size() == 0) {
 		iPoint backgroundPos = background->GetScreenPosition();
 
-		attack_label = App->gui->AddUILabel(backgroundPos.x + main_label1_pos.x, backgroundPos.y + main_label1_pos.y, "Attack", { 255,255,255,255 }, font_size, nullptr, background);
+		attack_label = App->gui->AddUILabel(backgroundPos.x + main_label1_pos.x, backgroundPos.y + main_label1_pos.y, "Attack", { 255,255,255,255 }, 25, nullptr, background);
 		int owned_abilities = 0;
 		for (int i = 0; i < entity->abilities.size(); i++) {
 			if (entity->abilities.at(i).owned == true) {
@@ -765,16 +765,16 @@ void UICombatMenu::GoBack() {
 			}
 		}
 		if (owned_abilities > 0) {
-			abilities_label = App->gui->AddUILabel(backgroundPos.x + main_label2_pos.x, backgroundPos.y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, font_size, nullptr, background);
+			abilities_label = App->gui->AddUILabel(backgroundPos.x + main_label2_pos.x, backgroundPos.y + main_label2_pos.y, "Abilities", { 255,255,255,255 }, 25, nullptr, background);
 		}
 		else {
-			abilities_label = App->gui->AddUILabel(backgroundPos.x + main_label2_pos.x, backgroundPos.y + main_label2_pos.y, "Abilities", { 255,0,0,255 }, font_size, nullptr, background);
+			abilities_label = App->gui->AddUILabel(backgroundPos.x + main_label2_pos.x, backgroundPos.y + main_label2_pos.y, "Abilities", { 255,0,0,255 }, 25, nullptr, background);
 		}
 		if (entity->usable_items.size() != 0) {
-			items_label = App->gui->AddUILabel(backgroundPos.x + main_label3_pos.x, backgroundPos.y + main_label3_pos.y, "Items", { 255,255,255,255 }, font_size, nullptr, background);
+			items_label = App->gui->AddUILabel(backgroundPos.x + main_label3_pos.x, backgroundPos.y + main_label3_pos.y, "Items", { 255,255,255,255 }, 25, nullptr, background);
 		}
 		else {
-			items_label = App->gui->AddUILabel(backgroundPos.x + main_label3_pos.x, backgroundPos.y + main_label3_pos.y, "Items", { 255,0,0,255 }, font_size, nullptr, background);
+			items_label = App->gui->AddUILabel(backgroundPos.x + main_label3_pos.x, backgroundPos.y + main_label3_pos.y, "Items", { 255,0,0,255 }, 25, nullptr, background);
 		}
 		attack_label->current_state = STATE_FOCUSED;
 		arrow->SetParent(attack_label);

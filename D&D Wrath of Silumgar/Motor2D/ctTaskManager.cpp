@@ -3113,7 +3113,7 @@ bool PerformActionToEntity::Execute()
 
 				for (int i = 0; i < App->entities->entities.size(); i++) {
 
-					if (App->entities->entities.at(i)->type == CLERIC || App->entities->entities.at(i)->type == WARRIOR || App->entities->entities.at(i)->type == ELF || App->entities->entities.at(i)->type == DWARF || App->entities->entities.at(i)->GetCurrentHealthPoints() > 0) {
+					if ((App->entities->entities.at(i)->type == CLERIC || App->entities->entities.at(i)->type == WARRIOR || App->entities->entities.at(i)->type == ELF || App->entities->entities.at(i)->type == DWARF) && App->entities->entities.at(i)->GetCurrentHealthPoints() > 0) {
 						receiver_entity = App->entities->entities.at(i);
 						receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
 

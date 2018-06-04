@@ -192,6 +192,27 @@ void UICombatMenu::Update()
 			if (entity_actions.at(current_ability).objective == ENEMIES) {
 				SelectEnemy(abilities);
 			}
+			else if (entity_actions.at(current_ability).objective == NO_SELECTION) {
+				App->gui->DeleteUIElement(*arrow);
+				arrow = nullptr;
+				App->gui->DeleteUIElement(*background);
+				background = nullptr;
+				App->gui->DeleteUIElement(*upper_points);
+				upper_points = nullptr;
+				App->gui->DeleteUIElement(*lower_points);
+				lower_points = nullptr;
+
+				selecting_enemy = false;
+				if (entity_actions.at(current_ability).have_to_move == false) {
+					App->task_manager->AddTask(new PerformActionToEntity(entity, entity_actions.at(current_ability), (*App->combat->enemies.begin())));
+					App->task_manager->AddTask(new MoveToInitialPosition(entity));
+				}
+				else {
+					App->task_manager->AddTask(new MoveToEntity(entity, (*App->combat->enemies.begin()), -20));
+					App->task_manager->AddTask(new PerformActionToEntity(entity, entity_actions.at(current_ability), (*App->combat->enemies.begin())));
+					App->task_manager->AddTask(new MoveToInitialPosition(entity));
+				}
+			}
 			else if (entity_actions.at(current_ability).objective == HEROES) {
 				SelectAlly(abilities);
 			}
@@ -219,6 +240,10 @@ void UICombatMenu::Update()
 		else if (items.size() != 0 && selecting_enemy == true) {
 			if (entity->usable_items.at(current_item).objective == ENEMIES) {
 				SelectEnemy(items);
+			}
+			else if (entity->usable_items.at(current_item).objective == NO_SELECTION) {
+				App->task_manager->AddTask(new PerformActionToEntity(entity, entity->usable_items.at(current_item).action, (*App->combat->enemies.begin())));
+				App->task_manager->AddTask(new MoveToInitialPosition(entity));
 			}
 			else if(entity->usable_items.at(current_item).objective == HEROES){
 				SelectAlly(items);

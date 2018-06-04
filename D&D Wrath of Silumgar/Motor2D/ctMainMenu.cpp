@@ -43,6 +43,12 @@ bool ctMainMenu::Awake()
 bool ctMainMenu::Start()
 {
 	bool ret = true;
+
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+
+	
+
 	
 	App->items->warrior_equip.clear();
 	App->items->cleric_equip.clear();
@@ -51,16 +57,25 @@ bool ctMainMenu::Start()
 
 	background = App->gui->AddUIImage(0, 0, { 337, 479, 484, 324 }, this);
 	labels_bg = App->gui->AddUIImage(15, 0, { 220, 1044, 80, 115 }, this);
-	continue_label = App->gui->AddUILabel(35, 10, App->language->GetDictionary().MM_continue_btn.c_str(), { 255,0,0,255 }, 25, this);
+	if (node->attribute("continue").as_int()) 
+		continue_label = App->gui->AddUILabel(35, 10, App->language->GetDictionary().MM_continue_btn.c_str(), { 255,255,255,255 }, 25, this);
+	else
+		continue_label = App->gui->AddUILabel(35, 10, App->language->GetDictionary().MM_continue_btn.c_str(), { 255,0,0,255 }, 25, this);
 	new_game_label = App->gui->AddUILabel(35, 30, App->language->GetDictionary().MM_new_game_btn.c_str(), { 255,255,255,255 }, 25, this);
 	settings_label = App->gui->AddUILabel(35, 50, App->language->GetDictionary().MM_settings_btn.c_str(), { 255,255,255,255 }, 25, this);
 	about_label = App->gui->AddUILabel(35, 70, App->language->GetDictionary().MM_about_btn.c_str(), { 255,255,255,255 }, 25, this);
 	quit_label = App->gui->AddUILabel(35, 90, App->language->GetDictionary().MM_quit_btn.c_str(), { 255,255,255,255 }, 25, this);
 	arrow = App->gui->AddUIImage(-10, 0, { 1333, 272, 7, 14 }, this);
 
-	new_game_label->current_state = STATE_FOCUSED;
-
-	arrow->SetParent(new_game_label);
+	if (node->attribute("continue").as_int()) {
+		labels.push_back(continue_label);
+		continue_label->current_state = STATE_FOCUSED;
+		arrow->SetParent(continue_label);
+	}
+	else {
+		new_game_label->current_state = STATE_FOCUSED;
+		arrow->SetParent(new_game_label);
+	}
 
 	labels.push_back(new_game_label);
 	labels.push_back(settings_label);
@@ -247,6 +262,7 @@ void ctMainMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 
 		
 	}
+
 	if (new_game_label->current_state == STATE_EXECUTED) {
 		LOG("new_game_label pressed");
 

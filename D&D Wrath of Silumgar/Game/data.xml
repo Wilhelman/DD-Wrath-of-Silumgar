@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
-<data>
+<data continue="1">
 	<settings select="0" back="1" />
 	<world_map location_x="40" location_y="170" />
-	<tiers>
+	<tiers actual_tier="0">
 		<tier number="0" />
 		<tier number="0" />
-		<tier number="1" />
+		<tier number="2" />
+		<tier number="0" />
 		<tier number="4" />
-		<tier number="1" />
-		<tier number="0" />
-		<tier number="0" />
-		<tier number="1" />
-		<tier number="2" />
-		<tier number="1" />
-		<tier number="2" />
-		<tier number="1" />
-		<tier number="0" />
 		<tier number="3" />
+		<tier number="1" />
+		<tier number="0" />
+		<tier number="1" />
+		<tier number="1" />
+		<tier number="2" />
+		<tier number="2" />
+		<tier number="3" />
+		<tier number="1" />
 		<tier number="0" />
 	</tiers>
 	<heroes>

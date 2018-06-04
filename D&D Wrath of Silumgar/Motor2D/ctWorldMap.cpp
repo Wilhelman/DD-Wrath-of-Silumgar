@@ -113,6 +113,12 @@ bool ctWorldMap::Start()
 {
 	bool ret = true;
 
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+
+	if(!App->main_menu->is_new_game)
+		App->map->actual_tier = (TierList)node->child("tiers").attribute("actual_tier").as_int();
+
 	if(App->main_menu->key_select == 0)
 		start_combat_label=App->gui->AddUITextBox(150, 293, 24, 500, "Press ENTER or A to start combat", { 0,0,0,255 }, nullptr, Second_Font);
 	else if (App->main_menu->key_select == 1)
@@ -132,7 +138,10 @@ bool ctWorldMap::Start()
 		ret = false;
 	}
 	
-
+	if (!App->main_menu->is_new_game) {
+		avatar_position.x = node->child("world_map").attribute("location_x").as_int();
+		avatar_position.y = node->child("world_map").attribute("location_y").as_int();
+	}
 	if (App->map->actual_tier == TIER_MAP_1) {
 		avatar_position.x = 40;
 		avatar_position.y = 170;
@@ -220,7 +229,9 @@ bool ctWorldMap::Start()
 
 	}
 
-	
+	//save all in data.xml
+
+	SaveAllToData();
 
 	return ret;
 }
@@ -367,6 +378,33 @@ bool ctWorldMap::Save(pugi::xml_node& save) const
 	return ret;
 }
 
+void ctWorldMap::SaveAllToData()
+{
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+
+	node->attribute("continue").set_value("1");
+
+	node = &node->child("world_map");
+
+	node->attribute("location_x").set_value(App->entities->GetMiniheroes()->position.x);
+	node->attribute("location_y").set_value(App->entities->GetMiniheroes()->position.y);
+
+	int count = 0;
+
+	node = &node->next_sibling();
+	node->attribute("actual_tier").set_value(App->map->actual_tier);
+	for (pugi::xml_node tiers = node->child("tier"); tiers; tiers = tiers.next_sibling("tier"))
+	{
+		tiers.attribute("number").set_value(App->world_map->number_map_generated[count]);
+		count++;
+	}
+
+
+	data_file.save_file("data.xml");
+	data_file.reset();
+}
+
 void ctWorldMap::OnUITrigger(UIElement* elementTriggered, UI_State ui_state)
 {
 	if (elementTriggered->type == DECISION)
@@ -457,16 +495,28 @@ void ctWorldMap::GenerateNewRandomlyMap()
 	int random_number = -1;
 	int last_random = -1;
 
+	pugi::xml_document	data_file;
+	pugi::xml_node* node = &App->LoadData(data_file);
+	node = &node->child("tiers").first_child();
+
 	//TIER 1 randomize (useless but whatever)
 	for (int i = 0; i < App->map->tier_1_coords.size(); i++) {
 		/* generate secret number: */
-		int random_number = (rand() % tier_1_vec.size());
+		int random_number = 0;
+		if (!App->main_menu->is_new_game)
+			random_number = node->attribute("number").as_int();
+		else
+			random_number = (rand() % tier_1_vec.size());
 
 		tier_1_vec.at(random_number)->coords_in_map = App->map->tier_1_coords.at(i);
 		
 		final_map_elements.push_back(tier_1_vec.at(random_number));
 		number_map_generated.push_back(random_number);
+
+		
 	}
+
+	node = &node->next_sibling();
 
 	//TIER 2 randomize
 	random_number = -1;
@@ -475,12 +525,18 @@ void ctWorldMap::GenerateNewRandomlyMap()
 		/* generate secret number: */
 		while(last_random == random_number)
 			random_number = rand() % tier_2_vec.size();
-		last_random = random_number;
 
-		tier_2_vec.at(random_number)->coords_in_map = App->map->tier_2_coords.at(i);
+		if (!App->main_menu->is_new_game)
+			last_random = node->attribute("number").as_int();
+		else
+			last_random = random_number;
 
-		final_map_elements.push_back(tier_2_vec.at(random_number));
-		number_map_generated.push_back(random_number);
+		tier_2_vec.at(last_random)->coords_in_map = App->map->tier_2_coords.at(i);
+
+		final_map_elements.push_back(tier_2_vec.at(last_random));
+		number_map_generated.push_back(last_random);
+
+		node = &node->next_sibling();
 	}
 
 	//TIER 3 randomize
@@ -496,12 +552,16 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_3_vec.size();
 
 			}
-			last_random = random_number;
+			if (!App->main_menu->is_new_game)
+				last_random = node->attribute("number").as_int();
+			else
+				last_random = random_number;
 
 			tier_3_vec.at(last_random)->coords_in_map = App->map->tier_3_coords.at(i);
 
 			final_map_elements.push_back(tier_3_vec.at(last_random));
-			number_map_generated.push_back(random_number);
+			number_map_generated.push_back(last_random);
+			node = &node->next_sibling();
 		}
 	}
 
@@ -518,12 +578,16 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_4_vec.size();
 
 			}
-			last_random = random_number;
+			if (!App->main_menu->is_new_game)
+				last_random = node->attribute("number").as_int();
+			else
+				last_random = random_number;
 
 			tier_4_vec.at(last_random)->coords_in_map = App->map->tier_4_coords.at(i);
 
 			final_map_elements.push_back(tier_4_vec.at(last_random));
-			number_map_generated.push_back(random_number);
+			number_map_generated.push_back(last_random);
+			node = &node->next_sibling();
 		}
 	}
 
@@ -540,12 +604,16 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_5_vec.size();
 
 			}
-			last_random = random_number;
+			if (!App->main_menu->is_new_game)
+				last_random = node->attribute("number").as_int();
+			else
+				last_random = random_number;
 
 			tier_5_vec.at(last_random)->coords_in_map = App->map->tier_5_coords.at(i);
 
 			final_map_elements.push_back(tier_5_vec.at(last_random));
-			number_map_generated.push_back(random_number);
+			number_map_generated.push_back(last_random);
+			node = &node->next_sibling();
 		}
 	}
 
@@ -562,12 +630,16 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_6_vec.size();
 
 			}
-			last_random = random_number;
+			if (!App->main_menu->is_new_game)
+				last_random = node->attribute("number").as_int();
+			else
+				last_random = random_number;
 
 			tier_6_vec.at(last_random)->coords_in_map = App->map->tier_6_coords.at(i);
 
 			final_map_elements.push_back(tier_6_vec.at(last_random));
-			number_map_generated.push_back(random_number);
+			number_map_generated.push_back(last_random);
+			node = &node->next_sibling();
 		}
 	}
 
@@ -584,12 +656,16 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_7_vec.size();
 
 			}
-			last_random = random_number;
+			if (!App->main_menu->is_new_game)
+				last_random = node->attribute("number").as_int();
+			else
+				last_random = random_number;
 
 			tier_7_vec.at(last_random)->coords_in_map = App->map->tier_7_coords.at(i);
 
 			final_map_elements.push_back(tier_7_vec.at(last_random));
-			number_map_generated.push_back(random_number);
+			number_map_generated.push_back(last_random);
+			node = &node->next_sibling();
 		}
 	}
 
@@ -606,12 +682,16 @@ void ctWorldMap::GenerateNewRandomlyMap()
 					random_number = rand() % tier_8_vec.size();
 
 			}
-			last_random = random_number;
+			if (!App->main_menu->is_new_game)
+				last_random = node->attribute("number").as_int();
+			else
+				last_random = random_number;
 
 			tier_8_vec.at(last_random)->coords_in_map = App->map->tier_8_coords.at(i);
 
 			final_map_elements.push_back(tier_8_vec.at(last_random));
-			number_map_generated.push_back(random_number);
+			number_map_generated.push_back(last_random);
+			node = &node->next_sibling();
 		}
 	}
 

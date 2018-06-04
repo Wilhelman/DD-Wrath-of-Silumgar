@@ -5,7 +5,8 @@ Project II for Videogame Development subject. The main goal here is to redesign 
 This project has been done by seven spanish students of CITM - UPC (Terrasa, Spain).  
 
 * [Github repository](https://github.com/Wilhelman/DD-Shadow-over-Mystara)  
-* [Website] 
+* [Twitter](https://twitter.com/Triggered_Squid)
+* [Facebook](https://www.facebook.com/Triggered-Squid-144659819538517/)
 
 ## About the game
 Dungeons & Dragons: Shadow over Mystara is an arcade game created and published by Capcom in 1996 and it's a sequel of Dungeons & Dragons: Tower of Doom. The game combines the genre of beat'em up with a lot of aspects about the role-playing. Brought a great innovation around the mechanics of the inventory system and habilities mechanics.
@@ -33,7 +34,6 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 * Escape: Open Pause menu.
 
 General/developer controls:
-[Contribution](https://softcactusteam.github.io/Warcraft-Heroes-Beyond-Time/victor_contribution)
 
 ## Innovations / Redesign
 TODO: ALL INNOVATIONS WE HAVE

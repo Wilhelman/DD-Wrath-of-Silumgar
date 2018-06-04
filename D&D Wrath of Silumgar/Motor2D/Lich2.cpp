@@ -149,7 +149,13 @@ void Lich2::PerformAction()
 			entity_objective = App->combat->GetTheWeakestHeroe();
 		}
 
-			if (GetCurrentManaPoints() >= 70) {
+			if (entity_objective->is_countering) {
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+				App->task_manager->AddTask(new PerformActionToEntity(this, this->countered, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
+			}
+
+			else if (GetCurrentManaPoints() >= 70) {
 				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
 				App->task_manager->AddTask(new PerformActionToEntity(this, sea_of_flames_action, entity_objective));
 				App->task_manager->AddTask(new MoveToInitialPosition(this));
@@ -177,9 +183,17 @@ void Lich2::PerformAction()
 			entity_objective = App->combat->GetRandomHeroe();
 		}
 
-		App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
-		App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
-		App->task_manager->AddTask(new MoveToInitialPosition(this));
+		if (entity_objective->is_countering) {
+			App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+			App->task_manager->AddTask(new PerformActionToEntity(this, this->countered, entity_objective));
+			App->task_manager->AddTask(new MoveToInitialPosition(this));
+		}
+
+		else {
+			App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+			App->task_manager->AddTask(new PerformActionToEntity(this, this->default_attack, entity_objective));
+			App->task_manager->AddTask(new MoveToInitialPosition(this));
+		}
 	}
 
 	

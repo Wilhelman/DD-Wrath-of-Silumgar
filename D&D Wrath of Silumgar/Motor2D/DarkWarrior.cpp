@@ -164,7 +164,13 @@ void DarkWarrior::PerformAction()
 				entity_objective = App->combat->GetTheWeakestHeroe();
 			}
 
-			if (GetCurrentManaPoints() >= 70) {
+			if (entity_objective->is_countering) {
+				App->task_manager->AddTask(new MoveToEntity(this, entity_objective, 20));
+				App->task_manager->AddTask(new PerformActionToEntity(this, this->countered, entity_objective));
+				App->task_manager->AddTask(new MoveToInitialPosition(this));
+			}
+
+			else if (GetCurrentManaPoints() >= 70) {
 				App->task_manager->AddTask(new PerformActionToEntity(this, void_cannon_action, entity_objective));
 			}
 

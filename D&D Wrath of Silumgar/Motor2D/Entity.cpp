@@ -191,6 +191,11 @@ bool Entity::LoadProperties(pugi::xml_node properties) {
 	default_attack.type = DEFAULT_ATTACK;
 	default_attack.objective = ENEMIES;
 	default_attack.health_points_effect = -3;
+
+	countered.name = "Countered";
+	countered.type = COUNTERED;
+	countered.objective = HEROES;
+	countered.health_points_effect = -3;
 	
 
 	return ret;

@@ -123,7 +123,8 @@ public:
 	bool flip_texture = false;
 
 	bool is_taunted = false;
-	
+	bool is_countering = false;
+
 	SDL_Texture* texture = nullptr;
 
 	//Priority Draw Order
@@ -131,6 +132,7 @@ public:
 
 	//Combat stuff
 	Action default_attack;
+	Action countered;
 
 	std::vector<Action> abilities;
 	std::vector<Altered_Stat> altered_stats;

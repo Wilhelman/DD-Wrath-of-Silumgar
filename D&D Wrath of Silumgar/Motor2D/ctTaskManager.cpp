@@ -1881,7 +1881,8 @@ bool PerformActionToEntity::Execute()
 			if (!HaveTeamObjective())
 				return true;
 
-			actioner_entity->animation = &actioner_entity->raging_mock;
+			actioner_entity->animation = &actioner_entity->counter;
+			actioner_entity->is_countering = true;
 
 			ret = actioner_entity->animation->Finished();
 			if (!sound_playing) {
@@ -1889,25 +1890,13 @@ bool PerformActionToEntity::Execute()
 				sound_playing = true;
 			}
 			if (ret == true) {
-				actioner_entity->raging_mock.Reset();
+				actioner_entity->counter.Reset();
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
 
-				std::string tmp_dmg = "BUFFED PHYSICAL DEFENSE";
-				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-				tmp_dmg = "BUFFED MAGICAL DEFENSE";
-				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-				tmp_dmg = "DEBUFFED STRENGTH x2.25";
-				App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 30, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-
-				//TODO IMPLEMENT LOSE HP
-				Altered_Stat debuff;
-				debuff.turn_left = 3;
-				debuff.stat_effect_magical_defense = 2;
-				debuff.stat_effect_physical_defense = 2;
-				debuff.stat_effect_strength = 2;
-				receiver_entity->AddAlteredStat(debuff);
+				std::string tmp_dmg = "COUNTERING";
+				
 
 				//animate the receiver to hit + audio or smth
 				sound_playing = false;
@@ -1915,6 +1904,68 @@ bool PerformActionToEntity::Execute()
 			}
 		}
 					  break;
+
+		case COUNTERED: {
+
+			if (!HaveObjective())
+				return true;
+			actioner_entity->attack.Reset();
+			receiver_entity->counter.Reset();
+			
+
+			ret = actioner_entity->animation->Finished();
+
+			if (!sound_playing) {
+				actioner_entity->Attack();
+				sound_playing = true;
+			}
+
+			if (ret == true) {
+				actioner_entity->animation = &actioner_entity->attack;
+				receiver_entity->animation = &actioner_entity->counter;
+
+
+				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
+
+				int random_thousand_faces_die = (rand() % 100) + 1;
+
+						bool critical = false;
+
+						int damage_to_deal = action_to_perform.health_points_effect * actioner_entity->GetCurrentStrengthPoints();
+						float damage_reduction = (float)actioner_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
+						actioner_dexterity = actioner_dexterity / 10;
+
+						random_thousand_faces_die = (rand() % 100) + 1;
+						if (random_thousand_faces_die <= actioner_dexterity) {
+							damage_to_deal = damage_to_deal * CRITICAL_VALUE;
+							critical = true;
+						}
+						damage_to_deal = damage_to_deal - damage_reduction;
+						actioner_entity->SetCurrentHealthPoints(actioner_entity->GetCurrentHealthPoints() + damage_to_deal);
+						actioner_entity->animation = &actioner_entity->attack;
+						receiver_entity->animation = &receiver_entity->counter;
+						App->combat->UpdateHPBarOfEntity(actioner_entity, damage_to_deal);
+						std::string tmp_dmg = std::to_string(damage_to_deal);
+						
+						App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Countered", { 255,0,0,255 }, 14, nullptr, nullptr);
+
+						if (!critical) {
+							App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
+							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Countered", { 255,0,0,255 }, 14, nullptr, nullptr);
+							//TODO SITO
+				
+						}
+
+						actioner_entity->Damaged();
+		
+				//animate the receiver to hit + audio or smth
+				sound_playing = false;
+
+			}
+			receiver_entity->is_countering = false;
+		}
+						break;
 
 		case HEAL: {
 

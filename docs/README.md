@@ -109,7 +109,7 @@ TODO: ALL INNOVATIONS WE HAVE
 
 ## Credits
 
-* Ripped Sprites:
+* Ripped Sprites: Skill icons credits to: [7Soul1](https://7soul1.deviantart.com/)
 
 * Music:
 

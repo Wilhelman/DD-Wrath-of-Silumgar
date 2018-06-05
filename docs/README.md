@@ -9,8 +9,13 @@ This project has been done by seven spanish students of CITM - UPC (Terrasa, Spa
 * [Facebook](https://www.facebook.com/Triggered-Squid-144659819538517/)
 
 ## About the game
-Dungeons & Dragons: Shadow over Mystara is an arcade game created and published by Capcom in 1996 and it's a sequel of Dungeons & Dragons: Tower of Doom. The game combines the genre of beat'em up with a lot of aspects about the role-playing. Brought a great innovation around the mechanics of the inventory system and habilities mechanics.
-We're going to redesign around JRPG genre. Check our game design document and stay tuned: [Game  Design Document](https://github.com/Wilhelman/DD-Shadow-over-Mystara/wiki/Game-Design-Document)
+Dungeons & Dragons: Wrath of Silumgar is a RPG with a turn-based combat. The game have items to equip and every character have their own abilities.
+
+The objective of the game is to save Allarad from Usollip, the god of war who want to get fun of chaos.
+
+The player will move in a map taking decisions and facing against enemies on consequence of this decision. The final boss will be ever the same, Silumgar.
+
+Check our game design document for more information about the game: [Game  Design Document](https://github.com/Wilhelman/DD-Shadow-over-Mystara/wiki/Game-Design-Document)
 
 ## Installation instructions
 

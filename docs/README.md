@@ -6,7 +6,7 @@ This project has been done by seven spanish students of CITM - UPC (Terrasa, Spa
 
 ## Index
 
-[About](https://wilhelman.github.io/DD-Wrath-of-Silumgar/##about_the_game)
+[About](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#about-the-game)
 
 * [Github repository](https://github.com/Wilhelman/DD-Shadow-over-Mystara)  
 * [Twitter](https://twitter.com/Triggered_Squid)

@@ -4,6 +4,10 @@ Project II for Videogame Development subject. The main goal here is to redesign 
 
 This project has been done by seven spanish students of CITM - UPC (Terrasa, Spain).  
 
+## Index
+
+[About](https://wilhelman.github.io/DD-Wrath-of-Silumgar/##about_the_game)
+
 * [Github repository](https://github.com/Wilhelman/DD-Shadow-over-Mystara)  
 * [Twitter](https://twitter.com/Triggered_Squid)
 * [Facebook](https://www.facebook.com/Triggered-Squid-144659819538517/)

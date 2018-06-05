@@ -6,7 +6,13 @@ This project has been done by seven spanish students of CITM - UPC (Terrasa, Spa
 
 ## Index
 
-[About](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#about-the-game)
+* [About the game](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#about-the-game)
+* [Installation instructions](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#installation-instructions)
+* [Controls](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#controls)
+* [Team members](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#team-members)
+** [Guillermo García Subirana](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#team-members/#guillermo-garcia-subirana)
+* [Tools used](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#team-members/#guillermo-garcia-subirana/#tools-used)
+* [Credits](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#team-members/#guillermo-garcia-subirana/#credits)
 
 * [Github repository](https://github.com/Wilhelman/DD-Shadow-over-Mystara)  
 * [Twitter](https://twitter.com/Triggered_Squid)
@@ -49,37 +55,37 @@ TODO: ALL INNOVATIONS WE HAVE
 
 ## Team members
 
-_García Subirana, Guillermo's responsability and Github account_
+### Guillermo García Subirana
 * Lead
 * [Github account](https://github.com/Wilhelman)
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Guillermo_contribution)
 
-_Sánchez-Cortés Puerta, Alfonso's responsability and Github account_
+### Alfonso Sánchez-Cortés Puerta 
 * Code
 * [Github account](https://github.com/Siitoo)
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Alfonso_contribution)
 
-_Gutiérrez Llenas, Ricardo's responsability and Github account_
+### Ricardo Gutiérrez Llenas
 * Management
 * [Github account](https://github.com/Ricardogll)
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Ricardo_contribution)
 
-_Tirado Fernández, Victor's responsability and Github account_
+### Victor Tirado Fernández
 * Design
 * [Github account](https://github.com/VictorTirado)
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Victor_contribution)
 
-_Tarrés i Urbieta, Marc's responsability and Github account_
+### Marc Tarrés i Urbieta
 * Art + Audio
 * [Github account](https://github.com/MAtaur00)
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Marc_contribution)
 
-_Campamar Redol, Alex's responsability and Github account_
+### Alex Campamar Redol
 * UI
 * [Github account](https://github.com/Acaree)
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Alex_contribution)
 
-_Mourelo Montero, Manel's responsability and Github account_
+### Manel Mourelo Montero
 * QA
 * [Github account](https://github.com/manelmourelo)
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Manel_contribution)
@@ -95,7 +101,7 @@ _Mourelo Montero, Manel's responsability and Github account_
 * Code repository: GitHub
 * Others: Adobe Photoshop CS6 / MS Paint / Aseprite
 
-## Credits for artwork, music/sound fx and fonts
+## Credits
 
 * Ripped Sprites:
 

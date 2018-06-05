@@ -10,7 +10,7 @@ This project has been done by seven spanish students of CITM - UPC (Terrasa, Spa
 * [Installation instructions](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#installation-instructions)
 * [Controls](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#controls)
 * [Team members](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#team-members)
-** [Guillermo García Subirana](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#team-members/#guillermo-garcia-subirana)
+  * [Guillermo García Subirana](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#team-members/#guillermo-garcia-subirana)
 * [Tools used](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#team-members/#guillermo-garcia-subirana/#tools-used)
 * [Credits](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#team-members/#guillermo-garcia-subirana/#credits)
 

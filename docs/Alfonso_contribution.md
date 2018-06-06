@@ -11,7 +11,7 @@ Apart from programming, I've also been responsible for part of the design of the
 	![Priority_Draw](images/order.gif)
 	* Logic of combat: attack, statistics and lose life.  
 * Change all SDL to STL in code.
-* Solve problems and cleaning UI.  
+* Solve problems and cleaning all UI.  
 * All particle system and all particles in game.  
 ![Particle](images/particle.gif)
 * Solve problems with FullScreen.  

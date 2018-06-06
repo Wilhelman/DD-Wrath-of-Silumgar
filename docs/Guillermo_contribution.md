@@ -10,7 +10,7 @@ My main role as a leader has been to organize the team, guide the milestones bet
   * Placement of entities using tileset
   * Spawn entities with statistics
   * Turn structure
-  * IA
+  * IA and taskmanager
   * Implement usable and equippable items
   * Implement buffs and debuffs
   * Implement the structure for the heroes skills
@@ -31,5 +31,7 @@ My main role as a leader has been to organize the team, guide the milestones bet
 
 * **Others**
  * Combat testing and redesign of some abilities
- * Trailer
  * Redo and clean the first project
+ * Wiki: Game Design Document contribution
+ * Wiki: Art Bible contribution
+ * Trailer

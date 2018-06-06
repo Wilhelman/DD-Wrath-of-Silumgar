@@ -1,8 +1,11 @@
-﻿# DUNGEONS & DRAGONS: SHADOW OVER MYSTARA TEST WEB
-
-Project II for Videogame Development subject. The main goal here is to redesign the arcade game Dungeons & Dragons: Shadow over Mystara. Enemies pathfinding is implemented along other stuff such as stable frame rate (60fps), normalized movement, structured entity system described in an UML file and code with Brofiler integration. We also have added an intro menu and HUD implemented through a structured ui system described in a UML file.
+﻿# DUNGEONS & DRAGONS: WRATH OF SILUMGAR
 
 This project has been done by seven spanish students of CITM - UPC (Terrasa, Spain).  
+
+* [Github repository](https://github.com/Wilhelman/DD-Shadow-over-Mystara)  
+* [Twitter](https://twitter.com/Triggered_Squid)
+* [Facebook](https://www.facebook.com/Triggered-Squid)
+
 
 ## Index
 
@@ -20,16 +23,13 @@ This project has been done by seven spanish students of CITM - UPC (Terrasa, Spa
 * [Tools used](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#tools-used)
 * [Credits](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#credits)
 
-* [Github repository](https://github.com/Wilhelman/DD-Shadow-over-Mystara)  
-* [Twitter](https://twitter.com/Triggered_Squid)
-* [Facebook](https://www.facebook.com/Triggered-Squid-144659819538517/)
 
 ## About the game
 Dungeons & Dragons: Wrath of Silumgar is a RPG with a turn-based combat. The game have items to equip and every character have their own abilities.
 
 The objective of the game is to save Allarad from Usollip, the god of war who want to get fun of chaos.
 
-The player will move in a map taking decisions and facing against enemies on consequence of this decision. The final boss will be ever the same, Silumgar.
+The player will move in a map taking decisions and facing against enemies on consequence of this decision.
 
 Check our game design document for more information about the game: [Game  Design Document](https://github.com/Wilhelman/DD-Shadow-over-Mystara/wiki/Game-Design-Document)
 

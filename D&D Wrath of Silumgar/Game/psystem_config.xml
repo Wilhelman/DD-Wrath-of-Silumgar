@@ -355,7 +355,23 @@
         <blendMode mode ="add"/>
         <lifetime value ="40"/>
       </emitter>
-      
+
+      <emitter type ="meteor">
+        <angleRange min ="0" max ="360"/>
+        <rotSpeed value ="200" randMin ="-1" randMax ="1"/>
+        <startSpeed value ="0" randMin ="0" randMax ="1"/>
+        <endSpeed value ="10" randMin ="0" randMax ="1"/>
+        <startSize value ="200" randMin ="0" randMax ="2"/>
+        <endSize value =" 100" randMin ="1" randMax ="1"/>
+        <emitNumber value ="6"/>
+        <emitVariance value ="3" randMin ="0" randMax ="1"/>
+        <maxParticleLife value ="50" randMin ="0" randMax ="1"/>
+        <textureRect x="128" y="0" w="256" h="256"/>
+        <startColor r ="166" g="94" b="46" a="255"/>
+        <endColorr r="139" g="69" b="19" a="255"/>
+        <blendMode mode ="add"/>
+        <lifetime value ="40"/>
+      </emitter>
       
         <!--ELF-->
       

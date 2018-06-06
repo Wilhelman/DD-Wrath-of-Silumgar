@@ -1,4 +1,4 @@
-I'm the project's programming leader. My role in the project has been to maintain a good code and a good structure. In addition to answer any questions that may arise to the other collaborators of the project.
+I'm the project's programming leader. My role in the project has been to maintain a good code and a good structure, in addition to answer any questions that may arise to the other collaborators of the project.
 Apart from programming, I've also been responsible for part of the design of the game, some art and to look for bugs apart from solving them. I've done:
 
 * Technical design document.

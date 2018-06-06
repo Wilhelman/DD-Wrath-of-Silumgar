@@ -29,3 +29,7 @@ _Loot menu and pause menu_
 
 !["LootMenu"](images/loot_menu.gif)
 !["Pause"](images/pause.png)
+
+
+
+[Back](https://wilhelman.github.io/DD-Wrath-of-Silumgar/)

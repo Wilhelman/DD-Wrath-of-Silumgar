@@ -23,12 +23,14 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 - ENTER: Select option/Skip
 - BACKSPACE: Go back
 - ESC: Close game inmmediatly
+- P: pause menu
 
 ### XBOX controller
 
-- D-PAD: Navigate
+- D-PAD or Left Joystick: Navigate
 - A: Select option/Skip
 - B: Go back
+- Start: Pause menu
 
 ## Team members
 

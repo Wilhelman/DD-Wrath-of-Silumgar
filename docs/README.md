@@ -2,11 +2,6 @@
 
 This project has been done by seven spanish students of CITM - UPC (Terrasa, Spain).  
 
-* [Github repository](https://github.com/Wilhelman/DD-Shadow-over-Mystara)  
-* [Twitter](https://twitter.com/Triggered_Squid)
-* [Facebook](https://www.facebook.com/Triggered-Squid)
-
-
 ## Index
 
 * [About the game](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#about-the-game)
@@ -22,6 +17,7 @@ This project has been done by seven spanish students of CITM - UPC (Terrasa, Spa
   * [Manel Mourelo Montero](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#manel-mourelo-montero)
 * [Trailer](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#trailer)
 * [Gameplay video](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#gameplay-video)
+* [Social Media](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#social-media)
 * [Tools used](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#tools-used)
 * [Credits](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#credits)
 
@@ -57,9 +53,6 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 * Escape: Open Pause menu.
 
 General/developer controls:
-
-## Innovations / Redesign
-TODO: ALL INNOVATIONS WE HAVE
 
 ## Team members
 
@@ -105,6 +98,14 @@ TODO: ALL INNOVATIONS WE HAVE
 
 ## Gameplay video
 
+
+## Social media
+  
+* [Github repository](https://github.com/Wilhelman/DD-Shadow-over-Mystara)  
+* [Twitter](https://twitter.com/Triggered_Squid)
+* [Facebook](https://www.facebook.com/Triggered-Squid)
+
+
 ## Tools used
 * IDE: Microsoft Visual Studio 2017
 * Language: C++
@@ -134,4 +135,3 @@ TODO: ALL INNOVATIONS WE HAVE
 
 * Fonts from:
   http://www.1001fonts.com/8-bit-limit-font.html
-

@@ -88,11 +88,7 @@ bool ctCombat::Start()
 	dwarf_name = App->gui->AddUILabel(445, 296, "Dwarf", { 255,255,255,255 }, 23, this);
 	
 	SpawnEntities();
-	//recover hp and mana
-	App->entities->GetCleric()->Recover();
-	App->entities->GetWarrior()->Recover();
-	App->entities->GetElf()->Recover();
-	App->entities->GetDwarf()->Recover();
+	
 
 
 	for (int i = 0; i < App->items->elf_equip.size(); i++)
@@ -123,6 +119,12 @@ bool ctCombat::Start()
 	LoadDataFromXML();
 
 	SetDataToUI();
+
+	//recover hp and mana
+	App->entities->GetCleric()->Recover();
+	App->entities->GetWarrior()->Recover();
+	App->entities->GetElf()->Recover();
+	App->entities->GetDwarf()->Recover();
 
 	OrderTurnPriority();
 
@@ -656,6 +658,16 @@ bool ctCombat::Update(float dt)
 						LOG("All heroes are dead!");
 						condition_victory = false;
 						heroes_are_dead = true;
+
+						pugi::xml_document	data_file;
+						pugi::xml_node* node = &App->LoadData(data_file);
+						node = &node->child("heroes");
+
+
+
+						data_file.save_file("data.xml");
+						data_file.reset();
+
 						if (App->fadeToBlack->FadeIsOver())
 							App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 					}

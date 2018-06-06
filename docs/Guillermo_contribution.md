@@ -37,3 +37,6 @@ My main role as a leader has been to organize the team, guide the milestones bet
  * Wiki: Game Design Document contribution
  * Wiki: Art Bible contribution
  * Trailer
+
+
+[Back](https://wilhelman.github.io/DD-Wrath-of-Silumgar/)

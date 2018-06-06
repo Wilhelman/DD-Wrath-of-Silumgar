@@ -205,7 +205,7 @@ public:
 	std::string CombatBSO6;
 	std::string WinBSO;
 	std::string LoseBSO;
-
+	std::string LootBSO;
 	//volumes
 	uint MusicVolumePercent = 10;
 	uint FXVolumePercent = 10;

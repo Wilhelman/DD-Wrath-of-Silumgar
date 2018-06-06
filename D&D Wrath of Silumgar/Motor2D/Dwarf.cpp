@@ -60,8 +60,8 @@ Dwarf::Dwarf(int x, int y, EntityType type) : Entity(x, y, type) {
 			LoadAnimation(animations, &counter);
 		else if (tmp == "menu_animation")
 			LoadAnimation(animations, &menu_animation);
-		else if (tmp == "rock")
-			LoadAnimation(animations, &rock);
+		else if (tmp == "harden_skin")
+			LoadAnimation(animations, &harder_skin);
 	}
 	LoadProperties(node->child("statistics"));
 	animation = &idle;

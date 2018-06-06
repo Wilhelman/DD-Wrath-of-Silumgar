@@ -190,6 +190,7 @@ void ctAudio::InitAudio()
 	CombatBSO6 = "audio/music/D_D-Shadow-Over-Mystara-Song-35-War-of-Spiral-_Stage-10_.ogg";
 	WinBSO = "audio/music/D_D-Shadow-Over-Mystara-Song-38-Epiloge-_Stage-10_.ogg";
 	LoseBSO = "audio/music/D_D-Shadow-Over-Mystara-Song-39-Our-Divine-Protection-First-Child-Amidst-Death.ogg";
+	LootBSO = "audio/music/D_D-Shadow-Over-Mystara-Song-30-Excessive-Feast-_Stage-8-B_.ogg";
 
 	//---------------------------------------SetVolumes----------------------------
 	Mix_Volume(-1, (MIX_MAX_VOLUME * FXVolumePercent) / 100);

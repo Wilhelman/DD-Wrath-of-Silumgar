@@ -130,8 +130,7 @@ Once you cross it you see two possible outputs:"/>
        <entity name="GNOLL" />
         <scene name="forest.tmx" />
         <icon_coords x="96" y="512" width="32" height="32" />
-        <decision name ="After defeating the enemies, one of them tells you that in the city you will find defeat. Without knowing very well what he says, you continue advancing through the forest until you come across some walls.
-You go around until you find the door that leads to the city. Once inside that feeling that you had in the forest begins to disappear, but for a short time, since you see the head of the region trying to escape. It is your only hope to get information about Silumgar, you can not let it escape:"/>
+        <decision name ="After defeating the enemies, you cross the forest and see the entrance to the city. Once inside that feeling he had in the forest begins to disappear, but for a short time, since he sees the head of the region trying to escape. It's your only hope for information about Silumgar, you can not let it escape:"/>
         <option name = "A dense forest in which the environment is charged, a sensation of heaviness that only increased being there."/>
       </map_element>
       
@@ -142,7 +141,7 @@ You go around until you find the door that leads to the city. Once inside that f
         <entity name="GNOLL" />
         <scene name="dungeon.tmx" />
         <icon_coords x="64" y="512" width="32" height="32" />
-        <decision name ="Dead the enemies of the exit, you find yourself in what looks like the courtyard of a collapsed castle. When you leave, you see the head of the region in the harbor, about to take a boat. You start going out in your search, you can not let it escape:"/>
+        <decision name ="You find yourself in what looks like the courtyard of a collapsed castle. When you leave, you see the head of the region in the harbor, about to take a boat. You start going out in your search, you can not let it escape:"/>
         <option name = "An illuminated corridor, where in the end you can see something similar to a castle courtyard. Surely it is the path of the enemies, for which, it would not be strange to meet more than one."/>
       </map_element>
 	  

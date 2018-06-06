@@ -837,20 +837,28 @@ void Entity::CalculateAllStats()
 	tmp_judgement += accessory.statistics.judgement;
 
 	if (this->type == WARRIOR || this->type == DWARF || this->type == ELF || this->type == CLERIC) {
-		if (current_health_points != 0 && App->map->actual_tier != TIER_MAP_1)
+		if (App->map->actual_tier != TIER_MAP_1)
 			max_health_points = tmp_constitution;
-		else
+		else {
 			max_health_points = current_health_points = tmp_constitution;
+		}
 	}
 	else {
+		
 		max_health_points = current_health_points = tmp_constitution;
 	}
 	
-
-	if (current_mana_points != 0)
-		max_mana_points = tmp_focus;
-	else
+	if (this->type == WARRIOR || this->type == DWARF || this->type == ELF || this->type == CLERIC) {
+		if (App->map->actual_tier != TIER_MAP_1)
+			max_mana_points = tmp_focus;
+		else {
+			max_mana_points = current_mana_points = tmp_focus;
+		}
+			
+	}
+	else {
 		max_mana_points = current_mana_points = tmp_focus;
+	}
 
 	current_strength = tmp_strength;
 	current_intelligence = tmp_intelligence;

@@ -9,8 +9,9 @@
       <!--TIER 1 MAPS-->
        <map_element>
           <tier type="1" />
-        	<entity name="KOBOLD"/>
- 		<entity name="KOBOLD"/>
+          <entity name="KOBOLD"/>
+		  <entity name="KOBOLD"/>
+		  <entity name="KOBOLD"/>
           <scene name="tavern.tmx" />
           <icon_coords x="0" y="480" width="32" height="32" /> 
           <decision name ="After getting to defeat that band of vermin in Allard, our heroes decide to understand the path to Silumgar. This is where your first decision is presented:"/>
@@ -21,7 +22,7 @@
       <map_element>
         <tier type="2" />
         <entity name="GOBLIN" />
-		    <entity name="ALCHEMISTGOBLIN"/>
+		<entity name="ALCHEMISTGOBLIN"/>
         <entity name="HEAVYGOBLIN"/>
         <scene name="mountain.tmx" />
         <icon_coords x="160" y="512" width="32" height="32" />
@@ -37,8 +38,7 @@
         <scene name="cave_05.tmx" />
         <icon_coords x="96" y="480" width="32" height="32" />
         <decision name ="As you guessed, the cave would not be a simple place, it hides part of the army led by Silumgar. But now there is no turning back, because of the battle part of the exit to be buried by stones, the only way out is crossing it, luckily, more than one route leads to the exit, where you should go:"/>
-        <option name = "What seems like the beginning of a cave is shown on the way, from it, several lights and noises come out. You know that it will not be an easy path, but that your reward can be good.
-"/>
+        <option name = "What seems like the beginning of a cave is shown on the way, from it, several lights and noises come out. You know that it will not be an easy path, but that your reward can be good."/>
       </map_element>
 
       <map_element>

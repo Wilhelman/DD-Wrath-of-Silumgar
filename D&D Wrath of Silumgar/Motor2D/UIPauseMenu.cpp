@@ -718,6 +718,9 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 
 			this->~UIPauseMenu();
 			App->combat->pauseMenuDelete = true;
+			if (App->combat->active == true)
+				App->combat->SaveDataToXML();
+
 			App->fadeToBlack->FadeToBlackBetweenModules(callback, App->main_menu, 1.0f);
 			
 

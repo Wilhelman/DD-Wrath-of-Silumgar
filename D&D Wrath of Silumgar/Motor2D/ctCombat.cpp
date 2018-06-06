@@ -94,23 +94,7 @@ bool ctCombat::Start()
 	App->entities->GetElf()->Recover();
 	App->entities->GetDwarf()->Recover();
 
-	/*---------------------------------------------------------- LE PETIT TESTING ZONE -------------------------------------------------------------*/
 
-	/*App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(4));
-	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(5));
-	App->entities->GetElf()->AddUsableItem(App->items->usable_items.at(6));
-	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(4));
-	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(5));
-	App->entities->GetCleric()->AddUsableItem(App->items->usable_items.at(6));
-	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(4));
-	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(5));
-	App->entities->GetDwarf()->AddUsableItem(App->items->usable_items.at(6));*/
-	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(4));
-	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(5));
-	//App->entities->GetWarrior()->AddUsableItem(App->items->usable_items.at(6));
-
-
-	/*---------------------------------------------------------- END LE PETIT TESTING ZONE -------------------------------------------------------------*/
 	for (int i = 0; i < App->items->elf_equip.size(); i++)
 	{
 		App->entities->GetElf()->AddEquipItem(App->items->elf_equip.at(i));

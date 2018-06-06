@@ -661,9 +661,7 @@ bool ctCombat::Update(float dt)
 
 						pugi::xml_document	data_file;
 						pugi::xml_node* node = &App->LoadData(data_file);
-						node = &node->child("heroes");
-
-
+						node->attribute("continue").set_value(0);
 
 						data_file.save_file("data.xml");
 						data_file.reset();
@@ -685,6 +683,14 @@ bool ctCombat::Update(float dt)
 
 							if (App->map->actual_tier == TIER_MAP_8 && App->fadeToBlack->FadeIsOver()) {
 								heroes_are_dead = true;
+
+								pugi::xml_document	data_file;
+								pugi::xml_node* node = &App->LoadData(data_file);
+								node->attribute("continue").set_value(0);
+
+								data_file.save_file("data.xml");
+								data_file.reset();
+
 								App->fadeToBlack->FadeToBlackBetweenModules(this, App->final_scene, 1.0f);
 							}
 							else {

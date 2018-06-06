@@ -54,6 +54,10 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 * Return: Go to previous menu.
 * P: Open Pause menu.
 
+## Debug Controls
+
+* SPACE: Skip level. It can't be used when a turn is in progress or game may crash.
+
 General/developer controls:
 
 ## Team members

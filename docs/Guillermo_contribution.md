@@ -13,8 +13,8 @@ My main role as a leader has been to organize the team, guide the milestones bet
   * Spawn entities with statistics
   * Turn structure
   * IA and taskmanager
-  * Implement usable and equippable items
-  * Implement buffs and debuffs
+  * Implement usable and equippable items structure
+  * Implement buffs and debuffs structure
   * Implement the structure for the heroes skills
   * Calculate all the rolls that are made in a combat (throws to hit, calculation of damage reduction, judgment ...)
   * Boss structure (Boss skills)
@@ -37,3 +37,6 @@ My main role as a leader has been to organize the team, guide the milestones bet
  * Wiki: Game Design Document contribution
  * Wiki: Art Bible contribution
  * Trailer
+
+
+[Back](https://wilhelman.github.io/DD-Wrath-of-Silumgar/)

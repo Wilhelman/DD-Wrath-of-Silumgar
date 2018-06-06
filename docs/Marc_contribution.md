@@ -18,3 +18,5 @@ In this project I've been in charge of the art. My role has been to work on the 
 * I've loaded all the entities statistics
 * Balancing & testing
 * Gameplay video
+
+[Back](https://wilhelman.github.io/DD-Wrath-of-Silumgar/)

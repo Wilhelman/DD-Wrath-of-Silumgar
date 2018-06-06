@@ -1875,19 +1875,19 @@
           <frame x="281" y="1177" width="156" height="111"/>
         </animation>
 
-        <animation name="charge" speed="0.1" loop="false">
-          <frame x="122" y="116" width="79" height="76"/>
-          <frame x="231" y="116" width="79" height="76"/>
-          <frame x="346" y="116" width="79" height="76"/>
-          <frame x="461" y="116" width="79" height="76"/>
-          <frame x="597" y="116" width="79" height="76"/>
-          <frame x="733" y="116" width="79" height="76"/>
-          <frame x="861" y="116" width="79" height="76"/>
-          <frame x="996" y="116" width="79" height="76"/>
-          <frame x="1119" y="116" width="79" height="76"/>
-          <frame x="1235" y="116" width="79" height="76"/>
-          <frame x="1363" y="116" width="79" height="76"/>
+        <animation name="charge" speed="0.25" loop="false">
           <frame x="1492" y="116" width="79" height="76"/>
+          <frame x="1363" y="116" width="79" height="76"/>
+          <frame x="1235" y="116" width="79" height="76"/>
+          <frame x="1119" y="116" width="79" height="76"/>
+          <frame x="996" y="116" width="79" height="76"/>
+          <frame x="861" y="116" width="79" height="76"/>
+          <frame x="733" y="116" width="79" height="76"/>
+          <frame x="597" y="116" width="79" height="76"/>
+          <frame x="461" y="116" width="79" height="76"/>
+          <frame x="346" y="116" width="79" height="76"/>
+          <frame x="231" y="116" width="79" height="76"/>
+          <frame x="122" y="116" width="79" height="76"/>
         </animation>
 
         <animation name="taunt" speed="0.1" loop="false">

@@ -53,6 +53,9 @@ public:
 	
 
 public:
+
+	bool pauseMenuDelete = false;
+
 	bool making_decision = false;
 
 	void SetSceneName(string new_scene_name);

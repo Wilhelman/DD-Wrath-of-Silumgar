@@ -225,11 +225,13 @@ void UIBar::MakeElementsInvisible() {
 }
 
 void UIBar::MakeElementsVisible() {
-	lower_bar->non_drawable = false;
-	upper_bar->non_drawable = false;
-	if (yellow_bar!=nullptr) {
-		yellow_bar->non_drawable = false;
-	}
+	
+		lower_bar->non_drawable = false;
+		upper_bar->non_drawable = false;
+		if (yellow_bar != nullptr) {
+			yellow_bar->non_drawable = false;
+		}
+	
 }
 
 void UIBar::SetBarNumbers() {

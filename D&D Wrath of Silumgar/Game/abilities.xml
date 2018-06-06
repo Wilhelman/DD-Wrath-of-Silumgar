@@ -93,7 +93,7 @@
       <ability  name="Raging Mock" tier="4" mana="47" branch="1" active ="0" description ="Anger enemy decreasing its judgement, strength and intelligence by 50% for 3 turns">
         <frame x="291" y="10" width="40" height="40"/>
       </ability>
-      <ability  name="Meteor" tier="4" mana="50" branch="2" active ="0" description ="Throws enormous rock to an enemy that deals big physical damage based on strength. If enemy is stunned, deals extra damage. Reduces defense">
+      <ability  name="Meteor" tier="4" mana="50" branch="2" active ="0" description ="Throws enormous rock to an enemy that deals big physical damage based on strength. If enemy is stunned, deals extra damage. Reduces physical defense">
         <frame x="197" y="54" width="40" height="40"/>
       </ability>
       <ability name="Counter" tier="4" mana="46" branch="3" active ="0" description ="Return the damage of the next received attack">

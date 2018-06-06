@@ -1905,14 +1905,9 @@ bool PerformActionToEntity::Execute()
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
 						Altered_Stat defense;
-						defense.turn_left = 1;
+						defense.turn_left = 2;
 						defense.stat_effect_physical_defense = -1;
 						actioner_entity->AddAlteredStat(defense);
-
-						Altered_Stat defense2;
-						defense2.turn_left = 1;
-						defense2.stat_effect_magical_defense = -1;
-						actioner_entity->AddAlteredStat(defense2);
 
 						receiver_entity->Damaged();
 					}
@@ -1921,9 +1916,6 @@ bool PerformActionToEntity::Execute()
 					App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, "Miss", { 0,102,204,255 }, 14, nullptr, nullptr);
 				}
 				//animate the receiver to hit + audio or smth
-				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
-
-				App->psystem->AddEmiter(posP, EMITTER_TYPE_METEOR);
 				sound_playing = false;
 
 			}

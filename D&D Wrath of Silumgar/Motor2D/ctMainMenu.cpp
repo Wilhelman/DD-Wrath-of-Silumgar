@@ -47,7 +47,8 @@ bool ctMainMenu::Start()
 	pugi::xml_document	data_file;
 	pugi::xml_node* node = &App->LoadData(data_file);
 
-	
+	is_new_game = false;
+	is_continue = false;
 
 	
 	App->items->warrior_equip.clear();

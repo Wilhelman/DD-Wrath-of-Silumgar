@@ -266,7 +266,7 @@ bool ctCombat::Update(float dt)
 		{
 			for (int j = 0; j < enemies.at(i)->altered_stats.size(); j++)
 			{
-				y_pos_icon = enemies.at(i)->position.y - enemies.at(i)->animation->GetCurrentFrame().h - 10;
+				y_pos_icon = enemies.at(i)->position.y - enemies.at(i)->animation->GetCurrentFrame().h - 16;
 				if (j == 0) {
 					x_pos_icon = enemies.at(i)->position.x + 8;
 				}
@@ -421,169 +421,170 @@ bool ctCombat::Update(float dt)
 		}
 
 	}
+	if (!making_decision) {
 
-	for (int i = 0; i < heroes.size(); i++)
-	{
-		if (heroes.at(i)->GetCurrentHealthPoints() > 0 && heroes.at(i)->animation == &heroes.at(i)->idle)
+		for (int i = 0; i < heroes.size(); i++)
 		{
-			for (int j = 0; j < heroes.at(i)->altered_stats.size(); j++)
+			if (heroes.at(i)->GetCurrentHealthPoints() > 0 && heroes.at(i)->animation == &heroes.at(i)->idle)
 			{
-				y_pos_icon = heroes.at(i)->position.y - heroes.at(i)->animation->GetCurrentFrame().h - 10;
-				if (j == 0) {
-					x_pos_icon = heroes.at(i)->position.x + 8;
-				}
-				else {
-					x_pos_icon = x_pos_icon + 16;
-				}
+				for (int j = 0; j < heroes.at(i)->altered_stats.size(); j++)
+				{
+					y_pos_icon = heroes.at(i)->position.y - heroes.at(i)->animation->GetCurrentFrame().h - 16;
+					if (j == 0) {
+						x_pos_icon = heroes.at(i)->position.x + 8;
+					}
+					else {
+						x_pos_icon = x_pos_icon + 16;
+					}
 
-				UIElement* tmp = nullptr;
+					UIElement* tmp = nullptr;
 
-				if (heroes.at(i)->altered_stats.at(j).stun == true) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STUN_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
-				else if (heroes.at(i)->altered_stats.at(j).bleeding == true) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, BLEED_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					if (heroes.at(i)->altered_stats.at(j).stun == true) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STUN_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
+					else if (heroes.at(i)->altered_stats.at(j).bleeding == true) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, BLEED_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).poison == true) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, POISON_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).poison == true) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, POISON_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).burn == true) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, BURN_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).burn == true) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, BURN_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_strength == 1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STR_1_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_strength == 1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STR_1_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_strength == 2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STR_2_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_strength == 2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STR_2_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_strength == -1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STR_3_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_strength == -1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STR_3_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_strength == -2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STR_4_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_strength == -2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, STR_4_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_intelligence == 1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, INT_1_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_intelligence == 1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, INT_1_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_intelligence == 2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, INT_2_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_intelligence == 2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, INT_2_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_intelligence == -1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, INT_3_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_intelligence == -1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, INT_3_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_intelligence == -2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, INT_4_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_intelligence == -2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, INT_4_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_dexterity == 1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_1_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_dexterity == 2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_2_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_dexterity == 1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_1_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_dexterity == 2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_2_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_dexterity == -1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_3_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_dexterity == -2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_4_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_dexterity == -1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_3_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_dexterity == -2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, DEX_4_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_agility == 1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, AGI_1_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_agility == 2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, AGI_2_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_agility == 1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, AGI_1_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_agility == 2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, AGI_2_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_agility == -1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, AGI_3_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_agility == -2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, AGI_4_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_agility == -1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, AGI_3_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_agility == -2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, AGI_4_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_physical_defense == 1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, PDEF_1_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_physical_defense == 2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, PDEF_2_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_physical_defense == 1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, PDEF_1_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_physical_defense == 2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, PDEF_2_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_physical_defense == -1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, PDEF_3_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_physical_defense == -2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, PDEF_4_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_physical_defense == -1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, PDEF_3_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_physical_defense == -2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, PDEF_4_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_magical_defense == 1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, MDEF_1_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_magical_defense == 2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, MDEF_2_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_magical_defense == 1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, MDEF_1_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_magical_defense == 2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, MDEF_2_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_magical_defense == -1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, MDEF_3_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_magical_defense == -2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, MDEF_4_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_magical_defense == -1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, MDEF_3_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_magical_defense == -2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, MDEF_4_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_judgement == -1) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, JUD_3_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
-				else if (heroes.at(i)->altered_stats.at(j).stat_effect_judgement == -2) {
-					tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, JUD_4_COORDS, this, nullptr);
-					tmp->have_to_resize = false;
-				}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_judgement == -1) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, JUD_3_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
+					else if (heroes.at(i)->altered_stats.at(j).stat_effect_judgement == -2) {
+						tmp = App->gui->AddUIImage(x_pos_icon, y_pos_icon, JUD_4_COORDS, this, nullptr);
+						tmp->have_to_resize = false;
+					}
 
-				altered_stats_icons.push_back(tmp); //clean this every frame!
+					altered_stats_icons.push_back(tmp); //clean this every frame!
+				}
 			}
+
 		}
-
 	}
-
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{

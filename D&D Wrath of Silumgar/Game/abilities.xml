@@ -9,25 +9,25 @@
       <ability  name="Kick" tier="2" mana="100" branch="1" active ="0" description="Physical attack that deals reduced damage based on strength and has a chance to stun the enemy for 2 turns">
         <frame x="65" y="289" width="40" height="40"/>
       </ability>
-      <ability  name="Guard" tier="2" mana="20" branch="2" active ="0" description="Protects himself or an ally for 1 turn increasing their physical and magical defenses by 1/4">
+      <ability  name="Guard" tier="2" mana="20" branch="2" active ="0" description="Protects himself or an ally for 1 turn increasing their physical and magical defenses by 25%">
         <frame x="21" y="243" width="40" height="40"/>
       </ability>
-      <ability  name="Heavy Slash" tier="2" mana="21" branch="3" active ="0" description="Deals physical damage based on strength that also 1/2 chance of causing bleed for 3 turns">
+      <ability  name="Heavy Slash" tier="2" mana="21" branch="3" active ="0" description="Deals physical damage based on strength that also 50% chance of causing bleed for 3 turns">
         <frame x="109" y="243" width="40" height="40"/>
       </ability>
-      <ability  name="Kick Plus" tier="3" mana="18" branch="1" active ="0" description="Strengthens Kick attack augmenting the stun chance and lowering enemy physical defense by 1/4">
+      <ability  name="Kick Plus" tier="3" mana="18" branch="1" active ="0" description="Strengthens Kick attack augmenting the stun chance and lowering enemy physical defense by 25%">
         <frame x="109" y="289" width="40" height="40"/>
       </ability>
-      <ability  name="Guard Plus" tier="3" mana="20" branch="2" active ="0" description="Strengthens Guard increases the defenses by 1/2">
+      <ability  name="Guard Plus" tier="3" mana="20" branch="2" active ="0" description="Strengthens Guard increases the defenses by 50%">
         <frame x="65" y="243" width="40" height="40"/>
       </ability>
-      <ability  name="Heavy Slash Plus" tier="3" mana="21" branch="3" active ="0" description="Strenghtens Heavy Slash attack augmenting the damage dealt, 50% chance of bleeding and lowering the enemy physical defense by 1/4">
+      <ability  name="Heavy Slash Plus" tier="3" mana="21" branch="3" active ="0" description="Strenghtens Heavy Slash attack augmenting the damage dealt, 50% chance of bleeding and lowering the enemy physical defense by 25%">
         <frame x="21" y="289" width="40" height="40"/>
       </ability>
-      <ability  name="Charge" tier="4" mana="38" branch="1" active ="0" description="Charges through an enemy dealing physical damage based on strength that reduces the judgement of the enemy by 1/2 for 2 turns">
+      <ability  name="Charge" tier="4" mana="38" branch="1" active ="0" description="Charges through an enemy dealing physical damage based on strength that reduces the judgement of the enemy by 50% for 2 turns">
         <frame x="109" y="199" width="40" height="40"/>
       </ability>
-      <ability  name="Taunt" tier="4" mana="46" branch="2" description="Angers an enemy, reducing its defenses by 50% but increasing the strength by 1/4. This enemy will attack warrior next turn">
+      <ability  name="Taunt" tier="4" mana="46" branch="2" description="Angers an enemy, reducing its defenses by 50% but increasing the strength by 25%. This enemy will attack warrior next turn">
         <frame x="21" y="199" width="40" height="40"/>
       </ability>
       <ability name="Whirlwind" tier="4" mana="45" branch="3" active ="0" description="Sword spining attack that deals damage in area based on strength">
@@ -45,13 +45,13 @@
       <ability  name="Light Strike" tier="2" mana="26" branch="2" active ="0" description="Hits enemy with a magic attack based on intelligence">
         <frame x="22" y="98" width="40" height="40"/>
       </ability>
-      <ability  name="Mace Throw" tier="2" mana="28" branch="3" active ="0" description="Throws mace to all enemies dealing damage based on strength. If target is burning reduces the enemy physical debense by 1/2, magical defense by 1/4 and strength by 1/4 for 2 turns">
+      <ability  name="Mace Throw" tier="2" mana="28" branch="3" active ="0" description="Throws mace to all enemies dealing damage based on strength. If target is burning reduces the enemy physical debense by 50%, magical defense by 25% and strength by 25% for 2 turns">
         <frame x="65" y="15" width="40" height="40"/>
       </ability>
       <ability  name="Heal Plus" tier="3" mana="32" branch="1" active ="0" description="Strengthens Heal healing even more">
         <frame x="65" y="98" width="40" height="40"/>
       </ability>
-      <ability  name="Light Strike Plus" tier="3" mana="26" branch="2" active ="0" description="Empowers Light Strike to reduce the magic defense of the enemy by 1/4 for 2 turns">
+      <ability  name="Light Strike Plus" tier="3" mana="26" branch="2" active ="0" description="Empowers Light Strike to reduce the magic defense of the enemy by 25% for 2 turns">
         <frame x="108" y="98" width="40" height="40"/>
       </ability>
       <ability  name="Mace Throw Plus" tier="3" mana="28" branch="3" active ="0" description="Strengthens Mace Throw deal extra damage and increasing the debuffs turns by 3">
@@ -72,13 +72,13 @@
       <ability  name="Axe slash" tier="1" mana="20" branch="0" active ="1" description ="Deals physical damage based on strength">
         <frame x="197" y="98" width="40" height="40"/>
       </ability>
-      <ability  name="Morale Boost" tier="2" mana="17" branch="1" active ="0" description ="1/4 boost to strength and intelligence for 2 turns on an ally">
+      <ability  name="Morale Boost" tier="2" mana="17" branch="1" active ="0" description ="25% boost to strength and intelligence for 2 turns on an ally">
         <frame x="291" y="98" width="40" height="40"/>
       </ability>
-      <ability  name="H. Axe" tier="2" mana="21" branch="2" active ="0" description ="Attacks with multiple axe swings that deal physical damage based on strength and deal extra damage to stunned enemies. Reduces enemy defenses by 1/4 for 1 turn">
+      <ability  name="H. Axe" tier="2" mana="21" branch="2" active ="0" description ="Attacks with multiple axe swings that deal physical damage based on strength and deal extra damage to stunned enemies. Reduces enemy defenses by 25% for 1 turn">
         <frame x="197" y="10" width="40" height="40"/>
       </ability>
-      <ability  name="Dwarfs Wrath" tier="2" mana="25" branch="3" active ="0" description ="Boosts dexterity by 1/2 for 2 turns">
+      <ability  name="Dwarfs Wrath" tier="2" mana="25" branch="3" active ="0" description ="Boosts dexterity by 50% for 2 turns">
         <frame x="244" y="54" width="40" height="40"/>
       </ability>
       <ability  name="Dwarfs Wrath Plus" tier="3" mana="17" branch="3" active ="0" description ="Strengthens Dwarfs Wrath lasting 3 turns">
@@ -87,10 +87,10 @@
       <ability  name="High Axe Plus" tier="3" mana="21" branch="2" active ="0" description ="Strengthens High Axe dealing more damage">
         <frame x="244" y="10" width="40" height="40"/>
       </ability>
-      <ability  name="Morale Boost Plus" tier="3" mana="25" branch="1" active ="0" description ="Strengthens Morale Boost making it last for 3 turns and boosting strength by 1/2">
+      <ability  name="Morale Boost Plus" tier="3" mana="25" branch="1" active ="0" description ="Strengthens Morale Boost making it last for 3 turns and boosting strength by 50%">
         <frame x="244" y="142" width="40" height="40"/>
       </ability>
-      <ability  name="Raging Mock" tier="4" mana="47" branch="1" active ="0" description ="Anger enemy decreasing its judgement, strength and intelligence by 1/2 for 3 turns">
+      <ability  name="Raging Mock" tier="4" mana="47" branch="1" active ="0" description ="Anger enemy decreasing its judgement, strength and intelligence by 50% for 3 turns">
         <frame x="291" y="10" width="40" height="40"/>
       </ability>
       <ability  name="Meteor" tier="4" mana="50" branch="2" active ="0" description ="Throws enormous rock to an enemy that deals big physical damage based on strength. If enemy is stunned, deals extra damage">
@@ -126,7 +126,7 @@
       <ability  name="Revive" tier="4" mana="120" branch="1" active ="0" description ="Casts a powerfull spell to bring back from the dead an ally with a small amount of health that increases based on intelligence">
         <frame x="200" y="242" width="40" height="40"/>
       </ability>
-      <ability  name="Blizzard" tier="4" mana="62" branch="2" active ="0" description ="Calls forth a strong blizzard that deals damage based on intelligence to all enemies and has a chance to lower the enemies agility by 1/2">
+      <ability  name="Blizzard" tier="4" mana="62" branch="2" active ="0" description ="Calls forth a strong blizzard that deals damage based on intelligence to all enemies and has a chance to lower the enemies agility by 50%">
         <frame x="243" y="242" width="40" height="40"/>
       </ability>
       <ability name="Fire Djinn" tier="4" mana="70" branch="3" active ="0" description ="Summons the Fire Djiin to deal heavy damage based on intelligence. Hits more for every enemy debuff.">

@@ -262,7 +262,7 @@ bool ctCombat::Update(float dt)
 	int y_pos_icon = 0;
 	for (int i = 0; i < enemies.size(); i++)
 	{
-		if (enemies.at(i)->GetCurrentHealthPoints() <= 0)
+		if (enemies.at(i)->GetCurrentHealthPoints() <= 0 && enemies.at(i)->animation == &enemies.at(i)->idle)
 			continue;
 		for (int j = 0; j < enemies.at(i)->altered_stats.size(); j++)
 		{
@@ -596,6 +596,13 @@ bool ctCombat::PostUpdate()
 bool ctCombat::CleanUp()
 {
 	LOG("Freeing combat");
+
+	for (int i = 0; i < altered_stats_icons.size(); i++)
+	{
+		altered_stats_icons.at(i)->to_destroy = true;
+	}
+
+	altered_stats_icons.clear();
 
 	App->map->CleanUp();
 

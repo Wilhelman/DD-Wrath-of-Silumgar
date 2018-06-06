@@ -223,10 +223,10 @@ bool ctCombat::Start()
 	}
 
 	//recover hp and mana
-	for (int i = 0; i < App->entities->entities.size(); i++)
-	{
-		App->entities->entities.at(i)->Recover();
-	}
+	App->entities->GetCleric()->Recover();
+	App->entities->GetWarrior()->Recover();
+	App->entities->GetElf()->Recover();
+	App->entities->GetDwarf()->Recover();
 
 
 	return ret;

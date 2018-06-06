@@ -1099,6 +1099,7 @@ bool PerformActionToEntity::Execute()
 				actioner_entity->Ability3T1();
 				sound_playing = true;
 			}
+
 			if (ret == true) {
 				actioner_entity->heavy_slash.Reset();
 
@@ -1620,8 +1621,6 @@ bool PerformActionToEntity::Execute()
 
 			actioner_entity->animation = &actioner_entity->high_axe;
 
-
-
 			ret = actioner_entity->animation->Finished();
 			if (!sound_playing) {
 				actioner_entity->Ability2T1();
@@ -1980,9 +1979,10 @@ bool PerformActionToEntity::Execute()
 
 			if (!HaveObjective())
 				return true;
-			actioner_entity->attack.Reset();
-			receiver_entity->counter.Reset();
-			
+
+			actioner_entity->animation = &actioner_entity->attack;
+			receiver_entity->animation = &actioner_entity->counter;
+
 
 			ret = actioner_entity->animation->Finished();
 
@@ -1992,9 +1992,9 @@ bool PerformActionToEntity::Execute()
 			}
 
 			if (ret == true) {
-				actioner_entity->animation = &actioner_entity->attack;
-				receiver_entity->animation = &actioner_entity->counter;
-
+			
+				actioner_entity->attack.Reset();
+				receiver_entity->counter.Reset();
 
 				int actioner_dexterity = BASE_DEXTERITY + actioner_entity->GetCurrentDexterityPoints();
 

@@ -2825,7 +2825,7 @@ bool PerformActionToEntity::Execute()
 
 					if (App->entities->entities.at(i)->type != CLERIC && App->entities->entities.at(i)->type != WARRIOR && App->entities->entities.at(i)->type != ELF && App->entities->entities.at(i)->type != DWARF && App->entities->entities.at(i)->GetCurrentHealthPoints() > 0) {
 						receiver_entity = App->entities->entities.at(i);
-
+						random_thousand_faces_die = (rand() % 100) + 1;
 						if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
 							int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
@@ -3079,7 +3079,7 @@ bool PerformActionToEntity::Execute()
 			if (!HaveObjective())
 				return true;
 
-			actioner_entity->animation = &actioner_entity->mace_throw_plus;
+			actioner_entity->animation = &actioner_entity->mace_throw;
 
 			ret = actioner_entity->animation->Finished();
 			if (!sound_playing) {
@@ -3087,7 +3087,7 @@ bool PerformActionToEntity::Execute()
 				sound_playing = true;
 			}
 			if (ret == true) {
-				actioner_entity->mace_throw_plus.Reset();
+				actioner_entity->mace_throw.Reset();
 
 				actioner_entity->SetCurrentManaPoints(actioner_entity->GetCurrentManaPoints() - action_to_perform.mana_points_effect_to_himself);
 				App->combat->UpdateManaBarOfEntity(actioner_entity, (-action_to_perform.mana_points_effect_to_himself));
@@ -3101,7 +3101,7 @@ bool PerformActionToEntity::Execute()
 
 					if (App->entities->entities.at(i)->type != CLERIC && App->entities->entities.at(i)->type != WARRIOR && App->entities->entities.at(i)->type != ELF && App->entities->entities.at(i)->type != DWARF && App->entities->entities.at(i)->GetCurrentHealthPoints() > 0) {
 						receiver_entity = App->entities->entities.at(i);
-
+						random_thousand_faces_die = (rand() % 100) + 1;
 						if (random_thousand_faces_die <= actioner_dexterity) {// THE ACTIONER HITS THE RECEIVER
 							int receiver_agility = BASE_AGILITY + receiver_entity->GetCurrentAgilityPoints();
 
@@ -3114,7 +3114,7 @@ bool PerformActionToEntity::Execute()
 
 								bool critical = false;
 
-								int damage_to_deal = action_to_perform.health_points_effect - (1.3 * App->entities->GetCleric()->GetCurrentIntelligencePoints());
+								int damage_to_deal = action_to_perform.health_points_effect - (20 + App->entities->GetCleric()->GetCurrentStrengthPoints());
 								float damage_reduction = (float)receiver_entity->GetCurrentPhysicalDefensePoints() / 100 * (float)damage_to_deal;
 								actioner_dexterity = actioner_dexterity / 10;
 
@@ -3130,14 +3130,6 @@ bool PerformActionToEntity::Execute()
 								std::string tmp_dmg = std::to_string(damage_to_deal);
 								if (!critical) {
 									App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-									receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-									receiver_entity->animation = &receiver_entity->hit;
-									App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
-									App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 20, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
-									receiver_entity->SetCurrentHealthPoints(receiver_entity->GetCurrentHealthPoints() + damage_to_deal);
-									receiver_entity->animation = &receiver_entity->hit;
-									App->combat->UpdateHPBarOfEntity(receiver_entity, damage_to_deal);
-									App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 30, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 									//TODO SITO
 									fPoint posP;
 									if (receiver_entity->type == CLERIC || receiver_entity->type == WARRIOR || receiver_entity->type == ELF || receiver_entity->type == DWARF)
@@ -3169,29 +3161,33 @@ bool PerformActionToEntity::Execute()
 
 								if (receiver_entity->IsBurning())
 								{
-									App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "DEBUFF MAGICAL DEFENSE ", { 0,255,0,255 }, 14, nullptr, nullptr);
-									Altered_Stat stats_up;
+									Altered_Stat stats_down;
 
-									stats_up.stat_effect_magical_defense = -1;
-									stats_up.turn_left = 3;
+									stats_down.stat_effect_magical_defense = -1;
+									stats_down.turn_left = 2;
 
-									receiver_entity->AddAlteredStat(stats_up);
+									receiver_entity->AddAlteredStat(stats_down);
 
-									Altered_Stat stats_up2;
+									Altered_Stat stats_down2;
 
-									stats_up2.stat_effect_physical_defense = -2;
-									stats_up2.turn_left = 3;
+									stats_down2.stat_effect_physical_defense = -2;
+									stats_down2.turn_left = 2;
 
-									receiver_entity->AddAlteredStat(stats_up2);
+									receiver_entity->AddAlteredStat(stats_down2);
+									Altered_Stat stats_down3;
 
-									Altered_Stat stats_up3;
+									stats_down3.stat_effect_strength = -1;
+									stats_down3.turn_left = 2;
 
-									stats_up3.stat_effect_strength = -1;
-									stats_up3.turn_left = 3;
+									receiver_entity->AddAlteredStat(stats_down3);
 
-									receiver_entity->AddAlteredStat(stats_up3);
+									App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "DEBUFF MAGICAL DEFENSE", { 0,255,0,255 }, 14, nullptr, nullptr);
+									App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h + 10, "DEBUFF PSYSICAL DEFENSE", { 0,255,0,255 }, 14, nullptr, nullptr);
+									App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h + 20, "DEBUFF STRENGTH", { 0,255,0,255 }, 14, nullptr, nullptr);
+
+
 								}
-								receiver_entity->Damaged();
+
 
 								receiver_entity->Damaged();
 							}

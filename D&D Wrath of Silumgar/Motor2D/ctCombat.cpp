@@ -778,9 +778,19 @@ bool ctCombat::CleanUp()
 
 	for (int i = 0; i < App->entities->entities.size(); i++)
 	{
-		if((App->entities->entities.at(i)->type != DWARF && App->entities->entities.at(i)->type != ELF && App->entities->entities.at(i)->type != WARRIOR && App->entities->entities.at(i)->type != CLERIC) || heroes_are_dead)
+		if (pauseMenuDelete == false)
+		{
+			if ((App->entities->entities.at(i)->type != DWARF && App->entities->entities.at(i)->type != ELF && App->entities->entities.at(i)->type != WARRIOR && App->entities->entities.at(i)->type != CLERIC) || heroes_are_dead)
+				App->entities->entities.at(i)->to_destroy = true;
+		}
+		else
+		{
 			App->entities->entities.at(i)->to_destroy = true;
+		}
 	}
+	
+	if (pauseMenuDelete == true)
+		pauseMenuDelete = false;
 
 	enemies.clear();
 	heroes.clear();
@@ -864,6 +874,8 @@ bool ctCombat::CleanUp()
 		App->map->actual_tier = TIER_MAP_1;
 
 	entity_performing_action = nullptr;
+
+	
 	
 	return true;
 }
@@ -1906,7 +1918,8 @@ bool ctCombat::PerformActionWithEntity(Entity * entity_to_perform_action)
 				else {
 					if (combat_menu->background == nullptr) {
 						ready_elf = App->gui->AddUILabel(entity_to_perform_action->position.x + 10, entity_to_perform_action->position.y - entity_to_perform_action->animation->GetCurrentFrame().h-20, "Ready", { 255,255,255,255 }, 25, this);
-						combat_menu->~UICombatMenu();
+						if(combat_menu->abilities_label != nullptr)
+							combat_menu->~UICombatMenu();
 						ready_elf->to_destroy = false; 
 						App->gui->DeleteUIElement(*combat_menu);
 						combat_menu = nullptr;

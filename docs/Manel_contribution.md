@@ -12,8 +12,8 @@ My main contributions to the project have been:
 * Implement Joystick inputs.
 * Test, bug solving and balancing.
 
-!["Combat"](https://github.com/manelmourelo/Quest-Boss-Balancing-Design/blob/master/combat.gif)
+!["Combat"](https://github.com/Wilhelman/DD-Wrath-of-Silumgar/blob/master/docs/images/combat.gif)
 
-!["SkillTree"](https://github.com/manelmourelo/Quest-Boss-Balancing-Design/blob/master/skillTree.gif)
+!["SkillTree"](https://github.com/Wilhelman/DD-Wrath-of-Silumgar/blob/master/docs/images/skillTree.gif)
 
 [Back](https://wilhelman.github.io/DD-Wrath-of-Silumgar/)

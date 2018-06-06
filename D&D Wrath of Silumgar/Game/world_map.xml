@@ -198,8 +198,8 @@ Once you cross it you see two possible outputs:"/>
        <map_element>
         <tier type="6" />
          <entity name="OWLBEAR" />
-        <entity name="GNOLL" />
         <entity name="GOBLIN" />
+        <entity name="GNOLL" />
         <scene name="cave_06.tmx" />
         <icon_coords x="160" y="480" width="32" height="32" />
         <decision name ="After defeating the enemies you are forced to flee the path to divert attention. To get out of this you have more than one possibility:"/>

@@ -20,6 +20,8 @@ This project has been done by seven spanish students of CITM - UPC (Terrasa, Spa
   * [Marc Tarrés i Urbieta](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#marc-tarrés-i-urbieta)
   * [Alex Campamar Redol](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#alex_campamar_redol)
   * [Manel Mourelo Montero](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#manel-mourelo-montero)
+* [Trailer](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#trailer)
+* [Gameplay video](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#gameplay-video)
 * [Tools used](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#tools-used)
 * [Credits](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#credits)
 
@@ -96,6 +98,12 @@ TODO: ALL INNOVATIONS WE HAVE
 * [Github account](https://github.com/manelmourelo)
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Manel_contribution)
 
+## Trailer
+
+<iframe width="1903" height="715" src="https://www.youtube.com/embed/9_9DGbxZBRY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+## Gameplay video
 
 ## Tools used
 * IDE: Microsoft Visual Studio 2017

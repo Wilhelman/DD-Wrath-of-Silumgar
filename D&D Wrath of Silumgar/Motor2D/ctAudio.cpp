@@ -193,8 +193,8 @@ void ctAudio::InitAudio()
 	LootBSO = "audio/music/D_D-Shadow-Over-Mystara-Song-30-Excessive-Feast-_Stage-8-B_.ogg";
 
 	//---------------------------------------SetVolumes----------------------------
-	Mix_Volume(-1, (MIX_MAX_VOLUME * FXVolumePercent) / 100);
-	Mix_VolumeMusic((MIX_MAX_VOLUME * MusicVolumePercent) / 100);
+	Mix_Volume(-1, 64);
+	Mix_VolumeMusic(64);
 }
 
 

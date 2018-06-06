@@ -1904,6 +1904,11 @@ bool PerformActionToEntity::Execute()
 						else
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, tmp_dmg, { 255,0,0,255 }, 14, nullptr, nullptr);
 
+						fPoint posP;
+						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w) / 2), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
+						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_METEOR);
+
+
 						Altered_Stat defense;
 						defense.turn_left = 2;
 						defense.stat_effect_physical_defense = -1;

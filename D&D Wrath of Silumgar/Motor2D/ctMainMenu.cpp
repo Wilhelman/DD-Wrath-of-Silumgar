@@ -17,6 +17,7 @@
 #include "ctSkillTree.h"
 #include "ctAbout.h"
 #include "j1Language.h"
+#include "j1Map.h"
 
 
 
@@ -50,7 +51,7 @@ bool ctMainMenu::Start()
 	is_new_game = false;
 	is_continue = false;
 
-	
+	App->map->actual_tier = TIER_MAP_1;
 	App->items->warrior_equip.clear();
 	App->items->cleric_equip.clear();
 	App->items->elf_equip.clear();

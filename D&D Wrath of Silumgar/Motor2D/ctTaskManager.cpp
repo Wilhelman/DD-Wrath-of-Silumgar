@@ -847,9 +847,13 @@ bool PerformActionToEntity::Execute()
 
 				Altered_Stat defense;
 				defense.turn_left = 2;
-				defense.stat_effect_magical_defense = 1;
 				defense.stat_effect_physical_defense = 1;
 				receiver_entity->AddAlteredStat(defense);
+
+				Altered_Stat defense2;
+				defense2.turn_left = 2;
+				defense2.stat_effect_magical_defense = 1;
+				receiver_entity->AddAlteredStat(defense2);
 
 
 				sound_playing = false;
@@ -1048,9 +1052,13 @@ bool PerformActionToEntity::Execute()
 
 				Altered_Stat defense;
 				defense.turn_left = 2;
-				defense.stat_effect_magical_defense = 2;
 				defense.stat_effect_physical_defense = 2;
 				receiver_entity->AddAlteredStat(defense);
+
+				Altered_Stat defense2;
+				defense2.turn_left = 2;
+				defense2.stat_effect_magical_defense = 2;
+				receiver_entity->AddAlteredStat(defense2);
 
 
 				sound_playing = false;
@@ -1126,6 +1134,12 @@ bool PerformActionToEntity::Execute()
 							bleed.turn_left = 3;
 							bleed.stat_effect_physical_defense = -1;
 							receiver_entity->AddAlteredStat(bleed);
+
+							Altered_Stat bleed2;
+							bleed2.turn_left = 3;
+							bleed2.stat_effect_physical_defense = -1;
+							receiver_entity->AddAlteredStat(bleed2);
+
 							std::string bleed_string = "BLEEDING";
 							App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, bleed_string, { 127,0,8,255 }, 16, nullptr, nullptr);
 
@@ -1213,8 +1227,14 @@ bool PerformActionToEntity::Execute()
 						Altered_Stat judg;
 						judg.bleeding = true;
 						judg.turn_left = 2;
-						judg.stat_effect_judgement = -2;
 						receiver_entity->AddAlteredStat(judg);
+
+						Altered_Stat judg2;
+						judg2.turn_left = 2;
+						judg2.stat_effect_judgement = -2;
+						receiver_entity->AddAlteredStat(judg2);
+
+
 						std::string bleed_string = "DEBUFFED JUDGEMENT";
 						App->gui->AddUIFloatingValue(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2), receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h - 10, bleed_string, { 127,0,8,255 }, 16, nullptr, nullptr);
 
@@ -1256,10 +1276,18 @@ bool PerformActionToEntity::Execute()
 
 				Altered_Stat judg;
 				judg.turn_left = 2;
-				judg.stat_effect_magical_defense=-2;
-				judg.stat_effect_physical_defense = -2;
 				judg.stat_effect_strength = 1;
 				receiver_entity->AddAlteredStat(judg);
+
+				Altered_Stat judg2;
+				judg2.turn_left = 2;
+				judg2.stat_effect_physical_defense = -2;
+				receiver_entity->AddAlteredStat(judg2);
+
+				Altered_Stat judg3;
+				judg3.turn_left = 2;
+				judg3.stat_effect_magical_defense = -2;
+				receiver_entity->AddAlteredStat(judg3);
 
 
 				receiver_entity->is_taunted = true;
@@ -1449,9 +1477,13 @@ bool PerformActionToEntity::Execute()
 						}
 						Altered_Stat defense;
 						defense.turn_left = 1;
-						defense.stat_effect_magical_defense = -1;
 						defense.stat_effect_physical_defense = -1;
 						actioner_entity->AddAlteredStat(defense);
+
+						Altered_Stat defense2;
+						defense2.turn_left = 1;
+						defense2.stat_effect_magical_defense = -1;
+						actioner_entity->AddAlteredStat(defense2);
 
 						receiver_entity->Damaged();
 					}
@@ -1499,8 +1531,12 @@ bool PerformActionToEntity::Execute()
 				Altered_Stat strength_up;
 				strength_up.turn_left = 2;
 				strength_up.stat_effect_strength = 1;
-				strength_up.stat_effect_intelligence = 1;
 				receiver_entity->AddAlteredStat(strength_up);
+
+				Altered_Stat strength_up2;
+				strength_up2.turn_left = 2;
+				strength_up2.stat_effect_intelligence = 1;
+				receiver_entity->AddAlteredStat(strength_up2);
 
 				//animate the receiver to hit + audio or smth
 				sound_playing = false;
@@ -1633,8 +1669,12 @@ bool PerformActionToEntity::Execute()
 						Altered_Stat defense;
 						defense.turn_left = 1;
 						defense.stat_effect_magical_defense = -1;
-						defense.stat_effect_physical_defense = -1;
 						actioner_entity->AddAlteredStat(defense);
+
+						Altered_Stat defense2;
+						defense2.turn_left = 1;
+						defense2.stat_effect_physical_defense = -1;
+						actioner_entity->AddAlteredStat(defense2);
 
 						receiver_entity->Damaged();
 					}
@@ -1682,8 +1722,12 @@ bool PerformActionToEntity::Execute()
 				Altered_Stat strength_up;
 				strength_up.turn_left = 3;
 				strength_up.stat_effect_strength = 2;
-				strength_up.stat_effect_intelligence = 1;
 				receiver_entity->AddAlteredStat(strength_up);
+
+				Altered_Stat strength_up2;
+				strength_up2.turn_left = 3;
+				strength_up2.stat_effect_intelligence = 1;
+				receiver_entity->AddAlteredStat(strength_up2);
 
 				//animate the receiver to hit + audio or smth
 				sound_playing = false;
@@ -1780,9 +1824,17 @@ bool PerformActionToEntity::Execute()
 						Altered_Stat debuff;
 						debuff.turn_left = 3;
 						debuff.stat_effect_judgement = -2;
-						debuff.stat_effect_strength = -2;
-						debuff.stat_effect_intelligence = -2;
 						receiver_entity->AddAlteredStat(debuff);
+
+						Altered_Stat debuff2;
+						debuff2.turn_left = 3;
+						debuff2.stat_effect_strength = -2;
+						receiver_entity->AddAlteredStat(debuff2);
+
+						Altered_Stat debuff3;
+						debuff3.turn_left = 3;
+						debuff3.stat_effect_intelligence = -2;
+						receiver_entity->AddAlteredStat(debuff3);
 
 						//animate the receiver to hit + audio or smth
 					}
@@ -1856,9 +1908,13 @@ bool PerformActionToEntity::Execute()
 
 						Altered_Stat defense;
 						defense.turn_left = 1;
-						defense.stat_effect_magical_defense = -1;
 						defense.stat_effect_physical_defense = -1;
 						actioner_entity->AddAlteredStat(defense);
+
+						Altered_Stat defense2;
+						defense2.turn_left = 1;
+						defense2.stat_effect_magical_defense = -1;
+						actioner_entity->AddAlteredStat(defense2);
 
 						receiver_entity->Damaged();
 					}
@@ -2588,12 +2644,24 @@ bool PerformActionToEntity::Execute()
 
 				Altered_Stat stats_up;
 
-				stats_up.stat_effect_constitution = 1;
-				stats_up.stat_effect_judgement = -2;
 				stats_up.stat_effect_strength = 2;
 				stats_up.turn_left = 2;
 
 				receiver_entity->AddAlteredStat(stats_up);
+
+				Altered_Stat stats_up2;
+
+				stats_up2.stat_effect_constitution = 1;
+				stats_up2.turn_left = 2;
+
+				receiver_entity->AddAlteredStat(stats_up2);
+
+				Altered_Stat stats_up3;
+
+				stats_up3.stat_effect_judgement = -2;
+				stats_up3.turn_left = 2;
+
+				receiver_entity->AddAlteredStat(stats_up3);
 
 				sound_playing = false;
 			}
@@ -2793,15 +2861,28 @@ bool PerformActionToEntity::Execute()
 									Altered_Stat stats_down;
 
 									stats_down.stat_effect_magical_defense = -1;
-									stats_down.stat_effect_physical_defense = -2;
-									stats_down.stat_effect_strength = -1;
 									stats_down.turn_left = 2;
+
+									receiver_entity->AddAlteredStat(stats_down);
+
+									Altered_Stat stats_down2;
+
+									stats_down2.stat_effect_physical_defense = -2;
+									stats_down2.turn_left = 2;
+
+									receiver_entity->AddAlteredStat(stats_down2);
+									Altered_Stat stats_down3;
+
+									stats_down3.stat_effect_strength = -1;
+									stats_down3.turn_left = 2;
+
+									receiver_entity->AddAlteredStat(stats_down3);
 
 									App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "DEBUFF MAGICAL DEFENSE", { 0,255,0,255 }, 14, nullptr, nullptr);
 									App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h + 10, "DEBUFF PSYSICAL DEFENSE", { 0,255,0,255 }, 14, nullptr, nullptr);
 									App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h + 20, "DEBUFF STRENGTH", { 0,255,0,255 }, 14, nullptr, nullptr);
 
-									receiver_entity->AddAlteredStat(stats_down);
+									
 								}
 
 
@@ -3065,11 +3146,23 @@ bool PerformActionToEntity::Execute()
 									Altered_Stat stats_up;
 
 									stats_up.stat_effect_magical_defense = -1;
-									stats_up.stat_effect_physical_defense = -2;
-									stats_up.stat_effect_strength = -1;
 									stats_up.turn_left = 3;
 
 									receiver_entity->AddAlteredStat(stats_up);
+
+									Altered_Stat stats_up2;
+
+									stats_up2.stat_effect_physical_defense = -2;
+									stats_up2.turn_left = 3;
+
+									receiver_entity->AddAlteredStat(stats_up2);
+
+									Altered_Stat stats_up3;
+
+									stats_up3.stat_effect_strength = -1;
+									stats_up3.turn_left = 3;
+
+									receiver_entity->AddAlteredStat(stats_up3);
 								}
 								receiver_entity->Damaged();
 
@@ -3170,12 +3263,24 @@ bool PerformActionToEntity::Execute()
 
 				Altered_Stat stats_up;
 
-				stats_up.stat_effect_magical_defense = 2;
-				stats_up.stat_effect_physical_defense = 2;
 				stats_up.stat_effect_strength = 2;
 				stats_up.turn_left = 2;
 
 				receiver_entity->AddAlteredStat(stats_up);
+
+				Altered_Stat stats_up2;
+
+				stats_up2.stat_effect_physical_defense = 2;
+				stats_up2.turn_left = 2;
+
+				receiver_entity->AddAlteredStat(stats_up2);
+
+				Altered_Stat stats_up3;
+
+				stats_up3.stat_effect_magical_defense = 2;
+				stats_up3.turn_left = 2;
+
+				receiver_entity->AddAlteredStat(stats_up3);
 
 				sound_playing = false;
 			}

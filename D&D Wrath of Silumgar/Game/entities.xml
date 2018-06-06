@@ -277,9 +277,9 @@
         </animation>
 
 		<animation name="dodge" speed="0.05" loop="false">
-		  <frame x="661"  y="1092" width="80" height="79"/>
-		  <frame x="536"  y="1092" width="80" height="79"/>
-		  <frame x="381"  y="1092" width="80" height="79"/>
+		  <frame x="661"  y="1092" width="80" height="67"/>
+		  <frame x="536"  y="1092" width="80" height="67"/>
+		  <frame x="381"  y="1092" width="80" height="67"/>
 	  
         </animation>
 		

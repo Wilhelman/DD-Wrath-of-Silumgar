@@ -1328,11 +1328,11 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 			new_action.type = GUARD;
 		else if (tmp == "Heavy Slash")
 			new_action.type = HEAVY_SLASH;
-		else if (tmp == "Kick Plus")
+		else if (tmp == "Kick +")
 			new_action.type = KICK_PLUS;
-		else if (tmp == "Guard Plus")
+		else if (tmp == "Guard +")
 			new_action.type = GUARD_PLUS;
-		else if (tmp == "Heavy Slash Plus")
+		else if (tmp == "Heavy Slash +")
 			new_action.type = HEAVY_SLASH_PLUS;
 		else if (tmp == "Charge")
 			new_action.type = CHARGE;
@@ -1349,11 +1349,11 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 			new_action.type = MORALE_BOOST;
 		else if (tmp == "Dwarfs Wrath")
 			new_action.type = DWARFS_WRATH;
-		else if (tmp == "High Axe Plus")
+		else if (tmp == "High Axe +")
 			new_action.type = HIGH_AXE_PLUS;
-		else if (tmp == "Morale Boost Plus")
+		else if (tmp == "Morale Boost +")
 			new_action.type = MORALE_BOOST_PLUS;
-		else if (tmp == "Dwarfs Wrath Plus")
+		else if (tmp == "Dwarfs Wrath +")
 			new_action.type = DWARFS_WRATH_PLUS;
 		else if (tmp == "Raging Mock")
 			new_action.type = RAGING_MOCK;
@@ -1370,11 +1370,11 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 			new_action.type = LIGHT_STRIKE;
 		else if (tmp == "Mace Throw")
 			new_action.type = MACE_THROW;
-		else if (tmp == "Heal Plus")
+		else if (tmp == "Heal +")
 			new_action.type = HEAL_PLUS;
-		else if (tmp == "Light Strike Plus")
+		else if (tmp == "Light Strike +")
 			new_action.type = LIGHT_STRIKE_PLUS;
-		else if (tmp == "Mace Throw Plus")
+		else if (tmp == "Mace Throw +")
 			new_action.type = MACE_THROW_PLUS;
 		else if (tmp == "Blessing")
 			new_action.type = BLESSING;
@@ -1393,11 +1393,11 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 			new_action.type = FIREBALL;
 		else if (tmp == "Lightning Bolt")
 			new_action.type = LIGHTNING_BOLT;
-		else if (tmp == "Seed Of Life Plus")
+		else if (tmp == "Seed Of Life +")
 			new_action.type = SEED_OF_LIFE_PLUS;
-		else if (tmp == "Fireball Plus")
+		else if (tmp == "Fireball +")
 			new_action.type = FIREBALL_PLUS;
-		else if (tmp == "Lightning Boolt Plus")
+		else if (tmp == "Lightning Bolt +")
 			new_action.type = LIGHTNING_BOLT_PLUS;
 		else if (tmp == "Revive")
 			new_action.type = REVIVE;

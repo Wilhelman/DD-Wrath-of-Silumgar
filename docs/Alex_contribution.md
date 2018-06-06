@@ -13,13 +13,19 @@ My work in this project have been focused on programming, but i also made some t
 
 
 _Combat with task manager and some UI_
+
+
 !["Combat"](images/combat2.gif)
 
 
 _Dark Warrior_
+
+
 !["DarkWarrior"](images/dark_warrior.gif)
 
 
 _Loot menu and pause menu_
+
+
 !["LootMenu"](images/loot_menu.gif)
 !["Pause"](images/pause.png)

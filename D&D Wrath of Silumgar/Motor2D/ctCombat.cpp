@@ -88,6 +88,11 @@ bool ctCombat::Start()
 	dwarf_name = App->gui->AddUILabel(445, 296, "Dwarf", { 255,255,255,255 }, 23, this);
 	
 	SpawnEntities();
+	//recover hp and mana
+	App->entities->GetCleric()->Recover();
+	App->entities->GetWarrior()->Recover();
+	App->entities->GetElf()->Recover();
+	App->entities->GetDwarf()->Recover();
 
 	/*---------------------------------------------------------- LE PETIT TESTING ZONE -------------------------------------------------------------*/
 
@@ -222,11 +227,7 @@ bool ctCombat::Start()
 		App->cutscene_manager->StartCutscene();
 	}
 
-	//recover hp and mana
-	App->entities->GetCleric()->Recover();
-	App->entities->GetWarrior()->Recover();
-	App->entities->GetElf()->Recover();
-	App->entities->GetDwarf()->Recover();
+	
 
 
 	return ret;

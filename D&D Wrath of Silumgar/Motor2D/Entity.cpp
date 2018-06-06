@@ -287,7 +287,7 @@ void Entity::Recover()
 {
 	int health_to_recover = (int)(0.10 * current_health_points);
 	if (health_to_recover == 0) {
-		health_to_recover = 27;
+		health_to_recover = 20;
 	}
 	App->combat->UpdateHPBarOfEntity(this, health_to_recover);
 	this->SetCurrentHealthPoints(this->GetCurrentHealthPoints() + health_to_recover);

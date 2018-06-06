@@ -24,6 +24,14 @@ _Dark Warrior_
 !["DarkWarrior"](images/dark_warrior.gif)
 
 
+
+_Silumgar_
+
+
+!["Silumgar"](images/lich.gif)
+
+
+
 _Loot menu and pause menu_
 
 

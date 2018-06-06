@@ -580,7 +580,7 @@ bool ctCombat::Update(float dt)
 		}
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu);
 	}
@@ -605,7 +605,7 @@ bool ctCombat::Update(float dt)
 					App->entities->GetWarrior()->animation = &App->entities->GetWarrior()->idle;
 				}
 			}
-			if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
+			if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN ) {
 				if (App->fadeToBlack->FadeIsOver())
 					App->fadeToBlack->FadeToBlackBetweenModules(this, App->loot_menu, 1.0f);
 			}

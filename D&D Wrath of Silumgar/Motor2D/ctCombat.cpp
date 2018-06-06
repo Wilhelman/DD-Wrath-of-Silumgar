@@ -88,6 +88,7 @@ bool ctCombat::Start()
 	dwarf_name = App->gui->AddUILabel(445, 296, "Dwarf", { 255,255,255,255 }, 23, this);
 	
 	SpawnEntities();
+	
 
 
 	for (int i = 0; i < App->items->elf_equip.size(); i++)
@@ -118,6 +119,12 @@ bool ctCombat::Start()
 	LoadDataFromXML();
 
 	SetDataToUI();
+
+	//recover hp and mana
+	App->entities->GetCleric()->Recover();
+	App->entities->GetWarrior()->Recover();
+	App->entities->GetElf()->Recover();
+	App->entities->GetDwarf()->Recover();
 
 	OrderTurnPriority();
 
@@ -206,11 +213,7 @@ bool ctCombat::Start()
 		App->cutscene_manager->StartCutscene();
 	}
 
-	//recover hp and mana
-	App->entities->GetCleric()->Recover();
-	App->entities->GetWarrior()->Recover();
-	App->entities->GetElf()->Recover();
-	App->entities->GetDwarf()->Recover();
+	
 
 
 	return ret;
@@ -655,6 +658,14 @@ bool ctCombat::Update(float dt)
 						LOG("All heroes are dead!");
 						condition_victory = false;
 						heroes_are_dead = true;
+
+						pugi::xml_document	data_file;
+						pugi::xml_node* node = &App->LoadData(data_file);
+						node->attribute("continue").set_value(0);
+
+						data_file.save_file("data.xml");
+						data_file.reset();
+
 						if (App->fadeToBlack->FadeIsOver())
 							App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 					}
@@ -672,6 +683,14 @@ bool ctCombat::Update(float dt)
 
 							if (App->map->actual_tier == TIER_MAP_8 && App->fadeToBlack->FadeIsOver()) {
 								heroes_are_dead = true;
+
+								pugi::xml_document	data_file;
+								pugi::xml_node* node = &App->LoadData(data_file);
+								node->attribute("continue").set_value(0);
+
+								data_file.save_file("data.xml");
+								data_file.reset();
+
 								App->fadeToBlack->FadeToBlackBetweenModules(this, App->final_scene, 1.0f);
 							}
 							else {

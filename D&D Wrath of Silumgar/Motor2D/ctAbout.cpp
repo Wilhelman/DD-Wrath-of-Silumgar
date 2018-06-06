@@ -7,16 +7,18 @@
 #include "ctRender.h"
 #include "ctWindow.h"
 #include "ctFadeToBlack.h"
-#include "ctMainMenu.h"
+
 #include "ctAbout.h"
 #include "ctGui.h"
 #include "j1Language.h"
-
+#include "ctMainMenu.h"
 #include "UIImage.h"
 #include "UIButton.h"
 #include "UILabel.h"
 #include "UITextBox.h"
 #include "ctEntities.h"
+
+#include "ctMainMenu.h"
 
 ctAbout::ctAbout() : ctModule()
 {
@@ -62,7 +64,17 @@ bool ctAbout::Start()
 	licence=("    Team Member                               Role                             Github\nGuillermo García Subirana              Team Lead                   Wilhelman\n\nAlfonso Sánchez-Cortés Puerta            Code                           Siitoo\n\nRicardo Gutiérrez Llenas               Management                 Ricardogll\n\nVictor Tirado Fernández                    Design                      VictorTirado\n\nMarc Tarrés i Urbieta                     Art & Audio                   MAtaur00\n\nAlex Campamar Redol                         UI                              Acaree\n\nManel Mourelo Montero                     QA                        manelmourelo\n\nMIT License - Copyright(c) 2017\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the ''Software''), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions :\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED ''AS IS'', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.");
 
 	std::string esc;
-	esc = "ESC to return";
+
+	if (App->main_menu->key_back == 0)
+		esc = "A to return";
+	else if (App->main_menu->key_back == 1)
+		esc = "B to return";
+	else if (App->main_menu->key_back == 2)
+		esc = "Y to return";
+	else if (App->main_menu->key_back == 3)
+		esc = "X to return";
+
+	
 	esc_lbl = (UILabel*)App->gui->AddUILabel(430, y_delay+345, esc, { 200,200,200,255 }, 10,nullptr,nullptr,"Fonts/FritzQuadrata Regular.ttf");
 
 	
@@ -101,7 +113,18 @@ bool ctAbout::Start()
 	*/
 
 	std::string hold;
-	hold="Hold space to skip";
+
+	if (App->main_menu->key_back == 0)
+		hold = "Hold A to skip";
+	else if (App->main_menu->key_back == 1)
+		hold = "Hold B to skip";
+	else if (App->main_menu->key_back == 2)
+		hold = "Hold Y to skip";
+	else if (App->main_menu->key_back == 3)
+		hold = "Hold X to skip";
+
+	
+	
 
 	hold_lbl = (UILabel*)App->gui->AddUILabel((-41 + App->win->GetWScalade()*w / 2) / 2, 5, hold, { 255,255,255,255 }, 10, nullptr, nullptr, "Fonts/FritzQuadrata Regular.ttf");
 	//hold_lbl->SetLocalPosition(w / App->win->GetScale() / 2 - hold_lbl->GetRect().w / 2, hold_lbl->GetLocalPosition().y);
@@ -147,7 +170,7 @@ bool ctAbout::Update(float dt)
 	//git_ggs_btn->SetLocalPosition(git_ggs_btn->GetLocalPosition().x, git_ggs_btn->GetLocalPosition().y - scroll_speed * holding_space);
 	//git_vmg_btn->SetLocalPosition(git_vmg_btn->GetLocalPosition().x, git_vmg_btn->GetLocalPosition().y - scroll_speed * holding_space);
 
-	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN && App->fadeToBlack->FadeIsOver())
+	if ((App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN || App->input->GetGamepadButton(App->main_menu->key_back) == GAMEPAD_STATE::PAD_BUTTON_DOWN) && App->fadeToBlack->FadeIsOver())
 	{
 		App->fadeToBlack->FadeToBlackBetweenModules(this, App->main_menu, 1.0f);
 	}

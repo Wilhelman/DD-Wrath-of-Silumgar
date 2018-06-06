@@ -337,6 +337,14 @@ bool PerformActionToEntity::Execute()
 							App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_VOID_CANNON);
 						}
 
+						Altered_Stat stats_down2;
+
+						stats_down2.bleeding = true;
+
+						stats_down2.turn_left = 2;
+
+						receiver_entity->AddAlteredStat(stats_down2);
+
 
 						receiver_entity->Damaged();
 					}
@@ -725,6 +733,18 @@ bool PerformActionToEntity::Execute()
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_VOID_CANNON);
 
 						receiver_entity->Damaged();
+
+						Altered_Stat poison;
+						poison.stat_effect_magical_defense = -2;
+						poison.turn_left = 2;
+
+						receiver_entity->AddAlteredStat(poison);
+
+						Altered_Stat poison2;
+						poison2.stat_effect_physical_defense = -2;
+						poison2.turn_left = 2;
+
+						receiver_entity->AddAlteredStat(poison2);
 					}
 				}
 				else {//ACTIONER MISSES!
@@ -2118,7 +2138,7 @@ bool PerformActionToEntity::Execute()
 
 						Altered_Stat stun;
 						stun.stun = true;
-						stun.turn_left = 1;
+						stun.turn_left = 2;
 
 						receiver_entity->AddAlteredStat(stun);
 					}
@@ -2337,6 +2357,12 @@ bool PerformActionToEntity::Execute()
 						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_INFESTED_CLAW);
 
+						Altered_Stat poison;
+						poison.poison = true;
+						poison.turn_left = 3;
+
+						receiver_entity->AddAlteredStat(poison);
+
 
 					}
 				}
@@ -2480,6 +2506,12 @@ bool PerformActionToEntity::Execute()
 						fPoint posP;
 						posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 						App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_INFERNAL_FIRE);
+
+						Altered_Stat poison;
+						poison.burn = true;
+						poison.turn_left = 3;
+
+						receiver_entity->AddAlteredStat(poison);
 
 					}
 				}
@@ -3602,7 +3634,13 @@ bool PerformActionToEntity::Execute()
 							App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_LIGHTNING_BOLT_PLUS);
 						}
 
+						Altered_Stat stats_down;
 
+						stats_down.burn = true;
+
+						stats_down.turn_left = 2;
+
+						receiver_entity->AddAlteredStat(stats_down);
 
 
 						receiver_entity->Damaged();

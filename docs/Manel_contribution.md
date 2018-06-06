@@ -15,3 +15,5 @@ My main contributions to the project have been:
 !["Combat"](https://github.com/manelmourelo/Quest-Boss-Balancing-Design/blob/master/combat.gif)
 
 !["SkillTree"](https://github.com/manelmourelo/Quest-Boss-Balancing-Design/blob/master/skillTree.gif)
+
+[Back](https://wilhelman.github.io/DD-Wrath-of-Silumgar/)

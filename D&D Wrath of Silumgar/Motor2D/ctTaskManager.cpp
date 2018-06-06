@@ -1847,13 +1847,13 @@ bool PerformActionToEntity::Execute()
 						receiver_entity->AddAlteredStat(debuff);
 
 						Altered_Stat debuff2;
-						debuff2.turn_left = 3;
-						debuff2.stat_effect_strength = -2;
+						debuff2.turn_left = 2;
+						debuff2.stat_effect_strength = -1;
 						receiver_entity->AddAlteredStat(debuff2);
 
 						Altered_Stat debuff3;
-						debuff3.turn_left = 3;
-						debuff3.stat_effect_intelligence = -2;
+						debuff3.turn_left = 2;
+						debuff3.stat_effect_intelligence = -1;
 						receiver_entity->AddAlteredStat(debuff3);
 
 						//animate the receiver to hit + audio or smth

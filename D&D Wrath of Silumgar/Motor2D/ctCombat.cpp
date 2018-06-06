@@ -266,7 +266,7 @@ bool ctCombat::Update(float dt)
 		{
 			for (int j = 0; j < enemies.at(i)->altered_stats.size(); j++)
 			{
-				y_pos_icon = enemies.at(i)->position.y - enemies.at(i)->animation->GetCurrentFrame().h - 16;
+				y_pos_icon = enemies.at(i)->position.y - enemies.at(i)->animation->GetCurrentFrame().h - 24;
 				if (j == 0) {
 					x_pos_icon = enemies.at(i)->position.x + 8;
 				}

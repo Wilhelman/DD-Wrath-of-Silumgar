@@ -147,14 +147,9 @@ void TrollLeaders::PerformAction()
 	Entity* entity_objective = nullptr;
 
 	if (IsGoingToDoAnythingClever()) {//hacer algo cheto
-		if (!boosted) {
+	
 
-			App->task_manager->AddTask(new PerformActionToEntity(this, brotherly_rage, App->combat->GetRandomHeroe()));
-			boosted = true;
-
-		}
-
-		else {
+		
 			if (is_taunted) {
 				entity_objective = (Entity*)App->entities->GetWarrior();
 				is_taunted = false;
@@ -186,7 +181,7 @@ void TrollLeaders::PerformAction()
 				App->task_manager->AddTask(new PerformActionToEntity(this, this->claw_attack, entity_objective));
 				App->task_manager->AddTask(new MoveToInitialPosition(this));
 			}
-		}
+		
 	}
 	else {//hacer algo mal
 		if (is_taunted) {

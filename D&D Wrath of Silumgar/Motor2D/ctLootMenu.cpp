@@ -1307,7 +1307,7 @@ void LootMenu::SetInformationDroppedItem()
 			parent_dropped_position += 10;
 			std::string txt = "Con increases\n the maximum life";
 			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 15, 140));
-			helped_text_parent_position += 25;
+			helped_text_parent_position += 30;
 		}
 		if (dropped_items[0]->statistics.focus != 0)
 		{
@@ -1316,7 +1316,7 @@ void LootMenu::SetInformationDroppedItem()
 
 			std::string txt = "Foc increases\n the maximum mana";
 			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 15, 140));
-			helped_text_parent_position += 25;
+			helped_text_parent_position += 30;
 		}
 		if (dropped_items[0]->statistics.strength != 0)
 		{
@@ -1325,7 +1325,7 @@ void LootMenu::SetInformationDroppedItem()
 
 			std::string txt = "Str increases\n the physical damage";
 			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 15, 140));
-			helped_text_parent_position += 25;
+			helped_text_parent_position += 30;
 		}
 		if (dropped_items[0]->statistics.intelligence != 0)
 		{
@@ -1334,7 +1334,7 @@ void LootMenu::SetInformationDroppedItem()
 
 			std::string txt = "Int increases\n the magical damage";
 			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 15, 140));
-			helped_text_parent_position += 25;
+			helped_text_parent_position += 30;
 		}
 		if (dropped_items[0]->statistics.dexterity != 0)
 		{
@@ -1343,7 +1343,7 @@ void LootMenu::SetInformationDroppedItem()
 
 			std::string txt = "Dex increases\n the probability of critical";
 			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 15, 140));
-			helped_text_parent_position += 25;
+			helped_text_parent_position += 30;
 		}
 		if (dropped_items[0]->statistics.agility != 0)
 		{
@@ -1352,7 +1352,7 @@ void LootMenu::SetInformationDroppedItem()
 
 			std::string txt = "Agi increases the probability of dodging and hitting attacks";
 			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 15, 140));
-			helped_text_parent_position += 25;
+			helped_text_parent_position += 30;
 		}
 		if (dropped_items[0]->statistics.magical_defense != 0)
 		{
@@ -1361,7 +1361,7 @@ void LootMenu::SetInformationDroppedItem()
 
 			std::string txt = "M.def magical defense\n increases resistance to magical attacks";
 			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 15, 140));
-			helped_text_parent_position += 25;
+			helped_text_parent_position += 30;
 		}
 		if (dropped_items[0]->statistics.physical_defense != 0)
 		{
@@ -1370,7 +1370,7 @@ void LootMenu::SetInformationDroppedItem()
 
 			std::string txt = "P.def increases\n resistance to physical attacks";
 			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 15, 140));
-			helped_text_parent_position += 25;
+			helped_text_parent_position += 30;
 		}
 		if (dropped_items[0]->statistics.luck != 0)
 		{
@@ -1379,7 +1379,7 @@ void LootMenu::SetInformationDroppedItem()
 
 			std::string txt = "Luck increases\n probability of drop items";
 			information_dropped_items.push_back(new UITextBox(420, helped_text_parent_position, TEXTBOX, txt, { 255,255,255 }, 15, 140));
-			helped_text_parent_position += 25;
+			helped_text_parent_position += 30;
 		}
 	}
 

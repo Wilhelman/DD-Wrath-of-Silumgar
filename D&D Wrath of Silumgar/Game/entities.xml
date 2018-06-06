@@ -934,7 +934,7 @@
     </trollLeaders>
 
     <displacerBeast>
-      <statistics constitution ="30" focus="80" strength="10" agility="6" dexterity ="20" intelligence="18" physicalDefense="11" magicalDefense="11" judgement="60"/>
+      <statistics constitution ="30" focus="80" strength="11" agility="8" dexterity ="20" intelligence="18" physicalDefense="11" magicalDefense="11" judgement="60"/>
       <animations>
 
         <animation name="idle" speed="2.0" loop="true">

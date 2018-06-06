@@ -294,7 +294,7 @@ void Entity::Recover()
 
 	int mana_to_recover = (int)(0.10 * current_mana_points);
 	App->combat->UpdateManaBarOfEntity(this, mana_to_recover);
-	this->SetCurrentManaPoints(this->GetCurrentManaPoints() + mana_to_recover);
+	this->SetCurrentManaPoints(this->GetCurrentHealthPoints() + mana_to_recover);
 }
 
 void Entity::AddAlteredStat(Altered_Stat new_altered_stat)

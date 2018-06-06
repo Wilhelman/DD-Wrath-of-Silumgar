@@ -110,10 +110,10 @@ TODO: ALL INNOVATIONS WE HAVE
 ## Credits
 
 * Sprites from:  
-- http://spritedatabase.net/game/606  
-- http://spritedatabase.net/game/605
-- http://guissouma.amine.free.fr/world-of-dragon0/resource.html
-- https://7soul1.deviantart.com/
+ - http://spritedatabase.net/game/606  
+ - http://spritedatabase.net/game/605
+ - http://guissouma.amine.free.fr/world-of-dragon0/resource.html
+ - https://7soul1.deviantart.com/
 
 * Music from: 
 http://fantasyanime.com/valhalla/ddarcade_music.htm

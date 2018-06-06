@@ -56,6 +56,8 @@ General/developer controls:
 
 ## Team members
 
+!["Team Photo"](images/team_photo.jpg)
+
 ### Guillermo García Subirana
 * Lead
 * [Github account](https://github.com/Wilhelman)

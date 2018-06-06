@@ -40,6 +40,8 @@ TODO: ALL INNOVATIONS WE HAVE
 
 ## Team members
 
+!["Team Photo"](images/team_photo.jpg)
+
 _García Subirana, Guillermo's responsability and Github account_
 * Lead
 * [Github account](https://github.com/Wilhelman)

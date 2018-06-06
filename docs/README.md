@@ -1,6 +1,8 @@
 ﻿# DUNGEONS & DRAGONS: WRATH OF SILUMGAR
 
-This project has been done by seven spanish students of CITM - UPC (Terrasa, Spain).  
+This project has been done by seven spanish students of CITM - UPC (Terrasa, Spain).
+
+You can download the last release [here](https://github.com/Wilhelman/DD-Wrath-of-Silumgar/releases/tag/v1.0)
 
 ## Index
 
@@ -56,6 +58,8 @@ General/developer controls:
 
 ## Team members
 
+!["Team Photo"](images/team_photo.jpg)
+
 ### Guillermo García Subirana
 * Lead
 * [Github account](https://github.com/Wilhelman)
@@ -98,6 +102,7 @@ General/developer controls:
 
 ## Gameplay video
 
+<iframe width="854" height="480" src="https://www.youtube.com/embed/LTh3h9JwYuE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 ## Social media
   

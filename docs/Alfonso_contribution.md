@@ -14,7 +14,7 @@ Apart from programming, I've also been responsible for part of the design of the
 * Solve problems and cleaning all UI.  
 * All particle system and all particles in game.  
 ![Particle](images/particle.gif)
-* Solve problems with FullScreen.  
+* All problems with full screen and blits.  
 * Logic of decision.    
 * Loot Menu.
 ![Loot_Menu](images/lootmenu.png)    
@@ -23,6 +23,7 @@ Apart from programming, I've also been responsible for part of the design of the
 * Some abilities of the heroes.  
 * Map structure.  
 ![ggs1](images/ggs1.png)
+* Implement save data.
 * High implication in design and balancing of the game. 
 
 [Back](https://wilhelman.github.io/DD-Wrath-of-Silumgar/)

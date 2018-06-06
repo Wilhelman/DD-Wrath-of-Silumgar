@@ -138,6 +138,18 @@
       </stats>
 
     </equip>
+	
+	 <equip name="Kira's Boots" tier="3" type="BOOT">
+
+      <draw_coords x="288" y="96" width="48" height="48"/>
+
+      <stats>
+        <stat dext="7"/>
+		<stat agi="7"/>
+        <stat lck="-10"/>
+      </stats>
+
+    </equip>
 
     <equip name="Wise Boots" tier="2" type="BOOT">
 
@@ -181,6 +193,17 @@
       <stats>
         <stat mr="4"/>
         <stat pr="4"/>
+      </stats>
+
+    </equip>
+	
+	   <equip name="Arlakhim's Gauntlets" tier="3" type="ARMS">
+
+      <draw_coords x="384" y="144" width="48" height="48"/>
+
+      <stats>
+        <stat mr="7"/>
+        <stat str="7"/>
       </stats>
 
     </equip>
@@ -324,6 +347,16 @@
       </stats>
 
     </equip>
+	
+	<equip name="Sersius Ring" tier="3" type="HANDS" passive= "EXTRA_MANA">
+
+      <draw_coords x="288" y="240" width="48" height="48"/>
+      <stats>
+        <stat int="-7"/>
+        <stat dext="-7"/>
+      </stats>
+
+    </equip>
 
     <equip name="Gold Ring" tier="2" type="HANDS">
 
@@ -366,13 +399,13 @@
 
     <!--- ACCESSORIES -->
     
-    <equip name="Berserker Bracelet" tier="3" type="ACCESSORIES" passive ="MORE_LIFE_REGENERATION_OUT">
+    <equip name="Sito's The 'Collarsito'" tier="3" type="ACCESSORIES" passive ="MORE_LIFE_REGENERATION_OUT">
     <!--de 48 a 48 en w  y de 48 a -->
       <draw_coords x="0" y="0" width="48" height="48"/>
 
       <stats>
-        <stat str="10"/>
-        <stat pr="9"/>
+        <stat str="7"/>
+        <stat dext="7"/>
       </stats>
 
     </equip>
@@ -441,6 +474,17 @@
 
       <stats>
         <stat cnst="5"/>
+      </stats>
+
+    </equip>
+	
+	<equip name="Rikarudo's Chest" tier="3" type="ARMOR">
+
+      <draw_coords x="240" y="480" width="48" height="48"/>
+
+      <stats>
+        <stat cnst="7"/>
+		<stat pr="7"/>
       </stats>
 
     </equip>
@@ -531,6 +575,17 @@
       <stats>
         <stat cnst="5"/>
 
+      </stats>
+
+    </equip>
+	
+	 <equip name="Alfa's Helmet" tier="3" type="HELMET">
+
+      <draw_coords x="192" y="192" width="48" height="48"/>
+
+      <stats>
+        <stat cnst="7"/>
+		<stat mr="7"/>
       </stats>
 
     </equip>
@@ -633,6 +688,18 @@
         <stat fcs="3"/>
        <stat pr="3"/>
        <stat mr="3"/>
+      </stats>
+
+    </equip>
+	
+	<equip name="Wilhelman's Shield" tier="3" type="SHIELDS">
+
+      <draw_coords x="240" y="288" width="48" height="48"/>
+
+      <stats>
+        <stat lck="7"/>
+       <stat pr="7"/>
+       <stat mr="7"/>
       </stats>
 
     </equip>
@@ -810,6 +877,17 @@
 
     </equip>
 	
+	<equip name="S O R E Z _ U S O L L I P  <-" tier="3" type="WEAPONS">
+
+      <draw_coords x="336" y="336" width="48" height="48"/>
+
+      <stats>
+        <stat int="10"/>
+       <stat fcs="7"/>
+      </stats>
+
+    </equip>
+	
 	<equip name="Snake Staff" tier="1" type="WEAPONS">
 
       <draw_coords x="384" y="336" width="48" height="48"/>
@@ -851,6 +929,18 @@
       <stats>
         <stat str="6"/>
 		<stat int="-2"/>
+
+      </stats>
+
+    </equip>
+	
+	<equip name="Acaree's Sword" tier="3" type="WEAPONS">
+
+      <draw_coords x="144" y="384" width="48" height="48"/>
+
+      <stats>
+        <stat str="12"/>
+		<stat agi="-5"/>
 
       </stats>
 

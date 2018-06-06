@@ -89,9 +89,9 @@ public:
 	vector<UIElement*> altered_stats_icons;
 
 	void SaveDataToXML();
-	
+	bool ret2 = true;
 private:
-
+	
 	bool heroes_are_dead = false;
 	
 	//spawn heroes and enemies

@@ -714,15 +714,15 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 			}
 		}
 		else if (quit_label->current_state == STATE_EXECUTED) {
-			SaveInPauseMenu();
-
-			this->~UIPauseMenu();
-			App->combat->pauseMenuDelete = true;
+					
 			if (App->combat->active == true)
-				App->combat->SaveDataToXML();
-
-			App->fadeToBlack->FadeToBlackBetweenModules(callback, App->main_menu, 1.0f);
-			
+			{
+				App->combat->ret2 = false;
+			}
+			else
+			{
+				App->world_map->ret2 = false;
+			}
 
 			App->world_map->pause_menu_is_open = false;
 			App->combat->pause_menu_is_open = false;

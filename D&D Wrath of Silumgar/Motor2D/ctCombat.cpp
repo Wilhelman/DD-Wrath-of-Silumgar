@@ -725,7 +725,8 @@ bool ctCombat::Update(float dt)
 	DrawTurnPriority();
 
 	EnemiesBarShouldBeVisible();
-	return true;
+
+	return ret2;
 }
 
 // Called each loop iteration

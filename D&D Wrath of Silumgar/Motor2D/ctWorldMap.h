@@ -72,6 +72,7 @@ public:
 	UIElement* pauseMenu = nullptr;
 	bool pause_menu_is_open = false;
 	std::vector<int> number_map_generated;
+	bool ret2 = true;
 private:
 
 	//used to load easily a rect from XML

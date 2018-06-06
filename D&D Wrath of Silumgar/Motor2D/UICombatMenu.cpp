@@ -121,25 +121,25 @@ void UICombatMenu::Update()
 		//Go down
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.CROSS_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_DOWN == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
 
-			if (main_labels.size() != 0) {
+			if (main_labels.size() != 0 && selecting_enemy == false) {
 				NavigateDown(main_labels);
 			}
-			else if (abilities.size() != 0) {
+			else if (abilities.size() != 0 && selecting_enemy == false) {
 				NavigateDown(abilities);
 			}
-			else if (items.size() != 0) {
+			else if (items.size() != 0 && selecting_enemy == false) {
 				NavigateDown(items);
 			}
 		}
 		//Go up
 		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN && selecting_enemy == false || App->input->gamepad.CROSS_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_UP == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-			if (main_labels.size() != 0) {
+			if (main_labels.size() != 0 && selecting_enemy == false) {
 				NavigateUp(main_labels);
 			}
-			else if (abilities.size() != 0) {
+			else if (abilities.size() != 0 && selecting_enemy == false) {
 				NavigateUp(abilities);
 			}
-			else if (items.size() != 0) {
+			else if (items.size() != 0 && selecting_enemy == false) {
 				NavigateUp(items);
 			}
 		}
@@ -147,23 +147,23 @@ void UICombatMenu::Update()
 		if ((App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN && selecting_enemy == false || App->input->GetGamepadButton(App->main_menu->key_select) == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false)&& App->combat->pause_menu_is_open == false) {
 			App->audio->PlayFx(App->audio->cm_select_fx);
 			execute_comand_time.Start();
-			if (main_labels.size() != 0) {
+			if (main_labels.size() != 0 && selecting_enemy == false) {
 				ExecuteComand(main_labels);
 			}
-			else if (abilities.size() != 0) {
+			else if (abilities.size() != 0 && selecting_enemy == false) {
 				ExecuteComand(abilities);
 			}
-			else if (items.size() != 0) {
+			else if (items.size() != 0 && selecting_enemy == false) {
 				ExecuteComand(items);
 			}
 		}
 		//Go back to the start combat menu
 		if (App->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && selecting_enemy == false || App->input->GetGamepadButton(App->main_menu->key_back) == GAMEPAD_STATE::PAD_BUTTON_DOWN && selecting_enemy == false) {
 
-			if (main_labels.size() != 0) {
+			if (main_labels.size() != 0 && selecting_enemy == false) {
 				App->combat->SelectWithPreviousHeroe();
 			}
-			else {
+			else if(main_labels.size() == 0 && selecting_enemy == false){
 				GoBack();
 			}
 		}

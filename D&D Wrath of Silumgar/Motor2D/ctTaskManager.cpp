@@ -3488,7 +3488,7 @@ bool PerformActionToEntity::Execute()
 
 								bool critical = false;
 
-								int damage_to_deal = action_to_perform.health_points_effect - (1.4*App->entities->GetElf()->GetCurrentIntelligencePoints());
+								int damage_to_deal = action_to_perform.health_points_effect - (1.1*App->entities->GetElf()->GetCurrentIntelligencePoints());
 								float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 								actioner_dexterity = actioner_dexterity / 10;
 
@@ -3521,13 +3521,16 @@ bool PerformActionToEntity::Execute()
 
 
 								App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "BURNIG", { 0,255,0,255 }, 14, nullptr, nullptr);
-								Altered_Stat stats_down;
+								int burn_chance = (rand() % 100) + 1;
+								if (burn_chance >= 33) {
+									Altered_Stat stats_down;
 
-								stats_down.burn = true;
+									stats_down.burn = true;
 
-								stats_down.turn_left = 2;
+									stats_down.turn_left = 2;
 
-								receiver_entity->AddAlteredStat(stats_down);
+									receiver_entity->AddAlteredStat(stats_down);
+								}
 
 
 								receiver_entity->Damaged();
@@ -3787,7 +3790,7 @@ bool PerformActionToEntity::Execute()
 
 								bool critical = false;
 
-								int damage_to_deal = action_to_perform.health_points_effect - (2*App->entities->GetElf()->GetCurrentIntelligencePoints());
+								int damage_to_deal = action_to_perform.health_points_effect - (1.6*App->entities->GetElf()->GetCurrentIntelligencePoints());
 								float damage_reduction = (float)receiver_entity->GetCurrentMagicalDefensePoints() / 100 * (float)damage_to_deal;
 								actioner_dexterity = actioner_dexterity / 10;
 
@@ -3820,13 +3823,16 @@ bool PerformActionToEntity::Execute()
 
 
 								App->gui->AddUIFloatingValue(actioner_entity->position.x + (actioner_entity->animation->GetCurrentFrame().w / 2), actioner_entity->position.y - actioner_entity->animation->GetCurrentFrame().h, "BURNIG", { 0,255,0,255 }, 14, nullptr, nullptr);
-								Altered_Stat stats_down;
+								int burn_chance = (rand() % 100) + 1;
+								if (burn_chance >= 50) {
+									Altered_Stat stats_down;
 
-								stats_down.burn = true;
+									stats_down.burn = true;
 
-								stats_down.turn_left = 2;
+									stats_down.turn_left = 2;
 
-								receiver_entity->AddAlteredStat(stats_down);
+									receiver_entity->AddAlteredStat(stats_down);
+								}
 
 
 								receiver_entity->Damaged();

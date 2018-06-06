@@ -1669,12 +1669,12 @@ bool PerformActionToEntity::Execute()
 						Altered_Stat defense;
 						defense.turn_left = 1;
 						defense.stat_effect_magical_defense = -1;
-						actioner_entity->AddAlteredStat(defense);
+						receiver_entity->AddAlteredStat(defense);
 
 						Altered_Stat defense2;
 						defense2.turn_left = 1;
 						defense2.stat_effect_physical_defense = -1;
-						actioner_entity->AddAlteredStat(defense2);
+						receiver_entity->AddAlteredStat(defense2);
 
 						receiver_entity->Damaged();
 					}
@@ -1850,8 +1850,6 @@ bool PerformActionToEntity::Execute()
 				return true;
 
 			actioner_entity->animation = &actioner_entity->meteor;
-
-
 
 			ret = actioner_entity->animation->Finished();
 			if (!sound_playing) {

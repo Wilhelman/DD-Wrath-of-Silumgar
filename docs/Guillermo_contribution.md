@@ -1,3 +1,5 @@
+# Guillermo García Subirana
+
 My main role as a leader has been to organize the team, guide the milestones between releases and keep the team motivated. In addition to my role as leader, I've been very aware of the programming part. These are my contributions:
 
 * **Map Scene**

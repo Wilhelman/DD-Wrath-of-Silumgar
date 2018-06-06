@@ -835,8 +835,16 @@ void Entity::CalculateAllStats()
 	tmp_luck += accessory.statistics.luck;
 	tmp_judgement += accessory.statistics.judgement;
 
-	max_health_points = current_health_points = tmp_constitution;
-	max_mana_points = current_mana_points = tmp_focus;
+	if(current_health_points != 0)
+		max_health_points = tmp_constitution;
+	else
+		max_health_points = current_health_points = tmp_constitution;
+
+	if (current_mana_points != 0)
+		max_mana_points = tmp_focus;
+	else
+		max_mana_points = current_mana_points = tmp_focus;
+
 	current_strength = tmp_strength;
 	current_intelligence = tmp_intelligence;
 	current_dexterity_points = tmp_dexterity;

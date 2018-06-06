@@ -404,8 +404,8 @@
       <draw_coords x="0" y="0" width="48" height="48"/>
 
       <stats>
-        <stat str="7"/>
-        <stat dext="7"/>
+        <stat str="10"/>
+        <stat dext="10"/>
       </stats>
 
     </equip>

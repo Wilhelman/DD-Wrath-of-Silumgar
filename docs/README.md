@@ -100,7 +100,7 @@ TODO: ALL INNOVATIONS WE HAVE
 
 ## Trailer
 
-<iframe width="1903" height="715" src="https://www.youtube.com/embed/9_9DGbxZBRY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="800" height="600" src="https://www.youtube.com/embed/9_9DGbxZBRY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 ## Gameplay video

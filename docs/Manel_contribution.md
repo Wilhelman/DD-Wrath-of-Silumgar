@@ -12,6 +12,10 @@ My main contributions to the project have been:
 * Implement Joystick inputs.
 * Test, bug solving and balancing.
 
+!["MainMenu"](https://github.com/Wilhelman/DD-Wrath-of-Silumgar/blob/master/docs/images/MainMenu.gif)
+
+!["Settings"](https://github.com/Wilhelman/DD-Wrath-of-Silumgar/blob/master/docs/images/Settings.gif)
+
 !["Combat"](https://github.com/Wilhelman/DD-Wrath-of-Silumgar/blob/master/docs/images/combat.gif)
 
 !["SkillTree"](https://github.com/Wilhelman/DD-Wrath-of-Silumgar/blob/master/docs/images/skillTree.gif)

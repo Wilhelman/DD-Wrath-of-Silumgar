@@ -196,13 +196,13 @@ bool ctSettings::Update(float dt)
 	}
 
 	//TurnUp volume
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_RIGHT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		App->audio->PlayFx(App->audio->mm_movement_fx);
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT || App->input->gamepad.CROSS_RIGHT == GAMEPAD_STATE::PAD_BUTTON_REPEAT || App->input->gamepad.JOYSTICK_RIGHT == GAMEPAD_STATE::PAD_BUTTON_REPEAT) {
+		//App->audio->PlayFx(App->audio->mm_movement_fx);
 		TurnUp(labels);
 	}
 	//TurnDownVolume
-	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN || App->input->gamepad.JOYSTICK_LEFT == GAMEPAD_STATE::PAD_BUTTON_DOWN) {
-		App->audio->PlayFx(App->audio->mm_movement_fx);
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT || App->input->gamepad.CROSS_LEFT == GAMEPAD_STATE::PAD_BUTTON_REPEAT || App->input->gamepad.JOYSTICK_LEFT == GAMEPAD_STATE::PAD_BUTTON_REPEAT) {
+		//App->audio->PlayFx(App->audio->mm_movement_fx);
 		TurnDown(labels);
 	}
 

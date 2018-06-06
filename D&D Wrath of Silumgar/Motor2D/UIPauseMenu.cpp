@@ -721,8 +721,8 @@ void UIPauseMenu::ExecuteComand(std::vector<UIElement*> &current_vector) {
 			App->fadeToBlack->FadeToBlackBetweenModules(callback, App->main_menu, 1.0f);
 			
 
-			//App->world_map->pause_menu_is_open = false;
-			//App->combat->pause_menu_is_open = false;
+			App->world_map->pause_menu_is_open = false;
+			App->combat->pause_menu_is_open = false;
 		}
 	}
 

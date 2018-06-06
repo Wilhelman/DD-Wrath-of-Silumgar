@@ -1391,7 +1391,7 @@ void ctCombat::LoadSkill(pugi::xml_node skill_node, Entity * entity)
 			new_action.type = SEED_OF_LIFE;
 		else if (tmp == "Fireball")
 			new_action.type = FIREBALL;
-		else if (tmp == "Lightning Boolt")
+		else if (tmp == "Lightning Bolt")
 			new_action.type = LIGHTNING_BOLT;
 		else if (tmp == "Seed Of Life Plus")
 			new_action.type = SEED_OF_LIFE_PLUS;

@@ -10,4 +10,4 @@ My main contributions to the project have been:
 * Implement some items.
 * Add the video manager.
 * Implement Joystick inputs.
-* Test, bug solving and testing.
+* Test, bug solving and balancing.

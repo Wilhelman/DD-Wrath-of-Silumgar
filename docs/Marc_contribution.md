@@ -17,3 +17,4 @@ In this project I've been in charge of the art. My role has been to work on the 
 * I've helped Guillermo and added the altered stats and status conditions missing to the game
 * I've loaded all the entities statistics
 * Balancing & testing
+* Gameplay video

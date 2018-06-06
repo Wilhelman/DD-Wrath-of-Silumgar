@@ -1,3 +1,5 @@
+# Marc Tarrés
+
 In this project I've been in charge of the art. My role has been to work on the visual part of the game and to supervise it so it all ends up looking as good as possible. I've done:
 
 * Art bible document

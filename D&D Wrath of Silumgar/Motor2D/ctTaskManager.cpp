@@ -3148,6 +3148,7 @@ bool PerformActionToEntity::Execute()
 				sound_playing = true;
 			}
 
+			ret = receiver_entity->animation->Finished();
 			if (ret)
 			{
 

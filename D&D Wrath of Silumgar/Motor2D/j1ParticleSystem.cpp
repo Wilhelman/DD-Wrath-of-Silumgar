@@ -82,6 +82,8 @@ bool j1ParticleSystem::Awake(pugi::xml_node& config)
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_DWARFS_WRATH_PLUS);
 		else if (emitterType == "ragging_mock")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_RAGGING_MOCK);
+		else if (emitterType == "meteor")
+			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_METEOR);
 		//ELF
 		else if (emitterType == "seed_of_life")
 			LoadEmitterData(emitters, EmitterType::EMITTER_TYPE_SEED_OF_LIFE);

@@ -1869,7 +1869,7 @@ bool PerformActionToEntity::Execute()
 				//animate the receiver to hit + audio or smth
 				fPoint  posP = { (float)(receiver_entity->position.x + (receiver_entity->animation->GetCurrentFrame().w / 2)), (float)(receiver_entity->position.y - receiver_entity->animation->GetCurrentFrame().h / 2) };
 
-				//App->psystem->AddEmiter(posP, EmitterType::EMITTER_TYPE_HIGH_AXE);
+				App->psystem->AddEmiter(posP, EMITTER_TYPE_METEOR);
 				sound_playing = false;
 
 			}

@@ -421,10 +421,17 @@ int Entity::GetCurrentStrengthPoints()
 				return (int)((0.50 * current_strength) + current_strength);
 				break;
 			case -1:
+				if ((int)((0.25 * current_strength) - current_strength) <= 0) {
+					return 3;
+				}else
 				return (int)((0.25 * current_strength) - current_strength);
 				break;
 			case -2:
-				return (int)((0.50 * current_strength) - current_strength);
+				if ((int)((0.50 * current_strength) - current_strength) <= 0) {
+					return 3;
+				}
+				else
+					return (int)((0.50* current_strength) - current_strength);
 				break;
 			default:
 				break;

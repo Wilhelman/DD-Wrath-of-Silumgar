@@ -1115,10 +1115,10 @@ void ctCombat::SpawnEntities()
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, TROLL_LEADERS);
 			break;
 		case LICH_1:
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, LICH_1);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, LICH_1);
 			break;
 		case LICH_2:
-			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, LICH_2);
+			App->entities->SpawnEntity(App->map->enemies_position_coords.at(1).x, App->map->enemies_position_coords.at(1).y, LICH_2);
 			break;
 		case DISPLACER_BEAST:
 			App->entities->SpawnEntity(App->map->enemies_position_coords.at(i).x, App->map->enemies_position_coords.at(i).y, DISPLACER_BEAST);

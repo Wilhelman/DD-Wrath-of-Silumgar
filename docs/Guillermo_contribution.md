@@ -9,7 +9,7 @@ My main role as a leader has been to organize the team, guide the milestones bet
   * Movement between combats
   
 ![MapScene_Example](images/ggs1.png)
-![MapScene_Example](images/ggs2.png)
+![MapScene_Example2](images/ggs2.png)
   
 * **Combat Scene**
   * Placement of entities using tileset
@@ -25,13 +25,13 @@ My main role as a leader has been to organize the team, guide the milestones bet
   * Item drop system
   * Implement the heroes with idle in select mode ( with extra saturated margin )
   
-![Combat_Example](images/ggs4.gif)
+![Combat_Example3](images/ggs4.gif)
   
 * **UI**
   * Implemented the interface element that appears when performing actions in combat (damage, stun, heal ...)
   * Decision element (for the world map scene)
   
-![UI](images/ggs3.png)
+![UI4](images/ggs3.png)
   
 * **Persistence of data**
   * Save and load of all the necesary between combats

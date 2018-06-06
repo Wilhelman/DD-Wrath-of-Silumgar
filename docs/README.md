@@ -111,8 +111,11 @@ TODO: ALL INNOVATIONS WE HAVE
 
 * Sprites from:  
   http://spritedatabase.net/game/606  
+  
   http://spritedatabase.net/game/605
+  
   http://guissouma.amine.free.fr/world-of-dragon0/resource.html
+  
   https://7soul1.deviantart.com/
 
 * Music from: 

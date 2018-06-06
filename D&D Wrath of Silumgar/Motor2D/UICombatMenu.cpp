@@ -1235,7 +1235,7 @@ void UICombatMenu::ChangeExplanation(std::vector<UIElement*> &current_vector) {
 			explanation_label = App->gui->AddUITextBox(2, 1, 15, 400, description, { 255,255,255,255 }, nullptr, Second_Font);
 			explanation_label->SetParent(explanation_background);
 			std::string mana_string = "Mana:" + std::to_string(entity_actions.at(current_ability).mana_points_effect_to_himself);
-			mana_cost = App->gui->AddUILabel(320, explanationPos.y+24, mana_string, { 0,0,255,255 }, 17, nullptr, nullptr, Second_Font);
+			mana_cost = App->gui->AddUILabel(320, explanationPos.y+24, mana_string, { 51, 204, 255,255 }, 17, nullptr, nullptr, Second_Font);
 		}
 		else {
 			explanation_label = App->gui->AddUITextBox(2, 1, 15, 450, "You have non abilities in this moment", { 255,255,255,255 }, nullptr, Second_Font);

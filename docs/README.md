@@ -52,7 +52,7 @@ _IMPORTANT: do not modify, change or add any folder or file as you might not be 
 * Arrow keys: Move through menus.
 * Enter: Choose option.
 * Return: Go to previous menu.
-* Escape: Open Pause menu.
+* P: Open Pause menu.
 
 General/developer controls:
 

@@ -1390,7 +1390,7 @@
           <frame x="1818" y="1119" width="91" height="71"/>
         </animation>
 
-        <animation name="rock" speed="0.05" loop="false">
+        <animation name="harden_skin" speed="0.05" loop="false">
           <frame x="2829" y="1949" width="73" height="73"/>
           <frame x="2707" y="1949" width="73" height="73"/>
           <frame x="2606" y="1949" width="73" height="73"/>
@@ -1585,7 +1585,7 @@
           <frame x="49" y="2149" width="53" height="72"/>
         </animation>
 
-        <animation name="rock" speed="0.05" loop="false">
+        <animation name="harden_skin" speed="0.05" loop="false">
         <frame x="707" y="1658" width="53" height="70"/>
           <frame x="642" y="1658" width="53" height="70"/>
           <frame x="572" y="1658" width="53" height="70"/>
@@ -1811,7 +1811,7 @@
           <frame x="1106" y="3376" width="124" height="108"/>
         </animation>
         
-        <animation name="rock" speed="0.05" loop="false">
+        <animation name="harden_skin" speed="0.05" loop="false">
           <frame x="984" y="2966" width="81" height="79"/>
           <frame x="899" y="2966" width="81" height="79"/>
           <frame x="816" y="2966" width="81" height="79"/>

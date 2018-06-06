@@ -7,6 +7,7 @@
 #include "ctCombat.h"
 #include "ctLog.h"
 #include "ctLootMenu.h"
+#include "j1Map.h"
 
 //randomize libs
 #include <stdlib.h>     /* srand, rand */
@@ -835,7 +836,7 @@ void Entity::CalculateAllStats()
 	tmp_luck += accessory.statistics.luck;
 	tmp_judgement += accessory.statistics.judgement;
 
-	if(current_health_points != 0)
+	if(current_health_points != 0 && App->map->actual_tier != TIER_MAP_1)
 		max_health_points = tmp_constitution;
 	else
 		max_health_points = current_health_points = tmp_constitution;

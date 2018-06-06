@@ -354,6 +354,11 @@ bool LootMenu::Start()
 	App->entities->GetDwarf()->animation = &App->entities->GetDwarf()->menu_animation;
 	App->entities->GetElf()->animation = &App->entities->GetElf()->menu_animation;
 
+	if (!App->audio->PlayMusic(App->audio->LootBSO.c_str(), 1)) {
+
+		LOG("Error playing music in ctLootMenu Start");
+	}
+
 	update_count = 0;
 	return true;
 }

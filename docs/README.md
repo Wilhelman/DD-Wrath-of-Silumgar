@@ -90,7 +90,7 @@ General/developer controls:
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Marc_contribution)
 
 ### Alex Campamar Redol
-* UI
+* Technical designer
 * [Github account](https://github.com/Acaree)
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Alex_contribution)
 

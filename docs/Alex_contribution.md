@@ -1,5 +1,5 @@
-As a responsible or UI i had to organise how to made ui to be intuitive. In a turn based game like this, it was difficult because the game have a lot of information and it was difficult to reach something clear and esy to understand.
-My work in this project have been focused on programming, but i also made some things of art (most of them of UI). I've done:
+I designed the UI for the game. I had to organise how to made UI to be intuitive. In a turn based game like this, it was difficult because the game has a lot of information and it was difficult to reach something clear and easy to understand.
+My work in this project have been focused on design and programming, but I also made some things of art (most of them of UI). I've done:
 
 * UI sprites for combat, loot menu and pause menu
 * Implement a task manager to manage all the combat

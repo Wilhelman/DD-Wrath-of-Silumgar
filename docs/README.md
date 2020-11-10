@@ -15,7 +15,7 @@ You can download the last release [here](https://github.com/Wilhelman/DD-Wrath-o
   * [Ricardo Gutiérrez Llenas](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#ricardo-gutiérrez-llenas)
   * [Victor Tirado Fernández](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#victor-tirado-fernández)
   * [Marc Tarrés i Urbieta](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#marc-tarrés-i-urbieta)
-  * [Alex Campamar Redol](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#alex_campamar_redol)
+  * [Alex Campamar Redol](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#alex-campamar-redol)
   * [Manel Mourelo Montero](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#manel-mourelo-montero)
 * [Trailer](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#trailer)
 * [Gameplay video](https://wilhelman.github.io/DD-Wrath-of-Silumgar/#gameplay-video)
@@ -90,7 +90,7 @@ General/developer controls:
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Marc_contribution)
 
 ### Alex Campamar Redol
-* Technical designer
+* Game & UI designer
 * [Github account](https://github.com/Acaree)
 * [Contribution](https://wilhelman.github.io/DD-Wrath-of-Silumgar/Alex_contribution)
 
